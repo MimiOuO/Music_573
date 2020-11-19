@@ -1,0 +1,1 @@
+../../../Qiniu/QiniuSDK/Collect/QNUploadInfoReporter.h
