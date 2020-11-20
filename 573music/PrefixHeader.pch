@@ -48,12 +48,12 @@
 #import "UITableView+MioExtension.h"
 #import "MioViewController.h"
 #import "MioLoginVC.h"
-#import "MioBaseNavigationController.h"
+#import "MioNavVC.h"
 #import "MioRefreshHeader.h"
 #import "MioEmpty.h"
 #import "MioAgeView.h"
 #import "MioAvatarView.h"
-
+#import "MioVCConfig.h"
 
 
 #endif

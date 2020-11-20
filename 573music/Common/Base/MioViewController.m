@@ -30,11 +30,15 @@
 	if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
 		self.automaticallyAdjustsScrollViewInsets = NO;
 	}
+    self.view.height = KSH;
+    
 	//设置背景颜色
-	self.view.backgroundColor = appBgColor;
+	self.view.backgroundColor = appWhiteColor;
     //隐藏自带的导航栏
     self.navigationController.navigationBar.hidden = YES;
 
+    UIView *bg = [UIView creatView:frame(0, 0, KSW, KSH) inView:self.view bgColor:appWhiteColor radius:0];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -45,8 +49,37 @@
     } else {
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     }
+//    self.view.height = KSH;
+    if ([MioVCConfig getBottomType:self] == MioBottomAll) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomAll" object:nil];
+        self.view.height = KSH - 49 - SafeBotH - 50;
+    }
+    if ([MioVCConfig getBottomType:self] == MioBottomHalf) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomHalf" object:nil];
+        self.view.height = KSH - SafeBotH - 50;
+    }
+    if ([MioVCConfig getBottomType:self] == MioBottomNone) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomNone" object:nil];
+//        self.view.height = KSH;
+    }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+//    self.view.height = KSH;
+    if ([MioVCConfig getBottomType:self] == MioBottomAll) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomAll" object:nil];
+        self.view.height = KSH - 49 - SafeBotH - 50;
+    }
+    if ([MioVCConfig getBottomType:self] == MioBottomHalf) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomHalf" object:nil];
+        self.view.height = KSH - SafeBotH - 50;
+    }
+    if ([MioVCConfig getBottomType:self] == MioBottomNone) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomNone" object:nil];
+//        self.view.height = KSH;
+    }
+}
 
 
 - (void)viewDidDisappear:(BOOL)animated {

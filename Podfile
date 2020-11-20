@@ -2,7 +2,7 @@
 platform :ios, '9.0'
 inhibit_all_warnings!
 target '573music' do
-pod 'YTKNetwork', '~> 2.0.4'
+pod 'YTKNetwork'
 pod 'SDWebImage'
 pod 'SDAutoLayout'
 pod 'MJRefresh'
@@ -25,6 +25,8 @@ pod 'LEEAlert'
 pod 'UMCCommon'
 pod 'PPBadgeView'
 #pod 'WechatOpenSDK'
+pod 'SSZipArchive'
 pod 'CHTCollectionViewWaterfallLayout'
 pod 'YYText'
+
 end
