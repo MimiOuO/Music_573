@@ -58,6 +58,7 @@ PODS:
     - Protobuf (~> 3.4)
   - UMCCommon (7.1.1)
   - WMPageController (2.3.0)
+  - WoodPeckeriOS (1.2.9)
   - YBImageBrowser (3.0.9):
     - YBImageBrowser/Core (= 3.0.9)
   - YBImageBrowser/Core (3.0.9):
@@ -90,6 +91,7 @@ DEPENDENCIES:
   - SVGAPlayer
   - UMCCommon
   - WMPageController (~> 2.3.0)
+  - WoodPeckeriOS
   - YBImageBrowser
   - YTKNetwork
   - YYText
@@ -119,6 +121,7 @@ SPEC REPOS:
     - SVGAPlayer
     - UMCCommon
     - WMPageController
+    - WoodPeckeriOS
     - YBImageBrowser
     - YTKNetwork
     - YYImage
@@ -148,11 +151,12 @@ SPEC CHECKSUMS:
   SVGAPlayer: ca9c869316b468d995994c7fe82b9bd8645a0787
   UMCCommon: f455f92c125342e360d6ad9eafe484945351eeb5
   WMPageController: 9f219bb8912a1a1f51af11fde61e2682a7b7e7f2
+  WoodPeckeriOS: f16864f7a78d5c6daa605591dd66690d466d95be
   YBImageBrowser: 7ecc8bf33ffa5f3b94c397c29b4f3638dd37f527
   YTKNetwork: a096f80c18c7e7cc0e623a0fbea0a1bfd3f5bcf2
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 0d30d708e078e76bd03f42cc47f6ac56768e6690
+PODFILE CHECKSUM: 433d22a8c59c8372576d2bfd49f2a089b999a5ea
 
 COCOAPODS: 1.9.3

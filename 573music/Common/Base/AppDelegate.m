@@ -15,9 +15,10 @@
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
+#import <SSZipArchive.h>
 #endif
 @interface AppDelegate ()
-
+@property (nonatomic, assign) float tabbarHeight;
 @end
 
 @implementation AppDelegate
@@ -41,8 +42,75 @@
     
     [self registPlatform];
     
+    [self changeSkinLocation];
+    
+    [self initSettings];
+    
     return YES;
 }
+
+-(void)initSettings{
+    NSLog(@"%@",[userdefault objectForKey:@"first"]);
+    if (![userdefault objectForKey:@"first"]) {
+        [userdefault setObject:@"1" forKey:@"first"];
+        [userdefault setObject:@"bai" forKey:@"skin"];
+    }
+}
+
+-(void)changeSkinLocation{
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDirectory = [path objectAtIndex:0];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"hei" ofType:@"zip"];
+    NSString *dstPath = [NSString stringWithFormat:@"%@/Skin/hei.zip",
+                         NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+
+    [[NSFileManager defaultManager] copyItemAtPath:filePath toPath:dstPath error:nil];
+    
+    NSString *zipPath =
+    [NSString stringWithFormat:@"%@/Skin/hei.zip",
+                     NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+
+    NSString *unzipPath = [NSString stringWithFormat:@"%@/Skin",
+                           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+   
+    NSLog(@"Unzip path: %@", unzipPath);
+    if (!unzipPath) {
+        return;
+    }
+    
+    BOOL success = [SSZipArchive unzipFileAtPath:zipPath
+                                   toDestination:unzipPath
+                              preserveAttributes:YES
+                                       overwrite:YES
+                                  nestedZipLevel:0
+                                        password:nil
+                                           error:nil
+                                        delegate:nil
+                                 progressHandler:nil
+                               completionHandler:nil];
+    if (success) {
+        NSLog(@"Success unzip");
+        
+    } else {
+        NSLog(@"No success unzip");
+        
+        
+    }
+}
+
+#pragma mark - 程序将要进入后台
+- (void)applicationWillResignActive:(UIApplication *)application {
+    MioTabbarVC *mt=(MioTabbarVC *)[UIApplication sharedApplication].delegate.window.rootViewController;
+    _tabbarHeight = mt.tabBar.frame.origin.y;
+}
+#pragma mark - 程序将要进入前台
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    
+    MioTabbarVC *mt=(MioTabbarVC *)[UIApplication sharedApplication].delegate.window.rootViewController;
+    mt.tabBar.frame = frame(0, _tabbarHeight, KSW, 49 + SafeBotH);
+    
+}
+
 
 -(void)registPlatform{
 

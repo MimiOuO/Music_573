@@ -9,8 +9,9 @@
 #import "MioViewController.h"
 #import "MioNavView.h"
 #import <YTKNetwork.h>
-
 //#import "MioGetRequest.h"
+
+
 @implementation MioViewController
 
 -(MioNavView *)navView{
@@ -36,8 +37,12 @@
 	self.view.backgroundColor = appWhiteColor;
     //隐藏自带的导航栏
     self.navigationController.navigationBar.hidden = YES;
-
-    UIView *bg = [UIView creatView:frame(0, 0, KSW, KSH) inView:self.view bgColor:appWhiteColor radius:0];
+    
+    //背景图
+//         _bgImg = //[MioImageView creatView:frame(0, 0, KSW, KSH) inView:self.view bgColor:appWhiteColor radius:0];
+    
+    _bgImg = [MioImageView creatImgView:frame(0, 0, KSW, KSH) inView:self.view skin:SkinName image:@"icon_bai" radius:0];
+    
     
 }
 
@@ -60,7 +65,7 @@
     }
     if ([MioVCConfig getBottomType:self] == MioBottomNone) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomNone" object:nil];
-//        self.view.height = KSH;
+        self.view.height = KSH;
     }
 }
 
@@ -77,7 +82,7 @@
     }
     if ([MioVCConfig getBottomType:self] == MioBottomNone) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomNone" object:nil];
-//        self.view.height = KSH;
+        self.view.height = KSH;
     }
 }
 

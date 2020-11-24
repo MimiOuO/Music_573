@@ -13,7 +13,7 @@
 #import "Lottie.h"
 #import "MioGroudVC.h"
 #import "MioMineVC.h"
-#import "MioTabbar.h"
+
 @interface MioTabbarVC ()
 
 @property (nonatomic, strong) UIControl *shadowView;
@@ -30,7 +30,7 @@
 @property (nonatomic, strong) LOTAnimationView *hud2;
 @property (nonatomic, strong) LOTAnimationView *hud3;
 @property (nonatomic, strong) LOTAnimationView *hud4;
-@property (nonatomic, strong) MioTabbar *tabbar;
+
 @end
 
 @implementation MioTabbarVC

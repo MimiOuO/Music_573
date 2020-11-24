@@ -24,7 +24,7 @@
     
     //save path
     NSString *documentPath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *path=[documentPath stringByAppendingPathComponent:@"IxueaCocoaDownloader/a.apk"];
+    NSString *path=[documentPath stringByAppendingPathComponent:@"Skin/bai.zip"];
 
     NSLog(@"ixuea download save path:%@",path);
 
@@ -36,10 +36,10 @@
     [self.downloadInfo setPath:path];
 
     //Set download url.
-    [self.downloadInfo setUri:@"http://file.giggsgame.com/app/video/2019120211433412679"];
+    [self.downloadInfo setUri:@"http://file.duoduo.apphw.com/test/bai.zip"];
 
     //Set download info id.
-    [self.downloadInfo setId:@"5"];
+    [self.downloadInfo setId:@"8"];
 
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
 
@@ -64,6 +64,8 @@
             
         }
     }];
+    
+    
 }
 
 

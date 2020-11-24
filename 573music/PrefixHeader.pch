@@ -55,6 +55,10 @@
 #import "MioAvatarView.h"
 #import "MioVCConfig.h"
 
+#import "MioLabel.h"
+#import "MioView.h"
+#import "MioImageView.h"
+
 
 #endif
 
@@ -84,6 +88,9 @@ if (@available(iOS 13.0, *)) {\
 } else {\
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;\
 }\
+
+#define SkinName            [userdefault objectForKey:@"skin"]
+
 //======================================================================//
 //                                尺寸
 //======================================================================//

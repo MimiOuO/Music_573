@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MioTabbar.h"
 @interface MioTabbarVC : UITabBarController
-
+@property (nonatomic, strong) MioTabbar *tabbar;
 @end

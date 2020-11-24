@@ -198,6 +198,7 @@ fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_ROOT}/LookinServer/LookinServer.framework"
+  install_framework "${PODS_ROOT}/WoodPeckeriOS/WoodPeckeriOS.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

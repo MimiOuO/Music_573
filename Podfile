@@ -16,6 +16,7 @@ pod 'YBImageBrowser'
 #pod 'Hyphenate', '~> 3.6.5'
 pod 'JPush', '3.2.2-noidfa'
 pod 'LookinServer', :configurations => ['Debug']
+pod 'WoodPeckeriOS', :configurations => ['Debug']
 pod 'Masonry'
 pod 'FSTextView'
 pod 'SVGAPlayer'
