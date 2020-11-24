@@ -56,5 +56,8 @@
     testlab.text = @"sdlfskjfsldjf234dsfsdfsf";
     testlab.textColor = subColor;
     [self.view addSubview:testlab];
+    
+
+
 }
 @end

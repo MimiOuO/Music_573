@@ -333,6 +333,16 @@
 		23AB23AE2431DA5300DBB427 /* MioBoundPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23A62431DA5300DBB427 /* MioBoundPhoneVC.m */; };
 		23AB23B12431DAB500DBB427 /* MioLargeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23B02431DAB500DBB427 /* MioLargeButton.m */; };
 		23AB23B42431DAEE00DBB427 /* TFQClickAreaButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23B32431DAEE00DBB427 /* TFQClickAreaButton.m */; };
+		23BC2511256C9C8100E756ED /* STKQueueEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC24FC256C9C8000E756ED /* STKQueueEntry.m */; };
+		23BC2512256C9C8100E756ED /* STKHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2500256C9C8000E756ED /* STKHTTPDataSource.m */; };
+		23BC2513256C9C8100E756ED /* STKLocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2502256C9C8000E756ED /* STKLocalFileDataSource.m */; };
+		23BC2514256C9C8100E756ED /* STKCoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2504256C9C8000E756ED /* STKCoreFoundationDataSource.m */; };
+		23BC2515256C9C8100E756ED /* STKAutoRecoveringHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2505256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.m */; };
+		23BC2516256C9C8100E756ED /* STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2508256C9C8100E756ED /* STKAudioPlayer.m */; };
+		23BC2517256C9C8100E756ED /* STKDataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2509256C9C8100E756ED /* STKDataSourceWrapper.m */; };
+		23BC2518256C9C8100E756ED /* STKDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC250C256C9C8100E756ED /* STKDataSource.m */; };
+		23BC2519256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC250F256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m */; };
+		23BC251E256CA08500E756ED /* MioGetCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC251D256CA08500E756ED /* MioGetCacheRequest.m */; };
 		23C24FCD2446A4CA00EE0BE2 /* STPickerDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FBA2446A4CA00EE0BE2 /* STPickerDate.m */; };
 		23C24FCE2446A4CA00EE0BE2 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23C24FBD2446A4CA00EE0BE2 /* area.plist */; };
 		23C24FCF2446A4CA00EE0BE2 /* STPickerArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FBF2446A4CA00EE0BE2 /* STPickerArea.m */; };
@@ -1016,6 +1026,29 @@
 		23AB23B02431DAB500DBB427 /* MioLargeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioLargeButton.m; sourceTree = "<group>"; };
 		23AB23B22431DAEE00DBB427 /* TFQClickAreaButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFQClickAreaButton.h; sourceTree = "<group>"; };
 		23AB23B32431DAEE00DBB427 /* TFQClickAreaButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFQClickAreaButton.m; sourceTree = "<group>"; };
+		23BC24FC256C9C8000E756ED /* STKQueueEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKQueueEntry.m; sourceTree = "<group>"; };
+		23BC24FD256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAutoRecoveringHTTPDataSource.h; sourceTree = "<group>"; };
+		23BC24FE256C9C8000E756ED /* STKDataSourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKDataSourceWrapper.h; sourceTree = "<group>"; };
+		23BC24FF256C9C8000E756ED /* STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAudioPlayer.h; sourceTree = "<group>"; };
+		23BC2500256C9C8000E756ED /* STKHTTPDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKHTTPDataSource.m; sourceTree = "<group>"; };
+		23BC2501256C9C8000E756ED /* STKDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKDataSource.h; sourceTree = "<group>"; };
+		23BC2502256C9C8000E756ED /* STKLocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKLocalFileDataSource.m; sourceTree = "<group>"; };
+		23BC2503256C9C8000E756ED /* NSMutableArray+STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+STKAudioPlayer.h"; sourceTree = "<group>"; };
+		23BC2504256C9C8000E756ED /* STKCoreFoundationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKCoreFoundationDataSource.m; sourceTree = "<group>"; };
+		23BC2505256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAutoRecoveringHTTPDataSource.m; sourceTree = "<group>"; };
+		23BC2506256C9C8000E756ED /* STKQueueEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKQueueEntry.h; sourceTree = "<group>"; };
+		23BC2507256C9C8000E756ED /* STKHTTPDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKHTTPDataSource.h; sourceTree = "<group>"; };
+		23BC2508256C9C8100E756ED /* STKAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAudioPlayer.m; sourceTree = "<group>"; };
+		23BC2509256C9C8100E756ED /* STKDataSourceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKDataSourceWrapper.m; sourceTree = "<group>"; };
+		23BC250A256C9C8100E756ED /* STKLocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKLocalFileDataSource.h; sourceTree = "<group>"; };
+		23BC250B256C9C8100E756ED /* STKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKMacro.h; sourceTree = "<group>"; };
+		23BC250C256C9C8100E756ED /* STKDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKDataSource.m; sourceTree = "<group>"; };
+		23BC250D256C9C8100E756ED /* STKCoreFoundationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKCoreFoundationDataSource.h; sourceTree = "<group>"; };
+		23BC250E256C9C8100E756ED /* STKSpinLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKSpinLock.h; sourceTree = "<group>"; };
+		23BC250F256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+STKAudioPlayer.m"; sourceTree = "<group>"; };
+		23BC2510256C9C8100E756ED /* StreamingKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StreamingKit-Prefix.pch"; sourceTree = "<group>"; };
+		23BC251C256CA08500E756ED /* MioGetCacheRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioGetCacheRequest.h; sourceTree = "<group>"; };
+		23BC251D256CA08500E756ED /* MioGetCacheRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioGetCacheRequest.m; sourceTree = "<group>"; };
 		23C24FBA2446A4CA00EE0BE2 /* STPickerDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerDate.m; sourceTree = "<group>"; };
 		23C24FBB2446A4CA00EE0BE2 /* STPickTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickTime.h; sourceTree = "<group>"; };
 		23C24FBC2446A4CA00EE0BE2 /* STPickerSingle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerSingle.h; sourceTree = "<group>"; };
@@ -2060,6 +2093,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				23BC24FB256C9C8000E756ED /* StreamingKit */,
 				2350558A2567A57400F96AFC /* CocoaDownloader */,
 				233FE2552564FFF200CBB1AE /* HXPhotoPicker */,
 				23CB0A81254BF6F400A18B63 /* XMTextView */,
@@ -2178,6 +2212,8 @@
 				23AB23302431C89800DBB427 /* MioDeleteRequest.m */,
 				23AB23382431C89800DBB427 /* MioGetRequest.h */,
 				23AB23312431C89800DBB427 /* MioGetRequest.m */,
+				23BC251C256CA08500E756ED /* MioGetCacheRequest.h */,
+				23BC251D256CA08500E756ED /* MioGetCacheRequest.m */,
 				23AB232C2431C89800DBB427 /* MioPostRequest.h */,
 				23AB23342431C89800DBB427 /* MioPostRequest.m */,
 				23AB23332431C89800DBB427 /* MioPutRequest.h */,
@@ -2287,6 +2323,34 @@
 				23AB23A42431DA5300DBB427 /* MioVerifyCodeVC.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		23BC24FB256C9C8000E756ED /* StreamingKit */ = {
+			isa = PBXGroup;
+			children = (
+				23BC2503256C9C8000E756ED /* NSMutableArray+STKAudioPlayer.h */,
+				23BC250F256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m */,
+				23BC24FF256C9C8000E756ED /* STKAudioPlayer.h */,
+				23BC2508256C9C8100E756ED /* STKAudioPlayer.m */,
+				23BC24FD256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.h */,
+				23BC2505256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.m */,
+				23BC250D256C9C8100E756ED /* STKCoreFoundationDataSource.h */,
+				23BC2504256C9C8000E756ED /* STKCoreFoundationDataSource.m */,
+				23BC2501256C9C8000E756ED /* STKDataSource.h */,
+				23BC250C256C9C8100E756ED /* STKDataSource.m */,
+				23BC24FE256C9C8000E756ED /* STKDataSourceWrapper.h */,
+				23BC2509256C9C8100E756ED /* STKDataSourceWrapper.m */,
+				23BC2507256C9C8000E756ED /* STKHTTPDataSource.h */,
+				23BC2500256C9C8000E756ED /* STKHTTPDataSource.m */,
+				23BC250A256C9C8100E756ED /* STKLocalFileDataSource.h */,
+				23BC2502256C9C8000E756ED /* STKLocalFileDataSource.m */,
+				23BC250B256C9C8100E756ED /* STKMacro.h */,
+				23BC2506256C9C8000E756ED /* STKQueueEntry.h */,
+				23BC24FC256C9C8000E756ED /* STKQueueEntry.m */,
+				23BC250E256C9C8100E756ED /* STKSpinLock.h */,
+				23BC2510256C9C8100E756ED /* StreamingKit-Prefix.pch */,
+			);
+			path = StreamingKit;
 			sourceTree = "<group>";
 		};
 		23C24FB92446A4CA00EE0BE2 /* STPickerView */ = {
@@ -2513,6 +2577,7 @@
 				233825F72518796900DC9021 /* HSCustomTableViewCell.m in Sources */,
 				236DB6E5250F0DD8001CC2F3 /* LOTGradientFillRender.m in Sources */,
 				236DB77A250F6668001CC2F3 /* ZFPresentTransition.m in Sources */,
+				23BC2517256C9C8100E756ED /* STKDataSourceWrapper.m in Sources */,
 				23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */,
 				236DB702250F0DD8001CC2F3 /* LOTComposition.m in Sources */,
 				2378094424FF4DF900007883 /* NERBlockInfo.m in Sources */,
@@ -2533,6 +2598,7 @@
 				23AB23962431D32A00DBB427 /* MioScrollView.m in Sources */,
 				233825ED2518796900DC9021 /* HSFooterModel.m in Sources */,
 				236DB78E250F6668001CC2F3 /* ZFSpeedLoadingView.m in Sources */,
+				23BC2514256C9C8100E756ED /* STKCoreFoundationDataSource.m in Sources */,
 				23AB23902431D32A00DBB427 /* MioAvatarView.m in Sources */,
 				236DB701250F0DD8001CC2F3 /* LOTAnimationCache.m in Sources */,
 				233825E72518796900DC9021 /* NSString+HSHeight.m in Sources */,
@@ -2555,6 +2621,7 @@
 				23C24FD12446A4CA00EE0BE2 /* UIView+STPicker.m in Sources */,
 				2393DD072511AEFD002483A9 /* YDEmojiCell.m in Sources */,
 				233825EE2518796900DC9021 /* HSTextCellModel.m in Sources */,
+				23BC2518256C9C8100E756ED /* STKDataSource.m in Sources */,
 				233FE3662564FFF300CBB1AE /* HXPhotoEditGraffitiColorViewCell.m in Sources */,
 				236DB780250F6668001CC2F3 /* ZFReachabilityManager.m in Sources */,
 				236DB706250F0DD8001CC2F3 /* LOTAnimationTransitionController.m in Sources */,
@@ -2579,6 +2646,7 @@
 				236DB6F8250F0DD8001CC2F3 /* LOTShapePath.m in Sources */,
 				233FE3562564FFF300CBB1AE /* HXPhotoEditSplashView.m in Sources */,
 				233FE31E2564FFF300CBB1AE /* UIImageView+HXExtension.m in Sources */,
+				23BC251E256CA08500E756ED /* MioGetCacheRequest.m in Sources */,
 				233FE3222564FFF300CBB1AE /* NSDate+HXExtension.m in Sources */,
 				2378092924FF4DF900007883 /* UISlider+NERChainable.m in Sources */,
 				235055A22567A57500F96AFC /* DownloadThread.m in Sources */,
@@ -2595,6 +2663,7 @@
 				233FE35F2564FFF300CBB1AE /* HXPhotoEditSplashMaskLayer.m in Sources */,
 				236DB774250F6668001CC2F3 /* ZFLandscapeWindow.m in Sources */,
 				233FE3632564FFF300CBB1AE /* HXPhotoEditChartletPreviewView.m in Sources */,
+				23BC2519256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m in Sources */,
 				236DB6E0250F0DD8001CC2F3 /* LOTPolystarAnimator.m in Sources */,
 				23FF983A2547BE09008CC170 /* UITableView+MioExtension.m in Sources */,
 				236DB6FD250F0DD8001CC2F3 /* CGGeometry+LOTAdditions.m in Sources */,
@@ -2621,6 +2690,7 @@
 				2378094024FF4DF900007883 /* UILabel+NERLink.m in Sources */,
 				237B77742500839B006272E5 /* UIWindow+MioExtension.m in Sources */,
 				236DB70F250F0DD8001CC2F3 /* LOTCompositionContainer.m in Sources */,
+				23BC2515256C9C8100E756ED /* STKAutoRecoveringHTTPDataSource.m in Sources */,
 				236DB78D250F6668001CC2F3 /* ZFLoadingView.m in Sources */,
 				233FE36A2564FFF300CBB1AE /* HXPhotoEditTextView.m in Sources */,
 				233826242518ACDD00DC9021 /* TAAnimatedDotView.m in Sources */,
@@ -2647,6 +2717,7 @@
 				233FE3232564FFF300CBB1AE /* UIColor+HXExtension.m in Sources */,
 				2393DCF42511AE9C002483A9 /* JJCardSliderFlowLayout.m in Sources */,
 				236DB773250F6668001CC2F3 /* ZFPlayerController.m in Sources */,
+				23BC2511256C9C8100E756ED /* STKQueueEntry.m in Sources */,
 				233FE3452564FFF300CBB1AE /* HXFullScreenCameraPlayView.m in Sources */,
 				233825E92518796900DC9021 /* HSSetTableViewMainController.m in Sources */,
 				2378094524FF4DF900007883 /* NERTypeConverter.m in Sources */,
@@ -2712,6 +2783,7 @@
 				236DB6E2250F0DD8001CC2F3 /* LOTCircleAnimator.m in Sources */,
 				236DB6E6250F0DD8001CC2F3 /* LOTStrokeRenderer.m in Sources */,
 				233FE35D2564FFF300CBB1AE /* HXPhotoEditChartletContentViewCell.m in Sources */,
+				23BC2512256C9C8100E756ED /* STKHTTPDataSource.m in Sources */,
 				23AB23972431D32A00DBB427 /* MioTabbarVC.m in Sources */,
 				236DB6DE250F0DD8001CC2F3 /* LOTAnimatorNode.m in Sources */,
 				236DB6F0250F0DD8001CC2F3 /* LOTLayerGroup.m in Sources */,
@@ -2781,8 +2853,10 @@
 				23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */,
 				233825F22518796900DC9021 /* HSHeaderModel.m in Sources */,
 				236DB78B250F6668001CC2F3 /* ZFPlayerControlView.m in Sources */,
+				23BC2516256C9C8100E756ED /* STKAudioPlayer.m in Sources */,
 				233FE34B2564FFF300CBB1AE /* HXPhotoPreviewViewCell.m in Sources */,
 				233FE3352564FFF300CBB1AE /* HXPhotoModel.m in Sources */,
+				23BC2513256C9C8100E756ED /* STKLocalFileDataSource.m in Sources */,
 				236DB6EA250F0DD8001CC2F3 /* UIColor.m in Sources */,
 				23AB23232431C77A00DBB427 /* main.m in Sources */,
 				23AB23AD2431DA5300DBB427 /* MioVerifyCodeVC.m in Sources */,

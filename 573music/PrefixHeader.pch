@@ -27,6 +27,7 @@
 #import "HXPhotoPicker.h"
 
 #import "MioGetRequest.h"
+#import "MioGetCacheRequest.h"
 #import "MioPostRequest.h"
 #import "MioDeleteRequest.h"
 #import "MioPutRequest.h"
@@ -76,7 +77,6 @@
 #define botLineColor 	    rgb(225,225,225)
 #define grayTextColor 	    rgb(153,153,153)
 #define redTextColor        rgb(255, 81, 81)
-#define appNickColor(level) (level >=  2)?appMemberColor:subColor
 #define appClearColor 		[UIColor clearColor]
 #define appWhiteColor 		[UIColor whiteColor]
 #define appBlackColor 		[UIColor blackColor]
@@ -142,7 +142,9 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define BoldFont(fontSize) [UIFont boldSystemFontOfSize:fontSize]
 //比较是否相等
 #define Equals(one,two) [NSString equalsValue:Str(one) with:Str(two)]
-//([one isKindOfClass:[NSString class]] && [two isKindOfClass:[NSString class]])?([NSString equalsValue:one with:two]):((![one isKindOfClass:[NSString class]] && ![two isKindOfClass:[NSString class]])? [NSString equalsIntValue:[one intValue] withInt:[two intValue]]:(([one isKindOfClass:[NSString class]] && ![two isKindOfClass:[NSString class]])? [NSString equalsValue:one withInt:[two intValue]]:((![one isKindOfClass:[NSString class]] && [two isKindOfClass:[NSString class]])? [NSString equalsIntValue:[one intValue] with:two]:(NO))))
+//通知
+#define PostNotice(name)            [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil];
+#define RecieveNotice(Name,selName) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selName) name:Name object:nil];
 
 
 
@@ -160,6 +162,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define userTable @"user_table"
 
 #define MioGetReq(url,param) [[MioGetRequest alloc] initWithRequestUrl:url argument:param]
+#define MioGetCacheReq(url,param) [[MioGetCacheRequest alloc] initWithRequestUrl:url argument:param]
 #define MioPostReq(url,param) [[MioPostRequest alloc] initWithRequestUrl:url argument:param]
 #define MioPutReq(url,param) [[MioPutRequest alloc] initWithRequestUrl:url argument:param]
 //======================================================================//
