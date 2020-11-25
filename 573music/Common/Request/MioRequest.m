@@ -58,7 +58,11 @@
 - (void)success:(nullable MioRequestCompletionBlock)success
                                     failure:(nullable MioRequestCompletionFailureBlock)failure
 {
-    
+    if ([super loadCacheWithError:nil]) {
+        NSDictionary *result = [super responseJSONObject];
+        success(result);
+    }
+    [super setIgnoreCache:YES];
     
     [super startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         

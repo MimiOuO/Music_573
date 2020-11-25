@@ -13,6 +13,8 @@
 #import "Lottie.h"
 #import "MioGroudVC.h"
 #import "MioMineVC.h"
+#import "MioTest3VC.h"
+#import "MioBottomPlayView.h"
 
 @interface MioTabbarVC ()
 
@@ -25,12 +27,13 @@
 @property (nonatomic, strong) UILabel *userName;
 @property (nonatomic, strong) UILabel *timeAndNum;
 @property (nonatomic, strong) UILabel *remark;
-@property (nonatomic, strong) UIView *split;
+@property (nonatomic, strong) MioBottomPlayView *split;
 @property (nonatomic, strong) LOTAnimationView *hud1;
 @property (nonatomic, strong) LOTAnimationView *hud2;
 @property (nonatomic, strong) LOTAnimationView *hud3;
 @property (nonatomic, strong) LOTAnimationView *hud4;
 
+@property (nonatomic, strong) STKAudioPlayer* audioPlayer;
 @end
 
 @implementation MioTabbarVC
@@ -51,11 +54,16 @@
     // 将自定义 View 添加到 tabBar 上
     [self.tabBar insertSubview:bgView atIndex:0];
     
-//    UIImageView *upShaow = [UIImageView creatImgView:frame(0, -13, KSW, 13) inView:self.tabBar image:@"Home_upshadow" radius:0];
-    _split = [UIView creatView:frame(0, -50, KSW, 50) inView:self.tabBar bgColor:rgba(0, 0, 0, 1)];
+    [self initAudioPlayer];
+    
+    _split = [[MioBottomPlayView alloc] initWithFrame:frame(0, -50, KSW, 50)];
     [_split whenTapped:^{
-        NSLog(@"11111");
+        MioTest3VC *vc = [[MioTest3VC alloc] init];
+        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
+        nav.modalPresentationStyle = 0;
+        [self presentViewController:nav animated:YES completion:nil];
     }];
+    [self.tabbar addSubview:_split];
     
     self.tabBar.backgroundImage = [[UIImage alloc]init];
     self.tabBar.shadowImage = [[UIImage alloc]init];
@@ -95,8 +103,14 @@
     _hud2.userInteractionEnabled = NO;
     _hud3.userInteractionEnabled = NO;
     _hud4.userInteractionEnabled = NO;
+
 }
 
+-(void)initAudioPlayer{
+    _audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
+    _audioPlayer.meteringEnabled = YES;
+    _audioPlayer.volume = 1;
+}
 
 #pragma mark - 添加子控制器
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage{

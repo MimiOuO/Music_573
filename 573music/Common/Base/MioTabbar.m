@@ -38,4 +38,28 @@
 
 //    UIView *view = [super hitTest:point withEvent:event];
 }
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+    
+    if (self.y < KSH) { //all
+        if (point.y > - 50.0) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
+
+    else if (self.y == KSH) { //half
+        if (point.y > - 50.0 - SafeBotH) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
+
+    else { //none
+        return NO;
+    }
+
+}
 @end

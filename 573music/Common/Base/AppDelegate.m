@@ -19,6 +19,7 @@
 #endif
 @interface AppDelegate ()
 @property (nonatomic, assign) float tabbarHeight;
+
 @end
 
 @implementation AppDelegate
@@ -46,8 +47,11 @@
     
     [self initSettings];
     
+    [self initAudioPlayer];
     return YES;
 }
+
+
 
 -(void)initSettings{
     NSLog(@"%@",[userdefault objectForKey:@"first"]);

@@ -26,6 +26,9 @@
 #import <IQKeyboardManager.h>
 #import "HXPhotoPicker.h"
 
+#import "STKAudioPlayer.h"
+
+
 #import "MioGetRequest.h"
 #import "MioGetCacheRequest.h"
 #import "MioPostRequest.h"
@@ -52,8 +55,6 @@
 #import "MioNavVC.h"
 #import "MioRefreshHeader.h"
 #import "MioEmpty.h"
-#import "MioAgeView.h"
-#import "MioAvatarView.h"
 #import "MioVCConfig.h"
 
 #import "MioLabel.h"
@@ -185,7 +186,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define goLogin \
 {if (![MioUserInfo shareUserInfo].isLogin) {\
     MioLoginVC *vc = [[MioLoginVC alloc] init];\
-    MioBaseNavigationController *nav = [[MioBaseNavigationController alloc] initWithRootViewController:vc];\
+    MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];\
     nav.modalPresentationStyle = 0;\
     [self presentViewController:nav animated:YES completion:nil];\
     return;\
@@ -201,132 +202,19 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 //测试服务器
 #define api_base @"http://edu.giggsgame.com/api"
 
-//课程
-#define api_courseDetail(course_id)     [NSString stringWithFormat:@"" api_base"/courses/%@",course_id]
-//教师
-#define api_teacherCourses(teacher_id)  [NSString stringWithFormat:@"" api_base"/teachers/%@/courses",teacher_id]
+
 
 //登录
-#define api_me                      @"" api_base"/shop-auth/me"
-#define api_close                   @"" api_base"/shop/close"
-#define api_open                    @"" api_base"/shop/open"
+
 #define api_getVerifyCode           @"" api_base"/verification_codes"
 #define api_login                   @"" api_base"/users"
 #define api_passwordLogin           @"" api_base"/shop/login-password"
-#define api_QNToken                 @"" api_base"/upload/token"
-#define api_type                    @"" api_base"/category"
-#define api_statistics              @"" api_base"/shop/statistics"
-#define api_orderData               @"" api_base"/shop/statistics/order"
-#define api_addProduct              @"" api_base"/shop-auth/product"
-#define api_getProducts             @"" api_base"/shop-auth/products"
-#define api_getProduct(product_id)  [NSString stringWithFormat:@"" api_base"/shop-auth/product/%@",product_id]
-#define api_getOrder(order_id)      [NSString stringWithFormat:@"" api_base"/shop/orders/%@/refund-show",order_id]
-#define api_getOrders               @"" api_base"/shop-orders"
-#define api_agreeRefund(order_id)   [NSString stringWithFormat:@"" api_base"/shop/orders/%@/refund-pass",order_id]
-#define api_rejectRefund(order_id)  [NSString stringWithFormat:@"" api_base"/shop/orders/%@/refund-reject",order_id]
-#define api_changePrice(order_id)   [NSString stringWithFormat:@"" api_base"/shop/orders/%@/change-price",order_id]
-#define api_getComment              @"" api_base"/shop/comments"
-#define api_replyComment(cmt_id)    [NSString stringWithFormat:@"" api_base"/shop/comments/%@/reply",cmt_id]
-#define api_getNeeds                @"" api_base"/shop/needs"
-#define api_getNeed(need_id)        [NSString stringWithFormat:@"" api_base"/shop/needs/%@",need_id]
-#define api_grabNeed(need_id)       [NSString stringWithFormat:@"" api_base"/shop/needs/%@/accept",need_id]
-#define api_orderMessege            @"" api_base"/shop/notifications/order"
-#define api_BillLog                 @"" api_base"/shop/currency-log"
 
 
-#define api_wxLogin                 @"" api_base"/socials/wechat_service_account/authorizations"
-#define api_boundPhone              @"" api_base"/my/phone"
-//首页
-#define api_GamesHome               @"" api_base"/home/games"
-#define api_PageName                @"" api_base"/home/category/games"
-#define api_GamesAll                @"" api_base"/games"
-#define api_GamesDetail(game_id)    [NSString stringWithFormat:@"" api_base"/games/%@",game_id]
-#define api_GamesMaster(game_id)    [NSString stringWithFormat:@"" api_base"/games/%@/master",game_id]
-#define api_search                  @"" api_base"/search"
 
-//动态
-#define api_Post                    @"" api_base"/post"
-#define api_recommedPost            @"" api_base"/posts/recommend"
-#define api_postDetail(post_id)     [NSString stringWithFormat:@"" api_base"/posts/%@",post_id]
-#define api_getCmt(post_id)         [NSString stringWithFormat:@"" api_base"/post/%@/comment",post_id]
-#define api_postCmt(post_id)        [NSString stringWithFormat:@"" api_base"/post/%@/comment",post_id]
-#define api_nearByPost              @"" api_base"/posts/nearby"
-#define api_followPost              @"" api_base"/posts/follow"
-#define api_DouyinPost              @"" api_base"/posts/douyin"
-#define api_userPosts(user_id)      [NSString stringWithFormat:@"" api_base"/user/%@/posts",user_id]
-#define api_GamePosts(game_id)      [NSString stringWithFormat:@"" api_base"/games/%@/posts",game_id]
-#define api_prais(post_id)          [NSString stringWithFormat:@"" api_base"/post/%@/praise",post_id]
-#define api_InteractMessege         @"" api_base"/my/notifications"
-#define api_rewardList(post_id)     [NSString stringWithFormat:@"" api_base"/posts/%@/gifts",post_id]
 //个人中心
 #define api_userInfo                @"" api_base"/auth/me"
 #define api_otherUserinfo(user_id)  [NSString stringWithFormat:@"" api_base"/users/%@",user_id]
-#define api_modifyInfo              @"" api_base"/me"
-#define api_modifyPassword          @"" api_base"/my/password"
 
-#define api_follow(user_id)         [NSString stringWithFormat:@"" api_base"/users/%@/follows",user_id]
-#define api_getFollows              @"" api_base"/follows"
-#define api_getFans                 @"" api_base"/fans"
-#define api_getFootPrint            @"" api_base"/my/views"
-#define api_getVister               @"" api_base"/my/visitors"
-#define api_refreshToken            @"" api_base"/auth/refresh"
-#define api_realName                @"" api_base"/users/authenticate"
-#define api_getRealInfo             @"" api_base"/my/authentication"
-#define api_feedback                @"" api_base"/feedback"
-#define api_bill                    @"" api_base"/coin/log"
-#define api_comein_bill             @"" api_base"/coin_in/log"
-#define api_myCoupon                @"" api_base"/my/coupons"
-#define api_getNewCoupon            @"" api_base"/coupons/new_guy"
-
-//大神
-#define api_getMasterList           @"" api_base"/masters"
-#define api_getSkillList            @"" api_base"/master/games"
-#define api_mySkill(game_id)        [NSString stringWithFormat:@"" api_base"/master/games/%@",game_id]
-#define api_applyList               @"" api_base"/apply/games"
-#define api_applyGod(game_id)       [NSString stringWithFormat:@"" api_base"/master/apply/games/%@",game_id]
-#define api_masterGames(user_id)    [NSString stringWithFormat:@"" api_base"/master/%@/games",user_id]
-#define api_masterSetting(master_id) [NSString stringWithFormat:@"" api_base"/masters/%@",master_id]
-#define api_skillSetting(skill_id)  [NSString stringWithFormat:@"" api_base"/master/games/set/%@",skill_id]
-//订单
-#define api_order                   @"" api_base"/order"
-#define api_pay(order_id)           [NSString stringWithFormat:@"" api_base"/orders/%@/payment",order_id]
-#define api_orders(order_id)        [NSString stringWithFormat:@"" api_base"/orders/%@",order_id]
-#define api_orderlist               @"" api_base"/orders"
-#define api_masterOrderlist         @"" api_base"/master/orders"
-#define api_onlineOrder             @"" api_base"/order/talk"
-
-#define api_masterOrderHandle(order_id) [NSString stringWithFormat:@"" api_base"/master/orders/%@/confirm",order_id]
-#define api_userOrderHandle(order_id)   [NSString stringWithFormat:@"" api_base"/orders/%@/confirm",order_id]
-#define api_payment                 @"" api_base"/payment/ios"
-#define api_orderComment(order_id)  [NSString stringWithFormat:@"" api_base"/orders/%@/comment",order_id]
-#define api_countOrderTotal         @"" api_base"/my/coupons/can_use"
-//订单操作
-#define api_agree(order_id)         [NSString stringWithFormat:@"" api_base"/orders/%@/action/agree",order_id]
-#define api_reject(order_id)        [NSString stringWithFormat:@"" api_base"/orders/%@/action/reject",order_id]
-#define api_cancel(order_id)        [NSString stringWithFormat:@"" api_base"/orders/%@/action/cancel",order_id]
-#define api_start(order_id)         [NSString stringWithFormat:@"" api_base"/orders/%@/action/start",order_id]
-#define api_agree_start(order_id)   [NSString stringWithFormat:@"" api_base"/orders/%@/action/agree_start",order_id]
-#define api_reject_start(order_id)  [NSString stringWithFormat:@"" api_base"/orders/%@/action/reject_start",order_id]
-#define api_finish(order_id)        [NSString stringWithFormat:@"" api_base"/orders/%@/action/finish",order_id]
-#define api_apply_refund(order_id)  [NSString stringWithFormat:@"" api_base"/orders/%@/action/apply_refund",order_id]
-#define api_reject_refund(order_id) [NSString stringWithFormat:@"" api_base"/orders/%@/action/reject_refund",order_id]
-#define api_agree_refund(order_id)  [NSString stringWithFormat:@"" api_base"/orders/%@/action/agree_refund",order_id]
-
-//发现
-#define api_findAd                       @"" api_base"/live/advertisements"
-#define api_findSearch                   @"" api_base"/room/search"
-#define api_roomlist                     @"" api_base"/rooms"
-#define api_roomAd                       @"" api_base"/room/advertisements"
-#define api_roomApply                    @"" api_base"/room-apply"
-#define api_roomCover                    @"" api_base"/room-cover"
-#define api_roomType                     @"" api_base"/room-categories"
-#define api_rank                         @"" api_base"/room/gift-rank"
-#define api_roomDetail(room_id)          [NSString stringWithFormat:@"" api_base"/rooms/%@",room_id]
-#define api_applyMic(room_id)            [NSString stringWithFormat:@"" api_base"/rooms/%@/microphone",room_id]
-#define api_agreeMic(room_id,user_id)    [NSString stringWithFormat:@"" api_base"/rooms/%@/microphone/user/%@",room_id,user_id]
-#define api_down(room_id,user_id)        [NSString stringWithFormat:@"" api_base"/rooms/%@/microphone/user/%@",room_id,user_id]
-#define api_giftlist                     @"" api_base"/gifts"
-#define api_sendGiftInRoom(gift_id)      [NSString stringWithFormat:@"" api_base"/gifts/%@",gift_id]
-#define api_songs                        @"" api_base"/songs"
 
 #endif

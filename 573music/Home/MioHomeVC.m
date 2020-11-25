@@ -57,7 +57,17 @@
     testlab.textColor = subColor;
     [self.view addSubview:testlab];
     
+    
+    
+    [MioGetCacheReq(api_otherUserinfo(@"4"), @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        NSLog(@"cacheYES__%@",data);
+    } failure:^(NSString *errorInfo) {}];
+    
 
-
+    
 }
+
+
+
 @end

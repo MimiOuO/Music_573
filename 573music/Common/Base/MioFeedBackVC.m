@@ -144,7 +144,7 @@
     NSDictionary *dic = @{
                           @"content":_noteTextView.text,
                           };
-    MioPostRequest *request = [[MioPostRequest alloc] initWithRequestUrl:api_feedback argument:dic];
+    MioPostRequest *request = [[MioPostRequest alloc] initWithRequestUrl:api_base argument:dic];
     
     [request success:^(NSDictionary *result) {
         NSDictionary *data = [result objectForKey:@"data"];

@@ -10,7 +10,6 @@
 #import "WLCaptcheButton.h"
 #import "MioUserAgreementVC.h"
 #import "UITextField+NumberFormat.h"
-#import "MioBoundPhoneVC.h"
 #import "MioLargeButton.h"
 @interface MioLoginVC ()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *phoneTF;
