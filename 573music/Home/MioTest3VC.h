@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MioTest3VC : MioViewController
 
-@property (nonatomic, strong) STKAudioPlayer* audioPlayer;
 @property (nonatomic, weak) id<AudioPlayerViewDelegate> delegate;
 
 @end

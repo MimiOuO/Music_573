@@ -146,6 +146,16 @@
 		235055A52567A57500F96AFC /* DownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2350559D2567A57500F96AFC /* DownloadInfo.m */; };
 		235055A62567A57500F96AFC /* DownloadDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2350559F2567A57500F96AFC /* DownloadDispatch.m */; };
 		235705D124401855007C3F87 /* MioHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 235705D024401855007C3F87 /* MioHomeVC.m */; };
+		23615E0025748FAB00EAD39D /* KVAudioConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DF425748FAB00EAD39D /* KVAudioConsumer.m */; };
+		23615E0125748FAB00EAD39D /* NSString+KVURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DF825748FAB00EAD39D /* NSString+KVURL.m */; };
+		23615E0225748FAB00EAD39D /* KVAudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DFA25748FAB00EAD39D /* KVAudioStreamer.m */; };
+		23615E0325748FAB00EAD39D /* KVAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DFB25748FAB00EAD39D /* KVAudioFile.m */; };
+		23615E0425748FAB00EAD39D /* KVAudioStreamHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DFD25748FAB00EAD39D /* KVAudioStreamHttpTool.m */; };
+		23615E0525748FAB00EAD39D /* KVAudioProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DFE25748FAB00EAD39D /* KVAudioProvider.m */; };
+		23615E12257493CA00EAD39D /* MioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E11257493CA00EAD39D /* MioPlayer.m */; };
+		23615E152574A18100EAD39D /* MioPlayList.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E142574A18100EAD39D /* MioPlayList.m */; };
+		23615E182574A3D200EAD39D /* MioMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E172574A3D200EAD39D /* MioMusicModel.m */; };
+		23615E1B2574CCCE00EAD39D /* KVAudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E1A2574CCCE00EAD39D /* KVAudioPlayerController.m */; };
 		2366652D256B81D400609A05 /* MioTest2VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366652C256B81D400609A05 /* MioTest2VC.m */; };
 		23673F6C2507165E00C599CB /* UIScrollView+MioExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F6B2507165E00C599CB /* UIScrollView+MioExtension.m */; };
 		23673F7225076E2300C599CB /* WLButtonCountdownManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F6F25076E2300C599CB /* WLButtonCountdownManager.m */; };
@@ -332,15 +342,6 @@
 		23AB23AD2431DA5300DBB427 /* MioVerifyCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23A42431DA5300DBB427 /* MioVerifyCodeVC.m */; };
 		23AB23B12431DAB500DBB427 /* MioLargeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23B02431DAB500DBB427 /* MioLargeButton.m */; };
 		23AB23B42431DAEE00DBB427 /* TFQClickAreaButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23B32431DAEE00DBB427 /* TFQClickAreaButton.m */; };
-		23BC2511256C9C8100E756ED /* STKQueueEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC24FC256C9C8000E756ED /* STKQueueEntry.m */; };
-		23BC2512256C9C8100E756ED /* STKHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2500256C9C8000E756ED /* STKHTTPDataSource.m */; };
-		23BC2513256C9C8100E756ED /* STKLocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2502256C9C8000E756ED /* STKLocalFileDataSource.m */; };
-		23BC2514256C9C8100E756ED /* STKCoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2504256C9C8000E756ED /* STKCoreFoundationDataSource.m */; };
-		23BC2515256C9C8100E756ED /* STKAutoRecoveringHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2505256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.m */; };
-		23BC2516256C9C8100E756ED /* STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2508256C9C8100E756ED /* STKAudioPlayer.m */; };
-		23BC2517256C9C8100E756ED /* STKDataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2509256C9C8100E756ED /* STKDataSourceWrapper.m */; };
-		23BC2518256C9C8100E756ED /* STKDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC250C256C9C8100E756ED /* STKDataSource.m */; };
-		23BC2519256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC250F256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m */; };
 		23BC251E256CA08500E756ED /* MioGetCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC251D256CA08500E756ED /* MioGetCacheRequest.m */; };
 		23BC2521256CD65800E756ED /* MioTest3VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2520256CD65800E756ED /* MioTest3VC.m */; };
 		23BC2524256CE5E500E756ED /* MioBottomPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC2523256CE5E500E756ED /* MioBottomPlayView.m */; };
@@ -647,6 +648,27 @@
 		2350559F2567A57500F96AFC /* DownloadDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadDispatch.m; sourceTree = "<group>"; };
 		235705CF24401855007C3F87 /* MioHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioHomeVC.h; sourceTree = "<group>"; };
 		235705D024401855007C3F87 /* MioHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioHomeVC.m; sourceTree = "<group>"; };
+		23615DF325748FAB00EAD39D /* KVAudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioStreamer.h; sourceTree = "<group>"; };
+		23615DF425748FAB00EAD39D /* KVAudioConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioConsumer.m; sourceTree = "<group>"; };
+		23615DF525748FAB00EAD39D /* KVAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioFile.h; sourceTree = "<group>"; };
+		23615DF625748FAB00EAD39D /* KVAudioProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioProvider.h; sourceTree = "<group>"; };
+		23615DF725748FAB00EAD39D /* KVAudioStreamHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioStreamHttpTool.h; sourceTree = "<group>"; };
+		23615DF825748FAB00EAD39D /* NSString+KVURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KVURL.m"; sourceTree = "<group>"; };
+		23615DF925748FAB00EAD39D /* KVAudioConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioConsumer.h; sourceTree = "<group>"; };
+		23615DFA25748FAB00EAD39D /* KVAudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioStreamer.m; sourceTree = "<group>"; };
+		23615DFB25748FAB00EAD39D /* KVAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioFile.m; sourceTree = "<group>"; };
+		23615DFC25748FAB00EAD39D /* NSString+KVURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KVURL.h"; sourceTree = "<group>"; };
+		23615DFD25748FAB00EAD39D /* KVAudioStreamHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioStreamHttpTool.m; sourceTree = "<group>"; };
+		23615DFE25748FAB00EAD39D /* KVAudioProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioProvider.m; sourceTree = "<group>"; };
+		23615DFF25748FAB00EAD39D /* KVAudioStreamDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioStreamDef.h; sourceTree = "<group>"; };
+		23615E10257493CA00EAD39D /* MioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioPlayer.h; sourceTree = "<group>"; };
+		23615E11257493CA00EAD39D /* MioPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioPlayer.m; sourceTree = "<group>"; };
+		23615E132574A18100EAD39D /* MioPlayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioPlayList.h; sourceTree = "<group>"; };
+		23615E142574A18100EAD39D /* MioPlayList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioPlayList.m; sourceTree = "<group>"; };
+		23615E162574A3D200EAD39D /* MioMusicModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMusicModel.h; sourceTree = "<group>"; };
+		23615E172574A3D200EAD39D /* MioMusicModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMusicModel.m; sourceTree = "<group>"; };
+		23615E192574CCCE00EAD39D /* KVAudioPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioPlayerController.h; sourceTree = "<group>"; };
+		23615E1A2574CCCE00EAD39D /* KVAudioPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioPlayerController.m; sourceTree = "<group>"; };
 		2366652B256B81D400609A05 /* MioTest2VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioTest2VC.h; sourceTree = "<group>"; };
 		2366652C256B81D400609A05 /* MioTest2VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioTest2VC.m; sourceTree = "<group>"; };
 		23673F6A2507165E00C599CB /* UIScrollView+MioExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MioExtension.h"; sourceTree = "<group>"; };
@@ -1025,27 +1047,6 @@
 		23AB23B02431DAB500DBB427 /* MioLargeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioLargeButton.m; sourceTree = "<group>"; };
 		23AB23B22431DAEE00DBB427 /* TFQClickAreaButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFQClickAreaButton.h; sourceTree = "<group>"; };
 		23AB23B32431DAEE00DBB427 /* TFQClickAreaButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFQClickAreaButton.m; sourceTree = "<group>"; };
-		23BC24FC256C9C8000E756ED /* STKQueueEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKQueueEntry.m; sourceTree = "<group>"; };
-		23BC24FD256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAutoRecoveringHTTPDataSource.h; sourceTree = "<group>"; };
-		23BC24FE256C9C8000E756ED /* STKDataSourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKDataSourceWrapper.h; sourceTree = "<group>"; };
-		23BC24FF256C9C8000E756ED /* STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAudioPlayer.h; sourceTree = "<group>"; };
-		23BC2500256C9C8000E756ED /* STKHTTPDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKHTTPDataSource.m; sourceTree = "<group>"; };
-		23BC2501256C9C8000E756ED /* STKDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKDataSource.h; sourceTree = "<group>"; };
-		23BC2502256C9C8000E756ED /* STKLocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKLocalFileDataSource.m; sourceTree = "<group>"; };
-		23BC2503256C9C8000E756ED /* NSMutableArray+STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+STKAudioPlayer.h"; sourceTree = "<group>"; };
-		23BC2504256C9C8000E756ED /* STKCoreFoundationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKCoreFoundationDataSource.m; sourceTree = "<group>"; };
-		23BC2505256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAutoRecoveringHTTPDataSource.m; sourceTree = "<group>"; };
-		23BC2506256C9C8000E756ED /* STKQueueEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKQueueEntry.h; sourceTree = "<group>"; };
-		23BC2507256C9C8000E756ED /* STKHTTPDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKHTTPDataSource.h; sourceTree = "<group>"; };
-		23BC2508256C9C8100E756ED /* STKAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAudioPlayer.m; sourceTree = "<group>"; };
-		23BC2509256C9C8100E756ED /* STKDataSourceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKDataSourceWrapper.m; sourceTree = "<group>"; };
-		23BC250A256C9C8100E756ED /* STKLocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKLocalFileDataSource.h; sourceTree = "<group>"; };
-		23BC250B256C9C8100E756ED /* STKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKMacro.h; sourceTree = "<group>"; };
-		23BC250C256C9C8100E756ED /* STKDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKDataSource.m; sourceTree = "<group>"; };
-		23BC250D256C9C8100E756ED /* STKCoreFoundationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKCoreFoundationDataSource.h; sourceTree = "<group>"; };
-		23BC250E256C9C8100E756ED /* STKSpinLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKSpinLock.h; sourceTree = "<group>"; };
-		23BC250F256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+STKAudioPlayer.m"; sourceTree = "<group>"; };
-		23BC2510256C9C8100E756ED /* StreamingKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StreamingKit-Prefix.pch"; sourceTree = "<group>"; };
 		23BC251C256CA08500E756ED /* MioGetCacheRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioGetCacheRequest.h; sourceTree = "<group>"; };
 		23BC251D256CA08500E756ED /* MioGetCacheRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioGetCacheRequest.m; sourceTree = "<group>"; };
 		23BC251F256CD65800E756ED /* MioTest3VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioTest3VC.h; sourceTree = "<group>"; };
@@ -1608,10 +1609,28 @@
 				2366652C256B81D400609A05 /* MioTest2VC.m */,
 				23BC251F256CD65800E756ED /* MioTest3VC.h */,
 				23BC2520256CD65800E756ED /* MioTest3VC.m */,
-				23BC2522256CE5E500E756ED /* MioBottomPlayView.h */,
-				23BC2523256CE5E500E756ED /* MioBottomPlayView.m */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		23615DF225748FAB00EAD39D /* KVAudioStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				23615DF925748FAB00EAD39D /* KVAudioConsumer.h */,
+				23615DF425748FAB00EAD39D /* KVAudioConsumer.m */,
+				23615DF525748FAB00EAD39D /* KVAudioFile.h */,
+				23615DFB25748FAB00EAD39D /* KVAudioFile.m */,
+				23615DF625748FAB00EAD39D /* KVAudioProvider.h */,
+				23615DFE25748FAB00EAD39D /* KVAudioProvider.m */,
+				23615DFF25748FAB00EAD39D /* KVAudioStreamDef.h */,
+				23615DF325748FAB00EAD39D /* KVAudioStreamer.h */,
+				23615DFA25748FAB00EAD39D /* KVAudioStreamer.m */,
+				23615DF725748FAB00EAD39D /* KVAudioStreamHttpTool.h */,
+				23615DFD25748FAB00EAD39D /* KVAudioStreamHttpTool.m */,
+				23615DFC25748FAB00EAD39D /* NSString+KVURL.h */,
+				23615DF825748FAB00EAD39D /* NSString+KVURL.m */,
+			);
+			path = KVAudioStreamer;
 			sourceTree = "<group>";
 		};
 		23673F6D25076E2300C599CB /* countDownBtn */ = {
@@ -2100,7 +2119,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				23BC24FB256C9C8000E756ED /* StreamingKit */,
+				23615DF225748FAB00EAD39D /* KVAudioStreamer */,
 				2350558A2567A57400F96AFC /* CocoaDownloader */,
 				233FE2552564FFF200CBB1AE /* HXPhotoPicker */,
 				23CB0A81254BF6F400A18B63 /* XMTextView */,
@@ -2181,6 +2200,7 @@
 			isa = PBXGroup;
 			children = (
 				23AB23292431C88600DBB427 /* Common */,
+				23BC2528256DF46300E756ED /* Player */,
 				235705CE2440183E007C3F87 /* Home */,
 				236DB71D250F573D001CC2F3 /* Ground */,
 				239B03432514649500B310D2 /* Mine */,
@@ -2330,32 +2350,21 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		23BC24FB256C9C8000E756ED /* StreamingKit */ = {
+		23BC2528256DF46300E756ED /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				23BC2503256C9C8000E756ED /* NSMutableArray+STKAudioPlayer.h */,
-				23BC250F256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m */,
-				23BC24FF256C9C8000E756ED /* STKAudioPlayer.h */,
-				23BC2508256C9C8100E756ED /* STKAudioPlayer.m */,
-				23BC24FD256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.h */,
-				23BC2505256C9C8000E756ED /* STKAutoRecoveringHTTPDataSource.m */,
-				23BC250D256C9C8100E756ED /* STKCoreFoundationDataSource.h */,
-				23BC2504256C9C8000E756ED /* STKCoreFoundationDataSource.m */,
-				23BC2501256C9C8000E756ED /* STKDataSource.h */,
-				23BC250C256C9C8100E756ED /* STKDataSource.m */,
-				23BC24FE256C9C8000E756ED /* STKDataSourceWrapper.h */,
-				23BC2509256C9C8100E756ED /* STKDataSourceWrapper.m */,
-				23BC2507256C9C8000E756ED /* STKHTTPDataSource.h */,
-				23BC2500256C9C8000E756ED /* STKHTTPDataSource.m */,
-				23BC250A256C9C8100E756ED /* STKLocalFileDataSource.h */,
-				23BC2502256C9C8000E756ED /* STKLocalFileDataSource.m */,
-				23BC250B256C9C8100E756ED /* STKMacro.h */,
-				23BC2506256C9C8000E756ED /* STKQueueEntry.h */,
-				23BC24FC256C9C8000E756ED /* STKQueueEntry.m */,
-				23BC250E256C9C8100E756ED /* STKSpinLock.h */,
-				23BC2510256C9C8100E756ED /* StreamingKit-Prefix.pch */,
+				23615E10257493CA00EAD39D /* MioPlayer.h */,
+				23615E11257493CA00EAD39D /* MioPlayer.m */,
+				23615E132574A18100EAD39D /* MioPlayList.h */,
+				23615E142574A18100EAD39D /* MioPlayList.m */,
+				23615E162574A3D200EAD39D /* MioMusicModel.h */,
+				23615E172574A3D200EAD39D /* MioMusicModel.m */,
+				23BC2522256CE5E500E756ED /* MioBottomPlayView.h */,
+				23BC2523256CE5E500E756ED /* MioBottomPlayView.m */,
+				23615E192574CCCE00EAD39D /* KVAudioPlayerController.h */,
+				23615E1A2574CCCE00EAD39D /* KVAudioPlayerController.m */,
 			);
-			path = StreamingKit;
+			path = Player;
 			sourceTree = "<group>";
 		};
 		23C24FB92446A4CA00EE0BE2 /* STPickerView */ = {
@@ -2581,8 +2590,8 @@
 				233FE3142564FFF300CBB1AE /* HXPhotoConfiguration.m in Sources */,
 				233825F72518796900DC9021 /* HSCustomTableViewCell.m in Sources */,
 				236DB6E5250F0DD8001CC2F3 /* LOTGradientFillRender.m in Sources */,
+				23615E0325748FAB00EAD39D /* KVAudioFile.m in Sources */,
 				236DB77A250F6668001CC2F3 /* ZFPresentTransition.m in Sources */,
-				23BC2517256C9C8100E756ED /* STKDataSourceWrapper.m in Sources */,
 				23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */,
 				236DB702250F0DD8001CC2F3 /* LOTComposition.m in Sources */,
 				2378094424FF4DF900007883 /* NERBlockInfo.m in Sources */,
@@ -2598,12 +2607,12 @@
 				2378094624FF4DF900007883 /* NERAlertMaker.m in Sources */,
 				2378093724FF4DF900007883 /* UISegmentedControl+NERChainable.m in Sources */,
 				2378093924FF4DF900007883 /* NERStyle+NERChainable.m in Sources */,
+				23615E0425748FAB00EAD39D /* KVAudioStreamHttpTool.m in Sources */,
 				233FE3252564FFF300CBB1AE /* UIButton+HXExtension.m in Sources */,
 				2393DD042511AEFD002483A9 /* ViewUtil.m in Sources */,
 				23AB23962431D32A00DBB427 /* MioScrollView.m in Sources */,
 				233825ED2518796900DC9021 /* HSFooterModel.m in Sources */,
 				236DB78E250F6668001CC2F3 /* ZFSpeedLoadingView.m in Sources */,
-				23BC2514256C9C8100E756ED /* STKCoreFoundationDataSource.m in Sources */,
 				23AB23902431D32A00DBB427 /* MioAvatarView.m in Sources */,
 				236DB701250F0DD8001CC2F3 /* LOTAnimationCache.m in Sources */,
 				233825E72518796900DC9021 /* NSString+HSHeight.m in Sources */,
@@ -2626,9 +2635,9 @@
 				23C24FD12446A4CA00EE0BE2 /* UIView+STPicker.m in Sources */,
 				2393DD072511AEFD002483A9 /* YDEmojiCell.m in Sources */,
 				233825EE2518796900DC9021 /* HSTextCellModel.m in Sources */,
-				23BC2518256C9C8100E756ED /* STKDataSource.m in Sources */,
 				233FE3662564FFF300CBB1AE /* HXPhotoEditGraffitiColorViewCell.m in Sources */,
 				236DB780250F6668001CC2F3 /* ZFReachabilityManager.m in Sources */,
+				23615E0025748FAB00EAD39D /* KVAudioConsumer.m in Sources */,
 				236DB706250F0DD8001CC2F3 /* LOTAnimationTransitionController.m in Sources */,
 				2378094124FF4DF900007883 /* UIView+NERFrame.m in Sources */,
 				2378093124FF4DF900007883 /* UITextView+NERChainable.m in Sources */,
@@ -2655,6 +2664,7 @@
 				233FE3222564FFF300CBB1AE /* NSDate+HXExtension.m in Sources */,
 				2378092924FF4DF900007883 /* UISlider+NERChainable.m in Sources */,
 				235055A22567A57500F96AFC /* DownloadThread.m in Sources */,
+				23615E0525748FAB00EAD39D /* KVAudioProvider.m in Sources */,
 				23AB23942431D32A00DBB427 /* MioNavVC.m in Sources */,
 				23CB0A87254BF6F400A18B63 /* XMTextView.m in Sources */,
 				233825E22518796900DC9021 /* HSSetTableViewControllerConst.m in Sources */,
@@ -2667,7 +2677,6 @@
 				233FE35F2564FFF300CBB1AE /* HXPhotoEditSplashMaskLayer.m in Sources */,
 				236DB774250F6668001CC2F3 /* ZFLandscapeWindow.m in Sources */,
 				233FE3632564FFF300CBB1AE /* HXPhotoEditChartletPreviewView.m in Sources */,
-				23BC2519256C9C8100E756ED /* NSMutableArray+STKAudioPlayer.m in Sources */,
 				236DB6E0250F0DD8001CC2F3 /* LOTPolystarAnimator.m in Sources */,
 				23FF983A2547BE09008CC170 /* UITableView+MioExtension.m in Sources */,
 				236DB6FD250F0DD8001CC2F3 /* CGGeometry+LOTAdditions.m in Sources */,
@@ -2686,6 +2695,7 @@
 				233FE31A2564FFF300CBB1AE /* NSString+HXExtension.m in Sources */,
 				236DB6ED250F0DD8001CC2F3 /* LOTMask.m in Sources */,
 				236DB6F7250F0DD8001CC2F3 /* LOTShapeCircle.m in Sources */,
+				23615E0225748FAB00EAD39D /* KVAudioStreamer.m in Sources */,
 				233825E52518796900DC9021 /* UIColor+HSExtension.m in Sources */,
 				2378093624FF4DF900007883 /* UIImageView+NERChainable.m in Sources */,
 				236DB6E7250F0DD8001CC2F3 /* LOTFillRenderer.m in Sources */,
@@ -2695,7 +2705,6 @@
 				2378094024FF4DF900007883 /* UILabel+NERLink.m in Sources */,
 				237B77742500839B006272E5 /* UIWindow+MioExtension.m in Sources */,
 				236DB70F250F0DD8001CC2F3 /* LOTCompositionContainer.m in Sources */,
-				23BC2515256C9C8100E756ED /* STKAutoRecoveringHTTPDataSource.m in Sources */,
 				236DB78D250F6668001CC2F3 /* ZFLoadingView.m in Sources */,
 				233FE36A2564FFF300CBB1AE /* HXPhotoEditTextView.m in Sources */,
 				233826242518ACDD00DC9021 /* TAAnimatedDotView.m in Sources */,
@@ -2722,7 +2731,6 @@
 				233FE3232564FFF300CBB1AE /* UIColor+HXExtension.m in Sources */,
 				2393DCF42511AE9C002483A9 /* JJCardSliderFlowLayout.m in Sources */,
 				236DB773250F6668001CC2F3 /* ZFPlayerController.m in Sources */,
-				23BC2511256C9C8100E756ED /* STKQueueEntry.m in Sources */,
 				233FE3452564FFF300CBB1AE /* HXFullScreenCameraPlayView.m in Sources */,
 				233825E92518796900DC9021 /* HSSetTableViewMainController.m in Sources */,
 				2378094524FF4DF900007883 /* NERTypeConverter.m in Sources */,
@@ -2731,6 +2739,7 @@
 				233826202518ACDD00DC9021 /* UIView+SDExtension.m in Sources */,
 				23FF98332547BB26008CC170 /* GCD.m in Sources */,
 				235705D124401855007C3F87 /* MioHomeVC.m in Sources */,
+				23615E152574A18100EAD39D /* MioPlayList.m in Sources */,
 				23BC2521256CD65800E756ED /* MioTest3VC.m in Sources */,
 				23AB23912431D32A00DBB427 /* MioUserInfo.m in Sources */,
 				23AB233B2431C89800DBB427 /* MioDeleteRequest.m in Sources */,
@@ -2769,6 +2778,7 @@
 				2378094824FF4DF900007883 /* NERConstraintMaker.m in Sources */,
 				233FE3272564FFF300CBB1AE /* HXPhotoCommon.m in Sources */,
 				2350556C2567522900F96AFC /* MioVCConfig.m in Sources */,
+				23615E0125748FAB00EAD39D /* NSString+KVURL.m in Sources */,
 				23CB0A86254BF6F400A18B63 /* UITextView+XMExtension.m in Sources */,
 				236DB7A0250F6FBC001CC2F3 /* NSDate+Helper.m in Sources */,
 				233FE3402564FFF300CBB1AE /* HXPreviewContentView.m in Sources */,
@@ -2789,7 +2799,6 @@
 				236DB6E2250F0DD8001CC2F3 /* LOTCircleAnimator.m in Sources */,
 				236DB6E6250F0DD8001CC2F3 /* LOTStrokeRenderer.m in Sources */,
 				233FE35D2564FFF300CBB1AE /* HXPhotoEditChartletContentViewCell.m in Sources */,
-				23BC2512256C9C8100E756ED /* STKHTTPDataSource.m in Sources */,
 				23AB23972431D32A00DBB427 /* MioTabbarVC.m in Sources */,
 				236DB6DE250F0DD8001CC2F3 /* LOTAnimatorNode.m in Sources */,
 				236DB6F0250F0DD8001CC2F3 /* LOTLayerGroup.m in Sources */,
@@ -2808,6 +2817,7 @@
 				236DB778250F6668001CC2F3 /* UIScrollView+ZFPlayer.m in Sources */,
 				233FE3472564FFF300CBB1AE /* HXAlbumlistView.m in Sources */,
 				233826052518A8D500DC9021 /* MioRefreshHeader.m in Sources */,
+				23615E182574A3D200EAD39D /* MioMusicModel.m in Sources */,
 				233FE33C2564FFF300CBB1AE /* HXPhotoPreviewVideoViewCell.m in Sources */,
 				233FE3532564FFF300CBB1AE /* HXPhotoClippingView.m in Sources */,
 				236DB6D5250F0DD8001CC2F3 /* LOTTrimPathNode.m in Sources */,
@@ -2838,6 +2848,7 @@
 				233FE3302564FFF300CBB1AE /* HXPhotoViewController.m in Sources */,
 				233FE32D2564FFF300CBB1AE /* HXPhoto3DTouchViewController.m in Sources */,
 				23AB233E2431C89800DBB427 /* MioPostRequest.m in Sources */,
+				23615E1B2574CCCE00EAD39D /* KVAudioPlayerController.m in Sources */,
 				233FE3692564FFF300CBB1AE /* HXPhotoEditGridLayer.m in Sources */,
 				236DB70B250F0DD8001CC2F3 /* LOTAnimatedSwitch.m in Sources */,
 				233FE32F2564FFF300CBB1AE /* HXPhotoPreviewViewController.m in Sources */,
@@ -2850,6 +2861,7 @@
 				236DB70A250F0DD8001CC2F3 /* LOTInterpolatorCallback.m in Sources */,
 				233FE32A2564FFF300CBB1AE /* HXPhotoTools.m in Sources */,
 				236DB777250F6668001CC2F3 /* ZFPersentInteractiveTransition.m in Sources */,
+				23615E12257493CA00EAD39D /* MioPlayer.m in Sources */,
 				23AB235B2431C8BA00DBB427 /* NSArray+jlExtension.m in Sources */,
 				233FE34C2564FFF300CBB1AE /* HXPhotoPreviewImageViewCell.m in Sources */,
 				236DB776250F6668001CC2F3 /* ZFPlayerLogManager.m in Sources */,
@@ -2859,10 +2871,8 @@
 				23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */,
 				233825F22518796900DC9021 /* HSHeaderModel.m in Sources */,
 				236DB78B250F6668001CC2F3 /* ZFPlayerControlView.m in Sources */,
-				23BC2516256C9C8100E756ED /* STKAudioPlayer.m in Sources */,
 				233FE34B2564FFF300CBB1AE /* HXPhotoPreviewViewCell.m in Sources */,
 				233FE3352564FFF300CBB1AE /* HXPhotoModel.m in Sources */,
-				23BC2513256C9C8100E756ED /* STKLocalFileDataSource.m in Sources */,
 				236DB6EA250F0DD8001CC2F3 /* UIColor.m in Sources */,
 				23AB23232431C77A00DBB427 /* main.m in Sources */,
 				23AB23AD2431DA5300DBB427 /* MioVerifyCodeVC.m in Sources */,

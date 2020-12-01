@@ -33,7 +33,6 @@
 @property (nonatomic, strong) LOTAnimationView *hud3;
 @property (nonatomic, strong) LOTAnimationView *hud4;
 
-@property (nonatomic, strong) STKAudioPlayer* audioPlayer;
 @end
 
 @implementation MioTabbarVC
@@ -54,7 +53,6 @@
     // 将自定义 View 添加到 tabBar 上
     [self.tabBar insertSubview:bgView atIndex:0];
     
-    [self initAudioPlayer];
     
     _split = [[MioBottomPlayView alloc] initWithFrame:frame(0, -50, KSW, 50)];
     [_split whenTapped:^{
@@ -79,7 +77,7 @@
 
 
     
-
+    RecieveNotice(@"changeSkin", changeSkin);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomNone) name:@"MioBottomNone" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomHalf) name:@"MioBottomHalf" object:nil];
@@ -106,11 +104,13 @@
 
 }
 
--(void)initAudioPlayer{
-    _audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
-    _audioPlayer.meteringEnabled = YES;
-    _audioPlayer.volume = 1;
+-(void)changeSkin{
+    _hud1 = [LOTAnimationView animationNamed:@"首页"];
+    _hud2 = [LOTAnimationView animationNamed:@"首页"];
+    _hud3 = [LOTAnimationView animationNamed:@"首页"];
+    _hud4 = [LOTAnimationView animationNamed:@"首页"];
 }
+
 
 #pragma mark - 添加子控制器
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage{

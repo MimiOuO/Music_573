@@ -10,7 +10,7 @@
 
 @implementation MioBottomPlayView
 
-- (instancetype)initWithFrame:(CGRect)frame andAudioPlayer:(STKAudioPlayer*)audioPlayer
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -19,6 +19,9 @@
             NSLog(@"23423423");
 //            PostNotice(@"closePlayer")
         }];
+        
+//        [mioPlayer resetAudioURL:@"http://kevinfile.oss-cn-shenzhen.aliyuncs.com/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E6%97%A0%E4%BA%BA%E4%B9%8B%E5%A2%83.mp3"];
+//        [mioPlayer play];
     }
     return self;
 }

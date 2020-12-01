@@ -26,7 +26,6 @@
 #import <IQKeyboardManager.h>
 #import "HXPhotoPicker.h"
 
-#import "STKAudioPlayer.h"
 
 
 #import "MioGetRequest.h"
@@ -61,10 +60,17 @@
 #import "MioView.h"
 #import "MioImageView.h"
 
+#import "MioMusicModel.h"
+#import "MioPlayer.h"
+
 
 #endif
 
-
+//======================================================================//
+//                               播放器
+//======================================================================//
+#define mioPlayer           [MioPlayer shareInstance]
+#define mioPlayList         [MioPlayList shareInstance]
 
 //======================================================================//
 //                                颜色
@@ -148,12 +154,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define RecieveNotice(Name,selName) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selName) name:Name object:nil];
 
 
-
-
-
 #define backArrowIcon          [UIImage imageNamed:@"backArrow"]
 #define backArrowWhiteIcon     [UIImage imageNamed:@"navigation_back_white"]
-
 
 
 #define WEAKSELF __weak typeof(self) weakSelf = self
@@ -166,6 +168,16 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define MioGetCacheReq(url,param) [[MioGetCacheRequest alloc] initWithRequestUrl:url argument:param]
 #define MioPostReq(url,param) [[MioPostRequest alloc] initWithRequestUrl:url argument:param]
 #define MioPutReq(url,param) [[MioPutRequest alloc] initWithRequestUrl:url argument:param]
+
+//======================================================================//
+//                             业务相关
+//======================================================================//
+#define currentPlayOrder        [userdefault objectForKey:@"playOrder"]
+#define setPlayOrder(order)     [userdefault setObject:(order) forKey:@"playOrder"];
+#define MioPlayOrderCycle       @"MioPlayOrderCycle"
+#define MioPlayOrderSingle      @"MioPlayOrderSingle"
+#define MioPlayOrderRandom      @"MioPlayOrderRandom"
+
 //======================================================================//
 //                               用户
 //======================================================================//

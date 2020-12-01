@@ -47,7 +47,7 @@
     
     [self initSettings];
     
-    [self initAudioPlayer];
+//    [self initAudioPlayer];
     return YES;
 }
 
@@ -58,6 +58,7 @@
     if (![userdefault objectForKey:@"first"]) {
         [userdefault setObject:@"1" forKey:@"first"];
         [userdefault setObject:@"bai" forKey:@"skin"];
+        setPlayOrder(MioPlayOrderCycle);
     }
 }
 
@@ -114,6 +115,12 @@
     mt.tabBar.frame = frame(0, _tabbarHeight, KSW, 49 + SafeBotH);
     
 }
+
+- (void)applicationWillTerminate:(UIApplication *)application{
+    NSLog(@"杀后台了");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"killApp" object:nil];
+}
+
 
 
 -(void)registPlatform{

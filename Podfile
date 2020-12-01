@@ -29,5 +29,4 @@ pod 'PPBadgeView'
 pod 'SSZipArchive'
 pod 'CHTCollectionViewWaterfallLayout'
 pod 'YYText'
-
 end
