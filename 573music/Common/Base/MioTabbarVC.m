@@ -13,7 +13,7 @@
 #import "Lottie.h"
 #import "MioGroudVC.h"
 #import "MioMineVC.h"
-#import "MioTest3VC.h"
+#import "MioMainPlayerVC.h"
 #import "MioBottomPlayView.h"
 
 @interface MioTabbarVC ()
@@ -32,6 +32,8 @@
 @property (nonatomic, strong) LOTAnimationView *hud2;
 @property (nonatomic, strong) LOTAnimationView *hud3;
 @property (nonatomic, strong) LOTAnimationView *hud4;
+
+@property (nonatomic, strong) MioMainPlayerVC *mainPlayerVC;
 
 @end
 
@@ -53,11 +55,11 @@
     // 将自定义 View 添加到 tabBar 上
     [self.tabBar insertSubview:bgView atIndex:0];
     
-    
+    _mainPlayerVC = [[MioMainPlayerVC alloc] init];
     _split = [[MioBottomPlayView alloc] initWithFrame:frame(0, -50, KSW, 50)];
     [_split whenTapped:^{
-        MioTest3VC *vc = [[MioTest3VC alloc] init];
-        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
+        
+        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:_mainPlayerVC];
         nav.modalPresentationStyle = 0;
         [self presentViewController:nav animated:YES completion:nil];
     }];

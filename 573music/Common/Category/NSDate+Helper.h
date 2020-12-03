@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)intervalFromNoewDateWithString:(NSString *)date;
 +(NSDate *)stringToDate:(NSString *)string;
 +(NSString *)dateToString:(NSDate *)date;
++ (NSString *)stringDuartion:(float)duration;
 @end
 
 NS_ASSUME_NONNULL_END

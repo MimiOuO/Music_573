@@ -8,7 +8,11 @@
 
 #import "MioPlayer.h"
 
-@interface MioPlayer()<KVAudioStreamerDelegate,MioPlayListDelegate>
+static void *kStatusKVOKey = &kStatusKVOKey;
+static void *kDurationKVOKey = &kDurationKVOKey;
+static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
+
+@interface MioPlayer()<MioPlayListDelegate>
 
 @end
 
@@ -28,10 +32,7 @@
 {
     self = [super init];
     if (self) {
-        self.streamer = [[KVAudioStreamer alloc] init];
-        self.streamer.delegate = self;
-        self.streamer.cacheEnable = YES;    //开启缓存功能
-        
+
         mioPlayList.delegate = self;
     }
     return self;
@@ -50,11 +51,11 @@
 }
 
 - (void)playPre{
-    
+    [self playIndex:[mioPlayList getPreIndex]];
 }
 
 - (void)playNext{
-    
+    [self playIndex:[mioPlayList getNextIndex]];
 }
 
 -(void)autoPlayNext{
@@ -62,42 +63,33 @@
 }
 
 #pragma mark - MioPlayer基础操作
--(NSInteger)getPreIndex{
-    if (!Equals(currentPlayOrder, MioPlayOrderRandom)) {
-        NSLog(@"%ld",(long)self.curretnPlayIndex);
-        return 0;
-    }else{
-        return 0;
-    }
-}
 
--(void)getNextIndex{
-    
-}
 
 - (void)playWithMusic:(MioMusicModel *)music{
     if (![self isCurrentPlay:music]) {
         self.currentMusic = music;
-        [self resetAudioURL:music.audiourl];
+        [self resetAudioURL:music];
         [self updateCurrentIndex];
-        [mioPlayList saveCurrentPlayList:mioPlayList.playListArr currentIndex:self.curretnPlayIndex];
+        [mioPlayList saveCurrentPlayList:mioPlayList.playListArr currentIndex:self.currentPlayIndex];
     }
     [self play];
 }
 
-- (NSInteger)curretnPlayIndex{
-    return [mioPlayList.playListArr indexOfObject:self.currentMusic];
+- (NSInteger)currentPlayIndex{
+    _currentPlayIndex = [mioPlayList.playListArr indexOfObject:self.currentMusic];
+    return _currentPlayIndex;
 }
 
+
 -(void)updateCurrentIndex{
-    self.curretnPlayIndex = [mioPlayList.playListArr indexOfObject:self.currentMusic];
+    self.currentPlayIndex = [mioPlayList.playListArr indexOfObject:self.currentMusic];
 }
 
 #pragma mark - 基础判断方法
 
 
 -(BOOL)isCurrentPlay:(MioMusicModel *)music{
-    if (Equals(music.id, mioPlayer.currentMusic.id)) {
+    if (Equals(music, mioPlayer.currentMusic)) {
         return YES;
     }else{
         return NO;
@@ -105,27 +97,43 @@
 }
 
 #pragma mark - 播放器基础操作
-
-- (BOOL)resetAudioURL:(NSString*)audiourl{
-    return [self.streamer resetAudioURL:audiourl];
+- (void)_cancelStreamer
+{
+  if (_streamer != nil) {
+    [_streamer pause];
+    [_streamer removeObserver:self forKeyPath:@"status"];
+    [_streamer removeObserver:self forKeyPath:@"duration"];
+    [_streamer removeObserver:self forKeyPath:@"bufferingRatio"];
+    _streamer = nil;
+  }
 }
 
+- (void)resetAudioURL:(MioMusicModel *)music{
+    [self _cancelStreamer];
+
+          _streamer = [DOUAudioStreamer streamerWithAudioFile:music];
+          [_streamer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:kStatusKVOKey];
+          [_streamer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
+          [_streamer addObserver:self forKeyPath:@"bufferingRatio" options:NSKeyValueObservingOptionNew context:kBufferingRatioKVOKey];
+          
+          [_streamer play];
+          
+//          [self _updateBufferingStatus];
+          [self _setupHintForStreamer];
+    
+      
+}
+//缓存下一首
+- (void)_setupHintForStreamer
+{
+  NSUInteger nextIndex = self.currentPlayIndex + 1;
+
+  [DOUAudioStreamer setHintWithAudioFile:[mioPlayList.playListArr objectAtIndex:[mioPlayList getNextIndex]]];
+}
 
 
 - (void)play{
-    
-    
     [self.streamer play];
-}
-
-
-- (void)playAtTime:(long)location{
-    [self.streamer playAtTime:location];
-}
-
-
-- (void)seekToTime:(long)location{
-    [self.streamer seekToTime:location];
 }
 
 - (void)pause{
@@ -136,75 +144,91 @@
     [self.streamer stop];
 }
 
-#pragma mark - 播放器代理
-- (void)audioStreamer:(KVAudioStreamer *)streamer playAtTime:(long)location{
-    if ([self.delegate respondsToSelector:@selector(player:playAtTime:)]) {
-        [self.delegate player:self playAtTime:self.status];
+- (void)seekToTime:(long)location{
+//    [_streamer setCurrentTime:[_streamer duration] * [_progressSlider value]];
+}
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+  if (context == kStatusKVOKey) {
+    [self performSelector:@selector(_updateStatus)
+                 onThread:[NSThread mainThread]
+               withObject:nil
+            waitUntilDone:NO];
+  }
+  else if (context == kDurationKVOKey) {
+    [self performSelector:@selector(_timerAction:)
+                 onThread:[NSThread mainThread]
+               withObject:nil
+            waitUntilDone:NO];
+  }
+  else if (context == kBufferingRatioKVOKey) {
+    [self performSelector:@selector(_updateBufferingStatus)
+                 onThread:[NSThread mainThread]
+               withObject:nil
+            waitUntilDone:NO];
+  }
+  else {
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+  }
+}
+
+//播放进度
+- (void)_timerAction:(id)timer
+{
+  if ([_streamer duration] == 0.0) {
+      self.currentMusicDuration = 0.0;
+//    [_progressSlider setValue:0.0f animated:NO];
+  }
+  else {
+      self.currentMusicDuration = [_streamer duration];
+//    [_progressSlider setValue:[_streamer currentTime] / [_streamer duration] animated:YES];
+  }
+}
+
+//缓存进度
+- (void)_updateBufferingStatus
+{
+//  [_miscLabel setText:[NSString stringWithFormat:@"Received %.2f/%.2f MB (%.2f %%), Speed %.2f MB/s", (double)[_streamer receivedLength] / 1024 / 1024, (double)[_streamer expectedLength] / 1024 / 1024, [_streamer bufferingRatio] * 100.0, (double)[_streamer downloadSpeed] / 1024 / 1024]];
+
+  if ([_streamer bufferingRatio] >= 1.0) {
+    NSLog(@"sha256: %@", [_streamer sha256]);
+  }
+}
+//播放状态改变
+- (void)_updateStatus
+{
+    self.status = [_streamer status];
+    switch ([_streamer status]) {
+        case DOUAudioStreamerPlaying:
+            NSLog(@"playing");
+        break;
+
+        case DOUAudioStreamerPaused:
+            NSLog(@"paused");
+            break;
+
+        case DOUAudioStreamerIdle:
+            NSLog(@"idle");
+            break;
+
+        case DOUAudioStreamerFinished:
+            NSLog(@"finished");
+            break;
+
+        case DOUAudioStreamerBuffering:
+            NSLog(@"buffering");
+            break;
+
+        case DOUAudioStreamerError:
+            NSLog(@"error");
+            break;
     }
 }
 
-- (void)audioStreamer:(KVAudioStreamer *)streamer loadNetworkDataInRange:(NSRange)range fileSize:(UInt64)filesize{
-    if ([self.delegate respondsToSelector:@selector(player:loadNetworkDataInRange:fileSize:)]) {
-        [self.delegate player:self loadNetworkDataInRange:(NSRange)range fileSize:(UInt64)filesize];
-    }
-}
 
-- (void)audioStreamer:(KVAudioStreamer *)streamer playStatusChange:(KVAudioStreamerPlayStatus)status{
-    switch (status) {
-        case KVAudioStreamerPlayStatusBuffering:
-            NSLog(@"缓冲中");
-
-            break;
-        case KVAudioStreamerPlayStatusStop:
-        {
-            NSLog(@"播放停止");
-
-        }
-            break;
-        case KVAudioStreamerPlayStatusPause:
-        {
-            NSLog(@"播放暂停");
-
-            if (self.streamer.currentAudioFile.duration) {
-//                [self pausePlaybackInfoWithTitle:self.title arttist:@"未知歌手" image:[UIImage imageNamed:@"chenyixun"] duration:self.streamer.currentAudioFile.duration currentDuration:self.streamer.currentAudioFile.currentPlayDuration];
-            }else {
-//                [self pausePlaybackInfoWithTitle:self.title arttist:@"未知歌手" image:[UIImage imageNamed:@"chenyixun"] duration:self.streamer.currentAudioFile.estimateDuration currentDuration:self.streamer.currentAudioFile.currentPlayDuration];
-            }
-        }
-            break;
-        case KVAudioStreamerPlayStatusFinish:
-        {
-            NSLog(@"播放结束");
-
-//            [self nextBtnClick];
-        }
-            break;
-        case KVAudioStreamerPlayStatusPlaying:
-        {
-            NSLog(@"播放中");
-
-//            if (self.streamer.currentAudioFile.duration) {
-//                [self updatePlaybackInfoWithTitle:self.title arttist:@"未知歌手" image:[UIImage imageNamed:@"chenyixun"] duration:self.streamer.currentAudioFile.duration currentDuration:self.streamer.currentAudioFile.currentPlayDuration playRate:self.streamer.playRate];
-//            }else {
-//                [self updatePlaybackInfoWithTitle:self.title arttist:@"未知歌手" image:[UIImage imageNamed:@"chenyixun"] duration:self.streamer.currentAudioFile.estimateDuration currentDuration:self.streamer.currentAudioFile.currentPlayDuration playRate:self.streamer.playRate];
-//            }
-        }
-            break;
-        case KVAudioStreamerPlayStatusIdle:
-        {
-            NSLog(@"闲置状态");
-
-        }
-            break;
-        default:
-            break;
-    }
-}
-
-- (BOOL)audioStreamer:(KVAudioStreamer *)streamer cacheCompleteWithRelativePath:(NSString *)relativePath cachepath:(NSString *)cachepath {
-    NSLog(@"缓存文件成功%@", cachepath);
-    return YES;
-}
+//缓存文件成功
 
 #pragma mark - 播放列表代理
 

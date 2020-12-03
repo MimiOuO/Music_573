@@ -92,4 +92,17 @@
     return currentDateStr;
 }
 
++ (NSString *)stringDuartion:(float)duration{
+    int durationInt = (int)duration;
+    if (duration > 0) {
+        if (durationInt % 60 < 10) {
+            return [NSString stringWithFormat:@"%d:0%d",durationInt / 60, durationInt % 60];
+        } else {
+            return  [NSString stringWithFormat:@"%d:%d",durationInt / 60, durationInt % 60];
+        }
+    }else{
+        return @"00:00";
+    }
+}
+
 @end

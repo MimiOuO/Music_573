@@ -11,7 +11,7 @@
 
 @implementation MioVCConfig
 +(MioBottomType)getBottomType:(UIViewController *)VC{
-    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC"];
+    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC"];
     NSArray *allArr = @[@"MioHomeVC",@"MioGroudVC",@"MioMineVC"];
     
     NSString *vcName = NSStringFromClass([VC class]);

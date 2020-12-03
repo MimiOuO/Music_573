@@ -36,10 +36,10 @@
     
     [self.window makeKeyAndVisible];
     
-    JJException.exceptionWhenTerminate = NO;
-    
-    [JJException configExceptionCategory:JJExceptionGuardNSStringContainer | JJExceptionGuardArrayContainer | JJExceptionGuardUnrecognizedSelector | JJExceptionGuardDictionaryContainer];
-    [JJException startGuardException];
+//    JJException.exceptionWhenTerminate = NO;
+//    
+//    [JJException configExceptionCategory:JJExceptionGuardNSStringContainer | JJExceptionGuardArrayContainer | JJExceptionGuardUnrecognizedSelector | JJExceptionGuardDictionaryContainer];
+//    [JJException startGuardException];
     
     [self registPlatform];
     

@@ -17,11 +17,10 @@
         self.backgroundColor = redTextColor;
         UIButton *close = [UIButton creatBtn:frame(100, 0, 100, 50) inView:self bgColor:mainColor title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
             NSLog(@"23423423");
-//            PostNotice(@"closePlayer")
+
         }];
         
-//        [mioPlayer resetAudioURL:@"http://kevinfile.oss-cn-shenzhen.aliyuncs.com/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E6%97%A0%E4%BA%BA%E4%B9%8B%E5%A2%83.mp3"];
-//        [mioPlayer play];
+
     }
     return self;
 }

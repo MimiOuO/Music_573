@@ -46,9 +46,13 @@
 //#import "MioLargeButton.h"
 //#import "MioLargeButton+MioExtension.h"
 //#import "NSString+Size.h"
+#import "NSDate+Helper.h"
 #import "NSString+MioExtension.h"
 #import "UIScrollView+MioExtension.h"
 #import "UITableView+MioExtension.h"
+#import "NSObject+XWAdd.h"
+
+
 #import "MioViewController.h"
 #import "MioLoginVC.h"
 #import "MioNavVC.h"
@@ -173,7 +177,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 //                             业务相关
 //======================================================================//
 #define currentPlayOrder        [userdefault objectForKey:@"playOrder"]
-#define setPlayOrder(order)     [userdefault setObject:(order) forKey:@"playOrder"];
+#define setPlayOrder(order)     [userdefault setObject:order forKey:@"playOrder"]
 #define MioPlayOrderCycle       @"MioPlayOrderCycle"
 #define MioPlayOrderSingle      @"MioPlayOrderSingle"
 #define MioPlayOrderRandom      @"MioPlayOrderRandom"

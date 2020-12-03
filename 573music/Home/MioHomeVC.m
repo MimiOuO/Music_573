@@ -11,10 +11,7 @@
 #import "MioTestVC.h"
 #import "MioTest2VC.h"
 #import "MioLabel.h"
-#import "KVAudioStreamer.h"
-#import "KVAudioPlayerController.h"
-@interface MioHomeVC ()<KVAudioStreamerDelegate>
-@property (nonatomic, strong) KVAudioStreamer *streamer;
+@interface MioHomeVC ()
 @end
 
 @implementation MioHomeVC
@@ -36,7 +33,7 @@
 //        [self.navigationController pushViewController:vc animated:YES];
     }];
     UIButton *sdfsdws = [UIButton creatBtn:frame(100, 220, 100, 100) inView:self.view bgColor:mainColor title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
-//        [mioPlayer resetAudioURL:@"http://kevinfile.oss-cn-shenzhen.aliyuncs.com/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E6%97%A0%E4%BA%BA%E4%B9%8B%E5%A2%83.mp3"];
+
         [mioPlayer play];
         return;
         MioTestVC *vc = [[MioTestVC alloc] init];
@@ -72,30 +69,16 @@
         NSMutableArray *musicArr = [[NSMutableArray alloc] init];
         for (int i = 0;i < data.count; i++) {
             [musicArr addObject:[MioMusicModel mj_objectWithKeyValues:data[i]]];
-            [musicArr addObject:[MioMusicModel mj_objectWithKeyValues:data[i]]];
         }
         [mioPlayer playWithMusicList:musicArr andIndex:0];
-        NSLog(@"cacheYES__%@",data);
+//        NSLog(@"cacheYES__%@",data);
     } failure:^(NSString *errorInfo) {
         NSLog(@"%@",errorInfo);
     }];
     
-    NSArray *arr = @[@"111",@"111",@"111",@"111"];
-    [mioPlayList updatePlayList:arr];
-    
-    
-//    self.streamer = [[KVAudioStreamer alloc] init];
-//    self.streamer.delegate = self;
-//    self.streamer.cacheEnable = YES;    //开启缓存功能
-//    [self.streamer resetAudioURL:@"http://kevinfile.oss-cn-shenzhen.aliyuncs.com/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E6%97%A0%E4%BA%BA%E4%B9%8B%E5%A2%83.mp3"];
-//    self.streamer.httpHeaders = @{@"Referer" : @"kevinrefer"};
-//    [self.streamer play];
+
     
 }
-//- (BOOL)audioStreamer:(KVAudioStreamer *)streamer cacheCompleteWithRelativePath:(NSString *)relativePath cachepath:(NSString *)cachepath {
-//    NSLog(@"缓存文件成功%@", cachepath);
-//    return YES;
-//}
 
 
 @end

@@ -7,37 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KVAudioStreamer.h"
+#import "DOUAudioStreamer.h"
 #import "MioPlayList.h"
 
 NS_ASSUME_NONNULL_BEGIN
-typedef NS_ENUM(NSInteger, MioPlayStatus) {
-    MioPlayStatusIdle,  //闲置状态
-    MioPlayStatusBuffering, //缓冲中
-    MioPlayStatusPlaying,   //播放
-    MioPlayStatusPause, //暂停
-    MioPlayStatusFinish,  //完成播放
-    MioPlayStatusStop  //停止
-};
+
 @class MioPlayer;
 @protocol MioPlayerDelegate <NSObject>
 @optional
-/**
- 播放进度通知
 
- @param player 流媒体
- @param location 当前播放位置，以秒为单位
- */
-- (void)player:(MioPlayer *)player playAtTime:(long)location;
-
-/**
- 网络请求数据加载区间
-
- @param player 流媒体
- @param range 数据区间，如果是没有seek操作的，那么是从0开始的，如果使用了seek操作，那么会从seek的文件位置开始，如果开发者需要在进度条中显示加载进度，需要自行处理（可以通过原文件大小跟数据区间的length比值来显示进度）
- @param filesize 原文件大小
- */
-- (void)player:(MioPlayer *)player loadNetworkDataInRange:(NSRange)range fileSize:(UInt64)filesize;
 @end
 
 @interface MioPlayer : NSObject
@@ -46,12 +24,12 @@ typedef NS_ENUM(NSInteger, MioPlayStatus) {
 
 @property (nonatomic, weak) id <MioPlayerDelegate> delegate;
 
-@property (nonatomic, strong) KVAudioStreamer *streamer;
+@property (nonatomic, strong) DOUAudioStreamer *streamer;
 
 /**
  当前播放状态
  */
-@property (atomic, assign) MioPlayStatus status;
+@property (atomic, assign) DOUAudioStreamerStatus status;
 
 /**
  当前播放的音频路径
@@ -64,19 +42,20 @@ typedef NS_ENUM(NSInteger, MioPlayStatus) {
 @property (nonatomic, strong) MioMusicModel * currentMusic;
 
 /**
- 当前播放的模型
+ 当前播放的index
  */
-@property (nonatomic, assign) NSInteger curretnPlayIndex;
+@property (nonatomic, assign) NSInteger currentPlayIndex;
+
+/**
+ 当前播放的时长
+ */
+@property (nonatomic, assign) float currentMusicDuration;
 
 #pragma mark - 音频播放相关
 /**
  重设音频地址
- 注意：重设音频地址将会停止播放上一个音频
- 
- @param audiourl 音频地址，如果为本地音频文件，需要添加file://前缀，如果为网络文件，必须以http（https）开头，支持https
- @return 成功返回YES
  */
-- (BOOL)resetAudioURL:(NSString*)audiourl;
+- (void)resetAudioURL:(MioMusicModel *)music;
 
 /**
  播放音频列表

@@ -146,16 +146,11 @@
 		235055A52567A57500F96AFC /* DownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2350559D2567A57500F96AFC /* DownloadInfo.m */; };
 		235055A62567A57500F96AFC /* DownloadDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2350559F2567A57500F96AFC /* DownloadDispatch.m */; };
 		235705D124401855007C3F87 /* MioHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 235705D024401855007C3F87 /* MioHomeVC.m */; };
-		23615E0025748FAB00EAD39D /* KVAudioConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DF425748FAB00EAD39D /* KVAudioConsumer.m */; };
-		23615E0125748FAB00EAD39D /* NSString+KVURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DF825748FAB00EAD39D /* NSString+KVURL.m */; };
-		23615E0225748FAB00EAD39D /* KVAudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DFA25748FAB00EAD39D /* KVAudioStreamer.m */; };
-		23615E0325748FAB00EAD39D /* KVAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DFB25748FAB00EAD39D /* KVAudioFile.m */; };
-		23615E0425748FAB00EAD39D /* KVAudioStreamHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DFD25748FAB00EAD39D /* KVAudioStreamHttpTool.m */; };
-		23615E0525748FAB00EAD39D /* KVAudioProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615DFE25748FAB00EAD39D /* KVAudioProvider.m */; };
 		23615E12257493CA00EAD39D /* MioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E11257493CA00EAD39D /* MioPlayer.m */; };
 		23615E152574A18100EAD39D /* MioPlayList.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E142574A18100EAD39D /* MioPlayList.m */; };
 		23615E182574A3D200EAD39D /* MioMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E172574A3D200EAD39D /* MioMusicModel.m */; };
-		23615E1B2574CCCE00EAD39D /* KVAudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E1A2574CCCE00EAD39D /* KVAudioPlayerController.m */; };
+		23615E2A2576236700EAD39D /* MioMainPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E292576236700EAD39D /* MioMainPlayerVC.m */; };
+		23615E2E257638BE00EAD39D /* NSObject+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E2C257638BD00EAD39D /* NSObject+XWAdd.m */; };
 		2366652D256B81D400609A05 /* MioTest2VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366652C256B81D400609A05 /* MioTest2VC.m */; };
 		23673F6C2507165E00C599CB /* UIScrollView+MioExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F6B2507165E00C599CB /* UIScrollView+MioExtension.m */; };
 		23673F7225076E2300C599CB /* WLButtonCountdownManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F6F25076E2300C599CB /* WLButtonCountdownManager.m */; };
@@ -306,6 +301,24 @@
 		2393DD072511AEFD002483A9 /* YDEmojiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2393DD002511AEFD002483A9 /* YDEmojiCell.m */; };
 		2393DD082511AEFD002483A9 /* YDEmojiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2393DD012511AEFD002483A9 /* YDEmojiCell.xib */; };
 		2393DD142512055C002483A9 /* UIImage+MioExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2393DD132512055C002483A9 /* UIImage+MioExtension.m */; };
+		239930A925777DF900584486 /* DOUAudioFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399308125777DF900584486 /* DOUAudioFileProvider.m */; };
+		239930AA25777DFA00584486 /* DOUAudioStreamer+Options.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399308525777DF900584486 /* DOUAudioStreamer+Options.m */; };
+		239930AB25777DFA00584486 /* DOUAudioAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399308825777DF900584486 /* DOUAudioAnalyzer.m */; };
+		239930AC25777DFA00584486 /* DOUAudioRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399308C25777DF900584486 /* DOUAudioRenderer.m */; };
+		239930AD25777DFA00584486 /* DOUAudioAnalyzer+Default.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399308D25777DF900584486 /* DOUAudioAnalyzer+Default.m */; };
+		239930AE25777DFA00584486 /* DOUAudioFilePreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309025777DF900584486 /* DOUAudioFilePreprocessor.m */; };
+		239930AF25777DFA00584486 /* NSData+DOUAudioMappedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309225777DF900584486 /* NSData+DOUAudioMappedFile.m */; };
+		239930B025777DFA00584486 /* DOUAudioVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309325777DF900584486 /* DOUAudioVisualizer.m */; };
+		239930B125777DFA00584486 /* DOUEAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309525777DF900584486 /* DOUEAGLView.m */; };
+		239930B225777DFA00584486 /* DOUAudioLPCM.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309725777DF900584486 /* DOUAudioLPCM.m */; };
+		239930B325777DFA00584486 /* DOUAudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309925777DF900584486 /* DOUAudioStreamer.m */; };
+		239930B425777DFA00584486 /* DOUAudioDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309A25777DF900584486 /* DOUAudioDecoder.m */; };
+		239930B525777DFA00584486 /* DOUSimpleHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309B25777DF900584486 /* DOUSimpleHTTPRequest.m */; };
+		239930B625777DFA00584486 /* DOUAudioPlaybackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399309E25777DF900584486 /* DOUAudioPlaybackItem.m */; };
+		239930B725777DFA00584486 /* DOUAudioEventLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 239930A025777DF900584486 /* DOUAudioEventLoop.m */; };
+		239930B825777DFA00584486 /* DOUAudioSpatialAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 239930A125777DF900584486 /* DOUAudioSpatialAnalyzer.m */; };
+		239930B925777DFA00584486 /* DOUAudioFrequencyAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 239930A325777DF900584486 /* DOUAudioFrequencyAnalyzer.m */; };
+		239930BA25777DFA00584486 /* DOUMPMediaLibraryAssetLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 239930A725777DF900584486 /* DOUMPMediaLibraryAssetLoader.m */; };
 		239B0346251464C300B310D2 /* MioMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 239B0345251464C300B310D2 /* MioMineVC.m */; };
 		23AB23122431C77700DBB427 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23112431C77700DBB427 /* AppDelegate.m */; };
 		23AB231D2431C77A00DBB427 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23AB231C2431C77A00DBB427 /* Assets.xcassets */; };
@@ -648,27 +661,16 @@
 		2350559F2567A57500F96AFC /* DownloadDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadDispatch.m; sourceTree = "<group>"; };
 		235705CF24401855007C3F87 /* MioHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioHomeVC.h; sourceTree = "<group>"; };
 		235705D024401855007C3F87 /* MioHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioHomeVC.m; sourceTree = "<group>"; };
-		23615DF325748FAB00EAD39D /* KVAudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioStreamer.h; sourceTree = "<group>"; };
-		23615DF425748FAB00EAD39D /* KVAudioConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioConsumer.m; sourceTree = "<group>"; };
-		23615DF525748FAB00EAD39D /* KVAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioFile.h; sourceTree = "<group>"; };
-		23615DF625748FAB00EAD39D /* KVAudioProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioProvider.h; sourceTree = "<group>"; };
-		23615DF725748FAB00EAD39D /* KVAudioStreamHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioStreamHttpTool.h; sourceTree = "<group>"; };
-		23615DF825748FAB00EAD39D /* NSString+KVURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KVURL.m"; sourceTree = "<group>"; };
-		23615DF925748FAB00EAD39D /* KVAudioConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioConsumer.h; sourceTree = "<group>"; };
-		23615DFA25748FAB00EAD39D /* KVAudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioStreamer.m; sourceTree = "<group>"; };
-		23615DFB25748FAB00EAD39D /* KVAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioFile.m; sourceTree = "<group>"; };
-		23615DFC25748FAB00EAD39D /* NSString+KVURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KVURL.h"; sourceTree = "<group>"; };
-		23615DFD25748FAB00EAD39D /* KVAudioStreamHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioStreamHttpTool.m; sourceTree = "<group>"; };
-		23615DFE25748FAB00EAD39D /* KVAudioProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioProvider.m; sourceTree = "<group>"; };
-		23615DFF25748FAB00EAD39D /* KVAudioStreamDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioStreamDef.h; sourceTree = "<group>"; };
 		23615E10257493CA00EAD39D /* MioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioPlayer.h; sourceTree = "<group>"; };
 		23615E11257493CA00EAD39D /* MioPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioPlayer.m; sourceTree = "<group>"; };
 		23615E132574A18100EAD39D /* MioPlayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioPlayList.h; sourceTree = "<group>"; };
 		23615E142574A18100EAD39D /* MioPlayList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioPlayList.m; sourceTree = "<group>"; };
 		23615E162574A3D200EAD39D /* MioMusicModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMusicModel.h; sourceTree = "<group>"; };
 		23615E172574A3D200EAD39D /* MioMusicModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMusicModel.m; sourceTree = "<group>"; };
-		23615E192574CCCE00EAD39D /* KVAudioPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVAudioPlayerController.h; sourceTree = "<group>"; };
-		23615E1A2574CCCE00EAD39D /* KVAudioPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVAudioPlayerController.m; sourceTree = "<group>"; };
+		23615E282576236700EAD39D /* MioMainPlayerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMainPlayerVC.h; sourceTree = "<group>"; };
+		23615E292576236700EAD39D /* MioMainPlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMainPlayerVC.m; sourceTree = "<group>"; };
+		23615E2C257638BD00EAD39D /* NSObject+XWAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XWAdd.m"; sourceTree = "<group>"; };
+		23615E2D257638BE00EAD39D /* NSObject+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XWAdd.h"; sourceTree = "<group>"; };
 		2366652B256B81D400609A05 /* MioTest2VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioTest2VC.h; sourceTree = "<group>"; };
 		2366652C256B81D400609A05 /* MioTest2VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioTest2VC.m; sourceTree = "<group>"; };
 		23673F6A2507165E00C599CB /* UIScrollView+MioExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MioExtension.h"; sourceTree = "<group>"; };
@@ -975,6 +977,46 @@
 		2393DD032511AEFD002483A9 /* YDCommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCommentInputView.h; sourceTree = "<group>"; };
 		2393DD122512055C002483A9 /* UIImage+MioExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+MioExtension.h"; sourceTree = "<group>"; };
 		2393DD132512055C002483A9 /* UIImage+MioExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MioExtension.m"; sourceTree = "<group>"; };
+		2399308125777DF900584486 /* DOUAudioFileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioFileProvider.m; sourceTree = "<group>"; };
+		2399308225777DF900584486 /* DOUAudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioStreamer.h; sourceTree = "<group>"; };
+		2399308325777DF900584486 /* DOUSimpleHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUSimpleHTTPRequest.h; sourceTree = "<group>"; };
+		2399308425777DF900584486 /* DOUAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioDecoder.h; sourceTree = "<group>"; };
+		2399308525777DF900584486 /* DOUAudioStreamer+Options.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUAudioStreamer+Options.m"; sourceTree = "<group>"; };
+		2399308625777DF900584486 /* DOUAudioLPCM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioLPCM.h; sourceTree = "<group>"; };
+		2399308725777DF900584486 /* DOUEAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUEAGLView.h; sourceTree = "<group>"; };
+		2399308825777DF900584486 /* DOUAudioAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioAnalyzer.m; sourceTree = "<group>"; };
+		2399308925777DF900584486 /* DOUAudioSpatialAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioSpatialAnalyzer.h; sourceTree = "<group>"; };
+		2399308A25777DF900584486 /* DOUAudioEventLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioEventLoop.h; sourceTree = "<group>"; };
+		2399308B25777DF900584486 /* DOUAudioPlaybackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioPlaybackItem.h; sourceTree = "<group>"; };
+		2399308C25777DF900584486 /* DOUAudioRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioRenderer.m; sourceTree = "<group>"; };
+		2399308D25777DF900584486 /* DOUAudioAnalyzer+Default.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUAudioAnalyzer+Default.m"; sourceTree = "<group>"; };
+		2399308E25777DF900584486 /* DOUAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioFile.h; sourceTree = "<group>"; };
+		2399308F25777DF900584486 /* DOUMPMediaLibraryAssetLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUMPMediaLibraryAssetLoader.h; sourceTree = "<group>"; };
+		2399309025777DF900584486 /* DOUAudioFilePreprocessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioFilePreprocessor.m; sourceTree = "<group>"; };
+		2399309125777DF900584486 /* DOUAudioAnalyzer_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioAnalyzer_Private.h; sourceTree = "<group>"; };
+		2399309225777DF900584486 /* NSData+DOUAudioMappedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DOUAudioMappedFile.m"; sourceTree = "<group>"; };
+		2399309325777DF900584486 /* DOUAudioVisualizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioVisualizer.m; sourceTree = "<group>"; };
+		2399309425777DF900584486 /* DOUAudioFrequencyAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioFrequencyAnalyzer.h; sourceTree = "<group>"; };
+		2399309525777DF900584486 /* DOUEAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUEAGLView.m; sourceTree = "<group>"; };
+		2399309625777DF900584486 /* DOUAudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioAnalyzer.h; sourceTree = "<group>"; };
+		2399309725777DF900584486 /* DOUAudioLPCM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioLPCM.m; sourceTree = "<group>"; };
+		2399309825777DF900584486 /* DOUAudioStreamer+Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUAudioStreamer+Options.h"; sourceTree = "<group>"; };
+		2399309925777DF900584486 /* DOUAudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioStreamer.m; sourceTree = "<group>"; };
+		2399309A25777DF900584486 /* DOUAudioDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioDecoder.m; sourceTree = "<group>"; };
+		2399309B25777DF900584486 /* DOUSimpleHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSimpleHTTPRequest.m; sourceTree = "<group>"; };
+		2399309C25777DF900584486 /* DOUAudioFileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioFileProvider.h; sourceTree = "<group>"; };
+		2399309D25777DF900584486 /* DOUAudioAnalyzer+Default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUAudioAnalyzer+Default.h"; sourceTree = "<group>"; };
+		2399309E25777DF900584486 /* DOUAudioPlaybackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioPlaybackItem.m; sourceTree = "<group>"; };
+		2399309F25777DF900584486 /* DOUAudioRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioRenderer.h; sourceTree = "<group>"; };
+		239930A025777DF900584486 /* DOUAudioEventLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioEventLoop.m; sourceTree = "<group>"; };
+		239930A125777DF900584486 /* DOUAudioSpatialAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioSpatialAnalyzer.m; sourceTree = "<group>"; };
+		239930A225777DF900584486 /* DOUAudioStreamer_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioStreamer_Private.h; sourceTree = "<group>"; };
+		239930A325777DF900584486 /* DOUAudioFrequencyAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioFrequencyAnalyzer.m; sourceTree = "<group>"; };
+		239930A425777DF900584486 /* DOUAudioVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioVisualizer.h; sourceTree = "<group>"; };
+		239930A525777DF900584486 /* NSData+DOUAudioMappedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DOUAudioMappedFile.h"; sourceTree = "<group>"; };
+		239930A625777DF900584486 /* DOUAudioFilePreprocessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioFilePreprocessor.h; sourceTree = "<group>"; };
+		239930A725777DF900584486 /* DOUMPMediaLibraryAssetLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUMPMediaLibraryAssetLoader.m; sourceTree = "<group>"; };
+		239930A825777DF900584486 /* DOUAudioBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioBase.h; sourceTree = "<group>"; };
 		239B0344251464C300B310D2 /* MioMineVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMineVC.h; sourceTree = "<group>"; };
 		239B0345251464C300B310D2 /* MioMineVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMineVC.m; sourceTree = "<group>"; };
 		23AB230D2431C77700DBB427 /* 573music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 573music.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1613,26 +1655,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		23615DF225748FAB00EAD39D /* KVAudioStreamer */ = {
-			isa = PBXGroup;
-			children = (
-				23615DF925748FAB00EAD39D /* KVAudioConsumer.h */,
-				23615DF425748FAB00EAD39D /* KVAudioConsumer.m */,
-				23615DF525748FAB00EAD39D /* KVAudioFile.h */,
-				23615DFB25748FAB00EAD39D /* KVAudioFile.m */,
-				23615DF625748FAB00EAD39D /* KVAudioProvider.h */,
-				23615DFE25748FAB00EAD39D /* KVAudioProvider.m */,
-				23615DFF25748FAB00EAD39D /* KVAudioStreamDef.h */,
-				23615DF325748FAB00EAD39D /* KVAudioStreamer.h */,
-				23615DFA25748FAB00EAD39D /* KVAudioStreamer.m */,
-				23615DF725748FAB00EAD39D /* KVAudioStreamHttpTool.h */,
-				23615DFD25748FAB00EAD39D /* KVAudioStreamHttpTool.m */,
-				23615DFC25748FAB00EAD39D /* NSString+KVURL.h */,
-				23615DF825748FAB00EAD39D /* NSString+KVURL.m */,
-			);
-			path = KVAudioStreamer;
-			sourceTree = "<group>";
-		};
 		23673F6D25076E2300C599CB /* countDownBtn */ = {
 			isa = PBXGroup;
 			children = (
@@ -2119,7 +2141,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				23615DF225748FAB00EAD39D /* KVAudioStreamer */,
+				2399308025777DF900584486 /* DouStreamer */,
 				2350558A2567A57400F96AFC /* CocoaDownloader */,
 				233FE2552564FFF200CBB1AE /* HXPhotoPicker */,
 				23CB0A81254BF6F400A18B63 /* XMTextView */,
@@ -2167,6 +2189,53 @@
 				2393DD032511AEFD002483A9 /* YDCommentInputView.h */,
 			);
 			path = YDKeyboard;
+			sourceTree = "<group>";
+		};
+		2399308025777DF900584486 /* DouStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				2399308225777DF900584486 /* DOUAudioStreamer.h */,
+				2399309925777DF900584486 /* DOUAudioStreamer.m */,
+				2399309125777DF900584486 /* DOUAudioAnalyzer_Private.h */,
+				2399309625777DF900584486 /* DOUAudioAnalyzer.h */,
+				2399308825777DF900584486 /* DOUAudioAnalyzer.m */,
+				2399309D25777DF900584486 /* DOUAudioAnalyzer+Default.h */,
+				2399308D25777DF900584486 /* DOUAudioAnalyzer+Default.m */,
+				239930A825777DF900584486 /* DOUAudioBase.h */,
+				2399308425777DF900584486 /* DOUAudioDecoder.h */,
+				2399309A25777DF900584486 /* DOUAudioDecoder.m */,
+				2399308A25777DF900584486 /* DOUAudioEventLoop.h */,
+				239930A025777DF900584486 /* DOUAudioEventLoop.m */,
+				2399308E25777DF900584486 /* DOUAudioFile.h */,
+				239930A625777DF900584486 /* DOUAudioFilePreprocessor.h */,
+				2399309025777DF900584486 /* DOUAudioFilePreprocessor.m */,
+				2399309C25777DF900584486 /* DOUAudioFileProvider.h */,
+				2399308125777DF900584486 /* DOUAudioFileProvider.m */,
+				2399309425777DF900584486 /* DOUAudioFrequencyAnalyzer.h */,
+				239930A325777DF900584486 /* DOUAudioFrequencyAnalyzer.m */,
+				2399308625777DF900584486 /* DOUAudioLPCM.h */,
+				2399309725777DF900584486 /* DOUAudioLPCM.m */,
+				2399308B25777DF900584486 /* DOUAudioPlaybackItem.h */,
+				2399309E25777DF900584486 /* DOUAudioPlaybackItem.m */,
+				2399309F25777DF900584486 /* DOUAudioRenderer.h */,
+				2399308C25777DF900584486 /* DOUAudioRenderer.m */,
+				2399308925777DF900584486 /* DOUAudioSpatialAnalyzer.h */,
+				239930A125777DF900584486 /* DOUAudioSpatialAnalyzer.m */,
+				239930A225777DF900584486 /* DOUAudioStreamer_Private.h */,
+				2399309825777DF900584486 /* DOUAudioStreamer+Options.h */,
+				2399308525777DF900584486 /* DOUAudioStreamer+Options.m */,
+				239930A425777DF900584486 /* DOUAudioVisualizer.h */,
+				2399309325777DF900584486 /* DOUAudioVisualizer.m */,
+				2399308725777DF900584486 /* DOUEAGLView.h */,
+				2399309525777DF900584486 /* DOUEAGLView.m */,
+				2399308F25777DF900584486 /* DOUMPMediaLibraryAssetLoader.h */,
+				239930A725777DF900584486 /* DOUMPMediaLibraryAssetLoader.m */,
+				2399308325777DF900584486 /* DOUSimpleHTTPRequest.h */,
+				2399309B25777DF900584486 /* DOUSimpleHTTPRequest.m */,
+				239930A525777DF900584486 /* NSData+DOUAudioMappedFile.h */,
+				2399309225777DF900584486 /* NSData+DOUAudioMappedFile.m */,
+			);
+			path = DouStreamer;
 			sourceTree = "<group>";
 		};
 		239B03432514649500B310D2 /* Mine */ = {
@@ -2282,6 +2351,8 @@
 				236DB79E250F6FBB001CC2F3 /* NSDate+Helper.m */,
 				2393DD122512055C002483A9 /* UIImage+MioExtension.h */,
 				2393DD132512055C002483A9 /* UIImage+MioExtension.m */,
+				23615E2D257638BE00EAD39D /* NSObject+XWAdd.h */,
+				23615E2C257638BD00EAD39D /* NSObject+XWAdd.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2361,8 +2432,8 @@
 				23615E172574A3D200EAD39D /* MioMusicModel.m */,
 				23BC2522256CE5E500E756ED /* MioBottomPlayView.h */,
 				23BC2523256CE5E500E756ED /* MioBottomPlayView.m */,
-				23615E192574CCCE00EAD39D /* KVAudioPlayerController.h */,
-				23615E1A2574CCCE00EAD39D /* KVAudioPlayerController.m */,
+				23615E282576236700EAD39D /* MioMainPlayerVC.h */,
+				23615E292576236700EAD39D /* MioMainPlayerVC.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -2576,6 +2647,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239930B925777DFA00584486 /* DOUAudioFrequencyAnalyzer.m in Sources */,
 				2393DCF32511AE9C002483A9 /* JJCardSliderView.m in Sources */,
 				233FE3372564FFF300CBB1AE /* HXAlbumModel.m in Sources */,
 				233825EF2518796900DC9021 /* HSCustomCellModel.m in Sources */,
@@ -2586,11 +2658,11 @@
 				233FE33F2564FFF300CBB1AE /* HXPreviewImageView.m in Sources */,
 				2393DD142512055C002483A9 /* UIImage+MioExtension.m in Sources */,
 				2378093224FF4DF900007883 /* NERStack+NERChainable.m in Sources */,
+				239930B825777DFA00584486 /* DOUAudioSpatialAnalyzer.m in Sources */,
 				2378093B24FF4DF900007883 /* UIFont+NERChainable.m in Sources */,
 				233FE3142564FFF300CBB1AE /* HXPhotoConfiguration.m in Sources */,
 				233825F72518796900DC9021 /* HSCustomTableViewCell.m in Sources */,
 				236DB6E5250F0DD8001CC2F3 /* LOTGradientFillRender.m in Sources */,
-				23615E0325748FAB00EAD39D /* KVAudioFile.m in Sources */,
 				236DB77A250F6668001CC2F3 /* ZFPresentTransition.m in Sources */,
 				23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */,
 				236DB702250F0DD8001CC2F3 /* LOTComposition.m in Sources */,
@@ -2607,7 +2679,6 @@
 				2378094624FF4DF900007883 /* NERAlertMaker.m in Sources */,
 				2378093724FF4DF900007883 /* UISegmentedControl+NERChainable.m in Sources */,
 				2378093924FF4DF900007883 /* NERStyle+NERChainable.m in Sources */,
-				23615E0425748FAB00EAD39D /* KVAudioStreamHttpTool.m in Sources */,
 				233FE3252564FFF300CBB1AE /* UIButton+HXExtension.m in Sources */,
 				2393DD042511AEFD002483A9 /* ViewUtil.m in Sources */,
 				23AB23962431D32A00DBB427 /* MioScrollView.m in Sources */,
@@ -2616,8 +2687,10 @@
 				23AB23902431D32A00DBB427 /* MioAvatarView.m in Sources */,
 				236DB701250F0DD8001CC2F3 /* LOTAnimationCache.m in Sources */,
 				233825E72518796900DC9021 /* NSString+HSHeight.m in Sources */,
+				239930B325777DFA00584486 /* DOUAudioStreamer.m in Sources */,
 				233FE34D2564FFF300CBB1AE /* HXPhotoEditConfiguration.m in Sources */,
 				236DB6E4250F0DD8001CC2F3 /* LOTRenderGroup.m in Sources */,
+				23615E2A2576236700EAD39D /* MioMainPlayerVC.m in Sources */,
 				233826222518ACDD00DC9021 /* TADotView.m in Sources */,
 				236DB772250F6668001CC2F3 /* ZFPlayerGestureControl.m in Sources */,
 				233FE3172564FFF300CBB1AE /* HXPhotoViewPresentTransition.m in Sources */,
@@ -2637,7 +2710,6 @@
 				233825EE2518796900DC9021 /* HSTextCellModel.m in Sources */,
 				233FE3662564FFF300CBB1AE /* HXPhotoEditGraffitiColorViewCell.m in Sources */,
 				236DB780250F6668001CC2F3 /* ZFReachabilityManager.m in Sources */,
-				23615E0025748FAB00EAD39D /* KVAudioConsumer.m in Sources */,
 				236DB706250F0DD8001CC2F3 /* LOTAnimationTransitionController.m in Sources */,
 				2378094124FF4DF900007883 /* UIView+NERFrame.m in Sources */,
 				2378093124FF4DF900007883 /* UITextView+NERChainable.m in Sources */,
@@ -2664,7 +2736,6 @@
 				233FE3222564FFF300CBB1AE /* NSDate+HXExtension.m in Sources */,
 				2378092924FF4DF900007883 /* UISlider+NERChainable.m in Sources */,
 				235055A22567A57500F96AFC /* DownloadThread.m in Sources */,
-				23615E0525748FAB00EAD39D /* KVAudioProvider.m in Sources */,
 				23AB23942431D32A00DBB427 /* MioNavVC.m in Sources */,
 				23CB0A87254BF6F400A18B63 /* XMTextView.m in Sources */,
 				233825E22518796900DC9021 /* HSSetTableViewControllerConst.m in Sources */,
@@ -2695,7 +2766,6 @@
 				233FE31A2564FFF300CBB1AE /* NSString+HXExtension.m in Sources */,
 				236DB6ED250F0DD8001CC2F3 /* LOTMask.m in Sources */,
 				236DB6F7250F0DD8001CC2F3 /* LOTShapeCircle.m in Sources */,
-				23615E0225748FAB00EAD39D /* KVAudioStreamer.m in Sources */,
 				233825E52518796900DC9021 /* UIColor+HSExtension.m in Sources */,
 				2378093624FF4DF900007883 /* UIImageView+NERChainable.m in Sources */,
 				236DB6E7250F0DD8001CC2F3 /* LOTFillRenderer.m in Sources */,
@@ -2717,6 +2787,7 @@
 				236DB6E3250F0DD8001CC2F3 /* LOTRoundedRectAnimator.m in Sources */,
 				2378092D24FF4DF900007883 /* UIStepper+NERChainable.m in Sources */,
 				23AB23572431C8BA00DBB427 /* UIImageView+MioExtension.m in Sources */,
+				239930AE25777DFA00584486 /* DOUAudioFilePreprocessor.m in Sources */,
 				233FE3262564FFF300CBB1AE /* UILabel+HXExtension.m in Sources */,
 				2393DCF22511AE9C002483A9 /* JJCardSliderCell.m in Sources */,
 				236DB6F6250F0DD8001CC2F3 /* LOTShapeRectangle.m in Sources */,
@@ -2761,6 +2832,7 @@
 				236DB6EB250F0DD8001CC2F3 /* NSValue+Compat.m in Sources */,
 				236DB6D6250F0DD8001CC2F3 /* LOTColorInterpolator.m in Sources */,
 				236DB787250F6668001CC2F3 /* ZFLandScapeControlView.m in Sources */,
+				239930B625777DFA00584486 /* DOUAudioPlaybackItem.m in Sources */,
 				233FE3582564FFF300CBB1AE /* HX_PhotoEditBottomView.m in Sources */,
 				235055A02567A57500F96AFC /* DatabaseController.m in Sources */,
 				23AB23122431C77700DBB427 /* AppDelegate.m in Sources */,
@@ -2778,15 +2850,16 @@
 				2378094824FF4DF900007883 /* NERConstraintMaker.m in Sources */,
 				233FE3272564FFF300CBB1AE /* HXPhotoCommon.m in Sources */,
 				2350556C2567522900F96AFC /* MioVCConfig.m in Sources */,
-				23615E0125748FAB00EAD39D /* NSString+KVURL.m in Sources */,
 				23CB0A86254BF6F400A18B63 /* UITextView+XMExtension.m in Sources */,
 				236DB7A0250F6FBC001CC2F3 /* NSDate+Helper.m in Sources */,
+				239930AA25777DFA00584486 /* DOUAudioStreamer+Options.m in Sources */,
 				233FE3402564FFF300CBB1AE /* HXPreviewContentView.m in Sources */,
 				23AB23922431D32A00DBB427 /* MioViewController.m in Sources */,
 				23AB233A2431C89800DBB427 /* MioPutRequest.m in Sources */,
 				236DB6F1250F0DD8001CC2F3 /* LOTShapeStar.m in Sources */,
 				233FE35A2564FFF300CBB1AE /* HXPhotoEditStickerItem.m in Sources */,
 				233FE31D2564FFF300CBB1AE /* NSBundle+HXPhotoPicker.m in Sources */,
+				239930BA25777DFA00584486 /* DOUMPMediaLibraryAssetLoader.m in Sources */,
 				236DB6D9250F0DD8001CC2F3 /* LOTPointInterpolator.m in Sources */,
 				233825EB2518796900DC9021 /* UIViewController+HSSetTableView.m in Sources */,
 				236DB6D4250F0DD8001CC2F3 /* LOTRenderNode.m in Sources */,
@@ -2801,6 +2874,7 @@
 				233FE35D2564FFF300CBB1AE /* HXPhotoEditChartletContentViewCell.m in Sources */,
 				23AB23972431D32A00DBB427 /* MioTabbarVC.m in Sources */,
 				236DB6DE250F0DD8001CC2F3 /* LOTAnimatorNode.m in Sources */,
+				239930B225777DFA00584486 /* DOUAudioLPCM.m in Sources */,
 				236DB6F0250F0DD8001CC2F3 /* LOTLayerGroup.m in Sources */,
 				236DB6E9250F0DD8001CC2F3 /* UIBezierPath.m in Sources */,
 				23AB235C2431C8BA00DBB427 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
@@ -2833,6 +2907,7 @@
 				236DB782250F6668001CC2F3 /* ZFIJKPlayerManager.m in Sources */,
 				2305A219256BA9A90099EFE3 /* MioView.m in Sources */,
 				2378094924FF4DF900007883 /* NERUtils.m in Sources */,
+				239930B125777DFA00584486 /* DOUEAGLView.m in Sources */,
 				236DB708250F0DD8001CC2F3 /* LOTCacheProvider.m in Sources */,
 				233FE3392564FFF300CBB1AE /* HXPhotoPreviewLivePhotoCell.m in Sources */,
 				23AB23B42431DAEE00DBB427 /* TFQClickAreaButton.m in Sources */,
@@ -2844,12 +2919,13 @@
 				233FE33E2564FFF300CBB1AE /* HXPhotoBottomSelectView.m in Sources */,
 				236DB6FC250F0DD8001CC2F3 /* LOTShapeStroke.m in Sources */,
 				23AB23582431C8BA00DBB427 /* UIView+MioExtension.m in Sources */,
+				239930B425777DFA00584486 /* DOUAudioDecoder.m in Sources */,
 				236DB6DC250F0DD8001CC2F3 /* LOTArrayInterpolator.m in Sources */,
 				233FE3302564FFF300CBB1AE /* HXPhotoViewController.m in Sources */,
 				233FE32D2564FFF300CBB1AE /* HXPhoto3DTouchViewController.m in Sources */,
 				23AB233E2431C89800DBB427 /* MioPostRequest.m in Sources */,
-				23615E1B2574CCCE00EAD39D /* KVAudioPlayerController.m in Sources */,
 				233FE3692564FFF300CBB1AE /* HXPhotoEditGridLayer.m in Sources */,
+				239930B725777DFA00584486 /* DOUAudioEventLoop.m in Sources */,
 				236DB70B250F0DD8001CC2F3 /* LOTAnimatedSwitch.m in Sources */,
 				233FE32F2564FFF300CBB1AE /* HXPhotoPreviewViewController.m in Sources */,
 				233FE3312564FFF300CBB1AE /* HXCustomCameraController.m in Sources */,
@@ -2879,13 +2955,16 @@
 				2367ADB1251DD80300935CF3 /* HLZIrregulatBtn.m in Sources */,
 				236DB6FA250F0DD8001CC2F3 /* LOTShapeFill.m in Sources */,
 				23AB23AC2431DA5300DBB427 /* MioUserAgreementVC.m in Sources */,
+				239930AD25777DFA00584486 /* DOUAudioAnalyzer+Default.m in Sources */,
 				233825F42518796900DC9021 /* HSTextTableViewCell.m in Sources */,
 				233FE3462564FFF300CBB1AE /* HXPhotoSubViewCell.m in Sources */,
 				236DB779250F6668001CC2F3 /* ZFPlayerNotification.m in Sources */,
 				236DB700250F0DD8001CC2F3 /* UIColor+Expanded.m in Sources */,
 				23AB23B12431DAB500DBB427 /* MioLargeButton.m in Sources */,
+				23615E2E257638BE00EAD39D /* NSObject+XWAdd.m in Sources */,
 				23AB23A92431DA5300DBB427 /* MioModiPassWordVC.m in Sources */,
 				2378093524FF4DF900007883 /* NSString+NERChainable.m in Sources */,
+				239930AF25777DFA00584486 /* NSData+DOUAudioMappedFile.m in Sources */,
 				233FE3292564FFF300CBB1AE /* HXAssetManager.m in Sources */,
 				236DB784250F6668001CC2F3 /* ZFUtilities.m in Sources */,
 				230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */,
@@ -2900,7 +2979,10 @@
 				236DB709250F0DD8001CC2F3 /* LOTAnimatedControl.m in Sources */,
 				236DB707250F0DD8001CC2F3 /* LOTKeypath.m in Sources */,
 				233FE3202564FFF300CBB1AE /* UIView+HXExtension.m in Sources */,
+				239930A925777DF900584486 /* DOUAudioFileProvider.m in Sources */,
 				23AB235E2431C8BA00DBB427 /* NSDictionary+jlExtension.m in Sources */,
+				239930B525777DFA00584486 /* DOUSimpleHTTPRequest.m in Sources */,
+				239930AB25777DFA00584486 /* DOUAudioAnalyzer.m in Sources */,
 				233FE3482564FFF300CBB1AE /* HXCustomPreviewView.m in Sources */,
 				233FE3362564FFF300CBB1AE /* HXCustomAssetModel.m in Sources */,
 				236DB6DF250F0DD8001CC2F3 /* LOTPathAnimator.m in Sources */,
@@ -2915,7 +2997,9 @@
 				236DB77C250F6668001CC2F3 /* ZFPlayerView.m in Sources */,
 				236DB6F5250F0DD8001CC2F3 /* LOTShapeRepeater.m in Sources */,
 				236DB6E8250F0DD8001CC2F3 /* LOTRepeaterRenderer.m in Sources */,
+				239930AC25777DFA00584486 /* DOUAudioRenderer.m in Sources */,
 				23FF98342547BB26008CC170 /* GCDQueue.m in Sources */,
+				239930B025777DFA00584486 /* DOUAudioVisualizer.m in Sources */,
 				236DB6DD250F0DD8001CC2F3 /* LOTNumberInterpolator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

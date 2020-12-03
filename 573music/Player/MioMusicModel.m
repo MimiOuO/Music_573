@@ -11,8 +11,16 @@
 @implementation MioMusicModel
 
 - (NSString *)audiourl{
-    return [_audiourl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    if (_audiourl.length > 0) {
+        return [_audiourl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }else{
+        return [_noneurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    
 }
 
+- (NSURL *)audioFileURL{
+    return [NSURL URLWithString:self.audiourl];
+}
 
 @end
