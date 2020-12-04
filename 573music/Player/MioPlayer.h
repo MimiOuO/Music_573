@@ -43,6 +43,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) float currentMusicDuration;
 
+/**
+ 当前缓冲进度
+ */
+@property (nonatomic, assign) float bufferProgress;
+
+/**
+ 当前播放时间
+ */
+@property (nonatomic, assign) NSInteger currentTime;
+
+
 #pragma mark - 音频播放相关
 
 
@@ -76,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param location 目标位置，以秒为单位
  */
-- (void)seekToTime:(long)location;
+- (void)seekToTime:(NSInteger)location;
 
 /**
  暂停播放

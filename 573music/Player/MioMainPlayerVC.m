@@ -8,8 +8,9 @@
 
 #import "MioMainPlayerVC.h"
 #import "NSObject+XWAdd.h"
+#import "GKSliderView.h"
 
-@interface MioMainPlayerVC ()<MioPlayerDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface MioMainPlayerVC ()<MioPlayerDelegate,UITableViewDelegate,UITableViewDataSource,GKSliderViewDelegate>
 @property (nonatomic, strong) UIButton *playBtn;
 @property (nonatomic, strong) UIButton *preBtn;
 @property (nonatomic, strong) UIButton *nextBtn;
@@ -17,6 +18,8 @@
 @property (nonatomic, strong) UIButton *playOrderBtn;
 @property (nonatomic, strong) UITableView *playList;
 @property (nonatomic, strong) UILabel *duration;
+@property (nonatomic, strong) GKSliderView *slider;
+@property (nonatomic, assign) BOOL isDraging;
 @end
 
 @implementation MioMainPlayerVC
@@ -24,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.view.backgroundColor = mainColor;
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     WEAKSELF;
     self.navView.leftButtonBlock = ^{
@@ -34,6 +38,8 @@
     
     mioPlayer.delegate = self;
     
+    
+    
     [mioPlayList xw_addObserverBlockForKeyPath:@"playListArr" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
         NSLog(@"播放列表变化");
     }];
@@ -43,8 +49,21 @@
     }];
     
     [mioPlayer xw_addObserverBlockForKeyPath:@"currentMusicDuration" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
-
         weakSelf.duration.text = [NSDate stringDuartion:mioPlayer.currentMusicDuration];
+    }];
+    
+    [mioPlayer xw_addObserverBlockForKeyPath:@"bufferProgress" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+        NSLog(@"___!!!%f",mioPlayer.bufferProgress);
+        _slider.bufferValue = mioPlayer.bufferProgress;
+        [self.slider layoutIfNeeded];
+    }];
+    
+    [mioPlayer xw_addObserverBlockForKeyPath:@"currentTime" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+        NSLog(@"___%f",mioPlayer.currentTime / mioPlayer.currentMusicDuration);
+        if (!self.isDraging) {
+            _slider.value = mioPlayer.currentTime / mioPlayer.currentMusicDuration;
+            [self.slider layoutIfNeeded];
+        }
     }];
 }
 
@@ -71,6 +90,16 @@
     }];
     _duration = [UILabel creatLabel:frame(0, 760, KSW, 20) inView:self.view text:@"00:00" color:appBlackColor size:14 alignment:NSTextAlignmentCenter];
 
+    _slider = [[GKSliderView alloc] initWithFrame:frame(50, 790, KSW - 100, 20)];
+    [_slider setBackgroundImage:[UIImage imageNamed:@"cm2_fm_playbar_btn"] forState:UIControlStateNormal];
+    [_slider setThumbImage:[UIImage imageNamed:@"cm2_fm_playbar_btn_dot"] forState:UIControlStateNormal];
+    _slider.maximumTrackImage = [UIImage imageNamed:@"cm2_fm_playbar_bg"];
+    _slider.minimumTrackImage = [UIImage imageNamed:@"cm2_fm_playbar_curr"];
+    _slider.bufferTrackImage  = [UIImage imageNamed:@"cm2_fm_playbar_ready"];
+    _slider.delegate = self;
+    _slider.sliderHeight = 2;
+    self.isDraging = NO;
+    [self.view addSubview:_slider];
     
     
     _playOrderBtn.centerX = KSW/6;
@@ -120,9 +149,31 @@
     }
 }
 
+
+
 -(void)playListClick{
     [mioPlayList clearPlayList];
 }
+
+#pragma mark - slider代理
+- (void)sliderTouchBegin:(float)value{//拖拽开始
+    self.isDraging = YES;
+}
+
+- (void)sliderValueChanged:(float)value{//正在拖拽，改变当前时间
+    
+    
+}
+- (void)sliderTouchEnded:(float)value{//拖拽结束
+    self.isDraging = NO;
+    NSInteger seekTime = (int)(mioPlayer.currentMusicDuration * value);
+    [mioPlayer seekToTime:seekTime];
+}
+- (void)sliderTapped:(float)value{//点击进度条
+    NSInteger seekTime = (int)(mioPlayer.currentMusicDuration * value);
+    [mioPlayer seekToTime:seekTime];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return mioPlayList.playListArr.count;
@@ -151,9 +202,5 @@
     [mioPlayer playIndex:indexPath.row];
 }
 
-- (void)dealloc
-{
-    NSLog(@"播放器被释放了");
-}
 
 @end

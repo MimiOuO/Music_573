@@ -156,6 +156,7 @@
 		23673F7225076E2300C599CB /* WLButtonCountdownManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F6F25076E2300C599CB /* WLButtonCountdownManager.m */; };
 		23673F7325076E2300C599CB /* WLCaptcheButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F7025076E2300C599CB /* WLCaptcheButton.m */; };
 		2367ADB1251DD80300935CF3 /* HLZIrregulatBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2367ADAF251DD80200935CF3 /* HLZIrregulatBtn.m */; };
+		236B1EAE257A13C1001D00E3 /* GKSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236B1EAC257A13C0001D00E3 /* GKSliderView.m */; };
 		236DB6D4250F0DD8001CC2F3 /* LOTRenderNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB648250F0DD7001CC2F3 /* LOTRenderNode.m */; };
 		236DB6D5250F0DD8001CC2F3 /* LOTTrimPathNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB64D250F0DD7001CC2F3 /* LOTTrimPathNode.m */; };
 		236DB6D6250F0DD8001CC2F3 /* LOTColorInterpolator.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB64F250F0DD7001CC2F3 /* LOTColorInterpolator.m */; };
@@ -681,6 +682,8 @@
 		23673F7125076E2300C599CB /* WLButtonCountdownManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLButtonCountdownManager.h; sourceTree = "<group>"; };
 		2367ADAF251DD80200935CF3 /* HLZIrregulatBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLZIrregulatBtn.m; sourceTree = "<group>"; };
 		2367ADB0251DD80300935CF3 /* HLZIrregulatBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLZIrregulatBtn.h; sourceTree = "<group>"; };
+		236B1EAC257A13C0001D00E3 /* GKSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSliderView.m; sourceTree = "<group>"; };
+		236B1EAD257A13C1001D00E3 /* GKSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSliderView.h; sourceTree = "<group>"; };
 		236DB648250F0DD7001CC2F3 /* LOTRenderNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOTRenderNode.m; sourceTree = "<group>"; };
 		236DB649250F0DD7001CC2F3 /* LOTAnimatorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTAnimatorNode.h; sourceTree = "<group>"; };
 		236DB64A250F0DD7001CC2F3 /* LOTRenderNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTRenderNode.h; sourceTree = "<group>"; };
@@ -2434,6 +2437,8 @@
 				23BC2523256CE5E500E756ED /* MioBottomPlayView.m */,
 				23615E282576236700EAD39D /* MioMainPlayerVC.h */,
 				23615E292576236700EAD39D /* MioMainPlayerVC.m */,
+				236B1EAD257A13C1001D00E3 /* GKSliderView.h */,
+				236B1EAC257A13C0001D00E3 /* GKSliderView.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -2861,6 +2866,7 @@
 				233FE31D2564FFF300CBB1AE /* NSBundle+HXPhotoPicker.m in Sources */,
 				239930BA25777DFA00584486 /* DOUMPMediaLibraryAssetLoader.m in Sources */,
 				236DB6D9250F0DD8001CC2F3 /* LOTPointInterpolator.m in Sources */,
+				236B1EAE257A13C1001D00E3 /* GKSliderView.m in Sources */,
 				233825EB2518796900DC9021 /* UIViewController+HSSetTableView.m in Sources */,
 				236DB6D4250F0DD8001CC2F3 /* LOTRenderNode.m in Sources */,
 				233FE3162564FFF300CBB1AE /* HXPhotoInteractiveTransition.m in Sources */,

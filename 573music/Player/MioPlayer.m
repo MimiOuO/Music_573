@@ -13,7 +13,7 @@ static void *kDurationKVOKey = &kDurationKVOKey;
 static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 @interface MioPlayer()<MioPlayListDelegate>
-
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 
@@ -34,6 +34,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     if (self) {
 
         mioPlayList.delegate = self;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_timerAction:) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -74,6 +75,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         }
         //重设currentIndex
         [mioPlayList updateCurrentIndex:music];
+        //重设currentIndex
+        self.currentTime = 0;
         //重设streamer
         [self resetAudiostreamer:music];
         //通知更新UI
@@ -138,8 +141,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self.streamer stop];
 }
 
-- (void)seekToTime:(long)location{
-//    [_streamer setCurrentTime:[_streamer duration] * [_progressSlider value]];
+- (void)seekToTime:(NSInteger)location{
+    [self.streamer setCurrentTime:location];
 }
 
 #pragma mark - KVO
@@ -171,24 +174,21 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 //播放进度
 - (void)_timerAction:(id)timer
 {
-  if ([_streamer duration] == 0.0) {
-      self.currentMusicDuration = 0.0;
-//    [_progressSlider setValue:0.0f animated:NO];
-  }
-  else {
-      self.currentMusicDuration = [_streamer duration];
-//    [_progressSlider setValue:[_streamer currentTime] / [_streamer duration] animated:YES];
-  }
+    if ([_streamer duration] == 0.0) {
+        self.currentMusicDuration = 0.0;
+    }
+    else {
+        self.currentMusicDuration = [_streamer duration];
+        self.currentTime = [_streamer currentTime];
+    }
 }
 
 //缓存进度
 - (void)_updateBufferingStatus
 {
-//  [_miscLabel setText:[NSString stringWithFormat:@"Received %.2f/%.2f MB (%.2f %%), Speed %.2f MB/s", (double)[_streamer receivedLength] / 1024 / 1024, (double)[_streamer expectedLength] / 1024 / 1024, [_streamer bufferingRatio] * 100.0, (double)[_streamer downloadSpeed] / 1024 / 1024]];
-
-  if ([_streamer bufferingRatio] >= 1.0) {
-    NSLog(@"sha256: %@", [_streamer sha256]);
-  }
+    if (!isnan([_streamer bufferingRatio])) {
+        self.bufferProgress = [_streamer bufferingRatio];
+    }
 }
 //播放状态改变
 - (void)_updateStatus
