@@ -153,10 +153,10 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define BoldFont(fontSize) [UIFont boldSystemFontOfSize:fontSize]
 //比较是否相等
 #define Equals(one,two) [NSString equalsValue:Str(one) with:Str(two)]
-//通知
-#define PostNotice(name)            [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil];
-#define RecieveNotice(Name,selName) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selName) name:Name object:nil];
 
+
+#define userdefault                 [NSUserDefaults standardUserDefaults]
+#define DLog(format, ...) printf("\n %s [第%d行] %s\n",  __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 
 #define backArrowIcon          [UIImage imageNamed:@"backArrow"]
 #define backArrowWhiteIcon     [UIImage imageNamed:@"navigation_back_white"]
@@ -182,6 +182,17 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define MioPlayOrderSingle      @"MioPlayOrderSingle"
 #define MioPlayOrderRandom      @"MioPlayOrderRandom"
 
+#define setPlayIndex(index)     [userdefault setInteger:index forKey:@"currentPlayIndex"]
+#define getPlayIndex            [userdefault integerForKey:@"currentPlayIndex"]
+
+//======================================================================//
+//                              通知
+//======================================================================//
+//通知
+#define PostNotice(name)            [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil];
+#define RecieveNotice(Name,selName) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selName) name:Name object:nil];
+
+#define switchMusic             @"switchMusic"
 //======================================================================//
 //                               用户
 //======================================================================//
@@ -190,13 +201,6 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define currentUserNickName     [userdefault objectForKey:@"nickname"]
 #define currentUserAvatar       [userdefault objectForKey:@"avatar"]
 
-/** 通知 */
-/** 登录状态改变（登录退出） */
-#define KLoginStateChangeNotice     @"KLoginStateChangeNotice"
-/** 更新用户资料 */
-#define KUpdateUserInfoNotice       @"KUpdateUserInfoNotice"
-#define userdefault                 [NSUserDefaults standardUserDefaults]
-#define DLog(format, ...) printf("\n %s [第%d行] %s\n",  __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 
 /** 是否登录 */
 #define goLogin \

@@ -29,4 +29,5 @@ pod 'PPBadgeView'
 pod 'SSZipArchive'
 pod 'CHTCollectionViewWaterfallLayout'
 pod 'YYText'
+pod 'WHC_ModelSqliteKit'
 end

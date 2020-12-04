@@ -41,13 +41,12 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 #pragma mark - 各种形式播放
 - (void)playWithMusicList:(NSArray<MioMusicModel *> *)musicList andIndex:(NSInteger)index{
-    [mioPlayList updatePlayList:musicList];
-    [self playWithMusic:musicList[index]];
+    [self playWithMusic:musicList[index] withMusicList:musicList];
 }
 
 
 - (void)playIndex:(NSInteger)index{
-    [self playWithMusic:mioPlayList.playListArr[index]];
+    [self playWithMusic:mioPlayList.playListArr[index] withMusicList:nil];
 }
 
 - (void)playPre{
@@ -64,26 +63,27 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 #pragma mark - MioPlayer基础操作
 
-
-- (void)playWithMusic:(MioMusicModel *)music{
-    if (![self isCurrentPlay:music]) {
+//统一播放方法
+- (void)playWithMusic:(MioMusicModel *)music withMusicList:(NSArray<MioMusicModel *> *)musicList{
+    if (![self isCurrentPlay:music]) {//不是当前歌曲
+        //重设Mioplayer模型
         self.currentMusic = music;
-        [self resetAudioURL:music];
-        [self updateCurrentIndex];
-        [mioPlayList saveCurrentPlayList:mioPlayList.playListArr currentIndex:self.currentPlayIndex];
+        //重设MioplayList
+        if (musicList) {
+            [mioPlayList updatePlayList:musicList];
+        }
+        //重设currentIndex
+        [mioPlayList updateCurrentIndex:music];
+        //重设streamer
+        [self resetAudiostreamer:music];
+        //通知更新UI
+        PostNotice(switchMusic);
+        
     }
     [self play];
 }
 
-- (NSInteger)currentPlayIndex{
-    _currentPlayIndex = [mioPlayList.playListArr indexOfObject:self.currentMusic];
-    return _currentPlayIndex;
-}
 
-
--(void)updateCurrentIndex{
-    self.currentPlayIndex = [mioPlayList.playListArr indexOfObject:self.currentMusic];
-}
 
 #pragma mark - 基础判断方法
 
@@ -108,27 +108,21 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
   }
 }
 
-- (void)resetAudioURL:(MioMusicModel *)music{
+- (void)resetAudiostreamer:(MioMusicModel *)music{
     [self _cancelStreamer];
 
-          _streamer = [DOUAudioStreamer streamerWithAudioFile:music];
-          [_streamer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:kStatusKVOKey];
-          [_streamer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
-          [_streamer addObserver:self forKeyPath:@"bufferingRatio" options:NSKeyValueObservingOptionNew context:kBufferingRatioKVOKey];
-          
-          [_streamer play];
-          
-//          [self _updateBufferingStatus];
-          [self _setupHintForStreamer];
-    
-      
-}
-//缓存下一首
-- (void)_setupHintForStreamer
-{
-  NSUInteger nextIndex = self.currentPlayIndex + 1;
+    _streamer = [DOUAudioStreamer streamerWithAudioFile:music];
+    [_streamer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:kStatusKVOKey];
+    [_streamer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
+    [_streamer addObserver:self forKeyPath:@"bufferingRatio" options:NSKeyValueObservingOptionNew context:kBufferingRatioKVOKey];
 
-  [DOUAudioStreamer setHintWithAudioFile:[mioPlayList.playListArr objectAtIndex:[mioPlayList getNextIndex]]];
+    
+
+    //          [self _updateBufferingStatus];
+    
+    //缓存下一首
+    [DOUAudioStreamer setHintWithAudioFile:[mioPlayList.playListArr objectAtIndex:[mioPlayList getNextIndex]]];
+      
 }
 
 
@@ -202,27 +196,27 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     self.status = [_streamer status];
     switch ([_streamer status]) {
         case DOUAudioStreamerPlaying:
-            NSLog(@"playing");
-        break;
+            NSLog(@"播放中");
+            break;
 
         case DOUAudioStreamerPaused:
-            NSLog(@"paused");
+            NSLog(@"暂停");
             break;
 
         case DOUAudioStreamerIdle:
-            NSLog(@"idle");
+            NSLog(@"空闲");
             break;
 
         case DOUAudioStreamerFinished:
-            NSLog(@"finished");
+            NSLog(@"结束");
             break;
 
         case DOUAudioStreamerBuffering:
-            NSLog(@"buffering");
+            NSLog(@"缓冲中");
             break;
 
         case DOUAudioStreamerError:
-            NSLog(@"error");
+            NSLog(@"错误");
             break;
     }
 }

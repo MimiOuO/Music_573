@@ -31,20 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (atomic, assign) DOUAudioStreamerStatus status;
 
-/**
- 当前播放的音频路径
- */
-@property (nonatomic, copy) NSString * currentAudioUrl;
 
 /**
  当前播放的模型
  */
 @property (nonatomic, strong) MioMusicModel * currentMusic;
 
-/**
- 当前播放的index
- */
-@property (nonatomic, assign) NSInteger currentPlayIndex;
 
 /**
  当前播放的时长
@@ -52,10 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float currentMusicDuration;
 
 #pragma mark - 音频播放相关
-/**
- 重设音频地址
- */
-- (void)resetAudioURL:(MioMusicModel *)music;
+
 
 /**
  播放音频列表
@@ -81,13 +70,6 @@ NS_ASSUME_NONNULL_BEGIN
  播放音频，如果当前为暂停状态，那么会继续播放
  */
 - (void)play;
-
-/**
- 在某个位置进行播放
-
- @param location 播放位置，以秒为单位
- */
-- (void)playAtTime:(long)location;
 
 /**
  seek到某个位置进行播放

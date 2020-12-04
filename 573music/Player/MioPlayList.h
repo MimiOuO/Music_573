@@ -19,17 +19,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MioPlayList : NSObject
 @property (nonatomic, weak) id <MioPlayListDelegate> delegate;
-@property (nonatomic, strong, readonly) NSMutableArray<MioMusicModel*> *playListArr;//不能直接操作，通过方法去改变列表
+
+//以下两个属性应该为readonly 但是为了出发KVO就没写，请不要直接操作这两个属性
+@property (nonatomic, assign) NSInteger currentPlayIndex;
+@property (nonatomic, strong) NSMutableArray<MioMusicModel*> *playListArr;
 
 
 +(MioPlayList *)shareInstance;
+
+-(void)updateCurrentIndex:(MioMusicModel *)music;
 
 -(void)updatePlayList:(NSArray<MioMusicModel*> *)playListArr;
 -(void)addLaterPlayList:(NSArray<MioMusicModel*> *)playListArr;
 -(void)deletePlayListAtIndex:(NSInteger)index;
 -(void)clearPlayList;
 
--(void)saveCurrentPlayList:(NSArray<MioMusicModel*> *)playListArr currentIndex:(NSInteger)index;
 
 -(NSInteger)getPreIndex;
 -(NSInteger)getNextIndex;

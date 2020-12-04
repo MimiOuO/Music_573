@@ -23,4 +23,8 @@
     return [NSURL URLWithString:self.audiourl];
 }
 
+- (void)setSavetype:(NSString *)savetype{
+    _savetype = savetype;
+}
+
 @end

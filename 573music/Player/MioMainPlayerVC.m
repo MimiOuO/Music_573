@@ -38,7 +38,7 @@
         NSLog(@"播放列表变化");
     }];
 //
-    [mioPlayer xw_addObserverBlockForKeyPath:@"currentPlayIndex" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+    [mioPlayList xw_addObserverBlockForKeyPath:@"currentPlayIndex" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
         [weakSelf.playList reloadData];
     }];
     
@@ -121,7 +121,7 @@
 }
 
 -(void)playListClick{
-    
+    [mioPlayList clearPlayList];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -139,7 +139,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.textLabel.text = mioPlayList.playListArr[indexPath.row].name;
-    if (mioPlayer.currentPlayIndex == indexPath.row) {
+    if (mioPlayList.currentPlayIndex == indexPath.row) {
         cell.backgroundColor = redTextColor;
     }else{
         cell.backgroundColor = appWhiteColor;
