@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * path;
 @property (nonatomic,copy) NSString * audiourl;
 @property (nonatomic,copy) NSString * noneurl;
+@property (nonatomic,copy) NSString * lrc_url;
 
 
 

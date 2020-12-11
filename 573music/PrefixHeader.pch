@@ -33,6 +33,7 @@
 #import "MioPostRequest.h"
 #import "MioDeleteRequest.h"
 #import "MioPutRequest.h"
+#import "MioDownloadRequest.h"
 #import "NerdyUI.h"
 //#import "MioAFPutRequest.h"
 
@@ -63,6 +64,7 @@
 #import "MioLabel.h"
 #import "MioView.h"
 #import "MioImageView.h"
+#import "MioScrollView.h"
 
 #import "MioMusicModel.h"
 #import "MioPlayer.h"
@@ -81,7 +83,8 @@
 //======================================================================//
 #define rgb(r,g,b)          [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 #define rgba(r,g,b,a)       [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-#define mainColor 		    rgba(100, 207, 156, 1)
+//#define mainColor 		    rgba([(colorDic[@"main"][@"r"]) intValue], [(colorDic[@"main"][@"g"]) intValue], [(colorDic[@"main"][@"b"]) intValue], [(colorDic[@"main"][@"a"]) floatValue])
+#define mainColor             rgb(128,222,111)
 #define appBgColor 			rgb(247,247,247)
 #define subColor 		    rgb(25,25,25)
 #define appMemberColor      rgb(255,149,51)
@@ -101,6 +104,8 @@ if (@available(iOS 13.0, *)) {\
 }\
 
 #define SkinName            [userdefault objectForKey:@"skin"]
+#define colorPath           [NSString stringWithFormat:@"%@/Skin/%@/%@/color.json",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],SkinName,SkinName]
+#define colorDic            [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:colorPath] options:kNilOptions error:nil]
 
 //======================================================================//
 //                                尺寸
@@ -172,6 +177,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define MioGetCacheReq(url,param) [[MioGetCacheRequest alloc] initWithRequestUrl:url argument:param]
 #define MioPostReq(url,param) [[MioPostRequest alloc] initWithRequestUrl:url argument:param]
 #define MioPutReq(url,param) [[MioPutRequest alloc] initWithRequestUrl:url argument:param]
+
+#define LRCDownloadDir [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"lrcDownload"]
 
 //======================================================================//
 //                             业务相关

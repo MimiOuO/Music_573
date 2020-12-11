@@ -63,16 +63,18 @@
 }
 
 -(void)changeSkinLocation{
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docDirectory = [path objectAtIndex:0];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"hei" ofType:@"zip"];
-    NSString *dstPath = [NSString stringWithFormat:@"%@/Skin/hei.zip",
+    NSString * docsdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *dataFilePath = [docsdir stringByAppendingPathComponent:@"Skin"];
+    [[NSFileManager defaultManager] createDirectoryAtPath:dataFilePath withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"bai" ofType:@"zip"];
+    NSString *dstPath = [NSString stringWithFormat:@"%@/Skin/bai.zip",
                          NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
 
-    [[NSFileManager defaultManager] copyItemAtPath:filePath toPath:dstPath error:nil];
+    BOOL success1 = [[NSFileManager defaultManager] copyItemAtPath:filePath toPath:dstPath error:nil];
     
     NSString *zipPath =
-    [NSString stringWithFormat:@"%@/Skin/hei.zip",
+    [NSString stringWithFormat:@"%@/Skin/bai.zip",
                      NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
 
     NSString *unzipPath = [NSString stringWithFormat:@"%@/Skin",
@@ -82,6 +84,7 @@
     if (!unzipPath) {
         return;
     }
+
     
     BOOL success = [SSZipArchive unzipFileAtPath:zipPath
                                    toDestination:unzipPath

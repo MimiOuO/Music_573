@@ -11,16 +11,36 @@
 
 @implementation MioVCConfig
 +(MioBottomType)getBottomType:(UIViewController *)VC{
-    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC"];
+    NSString *vcName = NSStringFromClass([VC class]);
+    NSArray *followArr = @[@"MioPlayListVC",@"MioMutipleVC"];
+    if ([followArr containsObject:vcName]) {
+        if (Equals([userdefault objectForKey:@"currentBottomType"], @"MioBottomNone")) {
+            return MioBottomNone;
+        }else if (Equals([userdefault objectForKey:@"currentBottomType"], @"MioBottomAll")){
+            return MioBottomAll;
+        }else{
+            return MioBottomHalf;
+        }
+        
+    }
+    
+    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC"];
     NSArray *allArr = @[@"MioHomeVC",@"MioGroudVC",@"MioMineVC"];
     
-    NSString *vcName = NSStringFromClass([VC class]);
-    if ([noneArr containsObject:vcName])
+    
+    if ([noneArr containsObject:vcName]){
+        [userdefault setObject:@"MioBottomNone" forKey:@"currentBottomType"];
         return MioBottomNone;
-    else if ([allArr containsObject:vcName])
+    }
+    else if ([allArr containsObject:vcName]){
+        [userdefault setObject:@"MioBottomAll" forKey:@"currentBottomType"];
         return MioBottomAll;
-    else
+    }
+    else{
+        [userdefault setObject:@"MioBottomHalf" forKey:@"currentBottomType"];
         return MioBottomHalf;
+    }
+
 }
 
 @end

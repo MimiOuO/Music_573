@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger, MioBottomType) {
 };
 
 @interface MioVCConfig : NSObject
+
 +(MioBottomType)getBottomType:(UIViewController *)VC;
 @end
 

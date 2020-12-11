@@ -7,6 +7,7 @@
 //
 
 #import "MioPlayer.h"
+#import "MioBugModel.h"
 
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
@@ -59,6 +60,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 -(void)autoPlayNext{
+    [self playIndex:[mioPlayList getAutoPlayIndex]];
     
 }
 
@@ -119,7 +121,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [_streamer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
     [_streamer addObserver:self forKeyPath:@"bufferingRatio" options:NSKeyValueObservingOptionNew context:kBufferingRatioKVOKey];
 
-    
 
     //          [self _updateBufferingStatus];
     
@@ -178,8 +179,13 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         self.currentMusicDuration = 0.0;
     }
     else {
-        self.currentMusicDuration = [_streamer duration];
-        self.currentTime = [_streamer currentTime];
+        if (!isnan([_streamer duration])) {
+            self.currentMusicDuration = [_streamer duration];
+        }
+        
+        if (!isnan([_streamer currentTime])) {
+            self.currentTime = [_streamer currentTime];
+        }
     }
 }
 
@@ -196,27 +202,33 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     self.status = [_streamer status];
     switch ([_streamer status]) {
         case DOUAudioStreamerPlaying:
-            NSLog(@"播放中");
+//            NSLog(@"播放中");
+            //解决播放框架单曲循环模式下currentTime>Duration的bug
+            if (self.currentMusicDuration && ((int)self.currentMusicDuration - self.currentTime < 2)) {
+                [_streamer setCurrentTime:0];
+            }
             break;
 
         case DOUAudioStreamerPaused:
-            NSLog(@"暂停");
+//            NSLog(@"暂停");
             break;
 
         case DOUAudioStreamerIdle:
-            NSLog(@"空闲");
+//            NSLog(@"空闲");
             break;
 
         case DOUAudioStreamerFinished:
-            NSLog(@"结束");
+//            NSLog(@"结束");
+
+            [self autoPlayNext];
             break;
 
         case DOUAudioStreamerBuffering:
-            NSLog(@"缓冲中");
+//            NSLog(@"缓冲中");
             break;
 
         case DOUAudioStreamerError:
-            NSLog(@"错误");
+//            NSLog(@"错误");
             break;
     }
 }

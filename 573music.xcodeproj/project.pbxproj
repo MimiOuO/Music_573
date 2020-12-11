@@ -152,10 +152,22 @@
 		23615E2A2576236700EAD39D /* MioMainPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E292576236700EAD39D /* MioMainPlayerVC.m */; };
 		23615E2E257638BE00EAD39D /* NSObject+XWAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 23615E2C257638BD00EAD39D /* NSObject+XWAdd.m */; };
 		2366652D256B81D400609A05 /* MioTest2VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366652C256B81D400609A05 /* MioTest2VC.m */; };
+		2366F65B257F13C2006E1D7D /* MioLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366F65A257F13C2006E1D7D /* MioLrcView.m */; };
+		2366F65E257F1F0D006E1D7D /* UIColorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366F65D257F1F0D006E1D7D /* UIColorLabel.m */; };
+		2366F661257F1F21006E1D7D /* MusicLyric.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366F660257F1F21006E1D7D /* MusicLyric.m */; };
+		2366F664257F1F2E006E1D7D /* SliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366F662257F1F2E006E1D7D /* SliderView.m */; };
+		2366F667257F1F6D006E1D7D /* TimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366F666257F1F6D006E1D7D /* TimeTool.m */; };
+		2366F66D257F246E006E1D7D /* LyricParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366F66C257F246E006E1D7D /* LyricParser.m */; };
+		2366F670257F2590006E1D7D /* NSDateFormatter + Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366F66F257F2590006E1D7D /* NSDateFormatter + Extension.m */; };
+		2366F679257F6484006E1D7D /* MioDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2366F678257F6484006E1D7D /* MioDownloadRequest.m */; };
 		23673F6C2507165E00C599CB /* UIScrollView+MioExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F6B2507165E00C599CB /* UIScrollView+MioExtension.m */; };
 		23673F7225076E2300C599CB /* WLButtonCountdownManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F6F25076E2300C599CB /* WLButtonCountdownManager.m */; };
 		23673F7325076E2300C599CB /* WLCaptcheButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23673F7025076E2300C599CB /* WLCaptcheButton.m */; };
 		2367ADB1251DD80300935CF3 /* HLZIrregulatBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2367ADAF251DD80200935CF3 /* HLZIrregulatBtn.m */; };
+		2369369A258321E7005DB8CA /* MioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23693699258321E7005DB8CA /* MioButton.m */; };
+		2369369E258322F3005DB8CA /* YLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2369369D258322F3005DB8CA /* YLButton.m */; };
+		236936A125835210005DB8CA /* MioSongListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 236936A025835210005DB8CA /* MioSongListVC.m */; };
+		236936A825836608005DB8CA /* bai.zip in Resources */ = {isa = PBXBuildFile; fileRef = 236936A725836608005DB8CA /* bai.zip */; };
 		236B1EAE257A13C1001D00E3 /* GKSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236B1EAC257A13C0001D00E3 /* GKSliderView.m */; };
 		236DB6D4250F0DD8001CC2F3 /* LOTRenderNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB648250F0DD7001CC2F3 /* LOTRenderNode.m */; };
 		236DB6D5250F0DD8001CC2F3 /* LOTTrimPathNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB64D250F0DD7001CC2F3 /* LOTTrimPathNode.m */; };
@@ -256,6 +268,9 @@
 		236DB790250F6668001CC2F3 /* UIImageView+ZFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB76F250F6668001CC2F3 /* UIImageView+ZFCache.m */; };
 		236DB79D250F6F8D001CC2F3 /* LEECoolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB79C250F6F8C001CC2F3 /* LEECoolButton.m */; };
 		236DB7A0250F6FBC001CC2F3 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB79E250F6FBB001CC2F3 /* NSDate+Helper.m */; };
+		23746CAA25806D7A0072A4C8 /* MioBugModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23746CA925806D7A0072A4C8 /* MioBugModel.m */; };
+		23746CB42580A8160072A4C8 /* MioMutipleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23746CB32580A8160072A4C8 /* MioMutipleVC.m */; };
+		23746CB72580AD150072A4C8 /* MioMutipleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23746CB62580AD150072A4C8 /* MioMutipleCell.m */; };
 		2378092824FF4DF900007883 /* UIView+NERChainable.m in Sources */ = {isa = PBXBuildFile; fileRef = 237808E024FF4DF900007883 /* UIView+NERChainable.m */; };
 		2378092924FF4DF900007883 /* UISlider+NERChainable.m in Sources */ = {isa = PBXBuildFile; fileRef = 237808E224FF4DF900007883 /* UISlider+NERChainable.m */; };
 		2378092A24FF4DF900007883 /* UIVisualEffectView+NERChainable.m in Sources */ = {isa = PBXBuildFile; fileRef = 237808E424FF4DF900007883 /* UIVisualEffectView+NERChainable.m */; };
@@ -291,6 +306,9 @@
 		2378094824FF4DF900007883 /* NERConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2378092524FF4DF900007883 /* NERConstraintMaker.m */; };
 		2378094924FF4DF900007883 /* NERUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2378092624FF4DF900007883 /* NERUtils.m */; };
 		237B77742500839B006272E5 /* UIWindow+MioExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 237B77732500839B006272E5 /* UIWindow+MioExtension.m */; };
+		237D061E257DC3BA00697F3A /* BTCoverHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D061B257DC3BA00697F3A /* BTCoverHorizontalTransition.m */; };
+		237D061F257DC3BA00697F3A /* BTCoverVerticalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D061C257DC3BA00697F3A /* BTCoverVerticalTransition.m */; };
+		237D0622257DC3FE00697F3A /* MioPlayListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D0621257DC3FE00697F3A /* MioPlayListVC.m */; };
 		238C94F62566683100FA58FC /* MioTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 238C94F42566683100FA58FC /* MioTabbar.m */; };
 		2393DCF12511AE9C002483A9 /* JJPageControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2393DCEB2511AE9B002483A9 /* JJPageControllerView.m */; };
 		2393DCF22511AE9C002483A9 /* JJCardSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2393DCED2511AE9C002483A9 /* JJCardSliderCell.m */; };
@@ -674,6 +692,22 @@
 		23615E2D257638BE00EAD39D /* NSObject+XWAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XWAdd.h"; sourceTree = "<group>"; };
 		2366652B256B81D400609A05 /* MioTest2VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioTest2VC.h; sourceTree = "<group>"; };
 		2366652C256B81D400609A05 /* MioTest2VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioTest2VC.m; sourceTree = "<group>"; };
+		2366F659257F13C2006E1D7D /* MioLrcView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioLrcView.h; sourceTree = "<group>"; };
+		2366F65A257F13C2006E1D7D /* MioLrcView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioLrcView.m; sourceTree = "<group>"; };
+		2366F65C257F1F0D006E1D7D /* UIColorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorLabel.h; sourceTree = "<group>"; };
+		2366F65D257F1F0D006E1D7D /* UIColorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorLabel.m; sourceTree = "<group>"; };
+		2366F65F257F1F21006E1D7D /* MusicLyric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicLyric.h; sourceTree = "<group>"; };
+		2366F660257F1F21006E1D7D /* MusicLyric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicLyric.m; sourceTree = "<group>"; };
+		2366F662257F1F2E006E1D7D /* SliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderView.m; sourceTree = "<group>"; };
+		2366F663257F1F2E006E1D7D /* SliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderView.h; sourceTree = "<group>"; };
+		2366F665257F1F6D006E1D7D /* TimeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTool.h; sourceTree = "<group>"; };
+		2366F666257F1F6D006E1D7D /* TimeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTool.m; sourceTree = "<group>"; };
+		2366F66B257F246E006E1D7D /* LyricParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricParser.h; sourceTree = "<group>"; };
+		2366F66C257F246E006E1D7D /* LyricParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricParser.m; sourceTree = "<group>"; };
+		2366F66E257F258F006E1D7D /* NSDateFormatter + Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter + Extension.h"; sourceTree = "<group>"; };
+		2366F66F257F2590006E1D7D /* NSDateFormatter + Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter + Extension.m"; sourceTree = "<group>"; };
+		2366F677257F6484006E1D7D /* MioDownloadRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioDownloadRequest.h; sourceTree = "<group>"; };
+		2366F678257F6484006E1D7D /* MioDownloadRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioDownloadRequest.m; sourceTree = "<group>"; };
 		23673F6A2507165E00C599CB /* UIScrollView+MioExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MioExtension.h"; sourceTree = "<group>"; };
 		23673F6B2507165E00C599CB /* UIScrollView+MioExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MioExtension.m"; sourceTree = "<group>"; };
 		23673F6E25076E2300C599CB /* WLCaptcheButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCaptcheButton.h; sourceTree = "<group>"; };
@@ -682,6 +716,13 @@
 		23673F7125076E2300C599CB /* WLButtonCountdownManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLButtonCountdownManager.h; sourceTree = "<group>"; };
 		2367ADAF251DD80200935CF3 /* HLZIrregulatBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLZIrregulatBtn.m; sourceTree = "<group>"; };
 		2367ADB0251DD80300935CF3 /* HLZIrregulatBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLZIrregulatBtn.h; sourceTree = "<group>"; };
+		23693698258321E7005DB8CA /* MioButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioButton.h; sourceTree = "<group>"; };
+		23693699258321E7005DB8CA /* MioButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioButton.m; sourceTree = "<group>"; };
+		2369369C258322F3005DB8CA /* YLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLButton.h; sourceTree = "<group>"; };
+		2369369D258322F3005DB8CA /* YLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLButton.m; sourceTree = "<group>"; };
+		2369369F25835210005DB8CA /* MioSongListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSongListVC.h; sourceTree = "<group>"; };
+		236936A025835210005DB8CA /* MioSongListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSongListVC.m; sourceTree = "<group>"; };
+		236936A725836608005DB8CA /* bai.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bai.zip; sourceTree = "<group>"; };
 		236B1EAC257A13C0001D00E3 /* GKSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSliderView.m; sourceTree = "<group>"; };
 		236B1EAD257A13C1001D00E3 /* GKSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSliderView.h; sourceTree = "<group>"; };
 		236DB648250F0DD7001CC2F3 /* LOTRenderNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOTRenderNode.m; sourceTree = "<group>"; };
@@ -887,6 +928,12 @@
 		236DB79C250F6F8C001CC2F3 /* LEECoolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEECoolButton.m; sourceTree = "<group>"; };
 		236DB79E250F6FBB001CC2F3 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		236DB79F250F6FBC001CC2F3 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		23746CA825806D7A0072A4C8 /* MioBugModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioBugModel.h; sourceTree = "<group>"; };
+		23746CA925806D7A0072A4C8 /* MioBugModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioBugModel.m; sourceTree = "<group>"; };
+		23746CB22580A8160072A4C8 /* MioMutipleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMutipleVC.h; sourceTree = "<group>"; };
+		23746CB32580A8160072A4C8 /* MioMutipleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMutipleVC.m; sourceTree = "<group>"; };
+		23746CB52580AD150072A4C8 /* MioMutipleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioMutipleCell.h; sourceTree = "<group>"; };
+		23746CB62580AD150072A4C8 /* MioMutipleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioMutipleCell.m; sourceTree = "<group>"; };
 		237808DF24FF4DF900007883 /* NERStyle+NERChainable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NERStyle+NERChainable.h"; sourceTree = "<group>"; };
 		237808E024FF4DF900007883 /* UIView+NERChainable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NERChainable.m"; sourceTree = "<group>"; };
 		237808E124FF4DF900007883 /* UIPageControl+NERChainable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPageControl+NERChainable.h"; sourceTree = "<group>"; };
@@ -960,6 +1007,13 @@
 		2378092724FF4DF900007883 /* NerdyUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NerdyUI.h; sourceTree = "<group>"; };
 		237B77722500839B006272E5 /* UIWindow+MioExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+MioExtension.h"; sourceTree = "<group>"; };
 		237B77732500839B006272E5 /* UIWindow+MioExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+MioExtension.m"; sourceTree = "<group>"; };
+		237D0619257DC3BA00697F3A /* BTTransitionAnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTransitionAnimationDelegate.h; sourceTree = "<group>"; };
+		237D061A257DC3BA00697F3A /* BTCoverVerticalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverVerticalTransition.h; sourceTree = "<group>"; };
+		237D061B257DC3BA00697F3A /* BTCoverHorizontalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCoverHorizontalTransition.m; sourceTree = "<group>"; };
+		237D061C257DC3BA00697F3A /* BTCoverVerticalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCoverVerticalTransition.m; sourceTree = "<group>"; };
+		237D061D257DC3BA00697F3A /* BTCoverHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverHorizontalTransition.h; sourceTree = "<group>"; };
+		237D0620257DC3FE00697F3A /* MioPlayListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioPlayListVC.h; sourceTree = "<group>"; };
+		237D0621257DC3FE00697F3A /* MioPlayListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioPlayListVC.m; sourceTree = "<group>"; };
 		238C94F42566683100FA58FC /* MioTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioTabbar.m; sourceTree = "<group>"; };
 		238C94F52566683100FA58FC /* MioTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioTabbar.h; sourceTree = "<group>"; };
 		2393DCE92511AE9B002483A9 /* JJCardSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCardSliderCell.h; sourceTree = "<group>"; };
@@ -1658,6 +1712,27 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		2366F671257F2653006E1D7D /* Lrc */ = {
+			isa = PBXGroup;
+			children = (
+				2366F659257F13C2006E1D7D /* MioLrcView.h */,
+				2366F65A257F13C2006E1D7D /* MioLrcView.m */,
+				2366F66B257F246E006E1D7D /* LyricParser.h */,
+				2366F66C257F246E006E1D7D /* LyricParser.m */,
+				2366F65F257F1F21006E1D7D /* MusicLyric.h */,
+				2366F660257F1F21006E1D7D /* MusicLyric.m */,
+				2366F663257F1F2E006E1D7D /* SliderView.h */,
+				2366F662257F1F2E006E1D7D /* SliderView.m */,
+				2366F665257F1F6D006E1D7D /* TimeTool.h */,
+				2366F666257F1F6D006E1D7D /* TimeTool.m */,
+				2366F65C257F1F0D006E1D7D /* UIColorLabel.h */,
+				2366F65D257F1F0D006E1D7D /* UIColorLabel.m */,
+				2366F66E257F258F006E1D7D /* NSDateFormatter + Extension.h */,
+				2366F66F257F2590006E1D7D /* NSDateFormatter + Extension.m */,
+			);
+			path = Lrc;
+			sourceTree = "<group>";
+		};
 		23673F6D25076E2300C599CB /* countDownBtn */ = {
 			isa = PBXGroup;
 			children = (
@@ -1676,6 +1751,24 @@
 				2367ADAF251DD80200935CF3 /* HLZIrregulatBtn.m */,
 			);
 			path = HLZIrregulatBtn;
+			sourceTree = "<group>";
+		};
+		2369369B258322F3005DB8CA /* YLButton */ = {
+			isa = PBXGroup;
+			children = (
+				2369369C258322F3005DB8CA /* YLButton.h */,
+				2369369D258322F3005DB8CA /* YLButton.m */,
+			);
+			path = YLButton;
+			sourceTree = "<group>";
+		};
+		236936A225835A86005DB8CA /* SongList&Album */ = {
+			isa = PBXGroup;
+			children = (
+				2369369F25835210005DB8CA /* MioSongListVC.h */,
+				236936A025835210005DB8CA /* MioSongListVC.m */,
+			);
+			path = "SongList&Album";
 			sourceTree = "<group>";
 		};
 		236DB646250F0DD7001CC2F3 /* Classes */ = {
@@ -2144,6 +2237,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				237D0618257DC3BA00697F3A /* TransitionAnimation */,
 				2399308025777DF900584486 /* DouStreamer */,
 				2350558A2567A57400F96AFC /* CocoaDownloader */,
 				233FE2552564FFF200CBB1AE /* HXPhotoPicker */,
@@ -2159,9 +2253,22 @@
 				236DB646250F0DD7001CC2F3 /* Classes */,
 				23673F6D25076E2300C599CB /* countDownBtn */,
 				237808DD24FF4DF900007883 /* NerdyUI */,
+				2369369B258322F3005DB8CA /* YLButton */,
 				23C24FB92446A4CA00EE0BE2 /* STPickerView */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		237D0618257DC3BA00697F3A /* TransitionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				237D0619257DC3BA00697F3A /* BTTransitionAnimationDelegate.h */,
+				237D061A257DC3BA00697F3A /* BTCoverVerticalTransition.h */,
+				237D061B257DC3BA00697F3A /* BTCoverHorizontalTransition.m */,
+				237D061C257DC3BA00697F3A /* BTCoverVerticalTransition.m */,
+				237D061D257DC3BA00697F3A /* BTCoverHorizontalTransition.h */,
+			);
+			path = TransitionAnimation;
 			sourceTree = "<group>";
 		};
 		2393DCE82511AE9B002483A9 /* CardSlider */ = {
@@ -2273,6 +2380,7 @@
 			children = (
 				23AB23292431C88600DBB427 /* Common */,
 				23BC2528256DF46300E756ED /* Player */,
+				236936A225835A86005DB8CA /* SongList&Album */,
 				235705CE2440183E007C3F87 /* Home */,
 				236DB71D250F573D001CC2F3 /* Ground */,
 				239B03432514649500B310D2 /* Mine */,
@@ -2280,6 +2388,7 @@
 				236DB724250F5FCE001CC2F3 /* 首页.json */,
 				236DB723250F5FCD001CC2F3 /* 我的.json */,
 				236DB721250F5FCC001CC2F3 /* 消息.json */,
+				236936A725836608005DB8CA /* bai.zip */,
 				2305A222256BB56B0099EFE3 /* hei.zip */,
 				23AB231C2431C77A00DBB427 /* Assets.xcassets */,
 				23AB237B2431C8DF00DBB427 /* PrefixHeader.pch */,
@@ -2319,6 +2428,8 @@
 				23AB232D2431C89800DBB427 /* MioPutRequest.m */,
 				23AB232F2431C89800DBB427 /* MioRequest.h */,
 				23AB23372431C89800DBB427 /* MioRequest.m */,
+				2366F677257F6484006E1D7D /* MioDownloadRequest.h */,
+				2366F678257F6484006E1D7D /* MioDownloadRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2399,6 +2510,8 @@
 				2305A215256BA4CE0099EFE3 /* MioLabel.m */,
 				2305A217256BA9A90099EFE3 /* MioView.h */,
 				2305A218256BA9A90099EFE3 /* MioView.m */,
+				23693698258321E7005DB8CA /* MioButton.h */,
+				23693699258321E7005DB8CA /* MioButton.m */,
 				2305A21D256BAC150099EFE3 /* MioImageView.h */,
 				2305A21E256BAC150099EFE3 /* MioImageView.m */,
 			);
@@ -2427,18 +2540,27 @@
 		23BC2528256DF46300E756ED /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				2366F671257F2653006E1D7D /* Lrc */,
 				23615E10257493CA00EAD39D /* MioPlayer.h */,
 				23615E11257493CA00EAD39D /* MioPlayer.m */,
 				23615E132574A18100EAD39D /* MioPlayList.h */,
 				23615E142574A18100EAD39D /* MioPlayList.m */,
 				23615E162574A3D200EAD39D /* MioMusicModel.h */,
 				23615E172574A3D200EAD39D /* MioMusicModel.m */,
+				23746CA825806D7A0072A4C8 /* MioBugModel.h */,
+				23746CA925806D7A0072A4C8 /* MioBugModel.m */,
 				23BC2522256CE5E500E756ED /* MioBottomPlayView.h */,
 				23BC2523256CE5E500E756ED /* MioBottomPlayView.m */,
 				23615E282576236700EAD39D /* MioMainPlayerVC.h */,
 				23615E292576236700EAD39D /* MioMainPlayerVC.m */,
+				237D0620257DC3FE00697F3A /* MioPlayListVC.h */,
+				237D0621257DC3FE00697F3A /* MioPlayListVC.m */,
 				236B1EAD257A13C1001D00E3 /* GKSliderView.h */,
 				236B1EAC257A13C0001D00E3 /* GKSliderView.m */,
+				23746CB22580A8160072A4C8 /* MioMutipleVC.h */,
+				23746CB32580A8160072A4C8 /* MioMutipleVC.m */,
+				23746CB52580AD150072A4C8 /* MioMutipleCell.h */,
+				23746CB62580AD150072A4C8 /* MioMutipleCell.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -2572,6 +2694,7 @@
 				23AB23202431C77A00DBB427 /* LaunchScreen.storyboard in Resources */,
 				2338261E2518ACDD00DC9021 /* README.md in Resources */,
 				236DB726250F5FCE001CC2F3 /* 社区.json in Resources */,
+				236936A825836608005DB8CA /* bai.zip in Resources */,
 				233FE3282564FFF300CBB1AE /* HXPhotoPicker.bundle in Resources */,
 				23C24FCE2446A4CA00EE0BE2 /* area.plist in Resources */,
 				236DB725250F5FCE001CC2F3 /* 消息.json in Resources */,
@@ -2667,6 +2790,7 @@
 				2378093B24FF4DF900007883 /* UIFont+NERChainable.m in Sources */,
 				233FE3142564FFF300CBB1AE /* HXPhotoConfiguration.m in Sources */,
 				233825F72518796900DC9021 /* HSCustomTableViewCell.m in Sources */,
+				237D061F257DC3BA00697F3A /* BTCoverVerticalTransition.m in Sources */,
 				236DB6E5250F0DD8001CC2F3 /* LOTGradientFillRender.m in Sources */,
 				236DB77A250F6668001CC2F3 /* ZFPresentTransition.m in Sources */,
 				23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */,
@@ -2680,6 +2804,8 @@
 				23C24FD32446A4CA00EE0BE2 /* STPickerSingle.m in Sources */,
 				236DB6F4250F0DD8001CC2F3 /* LOTAsset.m in Sources */,
 				2378092A24FF4DF900007883 /* UIVisualEffectView+NERChainable.m in Sources */,
+				2366F661257F1F21006E1D7D /* MusicLyric.m in Sources */,
+				23746CAA25806D7A0072A4C8 /* MioBugModel.m in Sources */,
 				233FE32E2564FFF300CBB1AE /* HXAlbumListViewController.m in Sources */,
 				2378094624FF4DF900007883 /* NERAlertMaker.m in Sources */,
 				2378093724FF4DF900007883 /* UISegmentedControl+NERChainable.m in Sources */,
@@ -2705,6 +2831,7 @@
 				236DB6E1250F0DD8001CC2F3 /* LOTPolygonAnimator.m in Sources */,
 				233FE34F2564FFF300CBB1AE /* HXPhotoEditChartletModel.m in Sources */,
 				236DB783250F6668001CC2F3 /* ZFAVPlayerManager.m in Sources */,
+				2366F65E257F1F0D006E1D7D /* UIColorLabel.m in Sources */,
 				23FF98362547BB26008CC170 /* GCDGroup.m in Sources */,
 				233FE34E2564FFF300CBB1AE /* HX_PhotoEditViewController.m in Sources */,
 				233FE3602564FFF300CBB1AE /* HXPhotoEditChartletListView.m in Sources */,
@@ -2721,6 +2848,7 @@
 				233826262518ACDD00DC9021 /* SDCustomMaskView.m in Sources */,
 				233FE35E2564FFF300CBB1AE /* HXPhotoEditingView.m in Sources */,
 				2378092F24FF4DF900007883 /* NERStaticTableView+NERChainable.m in Sources */,
+				23746CB72580AD150072A4C8 /* MioMutipleCell.m in Sources */,
 				2378093824FF4DF900007883 /* UIPageControl+NERChainable.m in Sources */,
 				233825EC2518796900DC9021 /* HSBaseCellModel.m in Sources */,
 				2378093C24FF4DF900007883 /* NSArray+NERChainable.m in Sources */,
@@ -2751,6 +2879,7 @@
 				233FE3382564FFF300CBB1AE /* HXPhotoPreviewBottomView.m in Sources */,
 				233825F82518796900DC9021 /* HSSwitchTableViewCell.m in Sources */,
 				233FE35F2564FFF300CBB1AE /* HXPhotoEditSplashMaskLayer.m in Sources */,
+				23746CB42580A8160072A4C8 /* MioMutipleVC.m in Sources */,
 				236DB774250F6668001CC2F3 /* ZFLandscapeWindow.m in Sources */,
 				233FE3632564FFF300CBB1AE /* HXPhotoEditChartletPreviewView.m in Sources */,
 				236DB6E0250F0DD8001CC2F3 /* LOTPolystarAnimator.m in Sources */,
@@ -2811,6 +2940,7 @@
 				233825E92518796900DC9021 /* HSSetTableViewMainController.m in Sources */,
 				2378094524FF4DF900007883 /* NERTypeConverter.m in Sources */,
 				2393DCF12511AE9C002483A9 /* JJPageControllerView.m in Sources */,
+				237D0622257DC3FE00697F3A /* MioPlayListVC.m in Sources */,
 				236DB6D7250F0DD8001CC2F3 /* LOTPathInterpolator.m in Sources */,
 				233826202518ACDD00DC9021 /* UIView+SDExtension.m in Sources */,
 				23FF98332547BB26008CC170 /* GCD.m in Sources */,
@@ -2879,6 +3009,7 @@
 				236DB6E6250F0DD8001CC2F3 /* LOTStrokeRenderer.m in Sources */,
 				233FE35D2564FFF300CBB1AE /* HXPhotoEditChartletContentViewCell.m in Sources */,
 				23AB23972431D32A00DBB427 /* MioTabbarVC.m in Sources */,
+				2366F664257F1F2E006E1D7D /* SliderView.m in Sources */,
 				236DB6DE250F0DD8001CC2F3 /* LOTAnimatorNode.m in Sources */,
 				239930B225777DFA00584486 /* DOUAudioLPCM.m in Sources */,
 				236DB6F0250F0DD8001CC2F3 /* LOTLayerGroup.m in Sources */,
@@ -2897,6 +3028,7 @@
 				236DB778250F6668001CC2F3 /* UIScrollView+ZFPlayer.m in Sources */,
 				233FE3472564FFF300CBB1AE /* HXAlbumlistView.m in Sources */,
 				233826052518A8D500DC9021 /* MioRefreshHeader.m in Sources */,
+				2366F670257F2590006E1D7D /* NSDateFormatter + Extension.m in Sources */,
 				23615E182574A3D200EAD39D /* MioMusicModel.m in Sources */,
 				233FE33C2564FFF300CBB1AE /* HXPhotoPreviewVideoViewCell.m in Sources */,
 				233FE3532564FFF300CBB1AE /* HXPhotoClippingView.m in Sources */,
@@ -2926,6 +3058,7 @@
 				236DB6FC250F0DD8001CC2F3 /* LOTShapeStroke.m in Sources */,
 				23AB23582431C8BA00DBB427 /* UIView+MioExtension.m in Sources */,
 				239930B425777DFA00584486 /* DOUAudioDecoder.m in Sources */,
+				236936A125835210005DB8CA /* MioSongListVC.m in Sources */,
 				236DB6DC250F0DD8001CC2F3 /* LOTArrayInterpolator.m in Sources */,
 				233FE3302564FFF300CBB1AE /* HXPhotoViewController.m in Sources */,
 				233FE32D2564FFF300CBB1AE /* HXPhoto3DTouchViewController.m in Sources */,
@@ -2934,6 +3067,7 @@
 				239930B725777DFA00584486 /* DOUAudioEventLoop.m in Sources */,
 				236DB70B250F0DD8001CC2F3 /* LOTAnimatedSwitch.m in Sources */,
 				233FE32F2564FFF300CBB1AE /* HXPhotoPreviewViewController.m in Sources */,
+				237D061E257DC3BA00697F3A /* BTCoverHorizontalTransition.m in Sources */,
 				233FE3312564FFF300CBB1AE /* HXCustomCameraController.m in Sources */,
 				233826252518ACDD00DC9021 /* TAAbstractDotView.m in Sources */,
 				2378093F24FF4DF900007883 /* NERStack.m in Sources */,
@@ -2941,6 +3075,7 @@
 				236DB78A250F6668001CC2F3 /* ZFSliderView.m in Sources */,
 				233FE3652564FFF300CBB1AE /* HXPhotoEditMosaicView.m in Sources */,
 				236DB70A250F0DD8001CC2F3 /* LOTInterpolatorCallback.m in Sources */,
+				2369369A258321E7005DB8CA /* MioButton.m in Sources */,
 				233FE32A2564FFF300CBB1AE /* HXPhotoTools.m in Sources */,
 				236DB777250F6668001CC2F3 /* ZFPersentInteractiveTransition.m in Sources */,
 				23615E12257493CA00EAD39D /* MioPlayer.m in Sources */,
@@ -2949,10 +3084,12 @@
 				236DB776250F6668001CC2F3 /* ZFPlayerLogManager.m in Sources */,
 				235055A42567A57500F96AFC /* DownloadManager.m in Sources */,
 				236DB70C250F0DD8001CC2F3 /* LOTKeyframe.m in Sources */,
+				2366F667257F1F6D006E1D7D /* TimeTool.m in Sources */,
 				236DB70D250F0DD8001CC2F3 /* LOTBezierData.m in Sources */,
 				23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */,
 				233825F22518796900DC9021 /* HSHeaderModel.m in Sources */,
 				236DB78B250F6668001CC2F3 /* ZFPlayerControlView.m in Sources */,
+				2366F66D257F246E006E1D7D /* LyricParser.m in Sources */,
 				233FE34B2564FFF300CBB1AE /* HXPhotoPreviewViewCell.m in Sources */,
 				233FE3352564FFF300CBB1AE /* HXPhotoModel.m in Sources */,
 				236DB6EA250F0DD8001CC2F3 /* UIColor.m in Sources */,
@@ -2960,6 +3097,7 @@
 				23AB23AD2431DA5300DBB427 /* MioVerifyCodeVC.m in Sources */,
 				2367ADB1251DD80300935CF3 /* HLZIrregulatBtn.m in Sources */,
 				236DB6FA250F0DD8001CC2F3 /* LOTShapeFill.m in Sources */,
+				2366F679257F6484006E1D7D /* MioDownloadRequest.m in Sources */,
 				23AB23AC2431DA5300DBB427 /* MioUserAgreementVC.m in Sources */,
 				239930AD25777DFA00584486 /* DOUAudioAnalyzer+Default.m in Sources */,
 				233825F42518796900DC9021 /* HSTextTableViewCell.m in Sources */,
@@ -2975,6 +3113,7 @@
 				236DB784250F6668001CC2F3 /* ZFUtilities.m in Sources */,
 				230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */,
 				23AB23552431C8BA00DBB427 /* UIButton+MioExtension.m in Sources */,
+				2369369E258322F3005DB8CA /* YLButton.m in Sources */,
 				2378092C24FF4DF900007883 /* UILabel+NERChainable.m in Sources */,
 				233FE3342564FFF300CBB1AE /* HXVideoEditViewController.m in Sources */,
 				236DB6EE250F0DD8001CC2F3 /* LOTLayer.m in Sources */,
@@ -2984,6 +3123,7 @@
 				233FE3182564FFF300CBB1AE /* HXPhotoPersentInteractiveTransition.m in Sources */,
 				236DB709250F0DD8001CC2F3 /* LOTAnimatedControl.m in Sources */,
 				236DB707250F0DD8001CC2F3 /* LOTKeypath.m in Sources */,
+				2366F65B257F13C2006E1D7D /* MioLrcView.m in Sources */,
 				233FE3202564FFF300CBB1AE /* UIView+HXExtension.m in Sources */,
 				239930A925777DF900584486 /* DOUAudioFileProvider.m in Sources */,
 				23AB235E2431C8BA00DBB427 /* NSDictionary+jlExtension.m in Sources */,

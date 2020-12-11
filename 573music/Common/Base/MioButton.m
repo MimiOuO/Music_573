@@ -1,0 +1,26 @@
+//
+//  MioButton.m
+//  573music
+//
+//  Created by Mimio on 2020/12/11.
+//  Copyright © 2020 Mimio. All rights reserved.
+//
+
+#import "MioButton.h"
+
+@implementation MioButton
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"changeSkin" object:nil];
+    }
+    return self;
+}
+
+-(void)refresh{
+    
+}
+
+@end

@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSInteger)getPreIndex;
 -(NSInteger)getNextIndex;
+-(NSInteger)getAutoPlayIndex;
 @end
 
 NS_ASSUME_NONNULL_END

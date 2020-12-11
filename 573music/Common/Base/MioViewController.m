@@ -14,6 +14,7 @@
 
 @implementation MioViewController
 
+
 -(MioNavView *)navView{
 	if (!_navView) {
 		MioNavView *navView = [[MioNavView alloc] init];

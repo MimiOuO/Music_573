@@ -78,9 +78,9 @@
 }
 
 -(void)clearPlayList{
-    NSArray *a = [WHCSqlite query:[MioMusicModel class]  where:@"savetype = 'playList'"];
-    NSInteger b = getPlayIndex;
-    NSLog(@"%@",a);
+//    NSArray *a = [WHCSqlite query:[MioMusicModel class]  where:@"savetype = 'playList'"];
+//    NSInteger b = getPlayIndex;
+//    NSLog(@"%@",a);
 }
 
 -(void)saveCurrentIndex{
@@ -127,7 +127,23 @@
     }
 }
 
+-(NSInteger)getAutoPlayIndex{
+    if (!Equals(currentPlayOrder, MioPlayOrderRandom)) {//非随机
+        if (Equals(currentPlayOrder, MioPlayOrderCycle)) {//循环
+            if (mioPlayList.currentPlayIndex == self.playListArr.count - 1) {
+                return 0;
+            }else{
+                return mioPlayList.currentPlayIndex + 1;
+            }
+        }else{//单曲
+            return mioPlayList.currentPlayIndex;
+        }
 
+    }else{//随机
+        NSInteger index = random()%self.playListArr.count;
+        return index;
+    }
+}
 
 
 @end

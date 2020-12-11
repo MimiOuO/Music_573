@@ -11,6 +11,7 @@
 #import "MioTestVC.h"
 #import "MioTest2VC.h"
 #import "MioLabel.h"
+#import "MioPlayListVC.h"
 @interface MioHomeVC ()
 @end
 
@@ -20,13 +21,13 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = appWhiteColor;
-    
     UIButton *sdfsd = [UIButton creatBtn:frame(100, 100, 100, 100) inView:self.view bgColor:mainColor title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
-        if (Equals([userdefault objectForKey:@"skin"], @"bai") ) {
-            [userdefault setObject:@"hei" forKey:@"skin"];
-        }else{
-            [userdefault setObject:@"bai" forKey:@"skin"];
-        }
+        
+//        if (Equals([userdefault objectForKey:@"skin"], @"bai") ) {
+//            [userdefault setObject:@"hei" forKey:@"skin"];
+//        }else{
+//            [userdefault setObject:@"bai" forKey:@"skin"];
+//        }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
 //        MioFeedBackVC *vc = [[MioFeedBackVC alloc] init];
@@ -41,10 +42,12 @@
     }];
     
     UIButton *sdfsdw21s = [UIButton creatBtn:frame(100, 340, 100, 100) inView:self.view bgColor:mainColor title:@"222" titleColor:appWhiteColor font:14 radius:5 action:^{
-        [mioPlayer pause];
+        MioPlayListVC * vc = [[MioPlayListVC alloc]init];
+        [self presentViewController:vc animated:YES completion:nil];
+//        [mioPlayer pause];
         return;
-        MioTest2VC *vc = [[MioTest2VC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+//        MioTest2VC *vc = [[MioTest2VC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
     }];
     
 //    UIImageView *avatar = [UIImageView creatImginView:self.view image:@"avatar_bai" radius:0];
@@ -61,17 +64,18 @@
     testlab.text = @"sdlfskjfsldjf234dsfsdfsf";
     testlab.textColor = subColor;
     [self.view addSubview:testlab];
+
+    NSLog(@"%@",colorPath);
     
-    
-    
-    [MioGetCacheReq(@"https://test.aw998.com/api/dance/all_listen_dance", @{@"token":@"8bafb112da1c444cba40578884196350"}) success:^(NSDictionary *result){
+    [MioGetCacheReq(@"https://test.aw998.com/api/dance/all_listen_dance", (@{@"token":@"8bafb112da1c444cba40578884196350",@"random":@"1"})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"list"];
         NSMutableArray *musicArr = [[NSMutableArray alloc] init];
         for (int i = 0;i < data.count; i++) {
             [musicArr addObject:[MioMusicModel mj_objectWithKeyValues:data[i]]];
         }
-        [mioPlayer playWithMusicList:musicArr andIndex:0];
-//        NSLog(@"cacheYES__%@",data);
+        if (musicArr.count > 0) {
+//            [mioPlayer playWithMusicList:musicArr andIndex:0];
+        }
     } failure:^(NSString *errorInfo) {
         NSLog(@"%@",errorInfo);
     }];
@@ -80,5 +84,9 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"111");
+}
 
 @end

@@ -27,4 +27,9 @@
     _savetype = savetype;
 }
 
+- (NSString *)lrc_url{
+    NSString *lrc = [self.audiourl stringByReplacingOccurrencesOfString:@".mp3"withString:@".lrc"];
+    return [lrc stringByReplacingOccurrencesOfString:@".flac"withString:@".lrc"] ;
+}
+
 @end

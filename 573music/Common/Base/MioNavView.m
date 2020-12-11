@@ -62,7 +62,7 @@
 -(UIButton *)rightButton{
 	if (!_rightButton) {
 		//右边按钮
-		UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(KSW - 56, StatusH, 56, 33)];
+		UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(KSW - 56, StatusH, 56, 44)];
 		rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
         rightButton.adjustsImageWhenHighlighted = NO;
 		[rightButton setTitleColor:appBlackColor forState:UIControlStateNormal];

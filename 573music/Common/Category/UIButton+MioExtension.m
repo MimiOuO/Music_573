@@ -75,10 +75,25 @@ static const char btnBlock;
     btn.block = ^(UIButton *sender) {
         block(sender);
     };
-
-    
     return btn;
 }
+
++(UIButton *)creatBtn:(CGRect)frame inView:(UIView *)view bgImage:(NSString *)image bgTintColor:(UIColor *)color action:(ButtonSenderBlock)block{
+    UIButton *btn = [[UIButton alloc] initWithFrame:frame];
+    [view addSubview:btn];
+    UIImage * tempImage = [UIImage imageNamed:@"image"];
+    tempImage = [tempImage imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+    [btn setBackgroundImage:tempImage forState:UIControlStateNormal];
+    btn.tintColor = color;
+    btn.adjustsImageWhenHighlighted = NO;
+    btn.block = ^(UIButton *sender) {
+        block(sender);
+    };
+    return btn;
+}
+
+
+
 +(UIButton *)creatBtn:(CGRect)frame inView:(UIView *)view bgColor:(UIColor *)color title:(NSString *)title titleColor:(UIColor *)titleColor font:(CGFloat)fontSize radius:(CGFloat)radius action:(void (^)())block{
     UIButton *btn = [[UIButton alloc] initWithFrame:frame];
     [view addSubview:btn];
