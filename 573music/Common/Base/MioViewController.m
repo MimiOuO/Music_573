@@ -42,7 +42,7 @@
     //背景图
 //         _bgImg = //[MioImageView creatView:frame(0, 0, KSW, KSH) inView:self.view bgColor:appWhiteColor radius:0];
     
-    _bgImg = [MioImageView creatImgView:frame(0, 0, KSW, KSH) inView:self.view skin:SkinName image:@"icon_bai" radius:0];
+    _bgImg = [MioImageView creatImgView:frame(0, 0, KSW, KSH) inView:self.view skin:SkinName image:@"beauty_bg" radius:0];
     
     
 }

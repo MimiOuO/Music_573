@@ -12,5 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIImageView (MioExtension)
 +(UIImageView *)creatImginView:(UIView *)view image:(NSString *)image radius:(CGFloat)radius;
 +(UIImageView *)creatImgView:(CGRect)frame inView:(UIView *)view image:(NSString *)image radius:(CGFloat)radius;
++(UIImageView *)creatImgView:(CGRect)frame inView:(UIView *)view image:(NSString *)image bgTintColor:(UIColor *)color radius:(CGFloat)radius;
 @end
 NS_ASSUME_NONNULL_END

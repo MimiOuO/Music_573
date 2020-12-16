@@ -30,11 +30,9 @@
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    self.window.rootViewController = [[MioTabbarVC alloc] init];
+   
+        
 
-    
-    [self.window makeKeyAndVisible];
     
 //    JJException.exceptionWhenTerminate = NO;
 //    
@@ -47,7 +45,11 @@
     
     [self initSettings];
     
-//    [self initAudioPlayer];
+    self.window.rootViewController = [[MioTabbarVC alloc] init];
+
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -58,6 +60,7 @@
     if (![userdefault objectForKey:@"first"]) {
         [userdefault setObject:@"1" forKey:@"first"];
         [userdefault setObject:@"bai" forKey:@"skin"];
+        [userdefault setObject:@"不开启" forKey:@"timeoff"];
         setPlayOrder(MioPlayOrderCycle);
     }
 }
@@ -97,6 +100,44 @@
                                  progressHandler:nil
                                completionHandler:nil];
     if (success) {
+        NSLog(@"Success unzip");
+        
+    } else {
+        NSLog(@"No success unzip");
+        
+        
+    }
+    
+    NSString *filePath2 = [[NSBundle mainBundle] pathForResource:@"hei" ofType:@"zip"];
+    NSString *dstPath2 = [NSString stringWithFormat:@"%@/Skin/hei.zip",
+                         NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+
+    BOOL success2 = [[NSFileManager defaultManager] copyItemAtPath:filePath2 toPath:dstPath2 error:nil];
+    
+    NSString *zipPath2 =
+    [NSString stringWithFormat:@"%@/Skin/hei.zip",
+                     NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+
+    NSString *unzipPath2 = [NSString stringWithFormat:@"%@/Skin",
+                           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+   
+    
+    if (!unzipPath2) {
+        return;
+    }
+
+    
+    BOOL success3 = [SSZipArchive unzipFileAtPath:zipPath2
+                                   toDestination:unzipPath2
+                              preserveAttributes:YES
+                                       overwrite:YES
+                                  nestedZipLevel:0
+                                        password:nil
+                                           error:nil
+                                        delegate:nil
+                                 progressHandler:nil
+                               completionHandler:nil];
+    if (success3) {
         NSLog(@"Success unzip");
         
     } else {

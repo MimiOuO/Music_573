@@ -192,10 +192,11 @@
     }];
     _moreBtn = [UIButton creatBtn:frame(KSW - 24 -28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"Group_player" action:^{
         
+        goLogin
         
-        MioSongListVC *vc = [[MioSongListVC alloc] init];
-        vc.view.height = KSH;
-        [self.navigationController pushViewController:vc animated:YES];
+//        MioSongListVC *vc = [[MioSongListVC alloc] init];
+//        vc.view.height = KSH;
+//        [self.navigationController pushViewController:vc animated:YES];
         
 //        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
 //        nav.modalPresentationStyle = 0;

@@ -265,7 +265,7 @@ NER_SYNTHESIZE(nerEffectedRanges, setNerEffectedRanges);
             
 //            if (![self attribute:NSForegroundColorAttributeName atIndex:range.location effectiveRange:NULL]) {
                 static UIColor *defaultLinkColor = nil;
-            if (!defaultLinkColor) defaultLinkColor = [UIColor colorWithRed:100/255. green:207/255. blue:156/255. alpha:1];
+            if (!defaultLinkColor) defaultLinkColor = [UIColor colorWithRed:0/255. green:122/255. blue:255/255. alpha:1];
                 [self addAttribute:NSForegroundColorAttributeName value:defaultLinkColor range:range];
 //            }
             

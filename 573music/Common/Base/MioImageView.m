@@ -15,8 +15,8 @@
     imgView.frame = frame;
     imgView.contentMode = UIViewContentModeScaleAspectFill;
     [view addSubview:imgView];
-    NSString *path = [NSString stringWithFormat:@"%@/Skin/%@/icon_bai.jpg",
-                     NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],skin];
+    NSString *path = [NSString stringWithFormat:@"%@/Skin/%@/%@",
+                     NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],skin,image];
     imgView.image = [UIImage imageWithContentsOfFile:path];
     
 //    imgView.image = [UIImage imageNamed:image];
@@ -33,14 +33,14 @@
 {
     self = [super init];
     if (self) {
-        RecieveNotice(@"changeSkin",refresh);
+        RecieveChangeSkin
     }
     return self;
 }
 
--(void)refresh{
+-(void)changeSkin{
     
-    NSString *path = [NSString stringWithFormat:@"%@/Skin/%@/%@.jpg",
+    NSString *path = [NSString stringWithFormat:@"%@/Skin/%@/%@",
                      NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],SkinName,self.imageName];
     self.image = [UIImage imageWithContentsOfFile:path];
 }

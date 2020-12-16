@@ -21,7 +21,7 @@ typedef void(^ButtonSenderBlock) (UIButton* sender);
 
 +(UIButton *)creatBtn:(CGRect)frame inView:(UIView *)view bgImage:(NSString *)image action:(void (^)())block;
 
-+(UIButton *)creatBtn:(CGRect)frame inView:(UIView *)view bgImage:(NSString *)image bgTintColor:(UIColor *)color action:(ButtonSenderBlock)block;
++(UIButton *)creatBtn:(CGRect)frame inView:(UIView *)view bgImage:(NSString *)image bgTintColor:(UIColor *)color action:(void (^)())block;
 +(UIButton *)creatBtn:(CGRect)frame inView:(UIView *)view bgColor:(UIColor *)color title:(NSString *)title titleColor:(UIColor *)titleColor font:(CGFloat)fontSize radius:(CGFloat)radius action:(void (^)())block;
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state;

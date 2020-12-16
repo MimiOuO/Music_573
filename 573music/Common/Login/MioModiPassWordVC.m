@@ -7,127 +7,193 @@
 //
 
 #import "MioModiPassWordVC.h"
+#import "WLCaptcheButton.h"
+#import "MioUserAgreementVC.h"
+#import "MioLargeButton.h"
+#import "UITextField+NumberFormat.h"
 
 @interface MioModiPassWordVC ()
-@property (nonatomic, strong) UITextField *oldTextField;
-@property (nonatomic, strong) UITextField *passwordTextField;
-@property (nonatomic, strong) UITextField *repeatTextField;
+@property (nonatomic, strong) UITextField *phoneTF;
+@property (nonatomic, strong) UITextField *passwordTF;
+@property (nonatomic, strong) UITextField *passwordTF2;
+@property (nonatomic, strong) UITextField *verifyTF;
+@property (nonatomic, strong) MioLargeButton *agreeBtn;
+@property (nonatomic, strong) WLCaptcheButton *countBtn;
+@property (nonatomic,copy) NSString * key;
+@property (nonatomic, strong) MioLargeButton *friendshipBtn1;
+@property (nonatomic, strong) UILabel *password;
+@property (nonatomic, strong) UILabel *forgetPassword;
 @end
 
 @implementation MioModiPassWordVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
-    [self.navView.centerButton setTitle:@"设置新密码" forState:UIControlStateNormal];
-    WEAKSELF;
-    [self.navView.rightButton setTitle:@"保存" forState:UIControlStateNormal];
-    self.navView.rightButtonBlock = ^{
-        [weakSelf xiugai];
-    };
     
-    self.view.backgroundColor = appBgColor;
+    self.view.backgroundColor = appWhiteColor;
+
+    self.navView.split.hidden = YES;
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    
     [self creatUI];
 }
 
 -(void)creatUI{
-    UILabel *oldLabel = [UILabel creatLabel:frame(Mar, Mar + NavH, 100, 14) inView:self.view text:@"原密码" color:subColor size:14];
 
-    _oldTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, Mar + oldLabel.bottom, KSW, 44)];
-    _oldTextField.backgroundColor = appWhiteColor;
-    _oldTextField.font = [UIFont systemFontOfSize:14];
-    _oldTextField.secureTextEntry = YES;
-    _oldTextField.placeholder = @"输入原密码";
-    _oldTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0,0,15,44)];
-    _oldTextField.leftViewMode =UITextFieldViewModeAlways;
+    UIScrollView *scroll = [UIScrollView creatScroll:frame(0, StatusH, KSW, KSH - StatusH) inView:self.view contentSize:CGSizeMake(0, 0)];
 
-    [self.view addSubview:_oldTextField];
     
-    if (!_isHavePassword) {
-        oldLabel.frame = frame(Mar,  NavH, 100, 0);
-        _oldTextField.frame = frame(Mar,  NavH, 100, 0);
-    }
+    UIButton *closeBtn = [UIButton creatBtn:frame(0, StatusH, 56, 44) inView:self.view bgImage:@"backArrow" bgTintColor:icon_one action:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+
+    UILabel *titleLabel = [UILabel creatLabel:frame(Mar, StatusH + 60, 250, 30) inView:scroll text:@"修改密码" color:text_main boldSize:26 alignment:NSTextAlignmentLeft];
+    UILabel *tip = [UILabel creatLabel:frame(Mar, titleLabel.bottom + 8, KSW, 12) inView:scroll text:@"" color:text_one size:12 alignment:NSTextAlignmentLeft];
+    UIView *phoneView = [UIView creatView:frame(Mar, tip.bottom + 60, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
+    UIView *passwordView = [UIView creatView:frame(Mar, phoneView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
+    UIView *passwordView2 = [UIView creatView:frame(Mar, passwordView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
+    
+
+    //======================================================================//
+    //                               用户名
+    //======================================================================//
+
+    self.phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 48, 16)];
+    self.phoneTF.delegate = self;
+    self.phoneTF.font = [UIFont systemFontOfSize:16];
+    self.phoneTF.placeholder = @"请输入11位手机号码";
+    self.phoneTF.textColor = text_main;
+    self.phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.phoneTF.keyboardType = UIKeyboardTypeNumberPad;
+    [phoneView addSubview:self.phoneTF];
+
+    
+    self.passwordTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 48, 16)];
+    self.passwordTF.delegate = self;
+    self.passwordTF.font = [UIFont systemFontOfSize:16];
+    self.passwordTF.placeholder = @"请输入密码";
+    self.passwordTF.textColor = text_main;
+    self.passwordTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.passwordTF.keyboardType = UIKeyboardTypeNumberPad;
+    [passwordView addSubview:self.passwordTF];
+    
+    self.passwordTF2 = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 48, 16)];
+    self.passwordTF2.delegate = self;
+    self.passwordTF2.font = [UIFont systemFontOfSize:16];
+    self.passwordTF2.placeholder = @"请再输入一遍";
+    self.passwordTF2.textColor = text_main;
+    self.passwordTF2.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.passwordTF2.keyboardType = UIKeyboardTypeNumberPad;
+    [passwordView2 addSubview:self.passwordTF2];
+
+    UIView *verifyView = [UIView creatView:frame(Mar, passwordView2.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
+
+    self.verifyTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 90, 16)];
+    self.verifyTF.maxLength(4);
+    self.verifyTF.font = [UIFont systemFontOfSize:16];
+    self.verifyTF.placeholder = @"请输入验证码";
+    self.verifyTF.textColor = text_main;
+    self.verifyTF.keyboardType = UIKeyboardTypeNumberPad;
+    [verifyView addSubview:self.verifyTF];
+
+    _countBtn = [[WLCaptcheButton alloc] initWithFrame:CGRectMake(KSW - 88 - Mar2,8, 80, 32)];
+    [_countBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [_countBtn setTitleColor:mainColor forState:UIControlStateNormal];
+    [_countBtn addTarget:self action:@selector(handlecountEvent:) forControlEvents:UIControlEventTouchUpInside];
+    _countBtn.titleLabel.font = Font(14);
+    [verifyView addSubview:_countBtn];
+
     
     
-    UILabel *passwordLabel = [UILabel creatLabel:frame(Mar, Mar + _oldTextField.bottom, 100, 14) inView:self.view text:@"新密码" color:subColor size:14];
+    UIButton *loginBtn = [UIButton creatBtn:frame(Mar, verifyView.bottom + 40, KSW - Mar2, 48) inView:scroll bgColor:mainColor title:@"修改密码" titleColor:appWhiteColor font:16 radius:8 action:^{
+        [self login];
+    }];
     
-    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, Mar + passwordLabel.bottom, KSW, 44)];
-    _passwordTextField.backgroundColor = appWhiteColor;
-    _passwordTextField.font = [UIFont systemFontOfSize:14];
-    _passwordTextField.secureTextEntry = YES;
-    _passwordTextField.placeholder = @"输入新的密码";
-    _passwordTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0,0,15,44)];
-    _passwordTextField.leftViewMode =UITextFieldViewModeAlways;
-    [self.view addSubview:_passwordTextField];
-    
-    UIView *split = [UIView creatView:frame(Mar, _passwordTextField.bottom - 0.5, KSW - Mar, 0.5) inView:self.view bgColor:botLineColor];
-    
-    _repeatTextField = [[UITextField alloc] initWithFrame:CGRectMake(0,_passwordTextField.bottom, KSW, 44)];
-    _repeatTextField.backgroundColor = appWhiteColor;
-    _repeatTextField.font = [UIFont systemFontOfSize:14];
-    _repeatTextField.secureTextEntry = YES;
-    _repeatTextField.placeholder = @"再次输入密码";
-    _repeatTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0,0,15,44)];
-    _repeatTextField.leftViewMode =UITextFieldViewModeAlways;
-    [self.view addSubview:_repeatTextField];
-    
-    UILabel *tipLab = [UILabel creatLabel:frame(Mar, _repeatTextField.bottom + Mar, 100, 12) inView:self.view text:@"6~20位密码" color:grayTextColor size:12];
 
 
 }
 
--(void)xiugai{
-   if (_isHavePassword) {//有原密码
-       if (_oldTextField.text.length<6 || _oldTextField.text.length>20) {
-           //[svprogressHUD showErrorWithStatus:@"请输入正确的原密码"];
-           return;
-       }
-//       if (_oldTextField.text.length != _passwordTextField.text.length) {
-//           //[svprogressHUD showErrorWithStatus:@"新密码不能与原密码相同"];
-//           return;
-//       }
-   }
+- (void)login{
 
-    if (_passwordTextField.text.length<6 || _passwordTextField.text.length>20) {
-        //[svprogressHUD showErrorWithStatus:@"请输入正确的新密码"];
-        return;
-    }
-    if (_repeatTextField.text.length<6 || _repeatTextField.text.length>20) {
-        //[svprogressHUD showErrorWithStatus:@"请再次输入密码"];
-        return;
-    }
-    if (_passwordTextField.text.length != _repeatTextField.text.length) {
-        //[svprogressHUD showErrorWithStatus:@"两次输入密码不一致"];
-        return;
-    }
-    NSDictionary *dic;
-    if (_isHavePassword){
-        dic = @{
-              @"old_password":_oldTextField.text,
-              @"password":_passwordTextField.text,
-              @"repeat_password":_repeatTextField.text,
-              };
-    }else{
-        dic = @{
-              @"password":_passwordTextField.text,
-              @"repeat_password":_repeatTextField.text,
-              };
-    }
+    NSString *telNumber = [self.passwordTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     
+    if (_passwordTF.text.length != 13) {
+        [UIWindow showInfo:@"请输入正确手机号"];
+        return;
+    }
+    if (_verifyTF.text.length != 4){
+        [UIWindow showInfo:@"请输入验证码"];
+        return;
+    }
+    if (_key.length < 10 ){
+        [UIWindow showInfo:@"请获取验证码"];
+        return;
+    }
 
-    MioPutRequest *request = [[MioPutRequest alloc] initWithRequestUrl:api_base argument:dic];
+    NSDictionary *dic = @{
+                          @"verification_key":_key,
+                          @"verification_code":self.verifyTF.text,
+                          };
+    MioPostRequest *request = [[MioPostRequest alloc] initWithRequestUrl:api_login argument:dic];
     
     [request success:^(NSDictionary *result) {
         NSDictionary *data = [result objectForKey:@"data"];
+        [UIWindow showSuccess:@"登录成功"];
         
-        //[svprogressHUD showSuccessWithStatus:@"密码修改成功"];
-    
+        NSString * token = [data objectForKey:@"access_token"];
+        MioUserInfo *user = [MioUserInfo mj_objectWithKeyValues:[data objectForKey:@"user"]];
+        [userdefault setObject:token forKey:@"token"];
+        [userdefault setObject:user.user_id forKey:@"user_id"];
+        [userdefault setObject:user.nickname forKey:@"nickname"];
+        [userdefault setObject:user.avatar forKey:@"avatar"];
+        [userdefault setObject:[NSNumber numberWithInt:user.is_teacher] forKey:@"isTeacher"];
+        [userdefault synchronize];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     } failure:^(NSString *errorInfo) {
-        //[svprogressHUD showErrorWithStatus:@"密码修改失败"];
-        
+        [UIWindow showInfo:errorInfo];
     }];
-    
 }
+
+-(void)handlecountEvent:(WLCaptcheButton *)sender{
+    if (_passwordTF.text.length != 13) {
+        [UIWindow showInfo:@"请输入正确手机号"];
+        return;
+    }
+    NSString *telNumber = [self.passwordTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSDictionary *dic = @{
+        @"phone":telNumber,
+    };
+    MioPostRequest *request = [[MioPostRequest alloc] initWithRequestUrl:api_getVerifyCode argument:dic];
+
+    [request success:^(NSDictionary *result) {
+        NSDictionary *data = [result objectForKey:@"data"];
+        [sender fire];
+        [UIWindow showInfo:@"验证码发送成功"];
+        _key = [data objectForKey:@"key"];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
+}
+
+
+-(void)agreeBtnClick:(UIButton *)btn{
+    btn.selected = !btn.selected;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
+    return [UITextField inputTextField:textField
+         shouldChangeCharactersInRange:range
+                     replacementString:string
+                        blankLocations:@[@3,@8]
+                            limitCount:11];
+}
+
 
 @end

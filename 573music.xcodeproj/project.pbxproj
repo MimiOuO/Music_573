@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230273D925899E5900937C04 /* CountdownTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 230273D825899E5900937C04 /* CountdownTimer.m */; };
 		2305A216256BA4CE0099EFE3 /* MioLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A215256BA4CE0099EFE3 /* MioLabel.m */; };
 		2305A219256BA9A90099EFE3 /* MioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A218256BA9A90099EFE3 /* MioView.m */; };
 		2305A21F256BAC150099EFE3 /* MioImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A21E256BAC150099EFE3 /* MioImageView.m */; };
-		2305A223256BB56B0099EFE3 /* hei.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2305A222256BB56B0099EFE3 /* hei.zip */; };
 		230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779472435CA9C00EFCD1D /* MyUploadManager.m */; };
 		2314389F2464F59D005E0B15 /* MioFeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2314389D2464F59D005E0B15 /* MioFeedBackVC.m */; };
+		232603E92588A20500754659 /* MioMoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232603E82588A20500754659 /* MioMoreVC.m */; };
+		232603ED2588BB6900754659 /* MioSetPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232603EC2588BB6900754659 /* MioSetPasswordVC.m */; };
+		232603F02588BC5700754659 /* MioTimeOffVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232603EF2588BC5700754659 /* MioTimeOffVC.m */; };
 		233825E22518796900DC9021 /* HSSetTableViewControllerConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 233825AD2518796800DC9021 /* HSSetTableViewControllerConst.m */; };
 		233825E32518796900DC9021 /* UIView+HSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 233825B02518796800DC9021 /* UIView+HSFrame.m */; };
 		233825E42518796900DC9021 /* NSArray+HSSafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 233825B12518796800DC9021 /* NSArray+HSSafeAccess.m */; };
@@ -167,7 +170,6 @@
 		2369369A258321E7005DB8CA /* MioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23693699258321E7005DB8CA /* MioButton.m */; };
 		2369369E258322F3005DB8CA /* YLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2369369D258322F3005DB8CA /* YLButton.m */; };
 		236936A125835210005DB8CA /* MioSongListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 236936A025835210005DB8CA /* MioSongListVC.m */; };
-		236936A825836608005DB8CA /* bai.zip in Resources */ = {isa = PBXBuildFile; fileRef = 236936A725836608005DB8CA /* bai.zip */; };
 		236B1EAE257A13C1001D00E3 /* GKSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236B1EAC257A13C0001D00E3 /* GKSliderView.m */; };
 		236DB6D4250F0DD8001CC2F3 /* LOTRenderNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB648250F0DD7001CC2F3 /* LOTRenderNode.m */; };
 		236DB6D5250F0DD8001CC2F3 /* LOTTrimPathNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB64D250F0DD7001CC2F3 /* LOTTrimPathNode.m */; };
@@ -371,7 +373,6 @@
 		23AB23AA2431DA5300DBB427 /* HWTFCursorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23A02431DA5300DBB427 /* HWTFCursorView.m */; };
 		23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23A12431DA5300DBB427 /* MioLoginVC.m */; };
 		23AB23AC2431DA5300DBB427 /* MioUserAgreementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23A32431DA5300DBB427 /* MioUserAgreementVC.m */; };
-		23AB23AD2431DA5300DBB427 /* MioVerifyCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23A42431DA5300DBB427 /* MioVerifyCodeVC.m */; };
 		23AB23B12431DAB500DBB427 /* MioLargeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23B02431DAB500DBB427 /* MioLargeButton.m */; };
 		23AB23B42431DAEE00DBB427 /* TFQClickAreaButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23B32431DAEE00DBB427 /* TFQClickAreaButton.m */; };
 		23BC251E256CA08500E756ED /* MioGetCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BC251D256CA08500E756ED /* MioGetCacheRequest.m */; };
@@ -389,6 +390,10 @@
 		23C24FD62446A4CA00EE0BE2 /* NSCalendar+STPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FCC2446A4CA00EE0BE2 /* NSCalendar+STPicker.m */; };
 		23CB0A86254BF6F400A18B63 /* UITextView+XMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CB0A84254BF6F400A18B63 /* UITextView+XMExtension.m */; };
 		23CB0A87254BF6F400A18B63 /* XMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CB0A85254BF6F400A18B63 /* XMTextView.m */; };
+		23CEA0362587381A0083AA75 /* MioHomeRecommendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CEA0352587381A0083AA75 /* MioHomeRecommendVC.m */; };
+		23CEA0392587383B0083AA75 /* MioHomeMusicHallVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CEA0382587383B0083AA75 /* MioHomeMusicHallVC.m */; };
+		23CEA03F25876FC20083AA75 /* bai.zip in Resources */ = {isa = PBXBuildFile; fileRef = 23CEA03E25876FC20083AA75 /* bai.zip */; };
+		23CEA04125876FCF0083AA75 /* hei.zip in Resources */ = {isa = PBXBuildFile; fileRef = 23CEA04025876FCF0083AA75 /* hei.zip */; };
 		23FF98332547BB26008CC170 /* GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF98282547BB25008CC170 /* GCD.m */; };
 		23FF98342547BB26008CC170 /* GCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF98292547BB25008CC170 /* GCDQueue.m */; };
 		23FF98352547BB26008CC170 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF982A2547BB25008CC170 /* GCDTimer.m */; };
@@ -399,17 +404,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		230273D725899E5900937C04 /* CountdownTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownTimer.h; sourceTree = "<group>"; };
+		230273D825899E5900937C04 /* CountdownTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownTimer.m; sourceTree = "<group>"; };
 		2305A214256BA4CE0099EFE3 /* MioLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioLabel.h; sourceTree = "<group>"; };
 		2305A215256BA4CE0099EFE3 /* MioLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioLabel.m; sourceTree = "<group>"; };
 		2305A217256BA9A90099EFE3 /* MioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioView.h; sourceTree = "<group>"; };
 		2305A218256BA9A90099EFE3 /* MioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioView.m; sourceTree = "<group>"; };
 		2305A21D256BAC150099EFE3 /* MioImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioImageView.h; sourceTree = "<group>"; };
 		2305A21E256BAC150099EFE3 /* MioImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioImageView.m; sourceTree = "<group>"; };
-		2305A222256BB56B0099EFE3 /* hei.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = hei.zip; sourceTree = "<group>"; };
 		230779472435CA9C00EFCD1D /* MyUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUploadManager.m; sourceTree = "<group>"; };
 		230779482435CA9C00EFCD1D /* MyUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUploadManager.h; sourceTree = "<group>"; };
 		2314389D2464F59D005E0B15 /* MioFeedBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioFeedBackVC.m; sourceTree = "<group>"; };
 		2314389E2464F59D005E0B15 /* MioFeedBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioFeedBackVC.h; sourceTree = "<group>"; };
+		232603E72588A20500754659 /* MioMoreVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMoreVC.h; sourceTree = "<group>"; };
+		232603E82588A20500754659 /* MioMoreVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMoreVC.m; sourceTree = "<group>"; };
+		232603EB2588BB6900754659 /* MioSetPasswordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSetPasswordVC.h; sourceTree = "<group>"; };
+		232603EC2588BB6900754659 /* MioSetPasswordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSetPasswordVC.m; sourceTree = "<group>"; };
+		232603EE2588BC5700754659 /* MioTimeOffVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioTimeOffVC.h; sourceTree = "<group>"; };
+		232603EF2588BC5700754659 /* MioTimeOffVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioTimeOffVC.m; sourceTree = "<group>"; };
 		233825AD2518796800DC9021 /* HSSetTableViewControllerConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSetTableViewControllerConst.m; sourceTree = "<group>"; };
 		233825AF2518796800DC9021 /* NSBundle+HSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+HSImage.h"; sourceTree = "<group>"; };
 		233825B02518796800DC9021 /* UIView+HSFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HSFrame.m"; sourceTree = "<group>"; };
@@ -722,7 +734,6 @@
 		2369369D258322F3005DB8CA /* YLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLButton.m; sourceTree = "<group>"; };
 		2369369F25835210005DB8CA /* MioSongListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSongListVC.h; sourceTree = "<group>"; };
 		236936A025835210005DB8CA /* MioSongListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSongListVC.m; sourceTree = "<group>"; };
-		236936A725836608005DB8CA /* bai.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bai.zip; sourceTree = "<group>"; };
 		236B1EAC257A13C0001D00E3 /* GKSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSliderView.m; sourceTree = "<group>"; };
 		236B1EAD257A13C1001D00E3 /* GKSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSliderView.h; sourceTree = "<group>"; };
 		236DB648250F0DD7001CC2F3 /* LOTRenderNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOTRenderNode.m; sourceTree = "<group>"; };
@@ -1134,12 +1145,10 @@
 		23AB239B2431DA5300DBB427 /* MioLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioLoginVC.h; sourceTree = "<group>"; };
 		23AB239C2431DA5300DBB427 /* MioUserAgreementVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioUserAgreementVC.h; sourceTree = "<group>"; };
 		23AB239E2431DA5300DBB427 /* MioModiPassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioModiPassWordVC.m; sourceTree = "<group>"; };
-		23AB239F2431DA5300DBB427 /* MioVerifyCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioVerifyCodeVC.h; sourceTree = "<group>"; };
 		23AB23A02431DA5300DBB427 /* HWTFCursorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTFCursorView.m; sourceTree = "<group>"; };
 		23AB23A12431DA5300DBB427 /* MioLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioLoginVC.m; sourceTree = "<group>"; };
 		23AB23A22431DA5300DBB427 /* MioPasswordLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioPasswordLoginVC.h; sourceTree = "<group>"; };
 		23AB23A32431DA5300DBB427 /* MioUserAgreementVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioUserAgreementVC.m; sourceTree = "<group>"; };
-		23AB23A42431DA5300DBB427 /* MioVerifyCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioVerifyCodeVC.m; sourceTree = "<group>"; };
 		23AB23A52431DA5300DBB427 /* MioModiPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioModiPassWordVC.h; sourceTree = "<group>"; };
 		23AB23A72431DA5300DBB427 /* HWTFCursorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTFCursorView.h; sourceTree = "<group>"; };
 		23AB23AF2431DAB500DBB427 /* MioLargeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioLargeButton.h; sourceTree = "<group>"; };
@@ -1175,6 +1184,12 @@
 		23CB0A83254BF6F400A18B63 /* XMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMTextView.h; sourceTree = "<group>"; };
 		23CB0A84254BF6F400A18B63 /* UITextView+XMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+XMExtension.m"; sourceTree = "<group>"; };
 		23CB0A85254BF6F400A18B63 /* XMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMTextView.m; sourceTree = "<group>"; };
+		23CEA0342587381A0083AA75 /* MioHomeRecommendVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioHomeRecommendVC.h; sourceTree = "<group>"; };
+		23CEA0352587381A0083AA75 /* MioHomeRecommendVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioHomeRecommendVC.m; sourceTree = "<group>"; };
+		23CEA0372587383B0083AA75 /* MioHomeMusicHallVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioHomeMusicHallVC.h; sourceTree = "<group>"; };
+		23CEA0382587383B0083AA75 /* MioHomeMusicHallVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioHomeMusicHallVC.m; sourceTree = "<group>"; };
+		23CEA03E25876FC20083AA75 /* bai.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bai.zip; sourceTree = "<group>"; };
+		23CEA04025876FCF0083AA75 /* hei.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = hei.zip; sourceTree = "<group>"; };
 		23FF98272547BB25008CC170 /* GCDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSemaphore.h; sourceTree = "<group>"; };
 		23FF98282547BB25008CC170 /* GCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCD.m; sourceTree = "<group>"; };
 		23FF98292547BB25008CC170 /* GCDQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDQueue.m; sourceTree = "<group>"; };
@@ -1213,6 +1228,26 @@
 				A4641F2232E4633554341B90 /* Pods-573music.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		230273D625899E4B00937C04 /* CountDown */ = {
+			isa = PBXGroup;
+			children = (
+				230273D725899E5900937C04 /* CountdownTimer.h */,
+				230273D825899E5900937C04 /* CountdownTimer.m */,
+			);
+			path = CountDown;
+			sourceTree = "<group>";
+		};
+		232603EA2588BA1100754659 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				232603E72588A20500754659 /* MioMoreVC.h */,
+				232603E82588A20500754659 /* MioMoreVC.m */,
+				232603EE2588BC5700754659 /* MioTimeOffVC.h */,
+				232603EF2588BC5700754659 /* MioTimeOffVC.m */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 		233825AC2518796800DC9021 /* HSSetTableViewController */ = {
@@ -1702,6 +1737,10 @@
 			children = (
 				235705CF24401855007C3F87 /* MioHomeVC.h */,
 				235705D024401855007C3F87 /* MioHomeVC.m */,
+				23CEA0342587381A0083AA75 /* MioHomeRecommendVC.h */,
+				23CEA0352587381A0083AA75 /* MioHomeRecommendVC.m */,
+				23CEA0372587383B0083AA75 /* MioHomeMusicHallVC.h */,
+				23CEA0382587383B0083AA75 /* MioHomeMusicHallVC.m */,
 				2350556D25675F4600F96AFC /* MioTestVC.h */,
 				2350556E25675F4600F96AFC /* MioTestVC.m */,
 				2366652B256B81D400609A05 /* MioTest2VC.h */,
@@ -2146,52 +2185,52 @@
 		237808DE24FF4DF900007883 /* Chainable */ = {
 			isa = PBXGroup;
 			children = (
+				2378090924FF4DF900007883 /* NERAlert+NERChainable.h */,
+				237808F224FF4DF900007883 /* NERAlert+NERChainable.m */,
+				237808F024FF4DF900007883 /* NERConstraint+NERChainable.h */,
+				2378090B24FF4DF900007883 /* NERConstraint+NERChainable.m */,
+				2378090024FF4DF900007883 /* NERStack+NERChainable.h */,
+				237808EE24FF4DF900007883 /* NERStack+NERChainable.m */,
+				2378090324FF4DF900007883 /* NERStaticTableView+NERChainable.h */,
+				237808EB24FF4DF900007883 /* NERStaticTableView+NERChainable.m */,
 				237808DF24FF4DF900007883 /* NERStyle+NERChainable.h */,
-				237808E024FF4DF900007883 /* UIView+NERChainable.m */,
-				237808E124FF4DF900007883 /* UIPageControl+NERChainable.h */,
-				237808E224FF4DF900007883 /* UISlider+NERChainable.m */,
-				237808E324FF4DF900007883 /* UISegmentedControl+NERChainable.h */,
-				237808E424FF4DF900007883 /* UIVisualEffectView+NERChainable.m */,
-				237808E524FF4DF900007883 /* UITextField+NERChainable.m */,
-				237808E624FF4DF900007883 /* UIImage+NERChainable.h */,
-				237808E724FF4DF900007883 /* UILabel+NERChainable.m */,
-				237808E824FF4DF900007883 /* UIStepper+NERChainable.m */,
+				237808FA24FF4DF900007883 /* NERStyle+NERChainable.m */,
+				237808F424FF4DF900007883 /* NSArray+NERChainable.h */,
+				2378090724FF4DF900007883 /* NSArray+NERChainable.m */,
+				237808F124FF4DF900007883 /* NSAttributedString+NERChainable.h */,
+				2378090A24FF4DF900007883 /* NSAttributedString+NERChainable.m */,
+				2378090824FF4DF900007883 /* NSString+NERChainable.h */,
+				237808F324FF4DF900007883 /* NSString+NERChainable.m */,
+				2378090C24FF4DF900007883 /* UIButton+NERChainable.h */,
+				237808EF24FF4DF900007883 /* UIButton+NERChainable.m */,
+				2378090424FF4DF900007883 /* UIColor+NERChainable.h */,
 				237808E924FF4DF900007883 /* UIColor+NERChainable.m */,
 				237808EA24FF4DF900007883 /* UIFont+NERChainable.h */,
-				237808EB24FF4DF900007883 /* NERStaticTableView+NERChainable.m */,
-				237808EC24FF4DF900007883 /* UISwitch+NERChainable.m */,
-				237808ED24FF4DF900007883 /* UITextView+NERChainable.m */,
-				237808EE24FF4DF900007883 /* NERStack+NERChainable.m */,
-				237808EF24FF4DF900007883 /* UIButton+NERChainable.m */,
-				237808F024FF4DF900007883 /* NERConstraint+NERChainable.h */,
-				237808F124FF4DF900007883 /* NSAttributedString+NERChainable.h */,
-				237808F224FF4DF900007883 /* NERAlert+NERChainable.m */,
-				237808F324FF4DF900007883 /* NSString+NERChainable.m */,
-				237808F424FF4DF900007883 /* NSArray+NERChainable.h */,
-				237808F524FF4DF900007883 /* UIImageView+NERChainable.m */,
-				237808F624FF4DF900007883 /* UISegmentedControl+NERChainable.m */,
-				237808F724FF4DF900007883 /* UIPageControl+NERChainable.m */,
-				237808F824FF4DF900007883 /* UISlider+NERChainable.h */,
-				237808F924FF4DF900007883 /* UIView+NERChainable.h */,
-				237808FA24FF4DF900007883 /* NERStyle+NERChainable.m */,
-				237808FB24FF4DF900007883 /* UIStepper+NERChainable.h */,
-				237808FC24FF4DF900007883 /* UILabel+NERChainable.h */,
-				237808FD24FF4DF900007883 /* UIImage+NERChainable.m */,
-				237808FE24FF4DF900007883 /* UITextField+NERChainable.h */,
-				237808FF24FF4DF900007883 /* UIVisualEffectView+NERChainable.h */,
-				2378090024FF4DF900007883 /* NERStack+NERChainable.h */,
-				2378090124FF4DF900007883 /* UISwitch+NERChainable.h */,
-				2378090224FF4DF900007883 /* UITextView+NERChainable.h */,
-				2378090324FF4DF900007883 /* NERStaticTableView+NERChainable.h */,
-				2378090424FF4DF900007883 /* UIColor+NERChainable.h */,
 				2378090524FF4DF900007883 /* UIFont+NERChainable.m */,
+				237808E624FF4DF900007883 /* UIImage+NERChainable.h */,
+				237808FD24FF4DF900007883 /* UIImage+NERChainable.m */,
 				2378090624FF4DF900007883 /* UIImageView+NERChainable.h */,
-				2378090724FF4DF900007883 /* NSArray+NERChainable.m */,
-				2378090824FF4DF900007883 /* NSString+NERChainable.h */,
-				2378090924FF4DF900007883 /* NERAlert+NERChainable.h */,
-				2378090A24FF4DF900007883 /* NSAttributedString+NERChainable.m */,
-				2378090B24FF4DF900007883 /* NERConstraint+NERChainable.m */,
-				2378090C24FF4DF900007883 /* UIButton+NERChainable.h */,
+				237808F524FF4DF900007883 /* UIImageView+NERChainable.m */,
+				237808FC24FF4DF900007883 /* UILabel+NERChainable.h */,
+				237808E724FF4DF900007883 /* UILabel+NERChainable.m */,
+				237808E124FF4DF900007883 /* UIPageControl+NERChainable.h */,
+				237808F724FF4DF900007883 /* UIPageControl+NERChainable.m */,
+				237808E324FF4DF900007883 /* UISegmentedControl+NERChainable.h */,
+				237808F624FF4DF900007883 /* UISegmentedControl+NERChainable.m */,
+				237808F824FF4DF900007883 /* UISlider+NERChainable.h */,
+				237808E224FF4DF900007883 /* UISlider+NERChainable.m */,
+				237808FB24FF4DF900007883 /* UIStepper+NERChainable.h */,
+				237808E824FF4DF900007883 /* UIStepper+NERChainable.m */,
+				2378090124FF4DF900007883 /* UISwitch+NERChainable.h */,
+				237808EC24FF4DF900007883 /* UISwitch+NERChainable.m */,
+				237808FE24FF4DF900007883 /* UITextField+NERChainable.h */,
+				237808E524FF4DF900007883 /* UITextField+NERChainable.m */,
+				2378090224FF4DF900007883 /* UITextView+NERChainable.h */,
+				237808ED24FF4DF900007883 /* UITextView+NERChainable.m */,
+				237808F924FF4DF900007883 /* UIView+NERChainable.h */,
+				237808E024FF4DF900007883 /* UIView+NERChainable.m */,
+				237808FF24FF4DF900007883 /* UIVisualEffectView+NERChainable.h */,
+				237808E424FF4DF900007883 /* UIVisualEffectView+NERChainable.m */,
 			);
 			path = Chainable;
 			sourceTree = "<group>";
@@ -2237,6 +2276,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				230273D625899E4B00937C04 /* CountDown */,
 				237D0618257DC3BA00697F3A /* TransitionAnimation */,
 				2399308025777DF900584486 /* DouStreamer */,
 				2350558A2567A57400F96AFC /* CocoaDownloader */,
@@ -2351,6 +2391,7 @@
 		239B03432514649500B310D2 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				232603EA2588BA1100754659 /* More */,
 				239B0344251464C300B310D2 /* MioMineVC.h */,
 				239B0345251464C300B310D2 /* MioMineVC.m */,
 			);
@@ -2388,8 +2429,8 @@
 				236DB724250F5FCE001CC2F3 /* 首页.json */,
 				236DB723250F5FCD001CC2F3 /* 我的.json */,
 				236DB721250F5FCC001CC2F3 /* 消息.json */,
-				236936A725836608005DB8CA /* bai.zip */,
-				2305A222256BB56B0099EFE3 /* hei.zip */,
+				23CEA03E25876FC20083AA75 /* bai.zip */,
+				23CEA04025876FCF0083AA75 /* hei.zip */,
 				23AB231C2431C77A00DBB427 /* Assets.xcassets */,
 				23AB237B2431C8DF00DBB427 /* PrefixHeader.pch */,
 				23AB231E2431C77A00DBB427 /* LaunchScreen.storyboard */,
@@ -2525,14 +2566,14 @@
 				23AB23A02431DA5300DBB427 /* HWTFCursorView.m */,
 				23AB239B2431DA5300DBB427 /* MioLoginVC.h */,
 				23AB23A12431DA5300DBB427 /* MioLoginVC.m */,
-				23AB23A52431DA5300DBB427 /* MioModiPassWordVC.h */,
-				23AB239E2431DA5300DBB427 /* MioModiPassWordVC.m */,
 				23AB23A22431DA5300DBB427 /* MioPasswordLoginVC.h */,
 				23AB239A2431DA5300DBB427 /* MioPasswordLoginVC.m */,
+				23AB23A52431DA5300DBB427 /* MioModiPassWordVC.h */,
+				23AB239E2431DA5300DBB427 /* MioModiPassWordVC.m */,
+				232603EB2588BB6900754659 /* MioSetPasswordVC.h */,
+				232603EC2588BB6900754659 /* MioSetPasswordVC.m */,
 				23AB239C2431DA5300DBB427 /* MioUserAgreementVC.h */,
 				23AB23A32431DA5300DBB427 /* MioUserAgreementVC.m */,
-				23AB239F2431DA5300DBB427 /* MioVerifyCodeVC.h */,
-				23AB23A42431DA5300DBB427 /* MioVerifyCodeVC.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2694,17 +2735,17 @@
 				23AB23202431C77A00DBB427 /* LaunchScreen.storyboard in Resources */,
 				2338261E2518ACDD00DC9021 /* README.md in Resources */,
 				236DB726250F5FCE001CC2F3 /* 社区.json in Resources */,
-				236936A825836608005DB8CA /* bai.zip in Resources */,
 				233FE3282564FFF300CBB1AE /* HXPhotoPicker.bundle in Resources */,
 				23C24FCE2446A4CA00EE0BE2 /* area.plist in Resources */,
+				23CEA03F25876FC20083AA75 /* bai.zip in Resources */,
 				236DB725250F5FCE001CC2F3 /* 消息.json in Resources */,
 				236DB727250F5FCE001CC2F3 /* 我的.json in Resources */,
 				236DB789250F6668001CC2F3 /* ZFPlayer.bundle in Resources */,
-				2305A223256BB56B0099EFE3 /* hei.zip in Resources */,
 				23AB231D2431C77A00DBB427 /* Assets.xcassets in Resources */,
 				2393DD082511AEFD002483A9 /* YDEmojiCell.xib in Resources */,
 				2338261D2518ACDD00DC9021 /* LICENSE in Resources */,
 				236DB728250F5FCE001CC2F3 /* 首页.json in Resources */,
+				23CEA04125876FCF0083AA75 /* hei.zip in Resources */,
 				233825E82518796900DC9021 /* HSSetTableViewController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2791,6 +2832,7 @@
 				233FE3142564FFF300CBB1AE /* HXPhotoConfiguration.m in Sources */,
 				233825F72518796900DC9021 /* HSCustomTableViewCell.m in Sources */,
 				237D061F257DC3BA00697F3A /* BTCoverVerticalTransition.m in Sources */,
+				23CEA0392587383B0083AA75 /* MioHomeMusicHallVC.m in Sources */,
 				236DB6E5250F0DD8001CC2F3 /* LOTGradientFillRender.m in Sources */,
 				236DB77A250F6668001CC2F3 /* ZFPresentTransition.m in Sources */,
 				23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */,
@@ -2994,6 +3036,7 @@
 				236DB6F1250F0DD8001CC2F3 /* LOTShapeStar.m in Sources */,
 				233FE35A2564FFF300CBB1AE /* HXPhotoEditStickerItem.m in Sources */,
 				233FE31D2564FFF300CBB1AE /* NSBundle+HXPhotoPicker.m in Sources */,
+				232603ED2588BB6900754659 /* MioSetPasswordVC.m in Sources */,
 				239930BA25777DFA00584486 /* DOUMPMediaLibraryAssetLoader.m in Sources */,
 				236DB6D9250F0DD8001CC2F3 /* LOTPointInterpolator.m in Sources */,
 				236B1EAE257A13C1001D00E3 /* GKSliderView.m in Sources */,
@@ -3045,6 +3088,8 @@
 				236DB782250F6668001CC2F3 /* ZFIJKPlayerManager.m in Sources */,
 				2305A219256BA9A90099EFE3 /* MioView.m in Sources */,
 				2378094924FF4DF900007883 /* NERUtils.m in Sources */,
+				23CEA0362587381A0083AA75 /* MioHomeRecommendVC.m in Sources */,
+				232603F02588BC5700754659 /* MioTimeOffVC.m in Sources */,
 				239930B125777DFA00584486 /* DOUEAGLView.m in Sources */,
 				236DB708250F0DD8001CC2F3 /* LOTCacheProvider.m in Sources */,
 				233FE3392564FFF300CBB1AE /* HXPhotoPreviewLivePhotoCell.m in Sources */,
@@ -3094,7 +3139,6 @@
 				233FE3352564FFF300CBB1AE /* HXPhotoModel.m in Sources */,
 				236DB6EA250F0DD8001CC2F3 /* UIColor.m in Sources */,
 				23AB23232431C77A00DBB427 /* main.m in Sources */,
-				23AB23AD2431DA5300DBB427 /* MioVerifyCodeVC.m in Sources */,
 				2367ADB1251DD80300935CF3 /* HLZIrregulatBtn.m in Sources */,
 				236DB6FA250F0DD8001CC2F3 /* LOTShapeFill.m in Sources */,
 				2366F679257F6484006E1D7D /* MioDownloadRequest.m in Sources */,
@@ -3106,6 +3150,7 @@
 				236DB700250F0DD8001CC2F3 /* UIColor+Expanded.m in Sources */,
 				23AB23B12431DAB500DBB427 /* MioLargeButton.m in Sources */,
 				23615E2E257638BE00EAD39D /* NSObject+XWAdd.m in Sources */,
+				232603E92588A20500754659 /* MioMoreVC.m in Sources */,
 				23AB23A92431DA5300DBB427 /* MioModiPassWordVC.m in Sources */,
 				2378093524FF4DF900007883 /* NSString+NERChainable.m in Sources */,
 				239930AF25777DFA00584486 /* NSData+DOUAudioMappedFile.m in Sources */,
@@ -3119,6 +3164,7 @@
 				236DB6EE250F0DD8001CC2F3 /* LOTLayer.m in Sources */,
 				2378094324FF4DF900007883 /* NERStaticTableView.m in Sources */,
 				233FE3192564FFF300CBB1AE /* HXPhotoViewTransition.m in Sources */,
+				230273D925899E5900937C04 /* CountdownTimer.m in Sources */,
 				23673F7325076E2300C599CB /* WLCaptcheButton.m in Sources */,
 				233FE3182564FFF300CBB1AE /* HXPhotoPersentInteractiveTransition.m in Sources */,
 				236DB709250F0DD8001CC2F3 /* LOTAnimatedControl.m in Sources */,

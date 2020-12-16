@@ -82,7 +82,7 @@
 
 
     
-    RecieveNotice(@"changeSkin", changeSkin);
+    RecieveChangeSkin;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomNone) name:@"MioBottomNone" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomHalf) name:@"MioBottomHalf" object:nil];
@@ -146,6 +146,7 @@
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:rgb(136, 134, 135),NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
     //选中字体颜色
     [userdefault setObject:@"bai" forKey:@"skin"];
+    [userdefault synchronize];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:mainColor,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
     self.tabBar.tintColor = mainColor;
     

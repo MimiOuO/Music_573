@@ -35,6 +35,20 @@
 	return imgView;
 }
 	
-
++(UIImageView *)creatImgView:(CGRect)frame inView:(UIView *)view image:(NSString *)image bgTintColor:(UIColor *)color radius:(CGFloat)radius{
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:frame];
+    imgView.contentMode = UIViewContentModeScaleAspectFill;
+    [view addSubview:imgView];
+    UIImage * tempImage = [UIImage imageNamed:image];
+    tempImage = [tempImage imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+    
+    imgView.image = tempImage;
+    
+        imgView.layer.cornerRadius = radius;
+        imgView.layer.masksToBounds = YES;
+    
+    
+    return imgView;
+}
 	
 @end

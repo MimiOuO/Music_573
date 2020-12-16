@@ -11,13 +11,17 @@
 #import "MioUserAgreementVC.h"
 #import "UITextField+NumberFormat.h"
 #import "MioLargeButton.h"
+#import "MioPasswordLoginVC.h"
 @interface MioLoginVC ()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *phoneTF;
 @property (nonatomic, strong) UITextField *verifyTF;
+@property (nonatomic, strong) UITextField *invitaTF;
 @property (nonatomic, strong) MioLargeButton *agreeBtn;
 @property (nonatomic, strong) WLCaptcheButton *countBtn;
 @property (nonatomic,copy) NSString * key;
 @property (nonatomic, strong) MioLargeButton *friendshipBtn1;
+@property (nonatomic, strong) UILabel *password;
+@property (nonatomic, strong) UILabel *invita;
 @end
 
 @implementation MioLoginVC
@@ -27,7 +31,6 @@
     
     self.view.backgroundColor = appWhiteColor;
 
-    [self.navView.centerButton setTitle:@"" forState:UIControlStateNormal];
     self.navView.split.hidden = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxLoginSuccess:) name:@"wxLoginSuccess" object:nil];
@@ -39,38 +42,38 @@
     UIScrollView *scroll = [UIScrollView creatScroll:frame(0, StatusH, KSW, KSH - StatusH) inView:self.view contentSize:CGSizeMake(0, 0)];
 
     
-    UIButton *closeBtn = [UIButton creatBtn:frame(KSW - 56, StatusH, 56, 44) inView:self.view bgImage:@"landing_icon_exit" action:^{
+    UIButton *closeBtn = [UIButton creatBtn:frame(0, StatusH, 56, 44) inView:self.view bgImage:@"landing_icon_exit" bgTintColor:icon_one action:^{
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 
-    UILabel *titleLabel = [UILabel creatLabel:frame(Mar, StatusH + 60, 250, 30) inView:scroll text:@"欢迎来到莱恩课堂" color:subColor boldSize:24 alignment:NSTextAlignmentLeft];
-    UILabel *tip = [UILabel creatLabel:frame(Mar, titleLabel.bottom + 8, KSW, 12) inView:scroll text:@"未注册的手机号码通过验证码登录后将自动注册" color:grayTextColor size:12 alignment:NSTextAlignmentLeft];
-    UIView *phoneView = [UIView creatView:frame(Mar, tip.bottom + 60, KSW - 2*Mar, 48) inView:scroll bgColor:rgb(247, 247, 247) radius:8];
+    UILabel *titleLabel = [UILabel creatLabel:frame(Mar, StatusH + 60, 250, 30) inView:scroll text:@"欢迎来到573音乐" color:text_main boldSize:26 alignment:NSTextAlignmentLeft];
+    UILabel *tip = [UILabel creatLabel:frame(Mar, titleLabel.bottom + 8, KSW, 12) inView:scroll text:@"未注册的手机号码通过验证码登录后将自动注册" color:text_one size:12 alignment:NSTextAlignmentLeft];
+    UIView *phoneView = [UIView creatView:frame(Mar, tip.bottom + 60, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
     
     
 
     //======================================================================//
     //                               用户名
     //======================================================================//
-    UILabel *accoutLab = [UILabel creatLabel:frame(8, 16, 35, 16) inView:phoneView text:@"+86" color:subColor boldSize:16 alignment:NSTextAlignmentLeft];
+
 
     
-    self.phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(48, 16 ,  KSW - 90, 16)];
+    self.phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 48, 16)];
     self.phoneTF.delegate = self;
     self.phoneTF.font = [UIFont systemFontOfSize:16];
     self.phoneTF.placeholder = @"请输入11位手机号码";
-    self.phoneTF.textColor = subColor;
+    self.phoneTF.textColor = text_main;
     self.phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.phoneTF.keyboardType = UIKeyboardTypeNumberPad;
     [phoneView addSubview:self.phoneTF];
 
-    UIView *verifyView = [UIView creatView:frame(Mar, phoneView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:rgb(247, 247, 247) radius:8];
+    UIView *verifyView = [UIView creatView:frame(Mar, phoneView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
 
     self.verifyTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 90, 16)];
     self.verifyTF.maxLength(4);
     self.verifyTF.font = [UIFont systemFontOfSize:16];
     self.verifyTF.placeholder = @"请输入验证码";
-    self.verifyTF.textColor = subColor;
+    self.verifyTF.textColor = text_main;
     self.verifyTF.keyboardType = UIKeyboardTypeNumberPad;
     [verifyView addSubview:self.verifyTF];
 
@@ -78,16 +81,47 @@
     [_countBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [_countBtn setTitleColor:mainColor forState:UIControlStateNormal];
     [_countBtn addTarget:self action:@selector(handlecountEvent:) forControlEvents:UIControlEventTouchUpInside];
-    _countBtn.disabledTitleColor = grayTextColor;
     _countBtn.titleLabel.font = Font(14);
     [verifyView addSubview:_countBtn];
+    
+    UIView *invitaView = [UIView creatView:frame(Mar, verifyView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
+    invitaView.alpha = 0;
+    
+    self.invitaTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 90, 16)];
+    self.invitaTF.maxLength(4);
+    self.invitaTF.font = [UIFont systemFontOfSize:16];
+    self.invitaTF.placeholder = @"请输入邀请码";
+    self.invitaTF.textColor = text_main;
+    self.invitaTF.keyboardType = UIKeyboardTypeNumberPad;
+    [invitaView addSubview:self.invitaTF];
+    
     
     UIButton *loginBtn = [UIButton creatBtn:frame(Mar, verifyView.bottom + 40, KSW - Mar2, 48) inView:scroll bgColor:mainColor title:@"登录"  titleColor:appWhiteColor font:16 radius:8 action:^{
         [self login];
     }];
     
+
+    _password = [UILabel creatLabel:frame(Mar, loginBtn.bottom + 16, 80, 20) inView:scroll text:@"密码登录" color:text_one size:14 alignment:NSTextAlignmentLeft];
+    [_password whenTapped:^{
+        MioPasswordLoginVC *vc = [[MioPasswordLoginVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+
     
-    UIImageView *img = [UIImageView creatImgView:frame(1, verifyView.bottom + 33, KSW - 1, 78) inView:scroll image:@"landing_button_projection" radius:0];
+    _invita = [UILabel creatLabel:frame(KSW - Mar - 100, loginBtn.bottom + 16, 100, 20) inView:scroll text:@"输入邀请码" color:text_one size:14 alignment:NSTextAlignmentRight];
+    [_invita whenTapped:^{
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            loginBtn.top = invitaView.bottom + 40;
+            _password.top = loginBtn.bottom + 16;
+            _invita.top = loginBtn.bottom + 16;
+            invitaView.alpha = 1;
+        } completion:^(BOOL finished) {
+            
+        }];
+
+    }];
+
     
     
     UILabel *tip2 = [UILabel creatLabel:frame(KSW/2 - 73, KSH - StatusH - SafeBotH - 54, 146, 40) inView:scroll text:@"登录即代表您阅读并同意用户协议 和 隐私政策" color:grayTextColor size:12 alignment:NSTextAlignmentCenter];
@@ -141,7 +175,6 @@
         [userdefault setObject:user.user_id forKey:@"user_id"];
         [userdefault setObject:user.nickname forKey:@"nickname"];
         [userdefault setObject:user.avatar forKey:@"avatar"];
-        [userdefault setObject:[NSNumber numberWithInt:user.is_teacher] forKey:@"isTeacher"];
         [userdefault synchronize];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];
@@ -155,7 +188,6 @@
 }
 
 -(void)handlecountEvent:(WLCaptcheButton *)sender{
-    
     if (_phoneTF.text.length != 13) {
         [UIWindow showInfo:@"请输入正确手机号"];
         return;

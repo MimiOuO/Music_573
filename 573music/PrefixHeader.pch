@@ -83,8 +83,18 @@
 //======================================================================//
 #define rgb(r,g,b)          [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 #define rgba(r,g,b,a)       [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-//#define mainColor 		    rgba([(colorDic[@"main"][@"r"]) intValue], [(colorDic[@"main"][@"g"]) intValue], [(colorDic[@"main"][@"b"]) intValue], [(colorDic[@"main"][@"a"]) floatValue])
-#define mainColor             rgb(128,222,111)
+#define mainColor 		    rgba([(colorDic[@"main"][@"r"]) intValue], [(colorDic[@"main"][@"g"]) intValue], [(colorDic[@"main"][@"b"]) intValue], [(colorDic[@"main"][@"a"]) floatValue])
+#define text_main             rgba([(colorDic[@"text_main"][@"r"]) intValue], [(colorDic[@"text_main"][@"g"]) intValue], [(colorDic[@"text_main"][@"b"]) intValue], [(colorDic[@"text_main"][@"a"]) floatValue])
+#define text_one             rgba([(colorDic[@"text_one"][@"r"]) intValue], [(colorDic[@"text_one"][@"g"]) intValue], [(colorDic[@"text_one"][@"b"]) intValue], [(colorDic[@"text_one"][@"a"]) floatValue])
+#define text_white          rbga(255,255,255,1)
+#define bg_search           rgba([(colorDic[@"bg_search"][@"r"]) intValue], [(colorDic[@"bg_search"][@"g"]) intValue], [(colorDic[@"bg_search"][@"b"]) intValue], [(colorDic[@"bg_search"][@"a"]) floatValue])
+#define icon_one             rgba([(colorDic[@"icon_one"][@"r"]) intValue], [(colorDic[@"icon_one"][@"g"]) intValue], [(colorDic[@"icon_one"][@"b"]) intValue], [(colorDic[@"icon_one"][@"a"]) floatValue])
+#define icon_two             rgba([(colorDic[@"icon_two"][@"r"]) intValue], [(colorDic[@"icon_two"][@"g"]) intValue], [(colorDic[@"icon_two"][@"b"]) intValue], [(colorDic[@"icon_two"][@"a"]) floatValue])
+#define icon_three             rgba([(colorDic[@"icon_three"][@"r"]) intValue], [(colorDic[@"icon_three"][@"g"]) intValue], [(colorDic[@"icon_three"][@"b"]) intValue], [(colorDic[@"icon_three"][@"a"]) floatValue])
+#define cardColor             rgba([(colorDic[@"card"][@"r"]) intValue], [(colorDic[@"card"][@"g"]) intValue], [(colorDic[@"card"][@"b"]) intValue], [(colorDic[@"card"][@"a"]) floatValue])
+#define dividerColor             rgba([(colorDic[@"divider"][@"r"]) intValue], [(colorDic[@"divider"][@"g"]) intValue], [(colorDic[@"divider"][@"b"]) intValue], [(colorDic[@"divider"][@"a"]) floatValue])
+
+//#define mainColor             rgb(128,222,111)
 #define appBgColor 			rgb(247,247,247)
 #define subColor 		    rgb(25,25,25)
 #define appMemberColor      rgb(255,149,51)
@@ -104,7 +114,7 @@ if (@available(iOS 13.0, *)) {\
 }\
 
 #define SkinName            [userdefault objectForKey:@"skin"]
-#define colorPath           [NSString stringWithFormat:@"%@/Skin/%@/%@/color.json",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],SkinName,SkinName]
+#define colorPath           [NSString stringWithFormat:@"%@/Skin/%@/color.json",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],SkinName]
 #define colorDic            [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:colorPath] options:kNilOptions error:nil]
 
 //======================================================================//
@@ -200,6 +210,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define RecieveNotice(Name,selName) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selName) name:Name object:nil];
 
 #define switchMusic             @"switchMusic"
+#define RecieveChangeSkin       RecieveNotice(@"changeSkin", changeSkin);
 //======================================================================//
 //                               用户
 //======================================================================//

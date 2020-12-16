@@ -14,12 +14,12 @@
 {
     self = [super init];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"changeSkin" object:nil];
+        RecieveChangeSkin;
     }
     return self;
 }
 
--(void)refresh{
+-(void)changeSkin{
     self.textColor = mainColor;
 }
 

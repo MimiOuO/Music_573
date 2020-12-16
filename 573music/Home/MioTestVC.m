@@ -17,8 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
-    [self.navView.centerButton setTitle:@"测试" forState:UIControlStateNormal];
+//    [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
+//    [self.navView.centerButton setTitle:@"测试" forState:UIControlStateNormal];
     
     self.downloadManger = [DownloadManager sharedInstance];
     
