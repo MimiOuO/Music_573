@@ -33,7 +33,7 @@
         UIView* lineView = [UIView new];
         [self addSubview:lineView];
         if (i == 0) {
-            lineView.backgroundColor = mainColor;
+            lineView.backgroundColor = color_main;
         } else {
             lineView.backgroundColor = rgba(51, 51, 51, 0.2);
         }
@@ -62,7 +62,7 @@
     for (UIView* view in self.pageControlArray) {
         NSInteger viewIndex = [self.pageControlArray indexOfObject:view];
         if (viewIndex == index) {
-            view.backgroundColor = mainColor;
+            view.backgroundColor = color_main;
         } else {
             view.backgroundColor = rgba(51, 51, 51, 0.2);
         }

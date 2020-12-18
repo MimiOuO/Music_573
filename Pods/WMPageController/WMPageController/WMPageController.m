@@ -452,7 +452,7 @@ static NSInteger const kWMControllerCountUndefined = -1;
     WMScrollView *scrollView = [[WMScrollView alloc] init];
     scrollView.scrollsToTop = NO;
     scrollView.pagingEnabled = YES;
-    scrollView.backgroundColor = [UIColor whiteColor];
+    scrollView.backgroundColor = [UIColor clearColor];
     scrollView.delegate = self;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -742,7 +742,7 @@ static NSInteger const kWMControllerCountUndefined = -1;
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     if (!self.childControllersCount) return;
     [self wm_calculateSize];
     [self wm_addScrollView];

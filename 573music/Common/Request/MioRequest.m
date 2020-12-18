@@ -33,7 +33,7 @@
 - (NSDictionary *)requestHeaderFieldValueDictionary {
     
     return @{
-//             @"Authorization":[NSString stringWithFormat:@"Bearer %@",[userdefault objectForKey:@"token"]],
+             @"Authorization":[NSString stringWithFormat:@"Bearer %@",[userdefault objectForKey:@"token"]],
              @"Accept":@"application/json"
              };
 }

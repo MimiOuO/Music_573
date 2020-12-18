@@ -102,10 +102,10 @@
     _nameLab = [UILabel creatLabel:frame(60, StatusH + 10, KSW - 120, 25) inView:self.view text:@"光年之外" color:appWhiteColor boldSize:18 alignment:NSTextAlignmentCenter];
     _nameLab.alpha = 0.5;
     _singerLab = [UILabel creatLabel:frame(60, StatusH + 35, KSW - 120, 17) inView:self.view text:@"光年之外" color:rgba(255, 255, 255, 0.7) boldSize:12 alignment:NSTextAlignmentCenter];
-    _qualityBtn = [UIButton creatBtn:frame(KSW2 - 22 - 7, StatusH + 62, 22, 14) inView:self.view bgImage:@"standard_player_player" action:^{
+    _qualityBtn = [UIButton creatBtn:frame(KSW2 - 26 - 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"standard_player_player" action:^{
         
     }];
-    _mvButton = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 22, 14) inView:self.view bgImage:@"mv_player_player" action:^{
+    _mvButton = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"mv_player_player" action:^{
         
     }];
 
@@ -187,10 +187,10 @@
     _downloadBtn = [UIButton creatBtn:frame(28 + (KSW - 56)/3 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"download_player" action:^{
         
     }];
-    _cmtBtn = [UIButton creatBtn:frame(28 + (KSW - 56)*2/3 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"Group_digital_player" action:^{
+    _cmtBtn = [UIButton creatBtn:frame(28 + (KSW - 56)*2/3 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_digital_player" action:^{
         
     }];
-    _moreBtn = [UIButton creatBtn:frame(KSW - 24 -28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"Group_player" action:^{
+    _moreBtn = [UIButton creatBtn:frame(KSW - 24 -28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
         
         goLogin
         

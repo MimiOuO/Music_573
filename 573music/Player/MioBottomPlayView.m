@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = redTextColor;
-//        UIButton *close = [UIButton creatBtn:frame(100, 0, 100, 50) inView:self bgColor:mainColor title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
+//        UIButton *close = [UIButton creatBtn:frame(100, 0, 100, 50) inView:self bgColor:color_main title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
 //            NSLog(@"23423423");
 //
 //        }];

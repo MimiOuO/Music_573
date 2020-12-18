@@ -273,7 +273,7 @@
         CGFloat rightY = self.buttonLeft.st_y;
         _buttonRight = [[UIButton alloc]initWithFrame:CGRectMake(rightX +5, rightY, rightW, rightH)];
         [_buttonRight setTitle:@"确定" forState:UIControlStateNormal];
-        [_buttonRight setTitleColor:mainColor forState:UIControlStateNormal];
+        [_buttonRight setTitleColor:color_main forState:UIControlStateNormal];
 
         [_buttonRight.titleLabel setFont:[UIFont systemFontOfSize:16]];
         [_buttonRight addTarget:self action:@selector(selectedOk) forControlEvents:UIControlEventTouchUpInside];

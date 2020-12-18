@@ -25,6 +25,7 @@
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"更多" forState:UIControlStateNormal];
     [self creatUI];
+    RecieveNotice(@"timeoff", timeoff:);
 }
 
 -(void)creatUI{
@@ -33,18 +34,18 @@
     NSArray *fuc2Arr = @[@"清除缓存",@"意见反馈",@"关于我们"];
     NSArray *arrowArr = @[@"设置密码",@"修改密码",@"听歌识曲",@"扫一扫",@"意见反馈",@"关于我们"];
     
-    UIView *bgView1 = [UIView creatView:frame(Mar, 12, KSW - Mar2 , 44*fuc1Arr.count) inView:bgscroll bgColor:cardColor radius:6];
+    UIView *bgView1 = [UIView creatView:frame(Mar, 12, KSW - Mar2 , 44*fuc1Arr.count) inView:bgscroll bgColor:color_card radius:6];
     for (int i = 0;i < fuc1Arr.count; i++) {
-        UILabel *title = [UILabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView1 text:fuc1Arr[i] color:text_main size:16 alignment:NSTextAlignmentLeft];
+        UILabel *title = [UILabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView1 text:fuc1Arr[i] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
         [title whenTapped:^{
             [self click:fuc1Arr[i]];
         }];
-        UIView *split = [UIView creatView:frame(10, 44 * (i + 1), KSW_Mar2 - 20, 0.5) inView:bgView1 bgColor:dividerColor radius:0];
+        UIView *split = [UIView creatView:frame(10, 44 * (i + 1), KSW_Mar2 - 20, 0.5) inView:bgView1 bgColor:color_split radius:0];
         if ([arrowArr containsObject:fuc1Arr[i]]) {
-            UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView1 image:@"right" bgTintColor:icon_three radius:0];
+            UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView1 image:@"right" bgTintColor:color_icon_three radius:0];
         }
         if (i == 1) {
-            _timeLab = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"关" color:text_one size:14 alignment:NSTextAlignmentRight];
+            _timeLab = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"关" color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
         if (i == 2) {
             _nightSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(KSW_Mar2 - 38 - 20, 7.5 +44*i, 38, 23)];
@@ -62,41 +63,44 @@
             [bgView1 addSubview:_wifiSwitch];
         }
         if (i == 6) {
-            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:text_one size:14 alignment:NSTextAlignmentRight];
+            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
         if (i == 7) {
-            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:text_one size:14 alignment:NSTextAlignmentRight];
+            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
         
     }
     
-    UIView *bgView2 = [UIView creatView:frame(Mar, bgView1.bottom + 8, KSW_Mar2 , 44*fuc2Arr.count) inView:bgscroll bgColor:cardColor radius:6];
+    UIView *bgView2 = [UIView creatView:frame(Mar, bgView1.bottom + 8, KSW_Mar2 , 44*fuc2Arr.count) inView:bgscroll bgColor:color_card radius:6];
     for (int i = 0;i < fuc2Arr.count; i++) {
-        UILabel *title = [UILabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView2 text:fuc2Arr[i] color:text_main size:16 alignment:NSTextAlignmentLeft];
+        UILabel *title = [UILabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView2 text:fuc2Arr[i] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
         [title whenTapped:^{
             [self click:fuc2Arr[i]];
         }];
-        UIView *split = [UIView creatView:frame(10, 44 * (i + 1), KSW - Mar2 - 20, 0.5) inView:bgView2 bgColor:dividerColor radius:0];
+        UIView *split = [UIView creatView:frame(10, 44 * (i + 1), KSW - Mar2 - 20, 0.5) inView:bgView2 bgColor:color_split radius:0];
         if ([arrowArr containsObject:fuc2Arr[i]]) {
-            UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView2 image:@"right" bgTintColor:icon_three radius:0];
+            UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView2 image:@"right" bgTintColor:color_icon_three radius:0];
         }
         if (i == 0) {
-            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView2 text:[NSString stringWithFormat:@"%.1fM",[self filePath]] color:text_one size:14 alignment:NSTextAlignmentRight];
+            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView2 text:[NSString stringWithFormat:@"%.1fM",[self filePath]] color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
     }
     
-    UIButton *logoutBtn = [UIButton creatBtn:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColor:cardColor title:@"退出登录" titleColor:mainColor font:16 radius:6 action:^{
+    UIButton *logoutBtn = [UIButton creatBtn:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColor:color_card title:@"退出登录" titleColor:color_main font:16 radius:6 action:^{
         
     }];
+    
+
 }
+
 
 -(void)click:(NSString *)title{
     if (Equals(title, @"清除缓存")) {
         [self clearFile];
     }
     if (Equals(title, @"定时关闭")) {
-        MioTimeOffVC *vc = [[MioTimeOffVC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+        MioTimeOffVC *timeOff = [[MioTimeOffVC alloc] init];
+        [self.navigationController pushViewController:timeOff animated:YES];
     }
 
 }
@@ -114,6 +118,17 @@
 
 -(void)wifiClick{
     NSLog(@"%d",_wifiSwitch.on);
+}
+
+#pragma mark - timeoff
+- (void)timeoff:(NSNotification *)notification{
+    NSString *count =  notification.userInfo[@"count"];
+    if ([count intValue] < 1) {
+        _timeLab.text = @"关";
+    }else{
+        _timeLab.text = [NSDate stringDuartion:[count floatValue]];
+    }
+    
 }
 
 #pragma mark - 清除缓存

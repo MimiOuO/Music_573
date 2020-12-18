@@ -61,9 +61,12 @@
 #import "MioEmpty.h"
 #import "MioVCConfig.h"
 
+#import "MioColor.h"
 #import "MioLabel.h"
 #import "MioView.h"
 #import "MioImageView.h"
+#import "MioButton.h"
+
 #import "MioScrollView.h"
 
 #import "MioMusicModel.h"
@@ -83,18 +86,67 @@
 //======================================================================//
 #define rgb(r,g,b)          [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 #define rgba(r,g,b,a)       [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-#define mainColor 		    rgba([(colorDic[@"main"][@"r"]) intValue], [(colorDic[@"main"][@"g"]) intValue], [(colorDic[@"main"][@"b"]) intValue], [(colorDic[@"main"][@"a"]) floatValue])
-#define text_main             rgba([(colorDic[@"text_main"][@"r"]) intValue], [(colorDic[@"text_main"][@"g"]) intValue], [(colorDic[@"text_main"][@"b"]) intValue], [(colorDic[@"text_main"][@"a"]) floatValue])
-#define text_one             rgba([(colorDic[@"text_one"][@"r"]) intValue], [(colorDic[@"text_one"][@"g"]) intValue], [(colorDic[@"text_one"][@"b"]) intValue], [(colorDic[@"text_one"][@"a"]) floatValue])
-#define text_white          rbga(255,255,255,1)
-#define bg_search           rgba([(colorDic[@"bg_search"][@"r"]) intValue], [(colorDic[@"bg_search"][@"g"]) intValue], [(colorDic[@"bg_search"][@"b"]) intValue], [(colorDic[@"bg_search"][@"a"]) floatValue])
-#define icon_one             rgba([(colorDic[@"icon_one"][@"r"]) intValue], [(colorDic[@"icon_one"][@"g"]) intValue], [(colorDic[@"icon_one"][@"b"]) intValue], [(colorDic[@"icon_one"][@"a"]) floatValue])
-#define icon_two             rgba([(colorDic[@"icon_two"][@"r"]) intValue], [(colorDic[@"icon_two"][@"g"]) intValue], [(colorDic[@"icon_two"][@"b"]) intValue], [(colorDic[@"icon_two"][@"a"]) floatValue])
-#define icon_three             rgba([(colorDic[@"icon_three"][@"r"]) intValue], [(colorDic[@"icon_three"][@"g"]) intValue], [(colorDic[@"icon_three"][@"b"]) intValue], [(colorDic[@"icon_three"][@"a"]) floatValue])
-#define cardColor             rgba([(colorDic[@"card"][@"r"]) intValue], [(colorDic[@"card"][@"g"]) intValue], [(colorDic[@"card"][@"b"]) intValue], [(colorDic[@"card"][@"a"]) floatValue])
-#define dividerColor             rgba([(colorDic[@"divider"][@"r"]) intValue], [(colorDic[@"divider"][@"g"]) intValue], [(colorDic[@"divider"][@"b"]) intValue], [(colorDic[@"divider"][@"a"]) floatValue])
 
-//#define mainColor             rgb(128,222,111)
+#define name_main                @"main"
+
+#define name_sup_one             @"sup_one"
+#define name_sup_two             @"sup_two"
+#define name_sup_three           @"sup_three"
+#define name_sup_four            @"sup_four"
+
+#define name_text_white          @"text_white"
+#define name_text_one            @"color_text_two"
+#define name_text_two            @"text_two"
+#define name_text_three          @"text_three"
+
+#define name_icon_white          @"icon_white"
+#define name_icon_one            @"color_icon_one"
+#define name_icon_two            @"icon_two"
+#define name_icon_three          @"color_icon_three"
+
+#define name_search              @"search"
+#define name_card                @"card"
+#define name_hud                 @"hud"
+#define name_split               @"split"
+
+#define name_input_bg            @"input_bg"
+#define name_input_line          @"input_line"
+#define name_input_icon          @"input_icon"
+
+
+
+#define color_main 		        rgba([(colorDic[@"main"][@"r"]) intValue], [(colorDic[@"main"][@"g"]) intValue], [(colorDic[@"main"][@"b"]) intValue], [(colorDic[@"main"][@"a"]) floatValue])
+
+#define color_sup_one           rgba([(colorDic[@"sup_one"][@"r"]) intValue], [(colorDic[@"sup_one"][@"g"]) intValue], [(colorDic[@"sup_one"][@"b"]) intValue], [(colorDic[@"sup_one"][@"a"]) floatValue])
+#define color_sup_two           rgba([(colorDic[@"sup_two"][@"r"]) intValue], [(colorDic[@"sup_two"][@"g"]) intValue], [(colorDic[@"sup_two"][@"b"]) intValue], [(colorDic[@"sup_two"][@"a"]) floatValue])
+#define color_sup_three         rgba([(colorDic[@"sup_three"][@"r"]) intValue], [(colorDic[@"sup_three"][@"g"]) intValue], [(colorDic[@"sup_three"][@"b"]) intValue], [(colorDic[@"sup_three"][@"a"]) floatValue])
+#define color_sup_four         rgba([(colorDic[@"sup_four"][@"r"]) intValue], [(colorDic[@"sup_four"][@"g"]) intValue], [(colorDic[@"sup_four"][@"b"]) intValue], [(colorDic[@"sup_four"][@"a"]) floatValue])
+
+#define color_text_white        rgba([(colorDic[@"text_white"][@"r"]) intValue], [(colorDic[@"text_white"][@"g"]) intValue], [(colorDic[@"text_white"][@"b"]) intValue], [(colorDic[@"text_white"][@"a"]) floatValue])
+#define color_text_one          rgba([(colorDic[@"color_text_two"][@"r"]) intValue], [(colorDic[@"color_text_two"][@"g"]) intValue], [(colorDic[@"color_text_two"][@"b"]) intValue], [(colorDic[@"color_text_two"][@"a"]) floatValue])
+#define color_text_two          rgba([(colorDic[@"text_two"][@"r"]) intValue], [(colorDic[@"text_two"][@"g"]) intValue], [(colorDic[@"text_two"][@"b"]) intValue], [(colorDic[@"text_two"][@"a"]) floatValue])
+#define color_text_three        rgba([(colorDic[@"text_three"][@"r"]) intValue], [(colorDic[@"text_three"][@"g"]) intValue], [(colorDic[@"text_three"][@"b"]) intValue], [(colorDic[@"text_three"][@"a"]) floatValue])
+
+#define color_icon_white        rgba([(colorDic[@"icon_white"][@"r"]) intValue], [(colorDic[@"icon_white"][@"g"]) intValue], [(colorDic[@"icon_white"][@"b"]) intValue], [(colorDic[@"icon_white"][@"a"]) floatValue])
+#define color_icon_one          rgba([(colorDic[@"color_icon_one"][@"r"]) intValue], [(colorDic[@"color_icon_one"][@"g"]) intValue], [(colorDic[@"color_icon_one"][@"b"]) intValue], [(colorDic[@"color_icon_one"][@"a"]) floatValue])
+#define color_icon_two          rgba([(colorDic[@"icon_two"][@"r"]) intValue], [(colorDic[@"icon_two"][@"g"]) intValue], [(colorDic[@"icon_two"][@"b"]) intValue], [(colorDic[@"icon_two"][@"a"]) floatValue])
+#define color_icon_three        rgba([(colorDic[@"color_icon_three"][@"r"]) intValue], [(colorDic[@"color_icon_three"][@"g"]) intValue], [(colorDic[@"color_icon_three"][@"b"]) intValue], [(colorDic[@"color_icon_three"][@"a"]) floatValue])
+
+#define color_search            rgba([(colorDic[@"search"][@"r"]) intValue], [(colorDic[@"search"][@"g"]) intValue], [(colorDic[@"search"][@"b"]) intValue], [(colorDic[@"search"][@"a"]) floatValue])
+#define color_card              rgba([(colorDic[@"card"][@"r"]) intValue], [(colorDic[@"card"][@"g"]) intValue], [(colorDic[@"card"][@"b"]) intValue], [(colorDic[@"card"][@"a"]) floatValue])
+#define color_hud               rgba([(colorDic[@"hud"][@"r"]) intValue], [(colorDic[@"hud"][@"g"]) intValue], [(colorDic[@"hud"][@"b"]) intValue], [(colorDic[@"hud"][@"a"]) floatValue])
+#define color_split             rgba([(colorDic[@"split"][@"r"]) intValue], [(colorDic[@"split"][@"g"]) intValue], [(colorDic[@"split"][@"b"]) intValue], [(colorDic[@"split"][@"a"]) floatValue])
+
+#define color_input_bg          rgba([(colorDic[@"input_bg"][@"r"]) intValue], [(colorDic[@"input_bg"][@"g"]) intValue], [(colorDic[@"input_bg"][@"b"]) intValue], [(colorDic[@"input_bg"][@"a"]) floatValue])
+#define color_input_line        rgba([(colorDic[@"input_line"][@"r"]) intValue], [(colorDic[@"input_line"][@"g"]) intValue], [(colorDic[@"input_line"][@"b"]) intValue], [(colorDic[@"input_line"][@"a"]) floatValue])
+#define color_input_icon        rgba([(colorDic[@"input_icon"][@"r"]) intValue], [(colorDic[@"input_icon"][@"g"]) intValue], [(colorDic[@"input_icon"][@"b"]) intValue], [(colorDic[@"input_icon"][@"a"]) floatValue])
+
+
+
+
+
+
+//#define color_main             rgb(128,222,111)
 #define appBgColor 			rgb(247,247,247)
 #define subColor 		    rgb(25,25,25)
 #define appMemberColor      rgb(255,149,51)
@@ -252,6 +304,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 //个人中心
 #define api_userInfo                @"" api_base"/auth/me"
+#define api_modifyInfo                @"" api_base"/me"
+#define api_uploadPic                @"" api_base"/upload"
 #define api_otherUserinfo(user_id)  [NSString stringWithFormat:@"" api_base"/users/%@",user_id]
 
 

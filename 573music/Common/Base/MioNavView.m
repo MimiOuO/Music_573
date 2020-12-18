@@ -20,7 +20,8 @@
     if (!_mainView) {
         _mainView = [UIView new];
         _mainView.backgroundColor = appWhiteColor;
-//        _split = [UIView creatView:frame(0, self.height - 0.5, KSW, 0.5) inView:_mainView bgColor:rgba(0, 0, 0, 0.1)];
+
+        MioImageView *bgimg = [MioImageView creatImgView:frame(0, 0, KSW, NavH) inView:_mainView skin:SkinName image:@"icon_bai.jpg" radius:0];
         
         [self addSubview:_mainView];
 		_mainView.frame = CGRectMake(0, 0, KSW, NavH);

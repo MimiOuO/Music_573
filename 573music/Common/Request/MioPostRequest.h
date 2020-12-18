@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (id)initWithRequestUrl:(NSString *)url argument:(NSDictionary *)argument;
 
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

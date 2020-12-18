@@ -10,7 +10,7 @@
 
 // 当需要一个倒计时的时候就在这里加一个key
 typedef enum : NSUInteger {
-    test1 = 0,
+    timeoff = 0,
     test2,
 } CountdownKey;
 

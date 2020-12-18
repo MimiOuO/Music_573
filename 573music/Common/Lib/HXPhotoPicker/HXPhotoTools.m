@@ -1,6 +1,6 @@
 //
 //  HXPhotoTools.m
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 17/2/8.
 //  Copyright © 2017年 洪欣. All rights reserved.
@@ -248,6 +248,17 @@ NSString *const hx_kKeyContentIdentifier = @"com.apple.quicktime.content.identif
         status = [PHPhotoLibrary authorizationStatus];
     }
     return status;
+}
++ (BOOL)authorizationStatusIsLimited {
+    PHAuthorizationStatus status = [self authorizationStatus];
+#ifdef __IPHONE_14_0
+    if (@available(iOS 14, *)) {
+        if (status == PHAuthorizationStatusLimited) {
+            return YES;
+        }
+    }
+#endif
+    return NO;
 }
 + (void)showUnusableCameraAlert:(UIViewController *)vc {
     hx_showAlert(vc, [NSBundle hx_localizedStringForKey:@"无法使用相机"], [NSBundle hx_localizedStringForKey:@"请在设置-隐私-相机中允许访问相机"], [NSBundle hx_localizedStringForKey:@"取消"], [NSBundle hx_localizedStringForKey:@"设置"] , nil, ^{
@@ -1014,5 +1025,22 @@ NSString *const hx_kKeyContentIdentifier = @"com.apple.quicktime.content.identif
 /// 删除下载的网络视频缓存文件
 + (void)deleteNetWorkVideoFile {
     [[NSFileManager defaultManager] removeItemAtPath:HXPhotoPickerCachesDownloadPath error:nil];
+}
+    
+    
++ (CGFloat)getStatusBarHeight {
+    CGFloat statusBarHeight = 0;
+    if (@available(iOS 13.0, *)) {
+        UIStatusBarManager *statusBarManager = [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager;
+        statusBarHeight = statusBarManager.statusBarFrame.size.height;
+    }
+    else {
+        if ([UIApplication sharedApplication].statusBarHidden) {
+            statusBarHeight = HX_IS_IPhoneX_All ? 44: 20;
+        }else {
+            statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+        }
+    }
+    return statusBarHeight;
 }
 @end

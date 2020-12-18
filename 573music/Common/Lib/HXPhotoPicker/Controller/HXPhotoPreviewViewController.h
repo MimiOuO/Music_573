@@ -1,6 +1,6 @@
 //
 //  HXPhotoPreviewViewController.h
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 2017/10/14.
 //  Copyright © 2017年 洪欣. All rights reserved.
@@ -115,4 +115,5 @@ HXPhotoPreviewViewCell;
 - (void)changeStatusBarWithHidden:(BOOL)hidden;
 - (void)setSubviewAlphaAnimate:(BOOL)animete duration:(NSTimeInterval)duration;
 - (void)setupDarkBtnAlpha:(CGFloat)alpha;
+- (void)setCellImage:(UIImage *)image;
 @end 

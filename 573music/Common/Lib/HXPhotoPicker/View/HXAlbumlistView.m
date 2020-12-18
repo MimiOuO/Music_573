@@ -1,6 +1,6 @@
 //
 //  HXAlbumlistView.m
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 2018/9/26.
 //  Copyright © 2018年 洪欣. All rights reserved.
@@ -267,14 +267,16 @@
     }
     self.countLb.text = @(photoCount).stringValue;
     HXWeakSelf
-    self.requestId = [HXAssetManager requestThumbnailImageForAsset:coverAsset targetWidth:self.hx_h * 1.4 completion:^(UIImage * _Nonnull result, NSDictionary<NSString *,id> * _Nonnull info) {
-        if (weakSelf.model.assetResult.lastObject == coverAsset && result) {
-            weakSelf.coverView.image = result;
-        }
-        if (completion && result) {
-            completion(result, coverAsset);
-        }
-    }];
+    if (coverAsset) {
+        self.requestId = [HXAssetManager requestThumbnailImageForAsset:coverAsset targetWidth:self.hx_h * 1.4 completion:^(UIImage * _Nonnull result, NSDictionary<NSString *,id> * _Nonnull info) {
+            if (weakSelf.model.assetResult.lastObject == coverAsset && result) {
+                weakSelf.coverView.image = result;
+            }
+            if (completion && result) {
+                completion(result, coverAsset);
+            }
+        }];
+    }
 }
 - (void)setConfiguration:(HXPhotoConfiguration *)configuration {
     _configuration = configuration;

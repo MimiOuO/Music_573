@@ -1,6 +1,6 @@
 //
 //  UIViewController+HXExtension.m
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 2017/11/24.
 //  Copyright © 2017年 洪欣. All rights reserved.
@@ -244,7 +244,7 @@
 }
 
 - (HXCustomNavigationController *)hx_customNavigationController {
-    if ([self.navigationController isKindOfClass:[HXCustomNavigationController class]]) {
+    if ([NSStringFromClass([self.navigationController class]) isEqualToString:@"HXCustomNavigationController"]) {
         return (HXCustomNavigationController *)self.navigationController;
     }
     return nil;

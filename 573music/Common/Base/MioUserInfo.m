@@ -43,11 +43,5 @@ static MioUserInfo *_userInfo;
 	[userdefault synchronize];
 }
 
--(NSString *)auth_video_cover{
-    if (self.auth_video_path) {
-        return [NSString stringWithFormat:@"%@?vframe/jpg/offset/1",self.auth_video_path];
-    }
-    return @"";
-}
 
 @end

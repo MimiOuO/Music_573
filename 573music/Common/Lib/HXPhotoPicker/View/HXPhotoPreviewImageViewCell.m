@@ -1,6 +1,6 @@
 //
 //  HXPhotoPreviewImageViewCell.m
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 2019/12/5.
 //  Copyright © 2019 洪欣. All rights reserved.
@@ -26,6 +26,9 @@
         [self.scrollView addSubview:self.previewContentView];
     }
     return self;
+}
+- (void)setAllowPreviewDirectLoadOriginalImage:(BOOL)allowPreviewDirectLoadOriginalImage {
+    self.previewContentView.allowPreviewDirectLoadOriginalImage = allowPreviewDirectLoadOriginalImage;
 }
 - (void)setModel:(HXPhotoModel *)model {
     [super setModel:model];

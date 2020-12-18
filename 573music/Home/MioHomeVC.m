@@ -31,7 +31,7 @@
     RecieveChangeSkin;
     
     _contentView = [[UIView alloc] initWithFrame:frame(0, 0, KSW, KSH - TabH)];
-    _contentView.backgroundColor = [UIColor yellowColor];
+    _contentView.backgroundColor = appClearColor;
     [self.view addSubview:_contentView];
     
 
@@ -48,9 +48,9 @@
     _pageController.titleFontName      = @"PingFangSC-Medium";
     _pageController.titleSizeNormal    = 16;
     _pageController.titleSizeSelected  = 20;
-    _pageController.menuBGColor        = appWhiteColor;
+    _pageController.menuBGColor        = appClearColor;
     _pageController.titleColorNormal   = subColor;
-    _pageController.titleColorSelected = mainColor;
+    _pageController.titleColorSelected = color_main;
     _pageController.progressWidth      = 16;
     _pageController.progressHeight     = 3;
     _pageController.progressViewCornerRadius = 1.5;
@@ -61,7 +61,7 @@
     
     
 //    self.view.backgroundColor = appWhiteColor;
-//    UIButton *sdfsd = [UIButton creatBtn:frame(100, 100, 100, 100) inView:self.view bgColor:mainColor title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
+//    UIButton *sdfsd = [UIButton creatBtn:frame(100, 100, 100, 100) inView:self.view bgColor:color_main title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
 //
 //        if (Equals([userdefault objectForKey:@"skin"], @"bai") ) {
 //            [userdefault setObject:@"hei" forKey:@"skin"];
@@ -73,7 +73,7 @@
 ////        MioFeedBackVC *vc = [[MioFeedBackVC alloc] init];
 ////        [self.navigationController pushViewController:vc animated:YES];
 //    }];
-//    UIButton *sdfsdws = [UIButton creatBtn:frame(100, 220, 100, 100) inView:self.view bgColor:mainColor title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
+//    UIButton *sdfsdws = [UIButton creatBtn:frame(100, 220, 100, 100) inView:self.view bgColor:color_main title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
 //
 //        [mioPlayer play];
 //        return;
@@ -81,7 +81,7 @@
 //        [self.navigationController pushViewController:vc animated:YES];
 //    }];
 //
-//    UIButton *sdfsdw21s = [UIButton creatBtn:frame(100, 340, 100, 100) inView:self.view bgColor:mainColor title:@"222" titleColor:appWhiteColor font:14 radius:5 action:^{
+//    UIButton *sdfsdw21s = [UIButton creatBtn:frame(100, 340, 100, 100) inView:self.view bgColor:color_main title:@"222" titleColor:appWhiteColor font:14 radius:5 action:^{
 //        MioPlayListVC * vc = [[MioPlayListVC alloc]init];
 //        [self presentViewController:vc animated:YES completion:nil];
 ////        [mioPlayer pause];
@@ -125,7 +125,7 @@
 }
 
 -(void)changeSkin{
-    _pageController.titleColorSelected = mainColor;
+    _pageController.titleColorSelected = color_main;
     [_pageController reloadData];
     CGFloat r = (CGFloat) [(colorDic[@"main"][@"r"]) intValue]/255.0;
     CGFloat g = (CGFloat) [(colorDic[@"main"][@"g"]) intValue]/255.0;

@@ -14,7 +14,7 @@
         self.multipleSelectionBackgroundView = [UIView new];
         
         self.tintColor = [UIColor redColor];
-        self.contentView.backgroundColor = mainColor;
+        self.contentView.backgroundColor = color_main;
     }
     return self;
 }

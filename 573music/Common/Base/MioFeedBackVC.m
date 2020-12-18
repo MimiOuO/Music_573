@@ -31,7 +31,7 @@
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"反馈" forState:UIControlStateNormal];
     [self.navView.rightButton  setTitle:@"提交" forState:UIControlStateNormal];
-    [self.navView.rightButton setTitleColor:mainColor forState:UIControlStateNormal];
+    [self.navView.rightButton setTitleColor:color_main forState:UIControlStateNormal];
     self.navView.rightButtonBlock = ^{
         [weakSelf submit];
     };
@@ -48,9 +48,9 @@
     for (int i = 0; i < _dataArr.count; i++) {
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(Mar + (i % 3) * ((KSW - 20 - Mar2 )/3 +10), NavH + 40 +Mar + (i / 3) * 50, (KSW - 20 - Mar2)/3, 30)];
         ViewRadius(btn, 5);
-        [btn setBackgroundColor:mainColor forState:UIControlStateSelected];
+        [btn setBackgroundColor:color_main forState:UIControlStateSelected];
         [btn setBackgroundColor:appWhiteColor forState:UIControlStateNormal];
-        [btn setTitleColor:mainColor forState:UIControlStateNormal];
+        [btn setTitleColor:color_main forState:UIControlStateNormal];
         [btn setTitleColor:appWhiteColor forState:UIControlStateSelected];
         [btn setTitle:_dataArr[i]  forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];

@@ -147,8 +147,8 @@
     //选中字体颜色
     [userdefault setObject:@"bai" forKey:@"skin"];
     [userdefault synchronize];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:mainColor,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
-    self.tabBar.tintColor = mainColor;
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:color_main,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
+    self.tabBar.tintColor = color_main;
     
     [nav.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -2)];
     

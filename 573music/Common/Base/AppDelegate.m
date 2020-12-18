@@ -44,6 +44,7 @@
     [self changeSkinLocation];
     
     [self initSettings];
+    [userdefault setObject:@"不开启" forKey:@"timeoff"];
     
     self.window.rootViewController = [[MioTabbarVC alloc] init];
 
@@ -60,7 +61,6 @@
     if (![userdefault objectForKey:@"first"]) {
         [userdefault setObject:@"1" forKey:@"first"];
         [userdefault setObject:@"bai" forKey:@"skin"];
-        [userdefault setObject:@"不开启" forKey:@"timeoff"];
         setPlayOrder(MioPlayOrderCycle);
     }
 }
@@ -146,6 +146,7 @@
         
     }
 }
+
 
 #pragma mark - 程序将要进入后台
 - (void)applicationWillResignActive:(UIApplication *)application {

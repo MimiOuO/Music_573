@@ -1,6 +1,6 @@
 //
 //  HXPhotoPreviewViewController.m
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 2017/10/14.
 //  Copyright © 2017年 洪欣. All rights reserved.
@@ -73,6 +73,10 @@ HX_PhotoEditViewControllerDelegate
             [self changeStatusBarStyle];
             [self setNeedsStatusBarAppearanceUpdate];
             [self.collectionView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                HXPhotoPreviewViewCell *cell = (HXPhotoPreviewViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentModelIndex inSection:0]];
+                [cell requestHDImage];
+            });
         }
     }
 #endif
@@ -255,6 +259,12 @@ HX_PhotoEditViewControllerDelegate
     
     [self addGesture];
     
+}
+- (void)setCellImage:(UIImage *)image {
+    if (image) {
+        HXPhotoPreviewViewCell *cell = (HXPhotoPreviewViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentModelIndex inSection:0]];
+        cell.previewContentView.imageView.image = image;
+    }
 }
 #pragma mark - < private >
 - (void)setExteriorPreviewStyle:(HXPhotoViewPreViewShowStyle)exteriorPreviewStyle {
@@ -723,7 +733,7 @@ HX_PhotoEditViewControllerDelegate
 }
 - (void)changeStatusBarWithHidden:(BOOL)hidden {
     self.statusBarShouldBeHidden = hidden;
-    [self preferredStatusBarUpdateAnimation];
+//    [self preferredStatusBarUpdateAnimation];
 }
 - (void)setSubviewAlphaAnimate:(BOOL)animete duration:(NSTimeInterval)duration {
     if (self.exteriorPreviewStyle == HXPhotoViewPreViewShowStyleDark) {
@@ -816,6 +826,7 @@ HX_PhotoEditViewControllerDelegate
     }else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HXPhotoPreviewImageViewCell" forIndexPath:indexPath];
     }
+    cell.allowPreviewDirectLoadOriginalImage = self.manager.configuration.allowPreviewDirectLoadOriginalImage;
     cell.cellViewLongPressGestureRecognizerBlock = ^(UILongPressGestureRecognizer * _Nonnull longPress) {
         [weakSelf respondsToLongPress:longPress];
     };

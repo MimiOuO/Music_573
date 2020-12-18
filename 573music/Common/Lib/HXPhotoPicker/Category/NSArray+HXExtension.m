@@ -1,6 +1,6 @@
 //
 //  NSArray+HXExtension.m
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 2019/1/7.
 //  Copyright © 2019年 洪欣. All rights reserved.
@@ -149,6 +149,8 @@
     HXWeakSelf
     [self requestImageWithOriginal:original photoModel:model successful:^(UIImage * _Nullable image, NSURL * _Nullable imagePath, HXPhotoModel *photoModel) {
         if (image) {
+            photoModel.thumbPhoto = image;
+            photoModel.previewPhoto = image;
             [imageList addObject:image];
         }else if (imagePath) {
             UIImage *hImage = [NSArray hx_disposeHEICWithPath:imagePath.relativePath];

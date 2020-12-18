@@ -1,6 +1,6 @@
 //
 //  HXPreviewContentView.m
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 2019/11/19.
 //  Copyright © 2019 洪欣. All rights reserved.
@@ -27,6 +27,10 @@
         }
     }
     return self;
+}
+- (void)setAllowPreviewDirectLoadOriginalImage:(BOOL)allowPreviewDirectLoadOriginalImage {
+    _allowPreviewDirectLoadOriginalImage = allowPreviewDirectLoadOriginalImage;
+    self.imageView.allowPreviewDirectLoadOriginalImage = allowPreviewDirectLoadOriginalImage;
 }
 - (void)setModel:(HXPhotoModel *)model {
     _model = model;
@@ -105,17 +109,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    if (!CGRectEqualToRect(self.imageView.frame, self.bounds)) {
         self.imageView.frame = self.bounds;
-    }
     if (self.type == HXPreviewContentViewTypeLivePhoto) {
-        if (!CGRectEqualToRect(self.livePhotoView.frame, self.bounds)) {
-            self.livePhotoView.frame = self.bounds;
-        }
+        self.livePhotoView.frame = self.bounds;
     }else if (self.type == HXPreviewContentViewTypeVideo) {
-        if (!CGRectEqualToRect(self.videoView.frame, self.bounds)) {
-            self.videoView.frame = self.bounds;
-        }
+        self.videoView.frame = self.bounds;
     }
 } 
 

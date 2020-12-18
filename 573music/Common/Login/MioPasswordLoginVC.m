@@ -42,13 +42,13 @@
     UIScrollView *scroll = [UIScrollView creatScroll:frame(0, StatusH, KSW, KSH - StatusH) inView:self.view contentSize:CGSizeMake(0, 0)];
 
     
-    UIButton *closeBtn = [UIButton creatBtn:frame(0, StatusH, 56, 44) inView:self.view bgImage:@"backArrow" bgTintColor:icon_one action:^{
+    UIButton *closeBtn = [UIButton creatBtn:frame(0, StatusH, 56, 44) inView:self.view bgImage:@"backArrow" bgTintColor:color_icon_one action:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
 
-    UILabel *titleLabel = [UILabel creatLabel:frame(Mar, StatusH + 60, 250, 30) inView:scroll text:@"欢迎来到573音乐" color:text_main boldSize:26 alignment:NSTextAlignmentLeft];
-    UILabel *tip = [UILabel creatLabel:frame(Mar, titleLabel.bottom + 8, KSW, 12) inView:scroll text:@"未注册的手机号码通过验证码登录后将自动注册" color:text_one size:12 alignment:NSTextAlignmentLeft];
-    UIView *phoneView = [UIView creatView:frame(Mar, tip.bottom + 60, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
+    UILabel *titleLabel = [UILabel creatLabel:frame(Mar, StatusH + 60, 250, 30) inView:scroll text:@"欢迎来到573音乐" color:color_text_one boldSize:26 alignment:NSTextAlignmentLeft];
+    UILabel *tip = [UILabel creatLabel:frame(Mar, titleLabel.bottom + 8, KSW, 12) inView:scroll text:@"未注册的手机号码通过验证码登录后将自动注册" color:color_text_two size:12 alignment:NSTextAlignmentLeft];
+    UIView *phoneView = [UIView creatView:frame(Mar, tip.bottom + 60, KSW - 2*Mar, 48) inView:scroll bgColor:color_search radius:8];
     
     
 
@@ -62,18 +62,18 @@
     self.phoneTF.delegate = self;
     self.phoneTF.font = [UIFont systemFontOfSize:16];
     self.phoneTF.placeholder = @"请输入11位手机号码";
-    self.phoneTF.textColor = text_main;
+    self.phoneTF.textColor = color_text_one;
     self.phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.phoneTF.keyboardType = UIKeyboardTypeNumberPad;
     [phoneView addSubview:self.phoneTF];
 
-    UIView *verifyView = [UIView creatView:frame(Mar, phoneView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:bg_search radius:8];
+    UIView *verifyView = [UIView creatView:frame(Mar, phoneView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:color_search radius:8];
 
     self.verifyTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 48, 16)];
     self.verifyTF.maxLength(30);
     self.verifyTF.font = [UIFont systemFontOfSize:16];
     self.verifyTF.placeholder = @"请输入密码";
-    self.verifyTF.textColor = text_main;
+    self.verifyTF.textColor = color_text_one;
     self.verifyTF.keyboardType = UIKeyboardTypeNumberPad;
     self.verifyTF.secureTextEntry = YES;
     self.verifyTF.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -81,18 +81,18 @@
 
     
     
-    UIButton *loginBtn = [UIButton creatBtn:frame(Mar, verifyView.bottom + 40, KSW - Mar2, 48) inView:scroll bgColor:mainColor title:@"密码登录" titleColor:appWhiteColor font:16 radius:8 action:^{
+    UIButton *loginBtn = [UIButton creatBtn:frame(Mar, verifyView.bottom + 40, KSW - Mar2, 48) inView:scroll bgColor:color_main title:@"密码登录" titleColor:appWhiteColor font:16 radius:8 action:^{
         [self login];
     }];
     
 
-    _password = [UILabel creatLabel:frame(Mar, loginBtn.bottom + 16, 80, 20) inView:scroll text:@"验证码登录" color:text_one size:14 alignment:NSTextAlignmentLeft];
+    _password = [UILabel creatLabel:frame(Mar, loginBtn.bottom + 16, 80, 20) inView:scroll text:@"验证码登录" color:color_text_two size:14 alignment:NSTextAlignmentLeft];
     [_password whenTapped:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
 
     
-    _forgetPassword = [UILabel creatLabel:frame(KSW - Mar - 80, loginBtn.bottom + 16, 80, 20) inView:scroll text:@"忘记密码" color:text_one size:14 alignment:NSTextAlignmentRight];
+    _forgetPassword = [UILabel creatLabel:frame(KSW - Mar - 80, loginBtn.bottom + 16, 80, 20) inView:scroll text:@"忘记密码" color:color_text_two size:14 alignment:NSTextAlignmentRight];
     [_forgetPassword whenTapped:^{
         MioModiPassWordVC *vc = [[MioModiPassWordVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
@@ -150,7 +150,6 @@
         [userdefault setObject:user.user_id forKey:@"user_id"];
         [userdefault setObject:user.nickname forKey:@"nickname"];
         [userdefault setObject:user.avatar forKey:@"avatar"];
-        [userdefault setObject:[NSNumber numberWithInt:user.is_teacher] forKey:@"isTeacher"];
         [userdefault synchronize];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];

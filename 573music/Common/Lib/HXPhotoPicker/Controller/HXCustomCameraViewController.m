@@ -1,6 +1,6 @@
 //
 //  HXCustomCameraViewController.m
-//  HXPhotoPicker-Demo
+//  HXPhotoPickerExample
 //
 //  Created by 洪欣 on 2017/9/30.
 //  Copyright © 2017年 洪欣. All rights reserved.
@@ -172,7 +172,7 @@ CLLocationManagerDelegate
 }
 - (void)setupImageOutput {
     [self.cameraController initImageOutput];
-    self.cameraController.flashMode = 2;
+    self.cameraController.flashMode = AVCaptureFlashModeAuto;
 }
 - (void)setupMovieOutput {
     [self.cameraController addAudioInput];
@@ -255,8 +255,7 @@ CLLocationManagerDelegate
     
     self.previewView.maxScale = [self.cameraController maxZoomFactor];
     [self resetCameraZoom];
-    
-    self.cameraController.flashMode = 0;
+    self.cameraController.flashMode = AVCaptureFlashModeAuto;
     [self setupFlashAndTorchBtn];
     self.previewView.tapToExposeEnabled = self.cameraController.cameraSupportsTapToExpose;
     self.previewView.tapToFocusEnabled = self.cameraController.cameraSupportsTapToFocus;

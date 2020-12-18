@@ -24,7 +24,7 @@
         
     }
     
-    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC"];
+    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioViewController",@"MioMvCmtVC"];
     NSArray *allArr = @[@"MioHomeVC",@"MioGroudVC",@"MioMineVC",@"MioHomeRecommendVC",@"MioHomeMusicHallVC"];
     
     
