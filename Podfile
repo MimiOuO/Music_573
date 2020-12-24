@@ -30,4 +30,5 @@ pod 'SSZipArchive'
 pod 'CHTCollectionViewWaterfallLayout'
 pod 'YYText'
 pod 'WHC_ModelSqliteKit'
+pod "SODownloader"
 end

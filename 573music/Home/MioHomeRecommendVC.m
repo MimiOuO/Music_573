@@ -14,6 +14,7 @@
 #import "MioSearchResultVC.h"
 #import "MioMvVC.h"
 #import "MioColor.h"
+#import "MioTest2VC.h"
 
 @interface MioHomeRecommendVC ()
 @property (nonatomic, strong) MioUserInfo *user;
@@ -41,8 +42,9 @@
     UILabel *name = [UILabel creatLabel:frame(100, 200, 200, 100) inView:self.view text:@"11111111" color:color_main size:20 alignment:NSTextAlignmentLeft];
 
     UIButton *butt = [UIButton creatBtn:frame(100, 300, 50, 50) inView:self.view bgImage:@"cycle_player" bgTintColor:color_main action:^{
-
-        goLogin;
+        MioTest2VC *vc = [[MioTest2VC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+//        goLogin;
 //        MioMvVC *vc = [[MioMvVC alloc] init];
 //        [self.navigationController pushViewController:vc animated:YES];
     }];

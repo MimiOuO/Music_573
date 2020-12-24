@@ -19,14 +19,14 @@
                          @"sup_four",
                          
                          @"text_white",
-                         @"color_text_two",
+                         @"text_one",
                          @"text_two",
                          @"text_three",
                          
                          @"icon_white",
-                         @"color_icon_one",
+                         @"icon_one",
                          @"icon_two",
-                         @"color_icon_three",
+                         @"icon_three",
                          
                          @"search",
                          @"card",

@@ -19,15 +19,8 @@
 @interface MioTabbarVC ()
 
 @property (nonatomic, strong) UIControl *shadowView;
-@property (nonatomic, strong) UIView *tipView;
-@property (nonatomic, strong) UIButton *agreeBtn;
-@property (nonatomic, strong) UIButton *rejectBtn;
-@property (nonatomic, strong) UILabel *gameNameLab;
-@property (nonatomic, strong) UILabel *price;
-@property (nonatomic, strong) UILabel *userName;
-@property (nonatomic, strong) UILabel *timeAndNum;
-@property (nonatomic, strong) UILabel *remark;
 @property (nonatomic, strong) MioBottomPlayView *split;
+@property (nonatomic, strong) UIImageView *bgView;
 
 @property (nonatomic, strong) MioHomeVC *homeVC;
 @property (nonatomic, strong) MioGroudVC *groundVC;
@@ -50,23 +43,25 @@
     [self setValue:self.tabbar forKeyPath:@"tabBar"];
     
     // 设置一个自定义 View,大小等于 tabBar 的大小
-    UIView *bgView = [[UIView alloc] initWithFrame:frame(0, 0, KSW, 49 + SafeBotH)];
-    // 给自定义 View 设置颜色
-    bgView.backgroundColor = appWhiteColor;
+    _bgView = [[UIImageView alloc] initWithFrame:frame(0, 0, KSW, 49 + SafeBotH)];
+    _bgView.image = imagePath(@"picture_bql");
+
+    
     // 将自定义 View 添加到 tabBar 上
-    [self.tabBar insertSubview:bgView atIndex:0];
+    [self.tabBar insertSubview:_bgView atIndex:0];
+    
+    MioView *split = [MioView creatView:frame(0, 0, KSW, 0.5) inView:self.tabbar bgColorName:name_split radius:0];
     
     _mainPlayerVC = [[MioMainPlayerVC alloc] init];
     _split = [[MioBottomPlayView alloc] initWithFrame:frame(0, -50, KSW, 50)];
     [_split whenTapped:^{
-//        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:[UIViewController new]];
-////                UINavigationController *nav = self.tabBar.selectedViewController;
-//                [nav pushViewController:_mainPlayerVC animated:YES];
+
         MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:_mainPlayerVC];
         nav.modalPresentationStyle = 0;
         [self presentViewController:nav animated:YES completion:nil];
     }];
     [self.tabbar addSubview:_split];
+    [self.tabbar sendSubviewToBack:_split];
     
     self.tabBar.backgroundImage = [[UIImage alloc]init];
     self.tabBar.shadowImage = [[UIImage alloc]init];
@@ -93,60 +88,59 @@
     _groundVC = [MioGroudVC new];
     _mineVC = [MioMineVC new];
     //首页
-    [self addChildVc:_homeVC title:@"首页" image:@"tab_home_ordinary" selectedImage:@"tab_home_selected"];
+    [self addChildVc:_homeVC title:@"首页" image:imagePath(@"tab_yingyue_putong") selectedImage:imagePath(@"tab_yingyue")];
     //发现
-    [self addChildVc:_groundVC title:@"广场" image:@"tab_found_ordinary" selectedImage:@""];
-    //消息
-    [self addChildVc:[MioGroudVC new] title:@"消息" image:@"tab_message_ordinary" selectedImage:@""];
+    [self addChildVc:_groundVC title:@"广场" image:imagePath(@"tab_mv_putong") selectedImage:imagePath(@"tab_mv")];
+ 
     //我的
-    [self addChildVc:_mineVC title:@"我的" image:@"tab_my_ordinary" selectedImage:@""];
+    [self addChildVc:_mineVC title:@"我的" image:imagePath(@"tab_me_putong") selectedImage:imagePath(@"tab_me")];
 	
-//    _hud1 = [LOTAnimationView animationNamed:@"首页"];
-//    _hud2 = [LOTAnimationView animationNamed:@"社区"];
-//    _hud3 = [LOTAnimationView animationNamed:@"消息"];
-//    _hud4 = [LOTAnimationView animationNamed:@"我的"];
-//    _hud1.userInteractionEnabled = NO;
-//    _hud2.userInteractionEnabled = NO;
-//    _hud3.userInteractionEnabled = NO;
-//    _hud4.userInteractionEnabled = NO;
+
 
 }
 
 -(void)changeSkin{
-//    _hud1 = [LOTAnimationView animationNamed:@"首页"];
-//    _hud2 = [LOTAnimationView animationNamed:@"首页"];
-//    _hud3 = [LOTAnimationView animationNamed:@"首页"];
-//    _hud4 = [LOTAnimationView animationNamed:@"首页"];
+
     
     NSArray<UITabBarItem *> *items = self.tabBar.items;
     
-    items[0].image = image(@"tab_home_ordinary");
-    items[1].image = image(@"tab_home_ordinary");
-    items[2].image = image(@"tab_home_ordinary");
-    items[3].image = image(@"tab_home_ordinary");
+
+    items[0].image = [UIImage imageWithCGImage:imagePath(@"tab_yingyue_putong").CGImage scale:3 orientation:UIImageOrientationUp];
+    items[1].image = [UIImage imageWithCGImage:imagePath(@"tab_mv_putong").CGImage scale:3 orientation:UIImageOrientationUp];
+    items[2].image = [UIImage imageWithCGImage:imagePath(@"tab_me_putong").CGImage scale:3 orientation:UIImageOrientationUp];
+    
+    items[0].selectedImage = [[UIImage imageWithCGImage:imagePath(@"tab_yingyue").CGImage scale:3 orientation:UIImageOrientationUp] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    items[1].selectedImage = [[UIImage imageWithCGImage:imagePath(@"tab_mv").CGImage scale:3 orientation:UIImageOrientationUp] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    items[2].selectedImage = [[UIImage imageWithCGImage:imagePath(@"tab_me").CGImage scale:3 orientation:UIImageOrientationUp] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    self.tabBar.tintColor = color_main;
+    _bgView.image = imagePath(@"picture_bql");
 }
 
 
 #pragma mark - 添加子控制器
-- (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage{
+- (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(UIImage *)image selectedImage:(UIImage *)selectedImage{
     // 设置子控制器的文字(可以设置tabBar和navigationBar的文字)
     childVc.title = title;
     
     // 设置子控制器的tabBarItem图片
-    childVc.tabBarItem.image = [UIImage imageNamed:image];
+    childVc.tabBarItem.image = image;
     // 禁用图片渲染
-    childVc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    childVc.tabBarItem.selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:childVc];
 
+    UIImage *normalImage = [UIImage imageWithCGImage:image.CGImage scale:3 orientation:UIImageOrientationUp];
+    UIImage *selectImage = [UIImage imageWithCGImage:selectedImage.CGImage scale:3 orientation:UIImageOrientationUp];
     //设置item按钮
-    nav.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[[UIImage imageNamed:image]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:selectedImage]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    nav.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[normalImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[selectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     //未选中字体颜色
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:rgb(136, 134, 135),NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
+    
+//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:rgb(136, 134, 135),NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
+    
     //选中字体颜色
-    [userdefault setObject:@"bai" forKey:@"skin"];
-    [userdefault synchronize];
+
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:color_main,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
     self.tabBar.tintColor = color_main;
     
@@ -194,133 +188,6 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     
-        
-//    NSInteger index = [self.tabBar.items indexOfObject:item];
-//    
-//    UIView *subview1 = self.tabBar.subviews[3];
-//    UIView *subview2 = self.tabBar.subviews[4];
-//    UIView *subview3 = self.tabBar.subviews[5];
-//    UIView *subview4 = self.tabBar.subviews[6];
-//    
-//    
-//    UIView *subimg1;
-//    UIView *subimg2;
-//    UIView *subimg3;
-//    UIView *subimg4;
-//    
-//    for (UIView *subImg in subview1.subviews) {
-//        if ([subImg isKindOfClass:NSClassFromString(@"UITabBarSwappableImageView")]) {
-//            subimg1 = subImg;
-//        }
-//    }
-//    for (UIView *subImg in subview2.subviews) {
-//        if ([subImg isKindOfClass:NSClassFromString(@"UITabBarSwappableImageView")]) {
-//            subimg2 = subImg;
-//        }
-//    }
-//    for (UIView *subImg in subview3.subviews) {
-//        if ([subImg isKindOfClass:NSClassFromString(@"UITabBarSwappableImageView")]) {
-//            subimg3 = subImg;
-//        }
-//    }
-//    for (UIView *subImg in subview4.subviews) {
-//        if ([subImg isKindOfClass:NSClassFromString(@"UITabBarSwappableImageView")]) {
-//            subimg4 = subImg;
-//        }
-//    }
-//
-//    
-//    _hud1.frame = frame(0, 5.33, 25, 25);
-//    _hud1.centerX = subview1.width/2;
-//    [subview1 addSubview:_hud1];
-//    
-//
-//    _hud2.frame = frame(0, 5.33, 25, 25);
-//    _hud2.centerX = subview2.width/2;
-//    [subview2 addSubview:_hud2];
-//    
-//    _hud3.frame = frame(0, 5.33, 25, 25);
-//    _hud3.centerX = subview3.width/2;
-//    [subview3 addSubview:_hud3];
-//    
-//    _hud4.frame = frame(0, 5.33, 25, 25);
-//    _hud4.centerX = subview4.width/2;
-//    [subview4 addSubview:_hud4];
-//    
-//    if (index == 0) {
-//        
-//        [_hud1 play];
-//        [_hud2 stop];
-//        [_hud3 stop];
-//        [_hud4 stop];
-//        
-//        subimg1.hidden = YES;
-//        subimg2.hidden = NO;
-//        subimg3.hidden = NO;
-//        subimg4.hidden = NO;
-//    }
-//    
-//    if (index == 1) {
-//
-//        [_hud1 stop];
-//        [_hud2 play];
-//        [_hud3 stop];
-//        [_hud4 stop];
-//        
-//        subimg1.hidden = NO;
-//        subimg2.hidden = YES;
-//        subimg3.hidden = NO;
-//        subimg4.hidden = NO;
-//    }
-//
-//    if (index == 2) {
-//
-//        [_hud1 stop];
-//        [_hud2 stop];
-//        [_hud3 play];
-//        [_hud4 stop];
-//        
-//        subimg1.hidden = NO;
-//        subimg2.hidden = NO;
-//        subimg3.hidden = YES;
-//        subimg4.hidden = NO;
-//    }
-//    if (index == 3) {
-//
-//        [_hud1 stop];
-//        [_hud2 stop];
-//        [_hud3 stop];
-//        [_hud4 play];
-//        
-//        subimg1.hidden = NO;
-//        subimg2.hidden = NO;
-//        subimg3.hidden = NO;
-//        subimg4.hidden = YES;
-//    }
-    
-    
-
-        
-//    subview.subviews
-//    [hud1 playWithCompletion:^(BOOL animationFinished) {
-//        for (UIView *subImg in subview.subviews) {
-//            if ([subImg isKindOfClass:NSClassFromString(@"UITabBarSwappableImageView")]) {
-////                subImg.hidden = NO;
-//                [hud removeFromSuperview];
-//            }
-//        }
-//    }];
-//    if (index > 0) {
-//        if (![MioUserInfo shareUserInfo].isLogin) {
-//            goLogin;
-//            return;
-//        }else{
-//            [self animationWithIndex:index];
-//
-//        }
-//    }else{
-//        [self animationWithIndex:index];
-//    }
 }
 
 

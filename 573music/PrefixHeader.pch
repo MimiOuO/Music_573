@@ -95,14 +95,14 @@
 #define name_sup_four            @"sup_four"
 
 #define name_text_white          @"text_white"
-#define name_text_one            @"color_text_two"
+#define name_text_one            @"text_one"
 #define name_text_two            @"text_two"
 #define name_text_three          @"text_three"
 
 #define name_icon_white          @"icon_white"
-#define name_icon_one            @"color_icon_one"
+#define name_icon_one            @"icon_one"
 #define name_icon_two            @"icon_two"
-#define name_icon_three          @"color_icon_three"
+#define name_icon_three          @"icon_three"
 
 #define name_search              @"search"
 #define name_card                @"card"
@@ -120,17 +120,17 @@
 #define color_sup_one           rgba([(colorDic[@"sup_one"][@"r"]) intValue], [(colorDic[@"sup_one"][@"g"]) intValue], [(colorDic[@"sup_one"][@"b"]) intValue], [(colorDic[@"sup_one"][@"a"]) floatValue])
 #define color_sup_two           rgba([(colorDic[@"sup_two"][@"r"]) intValue], [(colorDic[@"sup_two"][@"g"]) intValue], [(colorDic[@"sup_two"][@"b"]) intValue], [(colorDic[@"sup_two"][@"a"]) floatValue])
 #define color_sup_three         rgba([(colorDic[@"sup_three"][@"r"]) intValue], [(colorDic[@"sup_three"][@"g"]) intValue], [(colorDic[@"sup_three"][@"b"]) intValue], [(colorDic[@"sup_three"][@"a"]) floatValue])
-#define color_sup_four         rgba([(colorDic[@"sup_four"][@"r"]) intValue], [(colorDic[@"sup_four"][@"g"]) intValue], [(colorDic[@"sup_four"][@"b"]) intValue], [(colorDic[@"sup_four"][@"a"]) floatValue])
+#define color_sup_four          rgba([(colorDic[@"sup_four"][@"r"]) intValue], [(colorDic[@"sup_four"][@"g"]) intValue], [(colorDic[@"sup_four"][@"b"]) intValue], [(colorDic[@"sup_four"][@"a"]) floatValue])
 
 #define color_text_white        rgba([(colorDic[@"text_white"][@"r"]) intValue], [(colorDic[@"text_white"][@"g"]) intValue], [(colorDic[@"text_white"][@"b"]) intValue], [(colorDic[@"text_white"][@"a"]) floatValue])
-#define color_text_one          rgba([(colorDic[@"color_text_two"][@"r"]) intValue], [(colorDic[@"color_text_two"][@"g"]) intValue], [(colorDic[@"color_text_two"][@"b"]) intValue], [(colorDic[@"color_text_two"][@"a"]) floatValue])
+#define color_text_one          rgba([(colorDic[@"text_one"][@"r"]) intValue], [(colorDic[@"text_one"][@"g"]) intValue], [(colorDic[@"text_one"][@"b"]) intValue], [(colorDic[@"text_one"][@"a"]) floatValue])
 #define color_text_two          rgba([(colorDic[@"text_two"][@"r"]) intValue], [(colorDic[@"text_two"][@"g"]) intValue], [(colorDic[@"text_two"][@"b"]) intValue], [(colorDic[@"text_two"][@"a"]) floatValue])
 #define color_text_three        rgba([(colorDic[@"text_three"][@"r"]) intValue], [(colorDic[@"text_three"][@"g"]) intValue], [(colorDic[@"text_three"][@"b"]) intValue], [(colorDic[@"text_three"][@"a"]) floatValue])
 
 #define color_icon_white        rgba([(colorDic[@"icon_white"][@"r"]) intValue], [(colorDic[@"icon_white"][@"g"]) intValue], [(colorDic[@"icon_white"][@"b"]) intValue], [(colorDic[@"icon_white"][@"a"]) floatValue])
-#define color_icon_one          rgba([(colorDic[@"color_icon_one"][@"r"]) intValue], [(colorDic[@"color_icon_one"][@"g"]) intValue], [(colorDic[@"color_icon_one"][@"b"]) intValue], [(colorDic[@"color_icon_one"][@"a"]) floatValue])
+#define color_icon_one          rgba([(colorDic[@"icon_one"][@"r"]) intValue], [(colorDic[@"icon_one"][@"g"]) intValue], [(colorDic[@"icon_one"][@"b"]) intValue], [(colorDic[@"icon_one"][@"a"]) floatValue])
 #define color_icon_two          rgba([(colorDic[@"icon_two"][@"r"]) intValue], [(colorDic[@"icon_two"][@"g"]) intValue], [(colorDic[@"icon_two"][@"b"]) intValue], [(colorDic[@"icon_two"][@"a"]) floatValue])
-#define color_icon_three        rgba([(colorDic[@"color_icon_three"][@"r"]) intValue], [(colorDic[@"color_icon_three"][@"g"]) intValue], [(colorDic[@"color_icon_three"][@"b"]) intValue], [(colorDic[@"color_icon_three"][@"a"]) floatValue])
+#define color_icon_three        rgba([(colorDic[@"icon_three"][@"r"]) intValue], [(colorDic[@"icon_three"][@"g"]) intValue], [(colorDic[@"icon_three"][@"b"]) intValue], [(colorDic[@"icon_three"][@"a"]) floatValue])
 
 #define color_search            rgba([(colorDic[@"search"][@"r"]) intValue], [(colorDic[@"search"][@"g"]) intValue], [(colorDic[@"search"][@"b"]) intValue], [(colorDic[@"search"][@"a"]) floatValue])
 #define color_card              rgba([(colorDic[@"card"][@"r"]) intValue], [(colorDic[@"card"][@"g"]) intValue], [(colorDic[@"card"][@"b"]) intValue], [(colorDic[@"card"][@"a"]) floatValue])
@@ -177,8 +177,8 @@ if (@available(iOS 13.0, *)) {\
 #define KSH		[UIScreen mainScreen].bounds.size.height
 #define KSW 		    [UIScreen mainScreen].bounds.size.width
 #define KSW2            [UIScreen mainScreen].bounds.size.width/2
-#define KSW_Mar2        [UIScreen mainScreen].bounds.size.width - 2*Mar
-#define KSW_Mar        [UIScreen mainScreen].bounds.size.width - Mar
+#define KSW_Mar2        ([UIScreen mainScreen].bounds.size.width - 2*Mar)
+#define KSW_Mar        ([UIScreen mainScreen].bounds.size.width - Mar)
 #define KsCenterX       KSW/2
 #define Mar             16
 #define Mar2            2*Mar
@@ -213,6 +213,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 //======================================================================//
 //图片
 #define image(name) [UIImage imageNamed:name]
+#define imagePath(name) [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Skin/%@/%@",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],SkinName,name]]
 //Url
 #define Url(string) [NSURL URLWithString:string]
 //字体
@@ -281,6 +282,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
     [self presentViewController:nav animated:YES completion:nil];\
     return;\
 }}
+
+#define islogin [userdefault objectForKey:@"token"]
 
 //======================================================================//
 //                                Api

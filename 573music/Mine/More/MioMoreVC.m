@@ -8,9 +8,12 @@
 
 #import "MioMoreVC.h"
 #import "MioTimeOffVC.h"
+#import "AppDelegate.h"
+#import "MioTabbarVC.h"
 
 @interface MioMoreVC ()
 @property (nonatomic, strong) UILabel *timeLab;
+@property (nonatomic, strong) UISwitch *integralSwitch;
 @property (nonatomic, strong) UISwitch *wifiSwitch;
 @property (nonatomic, strong) UISwitch *nightSwitch;
 @property (nonatomic, strong) UILabel *defaultDownload;
@@ -30,7 +33,7 @@
 
 -(void)creatUI{
     UIScrollView *bgscroll = [UIScrollView creatScroll:frame(0, NavH, KSW, KSH - NavH) inView:self.view contentSize:CGSizeMake(KSW, 580)];
-    NSArray *fuc1Arr = @[@"修改密码",@"定时关闭",@"夜间模式",@"听歌识曲",@"仅WIFI联网",@"扫一扫",@"默认下载音质",@"默认播放音质"];
+    NSArray *fuc1Arr = @[@"修改密码",@"定时关闭",@"显示积分倒计时",@"夜间模式",@"听歌识曲",@"仅WIFI联网",@"扫一扫",@"默认下载音质",@"默认播放音质"];
     NSArray *fuc2Arr = @[@"清除缓存",@"意见反馈",@"关于我们"];
     NSArray *arrowArr = @[@"设置密码",@"修改密码",@"听歌识曲",@"扫一扫",@"意见反馈",@"关于我们"];
     
@@ -44,10 +47,16 @@
         if ([arrowArr containsObject:fuc1Arr[i]]) {
             UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView1 image:@"right" bgTintColor:color_icon_three radius:0];
         }
-        if (i == 1) {
+        if (Equals(fuc1Arr[i], @"定时关闭")) {
             _timeLab = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"关" color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
-        if (i == 2) {
+        if (Equals(fuc1Arr[i], @"显示积分倒计时")) {
+            _integralSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(KSW_Mar2 - 38 - 20, 7.5 +44*i, 38, 23)];
+            _integralSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
+            [_integralSwitch addTarget:self action:@selector(integralClick) forControlEvents:(UIControlEventValueChanged)];
+            [bgView1 addSubview:_integralSwitch];
+        }
+        if (Equals(fuc1Arr[i], @"夜间模式")) {
             _nightSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(KSW_Mar2 - 38 - 20, 7.5 +44*i, 38, 23)];
             _nightSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
             [_nightSwitch addTarget:self action:@selector(nightClick) forControlEvents:(UIControlEventValueChanged)];
@@ -56,16 +65,16 @@
                 _nightSwitch.on = YES;
             }
         }
-        if (i == 4) {
+        if (Equals(fuc1Arr[i], @"仅WIFI联网")) {
             _wifiSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(KSW_Mar2 - 38 - 20, 7.5 +44*i, 38, 23)];
             _wifiSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
             [_wifiSwitch addTarget:self action:@selector(wifiClick) forControlEvents:(UIControlEventValueChanged)];
             [bgView1 addSubview:_wifiSwitch];
         }
-        if (i == 6) {
+        if (Equals(fuc1Arr[i], @"默认下载音质")) {
             _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
-        if (i == 7) {
+        if (Equals(fuc1Arr[i], @"默认播放音质")) {
             _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
         
@@ -86,13 +95,37 @@
         }
     }
     
-    UIButton *logoutBtn = [UIButton creatBtn:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColor:color_card title:@"退出登录" titleColor:color_main font:16 radius:6 action:^{
-        
+    UIButton *logoutBtn = [UIButton creatBtn:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColor:color_card title:@"退出登录" titleColor:redTextColor font:16 radius:6 action:^{
+        [self logout];
     }];
-    
-
 }
 
+-(void)logout{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定退出？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再想想" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [userdefault setObject:nil forKey:@"token"];
+        [userdefault setObject:nil forKey:@"user_id"];
+        [userdefault setObject:nil forKey:@"nickname"];
+        [userdefault setObject:nil forKey:@"avatar"];
+        [userdefault setObject:nil forKey:@"isMaster"];
+        [userdefault synchronize];
+        
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        MioTabbarVC *tab = (MioTabbarVC *)delegate.window.rootViewController;
+        tab.selectedIndex = 0;
+        
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    alertController.modalPresentationStyle = 0;
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 -(void)click:(NSString *)title{
     if (Equals(title, @"清除缓存")) {
@@ -103,6 +136,10 @@
         [self.navigationController pushViewController:timeOff animated:YES];
     }
 
+}
+
+-(void)integralClick{
+    
 }
 
 -(void)nightClick{

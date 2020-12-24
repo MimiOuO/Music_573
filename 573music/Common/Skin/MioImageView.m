@@ -10,6 +10,8 @@
 
 @implementation MioImageView
 
+
+
 +(MioImageView *)creatImgView:(CGRect)frame inView:(UIView *)view skin:(NSString *)skin image:(NSString *)image radius:(CGFloat)radius{
     MioImageView *imgView = [[MioImageView alloc] init];
     imgView.frame = frame;
@@ -30,7 +32,8 @@
 }
 
 +(MioImageView *)creatImgView:(CGRect)frame inView:(UIView *)view image:(NSString *)image bgTintColorName:(NSString *)colorName radius:(CGFloat)radius{
-    MioImageView *imgView = [[MioImageView alloc] initWithFrame:frame];
+    MioImageView *imgView = [[MioImageView alloc] init];
+    imgView.frame = frame;
     imgView.colorName = colorName;
     imgView.contentMode = UIViewContentModeScaleAspectFill;
     [view addSubview:imgView];
