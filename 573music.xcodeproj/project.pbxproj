@@ -110,6 +110,16 @@
 		2305A21F256BAC150099EFE3 /* MioImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A21E256BAC150099EFE3 /* MioImageView.m */; };
 		230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779472435CA9C00EFCD1D /* MyUploadManager.m */; };
 		2312AC172595830700EF45AA /* MioDownloadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC162595830700EF45AA /* MioDownloadingCell.m */; };
+		2312AC1A2595D41500EF45AA /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC192595D41400EF45AA /* libACRCloud_IOS_SDK.a */; };
+		2312AC1F2595D45000EF45AA /* MioListenMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC1E2595D45000EF45AA /* MioListenMusicVC.m */; };
+		2312AC222595D4F600EF45AA /* YSCRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC212595D4F600EF45AA /* YSCRippleView.m */; };
+		2312AC242595D89D00EF45AA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC232595D89C00EF45AA /* Security.framework */; };
+		2312AC262595D8A600EF45AA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC252595D8A600EF45AA /* libc++.tbd */; };
+		2312AC282595D8B100EF45AA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC272595D8B100EF45AA /* AVFoundation.framework */; };
+		2312AC2A2595D8B900EF45AA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC292595D8B900EF45AA /* AudioToolbox.framework */; };
+		2312AC362595E89300EF45AA /* WBQRCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC352595E89300EF45AA /* WBQRCodeVC.m */; };
+		2312AC452595EB4300EF45AA /* ScanSuccessJumpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC432595EB4200EF45AA /* ScanSuccessJumpVC.m */; };
+		2312AC482595EB5200EF45AA /* SGWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC462595EB5200EF45AA /* SGWebView.m */; };
 		2314389F2464F59D005E0B15 /* MioFeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2314389D2464F59D005E0B15 /* MioFeedBackVC.m */; };
 		23189449258AEE9D0092C31B /* MioSongListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189448258AEE9D0092C31B /* MioSongListModel.m */; };
 		2318944C258AEEAE0092C31B /* MioAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318944B258AEEAE0092C31B /* MioAlbumModel.m */; };
@@ -641,6 +651,23 @@
 		230779482435CA9C00EFCD1D /* MyUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUploadManager.h; sourceTree = "<group>"; };
 		2312AC152595830700EF45AA /* MioDownloadingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioDownloadingCell.h; sourceTree = "<group>"; };
 		2312AC162595830700EF45AA /* MioDownloadingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioDownloadingCell.m; sourceTree = "<group>"; };
+		2312AC192595D41400EF45AA /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
+		2312AC1B2595D41C00EF45AA /* ACRCloudConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRCloudConfig.h; sourceTree = "<group>"; };
+		2312AC1C2595D41C00EF45AA /* ACRCloudRecognition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRCloudRecognition.h; sourceTree = "<group>"; };
+		2312AC1D2595D45000EF45AA /* MioListenMusicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioListenMusicVC.h; sourceTree = "<group>"; };
+		2312AC1E2595D45000EF45AA /* MioListenMusicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioListenMusicVC.m; sourceTree = "<group>"; };
+		2312AC202595D4F600EF45AA /* YSCRippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCRippleView.h; sourceTree = "<group>"; };
+		2312AC212595D4F600EF45AA /* YSCRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCRippleView.m; sourceTree = "<group>"; };
+		2312AC232595D89C00EF45AA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2312AC252595D8A600EF45AA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		2312AC272595D8B100EF45AA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2312AC292595D8B900EF45AA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2312AC342595E89300EF45AA /* WBQRCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBQRCodeVC.h; path = "../../../../Downloads/SGQRCode-master/SGQRCodeExample/Controller/WBQRCodeVC.h"; sourceTree = "<group>"; };
+		2312AC352595E89300EF45AA /* WBQRCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBQRCodeVC.m; path = "../../../../Downloads/SGQRCode-master/SGQRCodeExample/Controller/WBQRCodeVC.m"; sourceTree = "<group>"; };
+		2312AC432595EB4200EF45AA /* ScanSuccessJumpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanSuccessJumpVC.m; sourceTree = "<group>"; };
+		2312AC442595EB4300EF45AA /* ScanSuccessJumpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanSuccessJumpVC.h; sourceTree = "<group>"; };
+		2312AC462595EB5200EF45AA /* SGWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGWebView.m; sourceTree = "<group>"; };
+		2312AC472595EB5200EF45AA /* SGWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGWebView.h; sourceTree = "<group>"; };
 		2314389D2464F59D005E0B15 /* MioFeedBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioFeedBackVC.m; sourceTree = "<group>"; };
 		2314389E2464F59D005E0B15 /* MioFeedBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioFeedBackVC.h; sourceTree = "<group>"; };
 		23189447258AEE9D0092C31B /* MioSongListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSongListModel.h; sourceTree = "<group>"; };
@@ -1298,7 +1325,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2312AC2A2595D8B900EF45AA /* AudioToolbox.framework in Frameworks */,
+				2312AC282595D8B100EF45AA /* AVFoundation.framework in Frameworks */,
+				2312AC262595D8A600EF45AA /* libc++.tbd in Frameworks */,
+				2312AC242595D89D00EF45AA /* Security.framework in Frameworks */,
 				D29BF3EC7FB14B1E75FC4006 /* libPods-573music.a in Frameworks */,
+				2312AC1A2595D41500EF45AA /* libACRCloud_IOS_SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1629,6 +1661,18 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		2312AC182595D3CC00EF45AA /* AcrCloud */ = {
+			isa = PBXGroup;
+			children = (
+				2312AC1B2595D41C00EF45AA /* ACRCloudConfig.h */,
+				2312AC1C2595D41C00EF45AA /* ACRCloudRecognition.h */,
+				2312AC192595D41400EF45AA /* libACRCloud_IOS_SDK.a */,
+				2312AC202595D4F600EF45AA /* YSCRippleView.h */,
+				2312AC212595D4F600EF45AA /* YSCRippleView.m */,
+			);
+			path = AcrCloud;
+			sourceTree = "<group>";
+		};
 		2318944D258AEF510092C31B /* Model&Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1749,6 +1793,14 @@
 				232603E82588A20500754659 /* MioMoreVC.m */,
 				232603EE2588BC5700754659 /* MioTimeOffVC.h */,
 				232603EF2588BC5700754659 /* MioTimeOffVC.m */,
+				2312AC1D2595D45000EF45AA /* MioListenMusicVC.h */,
+				2312AC1E2595D45000EF45AA /* MioListenMusicVC.m */,
+				2312AC342595E89300EF45AA /* WBQRCodeVC.h */,
+				2312AC352595E89300EF45AA /* WBQRCodeVC.m */,
+				2312AC442595EB4300EF45AA /* ScanSuccessJumpVC.h */,
+				2312AC432595EB4200EF45AA /* ScanSuccessJumpVC.m */,
+				2312AC472595EB5200EF45AA /* SGWebView.h */,
+				2312AC462595EB5200EF45AA /* SGWebView.m */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -2519,6 +2571,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				2312AC182595D3CC00EF45AA /* AcrCloud */,
 				2324800D259424B500C1F68B /* SODownloader */,
 				230274FC2589FD6C00937C04 /* PYSearch */,
 				230273E52589B67600937C04 /* HXPhotoPicker */,
@@ -2902,6 +2955,10 @@
 		F26E630F12BEBF9B63203EA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2312AC292595D8B900EF45AA /* AudioToolbox.framework */,
+				2312AC272595D8B100EF45AA /* AVFoundation.framework */,
+				2312AC252595D8A600EF45AA /* libc++.tbd */,
+				2312AC232595D89C00EF45AA /* Security.framework */,
 				DAB6069E29C029B2B9430D85 /* libPods-573music.a */,
 			);
 			name = Frameworks;
@@ -3132,9 +3189,11 @@
 				230274A72589B67700937C04 /* HXPhotoViewPresentTransition.m in Sources */,
 				233825EE2518796900DC9021 /* HSTextCellModel.m in Sources */,
 				236DB780250F6668001CC2F3 /* ZFReachabilityManager.m in Sources */,
+				2312AC452595EB4300EF45AA /* ScanSuccessJumpVC.m in Sources */,
 				236DB706250F0DD8001CC2F3 /* LOTAnimationTransitionController.m in Sources */,
 				2378094124FF4DF900007883 /* UIView+NERFrame.m in Sources */,
 				2378093124FF4DF900007883 /* UITextView+NERChainable.m in Sources */,
+				2312AC362595E89300EF45AA /* WBQRCodeVC.m in Sources */,
 				2324801F2594397300C1F68B /* SODownloader+MusicDownloader.m in Sources */,
 				233826262518ACDD00DC9021 /* SDCustomMaskView.m in Sources */,
 				2378092F24FF4DF900007883 /* NERStaticTableView+NERChainable.m in Sources */,
@@ -3169,6 +3228,7 @@
 				23746CB42580A8160072A4C8 /* MioMutipleVC.m in Sources */,
 				236DB774250F6668001CC2F3 /* ZFLandscapeWindow.m in Sources */,
 				236DB6E0250F0DD8001CC2F3 /* LOTPolystarAnimator.m in Sources */,
+				2312AC1F2595D45000EF45AA /* MioListenMusicVC.m in Sources */,
 				23FF983A2547BE09008CC170 /* UITableView+MioExtension.m in Sources */,
 				236DB6FD250F0DD8001CC2F3 /* CGGeometry+LOTAdditions.m in Sources */,
 				236DB79D250F6F8D001CC2F3 /* LEECoolButton.m in Sources */,
@@ -3226,6 +3286,7 @@
 				2302750B2589FD6D00937C04 /* UIColor+PYSearchExtension.m in Sources */,
 				236DB786250F6668001CC2F3 /* ZFVolumeBrightnessView.m in Sources */,
 				2378093D24FF4DF900007883 /* NSAttributedString+NERChainable.m in Sources */,
+				2312AC222595D4F600EF45AA /* YSCRippleView.m in Sources */,
 				23C24FCF2446A4CA00EE0BE2 /* STPickerArea.m in Sources */,
 				23C24FD02446A4CA00EE0BE2 /* STPickerView.m in Sources */,
 				236DB785250F6668001CC2F3 /* UIView+ZFFrame.m in Sources */,
@@ -3394,6 +3455,7 @@
 				2366F667257F1F6D006E1D7D /* TimeTool.m in Sources */,
 				236DB70D250F0DD8001CC2F3 /* LOTBezierData.m in Sources */,
 				23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */,
+				2312AC482595EB5200EF45AA /* SGWebView.m in Sources */,
 				233825F22518796900DC9021 /* HSHeaderModel.m in Sources */,
 				236DB78B250F6668001CC2F3 /* ZFPlayerControlView.m in Sources */,
 				2366F66D257F246E006E1D7D /* LyricParser.m in Sources */,
@@ -3604,6 +3666,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/573music/Messege/Helper/3rdParty/VoiceConvert",
+					"$(PROJECT_DIR)/573music/Common/Lib/AcrCloud",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.573music.jgs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3638,6 +3701,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/573music/Messege/Helper/3rdParty/VoiceConvert",
+					"$(PROJECT_DIR)/573music/Common/Lib/AcrCloud",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.573music.jgs;
 				PRODUCT_NAME = "$(TARGET_NAME)";

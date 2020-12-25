@@ -10,6 +10,8 @@
 #import "MioTimeOffVC.h"
 #import "AppDelegate.h"
 #import "MioTabbarVC.h"
+#import "MioListenMusicVC.h"
+#import "WBQRCodeVC.h"
 
 @interface MioMoreVC ()
 @property (nonatomic, strong) UILabel *timeLab;
@@ -135,7 +137,14 @@
         MioTimeOffVC *timeOff = [[MioTimeOffVC alloc] init];
         [self.navigationController pushViewController:timeOff animated:YES];
     }
-
+    if (Equals(title, @"听歌识曲")) {
+        MioListenMusicVC *vc = [[MioListenMusicVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (Equals(title, @"扫一扫")) {
+        WBQRCodeVC *vc = [[WBQRCodeVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 -(void)integralClick{

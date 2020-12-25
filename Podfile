@@ -31,4 +31,5 @@ pod 'SSZipArchive'
 pod 'CHTCollectionViewWaterfallLayout'
 pod 'YYText'
 pod 'WHC_ModelSqliteKit'
+pod 'SGQRCode', '~> 3.0.1'
 end

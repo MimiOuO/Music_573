@@ -55,6 +55,7 @@ PODS:
   - SDWebImage (5.9.0):
     - SDWebImage/Core (= 5.9.0)
   - SDWebImage/Core (5.9.0)
+  - SGQRCode (3.0.1)
   - SSZipArchive (2.2.3)
   - SVGAPlayer (2.5.4):
     - SVGAPlayer/Core (= 2.5.4)
@@ -99,6 +100,7 @@ DEPENDENCIES:
   - Qiniu
   - SDAutoLayout
   - SDWebImage
+  - SGQRCode (~> 3.0.1)
   - SSZipArchive
   - SVGAPlayer
   - UMCCommon
@@ -130,6 +132,7 @@ SPEC REPOS:
     - Qiniu
     - SDAutoLayout
     - SDWebImage
+    - SGQRCode
     - SSZipArchive
     - SVGAPlayer
     - UMCCommon
@@ -161,6 +164,7 @@ SPEC CHECKSUMS:
   Qiniu: b9c638318b8179d01d8dfc745159e4047e8975b7
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
+  SGQRCode: bf02d60e18d6660a9d75ff1c8b9b467f064f054e
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   SVGAPlayer: ca9c869316b468d995994c7fe82b9bd8645a0787
   UMCCommon: f455f92c125342e360d6ad9eafe484945351eeb5
@@ -172,6 +176,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: ac980e093302223cdbf60daf43b18caf04119d30
+PODFILE CHECKSUM: 79104c963267a6892dca1d72ceb38c0eda83c6bc
 
 COCOAPODS: 1.9.3
