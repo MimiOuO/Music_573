@@ -109,6 +109,7 @@
 		2305A219256BA9A90099EFE3 /* MioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A218256BA9A90099EFE3 /* MioView.m */; };
 		2305A21F256BAC150099EFE3 /* MioImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A21E256BAC150099EFE3 /* MioImageView.m */; };
 		230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779472435CA9C00EFCD1D /* MyUploadManager.m */; };
+		2312AC172595830700EF45AA /* MioDownloadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC162595830700EF45AA /* MioDownloadingCell.m */; };
 		2314389F2464F59D005E0B15 /* MioFeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2314389D2464F59D005E0B15 /* MioFeedBackVC.m */; };
 		23189449258AEE9D0092C31B /* MioSongListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189448258AEE9D0092C31B /* MioSongListModel.m */; };
 		2318944C258AEEAE0092C31B /* MioAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318944B258AEEAE0092C31B /* MioAlbumModel.m */; };
@@ -120,6 +121,16 @@
 		2318946D258B32940092C31B /* MioMvCmtVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318946A258B32940092C31B /* MioMvCmtVC.m */; };
 		2318946E258B32940092C31B /* MioMvVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318946B258B32940092C31B /* MioMvVC.m */; };
 		23189473258B48C30092C31B /* MioColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189472258B48C30092C31B /* MioColor.m */; };
+		23248015259424B500C1F68B /* SODownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2324800E259424B500C1F68B /* SODownloader.m */; };
+		23248016259424B500C1F68B /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 2324800F259424B500C1F68B /* .gitkeep */; };
+		23248017259424B500C1F68B /* SODownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 23248010259424B500C1F68B /* SODownloadItem.m */; };
+		23248018259424B500C1F68B /* SODownloadResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23248013259424B500C1F68B /* SODownloadResponseSerializer.m */; };
+		2324801C259429AF00C1F68B /* MioDownloadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2324801B259429AF00C1F68B /* MioDownloadVC.m */; };
+		2324801F2594397300C1F68B /* SODownloader+MusicDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2324801E2594397300C1F68B /* SODownloader+MusicDownloader.m */; };
+		23248022259439E400C1F68B /* SOSimulateDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 23248021259439E400C1F68B /* SOSimulateDB.m */; };
+		232480252594612200C1F68B /* MioDownloadMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232480242594612100C1F68B /* MioDownloadMusicVC.m */; };
+		232480282594613300C1F68B /* MioDownloadMVVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232480272594613300C1F68B /* MioDownloadMVVC.m */; };
+		2324802B2594614200C1F68B /* MioDownloadingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2324802A2594614200C1F68B /* MioDownloadingVC.m */; };
 		232603E92588A20500754659 /* MioMoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232603E82588A20500754659 /* MioMoreVC.m */; };
 		232603ED2588BB6900754659 /* MioSetPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232603EC2588BB6900754659 /* MioSetPasswordVC.m */; };
 		232603F02588BC5700754659 /* MioTimeOffVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232603EF2588BC5700754659 /* MioTimeOffVC.m */; };
@@ -252,10 +263,6 @@
 		236DB70F250F0DD8001CC2F3 /* LOTCompositionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB6C3250F0DD8001CC2F3 /* LOTCompositionContainer.m */; };
 		236DB710250F0DD8001CC2F3 /* LOTMaskContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB6C4250F0DD8001CC2F3 /* LOTMaskContainer.m */; };
 		236DB720250F5BC0001CC2F3 /* MioGroudVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB71F250F5BC0001CC2F3 /* MioGroudVC.m */; };
-		236DB725250F5FCE001CC2F3 /* 消息.json in Resources */ = {isa = PBXBuildFile; fileRef = 236DB721250F5FCC001CC2F3 /* 消息.json */; };
-		236DB726250F5FCE001CC2F3 /* 社区.json in Resources */ = {isa = PBXBuildFile; fileRef = 236DB722250F5FCD001CC2F3 /* 社区.json */; };
-		236DB727250F5FCE001CC2F3 /* 我的.json in Resources */ = {isa = PBXBuildFile; fileRef = 236DB723250F5FCD001CC2F3 /* 我的.json */; };
-		236DB728250F5FCE001CC2F3 /* 首页.json in Resources */ = {isa = PBXBuildFile; fileRef = 236DB724250F5FCE001CC2F3 /* 首页.json */; };
 		236DB772250F6668001CC2F3 /* ZFPlayerGestureControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB730250F6667001CC2F3 /* ZFPlayerGestureControl.m */; };
 		236DB773250F6668001CC2F3 /* ZFPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB731250F6667001CC2F3 /* ZFPlayerController.m */; };
 		236DB774250F6668001CC2F3 /* ZFLandscapeWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB734250F6667001CC2F3 /* ZFLandscapeWindow.m */; };
@@ -632,6 +639,8 @@
 		2305A21E256BAC150099EFE3 /* MioImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioImageView.m; sourceTree = "<group>"; };
 		230779472435CA9C00EFCD1D /* MyUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUploadManager.m; sourceTree = "<group>"; };
 		230779482435CA9C00EFCD1D /* MyUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUploadManager.h; sourceTree = "<group>"; };
+		2312AC152595830700EF45AA /* MioDownloadingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioDownloadingCell.h; sourceTree = "<group>"; };
+		2312AC162595830700EF45AA /* MioDownloadingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioDownloadingCell.m; sourceTree = "<group>"; };
 		2314389D2464F59D005E0B15 /* MioFeedBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioFeedBackVC.m; sourceTree = "<group>"; };
 		2314389E2464F59D005E0B15 /* MioFeedBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioFeedBackVC.h; sourceTree = "<group>"; };
 		23189447258AEE9D0092C31B /* MioSongListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSongListModel.h; sourceTree = "<group>"; };
@@ -654,6 +663,25 @@
 		2318946B258B32940092C31B /* MioMvVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioMvVC.m; sourceTree = "<group>"; };
 		23189471258B48C30092C31B /* MioColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioColor.h; sourceTree = "<group>"; };
 		23189472258B48C30092C31B /* MioColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioColor.m; sourceTree = "<group>"; };
+		2324800E259424B500C1F68B /* SODownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SODownloader.m; sourceTree = "<group>"; };
+		2324800F259424B500C1F68B /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		23248010259424B500C1F68B /* SODownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SODownloadItem.m; sourceTree = "<group>"; };
+		23248011259424B500C1F68B /* SODownloadResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SODownloadResponseSerializer.h; sourceTree = "<group>"; };
+		23248012259424B500C1F68B /* SODownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SODownloader.h; sourceTree = "<group>"; };
+		23248013259424B500C1F68B /* SODownloadResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SODownloadResponseSerializer.m; sourceTree = "<group>"; };
+		23248014259424B500C1F68B /* SODownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SODownloadItem.h; sourceTree = "<group>"; };
+		2324801A259429AF00C1F68B /* MioDownloadVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioDownloadVC.h; sourceTree = "<group>"; };
+		2324801B259429AF00C1F68B /* MioDownloadVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioDownloadVC.m; sourceTree = "<group>"; };
+		2324801D2594397300C1F68B /* SODownloader+MusicDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SODownloader+MusicDownloader.h"; sourceTree = "<group>"; };
+		2324801E2594397300C1F68B /* SODownloader+MusicDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SODownloader+MusicDownloader.m"; sourceTree = "<group>"; };
+		23248020259439E300C1F68B /* SOSimulateDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSimulateDB.h; sourceTree = "<group>"; };
+		23248021259439E400C1F68B /* SOSimulateDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSimulateDB.m; sourceTree = "<group>"; };
+		232480232594612100C1F68B /* MioDownloadMusicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioDownloadMusicVC.h; sourceTree = "<group>"; };
+		232480242594612100C1F68B /* MioDownloadMusicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioDownloadMusicVC.m; sourceTree = "<group>"; };
+		232480262594613300C1F68B /* MioDownloadMVVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioDownloadMVVC.h; sourceTree = "<group>"; };
+		232480272594613300C1F68B /* MioDownloadMVVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioDownloadMVVC.m; sourceTree = "<group>"; };
+		232480292594614200C1F68B /* MioDownloadingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioDownloadingVC.h; sourceTree = "<group>"; };
+		2324802A2594614200C1F68B /* MioDownloadingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioDownloadingVC.m; sourceTree = "<group>"; };
 		232603E72588A20500754659 /* MioMoreVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMoreVC.h; sourceTree = "<group>"; };
 		232603E82588A20500754659 /* MioMoreVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMoreVC.m; sourceTree = "<group>"; };
 		232603EB2588BB6900754659 /* MioSetPasswordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSetPasswordVC.h; sourceTree = "<group>"; };
@@ -925,10 +953,6 @@
 		236DB6D3250F0DD8001CC2F3 /* LOTBlockCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTBlockCallback.h; sourceTree = "<group>"; };
 		236DB71E250F5BC0001CC2F3 /* MioGroudVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioGroudVC.h; sourceTree = "<group>"; };
 		236DB71F250F5BC0001CC2F3 /* MioGroudVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioGroudVC.m; sourceTree = "<group>"; };
-		236DB721250F5FCC001CC2F3 /* 消息.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "消息.json"; sourceTree = "<group>"; };
-		236DB722250F5FCD001CC2F3 /* 社区.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "社区.json"; sourceTree = "<group>"; };
-		236DB723250F5FCD001CC2F3 /* 我的.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "我的.json"; sourceTree = "<group>"; };
-		236DB724250F5FCE001CC2F3 /* 首页.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "首页.json"; sourceTree = "<group>"; };
 		236DB72F250F6667001CC2F3 /* ZFPlayerNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerNotification.h; sourceTree = "<group>"; };
 		236DB730250F6667001CC2F3 /* ZFPlayerGestureControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerGestureControl.m; sourceTree = "<group>"; };
 		236DB731250F6667001CC2F3 /* ZFPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerController.m; sourceTree = "<group>"; };
@@ -1681,6 +1705,41 @@
 				2305A21E256BAC150099EFE3 /* MioImageView.m */,
 			);
 			path = Skin;
+			sourceTree = "<group>";
+		};
+		2324800D259424B500C1F68B /* SODownloader */ = {
+			isa = PBXGroup;
+			children = (
+				2324800F259424B500C1F68B /* .gitkeep */,
+				23248012259424B500C1F68B /* SODownloader.h */,
+				2324800E259424B500C1F68B /* SODownloader.m */,
+				2324801D2594397300C1F68B /* SODownloader+MusicDownloader.h */,
+				2324801E2594397300C1F68B /* SODownloader+MusicDownloader.m */,
+				23248014259424B500C1F68B /* SODownloadItem.h */,
+				23248010259424B500C1F68B /* SODownloadItem.m */,
+				23248011259424B500C1F68B /* SODownloadResponseSerializer.h */,
+				23248013259424B500C1F68B /* SODownloadResponseSerializer.m */,
+				23248020259439E300C1F68B /* SOSimulateDB.h */,
+				23248021259439E400C1F68B /* SOSimulateDB.m */,
+			);
+			path = SODownloader;
+			sourceTree = "<group>";
+		};
+		232480192594298000C1F68B /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				2324801A259429AF00C1F68B /* MioDownloadVC.h */,
+				2324801B259429AF00C1F68B /* MioDownloadVC.m */,
+				232480232594612100C1F68B /* MioDownloadMusicVC.h */,
+				232480242594612100C1F68B /* MioDownloadMusicVC.m */,
+				232480262594613300C1F68B /* MioDownloadMVVC.h */,
+				232480272594613300C1F68B /* MioDownloadMVVC.m */,
+				232480292594614200C1F68B /* MioDownloadingVC.h */,
+				2324802A2594614200C1F68B /* MioDownloadingVC.m */,
+				2312AC152595830700EF45AA /* MioDownloadingCell.h */,
+				2312AC162595830700EF45AA /* MioDownloadingCell.m */,
+			);
+			path = Download;
 			sourceTree = "<group>";
 		};
 		232603EA2588BA1100754659 /* More */ = {
@@ -2460,6 +2519,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				2324800D259424B500C1F68B /* SODownloader */,
 				230274FC2589FD6C00937C04 /* PYSearch */,
 				230273E52589B67600937C04 /* HXPhotoPicker */,
 				230273D625899E4B00937C04 /* CountDown */,
@@ -2576,6 +2636,7 @@
 		239B03432514649500B310D2 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				232480192594298000C1F68B /* Download */,
 				230273E42589B59D00937C04 /* EditInfo */,
 				232603EA2588BA1100754659 /* More */,
 				239B0344251464C300B310D2 /* MioMineVC.h */,
@@ -2612,10 +2673,6 @@
 				235705CE2440183E007C3F87 /* Home */,
 				236DB71D250F573D001CC2F3 /* Ground */,
 				239B03432514649500B310D2 /* Mine */,
-				236DB722250F5FCD001CC2F3 /* 社区.json */,
-				236DB724250F5FCE001CC2F3 /* 首页.json */,
-				236DB723250F5FCD001CC2F3 /* 我的.json */,
-				236DB721250F5FCC001CC2F3 /* 消息.json */,
 				23CEA03E25876FC20083AA75 /* bai.zip */,
 				23CEA04025876FCF0083AA75 /* hei.zip */,
 				23AB231C2431C77A00DBB427 /* Assets.xcassets */,
@@ -2914,18 +2971,15 @@
 				2393DD062511AEFD002483A9 /* YDCommentInputView.xib in Resources */,
 				23AB23202431C77A00DBB427 /* LaunchScreen.storyboard in Resources */,
 				2338261E2518ACDD00DC9021 /* README.md in Resources */,
-				236DB726250F5FCE001CC2F3 /* 社区.json in Resources */,
+				23248016259424B500C1F68B /* .gitkeep in Resources */,
 				230274B82589B67700937C04 /* HXPhotoPicker.bundle in Resources */,
 				23C24FCE2446A4CA00EE0BE2 /* area.plist in Resources */,
 				23CEA03F25876FC20083AA75 /* bai.zip in Resources */,
-				236DB725250F5FCE001CC2F3 /* 消息.json in Resources */,
-				236DB727250F5FCE001CC2F3 /* 我的.json in Resources */,
 				236DB789250F6668001CC2F3 /* ZFPlayer.bundle in Resources */,
 				23AB231D2431C77A00DBB427 /* Assets.xcassets in Resources */,
 				2393DD082511AEFD002483A9 /* YDEmojiCell.xib in Resources */,
 				2302750F2589FD6D00937C04 /* PYSearch.bundle in Resources */,
 				2338261D2518ACDD00DC9021 /* LICENSE in Resources */,
-				236DB728250F5FCE001CC2F3 /* 首页.json in Resources */,
 				23CEA04125876FCF0083AA75 /* hei.zip in Resources */,
 				233825E82518796900DC9021 /* HSSetTableViewController.bundle in Resources */,
 			);
@@ -3026,6 +3080,7 @@
 				233825F12518796900DC9021 /* HSTitleCellModel.m in Sources */,
 				233825F32518796900DC9021 /* HSImageCellModel.m in Sources */,
 				23AB23932431D32A00DBB427 /* MioAgeView.m in Sources */,
+				23248022259439E400C1F68B /* SOSimulateDB.m in Sources */,
 				23C24FD32446A4CA00EE0BE2 /* STPickerSingle.m in Sources */,
 				236DB6F4250F0DD8001CC2F3 /* LOTAsset.m in Sources */,
 				230274E72589B67700937C04 /* HXPhotoEditClippingToolBar.m in Sources */,
@@ -3080,6 +3135,7 @@
 				236DB706250F0DD8001CC2F3 /* LOTAnimationTransitionController.m in Sources */,
 				2378094124FF4DF900007883 /* UIView+NERFrame.m in Sources */,
 				2378093124FF4DF900007883 /* UITextView+NERChainable.m in Sources */,
+				2324801F2594397300C1F68B /* SODownloader+MusicDownloader.m in Sources */,
 				233826262518ACDD00DC9021 /* SDCustomMaskView.m in Sources */,
 				2378092F24FF4DF900007883 /* NERStaticTableView+NERChainable.m in Sources */,
 				23746CB72580AD150072A4C8 /* MioMutipleCell.m in Sources */,
@@ -3093,6 +3149,7 @@
 				233825F02518796900DC9021 /* HSSwitchCellModel.m in Sources */,
 				2378092824FF4DF900007883 /* UIView+NERChainable.m in Sources */,
 				236DB6FF250F0DD8001CC2F3 /* LOTRadialGradientLayer.m in Sources */,
+				2324801C259429AF00C1F68B /* MioDownloadVC.m in Sources */,
 				236DB6F8250F0DD8001CC2F3 /* LOTShapePath.m in Sources */,
 				230274A62589B67700937C04 /* HXPhotoInteractiveTransition.m in Sources */,
 				23BC251E256CA08500E756ED /* MioGetCacheRequest.m in Sources */,
@@ -3102,6 +3159,7 @@
 				23CB0A87254BF6F400A18B63 /* XMTextView.m in Sources */,
 				230274FA2589B67700937C04 /* HXPhotoEditTextView.m in Sources */,
 				233825E22518796900DC9021 /* HSSetTableViewControllerConst.m in Sources */,
+				23248015259424B500C1F68B /* SODownloader.m in Sources */,
 				23C24FCD2446A4CA00EE0BE2 /* STPickerDate.m in Sources */,
 				236DB6EF250F0DD8001CC2F3 /* LOTAssetGroup.m in Sources */,
 				2378092E24FF4DF900007883 /* UIColor+NERChainable.m in Sources */,
@@ -3175,6 +3233,7 @@
 				2393DCF42511AE9C002483A9 /* JJCardSliderFlowLayout.m in Sources */,
 				2302750E2589FD6D00937C04 /* PYSearchConst.m in Sources */,
 				236DB773250F6668001CC2F3 /* ZFPlayerController.m in Sources */,
+				2312AC172595830700EF45AA /* MioDownloadingCell.m in Sources */,
 				233825E92518796900DC9021 /* HSSetTableViewMainController.m in Sources */,
 				2378094524FF4DF900007883 /* NERTypeConverter.m in Sources */,
 				230274F32589B67700937C04 /* HXPhotoEditChartletPreviewView.m in Sources */,
@@ -3188,6 +3247,7 @@
 				235705D124401855007C3F87 /* MioHomeVC.m in Sources */,
 				23615E152574A18100EAD39D /* MioPlayList.m in Sources */,
 				23BC2521256CD65800E756ED /* MioTest3VC.m in Sources */,
+				23248018259424B500C1F68B /* SODownloadResponseSerializer.m in Sources */,
 				23AB23912431D32A00DBB427 /* MioUserInfo.m in Sources */,
 				2302750D2589FD6D00937C04 /* PYSearchSuggestionViewController.m in Sources */,
 				23AB233B2431C89800DBB427 /* MioDeleteRequest.m in Sources */,
@@ -3200,6 +3260,7 @@
 				233825E62518796900DC9021 /* NSBundle+HSImage.m in Sources */,
 				2378094224FF4DF900007883 /* NERPrivates.m in Sources */,
 				23C24FD42446A4CA00EE0BE2 /* STPickTime.m in Sources */,
+				23248017259424B500C1F68B /* SODownloadItem.m in Sources */,
 				2378092B24FF4DF900007883 /* UITextField+NERChainable.m in Sources */,
 				236DB6EB250F0DD8001CC2F3 /* NSValue+Compat.m in Sources */,
 				236DB6D6250F0DD8001CC2F3 /* LOTColorInterpolator.m in Sources */,
@@ -3209,6 +3270,7 @@
 				235055A02567A57500F96AFC /* DatabaseController.m in Sources */,
 				230274C92589B67700937C04 /* HXPhotoPreviewLivePhotoCell.m in Sources */,
 				230274DA2589B67700937C04 /* HXCircleProgressView.m in Sources */,
+				2324802B2594614200C1F68B /* MioDownloadingVC.m in Sources */,
 				23AB23122431C77700DBB427 /* AppDelegate.m in Sources */,
 				230274B02589B67700937C04 /* UIView+HXExtension.m in Sources */,
 				239B0346251464C300B310D2 /* MioMineVC.m in Sources */,
@@ -3257,6 +3319,7 @@
 				239930B225777DFA00584486 /* DOUAudioLPCM.m in Sources */,
 				236DB6F0250F0DD8001CC2F3 /* LOTLayerGroup.m in Sources */,
 				230274D82589B67700937C04 /* HXCustomPreviewView.m in Sources */,
+				232480252594612200C1F68B /* MioDownloadMusicVC.m in Sources */,
 				236DB6E9250F0DD8001CC2F3 /* UIBezierPath.m in Sources */,
 				23AB235C2431C8BA00DBB427 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				2305A216256BA4CE0099EFE3 /* MioLabel.m in Sources */,
@@ -3319,6 +3382,7 @@
 				236DB70A250F0DD8001CC2F3 /* LOTInterpolatorCallback.m in Sources */,
 				230274AE2589B67700937C04 /* UIImageView+HXExtension.m in Sources */,
 				2369369A258321E7005DB8CA /* MioButton.m in Sources */,
+				232480282594613300C1F68B /* MioDownloadMVVC.m in Sources */,
 				236DB777250F6668001CC2F3 /* ZFPersentInteractiveTransition.m in Sources */,
 				23615E12257493CA00EAD39D /* MioPlayer.m in Sources */,
 				230274EB2589B67700937C04 /* HXPhotoEditGraffitiColorSizeView.m in Sources */,

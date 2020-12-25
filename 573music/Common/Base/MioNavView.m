@@ -21,7 +21,7 @@
         _mainView = [UIView new];
         _mainView.backgroundColor = appWhiteColor;
 
-        MioImageView *bgimg = [MioImageView creatImgView:frame(0, 0, KSW, NavH) inView:_mainView skin:SkinName image:@"picture_li" radius:0];
+        _bgImg = [MioImageView creatImgView:frame(0, 0, KSW, NavH) inView:_mainView skin:SkinName image:@"picture_li" radius:0];
         
         [self addSubview:_mainView];
 		_mainView.frame = CGRectMake(0, 0, KSW, NavH);
@@ -47,7 +47,7 @@
 -(UIButton *)centerButton{
     if (!_centerButton) {
         //中间按钮
-		UIButton * centerButton = [[UIButton alloc] initWithFrame:CGRectMake(40, self.leftButton.top, KSW - 38 * 2, self.leftButton.height)];
+		UIButton * centerButton = [[UIButton alloc] initWithFrame:CGRectMake(60, self.leftButton.top, KSW - 60 * 2, self.leftButton.height)];
         centerButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
         [centerButton setTitleColor:appBlackColor forState:UIControlStateNormal];
         centerButton.adjustsImageWhenHighlighted = NO;

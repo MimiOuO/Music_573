@@ -94,7 +94,8 @@
     [self.navView.leftButton setImage:image(@"right_player") forState:UIControlStateNormal];
     self.navView.leftButton.left = 13;
     self.navView.mainView.backgroundColor = appClearColor;
-
+    self.navView.bgImg.image = [UIImage imageNamed:@""];
+    
     self.navView.leftButtonBlock = ^{
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     };
@@ -252,16 +253,16 @@
 
 -(void)downLoadLrc{
 
-    MioDownloadRequest *req = [[MioDownloadRequest alloc] initWinthUrl:mioPlayer.currentMusic.lrc_url fileName:[NSString stringWithFormat:@"%@.lrc",mioPlayer.currentMusic.id]];
-    [req startWithCompletionBlockWithSuccess:^(__kindof MioDownloadRequest * _Nonnull request) {
-        NSLog(@"%s res:%@", __func__, request.lrcName);
-        if ([request.lrcName containsString:mioPlayer.currentMusic.id]) {
-            NSArray *lyrics = [LyricParser parserLyricWithFileName:[NSString stringWithFormat:@"%@/%@.lrc",LRCDownloadDir,mioPlayer.currentMusic.id]];
-            _lrcView.lyrics = lyrics;
-        }
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-    }];
+//    MioDownloadRequest *req = [[MioDownloadRequest alloc] initWinthUrl:mioPlayer.currentMusic.lrc_url fileName:[NSString stringWithFormat:@"%@.lrc",mioPlayer.currentMusic.id]];
+//    [req startWithCompletionBlockWithSuccess:^(__kindof MioDownloadRequest * _Nonnull request) {
+//        NSLog(@"%s res:%@", __func__, request.lrcName);
+//        if ([request.lrcName containsString:mioPlayer.currentMusic.id]) {
+//            NSArray *lyrics = [LyricParser parserLyricWithFileName:[NSString stringWithFormat:@"%@/%@.lrc",LRCDownloadDir,mioPlayer.currentMusic.id]];
+//            _lrcView.lyrics = lyrics;
+//        }
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//
+//    }];
 
 }
 

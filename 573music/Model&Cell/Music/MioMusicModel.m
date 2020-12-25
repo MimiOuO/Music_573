@@ -7,29 +7,84 @@
 //
 
 #import "MioMusicModel.h"
-
+#import "SOSimulateDB.h"
 @implementation MioMusicModel
+@synthesize so_downloadProgress, so_downloadState = _so_downloadState, so_downloadError, so_downloadSpeed = _so_downloadSpeed;
 
-- (NSString *)audiourl{
-    if (_audiourl.length > 0) {
-        return [_audiourl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }else{
-        return [_noneurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }
-    
-}
+
 
 - (NSURL *)audioFileURL{
-    return [NSURL URLWithString:self.audiourl];
+    return [NSURL URLWithString:[Str(_standard[@"url"]) stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
+
+- (BOOL)hasFlac{
+    if (((NSString *)_lossless[@"url"]).length > 0) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+- (BOOL)hasMV{
+    if ([_mv_id intValue] > 0) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+
 
 - (void)setSavetype:(NSString *)savetype{
     _savetype = savetype;
 }
 
-- (NSString *)lrc_url{
-    NSString *lrc = [self.audiourl stringByReplacingOccurrencesOfString:@".mp3"withString:@".lrc"];
-    return [lrc stringByReplacingOccurrencesOfString:@".flac"withString:@".lrc"] ;
+- (NSURL *)so_downloadURL {
+    return [_standard[@"url"] mj_url];
 }
+
+- (NSString *)savePath {
+    
+    return [[[[self class] musicDownloadFolder] stringByAppendingPathComponent:_song_id] stringByAppendingPathExtension:@"mp3"];
+}
+
++ (NSString *)musicDownloadFolder {
+    NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    NSString *downloadFolder = [documents stringByAppendingPathComponent:@"musics"];
+    [self handleDownloadFolder:downloadFolder];
+    return downloadFolder;
+}
+
++ (void)handleDownloadFolder:(NSString *)folder {
+    BOOL isDir = NO;
+    BOOL folderExist = [[NSFileManager defaultManager]fileExistsAtPath:folder isDirectory:&isDir];
+    if (!folderExist || !isDir) {
+        [[NSFileManager defaultManager]createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:nil];
+        NSURL *fileURL = [NSURL fileURLWithPath:folder];
+        [fileURL setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:nil];
+    }
+}
+
+-(void)changeSo_downloadState:(SODownloadState)so_downloadState {
+    self.so_downloadState = so_downloadState;
+    [SOSimulateDB save:self];
+}
+
+- (void)setSo_downloadState:(SODownloadState)so_downloadState {
+    _so_downloadState = so_downloadState;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super init];
+    if (self) {
+//        self.index = [coder decodeIntegerForKey:NSStringFromSelector(@selector(index))];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+//    [aCoder encodeInteger:self.index forKey:NSStringFromSelector(@selector(index))];
+}
+
 
 @end

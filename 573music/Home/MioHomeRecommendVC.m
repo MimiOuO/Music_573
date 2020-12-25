@@ -15,9 +15,14 @@
 #import "MioMvVC.h"
 #import "MioColor.h"
 #import "MioTest2VC.h"
+#import "MioMutipleVC.h"
+#import "MioDownloadVC.h"
+#import "SOSimulateDB.h"
+#import <WHC_ModelSqlite.h>
 
 @interface MioHomeRecommendVC ()
 @property (nonatomic, strong) MioUserInfo *user;
+@property (nonatomic, strong) NSArray *musicArr;
 @end
 
 @implementation MioHomeRecommendVC
@@ -26,6 +31,8 @@
     [super viewDidLoad];
     self.bgImg.hidden = YES;
     self.view.backgroundColor = appClearColor;
+    [SOSimulateDB sharedDB];
+    
     UIButton *sdfsd = [UIButton creatBtn:frame(100, 100, 100, 100) inView:self.view bgColor:color_main title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
 
         if (Equals([userdefault objectForKey:@"skin"], @"bai") ) {
@@ -41,16 +48,28 @@
     
     UILabel *name = [UILabel creatLabel:frame(100, 200, 200, 100) inView:self.view text:@"11111111" color:color_main size:20 alignment:NSTextAlignmentLeft];
 
+
+    
     UIButton *butt = [UIButton creatBtn:frame(100, 300, 50, 50) inView:self.view bgImage:@"cycle_player" bgTintColor:color_main action:^{
-        MioTest2VC *vc = [[MioTest2VC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+
+
+        NSArray *arr4 = [SOSimulateDB downloadingMusicArrayInDB];
+        NSArray *arr5 = [SOSimulateDB pausedMusicArrayInDB];
+        NSArray *arr6 = [SOSimulateDB complatedMusicArrayInDB];
+    
+        NSLog(@"%@%@%@",arr4,arr5,arr6);
+        
+//        MioTest2VC *vc = [[MioTest2VC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
 //        goLogin;
 //        MioMvVC *vc = [[MioMvVC alloc] init];
 //        [self.navigationController pushViewController:vc animated:YES];
     }];
     
     UIButton *butt2 = [UIButton creatBtn:frame(100, 400, 50, 50) inView:self.view bgImage:@"cycle_player" bgTintColor:color_main action:^{
-        MioMoreVC *vc = [[MioMoreVC alloc] init];
+
+        
+        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         
 //        NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
@@ -71,10 +90,18 @@
 //        [self.navigationController pushViewController:searchViewController animated:NO];
     }];
     
+    [MioGetReq(api_songs, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        _musicArr = [MioMusicModel mj_objectArrayWithKeyValuesArray:data];
+    } failure:^(NSString *errorInfo) {}];
+    
     UIButton *butt3 = [UIButton creatBtn:frame(100, 500, 50, 50) inView:self.view bgImage:@"cycle_player" bgTintColor:color_main action:^{
-        MioEditInfoVC *vc = [[MioEditInfoVC alloc] init];
-        vc.user = _user;
-        [self.navigationController pushViewController:vc animated:YES];
+        MioMutipleVC *vc = [[MioMutipleVC alloc] init];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        vc.musicArr = _musicArr;
+        [self presentViewController:vc animated:YES completion:nil];
+        
+//        [mioPlayer playWithMusicList:_musicArr andIndex:0];
     }];
     
     [MioGetReq(api_userInfo, @{@"k":@"v"}) success:^(NSDictionary *result){

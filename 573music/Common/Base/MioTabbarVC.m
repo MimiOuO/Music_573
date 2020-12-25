@@ -19,7 +19,7 @@
 @interface MioTabbarVC ()
 
 @property (nonatomic, strong) UIControl *shadowView;
-@property (nonatomic, strong) MioBottomPlayView *split;
+@property (nonatomic, strong) MioBottomPlayView *bottomPlayer;
 @property (nonatomic, strong) UIImageView *bgView;
 
 @property (nonatomic, strong) MioHomeVC *homeVC;
@@ -53,15 +53,15 @@
     MioView *split = [MioView creatView:frame(0, 0, KSW, 0.5) inView:self.tabbar bgColorName:name_split radius:0];
     
     _mainPlayerVC = [[MioMainPlayerVC alloc] init];
-    _split = [[MioBottomPlayView alloc] initWithFrame:frame(0, -50, KSW, 50)];
-    [_split whenTapped:^{
+    _bottomPlayer = [[MioBottomPlayView alloc] initWithFrame:frame(0, -50, KSW, 50)];
+    [_bottomPlayer whenTapped:^{
 
         MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:_mainPlayerVC];
         nav.modalPresentationStyle = 0;
         [self presentViewController:nav animated:YES completion:nil];
     }];
-    [self.tabbar addSubview:_split];
-    [self.tabbar sendSubviewToBack:_split];
+    [self.tabbar addSubview:_bottomPlayer];
+    [self.tabbar sendSubviewToBack:_bottomPlayer];
     
     self.tabBar.backgroundImage = [[UIImage alloc]init];
     self.tabBar.shadowImage = [[UIImage alloc]init];
@@ -154,7 +154,7 @@
 -(void)mioBottomHalf{
     [UIView animateWithDuration:0.3 animations:^{
         self.tabBar.frame = frame(0, KSH, KSW, 49 + SafeBotH);
-        _split.frame = frame(0, -50-SafeBotH, KSW, 50+SafeBotH);
+        _bottomPlayer.frame = frame(0, -50-SafeBotH, KSW, 50+SafeBotH);
     } completion:^(BOOL finished) {
         
     }];
@@ -164,7 +164,7 @@
 -(void)mioBottomAll{
     [UIView animateWithDuration:0.3 animations:^{
         self.tabBar.frame = frame(0, KSH - 49 - SafeBotH, KSW, 49 + SafeBotH);
-        _split.frame = frame(0, -50, KSW, 50);
+        _bottomPlayer.frame = frame(0, -50, KSW, 50);
     } completion:^(BOOL finished) {
         
     }];
@@ -172,8 +172,8 @@
 
 -(void)mioBottomNone{
     [UIView animateWithDuration:0.3 animations:^{
-        self.tabBar.frame = frame(0, KSH + _split.height, KSW, 49 + SafeBotH);
-        _split.frame = frame(0, -50, KSW, 50);
+        self.tabBar.frame = frame(0, KSH + _bottomPlayer.height + 10, KSW, 49 + SafeBotH);
+        _bottomPlayer.frame = frame(0, -50, KSW, 50);
     } completion:^(BOOL finished) {
         
     }];

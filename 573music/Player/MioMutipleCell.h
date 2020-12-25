@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MioMutipleCell : UITableViewCell
-
+@property (nonatomic, strong) MioMusicModel *music;
 @end

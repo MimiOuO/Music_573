@@ -294,7 +294,7 @@ static sqlite3 * _whc_database;
                       class_type == [NSScanner class] ||
                       class_type == [NSException class] ||
                       class_type == [NSBundle class]) {
-                [self log:@"检查模型类异常数据类型"];
+//                [self log:@"检查模型类异常数据类型"];
             }else {
                 if (need_dictionary_save) {
                     [self parserSubModelObjectFieldsWithModelClass:class_type propertyName:name complete:^(NSString * key, WHC_PropertyInfo *property_object) {

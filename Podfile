@@ -2,6 +2,7 @@
 platform :ios, '9.0'
 inhibit_all_warnings!
 target '573music' do
+pod "AFNetworking"
 pod 'YTKNetwork'
 pod 'SDWebImage'
 pod 'SDAutoLayout'
@@ -30,5 +31,4 @@ pod 'SSZipArchive'
 pod 'CHTCollectionViewWaterfallLayout'
 pod 'YYText'
 pod 'WHC_ModelSqliteKit'
-pod "SODownloader"
 end

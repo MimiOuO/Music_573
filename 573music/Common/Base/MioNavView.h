@@ -5,12 +5,12 @@
 //  Created by Brance on 17/11/24.
 //  Copyright © 2019年 Mimio. All rights reserved.
 //  自定义导航
-
+@class MioImageView;
 
 @interface MioNavView : UIView
 
-
 @property (nonatomic, strong) UIView    *mainView;
+@property (nonatomic, strong) MioImageView *bgImg;
 @property (nonatomic, strong) UIView    *split;
 @property (nonatomic, strong) UIButton  *leftButton;
 @property (nonatomic, strong) UIButton  *leftTwoButton;

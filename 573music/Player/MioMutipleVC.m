@@ -9,6 +9,8 @@
 #import "MioMutipleVC.h"
 #import "MioMutipleCell.h"
 #import "YLButton.h"
+#import "SODownloader.h"
+#import "SODownloader+MusicDownloader.h"
 
 @interface MioMutipleVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView       *tableView;
@@ -40,6 +42,7 @@
     _tableView = [UITableView creatTable:frame(0, NavH, KSW, KSH - NavH - TabH) inView:self.view vc:self];
     [_tableView registerClass:[MioMutipleCell class] forCellReuseIdentifier:@"Cell"];
     [_tableView setEditing:YES animated:YES];
+    _tableView.backgroundColor = appClearColor;
 
     [self creatBottomView];
 }
@@ -55,6 +58,9 @@
         [selectArr addObject:_musicArr[obj.row]];
     }];
     NSLog(@"%@",selectArr);
+    [[SODownloader musicDownloader] setValue:@"" forHTTPHeaderField:@"Accept-Encoding"];
+    [SODownloader musicDownloader].maximumActiveDownloads = 3;
+    [[SODownloader musicDownloader] downloadItems:selectArr];
 }
 
 -(void)playClick{
@@ -75,7 +81,7 @@
         [_musicArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
         }];
-        
+
         [self.navView.leftButton setTitle:@"全不选" forState:UIControlStateNormal];
     }else{
         [self.tableView reloadData];
@@ -97,28 +103,20 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     static NSString *cellIdentifier = @"cell";
-       
     MioMutipleCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-       
-       
     if(cell == nil)
     {
        cell = [[MioMutipleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-       
     }
-
-
-
-    cell.textLabel.text = [NSString stringWithFormat:@"第%ld条",(long)indexPath.row+1];
+    cell.music = _musicArr[indexPath.row];
     
     return cell;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 56;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -132,6 +130,7 @@
 
 -(void)creatBottomView{
     _bottomView = [UIView creatView:frame(0, KSH - 49 - SafeBotH, KSW, 49 + SafeBotH) inView:self.view bgColor:appWhiteColor radius:0];
+    MioImageView *bottomImg = [MioImageView creatImgView:frame(0, 0, KSW, 49 + SafeBotH) inView:_bottomView skin:SkinName image:@"picture_bfq" radius:0];
     
     _downloadBtn = [[YLButton alloc] initWithFrame:frame(-30, 4, 30, 40)];
     [_downloadBtn setTitle:@"下载" forState:UIControlStateNormal];

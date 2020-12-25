@@ -12,6 +12,7 @@
 +(UITableView *)creatTable:(CGRect)frame inView:(UIView *)view vc:(UIViewController *)vc{
 
     UITableView *tableView = [[UITableView alloc] initWithFrame:frame];
+    tableView.backgroundColor = appClearColor;
     tableView.delegate = vc;
     tableView.dataSource = vc;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

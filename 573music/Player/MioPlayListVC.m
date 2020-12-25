@@ -82,7 +82,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    cell.textLabel.text = mioPlayList.playListArr[indexPath.row].name;
+    cell.textLabel.text = mioPlayList.playListArr[indexPath.row].title;
     if (mioPlayList.currentPlayIndex == indexPath.row) {
         cell.backgroundColor = appClearColor;
     }else{
