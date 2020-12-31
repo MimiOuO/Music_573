@@ -47,7 +47,6 @@
 }
 
 -(void)changeSkin{
-    NSLog(@"%@",self.colorName);
     self.textColor = [MioColor colorWithName:self.colorName];
 }
 

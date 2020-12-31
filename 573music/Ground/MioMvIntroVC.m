@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.bgImg.hidden = YES;
+    self.view.backgroundColor = appClearColor;
     // Do any additional setup after loading the view.
 }
 

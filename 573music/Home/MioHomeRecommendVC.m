@@ -40,7 +40,7 @@
         }else{
             [userdefault setObject:@"bai" forKey:@"skin"];
         }
-
+        [userdefault synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
 //        MioFeedBackVC *vc = [[MioFeedBackVC alloc] init];
 //        [self.navigationController pushViewController:vc animated:YES];
@@ -72,22 +72,7 @@
         MioDownloadVC *vc = [[MioDownloadVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         
-//        NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
-//        PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索品类、ID、昵称"];
-//        searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-//        MioSearchResultVC *resultVC = [[MioSearchResultVC alloc] init];
-//        searchViewController.searchResultController = resultVC;
-//        searchViewController.delegate = resultVC;
-//        searchViewController.searchBarBackgroundColor = rgb(246, 247, 249);
-//        searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
-//        searchViewController.hotSearchStyle = PYHotSearchStyleNormalTag;
-//
-//        CATransition* transition = [CATransition animation];
-//        transition.type = kCATransitionMoveIn;//可更改为其他方式
-//        transition.subtype = kCATransitionFromTop;//可更改为其他方式
-//        [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-//
-//        [self.navigationController pushViewController:searchViewController animated:NO];
+
     }];
     
     [MioGetReq(api_songs, @{@"k":@"v"}) success:^(NSDictionary *result){
@@ -104,10 +89,10 @@
 //        [mioPlayer playWithMusicList:_musicArr andIndex:0];
     }];
     
-    [MioGetReq(api_userInfo, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSDictionary *data = [result objectForKey:@"data"];
-        _user = [MioUserInfo mj_objectWithKeyValues:data];
-    } failure:^(NSString *errorInfo) {}];
+//    [MioGetReq(api_userInfo, @{@"k":@"v"}) success:^(NSDictionary *result){
+//        NSDictionary *data = [result objectForKey:@"data"];
+//        _user = [MioUserInfo mj_objectWithKeyValues:data];
+//    } failure:^(NSString *errorInfo) {}];
 }
 
 /*

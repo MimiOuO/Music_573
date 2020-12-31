@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)showLoading:(NSString *)text;
 +(void)showMaskLoading:(NSString *)text;
 +(void)hiddenLoading;
+
++(void)showMessage:(NSString *)message withTitle:(NSString *)title;
 @end
 
 @interface MioHUD : UIView

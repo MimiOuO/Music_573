@@ -131,6 +131,19 @@
 		2318946D258B32940092C31B /* MioMvCmtVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318946A258B32940092C31B /* MioMvCmtVC.m */; };
 		2318946E258B32940092C31B /* MioMvVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318946B258B32940092C31B /* MioMvVC.m */; };
 		23189473258B48C30092C31B /* MioColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189472258B48C30092C31B /* MioColor.m */; };
+		231AE58325998801006AFA89 /* MioAlbumListPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE58225998801006AFA89 /* MioAlbumListPageVC.m */; };
+		231AE58625998887006AFA89 /* MioAlbumListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE58525998887006AFA89 /* MioAlbumListVC.m */; };
+		231AE58925998DBA006AFA89 /* MioAlbumCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE58825998DBA006AFA89 /* MioAlbumCollectionCell.m */; };
+		231AE58E2599B721006AFA89 /* MioAlbumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE58D2599B721006AFA89 /* MioAlbumVC.m */; };
+		231AE591259ABF15006AFA89 /* MioCreatSonglistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE590259ABF14006AFA89 /* MioCreatSonglistVC.m */; };
+		231AE594259ADA1E006AFA89 /* MioRecommendMVVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE593259ADA1E006AFA89 /* MioRecommendMVVC.m */; };
+		231AE597259ADA46006AFA89 /* MioCategoryMVVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE596259ADA46006AFA89 /* MioCategoryMVVC.m */; };
+		231AE59A259ADFE4006AFA89 /* MioMVCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE599259ADFE4006AFA89 /* MioMVCollectionCell.m */; };
+		231AE59E259B141F006AFA89 /* MioSingerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE59D259B141E006AFA89 /* MioSingerVC.m */; };
+		231AE5A1259B142D006AFA89 /* MioSingerSongsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE5A0259B142D006AFA89 /* MioSingerSongsVC.m */; };
+		231AE5A4259B143F006AFA89 /* MioSingerAlbumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE5A3259B143F006AFA89 /* MioSingerAlbumVC.m */; };
+		231AE5A7259B144B006AFA89 /* MioSingerMVVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE5A6259B144B006AFA89 /* MioSingerMVVC.m */; };
+		231AE5AE259B2498006AFA89 /* MioScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE5AC259B2498006AFA89 /* MioScrollView.m */; };
 		23248015259424B500C1F68B /* SODownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2324800E259424B500C1F68B /* SODownloader.m */; };
 		23248016259424B500C1F68B /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 2324800F259424B500C1F68B /* .gitkeep */; };
 		23248017259424B500C1F68B /* SODownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 23248010259424B500C1F68B /* SODownloadItem.m */; };
@@ -402,7 +415,6 @@
 		23AB23932431D32A00DBB427 /* MioAgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23862431D32A00DBB427 /* MioAgeView.m */; };
 		23AB23942431D32A00DBB427 /* MioNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23872431D32A00DBB427 /* MioNavVC.m */; };
 		23AB23952431D32A00DBB427 /* MioNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23882431D32A00DBB427 /* MioNavView.m */; };
-		23AB23962431D32A00DBB427 /* MioScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB23892431D32A00DBB427 /* MioScrollView.m */; };
 		23AB23972431D32A00DBB427 /* MioTabbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB238E2431D32A00DBB427 /* MioTabbarVC.m */; };
 		23AB23A82431DA5300DBB427 /* MioPasswordLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB239A2431DA5300DBB427 /* MioPasswordLoginVC.m */; };
 		23AB23A92431DA5300DBB427 /* MioModiPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB239E2431DA5300DBB427 /* MioModiPassWordVC.m */; };
@@ -424,6 +436,33 @@
 		23C24FD42446A4CA00EE0BE2 /* STPickTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FC62446A4CA00EE0BE2 /* STPickTime.m */; };
 		23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FCB2446A4CA00EE0BE2 /* STPickerDouble.m */; };
 		23C24FD62446A4CA00EE0BE2 /* NSCalendar+STPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C24FCC2446A4CA00EE0BE2 /* NSCalendar+STPicker.m */; };
+		23C913CB259C129B006FA6EB /* MioAlbumTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913CA259C129B006FA6EB /* MioAlbumTableCell.m */; };
+		23C913CE259C164E006FA6EB /* MioMVTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913CD259C164E006FA6EB /* MioMVTableCell.m */; };
+		23C913D1259C1B2B006FA6EB /* MioSonglistPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913D0259C1B2B006FA6EB /* MioSonglistPageVC.m */; };
+		23C913D4259C1B3C006FA6EB /* MioSonglistListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913D3259C1B3C006FA6EB /* MioSonglistListVC.m */; };
+		23C913E4259C549B006FA6EB /* MioCategoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913E3259C549B006FA6EB /* MioCategoryListVC.m */; };
+		23C913EC259C54AE006FA6EB /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913E6259C54AE006FA6EB /* HeaderView.m */; };
+		23C913ED259C54AE006FA6EB /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913EA259C54AE006FA6EB /* CustomCell.m */; };
+		23C913EE259C54AE006FA6EB /* ZYCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913EB259C54AE006FA6EB /* ZYCollectionView.m */; };
+		23C913F1259C7502006FA6EB /* MioMusicRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913F0259C7501006FA6EB /* MioMusicRankVC.m */; };
+		23C913F4259C75B0006FA6EB /* MioMusicRankListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913F3259C75B0006FA6EB /* MioMusicRankListVC.m */; };
+		23C913FD259D65AF006FA6EB /* MioSingerListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C913FC259D65AF006FA6EB /* MioSingerListVC.m */; };
+		23C91408259D6B32006FA6EB /* CYSectionIndexViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91400259D6B32006FA6EB /* CYSectionIndexViewCell.m */; };
+		23C91409259D6B32006FA6EB /* CYSectionIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91401259D6B32006FA6EB /* CYSectionIndexView.m */; };
+		23C9140A259D6B32006FA6EB /* TableViewSectionIndex.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23C91403259D6B32006FA6EB /* TableViewSectionIndex.bundle */; };
+		23C9140B259D6B32006FA6EB /* CYCustomSectionIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91406259D6B32006FA6EB /* CYCustomSectionIndexCell.m */; };
+		23C9140E259D70B7006FA6EB /* AppDelegate+MioInitalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C9140D259D70B7006FA6EB /* AppDelegate+MioInitalData.m */; };
+		23C91411259D7617006FA6EB /* MioSingerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91410259D7617006FA6EB /* MioSingerTableCell.m */; };
+		23C91414259D8068006FA6EB /* MioSearchMusicResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91413259D8068006FA6EB /* MioSearchMusicResultVC.m */; };
+		23C91417259D807B006FA6EB /* MioSearchSingerResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91416259D807B006FA6EB /* MioSearchSingerResultVC.m */; };
+		23C9141A259D808E006FA6EB /* MioSearchSonglistResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91419259D808E006FA6EB /* MioSearchSonglistResultVC.m */; };
+		23C9141D259D809B006FA6EB /* MioSearchAlbumResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C9141C259D809B006FA6EB /* MioSearchAlbumResultVC.m */; };
+		23C91420259D80AC006FA6EB /* MioSearchMVResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C9141F259D80AC006FA6EB /* MioSearchMVResultVC.m */; };
+		23C91423259DA5B9006FA6EB /* MioSonglistTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91422259DA5B9006FA6EB /* MioSonglistTableCell.m */; };
+		23C91426259DB68B006FA6EB /* MioCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91425259DB68B006FA6EB /* MioCategoryVC.m */; };
+		23C9142A259DB6EA006FA6EB /* MioCategoryMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C91429259DB6EA006FA6EB /* MioCategoryMusicVC.m */; };
+		23C9142D259DB6FA006FA6EB /* MioCategorySonglistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C9142C259DB6FA006FA6EB /* MioCategorySonglistVC.m */; };
+		23C91430259DB70A006FA6EB /* MioCategoryAlbumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C9142F259DB70A006FA6EB /* MioCategoryAlbumVC.m */; };
 		23CB0A86254BF6F400A18B63 /* UITextView+XMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CB0A84254BF6F400A18B63 /* UITextView+XMExtension.m */; };
 		23CB0A87254BF6F400A18B63 /* XMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CB0A85254BF6F400A18B63 /* XMTextView.m */; };
 		23CEA0362587381A0083AA75 /* MioHomeRecommendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CEA0352587381A0083AA75 /* MioHomeRecommendVC.m */; };
@@ -690,6 +729,32 @@
 		2318946B258B32940092C31B /* MioMvVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioMvVC.m; sourceTree = "<group>"; };
 		23189471258B48C30092C31B /* MioColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioColor.h; sourceTree = "<group>"; };
 		23189472258B48C30092C31B /* MioColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioColor.m; sourceTree = "<group>"; };
+		231AE58125998801006AFA89 /* MioAlbumListPageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAlbumListPageVC.h; sourceTree = "<group>"; };
+		231AE58225998801006AFA89 /* MioAlbumListPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAlbumListPageVC.m; sourceTree = "<group>"; };
+		231AE58425998887006AFA89 /* MioAlbumListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAlbumListVC.h; sourceTree = "<group>"; };
+		231AE58525998887006AFA89 /* MioAlbumListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAlbumListVC.m; sourceTree = "<group>"; };
+		231AE58725998DBA006AFA89 /* MioAlbumCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAlbumCollectionCell.h; sourceTree = "<group>"; };
+		231AE58825998DBA006AFA89 /* MioAlbumCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAlbumCollectionCell.m; sourceTree = "<group>"; };
+		231AE58C2599B721006AFA89 /* MioAlbumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAlbumVC.h; sourceTree = "<group>"; };
+		231AE58D2599B721006AFA89 /* MioAlbumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAlbumVC.m; sourceTree = "<group>"; };
+		231AE58F259ABF14006AFA89 /* MioCreatSonglistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCreatSonglistVC.h; sourceTree = "<group>"; };
+		231AE590259ABF14006AFA89 /* MioCreatSonglistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCreatSonglistVC.m; sourceTree = "<group>"; };
+		231AE592259ADA1E006AFA89 /* MioRecommendMVVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioRecommendMVVC.h; sourceTree = "<group>"; };
+		231AE593259ADA1E006AFA89 /* MioRecommendMVVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioRecommendMVVC.m; sourceTree = "<group>"; };
+		231AE595259ADA46006AFA89 /* MioCategoryMVVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCategoryMVVC.h; sourceTree = "<group>"; };
+		231AE596259ADA46006AFA89 /* MioCategoryMVVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCategoryMVVC.m; sourceTree = "<group>"; };
+		231AE598259ADFE4006AFA89 /* MioMVCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVCollectionCell.h; sourceTree = "<group>"; };
+		231AE599259ADFE4006AFA89 /* MioMVCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMVCollectionCell.m; sourceTree = "<group>"; };
+		231AE59C259B141E006AFA89 /* MioSingerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSingerVC.h; sourceTree = "<group>"; };
+		231AE59D259B141E006AFA89 /* MioSingerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSingerVC.m; sourceTree = "<group>"; };
+		231AE59F259B142D006AFA89 /* MioSingerSongsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSingerSongsVC.h; sourceTree = "<group>"; };
+		231AE5A0259B142D006AFA89 /* MioSingerSongsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSingerSongsVC.m; sourceTree = "<group>"; };
+		231AE5A2259B143F006AFA89 /* MioSingerAlbumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSingerAlbumVC.h; sourceTree = "<group>"; };
+		231AE5A3259B143F006AFA89 /* MioSingerAlbumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSingerAlbumVC.m; sourceTree = "<group>"; };
+		231AE5A5259B144B006AFA89 /* MioSingerMVVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSingerMVVC.h; sourceTree = "<group>"; };
+		231AE5A6259B144B006AFA89 /* MioSingerMVVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSingerMVVC.m; sourceTree = "<group>"; };
+		231AE5AC259B2498006AFA89 /* MioScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioScrollView.m; sourceTree = "<group>"; };
+		231AE5AD259B2498006AFA89 /* MioScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioScrollView.h; sourceTree = "<group>"; };
 		2324800E259424B500C1F68B /* SODownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SODownloader.m; sourceTree = "<group>"; };
 		2324800F259424B500C1F68B /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		23248010259424B500C1F68B /* SODownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SODownloadItem.m; sourceTree = "<group>"; };
@@ -1236,7 +1301,6 @@
 		23AB237E2431D32A00DBB427 /* MioNavVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioNavVC.h; sourceTree = "<group>"; };
 		23AB237F2431D32A00DBB427 /* MioEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioEmpty.m; sourceTree = "<group>"; };
 		23AB23802431D32A00DBB427 /* MioAvatarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioAvatarView.m; sourceTree = "<group>"; };
-		23AB23812431D32A00DBB427 /* MioScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioScrollView.h; sourceTree = "<group>"; };
 		23AB23822431D32A00DBB427 /* MioNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioNavView.h; sourceTree = "<group>"; };
 		23AB23832431D32A00DBB427 /* MioUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioUserInfo.m; sourceTree = "<group>"; };
 		23AB23842431D32A00DBB427 /* MioTabbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioTabbarVC.h; sourceTree = "<group>"; };
@@ -1244,7 +1308,6 @@
 		23AB23862431D32A00DBB427 /* MioAgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioAgeView.m; sourceTree = "<group>"; };
 		23AB23872431D32A00DBB427 /* MioNavVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioNavVC.m; sourceTree = "<group>"; };
 		23AB23882431D32A00DBB427 /* MioNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioNavView.m; sourceTree = "<group>"; };
-		23AB23892431D32A00DBB427 /* MioScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioScrollView.m; sourceTree = "<group>"; };
 		23AB238A2431D32A00DBB427 /* MioAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioAvatarView.h; sourceTree = "<group>"; };
 		23AB238B2431D32A00DBB427 /* MioEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioEmpty.h; sourceTree = "<group>"; };
 		23AB238C2431D32A00DBB427 /* MioUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioUserInfo.h; sourceTree = "<group>"; };
@@ -1289,6 +1352,59 @@
 		23C24FCA2446A4CA00EE0BE2 /* STPickerArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerArea.h; sourceTree = "<group>"; };
 		23C24FCB2446A4CA00EE0BE2 /* STPickerDouble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerDouble.m; sourceTree = "<group>"; };
 		23C24FCC2446A4CA00EE0BE2 /* NSCalendar+STPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+STPicker.m"; sourceTree = "<group>"; };
+		23C913C9259C129B006FA6EB /* MioAlbumTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAlbumTableCell.h; sourceTree = "<group>"; };
+		23C913CA259C129B006FA6EB /* MioAlbumTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAlbumTableCell.m; sourceTree = "<group>"; };
+		23C913CC259C164E006FA6EB /* MioMVTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVTableCell.h; sourceTree = "<group>"; };
+		23C913CD259C164E006FA6EB /* MioMVTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMVTableCell.m; sourceTree = "<group>"; };
+		23C913CF259C1B2B006FA6EB /* MioSonglistPageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSonglistPageVC.h; sourceTree = "<group>"; };
+		23C913D0259C1B2B006FA6EB /* MioSonglistPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSonglistPageVC.m; sourceTree = "<group>"; };
+		23C913D2259C1B3C006FA6EB /* MioSonglistListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSonglistListVC.h; sourceTree = "<group>"; };
+		23C913D3259C1B3C006FA6EB /* MioSonglistListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSonglistListVC.m; sourceTree = "<group>"; };
+		23C913E2259C549B006FA6EB /* MioCategoryListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCategoryListVC.h; sourceTree = "<group>"; };
+		23C913E3259C549B006FA6EB /* MioCategoryListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCategoryListVC.m; sourceTree = "<group>"; };
+		23C913E6259C54AE006FA6EB /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		23C913E7259C54AE006FA6EB /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		23C913E8259C54AE006FA6EB /* ZYCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCollectionView.h; sourceTree = "<group>"; };
+		23C913E9259C54AE006FA6EB /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		23C913EA259C54AE006FA6EB /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		23C913EB259C54AE006FA6EB /* ZYCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCollectionView.m; sourceTree = "<group>"; };
+		23C913EF259C7501006FA6EB /* MioMusicRankVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMusicRankVC.h; sourceTree = "<group>"; };
+		23C913F0259C7501006FA6EB /* MioMusicRankVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMusicRankVC.m; sourceTree = "<group>"; };
+		23C913F2259C75B0006FA6EB /* MioMusicRankListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMusicRankListVC.h; sourceTree = "<group>"; };
+		23C913F3259C75B0006FA6EB /* MioMusicRankListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMusicRankListVC.m; sourceTree = "<group>"; };
+		23C913FB259D65AF006FA6EB /* MioSingerListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSingerListVC.h; sourceTree = "<group>"; };
+		23C913FC259D65AF006FA6EB /* MioSingerListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSingerListVC.m; sourceTree = "<group>"; };
+		23C913FF259D6B32006FA6EB /* CYSectionIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYSectionIndexView.h; sourceTree = "<group>"; };
+		23C91400259D6B32006FA6EB /* CYSectionIndexViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYSectionIndexViewCell.m; sourceTree = "<group>"; };
+		23C91401259D6B32006FA6EB /* CYSectionIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYSectionIndexView.m; sourceTree = "<group>"; };
+		23C91403259D6B32006FA6EB /* TableViewSectionIndex.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TableViewSectionIndex.bundle; sourceTree = "<group>"; };
+		23C91405259D6B32006FA6EB /* CYCustomSectionIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYCustomSectionIndexCell.h; sourceTree = "<group>"; };
+		23C91406259D6B32006FA6EB /* CYCustomSectionIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCustomSectionIndexCell.m; sourceTree = "<group>"; };
+		23C91407259D6B32006FA6EB /* CYSectionIndexViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYSectionIndexViewCell.h; sourceTree = "<group>"; };
+		23C9140C259D70B7006FA6EB /* AppDelegate+MioInitalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+MioInitalData.h"; sourceTree = "<group>"; };
+		23C9140D259D70B7006FA6EB /* AppDelegate+MioInitalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+MioInitalData.m"; sourceTree = "<group>"; };
+		23C9140F259D7617006FA6EB /* MioSingerTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSingerTableCell.h; sourceTree = "<group>"; };
+		23C91410259D7617006FA6EB /* MioSingerTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSingerTableCell.m; sourceTree = "<group>"; };
+		23C91412259D8068006FA6EB /* MioSearchMusicResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSearchMusicResultVC.h; sourceTree = "<group>"; };
+		23C91413259D8068006FA6EB /* MioSearchMusicResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSearchMusicResultVC.m; sourceTree = "<group>"; };
+		23C91415259D807B006FA6EB /* MioSearchSingerResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSearchSingerResultVC.h; sourceTree = "<group>"; };
+		23C91416259D807B006FA6EB /* MioSearchSingerResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSearchSingerResultVC.m; sourceTree = "<group>"; };
+		23C91418259D808E006FA6EB /* MioSearchSonglistResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSearchSonglistResultVC.h; sourceTree = "<group>"; };
+		23C91419259D808E006FA6EB /* MioSearchSonglistResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSearchSonglistResultVC.m; sourceTree = "<group>"; };
+		23C9141B259D809B006FA6EB /* MioSearchAlbumResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSearchAlbumResultVC.h; sourceTree = "<group>"; };
+		23C9141C259D809B006FA6EB /* MioSearchAlbumResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSearchAlbumResultVC.m; sourceTree = "<group>"; };
+		23C9141E259D80AC006FA6EB /* MioSearchMVResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSearchMVResultVC.h; sourceTree = "<group>"; };
+		23C9141F259D80AC006FA6EB /* MioSearchMVResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSearchMVResultVC.m; sourceTree = "<group>"; };
+		23C91421259DA5B9006FA6EB /* MioSonglistTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSonglistTableCell.h; sourceTree = "<group>"; };
+		23C91422259DA5B9006FA6EB /* MioSonglistTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSonglistTableCell.m; sourceTree = "<group>"; };
+		23C91424259DB68B006FA6EB /* MioCategoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCategoryVC.h; sourceTree = "<group>"; };
+		23C91425259DB68B006FA6EB /* MioCategoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCategoryVC.m; sourceTree = "<group>"; };
+		23C91428259DB6EA006FA6EB /* MioCategoryMusicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCategoryMusicVC.h; sourceTree = "<group>"; };
+		23C91429259DB6EA006FA6EB /* MioCategoryMusicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCategoryMusicVC.m; sourceTree = "<group>"; };
+		23C9142B259DB6FA006FA6EB /* MioCategorySonglistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCategorySonglistVC.h; sourceTree = "<group>"; };
+		23C9142C259DB6FA006FA6EB /* MioCategorySonglistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCategorySonglistVC.m; sourceTree = "<group>"; };
+		23C9142E259DB70A006FA6EB /* MioCategoryAlbumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioCategoryAlbumVC.h; sourceTree = "<group>"; };
+		23C9142F259DB70A006FA6EB /* MioCategoryAlbumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioCategoryAlbumVC.m; sourceTree = "<group>"; };
 		23CB0A82254BF6F400A18B63 /* UITextView+XMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+XMExtension.h"; sourceTree = "<group>"; };
 		23CB0A83254BF6F400A18B63 /* XMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMTextView.h; sourceTree = "<group>"; };
 		23CB0A84254BF6F400A18B63 /* UITextView+XMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+XMExtension.m"; sourceTree = "<group>"; };
@@ -1635,18 +1751,18 @@
 			isa = PBXGroup;
 			children = (
 				230274FD2589FD6C00937C04 /* NSBundle+PYSearchExtension.h */,
-				230274FE2589FD6C00937C04 /* UIColor+PYSearchExtension.m */,
-				230274FF2589FD6C00937C04 /* PYSearchViewController.m */,
-				230275002589FD6C00937C04 /* PYSearchSuggestionViewController.m */,
-				230275012589FD6C00937C04 /* UIView+PYSearchExtension.h */,
-				230275022589FD6C00937C04 /* PYSearchConst.m */,
-				230275032589FD6C00937C04 /* PYSearch.bundle */,
 				230275042589FD6C00937C04 /* NSBundle+PYSearchExtension.m */,
+				230275032589FD6C00937C04 /* PYSearch.bundle */,
 				230275052589FD6C00937C04 /* PYSearch.h */,
-				230275062589FD6C00937C04 /* PYSearchSuggestionViewController.h */,
-				230275072589FD6C00937C04 /* PYSearchViewController.h */,
-				230275082589FD6C00937C04 /* UIColor+PYSearchExtension.h */,
 				230275092589FD6C00937C04 /* PYSearchConst.h */,
+				230275022589FD6C00937C04 /* PYSearchConst.m */,
+				230275062589FD6C00937C04 /* PYSearchSuggestionViewController.h */,
+				230275002589FD6C00937C04 /* PYSearchSuggestionViewController.m */,
+				230275072589FD6C00937C04 /* PYSearchViewController.h */,
+				230274FF2589FD6C00937C04 /* PYSearchViewController.m */,
+				230275082589FD6C00937C04 /* UIColor+PYSearchExtension.h */,
+				230274FE2589FD6C00937C04 /* UIColor+PYSearchExtension.m */,
+				230275012589FD6C00937C04 /* UIView+PYSearchExtension.h */,
 				2302750A2589FD6C00937C04 /* UIView+PYSearchExtension.m */,
 			);
 			path = PYSearch;
@@ -1657,6 +1773,16 @@
 			children = (
 				23027519258A0AC200937C04 /* MioSearchResultVC.h */,
 				2302751A258A0AC200937C04 /* MioSearchResultVC.m */,
+				23C91412259D8068006FA6EB /* MioSearchMusicResultVC.h */,
+				23C91413259D8068006FA6EB /* MioSearchMusicResultVC.m */,
+				23C91415259D807B006FA6EB /* MioSearchSingerResultVC.h */,
+				23C91416259D807B006FA6EB /* MioSearchSingerResultVC.m */,
+				23C91418259D808E006FA6EB /* MioSearchSonglistResultVC.h */,
+				23C91419259D808E006FA6EB /* MioSearchSonglistResultVC.m */,
+				23C9141B259D809B006FA6EB /* MioSearchAlbumResultVC.h */,
+				23C9141C259D809B006FA6EB /* MioSearchAlbumResultVC.m */,
+				23C9141E259D80AC006FA6EB /* MioSearchMVResultVC.h */,
+				23C9141F259D80AC006FA6EB /* MioSearchMVResultVC.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1703,6 +1829,8 @@
 				23189448258AEE9D0092C31B /* MioSongListModel.m */,
 				23F3716D25906DDE006053B1 /* MioSonglistCollectionCell.h */,
 				23F3716E25906DDE006053B1 /* MioSonglistCollectionCell.m */,
+				23C91421259DA5B9006FA6EB /* MioSonglistTableCell.h */,
+				23C91422259DA5B9006FA6EB /* MioSonglistTableCell.m */,
 			);
 			path = Songlist;
 			sourceTree = "<group>";
@@ -1712,6 +1840,10 @@
 			children = (
 				2318944A258AEEAE0092C31B /* MioAlbumModel.h */,
 				2318944B258AEEAE0092C31B /* MioAlbumModel.m */,
+				231AE58725998DBA006AFA89 /* MioAlbumCollectionCell.h */,
+				231AE58825998DBA006AFA89 /* MioAlbumCollectionCell.m */,
+				23C913C9259C129B006FA6EB /* MioAlbumTableCell.h */,
+				23C913CA259C129B006FA6EB /* MioAlbumTableCell.m */,
 			);
 			path = Album;
 			sourceTree = "<group>";
@@ -1721,6 +1853,8 @@
 			children = (
 				23189454258AEFDC0092C31B /* MioSingerModel.h */,
 				23189455258AEFDC0092C31B /* MioSingerModel.m */,
+				23C9140F259D7617006FA6EB /* MioSingerTableCell.h */,
+				23C91410259D7617006FA6EB /* MioSingerTableCell.m */,
 			);
 			path = Singer;
 			sourceTree = "<group>";
@@ -1730,6 +1864,10 @@
 			children = (
 				23189457258AEFE70092C31B /* MioMvModel.h */,
 				23189458258AEFE70092C31B /* MioMvModel.m */,
+				231AE598259ADFE4006AFA89 /* MioMVCollectionCell.h */,
+				231AE599259ADFE4006AFA89 /* MioMVCollectionCell.m */,
+				23C913CC259C164E006FA6EB /* MioMVTableCell.h */,
+				23C913CD259C164E006FA6EB /* MioMVTableCell.m */,
 			);
 			path = MV;
 			sourceTree = "<group>";
@@ -1749,6 +1887,49 @@
 				2305A21E256BAC150099EFE3 /* MioImageView.m */,
 			);
 			path = Skin;
+			sourceTree = "<group>";
+		};
+		231AE58A2599B6EE006AFA89 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				231AE58125998801006AFA89 /* MioAlbumListPageVC.h */,
+				231AE58225998801006AFA89 /* MioAlbumListPageVC.m */,
+				231AE58425998887006AFA89 /* MioAlbumListVC.h */,
+				231AE58525998887006AFA89 /* MioAlbumListVC.m */,
+				231AE58C2599B721006AFA89 /* MioAlbumVC.h */,
+				231AE58D2599B721006AFA89 /* MioAlbumVC.m */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		231AE58B2599B6F9006AFA89 /* Songlist */ = {
+			isa = PBXGroup;
+			children = (
+				23C913CF259C1B2B006FA6EB /* MioSonglistPageVC.h */,
+				23C913D0259C1B2B006FA6EB /* MioSonglistPageVC.m */,
+				23C913D2259C1B3C006FA6EB /* MioSonglistListVC.h */,
+				23C913D3259C1B3C006FA6EB /* MioSonglistListVC.m */,
+				2369369F25835210005DB8CA /* MioSongListVC.h */,
+				236936A025835210005DB8CA /* MioSongListVC.m */,
+				231AE58F259ABF14006AFA89 /* MioCreatSonglistVC.h */,
+				231AE590259ABF14006AFA89 /* MioCreatSonglistVC.m */,
+			);
+			path = Songlist;
+			sourceTree = "<group>";
+		};
+		231AE59B259B13BD006AFA89 /* Singer */ = {
+			isa = PBXGroup;
+			children = (
+				231AE59C259B141E006AFA89 /* MioSingerVC.h */,
+				231AE59D259B141E006AFA89 /* MioSingerVC.m */,
+				231AE59F259B142D006AFA89 /* MioSingerSongsVC.h */,
+				231AE5A0259B142D006AFA89 /* MioSingerSongsVC.m */,
+				231AE5A2259B143F006AFA89 /* MioSingerAlbumVC.h */,
+				231AE5A3259B143F006AFA89 /* MioSingerAlbumVC.m */,
+				231AE5A5259B144B006AFA89 /* MioSingerMVVC.h */,
+				231AE5A6259B144B006AFA89 /* MioSingerMVVC.m */,
+			);
+			path = Singer;
 			sourceTree = "<group>";
 		};
 		2324800D259424B500C1F68B /* SODownloader */ = {
@@ -2023,6 +2204,7 @@
 		235705CE2440183E007C3F87 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				23C91427259DB6CB006FA6EB /* Category */,
 				23027518258A0AB900937C04 /* Search */,
 				235705CF24401855007C3F87 /* MioHomeVC.h */,
 				235705D024401855007C3F87 /* MioHomeVC.m */,
@@ -2030,6 +2212,12 @@
 				23CEA0352587381A0083AA75 /* MioHomeRecommendVC.m */,
 				23CEA0372587383B0083AA75 /* MioHomeMusicHallVC.h */,
 				23CEA0382587383B0083AA75 /* MioHomeMusicHallVC.m */,
+				23C913FB259D65AF006FA6EB /* MioSingerListVC.h */,
+				23C913FC259D65AF006FA6EB /* MioSingerListVC.m */,
+				23C913F2259C75B0006FA6EB /* MioMusicRankListVC.h */,
+				23C913F3259C75B0006FA6EB /* MioMusicRankListVC.m */,
+				23C913EF259C7501006FA6EB /* MioMusicRankVC.h */,
+				23C913F0259C7501006FA6EB /* MioMusicRankVC.m */,
 				2350556D25675F4600F96AFC /* MioTestVC.h */,
 				2350556E25675F4600F96AFC /* MioTestVC.m */,
 				2366652B256B81D400609A05 /* MioTest2VC.h */,
@@ -2090,13 +2278,14 @@
 			path = YLButton;
 			sourceTree = "<group>";
 		};
-		236936A225835A86005DB8CA /* SongList&Album */ = {
+		236936A225835A86005DB8CA /* CommenView */ = {
 			isa = PBXGroup;
 			children = (
-				2369369F25835210005DB8CA /* MioSongListVC.h */,
-				236936A025835210005DB8CA /* MioSongListVC.m */,
+				231AE59B259B13BD006AFA89 /* Singer */,
+				231AE58B2599B6F9006AFA89 /* Songlist */,
+				231AE58A2599B6EE006AFA89 /* Album */,
 			);
-			path = "SongList&Album";
+			path = CommenView;
 			sourceTree = "<group>";
 		};
 		236DB646250F0DD7001CC2F3 /* Classes */ = {
@@ -2336,6 +2525,10 @@
 			children = (
 				236DB71E250F5BC0001CC2F3 /* MioGroudVC.h */,
 				236DB71F250F5BC0001CC2F3 /* MioGroudVC.m */,
+				231AE592259ADA1E006AFA89 /* MioRecommendMVVC.h */,
+				231AE593259ADA1E006AFA89 /* MioRecommendMVVC.m */,
+				231AE595259ADA46006AFA89 /* MioCategoryMVVC.h */,
+				231AE596259ADA46006AFA89 /* MioCategoryMVVC.m */,
 				23189469258B32940092C31B /* MioMvVC.h */,
 				2318946B258B32940092C31B /* MioMvVC.m */,
 				23189466258B32930092C31B /* MioMvIntroVC.h */,
@@ -2571,6 +2764,8 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				23C913FE259D6B32006FA6EB /* TableViewSectionIndex */,
+				23C913E5259C54AE006FA6EB /* ZYLinkageCollectionView */,
 				2312AC182595D3CC00EF45AA /* AcrCloud */,
 				2324800D259424B500C1F68B /* SODownloader */,
 				230274FC2589FD6C00937C04 /* PYSearch */,
@@ -2722,7 +2917,7 @@
 				23AB23292431C88600DBB427 /* Common */,
 				2318944D258AEF510092C31B /* Model&Cell */,
 				23BC2528256DF46300E756ED /* Player */,
-				236936A225835A86005DB8CA /* SongList&Album */,
+				236936A225835A86005DB8CA /* CommenView */,
 				235705CE2440183E007C3F87 /* Home */,
 				236DB71D250F573D001CC2F3 /* Ground */,
 				239B03432514649500B310D2 /* Mine */,
@@ -2817,6 +3012,8 @@
 			children = (
 				23AB23102431C77700DBB427 /* AppDelegate.h */,
 				23AB23112431C77700DBB427 /* AppDelegate.m */,
+				23C9140C259D70B7006FA6EB /* AppDelegate+MioInitalData.h */,
+				23C9140D259D70B7006FA6EB /* AppDelegate+MioInitalData.m */,
 				23AB23842431D32A00DBB427 /* MioTabbarVC.h */,
 				23AB238E2431D32A00DBB427 /* MioTabbarVC.m */,
 				238C94F52566683100FA58FC /* MioTabbar.h */,
@@ -2837,10 +3034,10 @@
 				23AB23862431D32A00DBB427 /* MioAgeView.m */,
 				23AB238A2431D32A00DBB427 /* MioAvatarView.h */,
 				23AB23802431D32A00DBB427 /* MioAvatarView.m */,
+				231AE5AD259B2498006AFA89 /* MioScrollView.h */,
+				231AE5AC259B2498006AFA89 /* MioScrollView.m */,
 				23AB238B2431D32A00DBB427 /* MioEmpty.h */,
 				23AB237F2431D32A00DBB427 /* MioEmpty.m */,
-				23AB23812431D32A00DBB427 /* MioScrollView.h */,
-				23AB23892431D32A00DBB427 /* MioScrollView.m */,
 				23AB238C2431D32A00DBB427 /* MioUserInfo.h */,
 				23AB23832431D32A00DBB427 /* MioUserInfo.m */,
 				23AB23B22431DAEE00DBB427 /* TFQClickAreaButton.h */,
@@ -2920,6 +3117,66 @@
 				23C24FC12446A4CA00EE0BE2 /* UIView+STPicker.m */,
 			);
 			path = STPickerView;
+			sourceTree = "<group>";
+		};
+		23C913E5259C54AE006FA6EB /* ZYLinkageCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				23C913E7259C54AE006FA6EB /* CustomCell.h */,
+				23C913EA259C54AE006FA6EB /* CustomCell.m */,
+				23C913E9259C54AE006FA6EB /* HeaderView.h */,
+				23C913E6259C54AE006FA6EB /* HeaderView.m */,
+				23C913E8259C54AE006FA6EB /* ZYCollectionView.h */,
+				23C913EB259C54AE006FA6EB /* ZYCollectionView.m */,
+			);
+			path = ZYLinkageCollectionView;
+			sourceTree = "<group>";
+		};
+		23C913FE259D6B32006FA6EB /* TableViewSectionIndex */ = {
+			isa = PBXGroup;
+			children = (
+				23C91404259D6B32006FA6EB /* Custom */,
+				23C913FF259D6B32006FA6EB /* CYSectionIndexView.h */,
+				23C91401259D6B32006FA6EB /* CYSectionIndexView.m */,
+				23C91407259D6B32006FA6EB /* CYSectionIndexViewCell.h */,
+				23C91400259D6B32006FA6EB /* CYSectionIndexViewCell.m */,
+				23C91402259D6B32006FA6EB /* Resource */,
+			);
+			path = TableViewSectionIndex;
+			sourceTree = "<group>";
+		};
+		23C91402259D6B32006FA6EB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				23C91403259D6B32006FA6EB /* TableViewSectionIndex.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		23C91404259D6B32006FA6EB /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				23C91405259D6B32006FA6EB /* CYCustomSectionIndexCell.h */,
+				23C91406259D6B32006FA6EB /* CYCustomSectionIndexCell.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		23C91427259DB6CB006FA6EB /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				23C913E2259C549B006FA6EB /* MioCategoryListVC.h */,
+				23C913E3259C549B006FA6EB /* MioCategoryListVC.m */,
+				23C91424259DB68B006FA6EB /* MioCategoryVC.h */,
+				23C91425259DB68B006FA6EB /* MioCategoryVC.m */,
+				23C91428259DB6EA006FA6EB /* MioCategoryMusicVC.h */,
+				23C91429259DB6EA006FA6EB /* MioCategoryMusicVC.m */,
+				23C9142B259DB6FA006FA6EB /* MioCategorySonglistVC.h */,
+				23C9142C259DB6FA006FA6EB /* MioCategorySonglistVC.m */,
+				23C9142E259DB70A006FA6EB /* MioCategoryAlbumVC.h */,
+				23C9142F259DB70A006FA6EB /* MioCategoryAlbumVC.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		23CB0A81254BF6F400A18B63 /* XMTextView */ = {
@@ -3032,6 +3289,7 @@
 				230274B82589B67700937C04 /* HXPhotoPicker.bundle in Resources */,
 				23C24FCE2446A4CA00EE0BE2 /* area.plist in Resources */,
 				23CEA03F25876FC20083AA75 /* bai.zip in Resources */,
+				23C9140A259D6B32006FA6EB /* TableViewSectionIndex.bundle in Resources */,
 				236DB789250F6668001CC2F3 /* ZFPlayer.bundle in Resources */,
 				23AB231D2431C77A00DBB427 /* Assets.xcassets in Resources */,
 				2393DD082511AEFD002483A9 /* YDEmojiCell.xib in Resources */,
@@ -3153,7 +3411,6 @@
 				2378093924FF4DF900007883 /* NERStyle+NERChainable.m in Sources */,
 				2393DD042511AEFD002483A9 /* ViewUtil.m in Sources */,
 				230274E32589B67700937C04 /* HXPhotoClippingView.m in Sources */,
-				23AB23962431D32A00DBB427 /* MioScrollView.m in Sources */,
 				230274E42589B67700937C04 /* HXPhotoEditStickerTrashView.m in Sources */,
 				230274F42589B67700937C04 /* HXPhotoEditGridView.m in Sources */,
 				230274F92589B67700937C04 /* HXPhotoEditGridLayer.m in Sources */,
@@ -3168,11 +3425,14 @@
 				23615E2A2576236700EAD39D /* MioMainPlayerVC.m in Sources */,
 				233826222518ACDD00DC9021 /* TADotView.m in Sources */,
 				230274D62589B67700937C04 /* HXPhotoSubViewCell.m in Sources */,
+				23C91417259D807B006FA6EB /* MioSearchSingerResultVC.m in Sources */,
+				23C9141D259D809B006FA6EB /* MioSearchAlbumResultVC.m in Sources */,
 				230274E02589B67700937C04 /* HXMECancelBlock.m in Sources */,
 				230274CA2589B67700937C04 /* HXCollectionView.m in Sources */,
 				236DB772250F6668001CC2F3 /* ZFPlayerGestureControl.m in Sources */,
 				230274DE2589B67700937C04 /* HX_PhotoEditViewController.m in Sources */,
 				23FF98352547BB26008CC170 /* GCDTimer.m in Sources */,
+				23C913FD259D65AF006FA6EB /* MioSingerListVC.m in Sources */,
 				230274B22589B67700937C04 /* NSDate+HXExtension.m in Sources */,
 				230274E82589B67700937C04 /* HX_PhotoEditBottomView.m in Sources */,
 				2338261F2518ACDD00DC9021 /* SDCycleScrollView.m in Sources */,
@@ -3184,6 +3444,7 @@
 				230274DB2589B67700937C04 /* HXPhotoPreviewViewCell.m in Sources */,
 				230274BB2589B67700937C04 /* HXPhotoManager.m in Sources */,
 				236DB70E250F0DD8001CC2F3 /* LOTLayerContainer.m in Sources */,
+				231AE5A7259B144B006AFA89 /* MioSingerMVVC.m in Sources */,
 				23C24FD12446A4CA00EE0BE2 /* UIView+STPicker.m in Sources */,
 				2393DD072511AEFD002483A9 /* YDEmojiCell.m in Sources */,
 				230274A72589B67700937C04 /* HXPhotoViewPresentTransition.m in Sources */,
@@ -3194,7 +3455,9 @@
 				2378094124FF4DF900007883 /* UIView+NERFrame.m in Sources */,
 				2378093124FF4DF900007883 /* UITextView+NERChainable.m in Sources */,
 				2312AC362595E89300EF45AA /* WBQRCodeVC.m in Sources */,
+				23C91414259D8068006FA6EB /* MioSearchMusicResultVC.m in Sources */,
 				2324801F2594397300C1F68B /* SODownloader+MusicDownloader.m in Sources */,
+				231AE58325998801006AFA89 /* MioAlbumListPageVC.m in Sources */,
 				233826262518ACDD00DC9021 /* SDCustomMaskView.m in Sources */,
 				2378092F24FF4DF900007883 /* NERStaticTableView+NERChainable.m in Sources */,
 				23746CB72580AD150072A4C8 /* MioMutipleCell.m in Sources */,
@@ -3234,6 +3497,7 @@
 				236DB79D250F6F8D001CC2F3 /* LEECoolButton.m in Sources */,
 				235055A52567A57500F96AFC /* DownloadInfo.m in Sources */,
 				236DB6FB250F0DD8001CC2F3 /* LOTShapeTransform.m in Sources */,
+				23C91408259D6B32006FA6EB /* CYSectionIndexViewCell.m in Sources */,
 				236DB78F250F6668001CC2F3 /* ZFPortraitControlView.m in Sources */,
 				230274C52589B67700937C04 /* HXPhotoModel.m in Sources */,
 				230274D52589B67700937C04 /* HXFullScreenCameraPlayView.m in Sources */,
@@ -3265,13 +3529,17 @@
 				236DB70F250F0DD8001CC2F3 /* LOTCompositionContainer.m in Sources */,
 				236DB78D250F6668001CC2F3 /* ZFLoadingView.m in Sources */,
 				233826242518ACDD00DC9021 /* TAAnimatedDotView.m in Sources */,
+				23C913CE259C164E006FA6EB /* MioMVTableCell.m in Sources */,
 				230274AD2589B67700937C04 /* NSBundle+HXPhotoPicker.m in Sources */,
+				23C91423259DA5B9006FA6EB /* MioSonglistTableCell.m in Sources */,
 				23AB23562431C8BA00DBB427 /* NSString+MioExtension.m in Sources */,
 				230274B72589B67700937C04 /* HXPhotoCommon.m in Sources */,
 				236DB788250F6668001CC2F3 /* ZFNetworkSpeedMonitor.m in Sources */,
 				23673F7225076E2300C599CB /* WLButtonCountdownManager.m in Sources */,
+				23C9141A259D808E006FA6EB /* MioSearchSonglistResultVC.m in Sources */,
 				233826232518ACDD00DC9021 /* TAPageControl.m in Sources */,
 				233825F92518796900DC9021 /* HSImageTableViewCell.m in Sources */,
+				23C913F1259C7502006FA6EB /* MioMusicRankVC.m in Sources */,
 				230274F22589B67700937C04 /* HXPhotoEditStickerItemContentView.m in Sources */,
 				236DB6E3250F0DD8001CC2F3 /* LOTRoundedRectAnimator.m in Sources */,
 				2378092D24FF4DF900007883 /* UIStepper+NERChainable.m in Sources */,
@@ -3279,6 +3547,8 @@
 				23AB23572431C8BA00DBB427 /* UIImageView+MioExtension.m in Sources */,
 				230274F12589B67700937C04 /* HXPhotoEditDrawView.m in Sources */,
 				239930AE25777DFA00584486 /* DOUAudioFilePreprocessor.m in Sources */,
+				23C913CB259C129B006FA6EB /* MioAlbumTableCell.m in Sources */,
+				23C913EE259C54AE006FA6EB /* ZYCollectionView.m in Sources */,
 				230274F52589B67700937C04 /* HXPhotoEditMosaicView.m in Sources */,
 				230274A52589B67700937C04 /* HXPhotoEditTransition.m in Sources */,
 				2393DCF22511AE9C002483A9 /* JJCardSliderCell.m in Sources */,
@@ -3286,6 +3556,7 @@
 				2302750B2589FD6D00937C04 /* UIColor+PYSearchExtension.m in Sources */,
 				236DB786250F6668001CC2F3 /* ZFVolumeBrightnessView.m in Sources */,
 				2378093D24FF4DF900007883 /* NSAttributedString+NERChainable.m in Sources */,
+				23C91426259DB68B006FA6EB /* MioCategoryVC.m in Sources */,
 				2312AC222595D4F600EF45AA /* YSCRippleView.m in Sources */,
 				23C24FCF2446A4CA00EE0BE2 /* STPickerArea.m in Sources */,
 				23C24FD02446A4CA00EE0BE2 /* STPickerView.m in Sources */,
@@ -3293,9 +3564,11 @@
 				23F3716F25906DDE006053B1 /* MioSonglistCollectionCell.m in Sources */,
 				2393DCF42511AE9C002483A9 /* JJCardSliderFlowLayout.m in Sources */,
 				2302750E2589FD6D00937C04 /* PYSearchConst.m in Sources */,
+				231AE5A1259B142D006AFA89 /* MioSingerSongsVC.m in Sources */,
 				236DB773250F6668001CC2F3 /* ZFPlayerController.m in Sources */,
 				2312AC172595830700EF45AA /* MioDownloadingCell.m in Sources */,
 				233825E92518796900DC9021 /* HSSetTableViewMainController.m in Sources */,
+				23C913D4259C1B3C006FA6EB /* MioSonglistListVC.m in Sources */,
 				2378094524FF4DF900007883 /* NERTypeConverter.m in Sources */,
 				230274F32589B67700937C04 /* HXPhotoEditChartletPreviewView.m in Sources */,
 				2393DCF12511AE9C002483A9 /* JJPageControllerView.m in Sources */,
@@ -3306,6 +3579,7 @@
 				233826202518ACDD00DC9021 /* UIView+SDExtension.m in Sources */,
 				23FF98332547BB26008CC170 /* GCD.m in Sources */,
 				235705D124401855007C3F87 /* MioHomeVC.m in Sources */,
+				23C9140E259D70B7006FA6EB /* AppDelegate+MioInitalData.m in Sources */,
 				23615E152574A18100EAD39D /* MioPlayList.m in Sources */,
 				23BC2521256CD65800E756ED /* MioTest3VC.m in Sources */,
 				23248018259424B500C1F68B /* SODownloadResponseSerializer.m in Sources */,
@@ -3335,6 +3609,7 @@
 				23AB23122431C77700DBB427 /* AppDelegate.m in Sources */,
 				230274B02589B67700937C04 /* UIView+HXExtension.m in Sources */,
 				239B0346251464C300B310D2 /* MioMineVC.m in Sources */,
+				231AE5AE259B2498006AFA89 /* MioScrollView.m in Sources */,
 				2378093324FF4DF900007883 /* UIButton+NERChainable.m in Sources */,
 				236DB790250F6668001CC2F3 /* UIImageView+ZFCache.m in Sources */,
 				230274BC2589B67700937C04 /* HXCustomCameraViewController.m in Sources */,
@@ -3344,10 +3619,14 @@
 				230274FB2589B67700937C04 /* HXPhotoEdit.m in Sources */,
 				2366652D256B81D400609A05 /* MioTest2VC.m in Sources */,
 				233825E32518796900DC9021 /* UIView+HSFrame.m in Sources */,
+				231AE597259ADA46006AFA89 /* MioCategoryMVVC.m in Sources */,
 				236DB77B250F6668001CC2F3 /* ZFFloatView.m in Sources */,
 				230274AC2589B67700937C04 /* NSArray+HXExtension.m in Sources */,
+				231AE591259ABF15006AFA89 /* MioCreatSonglistVC.m in Sources */,
 				238C94F62566683100FA58FC /* MioTabbar.m in Sources */,
+				23C913EC259C54AE006FA6EB /* HeaderView.m in Sources */,
 				230274ED2589B67700937C04 /* HXPhotoEditChartletContentViewCell.m in Sources */,
+				231AE5A4259B143F006AFA89 /* MioSingerAlbumVC.m in Sources */,
 				23FF98372547BB26008CC170 /* GCDSemaphore.m in Sources */,
 				2378094824FF4DF900007883 /* NERConstraintMaker.m in Sources */,
 				2350556C2567522900F96AFC /* MioVCConfig.m in Sources */,
@@ -3363,8 +3642,10 @@
 				239930BA25777DFA00584486 /* DOUMPMediaLibraryAssetLoader.m in Sources */,
 				236DB6D9250F0DD8001CC2F3 /* LOTPointInterpolator.m in Sources */,
 				236B1EAE257A13C1001D00E3 /* GKSliderView.m in Sources */,
+				231AE59E259B141F006AFA89 /* MioSingerVC.m in Sources */,
 				233825EB2518796900DC9021 /* UIViewController+HSSetTableView.m in Sources */,
 				236DB6D4250F0DD8001CC2F3 /* LOTRenderNode.m in Sources */,
+				231AE58625998887006AFA89 /* MioAlbumListVC.m in Sources */,
 				230274D92589B67700937C04 /* HXPreviewVideoView.m in Sources */,
 				23AB233F2431C89800DBB427 /* MioRequest.m in Sources */,
 				2378093A24FF4DF900007883 /* UIImage+NERChainable.m in Sources */,
@@ -3383,6 +3664,7 @@
 				232480252594612200C1F68B /* MioDownloadMusicVC.m in Sources */,
 				236DB6E9250F0DD8001CC2F3 /* UIBezierPath.m in Sources */,
 				23AB235C2431C8BA00DBB427 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				23C91409259D6B32006FA6EB /* CYSectionIndexView.m in Sources */,
 				2305A216256BA4CE0099EFE3 /* MioLabel.m in Sources */,
 				230274F72589B67700937C04 /* HXPhotoEditStickerItemView.m in Sources */,
 				2378093424FF4DF900007883 /* NERAlert+NERChainable.m in Sources */,
@@ -3397,12 +3679,16 @@
 				230274AF2589B67700937C04 /* UIFont+HXExtension.m in Sources */,
 				23615E182574A3D200EAD39D /* MioMusicModel.m in Sources */,
 				236DB6D5250F0DD8001CC2F3 /* LOTTrimPathNode.m in Sources */,
+				23C91430259DB70A006FA6EB /* MioCategoryAlbumVC.m in Sources */,
 				230274AA2589B67700937C04 /* NSString+HXExtension.m in Sources */,
 				230274C72589B67700937C04 /* HXAlbumModel.m in Sources */,
 				230274E92589B67700937C04 /* HXPhotoEditGridMaskLayer.m in Sources */,
 				2318946E258B32940092C31B /* MioMvVC.m in Sources */,
 				236DB6F2250F0DD8001CC2F3 /* LOTShapeTrimPath.m in Sources */,
+				23C913F4259C75B0006FA6EB /* MioMusicRankListVC.m in Sources */,
 				236DB6F3250F0DD8001CC2F3 /* LOTShapeGradientFill.m in Sources */,
+				231AE59A259ADFE4006AFA89 /* MioMVCollectionCell.m in Sources */,
+				23C9142D259DB6FA006FA6EB /* MioCategorySonglistVC.m in Sources */,
 				236DB703250F0DD8001CC2F3 /* LOTValueCallback.m in Sources */,
 				2350556F25675F4600F96AFC /* MioTestVC.m in Sources */,
 				23C24FD22446A4CA00EE0BE2 /* STPickerViewUI.m in Sources */,
@@ -3423,10 +3709,13 @@
 				230274F82589B67700937C04 /* HXPhotoEditGraffitiColorView.m in Sources */,
 				2318944C258AEEAE0092C31B /* MioAlbumModel.m in Sources */,
 				236DB720250F5BC0001CC2F3 /* MioGroudVC.m in Sources */,
+				231AE594259ADA1E006AFA89 /* MioRecommendMVVC.m in Sources */,
 				236DB77D250F6668001CC2F3 /* ZFPortraitViewController.m in Sources */,
 				236DB6FC250F0DD8001CC2F3 /* LOTShapeStroke.m in Sources */,
 				23AB23582431C8BA00DBB427 /* UIView+MioExtension.m in Sources */,
+				23C913D1259C1B2B006FA6EB /* MioSonglistPageVC.m in Sources */,
 				230274D42589B67700937C04 /* HXPhotoView.m in Sources */,
+				23C9140B259D6B32006FA6EB /* CYCustomSectionIndexCell.m in Sources */,
 				239930B425777DFA00584486 /* DOUAudioDecoder.m in Sources */,
 				236936A125835210005DB8CA /* MioSongListVC.m in Sources */,
 				230274AB2589B67700937C04 /* UIViewController+HXExtension.m in Sources */,
@@ -3434,6 +3723,8 @@
 				236DB6DC250F0DD8001CC2F3 /* LOTArrayInterpolator.m in Sources */,
 				23AB233E2431C89800DBB427 /* MioPostRequest.m in Sources */,
 				239930B725777DFA00584486 /* DOUAudioEventLoop.m in Sources */,
+				23C9142A259DB6EA006FA6EB /* MioCategoryMusicVC.m in Sources */,
+				23C91411259D7617006FA6EB /* MioSingerTableCell.m in Sources */,
 				236DB70B250F0DD8001CC2F3 /* LOTAnimatedSwitch.m in Sources */,
 				237D061E257DC3BA00697F3A /* BTCoverHorizontalTransition.m in Sources */,
 				233826252518ACDD00DC9021 /* TAAbstractDotView.m in Sources */,
@@ -3443,6 +3734,7 @@
 				236DB70A250F0DD8001CC2F3 /* LOTInterpolatorCallback.m in Sources */,
 				230274AE2589B67700937C04 /* UIImageView+HXExtension.m in Sources */,
 				2369369A258321E7005DB8CA /* MioButton.m in Sources */,
+				231AE58925998DBA006AFA89 /* MioAlbumCollectionCell.m in Sources */,
 				232480282594613300C1F68B /* MioDownloadMVVC.m in Sources */,
 				236DB777250F6668001CC2F3 /* ZFPersentInteractiveTransition.m in Sources */,
 				23615E12257493CA00EAD39D /* MioPlayer.m in Sources */,
@@ -3456,6 +3748,7 @@
 				236DB70D250F0DD8001CC2F3 /* LOTBezierData.m in Sources */,
 				23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */,
 				2312AC482595EB5200EF45AA /* SGWebView.m in Sources */,
+				23C913ED259C54AE006FA6EB /* CustomCell.m in Sources */,
 				233825F22518796900DC9021 /* HSHeaderModel.m in Sources */,
 				236DB78B250F6668001CC2F3 /* ZFPlayerControlView.m in Sources */,
 				2366F66D257F246E006E1D7D /* LyricParser.m in Sources */,
@@ -3476,9 +3769,11 @@
 				23615E2E257638BE00EAD39D /* NSObject+XWAdd.m in Sources */,
 				232603E92588A20500754659 /* MioMoreVC.m in Sources */,
 				230275112589FD6D00937C04 /* UIView+PYSearchExtension.m in Sources */,
+				231AE58E2599B721006AFA89 /* MioAlbumVC.m in Sources */,
 				23AB23A92431DA5300DBB427 /* MioModiPassWordVC.m in Sources */,
 				2378093524FF4DF900007883 /* NSString+NERChainable.m in Sources */,
 				239930AF25777DFA00584486 /* NSData+DOUAudioMappedFile.m in Sources */,
+				23C91420259D80AC006FA6EB /* MioSearchMVResultVC.m in Sources */,
 				2302750C2589FD6D00937C04 /* PYSearchViewController.m in Sources */,
 				236DB784250F6668001CC2F3 /* ZFUtilities.m in Sources */,
 				230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */,
@@ -3502,6 +3797,7 @@
 				239930AB25777DFA00584486 /* DOUAudioAnalyzer.m in Sources */,
 				236DB6DF250F0DD8001CC2F3 /* LOTPathAnimator.m in Sources */,
 				230274CE2589B67700937C04 /* HXPhotoBottomSelectView.m in Sources */,
+				23C913E4259C549B006FA6EB /* MioCategoryListVC.m in Sources */,
 				23C24FD62446A4CA00EE0BE2 /* NSCalendar+STPicker.m in Sources */,
 				23AB235D2431C8BA00DBB427 /* UITextField+NumberFormat.m in Sources */,
 				230274C82589B67700937C04 /* HXPhotoPreviewBottomView.m in Sources */,

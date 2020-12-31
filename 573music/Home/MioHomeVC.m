@@ -49,14 +49,14 @@
     _pageController.titleSizeNormal    = 16;
     _pageController.titleSizeSelected  = 20;
     _pageController.menuBGColor        = appClearColor;
-    _pageController.titleColorNormal   = subColor;
+    _pageController.titleColorNormal   = color_text_one;
     _pageController.titleColorSelected = color_main;
     _pageController.progressWidth      = 16;
     _pageController.progressHeight     = 3;
     _pageController.progressViewCornerRadius = 1.5;
     _pageController.progressViewBottomSpace = 4;
     _pageController.viewFrame = CGRectMake(0, StatusH , KSW , KSH - StatusH - 44 - TabH);
-    _pageController.menuViewContentMargin = 20;
+    _pageController.selectIndex = 1;
     [_contentView addSubview:self.pageController.view];
     
     
@@ -125,6 +125,7 @@
 }
 
 -(void)changeSkin{
+    _pageController.titleColorNormal   = color_text_one;
     _pageController.titleColorSelected = color_main;
     [_pageController reloadData];
     CGFloat r = (CGFloat) [(colorDic[@"main"][@"r"]) intValue]/255.0;

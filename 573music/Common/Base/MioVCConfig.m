@@ -24,8 +24,8 @@
         
     }
     
-    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioViewController",@"MioMvCmtVC",@"MioMutipleVC",@"MioListenMusicVC",@"LBXScanBaseViewController",@"ScanSuccessJumpVC"];
-    NSArray *allArr = @[@"MioHomeVC",@"MioGroudVC",@"MioMineVC",@"MioHomeRecommendVC",@"MioHomeMusicHallVC"];
+    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioMvIntroVC",@"MioMvCmtVC",@"MioMutipleVC",@"MioListenMusicVC",@"LBXScanBaseViewController",@"ScanSuccessJumpVC"];
+    NSArray *allArr = @[@"MioHomeVC",@"MioGroudVC",@"MioMineVC",@"MioHomeRecommendVC",@"MioHomeMusicHallVC",@"MioGroudVC",@"MioRecommendMVVC",@"MioCategoryMVVC"];
     
     
     if ([noneArr containsObject:vcName]){

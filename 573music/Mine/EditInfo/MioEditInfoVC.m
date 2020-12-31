@@ -11,8 +11,7 @@
 #import "XMTextView.h"
 #import <LEEAlert.h>
 #import <AFHTTPSessionManager.h>
-#import "MioUploadRequest.h"
-#import <AFNetworking/AFHTTPSessionManager.h>
+
 @interface MioEditInfoVC ()
 @property (nonatomic, strong) UIImageView *avatar;
 @property (nonatomic, strong) UILabel *nickNameLab;
@@ -44,7 +43,7 @@
         UILabel *titleLab = [UILabel creatLabel:frame(12, [heightArr[i] intValue]/2 - 22, 100, 44) inView:infoView text:titleArr[i] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
         UIView *split = [UIView creatView:frame(10, [topArr[i] intValue] + [heightArr[i] intValue], KSW_Mar2 - 20, 0.5) inView:bgView bgColor:color_split radius:0];
         if (i < 4) {
-            UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 20 - 12 , [heightArr[i] intValue]/2 - 10, 20, 20) inView:infoView image:@"right" bgTintColor:color_icon_three radius:0];
+            MioImageView *arrow = [MioImageView creatImgView:frame(KSW_Mar2 - 20 - 12 , [heightArr[i] intValue]/2 - 10, 20, 20) inView:infoView image:@"right" bgTintColorName:name_icon_three radius:0];
         }
         
         [infoView whenTapped:^{
@@ -71,7 +70,7 @@
         XMTextView *noteTV = [[XMTextView alloc] initWithFrame:CGRectMake(0, 0, 240, 70)];
         noteTV.textFont = [UIFont systemFontOfSize:14];
         noteTV.textColor = subColor;
-        noteTV.textMaxNum = 12;
+        noteTV.textMaxNum = 20;
         noteTV.isSetBorder = YES;
         noteTV.borderLineWidth = 0.5;
         noteTV.placeholderColor = grayTextColor;
@@ -183,7 +182,7 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
-    [manager POST:api_uploadPic parameters:nil
+    [manager POST:api_uploadPic parameters:@{@"dir":@"avatar"}
        headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSData *data = UIImageJPEGRepresentation(image, 0.8);
         [formData appendPartWithFileData:data name:@"file" fileName:@"11" mimeType:@"image/png"];

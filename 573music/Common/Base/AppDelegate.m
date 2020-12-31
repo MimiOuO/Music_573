@@ -16,6 +16,8 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #import <SSZipArchive.h>
+
+#import "AppDelegate+MioInitalData.h"
 #endif
 @interface AppDelegate ()
 @property (nonatomic, assign) float tabbarHeight;
@@ -38,6 +40,7 @@
 //
 //    [JJException configExceptionCategory:JJExceptionGuardNSStringContainer | JJExceptionGuardArrayContainer | JJExceptionGuardUnrecognizedSelector | JJExceptionGuardDictionaryContainer];
 //    [JJException startGuardException];
+    [self initalData];
     
     [self registPlatform];
     

@@ -63,17 +63,7 @@
     [self.tabbar addSubview:_bottomPlayer];
     [self.tabbar sendSubviewToBack:_bottomPlayer];
     
-    self.tabBar.backgroundImage = [[UIImage alloc]init];
-    self.tabBar.shadowImage = [[UIImage alloc]init];
-    if (@available(iOS 13.0, *)) {
-        UITabBarAppearance *tabBarAppearance = [self.tabBar.standardAppearance copy];
-        [tabBarAppearance setBackgroundImage:[UIImage new]];
-        [tabBarAppearance setShadowColor:[UIColor clearColor]];
-        [self.tabBar setStandardAppearance:tabBarAppearance];
-    }else{
-        [self.tabBar setBackgroundImage:[UIImage new]];
-        [self.tabBar setShadowImage:[UIImage new]];
-    }
+
 
 
     
@@ -82,7 +72,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomNone) name:@"MioBottomNone" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomHalf) name:@"MioBottomHalf" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomAll) name:@"MioBottomAll" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTip:) name:@"showTip" object:nil];
+ 
     
     _homeVC = [MioHomeVC new];
     _groundVC = [MioGroudVC new];
@@ -104,7 +94,6 @@
     
     NSArray<UITabBarItem *> *items = self.tabBar.items;
     
-
     items[0].image = [UIImage imageWithCGImage:imagePath(@"tab_yingyue_putong").CGImage scale:3 orientation:UIImageOrientationUp];
     items[1].image = [UIImage imageWithCGImage:imagePath(@"tab_mv_putong").CGImage scale:3 orientation:UIImageOrientationUp];
     items[2].image = [UIImage imageWithCGImage:imagePath(@"tab_me_putong").CGImage scale:3 orientation:UIImageOrientationUp];
@@ -113,7 +102,11 @@
     items[1].selectedImage = [[UIImage imageWithCGImage:imagePath(@"tab_mv").CGImage scale:3 orientation:UIImageOrientationUp] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     items[2].selectedImage = [[UIImage imageWithCGImage:imagePath(@"tab_me").CGImage scale:3 orientation:UIImageOrientationUp] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
+    
     self.tabBar.tintColor = color_main;
+    self.tabBar.unselectedItemTintColor = color_icon_three;
+
+    
     _bgView.image = imagePath(@"picture_bql");
 }
 
@@ -135,14 +128,10 @@
     //设置item按钮
     nav.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[normalImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[selectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
-    //未选中字体颜色
-    
-//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:rgb(136, 134, 135),NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
-    
-    //选中字体颜色
-
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:color_main,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
     self.tabBar.tintColor = color_main;
+    self.tabBar.unselectedItemTintColor = color_icon_three;
+
+
     
     [nav.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -2)];
     

@@ -463,7 +463,8 @@
     titleView.backgroundColor = redTextColor;
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:frame(Mar, 6 + StatusH, KSW - 3 * Mar - 53, 30)];
     if (@available(iOS 13.0, *)) {
-        searchBar.searchTextField.backgroundColor = appBgColor;
+        searchBar.searchTextField.backgroundColor = appClearColor;
+        searchBar.searchTextField.textColor = color_text_one;
     }
     [titleView addSubview:searchBar];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) { // iOS 11
@@ -489,7 +490,7 @@
         }
     }
     self.searchBar = searchBar;
-    self.searchBar.backgroundColor = rgb(246, 247, 249);
+    self.searchBar.backgroundColor = color_card;
     if (@available(iOS 13.0, *)) {
         self.searchBar.searchTextField.font = [UIFont systemFontOfSize:14];
     }
@@ -1134,8 +1135,8 @@
     label.userInteractionEnabled = YES;
     label.font = [UIFont systemFontOfSize:12];
     label.text = title;
-    label.textColor = [UIColor grayColor];
-    label.backgroundColor = [UIColor py_colorWithHexString:@"#fafafa"];
+    label.textColor = color_text_one;
+    label.backgroundColor = color_card;
     label.layer.cornerRadius = 3;
     label.clipsToBounds = YES;
     label.textAlignment = NSTextAlignmentCenter;

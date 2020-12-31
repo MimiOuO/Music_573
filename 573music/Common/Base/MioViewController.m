@@ -50,11 +50,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-    if (@available(iOS 13.0, *)) {
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
-    } else {
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    if (Equals(statusColor, @"white")) {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    }else{
+        if (@available(iOS 13.0, *)) {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
+        } else {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        }
     }
+    
+
 //    self.view.height = KSH;
     if ([MioVCConfig getBottomType:self] == MioBottomAll) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomAll" object:nil];

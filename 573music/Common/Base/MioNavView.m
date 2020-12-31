@@ -40,22 +40,32 @@
         [_leftButton setTitleColor:appBlackColor forState:UIControlStateNormal];
         [self.mainView addSubview:_leftButton];
         [_leftButton addTarget:self action:@selector(clickLeftButton) forControlEvents:UIControlEventTouchUpInside];
+
+
+        
+
     }
     return _leftButton;
 }
+
+
 
 -(UIButton *)centerButton{
     if (!_centerButton) {
         //中间按钮
 		UIButton * centerButton = [[UIButton alloc] initWithFrame:CGRectMake(60, self.leftButton.top, KSW - 60 * 2, self.leftButton.height)];
         centerButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-        [centerButton setTitleColor:appBlackColor forState:UIControlStateNormal];
+        [centerButton setTitleColor:color_text_one forState:UIControlStateNormal];
         centerButton.adjustsImageWhenHighlighted = NO;
         [self.mainView addSubview:centerButton];
         self.centerButton = centerButton;
         [_centerButton addTarget:self action:@selector(clickCenterButton) forControlEvents:UIControlEventTouchUpInside];
         [self.centerButton.superview layoutIfNeeded];
-        
+
+        UIImage * tempImage = backArrowIcon;
+        tempImage = [tempImage imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+        [_leftButton setImage:tempImage forState:UIControlStateNormal];
+        _leftButton.tintColor = color_text_one;
     }
     return _centerButton;
 }

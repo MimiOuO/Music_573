@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self creatView];
     [self request];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popVC) name:@"playerBackClick" object:nil];
 }
@@ -53,10 +54,10 @@
 }
 
 -(void)request{
-    [MioGetReq(api_base, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSDictionary *data = [result objectForKey:@"data"];
-        _mv = [MioMvModel mj_objectWithKeyValues:data];
-        [self creatView];
+    [MioGetReq(api_mvs, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        _mv = [MioMvModel mj_objectWithKeyValues:data[0]];
+        
     } failure:^(NSString *errorInfo) {}];
 }
 
@@ -123,7 +124,7 @@
     _pageController.titleFontName      = @"PingFangSC-Medium";
     _pageController.titleSizeNormal    = 16;
     _pageController.menuBGColor        = appWhiteColor;
-    _pageController.titleColorNormal   = subColor;
+    _pageController.titleColorNormal   = color_text_one;
     _pageController.titleColorSelected = color_main;
     _pageController.progressWidth      = 32;
     _pageController.progressHeight     = 2;

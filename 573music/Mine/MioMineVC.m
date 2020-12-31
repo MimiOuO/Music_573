@@ -10,6 +10,8 @@
 #import "MioSonglistCollectionCell.h"
 #import "MioMoreVC.h"
 #import "MioUserInfo.h"
+#import "MioEditInfoVC.h"
+#import "MioCreatSonglistVC.h"
 
 @interface MioMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) MioUserInfo *user;
@@ -96,7 +98,7 @@
     }];
 
     UIScrollView *bgScroll = [UIScrollView creatScroll:frame(0, NavH, KSW, KSH - NavH - TabH - 50) inView:self.view contentSize:CGSizeMake(KSW, 698)];
-    _userBgView = [MioView creatView:frame(Mar,31, KSW_Mar2, 136) inView:bgScroll bgColorName:name_sup_one radius:8];
+    _userBgView = [MioView creatView:frame(Mar,31, KSW_Mar2, 136) inView:bgScroll bgColorName:name_card radius:8];
     
     _loginLab = [MioLabel creatLabel:frame(92, 8, 250, 80) inView:_userBgView text:@"登录/注册\n\n" colorName:name_text_one boldSize:18 alignment:NSTextAlignmentLeft];
     _loginLab.numberOfLines = 0;
@@ -112,7 +114,8 @@
     _nicknameLab.text = currentUserNickName;
     _nicknameLab.width = [_nicknameLab.text widthForFont:BoldFont(16)];
     _editBtn = [MioButton creatBtn:frame(_nicknameLab.right + 4, 8, 14, 14) inView:_userBgView bgImage:@"bianji_icon" bgTintColorName:name_icon_three action:^{
-        
+        MioEditInfoVC *vc = [[MioEditInfoVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
 
     _LvBg = [UIView creatView:frame(92, 28, 30, 16) inView:_userBgView bgColor:rgba(0, 0, 0, 0.15) radius:8];
@@ -158,30 +161,7 @@
     MioLabel *loalLab = [MioLabel creatLabel:frame(localView.left, 253, 52, 17) inView:bgScroll text:@"本地" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     MioLabel *downloadLab = [MioLabel creatLabel:frame(downLoadView.left, 253, 52, 17) inView:bgScroll text:@"下载" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     
-    [memberLab whenTapped:^{
-        goLogin;
-    }];
-    [shareLab whenTapped:^{
-            
-    }];
-    [skinLab whenTapped:^{
-        goLogin;
-    }];
-    [signLab whenTapped:^{
-        goLogin;
-    }];
-    [likeView whenTapped:^{
-        goLogin;
-    }];
-    [songListView whenTapped:^{
-            
-    }];
-    [localView whenTapped:^{
-            
-    }];
-    [downLoadView whenTapped:^{
-            
-    }];
+
     
 
     MioLabel *mySonglistLab = [MioLabel creatLabel:frame(Mar, 300, 100, 20) inView:bgScroll text:@"我的歌单" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
@@ -215,6 +195,42 @@
     
     [bgScroll addSubview:_recentPlayCollection];
     
+    [memberLab whenTapped:^{
+        goLogin;
+    }];
+    [shareLab whenTapped:^{
+            
+    }];
+    [skinLab whenTapped:^{
+        goLogin;
+    }];
+    [signLab whenTapped:^{
+        goLogin;
+    }];
+    [likeView whenTapped:^{
+        goLogin;
+    }];
+    [songListView whenTapped:^{
+            
+    }];
+    [localView whenTapped:^{
+            
+    }];
+    [downLoadView whenTapped:^{
+            
+    }];
+    
+    [newSonglistLab whenTapped:^{
+        goLogin;
+        MioCreatSonglistVC *vc = [[MioCreatSonglistVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+    [moreSonglistLab whenTapped:^{
+        goLogin;
+    }];
+    [moreRecentLab whenTapped:^{
+            
+    }];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

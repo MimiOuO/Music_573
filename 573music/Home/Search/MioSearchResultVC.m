@@ -7,94 +7,129 @@
 //
 
 #import "MioSearchResultVC.h"
+#import <WMPageController.h>
 
-@interface MioSearchResultVC () <UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) UITableView *searchTable;
-@property (nonatomic, strong) NSMutableArray *resultArr;
-@property (nonatomic, strong) NSString *key;
-@property (nonatomic, assign) NSInteger page;
+#import "MioSearchMusicResultVC.h"
+#import "MioSearchSingerResultVC.h"
+#import "MioSearchSonglistResultVC.h"
+#import "MioSearchAlbumResultVC.h"
+#import "MioSearchMVResultVC.h"
+
+@interface MioSearchResultVC ()<WMPageControllerDelegate,WMPageControllerDataSource>
+@property (nonatomic,copy) NSString * key;
+
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) WMPageController *pageController;
+
+@property (nonatomic, strong) MioSearchMusicResultVC *musicResult;
+@property (nonatomic, strong) MioSearchSingerResultVC *singerResult;
+@property (nonatomic, strong) MioSearchSonglistResultVC *songlistResult;
+@property (nonatomic, strong) MioSearchAlbumResultVC *albumResult;
+@property (nonatomic, strong) MioSearchMVResultVC *mvResult;
 @end
 
 @implementation MioSearchResultVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    _musicResult = [[MioSearchMusicResultVC alloc] init];
+    _singerResult = [[MioSearchSingerResultVC alloc] init];
+    _songlistResult = [[MioSearchSonglistResultVC alloc] init];
+    _albumResult = [[MioSearchAlbumResultVC alloc] init];
+    _mvResult = [[MioSearchMVResultVC alloc] init];
     
+
+    _contentView = [[UIView alloc] initWithFrame:frame(0, 0, KSW, KSH - TabH)];
+    _contentView.backgroundColor = appClearColor;
+    [self.view addSubview:_contentView];
     
-    _resultArr = [[NSMutableArray alloc] init];
-    _page = 1;
+
+    _pageController = [[WMPageController alloc] init];
+    [self addChildViewController:_pageController];
+    _pageController.delegate           = self;
+    _pageController.dataSource         = self;
+    _pageController.menuViewStyle      = WMMenuViewStyleLine;
+    _pageController.automaticallyCalculatesItemWidths = YES;
+    _pageController.itemMargin         = 16;
+    _pageController.menuHeight         = 40;
+    _pageController.titleFontName      = @"PingFangSC-Medium";
+    _pageController.titleSizeNormal    = 14;
+    _pageController.titleSizeSelected  = 14;
+    _pageController.menuBGColor        = appClearColor;
+    _pageController.titleColorNormal   = color_text_one;
+    _pageController.titleColorSelected = color_main;
+    _pageController.progressWidth      = 16;
+    _pageController.progressHeight     = 3;
+    _pageController.progressViewCornerRadius = 1.5;
+    _pageController.progressViewBottomSpace = 4;
+    _pageController.viewFrame = CGRectMake(0, 0 , KSW , KSH - NavH - TabH);
+    [_contentView addSubview:self.pageController.view];
     
-    _searchTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KSW, KSH - NavH)];
+    MioImageView *menuBg = [MioImageView creatImgView:frame(0, 0, KSW, 40) inView:_pageController.menuView skin:SkinName image:@"picture_bql" radius:0];
+    [_pageController.menuView sendSubviewToBack:menuBg];
     
-    _searchTable.separatorStyle =UITableViewCellSeparatorStyleNone;
-    _searchTable.dataSource = self;
-    _searchTable.delegate = self;
-    _searchTable.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        _page = _page + 1;
-        [self serchRequest];
-    }];
-    
-    [self.view addSubview:_searchTable];
+
 }
 
+- (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
+    
+    return 5;
+}
 
+- (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
+    
+    if (index == 0) {
+        return _musicResult;
+    }else if (index == 1){
+        return _singerResult;
+    }else if (index == 2){
+        return _songlistResult;
+    }else if (index == 3){
+        return _albumResult;
+    }else{
+        return _mvResult;
+    }
+    
+    
+}
 
+- (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
+    
+    if (index == 0) {
+        return @"歌曲";
+    }else if (index == 1){
+        return @"歌手";
+    }else if (index == 2){
+        return @"歌单";
+    }else if (index == 3){
+        return @"专辑";
+    }else{
+        return @"视频";
+    }
+}
 
 #pragma mark - netWork
 -(void)serchRequest{
     
-    NSDictionary *dic = @{
-                          @"k":_key,
-                          @"page":[NSString stringWithFormat:@"%ld",(long)_page],
-                          };
-    MioGetRequest *request = [[MioGetRequest alloc] initWithRequestUrl:api_base argument:dic];
-    
-    [request success:^(NSDictionary *result) {
-
-    } failure:^(NSString *errorInfo) {
-        
-        
-    }];
+    _musicResult.searchKey = _key;
+    _singerResult.searchKey = _key;
+    _songlistResult.searchKey = _key;
+    _albumResult.searchKey = _key;
+    _mvResult.searchKey = _key;
+    PostNotice(@"search");
 }
 
 #pragma mark - PYSearchViewControllerDelegate
 
 -(void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithSearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText{
-    [_resultArr removeAllObjects];
     _key = searchText;
     [self serchRequest];
 
 }
 
 -(void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchHistoryAtIndex:(NSInteger)index searchText:(NSString *)searchText{
-    [_resultArr removeAllObjects];
     _key = searchText;
     [self serchRequest];
 }
-
-#pragma mark - tableViewDatasoure & delegate
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    cell.backgroundColor = color_main;
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
-
 @end

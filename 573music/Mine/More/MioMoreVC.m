@@ -18,7 +18,6 @@
 @property (nonatomic, strong) UISwitch *integralSwitch;
 @property (nonatomic, strong) UISwitch *wifiSwitch;
 @property (nonatomic, strong) UISwitch *nightSwitch;
-@property (nonatomic, strong) UILabel *defaultDownload;
 @property (nonatomic, strong) UILabel *defaultPlay;
 @property (nonatomic, strong) UILabel *cacheSize;
 @end
@@ -35,7 +34,7 @@
 
 -(void)creatUI{
     UIScrollView *bgscroll = [UIScrollView creatScroll:frame(0, NavH, KSW, KSH - NavH) inView:self.view contentSize:CGSizeMake(KSW, 580)];
-    NSArray *fuc1Arr = @[@"修改密码",@"定时关闭",@"显示积分倒计时",@"夜间模式",@"听歌识曲",@"仅WIFI联网",@"扫一扫",@"默认下载音质",@"默认播放音质"];
+    NSArray *fuc1Arr = @[@"修改密码",@"定时关闭",@"显示积分倒计时",@"夜间模式",@"听歌识曲",@"仅WIFI联网",@"扫一扫",@"默认播放音质"];
     NSArray *fuc2Arr = @[@"清除缓存",@"意见反馈",@"关于我们"];
     NSArray *arrowArr = @[@"设置密码",@"修改密码",@"听歌识曲",@"扫一扫",@"意见反馈",@"关于我们"];
     
@@ -73,11 +72,8 @@
             [_wifiSwitch addTarget:self action:@selector(wifiClick) forControlEvents:(UIControlEventValueChanged)];
             [bgView1 addSubview:_wifiSwitch];
         }
-        if (Equals(fuc1Arr[i], @"默认下载音质")) {
-            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:color_text_two size:14 alignment:NSTextAlignmentRight];
-        }
         if (Equals(fuc1Arr[i], @"默认播放音质")) {
-            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:color_text_two size:14 alignment:NSTextAlignmentRight];
+            _defaultPlay = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
         
     }

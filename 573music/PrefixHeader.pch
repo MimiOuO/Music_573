@@ -168,6 +168,7 @@ if (@available(iOS 13.0, *)) {\
 #define SkinName            [userdefault objectForKey:@"skin"]
 #define colorPath           [NSString stringWithFormat:@"%@/Skin/%@/color.json",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],SkinName]
 #define colorDic            [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:colorPath] options:kNilOptions error:nil]
+#define statusColor         (colorDic[@"status"])
 
 //======================================================================//
 //                                尺寸
@@ -227,7 +228,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define DLog(format, ...) printf("\n %s [第%d行] %s\n",  __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 
 #define backArrowIcon          [UIImage imageNamed:@"backArrow"]
-#define backArrowWhiteIcon     [UIImage imageNamed:@"navigation_back_white"]
+#define backArrowWhiteIcon     [UIImage imageNamed:@"left"]
 
 
 #define WEAKSELF __weak typeof(self) weakSelf = self
@@ -293,9 +294,10 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 //正式服务器
 //#define api_base @"https://duoduo.apphw.com/api"
 //测试服务器
-#define api_base @"http://edu.giggsgame.com/api"
+//#define api_base @"http://edu.giggsgame.com/api"
 
-
+//本地服务器
+#define api_base @"http://new-music.jigesi.test/api"
 
 //登录
 
@@ -303,8 +305,30 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_login                   @"" api_base"/users"
 #define api_passwordLogin           @"" api_base"/shop/login-password"
 
+//分类
+#define api_categories                @"" api_base"/categories"
+
 //歌曲
 #define api_songs                @"" api_base"/songs"
+
+//歌手
+#define api_singers               @"" api_base"/singers"
+#define api_singersGroup               @"" api_base"/singers/group"
+#define api_singerSongs(singer_id)  [NSString stringWithFormat:@"" api_base"/singers/%@/songs",singer_id]
+#define api_singerAlbums(singer_id)  [NSString stringWithFormat:@"" api_base"/singers/%@/albums",singer_id]
+#define api_singerMvs(singer_id)  [NSString stringWithFormat:@"" api_base"/singers/%@/mvs",singer_id]
+
+//歌单
+#define api_songLists                @"" api_base"/song-lists"
+#define api_songListDetail(songlist_id)                [NSString stringWithFormat:@"" api_base"/song-lists/%@",songlist_id]
+//专辑
+#define api_albums                @"" api_base"/albums"
+
+//MV
+#define api_mvs                @"" api_base"/mvs"
+
+//排行榜
+#define api_ranks                @"" api_base"/mvs"
 
 //个人中心
 #define api_userInfo                @"" api_base"/auth/me"

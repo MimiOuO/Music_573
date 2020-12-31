@@ -158,6 +158,37 @@
     }
 }
 
++(void)showMessage:(NSString *)message withTitle:(NSString *)title
+{
+    UIWindow * window = [UIApplication sharedApplication].keyWindow;
+   
+    
+    
+    UIView *bgView = [UIView creatView:frame(0, 0, KSW, KSH) inView:window bgColor:rgba(0, 0, 0, 0.3) radius:0];
+    MioView *view = [MioView creatView:frame(40, 0, KSW - 80, KSH) inView:bgView bgColorName:name_hud radius:8];
+    
+    MioLabel *titleLab = [MioLabel creatLabel:frame(0, 0, KSW -  80, 50) inView:view text:title colorName:name_text_one boldSize:16 alignment:NSTextAlignmentCenter];
+    MioView *split = [MioView creatView:frame(0, 49.5, KSW - 80, 0.5) inView:view bgColorName:name_split radius:0];
+    MioLabel *tip = [MioLabel creatLabel:frame(Mar, 60, KSW_Mar2 -  80, 0) inView:view text:message colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
+    tip.numberOfLines = 0;
+
+    
+    UIButton *knowBtn = [UIButton creatBtn:frame(20, tip.bottom + 20, view.width - 40, 38) inView:view bgColor:color_main title:@"我知道了" titleColor:appWhiteColor font:14 radius:6 action:^{
+        [UIView animateWithDuration:0.3 animations:^{
+            bgView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [bgView removeFromSuperview];
+        }];
+    }];
+    
+    tip.height = [tip.text heightForFont:Font(14) width:KSW_Mar2 - 80];
+    view.height = tip.height + 60 + 20 + 38 + 16;
+    view.centerY = KSH/2;
+    knowBtn.top = tip.bottom + 20;
+
+
+}
+
 @end
 
 
