@@ -15,6 +15,9 @@
 @property (retain, nonatomic) NSMutableArray *sections;
 @property (retain, nonatomic) NSMutableDictionary *sectionDic;
 @property (nonatomic, strong) CYSectionIndexView * sectionIndexView;
+@property (nonatomic, strong) NSArray *categoryArr;
+@property (nonatomic,copy) NSString * areaKey;
+@property (nonatomic,copy) NSString * genderKey;
 @end
 
 @implementation MioSingerListVC
@@ -24,10 +27,60 @@
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"热门歌手" forState:UIControlStateNormal];
     
+    _categoryArr = [userdefault objectForKey:@"category"];
+    
+    [self creatCategory];
     [self createData];
     [self creatUI];
 }
 
+-(void)creatCategory{
+    
+    NSMutableArray *areaArr = [((NSArray *)_categoryArr[0][@"tags"]) mutableCopy];
+    [areaArr insertObject:@"全部" atIndex:0];
+    UIScrollView *areaScroll = [UIScrollView creatScroll:frame(0, NavH + 16, KSW, 28) inView:self.view contentSize:CGSizeMake(areaArr.count * 64 + 24, 28)];
+
+    for (int i = 0;i < areaArr.count; i++) {
+        
+        __block UIButton *titleBtn = [UIButton creatBtn:frame(16 + i*64, 0, 56, 28) inView:areaScroll bgColor:color_card title:areaArr[i] titleColor:color_text_one font:14 radius:14 action:^{
+            for (int j = 0;j < areaArr.count; j++) {
+                UIButton *btn = (UIButton *)[self.view viewWithTag:100 + j];
+                btn.selected = NO;
+            }
+            titleBtn.selected = YES;
+            [self requestData];
+        }];
+        [titleBtn setBackgroundColor:color_main forState:UIControlStateSelected];
+        [titleBtn setTitleColor:color_text_white forState:UIControlStateSelected];
+        titleBtn.tag = 100 + i;
+        if (i == 0) titleBtn.selected = YES;
+    }
+    
+    NSMutableArray *genderArr = [((NSArray *)_categoryArr[1][@"tags"]) mutableCopy];
+    [genderArr insertObject:@"全部" atIndex:0];
+    UIScrollView *genderScroll = [UIScrollView creatScroll:frame(0, NavH + 52, KSW, 28) inView:self.view contentSize:CGSizeMake(genderArr.count * 64 + 24, 28)];
+
+    for (int i = 0;i < genderArr.count; i++) {
+        
+        __block UIButton *titleBtn = [UIButton creatBtn:frame(16 + i*64, 0, 56, 28) inView:genderScroll bgColor:color_card title:genderArr[i] titleColor:color_text_one font:14 radius:14 action:^{
+            for (int j = 0;j < genderArr.count; j++) {
+                UIButton *btn = (UIButton *)[self.view viewWithTag:200 + j];
+                btn.selected = NO;
+            }
+            titleBtn.selected = YES;
+            [self requestData];
+        }];
+        [titleBtn setBackgroundColor:color_main forState:UIControlStateSelected];
+        [titleBtn setTitleColor:color_text_white forState:UIControlStateSelected];
+        titleBtn.tag = 200 + i;
+        if (i == 0) titleBtn.selected = YES;
+    }
+    
+}
+
+-(void)requestData{
+    
+}
 
 
 -(void)creatUI{

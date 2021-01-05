@@ -90,6 +90,11 @@ static const CGFloat kNumberOfLinePerPage = 3;
 
 - (void)hideInputView
 {
+    
+    if ([self.delegate respondsToSelector:@selector(didHideCommentInputView: onSendText:)]) {
+        NSString *content = self.commentInputTextField.text;
+        [self.delegate didHideCommentInputView:self onSendText:content];
+    }
     self.inputBottomViewHeight = 0;
     [self.commentInputTextField resignFirstResponder];
     self.commentInputTextField.text = @"";
@@ -101,9 +106,7 @@ static const CGFloat kNumberOfLinePerPage = 3;
         self.frame = rect;
         [self removeFromSuperview];
     }];
-    if ([self.delegate respondsToSelector:@selector(didHideCommentInputView:)]) {
-        [self.delegate didHideCommentInputView:self];
-    }
+
 }
 
 #pragma mark - UITextFieldDelegate

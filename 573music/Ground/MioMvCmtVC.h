@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioMvCmtVC : MioViewController
-@property (nonatomic, strong) MioMvModel *mv;
+@property (nonatomic,copy) NSString * mvId;
 @end
 
 NS_ASSUME_NONNULL_END

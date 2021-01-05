@@ -15,6 +15,7 @@
 #import "MusicLyric.h"
 #import "UIButton+MioExtension.h"
 #import "MioSongListVC.h"
+#import "MioMusicCmtVC.h"
 
 @interface MioMainPlayerVC ()<MioPlayerDelegate,UITableViewDelegate,UITableViewDataSource,GKSliderViewDelegate,LyricViewDelegate>
 
@@ -189,7 +190,9 @@
         
     }];
     _cmtBtn = [UIButton creatBtn:frame(28 + (KSW - 56)*2/3 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_digital_player" action:^{
-        
+        MioMusicCmtVC *vc = [[MioMusicCmtVC alloc] init];
+        vc.musicId = @"1";
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     _moreBtn = [UIButton creatBtn:frame(KSW - 24 -28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
         

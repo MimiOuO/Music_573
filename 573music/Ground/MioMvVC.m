@@ -118,7 +118,7 @@
     _pageController.automaticallyCalculatesItemWidths = YES;
     _pageController.progressViewIsNaughty = YES;
     _pageController.itemMargin         = 25;
-    _pageController.menuHeight         = 48;
+    _pageController.menuHeight         = 44;
     _pageController.menuItemWidth      = 60;
     _pageController.progressWidth      = 20;
     _pageController.titleFontName      = @"PingFangSC-Medium";
@@ -132,8 +132,10 @@
     _pageController.progressViewBottomSpace = 0;
     _pageController.viewFrame = CGRectMake(0, 0, KSW, KSH-StatusH - TabH);
     [_contentView addSubview:self.pageController.view];
+
     
-    UIView *split = [UIView creatView:frame(0, 48, KSW, 0.5) inView:_contentView bgColor:botLineColor radius:0];
+    MioImageView *menuBg = [MioImageView creatImgView:frame(0, 0, KSW, 44) inView:_pageController.menuView skin:SkinName image:@"picture_li" radius:0];
+    [_pageController.menuView sendSubviewToBack:menuBg];
 }
 
 -(void)changeCollection:(int)index{
@@ -157,7 +159,9 @@
         return info;
     }
     if (index == 1) {
-        return [[MioMvCmtVC alloc] init];
+        MioMvCmtVC *vc = [[MioMvCmtVC alloc] init];
+        vc.mvId = @"1";
+        return vc;
     }
     return [[UIViewController alloc] init];
     

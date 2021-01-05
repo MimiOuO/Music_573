@@ -1,17 +1,16 @@
 //
-//  MioSongListVC.m
+//  MioMusicRankVC.m
 //  573music
 //
-//  Created by Mimio on 2020/12/11.
+//  Created by Mimio on 2020/12/30.
 //  Copyright © 2020 Mimio. All rights reserved.
 //
 
-#import "MioSongListVC.h"
-#import "MioSongListModel.h"
+#import "MioMusicRankVC.h"
 #import "MioMusicTableCell.h"
 
-@interface MioSongListVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) MioSongListModel *songlist;
+@interface MioMusicRankVC ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) NSDictionary *rankDic;
 @property (nonatomic, strong) UILabel *titleLab;
 @property (nonatomic, strong) UILabel *nameLab;
 @property (nonatomic, strong) UILabel *introLab;
@@ -26,7 +25,7 @@
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @end
 
-@implementation MioSongListVC
+@implementation MioMusicRankVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,7 +36,7 @@
     
     
     
-    [self.navView.centerButton setTitle:@"歌单" forState:UIControlStateNormal];
+    [self.navView.centerButton setTitle:@"" forState:UIControlStateNormal];
     [self.navView.centerButton setTitleColor:appWhiteColor forState:UIControlStateNormal];
     [self.navView.leftButton setImage:backArrowWhiteIcon forState:UIControlStateNormal];
     self.navView.mainView.backgroundColor = appClearColor;
@@ -50,17 +49,12 @@
 }
 
 -(void)requestData{
-    [MioGetReq(api_songListDetail(_songlistId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
-        NSDictionary *data = [result objectForKey:@"data"];
-        _songlist = [MioSongListModel mj_objectWithKeyValues:data];
+    [MioGetReq(api_rankDetail(_rankId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
+        _rankDic = result;
+        _dataArr = [MioMusicModel mj_objectArrayWithKeyValuesArray:_rankDic[@"data"]];
     
         [self updateData];
-        [self.tableView.mj_footer endRefreshing];
-        if (_songlist.songs.count < 10) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
-        
-        [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:_songlist.songs]];
+
         [_tableView reloadData];
         
     } failure:^(NSString *errorInfo) {}];
@@ -81,44 +75,23 @@
     _tableView.backgroundColor = appClearColor;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.bounces = NO;
-    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        _page = _page + 1;
-        [self requestData];
-    }];
+    
     [self.view addSubview:_tableView];
     
     
     UIView *headerView = [UIView creatView:frame(0, 0, KSW, 164) inView:nil bgColor:appClearColor radius:0];
     _tableView.tableHeaderView = headerView;
     
-    UIImageView *coverBg = [UIImageView creatImgView:frame(14, 28, 120, 128) inView:headerView image:@"gedan_shadow" radius:0];
-    UIImageView *coverBg2 = [UIImageView creatImgView:frame(35, 34, 96, 96) inView:headerView image:@"zhuanji_heijiao" radius:0];
-    _coverImg = [UIImageView creatImgView:frame(20, 34, 96, 96) inView:headerView image:@"qxt_zhuanji" radius:0];
     
-    _titleLab = [UILabel creatLabel:frame(150, 45.5, KSW - 183, 22) inView:headerView text:@"" color:appWhiteColor boldSize:16 alignment:NSTextAlignmentLeft];
-    _introLab = [UILabel creatLabel:frame(150, 73.5, KSW - 183, 17) inView:headerView text:@"" color:rgba(255, 255, 255, 0.7) size:12 alignment:NSTextAlignmentLeft];
-    _arrow = [UIImageView creatImgView:frame(KSW - 33 - 14, 75, 14, 14) inView:headerView image:@"gedan_more" radius:0];
-    _arrow.hidden = YES;
-    _likeBtn = [UIButton creatBtn:frame(150, 98.5, 50, 22) inView:headerView bgImage:@"xihuan" action:^{
-        _likeBtn.selected = !_likeBtn.selected;
-    }];
-    [_likeBtn setBackgroundImage:image(@"xihuan_yixihuan") forState:UIControlStateSelected];
+    _titleLab = [UILabel creatLabel:frame(0, 79, KSW , 56) inView:headerView text:@"" color:color_text_white boldSize:40 alignment:NSTextAlignmentCenter];
+    _introLab = [UILabel creatLabel:frame(0, 135, KSW, 17) inView:headerView text:@"" color:rgba(255, 255, 255, 0.7) size:12 alignment:NSTextAlignmentCenter];
+    
 }
 
 -(void)updateData{
-    [_coverBg sd_setImageWithURL:_songlist.cover_image_path.mj_url   placeholderImage:image(@"gequ_zhanweitu")];
-    [_coverImg sd_setImageWithURL:_songlist.cover_image_path.mj_url   placeholderImage:image(@"qxt_zhuanji")];
-    _titleLab.text = _songlist.title;
-    _introLab.text = _songlist.song_list_description;
-
-    if ([_introLab.text widthForFont:Font(12)] > KSW - 183 ) {
-        _arrow.hidden = NO;
-        [_introLab whenTapped:^{
-                [UIWindow showMessage:_introLab.text withTitle:@"简介"];
-        }];
-    }else{
-        _arrow.hidden = YES;
-    }
+    [_coverBg sd_setImageWithURL:((NSString *)_rankDic[@"cover_image_path"]).mj_url placeholderImage:image(@"gequ_zhanweitu")];
+    _titleLab.text = ((NSString *)_rankDic[@"rank_title"]);
+    _introLab.text = [NSString stringWithFormat:@"%@更新",[((NSString *)_rankDic[@"updated_at"]) substringToIndex:10]];
 
 }
 
@@ -172,8 +145,8 @@
     if (offsetY  < 0) {
         offsetY = 0.0;
     }
-    
-    [self.navView.centerButton setTitle:offsetY > 100?_songlist.title:@"专辑" forState:UIControlStateNormal];
+    [self.navView.centerButton setTitle:offsetY > 120?_rankDic[@"rank_title"]:@"" forState:UIControlStateNormal];
     _coverBg.top = -offsetY;
 }
 @end
+

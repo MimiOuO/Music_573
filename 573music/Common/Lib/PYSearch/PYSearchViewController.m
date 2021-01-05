@@ -552,6 +552,7 @@
     self.hotSearches = nil;
 }
 
+
 - (UILabel *)setupTitleLabel:(NSString *)title
 {
     UILabel *titleLabel = [[UILabel alloc] init];
@@ -1382,6 +1383,22 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer*)otherGestureRecognizer
 {
     return self.navigationController.viewControllers.count > 1;
+}
+
+
+#pragma mark - custom
+-(void)autoSearch{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([self.delegate respondsToSelector:@selector(searchViewController:didSearchWithSearchBar:searchText:)]) {
+            [self.delegate searchViewController:self didSearchWithSearchBar:self.searchBar searchText:self.searchBar.text];
+            [self saveSearchCacheAndRefreshView];
+            return;
+        }
+        if (self.didSearchBlock) self.didSearchBlock(self, self.searchBar, self.searchBar.text);
+    });
+
+//    [self saveSearchCacheAndRefreshView];
 }
 
 @end

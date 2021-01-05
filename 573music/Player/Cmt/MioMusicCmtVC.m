@@ -1,16 +1,16 @@
 //
-//  MioCourseCmtVC.m
-//  jgsschool
+//  MioMusicCmtVC.m
+//  573music
 //
-//  Created by Mimio on 2020/9/17.
-//  Copyright © 2020 Mimio. All rights reserved.
+//  Created by Mimio on 2021/1/4.
+//  Copyright © 2021 Mimio. All rights reserved.
 //
 
-#import "MioMvCmtVC.h"
+#import "MioMusicCmtVC.h"
 #import "YDCommentInputView.h"
-#import "MioMVAllCmtVC.h"
+#import "MioMusicAllCmtVC.h"
 #import "MioCmtCell.h"
-@interface MioMvCmtVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,YDCommentInputViewDelegate,MioRefreshMusicCmtDelegate>
+@interface MioMusicCmtVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,YDCommentInputViewDelegate,MioRefreshMusicCmtDelegate>
 @property (nonatomic, strong) UIView *cmtToolView;
 @property (nonatomic, strong) UITextField *cmtTextField;
 @property (nonatomic, strong) UIButton *cmtBtn;
@@ -22,13 +22,12 @@
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @end
 
-@implementation MioMvCmtVC
+@implementation MioMusicCmtVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.view.backgroundColor = appClearColor;
-    self.bgImg.hidden = YES;
+    [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
+    [self.navView.centerButton setTitle:@"全部评论" forState:UIControlStateNormal];
     _dataArr = [[NSMutableArray alloc] init];
     _page = 1;
     [self requestData];
@@ -36,7 +35,7 @@
 }
 
 -(void)requestData{
-    [MioGetReq(api_songCmt(_mvId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
+    [MioGetReq(api_songCmt(_musicId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [self.tableView.mj_footer endRefreshing];
         if (_page == 1) {
@@ -52,7 +51,7 @@
 }
 
 -(void)creatUI{
-    _tableView = [UITableView creatTable:frame(0, 0, KSW, KSH - StatusH -  44 - SafeBotH - 44 - KSW * 9/16) inView:self.view vc:self];
+    _tableView = [UITableView creatTable:frame(0, NavH, KSW, KSH - NavH - TabH) inView:self.view vc:self];
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -60,7 +59,7 @@
     //======================================================================//
     //                               评论条
     //======================================================================//
-    UIView *bottomView = [UIView creatView:frame(0, KSH - StatusH -  44 - SafeBotH - 44 - KSW * 9/16, KSW, 44 + SafeBotH) inView:self.view bgColor:color_input_bg];
+    UIView *bottomView = [UIView creatView:frame(0, KSH - 44 - SafeBotH, KSW, 44 + SafeBotH) inView:self.view bgColor:color_input_bg];
     bottomView.layer.shadowColor = rgba(0, 0, 0, 1).CGColor;
     bottomView.layer.shadowOffset = CGSizeMake(0, -2);
     bottomView.layer.shadowOpacity = 0.06;
@@ -108,13 +107,13 @@
     if (self.message == 0) {
         dic = @{
             @"model_name":@"song",
-            @"model_id":_mvId,
+            @"model_id":_musicId,
             @"content":content,
         };
     } else {
         dic = @{
             @"model_name":@"song",
-            @"model_id":_mvId,
+            @"model_id":_musicId,
             @"content":content,
             @"pid":self.commentInputView.pid,
             @"tid":self.commentInputView.pid,
@@ -180,13 +179,10 @@
     MioCmtModel *cmtModel = _dataArr[indexPath.row];
     cell.cmtModel = cmtModel;
     cell.replyBlock = ^(MioCmtCell * cell) {
-        MioMVAllCmtVC *vc = [[MioMVAllCmtVC alloc] init];
-        vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        MioMusicAllCmtVC *vc = [[MioMusicAllCmtVC alloc] init];
         vc.delegate = self;
         vc.cmtModel = cmtModel;
-        [self presentViewController:vc animated:YES completion:nil];
-
-//        [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
     };
     cell.cmtBlock = ^(MioCmtCell * cell) {
         self.message = 1;

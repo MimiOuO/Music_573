@@ -11,6 +11,7 @@
 #import "ACRCloudConfig.h"
 #import "YSCRippleView.h"
 #import "PYSearchViewController.h"
+#import "MioSearchResultVC.h"
 @interface MioListenMusicVC ()
 @property (nonatomic, strong) ACRCloudRecognition *client;
 @property (nonatomic, strong) ACRCloudConfig *config;
@@ -53,11 +54,26 @@
             //主线程执行
             
             NSArray *musicArr =  [[resultDic objectForKey:@"metadata"] objectForKey:@"music"];
-            
             if (musicArr) {
-                PYSearchViewController *vc = [[PYSearchViewController alloc] init];
-//                vc.listenStr =[musicArr[0] objectForKey:@"title"];
-                [self.navigationController pushViewController:vc animated:YES];
+
+                PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索品类、ID、昵称"];
+                searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
+                MioSearchResultVC *resultVC = [[MioSearchResultVC alloc] init];
+                searchViewController.searchResultController = resultVC;
+                searchViewController.delegate = resultVC;
+                searchViewController.searchBarBackgroundColor = color_card;
+                searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
+                searchViewController.hotSearchStyle = PYHotSearchStyleNormalTag;
+                searchViewController.searchBar.text = [musicArr[0] objectForKey:@"title"];
+                
+                
+                CATransition* transition = [CATransition animation];
+                transition.type = kCATransitionMoveIn;//可更改为其他方式
+                transition.subtype = kCATransitionFromTop;//可更改为其他方式
+                [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+
+                [self.navigationController pushViewController:searchViewController animated:NO];
+                [searchViewController autoSearch];
             }else{
                 [UIWindow showInfo:@"没有识别到歌曲哦，换一段音乐试试吧"];
             

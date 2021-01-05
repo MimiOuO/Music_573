@@ -40,6 +40,8 @@
 //
 //    [JJException configExceptionCategory:JJExceptionGuardNSStringContainer | JJExceptionGuardArrayContainer | JJExceptionGuardUnrecognizedSelector | JJExceptionGuardDictionaryContainer];
 //    [JJException startGuardException];
+    
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     [self initalData];
     
     [self registPlatform];

@@ -184,7 +184,7 @@
     
     MioLabel *recentLab = [MioLabel creatLabel:frame(Mar, 507, 100, 20) inView:bgScroll text:@"最近播放" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
     MioLabel *moreRecentLab = [MioLabel creatLabel:frame(KSW_Mar - 50, 507, 50, 23) inView:bgScroll text:@"更多" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
-    MioImageView *arrow2 = [MioImageView creatImgView:frame(KSW_Mar -  14, 611.5, 14, 14) inView:bgScroll image:@"return_more" bgTintColorName:name_icon_two radius:0];
+    MioImageView *arrow2 = [MioImageView creatImgView:frame(KSW_Mar -  14, 511.5, 14, 14) inView:bgScroll image:@"return_more" bgTintColorName:name_icon_two radius:0];
     
     _recentPlayCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 535 , KSW, 149) collectionViewLayout:flowLayout];
     _recentPlayCollection.dataSource = self;

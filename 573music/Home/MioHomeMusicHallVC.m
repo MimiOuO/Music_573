@@ -7,21 +7,37 @@
 //
 
 #import "MioHomeMusicHallVC.h"
-#import "PYSearch.h"
-#import "MioSearchResultVC.h"
+
 #import "SDCycleScrollView.h"
 #import "ScanSuccessJumpVC.h"
 #import "MioAlbumListPageVC.h"
 #import "MioSonglistPageVC.h"
 #import "MioCategoryListVC.h"
-#import "MioSingerVC.h"
 #import "MioSingerModel.h"
 #import "MioMusicRankListVC.h"
 #import "MioSingerListVC.h"
+
+#import "MioMusicView.h"
+#import "MioSonglistCollectionCell.h"
+#import "MioAlbumCollectionCell.h"
+#import "MioHallRankView.h"
+
+#import "MioSongListVC.h"
+#import "MioAlbumVC.h"
+#import "MioMusicRankVC.h"
 @interface MioHomeMusicHallVC ()<SDCycleScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *bgScroll;
 @property (nonatomic, strong) SDCycleScrollView *adScroll;
 @property (nonatomic, strong) NSMutableArray *adUrlArr;
+@property (nonatomic, strong) UIScrollView *songlistScroll;
+@property (nonatomic, strong) UIScrollView *musicScroll;
+@property (nonatomic, strong) UIScrollView *rankScroll;
+@property (nonatomic, strong) UIScrollView *albumScroll;
+
+@property (nonatomic, strong) NSArray *songlistArr;
+@property (nonatomic, strong) NSArray *musicArr;
+@property (nonatomic, strong) NSArray *rankArr;
+@property (nonatomic, strong) NSArray *albumArr;
 @end
 
 @implementation MioHomeMusicHallVC
@@ -32,28 +48,48 @@
     self.view.backgroundColor = appClearColor;
     
     [self creatUI];
+    [self request];
+}
+
+-(void)request{
+    [MioGetReq(api_ranks, @{@"page":@"推荐"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        for (int i = 0;i < data.count; i++) {
+            if (Equals(@"歌曲", data[i][@"type"])) {
+                _musicArr = [MioMusicModel mj_objectArrayWithKeyValuesArray:data[i][@"data"]];
+            }
+            if (Equals(@"专辑", data[i][@"type"])) {
+                _albumArr = [MioAlbumModel mj_objectArrayWithKeyValuesArray:data[i][@"data"]];
+            }
+            if (Equals(@"歌单", data[i][@"type"])) {
+                _songlistArr = [MioSongListModel mj_objectArrayWithKeyValuesArray:data[i][@"data"]];
+            }
+        }
+        [self updateUI];
+        
+    } failure:^(NSString *errorInfo) {}];
+    
+    [MioGetReq(api_ranks,(@{@"type":@"歌曲",@"limit":@"3"})) success:^(NSDictionary *result){
+        _rankArr = [result objectForKey:@"data"];
+        [self updateRank];
+    } failure:^(NSString *errorInfo) {}];
+    
 }
 
 -(void)creatUI{
-    _bgScroll = [UIScrollView creatScroll:frame(0, 0, KSW, KSH - NavH - TabH - 49) inView:self.view contentSize:CGSizeMake(KSW, 1493)];
+    _bgScroll = [UIScrollView creatScroll:frame(0, 44 , KSW,KSH - NavH - TabH - 44 -49) inView:self.view contentSize:CGSizeMake(KSW, 1443)];
     
-    MioView *searchView = [MioView creatView:frame(Mar, 8, KSW_Mar2, 34) inView:_bgScroll bgColorName:name_search radius:17];;
-    UIImageView *searchIcon = [UIImageView creatImgView:frame(12, 10, 14, 14) inView:searchView image:@"sosuo" radius:0];
-    MioLabel *searchTip = [MioLabel creatLabel:frame(30, 0, 100, 34) inView:searchView text:@"请输入关键词搜索" colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
-    [searchView whenTapped:^{
-        [self searchClick];
-    }];
     
-    _adScroll = [SDCycleScrollView cycleScrollViewWithFrame:frame(Mar,62, KSW_Mar2, 140) delegate:self placeholderImage:nil];
+    _adScroll = [SDCycleScrollView cycleScrollViewWithFrame:frame(Mar,12, KSW_Mar2, 140) delegate:self placeholderImage:nil];
     _adScroll.autoScrollTimeInterval = 4;
     ViewRadius(_adScroll, 6);
     [_bgScroll addSubview:_adScroll];
     
-    MioView *rankView = [MioView creatView:frame(Mar, 232, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
-    MioView *songListView = [MioView creatView:frame(rankView.right + (KSW - 136 - 156)/4, 232, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
-    MioView *singerView = [MioView creatView:frame(songListView.right + (KSW - 136 - 156)/4, 232, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
-    MioView *albumView = [MioView creatView:frame(singerView.right + (KSW - 136 - 156)/4, 232, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
-    MioView *categoryView = [MioView creatView:frame(KSW - Mar -52, 232, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+    MioView *rankView = [MioView creatView:frame(Mar, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+    MioView *songListView = [MioView creatView:frame(rankView.right + (KSW - 136 - 156)/4, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+    MioView *singerView = [MioView creatView:frame(songListView.right + (KSW - 136 - 156)/4, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+    MioView *albumView = [MioView creatView:frame(singerView.right + (KSW - 136 - 156)/4, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+    MioView *categoryView = [MioView creatView:frame(KSW - Mar -52, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
     
     MioImageView *rankImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:rankView image:@"shouye_ranking" bgTintColorName:name_main radius:0];
     MioImageView *songListImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:songListView image:@"shouye_gedan" bgTintColorName:name_main radius:0];
@@ -61,11 +97,11 @@
     MioImageView *albumImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:albumView image:@"shouye_album" bgTintColorName:name_main radius:0];
     MioImageView *categoryImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:categoryView image:@"shouye_system" bgTintColorName:name_main radius:0];
     
-    MioLabel *rankLab = [MioLabel creatLabel:frame(rankView.left, 288, 52, 17) inView:_bgScroll text:@"排行榜" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
-    MioLabel *songlistLab = [MioLabel creatLabel:frame(songListView.left, 288, 52, 17) inView:_bgScroll text:@"歌单" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
-    MioLabel *singerLab = [MioLabel creatLabel:frame(singerView.left, 288, 52, 17) inView:_bgScroll text:@"歌手" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
-    MioLabel *albumLab = [MioLabel creatLabel:frame(albumView.left, 288, 52, 17) inView:_bgScroll text:@"专辑" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
-    MioLabel *categoryLab = [MioLabel creatLabel:frame(categoryView.left, 288, 52, 17) inView:_bgScroll text:@"分类" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+    MioLabel *rankLab = [MioLabel creatLabel:frame(rankView.left, 238, 52, 17) inView:_bgScroll text:@"排行榜" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+    MioLabel *songlistLab = [MioLabel creatLabel:frame(songListView.left, 238, 52, 17) inView:_bgScroll text:@"歌单" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+    MioLabel *singerLab = [MioLabel creatLabel:frame(singerView.left, 238, 52, 17) inView:_bgScroll text:@"歌手" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+    MioLabel *albumLab = [MioLabel creatLabel:frame(albumView.left, 238, 52, 17) inView:_bgScroll text:@"专辑" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+    MioLabel *categoryLab = [MioLabel creatLabel:frame(categoryView.left, 238, 52, 17) inView:_bgScroll text:@"分类" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     
     [rankView whenTapped:^{
         MioMusicRankListVC *vc = [[MioMusicRankListVC alloc] init];
@@ -85,29 +121,76 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     [categoryView whenTapped:^{
+
         MioCategoryListVC *vc = [[MioCategoryListVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
+    
+    NSArray *titleYArr = @[@285,@652,@914,@1082];
+    NSArray *titleArr = @[@"最新歌单",@"最新单曲",@"排行榜",@"最新专辑"];
+    for (int i = 0;i < titleYArr.count; i++) {
+        MioLabel *titleLab = [MioLabel creatLabel:frame(Mar, [titleYArr[i] intValue], 100, 20) inView:_bgScroll text:titleArr[i] colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+        MioLabel *moreSonglistLab = [MioLabel creatLabel:frame(KSW_Mar - 50, [titleYArr[i] intValue], 50, 20) inView:_bgScroll text:@"更多" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
+        MioImageView *arrow1 = [MioImageView creatImgView:frame(KSW_Mar -  14,[titleYArr[i] intValue] + 3, 14, 14) inView:_bgScroll image:@"return_more" bgTintColorName:name_icon_two radius:0];
+    }
+    
+    _songlistScroll = [UIScrollView creatScroll:frame(0, 313, KSW, 149*2 + 12) inView:_bgScroll contentSize:CGSizeMake(ceilf(_songlistArr.count/2.0)*118 + 24, 149*2 + 12)];
+    _musicScroll = [UIScrollView creatScroll:frame(0, 680, KSW, 60*3 + 24) inView:_bgScroll contentSize:CGSizeMake(ceilf(_musicArr.count/3.0)*KSW_Mar2 + 24, 60*3 + 24)];
+    _rankScroll = [UIScrollView creatScroll:frame(0, 942, KSW, 110) inView:_bgScroll contentSize:CGSizeMake(ceilf(_rankArr.count/2.0)*118 + 24, 132*2 + 12)];
+    _albumScroll = [UIScrollView creatScroll:frame(0, 1110, KSW, 132*2 + 12) inView:_bgScroll contentSize:CGSizeMake(ceilf(_albumArr.count/2.0)*118 + 24, 132*2 + 12)];
+    _rankScroll.pagingEnabled = YES;
 }
 
-#pragma mark - 搜索
--(void)searchClick{
-        NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
-        PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索品类、ID、昵称"];
-        searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-        MioSearchResultVC *resultVC = [[MioSearchResultVC alloc] init];
-        searchViewController.searchResultController = resultVC;
-        searchViewController.delegate = resultVC;
-        searchViewController.searchBarBackgroundColor = color_card;
-        searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
-        searchViewController.hotSearchStyle = PYHotSearchStyleNormalTag;
+-(void)updateUI{
+    _songlistScroll.contentSize = CGSizeMake(ceilf(_songlistArr.count/2.0)*118 + 24, 149*2 + 12);
+    _musicScroll.contentSize = CGSizeMake(ceilf(_musicArr.count/2.0)*118 + 24, 60*3 + 24);
+   
+    _albumScroll.contentSize = CGSizeMake(ceilf(_albumArr.count/2.0)*118 + 24, 132*2 + 12);
+    
+    for (int i = 0;i < _albumArr.count; i++) {
+        MioSonglistCollectionCell *songlistCell = [[MioSonglistCollectionCell alloc] initWithFrame:CGRectMake( Mar + (i/2) * 117, 160*(i%2), 109, 149)];
+        songlistCell.model = _songlistArr[i];
+        [_songlistScroll addSubview:songlistCell];
+        [songlistCell whenTapped:^{
+            MioSongListVC *vc = [[MioSongListVC alloc] init];
+            vc.songlistId = ((MioSongListModel *)_songlistArr[i]).song_list_id;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+    }
+    
+    for (int i = 0;i < _musicArr.count; i++) {
+        MioMusicView *musicCell = [[MioMusicView alloc] initWithFrame:CGRectMake( Mar + (i/3) * KSW_Mar2,  72*(i%3), KSW_Mar2, 60)];
+        musicCell.model = _musicArr[i];
+        [_musicScroll addSubview:musicCell];
+        [musicCell whenTapped:^{
+            
+        }];
+    }
+    for (int i = 0;i < _albumArr.count; i++) {
+        MioAlbumCollectionCell *albumCell = [[MioAlbumCollectionCell alloc] initWithFrame:CGRectMake( Mar + (i/2) * 118, 144*(i%2), 110, 132)];
+        albumCell.model = _albumArr[i];
+        [_albumScroll addSubview:albumCell];
+        [albumCell whenTapped:^{
+            MioAlbumVC *vc = [[MioAlbumVC alloc] init];
+            vc.album_id = ((MioAlbumModel *)_albumArr[i]).album_id;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+    }
+    
+}
 
-        CATransition* transition = [CATransition animation];
-        transition.type = kCATransitionMoveIn;//可更改为其他方式
-        transition.subtype = kCATransitionFromTop;//可更改为其他方式
-        [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-
-        [self.navigationController pushViewController:searchViewController animated:NO];
+-(void)updateRank{
+    _rankScroll.contentSize = CGSizeMake(_rankArr.count * KSW, 110);
+    for (int i = 0;i < _rankArr.count; i++) {
+        MioHallRankView *rankCell = [[MioHallRankView alloc] initWithFrame:CGRectMake( i * KSW,  0, KSW, 110)];
+        rankCell.rankDic = _rankArr[i];
+        [_rankScroll addSubview:rankCell];
+        [rankCell whenTapped:^{
+            MioMusicRankVC *vc = [[MioMusicRankVC alloc] init];
+            vc.rankId = _rankArr[i][@"rank_id"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+    }
 }
 
 #pragma mark - 广告

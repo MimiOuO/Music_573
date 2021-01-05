@@ -55,7 +55,7 @@
 -(void)creatUI{
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
     flowLayout.sectionInset = UIEdgeInsetsMake(Mar, Mar, Mar, Mar);
-    _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 44 , KSW, KSH - NavH - TabH - 44) collectionViewLayout:flowLayout];
+    _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 44 , KSW, KSH - NavH - TabH - 44 - 49) collectionViewLayout:flowLayout];
     _collection.dataSource = self;
     _collection.delegate = self;
     _collection.showsVerticalScrollIndicator = NO;

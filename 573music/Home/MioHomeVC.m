@@ -10,10 +10,10 @@
 #import <WMPageController.h>
 #import "MioHomeMusicHallVC.h"
 #import "MioHomeRecommendVC.h"
+#import "PYSearch.h"
+#import "MioSearchResultVC.h"
 
 #import "MioFeedBackVC.h"
-#import "MioTestVC.h"
-#import "MioTest2VC.h"
 #import "MioLabel.h"
 #import "MioPlayListVC.h"
 
@@ -35,7 +35,6 @@
     [self.view addSubview:_contentView];
     
 
-    
     _pageController = [[WMPageController alloc] init];
     [self addChildViewController:_pageController];
     _pageController.delegate           = self;
@@ -59,68 +58,12 @@
     _pageController.selectIndex = 1;
     [_contentView addSubview:self.pageController.view];
     
-    
-//    self.view.backgroundColor = appWhiteColor;
-//    UIButton *sdfsd = [UIButton creatBtn:frame(100, 100, 100, 100) inView:self.view bgColor:color_main title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
-//
-//        if (Equals([userdefault objectForKey:@"skin"], @"bai") ) {
-//            [userdefault setObject:@"hei" forKey:@"skin"];
-//        }else{
-//            [userdefault setObject:@"bai" forKey:@"skin"];
-//        }
-//
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
-////        MioFeedBackVC *vc = [[MioFeedBackVC alloc] init];
-////        [self.navigationController pushViewController:vc animated:YES];
-//    }];
-//    UIButton *sdfsdws = [UIButton creatBtn:frame(100, 220, 100, 100) inView:self.view bgColor:color_main title:@"111" titleColor:appWhiteColor font:14 radius:5 action:^{
-//
-//        [mioPlayer play];
-//        return;
-//        MioTestVC *vc = [[MioTestVC alloc] init];
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }];
-//
-//    UIButton *sdfsdw21s = [UIButton creatBtn:frame(100, 340, 100, 100) inView:self.view bgColor:color_main title:@"222" titleColor:appWhiteColor font:14 radius:5 action:^{
-//        MioPlayListVC * vc = [[MioPlayListVC alloc]init];
-//        [self presentViewController:vc animated:YES completion:nil];
-////        [mioPlayer pause];
-//        return;
-////        MioTest2VC *vc = [[MioTest2VC alloc] init];
-////        [self.navigationController pushViewController:vc animated:YES];
-//    }];
-//
-////    UIImageView *avatar = [UIImageView creatImginView:self.view image:@"avatar_bai" radius:0];
-//    UIImageView *avatar = [UIImageView creatImgView:frame(100, 460, 100, 100) inView:self.view image:@"" radius:5];
-//
-//    NSString *path = [NSString stringWithFormat:@"%@/Skin/bai/icon_bai.jpg",
-//                     NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
-//    avatar.image = [UIImage imageWithContentsOfFile:path];
-////    UIImage *_image = [UIImage imageWithContentsOfFile:fullPathToFile];
-//
-//
-//    MioLabel *testlab = [[MioLabel alloc] init];
-//    testlab.frame = frame( 0, 580, KSW, 23);
-//    testlab.text = @"sdlfskjfsldjf234dsfsdfsf";
-//    testlab.textColor = subColor;
-//    [self.view addSubview:testlab];
-//
-//    NSLog(@"%@",colorPath);
-//
-//    [MioGetCacheReq(@"https://test.aw998.com/api/dance/all_listen_dance", (@{@"token":@"8bafb112da1c444cba40578884196350",@"random":@"1"})) success:^(NSDictionary *result){
-//        NSArray *data = [result objectForKey:@"list"];
-//        NSMutableArray *musicArr = [[NSMutableArray alloc] init];
-//        for (int i = 0;i < data.count; i++) {
-//            [musicArr addObject:[MioMusicModel mj_objectWithKeyValues:data[i]]];
-//        }
-//        if (musicArr.count > 0) {
-////            [mioPlayer playWithMusicList:musicArr andIndex:0];
-//        }
-//    } failure:^(NSString *errorInfo) {
-//        NSLog(@"%@",errorInfo);
-//    }];
-//
-
+    MioView *searchView = [MioView creatView:frame(Mar, NavH +  8, KSW_Mar2, 34) inView:self.view bgColorName:name_search radius:17];;
+    UIImageView *searchIcon = [UIImageView creatImgView:frame(12, 10, 14, 14) inView:searchView image:@"sosuo" radius:0];
+    MioLabel *searchTip = [MioLabel creatLabel:frame(30, 0, 100, 34) inView:searchView text:@"请输入关键词搜索" colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
+    [searchView whenTapped:^{
+        [self searchClick];
+    }];
     
 }
 
@@ -141,6 +84,26 @@
     _pageController.menuView.progressView.color =  color;
     [_pageController.menuView.progressView setNeedsDisplay];
     
+}
+
+#pragma mark - 搜索
+-(void)searchClick{
+        NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
+        PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索品类、ID、昵称"];
+        searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
+        MioSearchResultVC *resultVC = [[MioSearchResultVC alloc] init];
+        searchViewController.searchResultController = resultVC;
+        searchViewController.delegate = resultVC;
+        searchViewController.searchBarBackgroundColor = rgb(246, 247, 249);
+        searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
+        searchViewController.hotSearchStyle = PYHotSearchStyleNormalTag;
+
+        CATransition* transition = [CATransition animation];
+        transition.type = kCATransitionMoveIn;//可更改为其他方式
+        transition.subtype = kCATransitionFromTop;//可更改为其他方式
+        [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+
+        [self.navigationController pushViewController:searchViewController animated:NO];
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{

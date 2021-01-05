@@ -310,6 +310,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 //歌曲
 #define api_songs                @"" api_base"/songs"
+#define api_sendCmt                @"" api_base"/comments"
+#define api_songCmt(song_id)  [NSString stringWithFormat:@"" api_base"/comments/song/%@",song_id]
 
 //歌手
 #define api_singers               @"" api_base"/singers"
@@ -328,8 +330,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_mvs                @"" api_base"/mvs"
 
 //排行榜
-#define api_ranks                @"" api_base"/mvs"
-
+#define api_ranks                @"" api_base"/ranks"
+#define api_rankDetail(rank_id)               [NSString stringWithFormat:@"" api_base"/ranks/%@",rank_id]
 //个人中心
 #define api_userInfo                @"" api_base"/auth/me"
 #define api_modifyInfo                @"" api_base"/me"

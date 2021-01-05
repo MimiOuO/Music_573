@@ -14,7 +14,7 @@
 @optional
 - (void)commentInputView:(YDCommentInputView *)anInputView onSendText:(NSString *)aText;
 - (void)didInputAtFromCommentInputView:(YDCommentInputView *)anInputView;
-- (void)didHideCommentInputView:(YDCommentInputView *)anInputView;
+- (void)didHideCommentInputView:(YDCommentInputView *)anInputView onSendText:(NSString *)aText;
 @end
 
 @interface YDCommentInputView : UIView

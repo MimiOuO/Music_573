@@ -89,20 +89,8 @@
 //        [mioPlayer playWithMusicList:_musicArr andIndex:0];
     }];
     
-//    [MioGetReq(api_userInfo, @{@"k":@"v"}) success:^(NSDictionary *result){
-//        NSDictionary *data = [result objectForKey:@"data"];
-//        _user = [MioUserInfo mj_objectWithKeyValues:data];
-//    } failure:^(NSString *errorInfo) {}];
+
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
