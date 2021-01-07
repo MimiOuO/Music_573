@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) NSArray *song_ids;
 @property (nonatomic, strong) NSArray *songs;
+@property (nonatomic, assign) BOOL isLike;
 @end
 
 NS_ASSUME_NONNULL_END

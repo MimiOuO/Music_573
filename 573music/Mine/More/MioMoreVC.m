@@ -12,10 +12,12 @@
 #import "MioTabbarVC.h"
 #import "MioListenMusicVC.h"
 #import "WBQRCodeVC.h"
+#import "MioAboutUsVC.h"
+#import "MioFeedBackVC.h"
 
 @interface MioMoreVC ()
 @property (nonatomic, strong) UILabel *timeLab;
-@property (nonatomic, strong) UISwitch *integralSwitch;
+@property (nonatomic, strong) UISwitch *jifenSwitch;
 @property (nonatomic, strong) UISwitch *wifiSwitch;
 @property (nonatomic, strong) UISwitch *nightSwitch;
 @property (nonatomic, strong) UILabel *defaultPlay;
@@ -38,7 +40,7 @@
     NSArray *fuc2Arr = @[@"清除缓存",@"意见反馈",@"关于我们"];
     NSArray *arrowArr = @[@"设置密码",@"修改密码",@"听歌识曲",@"扫一扫",@"意见反馈",@"关于我们"];
     
-    UIView *bgView1 = [UIView creatView:frame(Mar, 12, KSW - Mar2 , 44*fuc1Arr.count) inView:bgscroll bgColor:color_card radius:6];
+    MioView *bgView1 = [MioView creatView:frame(Mar, 12, KSW - Mar2 , 44*fuc1Arr.count) inView:bgscroll bgColorName:name_card radius:6];
     for (int i = 0;i < fuc1Arr.count; i++) {
         UILabel *title = [UILabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView1 text:fuc1Arr[i] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
         [title whenTapped:^{
@@ -52,10 +54,15 @@
             _timeLab = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"关" color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
         if (Equals(fuc1Arr[i], @"显示积分倒计时")) {
-            _integralSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(KSW_Mar2 - 38 - 20, 7.5 +44*i, 38, 23)];
-            _integralSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
-            [_integralSwitch addTarget:self action:@selector(integralClick) forControlEvents:(UIControlEventValueChanged)];
-            [bgView1 addSubview:_integralSwitch];
+            _jifenSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(KSW_Mar2 - 38 - 20, 7.5 +44*i, 38, 23)];
+            _jifenSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
+            [_jifenSwitch addTarget:self action:@selector(jifenClick) forControlEvents:(UIControlEventValueChanged)];
+            [bgView1 addSubview:_jifenSwitch];
+            if (Equals([userdefault objectForKey:@"showJifen"], @"1")) {
+                _jifenSwitch.on = YES;
+            }else{
+                _jifenSwitch.on = NO;
+            }
         }
         if (Equals(fuc1Arr[i], @"夜间模式")) {
             _nightSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(KSW_Mar2 - 38 - 20, 7.5 +44*i, 38, 23)];
@@ -77,8 +84,8 @@
         }
         
     }
-    
-    UIView *bgView2 = [UIView creatView:frame(Mar, bgView1.bottom + 8, KSW_Mar2 , 44*fuc2Arr.count) inView:bgscroll bgColor:color_card radius:6];
+
+    MioView *bgView2 = [MioView creatView:frame(Mar, bgView1.bottom + 8, KSW_Mar2 , 44*fuc2Arr.count) inView:bgscroll bgColorName:name_card radius:6];
     for (int i = 0;i < fuc2Arr.count; i++) {
         UILabel *title = [UILabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView2 text:fuc2Arr[i] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
         [title whenTapped:^{
@@ -93,7 +100,8 @@
         }
     }
     
-    UIButton *logoutBtn = [UIButton creatBtn:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColor:color_card title:@"退出登录" titleColor:redTextColor font:16 radius:6 action:^{
+    MioView *bgView3 = [MioView creatView:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColorName:name_card radius:6];
+    UIButton *logoutBtn = [UIButton creatBtn:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColor:appClearColor title:@"退出登录" titleColor:redTextColor font:16 radius:6 action:^{
         [self logout];
     }];
 }
@@ -141,18 +149,34 @@
         WBQRCodeVC *vc = [[WBQRCodeVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if (Equals(title, @"关于我们")) {
+        MioAboutUsVC *vc = [[MioAboutUsVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (Equals(title, @"意见反馈")) {
+        MioFeedBackVC *vc = [[MioFeedBackVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
--(void)integralClick{
+-(void)jifenClick{
+    if (_jifenSwitch.on) {
+        [userdefault setObject:@"1" forKey:@"showJifen"];
+    }else{
+        [userdefault setObject:@"0" forKey:@"showJifen"];
+    }
     
 }
 
 -(void)nightClick{
 
     if (_nightSwitch.on) {
+        [userdefault setObject:[userdefault objectForKey:@"skin"] forKey:@"boforeSkin"];
         [userdefault setObject:@"hei" forKey:@"skin"];
+        [userdefault synchronize];
     }else{
-        [userdefault setObject:@"bai" forKey:@"skin"];
+        [userdefault setObject:[userdefault objectForKey:@"boforeSkin"] forKey:@"skin"];
+        [userdefault synchronize];
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];

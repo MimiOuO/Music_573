@@ -131,6 +131,10 @@
 		2318946D258B32940092C31B /* MioMvCmtVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318946A258B32940092C31B /* MioMvCmtVC.m */; };
 		2318946E258B32940092C31B /* MioMvVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318946B258B32940092C31B /* MioMvVC.m */; };
 		23189473258B48C30092C31B /* MioColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189472258B48C30092C31B /* MioColor.m */; };
+		23189EFD25A5B79500D7EBDC /* HQFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189EF725A5B79500D7EBDC /* HQFlowView.m */; };
+		23189EFE25A5B79500D7EBDC /* HQIndexBannerSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189EF825A5B79500D7EBDC /* HQIndexBannerSubview.m */; };
+		23189EFF25A5B79500D7EBDC /* HQImagePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189EF925A5B79500D7EBDC /* HQImagePageControl.m */; };
+		23189F0225A5B7B800D7EBDC /* MioSkinCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189F0125A5B7B800D7EBDC /* MioSkinCenterVC.m */; };
 		231AE58325998801006AFA89 /* MioAlbumListPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE58225998801006AFA89 /* MioAlbumListPageVC.m */; };
 		231AE58625998887006AFA89 /* MioAlbumListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE58525998887006AFA89 /* MioAlbumListVC.m */; };
 		231AE58925998DBA006AFA89 /* MioAlbumCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 231AE58825998DBA006AFA89 /* MioAlbumCollectionCell.m */; };
@@ -231,6 +235,9 @@
 		23693FBB25A30E7600696C74 /* MioAllCmtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23693FB925A30E7600696C74 /* MioAllCmtCell.m */; };
 		23693FBE25A4389300696C74 /* MioMVAllCmtVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23693FBD25A4389300696C74 /* MioMVAllCmtVC.m */; };
 		23693FC225A4412800696C74 /* MioHallRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23693FC125A4412800696C74 /* MioHallRankView.m */; };
+		23693FC525A45C0E00696C74 /* MioRadioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23693FC425A45C0E00696C74 /* MioRadioView.m */; };
+		23693FC825A460BB00696C74 /* MioSingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23693FC725A460BB00696C74 /* MioSingerView.m */; };
+		23693FCB25A46A6200696C74 /* MioMVBigCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23693FCA25A46A6200696C74 /* MioMVBigCollectionCell.m */; };
 		236B1EAE257A13C1001D00E3 /* GKSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236B1EAC257A13C0001D00E3 /* GKSliderView.m */; };
 		236DB6D4250F0DD8001CC2F3 /* LOTRenderNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB648250F0DD7001CC2F3 /* LOTRenderNode.m */; };
 		236DB6D5250F0DD8001CC2F3 /* LOTTrimPathNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB64D250F0DD7001CC2F3 /* LOTTrimPathNode.m */; };
@@ -368,6 +375,14 @@
 		237D061E257DC3BA00697F3A /* BTCoverHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D061B257DC3BA00697F3A /* BTCoverHorizontalTransition.m */; };
 		237D061F257DC3BA00697F3A /* BTCoverVerticalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D061C257DC3BA00697F3A /* BTCoverVerticalTransition.m */; };
 		237D0622257DC3FE00697F3A /* MioPlayListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D0621257DC3FE00697F3A /* MioPlayListVC.m */; };
+		2388759C25A54E230097FCEE /* MioMVRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2388759B25A54E220097FCEE /* MioMVRankView.m */; };
+		2388759F25A551190097FCEE /* MioMVRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2388759E25A551190097FCEE /* MioMVRankVC.m */; };
+		238875A225A55C800097FCEE /* MioAboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 238875A125A55C800097FCEE /* MioAboutUsVC.m */; };
+		238875A825A595C40097FCEE /* MioLikeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 238875A725A595C40097FCEE /* MioLikeVC.m */; };
+		238875AF25A597570097FCEE /* MioLikeMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 238875AE25A597570097FCEE /* MioLikeMusicVC.m */; };
+		238875B225A597640097FCEE /* MioLikeSingerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 238875B125A597640097FCEE /* MioLikeSingerVC.m */; };
+		238875B525A597720097FCEE /* MioLikeAlbumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 238875B425A597720097FCEE /* MioLikeAlbumVC.m */; };
+		238875B825A597810097FCEE /* MioLikeMVVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 238875B725A597810097FCEE /* MioLikeMVVC.m */; };
 		238C94F62566683100FA58FC /* MioTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 238C94F42566683100FA58FC /* MioTabbar.m */; };
 		2393DCF12511AE9C002483A9 /* JJPageControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2393DCEB2511AE9B002483A9 /* JJPageControllerView.m */; };
 		2393DCF22511AE9C002483A9 /* JJCardSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2393DCED2511AE9C002483A9 /* JJCardSliderCell.m */; };
@@ -737,6 +752,14 @@
 		2318946B258B32940092C31B /* MioMvVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioMvVC.m; sourceTree = "<group>"; };
 		23189471258B48C30092C31B /* MioColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioColor.h; sourceTree = "<group>"; };
 		23189472258B48C30092C31B /* MioColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioColor.m; sourceTree = "<group>"; };
+		23189EF725A5B79500D7EBDC /* HQFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQFlowView.m; sourceTree = "<group>"; };
+		23189EF825A5B79500D7EBDC /* HQIndexBannerSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQIndexBannerSubview.m; sourceTree = "<group>"; };
+		23189EF925A5B79500D7EBDC /* HQImagePageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQImagePageControl.m; sourceTree = "<group>"; };
+		23189EFA25A5B79500D7EBDC /* HQFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQFlowView.h; sourceTree = "<group>"; };
+		23189EFB25A5B79500D7EBDC /* HQImagePageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQImagePageControl.h; sourceTree = "<group>"; };
+		23189EFC25A5B79500D7EBDC /* HQIndexBannerSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQIndexBannerSubview.h; sourceTree = "<group>"; };
+		23189F0025A5B7B800D7EBDC /* MioSkinCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSkinCenterVC.h; sourceTree = "<group>"; };
+		23189F0125A5B7B800D7EBDC /* MioSkinCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSkinCenterVC.m; sourceTree = "<group>"; };
 		231AE58125998801006AFA89 /* MioAlbumListPageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAlbumListPageVC.h; sourceTree = "<group>"; };
 		231AE58225998801006AFA89 /* MioAlbumListPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAlbumListPageVC.m; sourceTree = "<group>"; };
 		231AE58425998887006AFA89 /* MioAlbumListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAlbumListVC.h; sourceTree = "<group>"; };
@@ -936,6 +959,12 @@
 		23693FBD25A4389300696C74 /* MioMVAllCmtVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMVAllCmtVC.m; sourceTree = "<group>"; };
 		23693FC025A4412800696C74 /* MioHallRankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioHallRankView.h; sourceTree = "<group>"; };
 		23693FC125A4412800696C74 /* MioHallRankView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioHallRankView.m; sourceTree = "<group>"; };
+		23693FC325A45C0E00696C74 /* MioRadioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioRadioView.h; sourceTree = "<group>"; };
+		23693FC425A45C0E00696C74 /* MioRadioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioRadioView.m; sourceTree = "<group>"; };
+		23693FC625A460BB00696C74 /* MioSingerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSingerView.h; sourceTree = "<group>"; };
+		23693FC725A460BB00696C74 /* MioSingerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSingerView.m; sourceTree = "<group>"; };
+		23693FC925A46A6200696C74 /* MioMVBigCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVBigCollectionCell.h; sourceTree = "<group>"; };
+		23693FCA25A46A6200696C74 /* MioMVBigCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMVBigCollectionCell.m; sourceTree = "<group>"; };
 		236B1EAC257A13C0001D00E3 /* GKSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSliderView.m; sourceTree = "<group>"; };
 		236B1EAD257A13C1001D00E3 /* GKSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSliderView.h; sourceTree = "<group>"; };
 		236DB648250F0DD7001CC2F3 /* LOTRenderNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOTRenderNode.m; sourceTree = "<group>"; };
@@ -1223,6 +1252,22 @@
 		237D061D257DC3BA00697F3A /* BTCoverHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverHorizontalTransition.h; sourceTree = "<group>"; };
 		237D0620257DC3FE00697F3A /* MioPlayListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioPlayListVC.h; sourceTree = "<group>"; };
 		237D0621257DC3FE00697F3A /* MioPlayListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioPlayListVC.m; sourceTree = "<group>"; };
+		2388759A25A54E220097FCEE /* MioMVRankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVRankView.h; sourceTree = "<group>"; };
+		2388759B25A54E220097FCEE /* MioMVRankView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMVRankView.m; sourceTree = "<group>"; };
+		2388759D25A551190097FCEE /* MioMVRankVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVRankVC.h; sourceTree = "<group>"; };
+		2388759E25A551190097FCEE /* MioMVRankVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMVRankVC.m; sourceTree = "<group>"; };
+		238875A025A55C800097FCEE /* MioAboutUsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAboutUsVC.h; sourceTree = "<group>"; };
+		238875A125A55C800097FCEE /* MioAboutUsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioAboutUsVC.m; sourceTree = "<group>"; };
+		238875A625A595C40097FCEE /* MioLikeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioLikeVC.h; sourceTree = "<group>"; };
+		238875A725A595C40097FCEE /* MioLikeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioLikeVC.m; sourceTree = "<group>"; };
+		238875AD25A597570097FCEE /* MioLikeMusicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioLikeMusicVC.h; sourceTree = "<group>"; };
+		238875AE25A597570097FCEE /* MioLikeMusicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioLikeMusicVC.m; sourceTree = "<group>"; };
+		238875B025A597640097FCEE /* MioLikeSingerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioLikeSingerVC.h; sourceTree = "<group>"; };
+		238875B125A597640097FCEE /* MioLikeSingerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioLikeSingerVC.m; sourceTree = "<group>"; };
+		238875B325A597720097FCEE /* MioLikeAlbumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioLikeAlbumVC.h; sourceTree = "<group>"; };
+		238875B425A597720097FCEE /* MioLikeAlbumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioLikeAlbumVC.m; sourceTree = "<group>"; };
+		238875B625A597810097FCEE /* MioLikeMVVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioLikeMVVC.h; sourceTree = "<group>"; };
+		238875B725A597810097FCEE /* MioLikeMVVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioLikeMVVC.m; sourceTree = "<group>"; };
 		238C94F42566683100FA58FC /* MioTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioTabbar.m; sourceTree = "<group>"; };
 		238C94F52566683100FA58FC /* MioTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioTabbar.h; sourceTree = "<group>"; };
 		2393DCE92511AE9B002483A9 /* JJCardSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCardSliderCell.h; sourceTree = "<group>"; };
@@ -1857,6 +1902,8 @@
 				23F3716E25906DDE006053B1 /* MioSonglistCollectionCell.m */,
 				23C91421259DA5B9006FA6EB /* MioSonglistTableCell.h */,
 				23C91422259DA5B9006FA6EB /* MioSonglistTableCell.m */,
+				23693FC325A45C0E00696C74 /* MioRadioView.h */,
+				23693FC425A45C0E00696C74 /* MioRadioView.m */,
 			);
 			path = Songlist;
 			sourceTree = "<group>";
@@ -1881,6 +1928,8 @@
 				23189455258AEFDC0092C31B /* MioSingerModel.m */,
 				23C9140F259D7617006FA6EB /* MioSingerTableCell.h */,
 				23C91410259D7617006FA6EB /* MioSingerTableCell.m */,
+				23693FC625A460BB00696C74 /* MioSingerView.h */,
+				23693FC725A460BB00696C74 /* MioSingerView.m */,
 			);
 			path = Singer;
 			sourceTree = "<group>";
@@ -1892,6 +1941,8 @@
 				23189458258AEFE70092C31B /* MioMvModel.m */,
 				231AE598259ADFE4006AFA89 /* MioMVCollectionCell.h */,
 				231AE599259ADFE4006AFA89 /* MioMVCollectionCell.m */,
+				23693FC925A46A6200696C74 /* MioMVBigCollectionCell.h */,
+				23693FCA25A46A6200696C74 /* MioMVBigCollectionCell.m */,
 				23C913CC259C164E006FA6EB /* MioMVTableCell.h */,
 				23C913CD259C164E006FA6EB /* MioMVTableCell.m */,
 			);
@@ -1913,6 +1964,19 @@
 				2305A21E256BAC150099EFE3 /* MioImageView.m */,
 			);
 			path = Skin;
+			sourceTree = "<group>";
+		};
+		23189EF625A5B79500D7EBDC /* HQFlowView */ = {
+			isa = PBXGroup;
+			children = (
+				23189EFA25A5B79500D7EBDC /* HQFlowView.h */,
+				23189EF725A5B79500D7EBDC /* HQFlowView.m */,
+				23189EFB25A5B79500D7EBDC /* HQImagePageControl.h */,
+				23189EF925A5B79500D7EBDC /* HQImagePageControl.m */,
+				23189EFC25A5B79500D7EBDC /* HQIndexBannerSubview.h */,
+				23189EF825A5B79500D7EBDC /* HQIndexBannerSubview.m */,
+			);
+			path = HQFlowView;
 			sourceTree = "<group>";
 		};
 		231AE58A2599B6EE006AFA89 /* Album */ = {
@@ -2008,6 +2072,10 @@
 				2312AC432595EB4200EF45AA /* ScanSuccessJumpVC.m */,
 				2312AC472595EB5200EF45AA /* SGWebView.h */,
 				2312AC462595EB5200EF45AA /* SGWebView.m */,
+				238875A025A55C800097FCEE /* MioAboutUsVC.h */,
+				238875A125A55C800097FCEE /* MioAboutUsVC.m */,
+				2314389E2464F59D005E0B15 /* MioFeedBackVC.h */,
+				2314389D2464F59D005E0B15 /* MioFeedBackVC.m */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -2576,20 +2644,14 @@
 		236DB71D250F573D001CC2F3 /* Ground */ = {
 			isa = PBXGroup;
 			children = (
+				238875A425A55DC20097FCEE /* MVDetail */,
+				238875A325A55D9E0097FCEE /* Rank */,
 				236DB71E250F5BC0001CC2F3 /* MioGroudVC.h */,
 				236DB71F250F5BC0001CC2F3 /* MioGroudVC.m */,
 				231AE592259ADA1E006AFA89 /* MioRecommendMVVC.h */,
 				231AE593259ADA1E006AFA89 /* MioRecommendMVVC.m */,
 				231AE595259ADA46006AFA89 /* MioCategoryMVVC.h */,
 				231AE596259ADA46006AFA89 /* MioCategoryMVVC.m */,
-				23189469258B32940092C31B /* MioMvVC.h */,
-				2318946B258B32940092C31B /* MioMvVC.m */,
-				23189466258B32930092C31B /* MioMvIntroVC.h */,
-				23189468258B32930092C31B /* MioMvIntroVC.m */,
-				23189467258B32930092C31B /* MioMvCmtVC.h */,
-				2318946A258B32940092C31B /* MioMvCmtVC.m */,
-				23693FBC25A4389300696C74 /* MioMVAllCmtVC.h */,
-				23693FBD25A4389300696C74 /* MioMVAllCmtVC.m */,
 			);
 			path = Ground;
 			sourceTree = "<group>";
@@ -2819,6 +2881,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				23189EF625A5B79500D7EBDC /* HQFlowView */,
 				23C913FE259D6B32006FA6EB /* TableViewSectionIndex */,
 				23C913E5259C54AE006FA6EB /* ZYLinkageCollectionView */,
 				2312AC182595D3CC00EF45AA /* AcrCloud */,
@@ -2857,6 +2920,49 @@
 				237D061D257DC3BA00697F3A /* BTCoverHorizontalTransition.h */,
 			);
 			path = TransitionAnimation;
+			sourceTree = "<group>";
+		};
+		238875A325A55D9E0097FCEE /* Rank */ = {
+			isa = PBXGroup;
+			children = (
+				2388759A25A54E220097FCEE /* MioMVRankView.h */,
+				2388759B25A54E220097FCEE /* MioMVRankView.m */,
+				2388759D25A551190097FCEE /* MioMVRankVC.h */,
+				2388759E25A551190097FCEE /* MioMVRankVC.m */,
+			);
+			path = Rank;
+			sourceTree = "<group>";
+		};
+		238875A425A55DC20097FCEE /* MVDetail */ = {
+			isa = PBXGroup;
+			children = (
+				23189469258B32940092C31B /* MioMvVC.h */,
+				2318946B258B32940092C31B /* MioMvVC.m */,
+				23189466258B32930092C31B /* MioMvIntroVC.h */,
+				23189468258B32930092C31B /* MioMvIntroVC.m */,
+				23189467258B32930092C31B /* MioMvCmtVC.h */,
+				2318946A258B32940092C31B /* MioMvCmtVC.m */,
+				23693FBC25A4389300696C74 /* MioMVAllCmtVC.h */,
+				23693FBD25A4389300696C74 /* MioMVAllCmtVC.m */,
+			);
+			path = MVDetail;
+			sourceTree = "<group>";
+		};
+		238875A925A595CC0097FCEE /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				238875A625A595C40097FCEE /* MioLikeVC.h */,
+				238875A725A595C40097FCEE /* MioLikeVC.m */,
+				238875AD25A597570097FCEE /* MioLikeMusicVC.h */,
+				238875AE25A597570097FCEE /* MioLikeMusicVC.m */,
+				238875B025A597640097FCEE /* MioLikeSingerVC.h */,
+				238875B125A597640097FCEE /* MioLikeSingerVC.m */,
+				238875B325A597720097FCEE /* MioLikeAlbumVC.h */,
+				238875B425A597720097FCEE /* MioLikeAlbumVC.m */,
+				238875B625A597810097FCEE /* MioLikeMVVC.h */,
+				238875B725A597810097FCEE /* MioLikeMVVC.m */,
+			);
+			path = Like;
 			sourceTree = "<group>";
 		};
 		2393DCE82511AE9B002483A9 /* CardSlider */ = {
@@ -2939,11 +3045,14 @@
 		239B03432514649500B310D2 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				238875A925A595CC0097FCEE /* Like */,
 				232480192594298000C1F68B /* Download */,
 				230273E42589B59D00937C04 /* EditInfo */,
 				232603EA2588BA1100754659 /* More */,
 				239B0344251464C300B310D2 /* MioMineVC.h */,
 				239B0345251464C300B310D2 /* MioMineVC.m */,
+				23189F0025A5B7B800D7EBDC /* MioSkinCenterVC.h */,
+				23189F0125A5B7B800D7EBDC /* MioSkinCenterVC.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -3083,8 +3192,6 @@
 				2350556B2567522900F96AFC /* MioVCConfig.m */,
 				233826032518A8D500DC9021 /* MioRefreshHeader.h */,
 				233826042518A8D500DC9021 /* MioRefreshHeader.m */,
-				2314389E2464F59D005E0B15 /* MioFeedBackVC.h */,
-				2314389D2464F59D005E0B15 /* MioFeedBackVC.m */,
 				23AB237D2431D32A00DBB427 /* MioAgeView.h */,
 				23AB23862431D32A00DBB427 /* MioAgeView.m */,
 				23AB238A2431D32A00DBB427 /* MioAvatarView.h */,
@@ -3429,12 +3536,14 @@
 				230274B32589B67700937C04 /* UIColor+HXExtension.m in Sources */,
 				233825EF2518796900DC9021 /* HSCustomCellModel.m in Sources */,
 				236DB6DA250F0DD8001CC2F3 /* LOTValueInterpolator.m in Sources */,
+				23189EFE25A5B79500D7EBDC /* HQIndexBannerSubview.m in Sources */,
 				230274E12589B67700937C04 /* HXPhotoEditGraffitiColorModel.m in Sources */,
 				236DB78C250F6668001CC2F3 /* ZFSmallFloatControlView.m in Sources */,
 				236DB775250F6668001CC2F3 /* ZFOrientationObserver.m in Sources */,
 				2393DD142512055C002483A9 /* UIImage+MioExtension.m in Sources */,
 				230274B62589B67700937C04 /* UILabel+HXExtension.m in Sources */,
 				2378093224FF4DF900007883 /* NERStack+NERChainable.m in Sources */,
+				23189EFF25A5B79500D7EBDC /* HQImagePageControl.m in Sources */,
 				239930B825777DFA00584486 /* DOUAudioSpatialAnalyzer.m in Sources */,
 				2378093B24FF4DF900007883 /* UIFont+NERChainable.m in Sources */,
 				233825F72518796900DC9021 /* HSCustomTableViewCell.m in Sources */,
@@ -3479,6 +3588,7 @@
 				239930B325777DFA00584486 /* DOUAudioStreamer.m in Sources */,
 				236DB6E4250F0DD8001CC2F3 /* LOTRenderGroup.m in Sources */,
 				23615E2A2576236700EAD39D /* MioMainPlayerVC.m in Sources */,
+				238875A825A595C40097FCEE /* MioLikeVC.m in Sources */,
 				233826222518ACDD00DC9021 /* TADotView.m in Sources */,
 				230274D62589B67700937C04 /* HXPhotoSubViewCell.m in Sources */,
 				23C91417259D807B006FA6EB /* MioSearchSingerResultVC.m in Sources */,
@@ -3547,6 +3657,7 @@
 				23746CB42580A8160072A4C8 /* MioMutipleVC.m in Sources */,
 				236DB774250F6668001CC2F3 /* ZFLandscapeWindow.m in Sources */,
 				236DB6E0250F0DD8001CC2F3 /* LOTPolystarAnimator.m in Sources */,
+				238875B825A597810097FCEE /* MioLikeMVVC.m in Sources */,
 				2312AC1F2595D45000EF45AA /* MioListenMusicVC.m in Sources */,
 				23FF983A2547BE09008CC170 /* UITableView+MioExtension.m in Sources */,
 				236DB6FD250F0DD8001CC2F3 /* CGGeometry+LOTAdditions.m in Sources */,
@@ -3650,6 +3761,7 @@
 				236DB6FE250F0DD8001CC2F3 /* LOTBezierPath.m in Sources */,
 				236DB77E250F6668001CC2F3 /* ZFKVOController.m in Sources */,
 				233825F62518796900DC9021 /* HSTitleTableViewCell.m in Sources */,
+				238875AF25A597570097FCEE /* MioLikeMusicVC.m in Sources */,
 				233825E62518796900DC9021 /* NSBundle+HSImage.m in Sources */,
 				2378094224FF4DF900007883 /* NERPrivates.m in Sources */,
 				23C24FD42446A4CA00EE0BE2 /* STPickTime.m in Sources */,
@@ -3738,6 +3850,7 @@
 				2366F670257F2590006E1D7D /* NSDateFormatter + Extension.m in Sources */,
 				230274AF2589B67700937C04 /* UIFont+HXExtension.m in Sources */,
 				23615E182574A3D200EAD39D /* MioMusicModel.m in Sources */,
+				2388759C25A54E230097FCEE /* MioMVRankView.m in Sources */,
 				236DB6D5250F0DD8001CC2F3 /* LOTTrimPathNode.m in Sources */,
 				23C91430259DB70A006FA6EB /* MioCategoryAlbumVC.m in Sources */,
 				230274AA2589B67700937C04 /* NSString+HXExtension.m in Sources */,
@@ -3771,11 +3884,13 @@
 				2318944C258AEEAE0092C31B /* MioAlbumModel.m in Sources */,
 				236DB720250F5BC0001CC2F3 /* MioGroudVC.m in Sources */,
 				231AE594259ADA1E006AFA89 /* MioRecommendMVVC.m in Sources */,
+				238875A225A55C800097FCEE /* MioAboutUsVC.m in Sources */,
 				236DB77D250F6668001CC2F3 /* ZFPortraitViewController.m in Sources */,
 				236DB6FC250F0DD8001CC2F3 /* LOTShapeStroke.m in Sources */,
 				23AB23582431C8BA00DBB427 /* UIView+MioExtension.m in Sources */,
 				23C913D1259C1B2B006FA6EB /* MioSonglistPageVC.m in Sources */,
 				230274D42589B67700937C04 /* HXPhotoView.m in Sources */,
+				2388759F25A551190097FCEE /* MioMVRankVC.m in Sources */,
 				23C9140B259D6B32006FA6EB /* CYCustomSectionIndexCell.m in Sources */,
 				239930B425777DFA00584486 /* DOUAudioDecoder.m in Sources */,
 				236936A125835210005DB8CA /* MioSongListVC.m in Sources */,
@@ -3810,10 +3925,13 @@
 				23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */,
 				2312AC482595EB5200EF45AA /* SGWebView.m in Sources */,
 				23C913ED259C54AE006FA6EB /* CustomCell.m in Sources */,
+				23693FC525A45C0E00696C74 /* MioRadioView.m in Sources */,
 				233825F22518796900DC9021 /* HSHeaderModel.m in Sources */,
+				238875B225A597640097FCEE /* MioLikeSingerVC.m in Sources */,
 				23693FBB25A30E7600696C74 /* MioAllCmtCell.m in Sources */,
 				236DB78B250F6668001CC2F3 /* ZFPlayerControlView.m in Sources */,
 				2366F66D257F246E006E1D7D /* LyricParser.m in Sources */,
+				238875B525A597720097FCEE /* MioLikeAlbumVC.m in Sources */,
 				236DB6EA250F0DD8001CC2F3 /* UIColor.m in Sources */,
 				230274DF2589B67700937C04 /* HXPhotoEditChartletModel.m in Sources */,
 				23AB23232431C77A00DBB427 /* main.m in Sources */,
@@ -3821,6 +3939,7 @@
 				2367ADB1251DD80300935CF3 /* HLZIrregulatBtn.m in Sources */,
 				23693FB825A302E500696C74 /* MioCmtModel.m in Sources */,
 				236DB6FA250F0DD8001CC2F3 /* LOTShapeFill.m in Sources */,
+				23693FC825A460BB00696C74 /* MioSingerView.m in Sources */,
 				2366F679257F6484006E1D7D /* MioDownloadRequest.m in Sources */,
 				23AB23AC2431DA5300DBB427 /* MioUserAgreementVC.m in Sources */,
 				239930AD25777DFA00584486 /* DOUAudioAnalyzer+Default.m in Sources */,
@@ -3833,6 +3952,7 @@
 				232603E92588A20500754659 /* MioMoreVC.m in Sources */,
 				230275112589FD6D00937C04 /* UIView+PYSearchExtension.m in Sources */,
 				231AE58E2599B721006AFA89 /* MioAlbumVC.m in Sources */,
+				23693FCB25A46A6200696C74 /* MioMVBigCollectionCell.m in Sources */,
 				23AB23A92431DA5300DBB427 /* MioModiPassWordVC.m in Sources */,
 				2378093524FF4DF900007883 /* NSString+NERChainable.m in Sources */,
 				239930AF25777DFA00584486 /* NSData+DOUAudioMappedFile.m in Sources */,
@@ -3862,6 +3982,7 @@
 				230274CE2589B67700937C04 /* HXPhotoBottomSelectView.m in Sources */,
 				23693FB225A2F6F200696C74 /* MioMusicAllCmtVC.m in Sources */,
 				23C913E4259C549B006FA6EB /* MioCategoryListVC.m in Sources */,
+				23189F0225A5B7B800D7EBDC /* MioSkinCenterVC.m in Sources */,
 				23C24FD62446A4CA00EE0BE2 /* NSCalendar+STPicker.m in Sources */,
 				23AB235D2431C8BA00DBB427 /* UITextField+NumberFormat.m in Sources */,
 				230274C82589B67700937C04 /* HXPhotoPreviewBottomView.m in Sources */,
@@ -3872,6 +3993,7 @@
 				236DB6F9250F0DD8001CC2F3 /* LOTShapeGroup.m in Sources */,
 				230274C02589B67700937C04 /* HXPhotoViewController.m in Sources */,
 				236DB77C250F6668001CC2F3 /* ZFPlayerView.m in Sources */,
+				23189EFD25A5B79500D7EBDC /* HQFlowView.m in Sources */,
 				236DB6F5250F0DD8001CC2F3 /* LOTShapeRepeater.m in Sources */,
 				236DB6E8250F0DD8001CC2F3 /* LOTRepeaterRenderer.m in Sources */,
 				239930AC25777DFA00584486 /* DOUAudioRenderer.m in Sources */,

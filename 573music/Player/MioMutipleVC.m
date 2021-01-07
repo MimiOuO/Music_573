@@ -14,11 +14,13 @@
 
 @interface MioMutipleVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView       *tableView;
+@property (nonatomic, strong) UIButton *allSelectBtn;
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) YLButton *downloadBtn;
 @property (nonatomic, strong) YLButton *playBtn;
 @property (nonatomic, strong) YLButton *addBtn;
 @property (nonatomic, strong) YLButton *deleteBtn;
+
 
 @end
 
@@ -27,18 +29,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     WEAKSELF;
-
-    [self.navView.leftButton setTitle:@"全选" forState:UIControlStateNormal];
-    self.navView.leftButton.left = 5;
-    self.navView.leftButtonBlock = ^{
+    [self.navView.centerButton setTitle:@"批量操作" forState:UIControlStateNormal];
+    self.navView.leftButton.hidden = YES;
+    _allSelectBtn = [UIButton creatBtn:frame(5, StatusH, 56, 44) inView:self.navView.mainView bgColor:appClearColor title:@"全选" titleColor:color_text_one font:15 radius:0 action:^{
         [weakSelf selectAll];
-    };
+    }];
+
     
     [self.navView.rightButton setTitle:@"取消" forState:UIControlStateNormal];
     self.navView.rightButtonBlock = ^{
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     };
-    [self.navView.centerButton setTitle:@"批量操作" forState:UIControlStateNormal];
+    
     _tableView = [UITableView creatTable:frame(0, NavH, KSW, KSH - NavH - TabH) inView:self.view vc:self];
     [_tableView registerClass:[MioMutipleCell class] forCellReuseIdentifier:@"Cell"];
     [_tableView setEditing:YES animated:YES];
@@ -77,15 +79,15 @@
 
 
 -(void)selectAll{
-    if (Equals(self.navView.leftButton.titleLabel.text, @"全选")) {
+    if (Equals(_allSelectBtn.titleLabel.text, @"全选")) {
         [_musicArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
         }];
 
-        [self.navView.leftButton setTitle:@"全不选" forState:UIControlStateNormal];
+        [_allSelectBtn setTitle:@"全不选" forState:UIControlStateNormal];
     }else{
         [self.tableView reloadData];
-        [self.navView.leftButton setTitle:@"全选" forState:UIControlStateNormal];
+        [_allSelectBtn setTitle:@"全选" forState:UIControlStateNormal];
     }
 }
 

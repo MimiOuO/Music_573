@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * mv_id;
 @property (nonatomic, copy) NSString *like_num;
 @property (nonatomic, copy) NSString *hits_all;
-
+@property (nonatomic, assign) BOOL isLike;
 
 @property (nonatomic, assign) BOOL hasFlac;
 @property (nonatomic, assign) BOOL hasMV;

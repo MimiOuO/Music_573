@@ -37,7 +37,7 @@
         _leftButton.titleLabel.font = [UIFont systemFontOfSize:15];
         _leftButton.adjustsImageWhenHighlighted = NO;
         _leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-        [_leftButton setTitleColor:appBlackColor forState:UIControlStateNormal];
+        [_leftButton setTitleColor:color_text_one forState:UIControlStateNormal];
         [self.mainView addSubview:_leftButton];
         [_leftButton addTarget:self action:@selector(clickLeftButton) forControlEvents:UIControlEventTouchUpInside];
 
@@ -76,7 +76,7 @@
 		UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(KSW - 56, StatusH, 56, 44)];
 		rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
         rightButton.adjustsImageWhenHighlighted = NO;
-		[rightButton setTitleColor:appBlackColor forState:UIControlStateNormal];
+		[rightButton setTitleColor:color_text_one forState:UIControlStateNormal];
 		[self.mainView addSubview:rightButton];
 		self.rightButton = rightButton;
 		[_rightButton addTarget:self action:@selector(clickRightButton) forControlEvents:UIControlEventTouchUpInside];

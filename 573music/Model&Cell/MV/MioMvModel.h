@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * hits_all;
 @property (nonatomic,copy) NSString * comment_num;
 @property (nonatomic, strong) NSArray *tags;
-
+@property (nonatomic, assign) BOOL isLike;
 
 @end
 

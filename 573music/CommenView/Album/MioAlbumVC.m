@@ -101,6 +101,7 @@
     _arrow.hidden = YES;
     _likeBtn = [UIButton creatBtn:frame(150, 106.5, 50, 22) inView:headerView bgImage:@"xihuan" action:^{
         _likeBtn.selected = !_likeBtn.selected;
+        [self likeClick];
     }];
     [_likeBtn setBackgroundImage:image(@"xihuan_yixihuan") forState:UIControlStateSelected];
 }
@@ -121,6 +122,13 @@
         _arrow.hidden = YES;
     }
 
+}
+
+-(void)likeClick{
+    [MioPostReq(api_likes, (@{@"model_name":@"album",@"model_id":_album_id})) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        [UIWindow showSuccess:@"操作成功"];
+    } failure:^(NSString *errorInfo) {}];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

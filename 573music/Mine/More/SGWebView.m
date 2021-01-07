@@ -19,7 +19,7 @@
 @implementation SGWebView
 
 static CGFloat const navigationBarHeight = 64;
-static CGFloat const progressViewHeight = 2;
+static CGFloat const progressViewHeight = 1;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -49,9 +49,9 @@ static CGFloat const progressViewHeight = 2;
         _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
         _progressView.trackTintColor = [UIColor clearColor];
         // 高度默认有导航栏且有穿透效果
-        _progressView.frame = CGRectMake(0, navigationBarHeight, self.frame.size.width, progressViewHeight);
+        _progressView.frame = CGRectMake(0, 0, self.frame.size.width, progressViewHeight);
         // 设置进度条颜色
-        _progressView.tintColor = [UIColor greenColor];
+        _progressView.tintColor = color_main;
     }
     return _progressView;
 }

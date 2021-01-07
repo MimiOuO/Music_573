@@ -13,7 +13,6 @@
 #import "MioAlbumListPageVC.h"
 #import "MioSonglistPageVC.h"
 #import "MioCategoryListVC.h"
-#import "MioSingerModel.h"
 #import "MioMusicRankListVC.h"
 #import "MioSingerListVC.h"
 
@@ -52,7 +51,7 @@
 }
 
 -(void)request{
-    [MioGetReq(api_ranks, @{@"page":@"推荐"}) success:^(NSDictionary *result){
+    [MioGetCacheReq(api_ranks, @{@"page":@"推荐"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         for (int i = 0;i < data.count; i++) {
             if (Equals(@"歌曲", data[i][@"type"])) {
@@ -69,19 +68,35 @@
         
     } failure:^(NSString *errorInfo) {}];
     
-    [MioGetReq(api_ranks,(@{@"type":@"歌曲",@"limit":@"3"})) success:^(NSDictionary *result){
+    [MioGetCacheReq(api_ranks,(@{@"type":@"歌曲",@"limit":@"3"})) success:^(NSDictionary *result){
         _rankArr = [result objectForKey:@"data"];
         [self updateRank];
+    } failure:^(NSString *errorInfo) {}];
+    
+    [MioGetCacheReq(api_banners,nil) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        for (int i = 0;i < data.count; i++) {
+            [tempArr addObject:data[i][@"cover_image_path"]];
+        }
+        _adUrlArr = tempArr;
+        _adScroll.imageURLStringsGroup = _adUrlArr;
     } failure:^(NSString *errorInfo) {}];
     
 }
 
 -(void)creatUI{
     _bgScroll = [UIScrollView creatScroll:frame(0, 44 , KSW,KSH - NavH - TabH - 44 -49) inView:self.view contentSize:CGSizeMake(KSW, 1443)];
-    
+    _bgScroll.mj_header = [MioRefreshHeader headerWithRefreshingBlock:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_bgScroll.mj_header endRefreshing];
+        });
+    }];
     
     _adScroll = [SDCycleScrollView cycleScrollViewWithFrame:frame(Mar,12, KSW_Mar2, 140) delegate:self placeholderImage:nil];
-    _adScroll.autoScrollTimeInterval = 4;
+    _adScroll.autoScrollTimeInterval = 5;
+    _adScroll.pageDotImage = image(@"lunbo01");
+    _adScroll.currentPageDotImage = image(@"lunbo02");
     ViewRadius(_adScroll, 6);
     [_bgScroll addSubview:_adScroll];
     
@@ -134,20 +149,20 @@
         MioImageView *arrow1 = [MioImageView creatImgView:frame(KSW_Mar -  14,[titleYArr[i] intValue] + 3, 14, 14) inView:_bgScroll image:@"return_more" bgTintColorName:name_icon_two radius:0];
     }
     
-    _songlistScroll = [UIScrollView creatScroll:frame(0, 313, KSW, 149*2 + 12) inView:_bgScroll contentSize:CGSizeMake(ceilf(_songlistArr.count/2.0)*118 + 24, 149*2 + 12)];
-    _musicScroll = [UIScrollView creatScroll:frame(0, 680, KSW, 60*3 + 24) inView:_bgScroll contentSize:CGSizeMake(ceilf(_musicArr.count/3.0)*KSW_Mar2 + 24, 60*3 + 24)];
-    _rankScroll = [UIScrollView creatScroll:frame(0, 942, KSW, 110) inView:_bgScroll contentSize:CGSizeMake(ceilf(_rankArr.count/2.0)*118 + 24, 132*2 + 12)];
-    _albumScroll = [UIScrollView creatScroll:frame(0, 1110, KSW, 132*2 + 12) inView:_bgScroll contentSize:CGSizeMake(ceilf(_albumArr.count/2.0)*118 + 24, 132*2 + 12)];
+    _songlistScroll = [UIScrollView creatScroll:frame(0, 313, KSW, 149*2 + 12) inView:_bgScroll contentSize:CGSizeMake(0,0)];
+    _musicScroll = [UIScrollView creatScroll:frame(0, 680, KSW, 60*3 + 24) inView:_bgScroll contentSize:CGSizeMake(0,0)];
+    _rankScroll = [UIScrollView creatScroll:frame(0, 942, KSW, 110) inView:_bgScroll contentSize:CGSizeMake(0,0)];
+    _albumScroll = [UIScrollView creatScroll:frame(0, 1110, KSW, 132*2 + 12) inView:_bgScroll contentSize:CGSizeMake(0,0)];
     _rankScroll.pagingEnabled = YES;
 }
 
 -(void)updateUI{
-    _songlistScroll.contentSize = CGSizeMake(ceilf(_songlistArr.count/2.0)*118 + 24, 149*2 + 12);
-    _musicScroll.contentSize = CGSizeMake(ceilf(_musicArr.count/2.0)*118 + 24, 60*3 + 24);
+    _songlistScroll.contentSize = CGSizeMake(ceilf(_songlistArr.count/2.0)*117 + 24, 149*2 + 12);
+    _musicScroll.contentSize = CGSizeMake(ceilf(_musicArr.count/3.0)*KSW_Mar2 + 24, 60*3 + 24);
    
     _albumScroll.contentSize = CGSizeMake(ceilf(_albumArr.count/2.0)*118 + 24, 132*2 + 12);
     
-    for (int i = 0;i < _albumArr.count; i++) {
+    for (int i = 0;i < _songlistArr.count; i++) {
         MioSonglistCollectionCell *songlistCell = [[MioSonglistCollectionCell alloc] initWithFrame:CGRectMake( Mar + (i/2) * 117, 160*(i%2), 109, 149)];
         songlistCell.model = _songlistArr[i];
         [_songlistScroll addSubview:songlistCell];
@@ -197,7 +212,6 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     ScanSuccessJumpVC *vc = [[ScanSuccessJumpVC alloc] init];
     vc.jump_URL = @"http://www.baidu.com";
-//    vc.url = _adUrlArr[index];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

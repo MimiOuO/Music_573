@@ -11,7 +11,7 @@
 @implementation MioGetCacheRequest
 
 - (YTKRequestMethod)requestMethod {
-    return YTKRequestMethodPOST;
+    return YTKRequestMethodGET;
 }
 
 

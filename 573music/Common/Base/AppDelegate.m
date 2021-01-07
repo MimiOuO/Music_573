@@ -18,8 +18,11 @@
 #import <SSZipArchive.h>
 
 #import "AppDelegate+MioInitalData.h"
+
+#import <XHLaunchAd.h>
+#import "ScanSuccessJumpVC.h"
 #endif
-@interface AppDelegate ()
+@interface AppDelegate ()<XHLaunchAdDelegate>
 @property (nonatomic, assign) float tabbarHeight;
 
 @end
@@ -36,12 +39,15 @@
         
 
 //
-//    JJException.exceptionWhenTerminate = NO;
-//
-//    [JJException configExceptionCategory:JJExceptionGuardNSStringContainer | JJExceptionGuardArrayContainer | JJExceptionGuardUnrecognizedSelector | JJExceptionGuardDictionaryContainer];
-//    [JJException startGuardException];
+    JJException.exceptionWhenTerminate = NO;
+
+    [JJException configExceptionCategory:JJExceptionGuardNSStringContainer | JJExceptionGuardArrayContainer | JJExceptionGuardUnrecognizedSelector | JJExceptionGuardDictionaryContainer];
+    [JJException startGuardException];
     
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    
+    [self configAd];
+    
     [self initalData];
     
     [self registPlatform];
@@ -59,6 +65,47 @@
     return YES;
 }
 
+-(void)configAd{
+    [XHLaunchAd setLaunchSourceType:SourceTypeLaunchScreen];
+    [XHLaunchAd setWaitDataDuration:2];
+    [MioGetCacheReq(api_startAd, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        
+        //配置广告数据
+        XHLaunchImageAdConfiguration *imageAdconfiguration = [XHLaunchImageAdConfiguration defaultConfiguration];
+        
+        imageAdconfiguration.imageNameOrURLString = data[@"url"];
+        
+        imageAdconfiguration.openModel = @"http://www.baidu.com";
+        imageAdconfiguration.frame = CGRectMake(0, 0, KSW, KSH- 78 - SafeBotH);
+        imageAdconfiguration.skipButtonType = SkipTypeTimeText;
+       
+        UIImageView *icon = [UIImageView creatImgView:frame(KSW2 - 98/2, KSH - 25 - 28 - SafeBotH, 98, 28) inView:nil image:@"573logo" radius:0];
+        imageAdconfiguration.subViews = [NSArray arrayWithObject:icon];
+        
+        //显示图片开屏广告
+        [XHLaunchAd imageAdWithImageAdConfiguration:imageAdconfiguration delegate:self];
+    } failure:^(NSString *errorInfo) {}];
+ 
+}
+
+-(BOOL)xhLaunchAd:(XHLaunchAd *)launchAd clickAtOpenModel:(id)openModel clickPoint:(CGPoint)clickPoint{
+    
+    NSLog(@"广告点击事件");
+    
+    //openModel即配置广告数据设置的点击广告时打开页面参数(configuration.openModel)
+    
+    if(openModel == nil) return NO;
+    
+    ScanSuccessJumpVC *vc = [[ScanSuccessJumpVC alloc] init];
+    NSString *urlString = (NSString *)openModel;
+    vc.jump_URL = urlString;
+    //此处不要直接取keyWindow
+    UIViewController* rootVC = [[UIApplication sharedApplication].delegate window].rootViewController;
+    [((UITabBarController*)rootVC).selectedViewController pushViewController:vc animated:YES];
+    
+    return YES;//YES移除广告,NO不移除广告
+}
 
 
 -(void)initSettings{
@@ -66,6 +113,7 @@
     if (![userdefault objectForKey:@"first"]) {
         [userdefault setObject:@"1" forKey:@"first"];
         [userdefault setObject:@"bai" forKey:@"skin"];
+        [userdefault setObject:@"1" forKey:@"showJifen"];
         setPlayOrder(MioPlayOrderCycle);
     }
 }

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioCategoryMVVC : MioViewController
-
+@property (nonatomic,copy) NSString * tagStr;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -24,7 +24,7 @@
         
     }
     
-    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioMvIntroVC",@"MioMvCmtVC",@"MioMutipleVC",@"MioListenMusicVC",@"LBXScanBaseViewController",@"ScanSuccessJumpVC",@"MioMusicCmtVC",@"MioMusicAllCmtVC",@"MioMVAllCmtVC"];
+    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioMvIntroVC",@"MioMvCmtVC",@"MioMutipleVC",@"MioListenMusicVC",@"LBXScanBaseViewController",@"ScanSuccessJumpVC",@"MioMusicCmtVC",@"MioMusicAllCmtVC",@"MioMVAllCmtVC",@"MioAboutUsVC",@"MioFeedBackVC",@"MioSkinCenterVC"];
     NSArray *allArr = @[@"MioHomeVC",@"MioGroudVC",@"MioMineVC",@"MioHomeRecommendVC",@"MioHomeMusicHallVC",@"MioGroudVC",@"MioRecommendMVVC",@"MioCategoryMVVC"];
     
     

@@ -7,19 +7,22 @@
 //
 
 #import "MioRecommendMVVC.h"
-#import "PYSearch.h"
-#import "MioSearchResultVC.h"
 #import "SDCycleScrollView.h"
 #import "ScanSuccessJumpVC.h"
 #import "MioMvModel.h"
 #import "MioMVCollectionCell.h"
 #import "MioMvVC.h"
+#import "MioMVRankView.h"
+#import "MioMVRankVC.h"
 @interface MioRecommendMVVC ()<UICollectionViewDataSource,UICollectionViewDelegate,SDCycleScrollViewDelegate>
 @property (nonatomic, strong) UICollectionView *collection;
 @property (nonatomic, strong) SDCycleScrollView *adScroll;
 @property (nonatomic, strong) NSMutableArray *adUrlArr;
+@property (nonatomic, strong) UIScrollView *rankScroll;
 
+@property (nonatomic, strong) NSArray *rankArr;
 @property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSArray *hotArr;
 @property (nonatomic, assign) NSInteger page;
 
 @end
@@ -38,7 +41,7 @@
 }
 
 -(void)requestData{
-    [MioGetReq(api_mvs, @{@"page":Str(_page)}) success:^(NSDictionary *result){
+    [MioGetCacheReq(api_mvs, @{@"page":Str(_page)}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         if (_page == 1) {
             [_dataArr removeAllObjects];
@@ -49,6 +52,20 @@
         [self.collection.mj_footer endRefreshing];
         [_dataArr addObjectsFromArray:[MioMvModel mj_objectArrayWithKeyValuesArray:data]];
         [self.collection reloadData];
+    } failure:^(NSString *errorInfo) {}];
+    
+    [MioGetCacheReq(api_ranks,(@{@"type":@"歌曲",@"limit":@"3"})) success:^(NSDictionary *result){
+        _rankArr = [result objectForKey:@"data"];
+    } failure:^(NSString *errorInfo) {}];
+    
+    [MioGetCacheReq(api_banners,nil) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        for (int i = 0;i < data.count; i++) {
+            [tempArr addObject:data[i][@"cover_image_path"]];
+        }
+        _adUrlArr = tempArr;
+        
     } failure:^(NSString *errorInfo) {}];
 }
 
@@ -71,23 +88,60 @@
     }];
 }
 
+-(void)updateRank{
+    _rankScroll.contentSize = CGSizeMake(_rankArr.count * 242 + 24, 140);
+    for (int i = 0;i < _rankArr.count; i++) {
+        MioMVRankView *rankCell = [[MioMVRankView alloc] initWithFrame:CGRectMake( Mar + i * 242,  0, 234, 140)];
+        rankCell.rankDic = _rankArr[i];
+        [_rankScroll addSubview:rankCell];
+        [rankCell whenTapped:^{
+            MioMVRankVC *vc = [[MioMVRankVC alloc] init];
+            vc.rankId = _rankArr[i][@"rank_id"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+    }
+}
 
 #pragma mark - collectionview
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
 
     UICollectionReusableView *reusableview = nil;
     if (kind == UICollectionElementKindSectionHeader){
+
         UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
         headerView.backgroundColor = appClearColor;
+        [headerView removeAllSubviews];
         
         _adScroll = [SDCycleScrollView cycleScrollViewWithFrame:frame(Mar,12, KSW_Mar2, 140) delegate:self placeholderImage:nil];
-        _adScroll.autoScrollTimeInterval = 4;
+        _adScroll.autoScrollTimeInterval = 5;
+        _adScroll.pageDotImage = image(@"lunbo01");
+        _adScroll.currentPageDotImage = image(@"lunbo02");
+        _adScroll.imageURLStringsGroup = _adUrlArr;
         ViewRadius(_adScroll, 6);
         [headerView addSubview:_adScroll];
         
-        MioLabel *rankTitle = [MioLabel creatLabel:frame(Mar, 182, 50, 20) inView:headerView text:@"排行榜" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
-        MioLabel *morerankLab = [MioLabel creatLabel:frame(KSW_Mar - 50, 185, 50, 23) inView:headerView text:@"更多" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
-        MioImageView *arrow1 = [MioImageView creatImgView:frame(KSW_Mar -  14, 189.5, 14, 14) inView:headerView image:@"return_more" bgTintColorName:name_icon_two radius:0];
+        NSArray *titleYArr = @[@182,@380,(KSW>400?@819:@790)];
+        NSArray *titleArr = @[@"排行榜",@"热门MV",@"最新MV"];
+        for (int i = 0;i < titleYArr.count; i++) {
+            MioLabel *titleLab = [MioLabel creatLabel:frame(Mar, [titleYArr[i] intValue], 100, 20) inView:headerView text:titleArr[i] colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+            MioLabel *moreSonglistLab = [MioLabel creatLabel:frame(KSW_Mar - 50, [titleYArr[i] intValue], 50, 20) inView:headerView text:@"更多" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
+            MioImageView *arrow1 = [MioImageView creatImgView:frame(KSW_Mar -  14,[titleYArr[i] intValue] + 3, 14, 14) inView:headerView image:@"return_more" bgTintColorName:name_icon_two radius:0];
+        }
+        
+        
+        _rankScroll = [UIScrollView creatScroll:frame(0, 210, KSW, 140) inView:headerView contentSize:CGSizeMake(_rankArr.count * 242 + 24, 140)];
+        [self updateRank];
+        
+        for (int i = 0;i < (_dataArr.count<4?_dataArr.count:4); i++) {
+            MioMVCollectionCell *mvCell = [[MioMVCollectionCell alloc] initWithFrame:CGRectMake( Mar + (i%2)*((KSW_Mar2 - 10)/2 + 8) , 408+ ((KSW_Mar2 - 10)/2 * 10/17 + 70 + 12)*(i/2), (KSW_Mar2 - 10)/2, (KSW_Mar2 - 10)/2 * 10/17 + 70)];
+            mvCell.model = _dataArr[i];
+            [headerView addSubview:mvCell];
+            [mvCell whenTapped:^{
+                MioMvVC *vc = [[MioMvVC alloc] init];
+                vc.mvId = ((MioMvModel *)_dataArr[i]).mv_id;
+                [self.navigationController pushViewController:vc animated:YES];
+            }];
+        }
         
         reusableview = headerView;
     }
@@ -95,7 +149,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(self.view.frame.size.width, 818);
+    return CGSizeMake(self.view.frame.size.width, 818 + (KSW>400?19:0));
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,6 +176,13 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     MioMvVC *vc = [[MioMvVC alloc] init];
     vc.mvId = ((MioMvModel *)_dataArr[indexPath.row]).mv_id;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - 广告
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    ScanSuccessJumpVC *vc = [[ScanSuccessJumpVC alloc] init];
+    vc.jump_URL = @"http://www.baidu.com";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

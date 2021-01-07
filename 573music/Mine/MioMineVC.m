@@ -12,6 +12,9 @@
 #import "MioUserInfo.h"
 #import "MioEditInfoVC.h"
 #import "MioCreatSonglistVC.h"
+#import "MioDownloadVC.h"
+#import "MioLikeVC.h"
+#import "MioSkinCenterVC.h"
 
 @interface MioMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) MioUserInfo *user;
@@ -202,13 +205,16 @@
             
     }];
     [skinLab whenTapped:^{
-        goLogin;
+        MioSkinCenterVC *vc = [[MioSkinCenterVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     [signLab whenTapped:^{
         goLogin;
     }];
     [likeView whenTapped:^{
         goLogin;
+        MioLikeVC *vc = [[MioLikeVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     [songListView whenTapped:^{
             
@@ -217,7 +223,8 @@
             
     }];
     [downLoadView whenTapped:^{
-            
+        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     
     [newSonglistLab whenTapped:^{

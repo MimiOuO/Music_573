@@ -484,7 +484,7 @@ NSString * const ID = @"cycleCell";
         [pageControl sizeToFit];
     }
     
-    self.pageControl.frame = CGRectMake(x, y, size.width, size.height);
+    self.pageControl.frame = CGRectMake(x, y, size.width, 4);
     self.pageControl.hidden = !_showPageControl;
     
     if (self.backgroundImageView) {

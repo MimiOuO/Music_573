@@ -15,7 +15,7 @@
 @interface MioGroudVC ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong) WMPageController *pageController;
 @property (nonatomic, strong) UIView *contentView;
-
+@property (nonatomic, strong) NSArray *tabsArr;
 @end
 
 @implementation MioGroudVC
@@ -26,6 +26,8 @@
 
     
     RecieveChangeSkin;
+    
+    _tabsArr = [userdefault objectForKey:@"mvtabs"];
     
     _contentView = [[UIView alloc] initWithFrame:frame(0, 0, KSW, KSH - TabH)];
     _contentView.backgroundColor = appClearColor;
@@ -105,7 +107,7 @@
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     
-    return 10;
+    return _tabsArr.count + 1;
 }
 
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
@@ -114,7 +116,9 @@
         
         return [[MioRecommendMVVC alloc] init];
     }else{
-        return [[MioCategoryMVVC alloc] init];
+        MioCategoryMVVC *vc = [[MioCategoryMVVC alloc] init];
+        vc.tagStr = _tabsArr[index - 1];
+        return vc;
     }
     
     
@@ -125,7 +129,7 @@
     if (index == 0) {
         return @"推荐";
     }else{
-        return @"音乐现场";
+        return _tabsArr[index - 1];
     }
     
 }

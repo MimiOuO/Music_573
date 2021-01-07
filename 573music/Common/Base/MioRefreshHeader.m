@@ -16,16 +16,16 @@
     
     // 设置普通状态的动画图片
     NSMutableArray *idleImages = [NSMutableArray array];
-    for (NSUInteger i = 0; i<35; i++) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"合成 %zd", i + 99]];
+    for (NSUInteger i = 0; i<16; i++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"frame-%zd", i ]];
         [idleImages addObject:image];
     }
      [self setImages:idleImages forState:MJRefreshStateIdle];
     
     // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
     NSMutableArray *refreshingImages = [NSMutableArray array];
-    for (NSUInteger i = 0; i<35; i++) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"合成 %zd",  i + 100]];
+    for (NSUInteger i = 0; i<16; i++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"frame-%zd", i]];
         [refreshingImages addObject:image];
     }
     

@@ -16,11 +16,14 @@
 #import "MioFeedBackVC.h"
 #import "MioLabel.h"
 #import "MioPlayListVC.h"
+#import "CountdownTimer.h"
 
 @interface MioHomeVC ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) WMPageController *pageController;
-
+@property (nonatomic, strong) UIView *countDownView;
+@property (nonatomic, strong) MioLabel *minuteLab;
+@property (nonatomic, strong) MioLabel *secondLab;
 @end
 
 @implementation MioHomeVC
@@ -64,6 +67,45 @@
     [searchView whenTapped:^{
         [self searchClick];
     }];
+   
+    _countDownView = [UIView creatView:frame(KSW_Mar - 54, StatusH + 13, 54, 24) inView:self.view bgColor:appClearColor radius:0];
+    UIImageView *bgImg = [UIImageView creatImgView:frame(0, 0, 54, 24) inView:_countDownView image:@"daojishi_bg" radius:0];
+    _minuteLab = [MioLabel creatLabel:frame(2, 0, 20, 28) inView:_countDownView text:@"" colorName:name_main size:14 alignment:NSTextAlignmentCenter];
+    _secondLab = [MioLabel creatLabel:frame(31, 0, 20, 28) inView:_countDownView text:@"" colorName:name_main size:14 alignment:NSTextAlignmentCenter];
+    _minuteLab.font = [UIFont fontWithName:@"DIN Condensed" size:16];
+    _secondLab.font = [UIFont fontWithName:@"DIN Condensed" size:16];
+    UIImageView *bgImg2 = [UIImageView creatImgView:frame(2, 12, 20, 0.5) inView:_countDownView image:@"daojishi_xian" radius:0];
+    UIImageView *bgImg3 = [UIImageView creatImgView:frame(31, 12, 20, 0.5) inView:_countDownView image:@"daojishi_xian" radius:0];
+    [self startCutDown];
+    [_countDownView whenTapped:^{
+        [UIWindow showMessage:@"11111at" withTitle:@"积分说明"];
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (Equals([userdefault objectForKey:@"showJifen"], @"1")) {
+        _countDownView.hidden = NO;
+    }else{
+        _countDownView.hidden = YES;
+    }
+}
+
+-(void)startCutDown{
+    [CountdownTimer startTimerWithKey:cutdown count:300*1000 callBack:^(NSInteger count, BOOL isFinished) {
+        NSInteger time = count%300;
+        _minuteLab.text = [NSString stringWithFormat:@"%02ld",time/60];
+        _secondLab.text = [NSString stringWithFormat:@"%02ld",time%60];
+        if (time == 1) {
+            [UIWindow showInfo:@"积分添加成功"];
+            [self addJifen];
+        }
+    }];
+}
+
+-(void)addJifen{
+    [CountdownTimer stopTimerWithKey:cutdown];
+    
     
 }
 
@@ -145,12 +187,6 @@
     [UIView animateWithDuration:0.3 animations:^{
 //        weakSelf.publichBtn.top = KSH - TabH;
     }];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
 }
 
 @end

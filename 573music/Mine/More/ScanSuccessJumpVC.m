@@ -21,7 +21,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
-    [self.navView.centerButton setTitle:@"扫描结果" forState:UIControlStateNormal];
+    [self.navView.centerButton setTitle:@"" forState:UIControlStateNormal];
     
 //    [self setupNavigationItem];
    
@@ -85,7 +85,7 @@
     CGFloat webViewH = KSH - NavH;
     self.webView = [SGWebView webViewWithFrame:CGRectMake(webViewX, webViewY, webViewW, webViewH)];
     if (self.comeFromVC == ScanSuccessJumpComeFromWB) {
-        _webView.progressViewColor = [UIColor orangeColor];
+        _webView.progressViewColor = color_main;
     };
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.jump_URL]]];
     _webView.SGQRCodeDelegate = self;

@@ -9,6 +9,7 @@
 #import "MioSongListVC.h"
 #import "MioSongListModel.h"
 #import "MioMusicTableCell.h"
+#import "MioMutipleVC.h"
 
 @interface MioSongListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) MioSongListModel *songlist;
@@ -136,6 +137,14 @@
         
     }];
     UIImageView *multipleIcon = [UIImageView creatImgView:frame(KSW - 24 -  18, 15, 18, 18) inView:sectionHeader image:@"liebiao_duoxuan" radius:0];
+    [multipleIcon whenTapped:^{
+        MioMutipleVC *vc = [[MioMutipleVC alloc] init];
+        vc.musicArr = _dataArr;
+        vc.type = MioMutipleTypeSongList;
+        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
+        nav.modalPresentationStyle = 0;
+        [self presentViewController:nav animated:YES completion:nil];
+    }];
     
     return sectionHeader;
 }
