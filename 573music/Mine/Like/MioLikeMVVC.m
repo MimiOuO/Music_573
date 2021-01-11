@@ -49,7 +49,7 @@
 
 -(void)requestData{
 
-    [MioGetReq(api_songs, (@{@"page":Str(_page)})) success:^(NSDictionary *result){
+    [MioGetReq(api_likeMV, (@{@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_collection.mj_footer endRefreshing];
         if (_page == 1) {

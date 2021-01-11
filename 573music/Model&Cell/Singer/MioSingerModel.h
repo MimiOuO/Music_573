@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * albums_num;
 @property (nonatomic,copy) NSString * mvs_num;
 @property (nonatomic, strong) NSArray *tags;
-@property (nonatomic, assign) BOOL isLike;
+@property (nonatomic, assign) BOOL is_like;
 @end
 
 NS_ASSUME_NONNULL_END

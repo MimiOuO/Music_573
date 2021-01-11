@@ -14,7 +14,7 @@
 @interface MioSearchSingerResultVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray<MioSingerModel *> *dataArr;
 @end
 
 @implementation MioSearchSingerResultVC
@@ -84,7 +84,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MioSingerVC *vc = [[MioSingerVC alloc] init];
-    vc.model = _dataArr[indexPath.row];
+    vc.singerId = _dataArr[indexPath.row].singer_id;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

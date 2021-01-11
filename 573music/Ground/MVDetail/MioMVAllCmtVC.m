@@ -127,7 +127,7 @@
         return;
     }
     NSDictionary *dic = @{
-            @"model_name":@"song",
+            @"model_name":@"mv",
             @"model_id":_cmtModel.commentable_id,
             @"content":content,
             @"pid":self.commentInputView.pid,
@@ -139,7 +139,7 @@
         MioCmtModel *currentReplyModel = [MioCmtModel mj_objectWithKeyValues:data[0]];
 //        cmtModel.isBendi = @"1";
         [UIWindow showInfo:@"评论成功"];
-        PostNotice(@"commentRefresh");
+        PostNotice(@"mvCmtSuccess");
         NSMutableArray *tempSubArr = [_cmtModel.sub_comments mutableCopy];
         [tempSubArr insertObject:data[0] atIndex:0];
         _replyArr = tempSubArr;

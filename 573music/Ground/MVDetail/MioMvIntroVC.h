@@ -11,14 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-@protocol ChangeCollectionDelegate <NSObject>
+@protocol ChangeMVDelegate <NSObject>
 @optional
-- (void)changeCollection:(int)index;
+- (void)changeMV:(NSString *)mvId;
 @end
 
 @interface MioMvIntroVC : MioViewController
 @property (nonatomic, strong) MioMvModel *mv;
-@property (nonatomic, weak)id <ChangeCollectionDelegate>delegate;
+@property (nonatomic, weak)id <ChangeMVDelegate>delegate;
 @end
 
 NS_ASSUME_NONNULL_END

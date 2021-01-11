@@ -12,17 +12,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class MioPlayer;
-@protocol MioPlayerDelegate <NSObject>
-@optional
 
-@end
 
 @interface MioPlayer : NSObject
 +(MioPlayer *)shareInstance;
 
-
-@property (nonatomic, weak) id <MioPlayerDelegate> delegate;
 
 @property (nonatomic, strong) DOUAudioStreamer *streamer;
 

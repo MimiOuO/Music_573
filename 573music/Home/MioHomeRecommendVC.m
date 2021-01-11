@@ -30,10 +30,10 @@
 @property (nonatomic, strong) UIScrollView *albumScroll;
 
 @property (nonatomic, strong) NSArray *radioArr;
-@property (nonatomic, strong) NSArray *songlistArr;
-@property (nonatomic, strong) NSArray *musicArr;
-@property (nonatomic, strong) NSArray *singerArr;
-@property (nonatomic, strong) NSArray *albumArr;
+@property (nonatomic, strong) NSArray<MioSongListModel *> *songlistArr;
+@property (nonatomic, strong) NSArray<MioMusicModel *> *musicArr;
+@property (nonatomic, strong) NSArray<MioSingerModel *>*singerArr;
+@property (nonatomic, strong) NSArray<MioAlbumModel *> *albumArr;
 @end
 
 @implementation MioHomeRecommendVC
@@ -145,7 +145,7 @@
         [_singerScroll addSubview:singerCell];
         [singerCell whenTapped:^{
             MioSingerVC *vc = [[MioSingerVC alloc] init];
-            vc.model = _singerArr[i];
+            vc.singerId = _singerArr[i].singer_id;
             [self.navigationController pushViewController:vc animated:YES];
         }];
     }

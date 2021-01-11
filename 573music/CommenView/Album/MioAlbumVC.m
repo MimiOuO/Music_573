@@ -49,19 +49,18 @@
 }
 
 -(void)requestData{
-    [MioGetReq(api_albums, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSArray *data = [result objectForKey:@"data"];
-        _album = [MioAlbumModel mj_objectWithKeyValues:data[0]];
+    [MioGetReq(api_albumDetail(_album_id), @{@"page":Str(_page)}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _album = [MioAlbumModel mj_objectWithKeyValues:data];
         [self updateData];
-        [MioGetReq(api_songs, @{@"page":Str(_page)}) success:^(NSDictionary *result){
-            NSArray *data = [result objectForKey:@"data"];
-            if (data.count < 10) {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-            }
-            [self.tableView.mj_footer endRefreshing];
-            [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:data]];
-            [_tableView reloadData];
-        } failure:^(NSString *errorInfo) {}];
+        
+        if (_album.songs.count < 10) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        [self.tableView.mj_footer endRefreshing];
+        [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:data]];
+        [_tableView reloadData];
+        
     } failure:^(NSString *errorInfo) {}];
     
 }
@@ -100,7 +99,6 @@
     _arrow = [UIImageView creatImgView:frame(KSW - 33 - 14, 83, 14, 14) inView:headerView image:@"gedan_more" radius:0];
     _arrow.hidden = YES;
     _likeBtn = [UIButton creatBtn:frame(150, 106.5, 50, 22) inView:headerView bgImage:@"xihuan" action:^{
-        _likeBtn.selected = !_likeBtn.selected;
         [self likeClick];
     }];
     [_likeBtn setBackgroundImage:image(@"xihuan_yixihuan") forState:UIControlStateSelected];
@@ -112,7 +110,9 @@
     _titleLab.text = _album.title;
     _nameLab.text = _album.singer_name;
     _introLab.text = _album.album_description;
-
+    if (_album.is_like) {
+        _likeBtn.selected = YES;
+    }
     if ([_introLab.text widthForFont:Font(12)] > KSW - 183 ) {
         _arrow.hidden = NO;
         [_introLab whenTapped:^{
@@ -127,8 +127,11 @@
 -(void)likeClick{
     [MioPostReq(api_likes, (@{@"model_name":@"album",@"model_id":_album_id})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
+        _likeBtn.selected = !_likeBtn.selected;
         [UIWindow showSuccess:@"操作成功"];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

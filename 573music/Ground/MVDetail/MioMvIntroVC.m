@@ -11,6 +11,7 @@
 #import "MioMvVC.h"
 @interface MioMvIntroVC ()
 @property (nonatomic, strong) UIScrollView *scroll;
+@property (nonatomic, strong) UIButton *likeBtn;
 @end
 
 @implementation MioMvIntroVC
@@ -19,118 +20,70 @@
     [super viewDidLoad];
     self.bgImg.hidden = YES;
     self.view.backgroundColor = appClearColor;
-    // Do any additional setup after loading the view.
+    
 }
 
-//- (void)setCourse:(MioMvModel *)mv{
-//    _scroll = [UIScrollView creatScroll:frame(0, 0, KSW, KSH - StatusH - KSW *9/16 - 48) inView:self.view contentSize:CGSizeMake(KSW, 1000)];
-//    UIView *mvView = [UIView creatView:frame(0, 0, KSW, 142) inView:_scroll bgColor:appWhiteColor radius:0];
-//    UILabel *titleLab = [UILabel creatLabel:frame(Mar, Mar, 240, 16) inView:mvView text:mv.mv_name color:subColor boldSize:16 alignment:NSTextAlignmentLeft];
-//    titleLab.height = [titleLab.text heightForFont:BoldFont(16) width:KSW];
-//    UILabel *typeLab = [UILabel creatLabel:frame(Mar, 40, 240, 12) inView:mvView text:[NSString stringWithFormat:@"%@·%@",mv.mv_category_name,mv.mv_name] color:grayTextColor size:12 alignment:NSTextAlignmentLeft];
-//    UILabel *introLab = [UILabel creatLabel:frame(Mar, 64, KSW_Mar2, 0) inView:mvView text:mv.mv_desc color:subColor size:14 alignment:NSTextAlignmentLeft];
-//    introLab.numberOfLines = 0;
-//    introLab.height = [introLab.text heightForFont:Font(14) width:KSW_Mar2];
-//    
-//    UIButton *shareBtn = [UIButton creatBtn:frame(56, introLab.bottom + 22, 18, 18) inView:mvView bgImage:@"dynamic_share_icon" action:^{
-//        
-//    }];
-//    UILabel *shareLab = [UILabel creatLabel:frame(0, shareBtn.bottom + 5, 30, 12) inView:mvView text:mv.share_num color:grayTextColor size:12    alignment:NSTextAlignmentCenter];
-//    shareLab.centerX = shareBtn.centerX;
-//    
-//    UIButton *studyBtn = [UIButton creatBtn:frame(KSW2 - 17.5/2, introLab.bottom + 22, 17.5, 18) inView:mvView bgImage:@"dynamic_learning_icon" action:^{
-//        
-//    }];
-//    UILabel *studyLab = [UILabel creatLabel:frame(0, shareBtn.bottom + 5, 30, 12) inView:mvView text:mv.study_num color:grayTextColor size:12    alignment:NSTextAlignmentCenter];
-//    studyLab.centerX = studyBtn.centerX;
-//    
-//    LEECoolButton *likeBtn = [LEECoolButton coolButtonWithImage:[UIImage imageNamed:@"dynamic_like_icon"] ImageFrame:CGRectMake(0, 0, 20.5, 18)];
-//    likeBtn.frame = frame(KSW - 56 -20.5, introLab.bottom + 22, 20.5, 18);
-//    likeBtn.imageColorOn = [UIColor colorWithRed:254/255.0f green:55/255.0f blue:23/255.0f alpha:1.0f];
-//    likeBtn.circleColor = [UIColor colorWithRed:255/255.0f green:55/255.0f blue:23/255.0f alpha:1.0f];
-//    likeBtn.lineColor = [UIColor colorWithRed:226/255.0f green:96/255.0f blue:96/255.0f alpha:1.0f];
-//
-//    [mvView addSubview:likeBtn];
-//    UIImageView *likeCover = [UIImageView creatImgView:frame(0, 0, 20.5, 18) inView:likeBtn image:@"dynamic_like_icon" radius:0];
-//    
-//    
-//    if (mv.had_like) {
-//        likeBtn.selected = YES;
-//        likeCover.hidden = YES;
-//    }else{
-//        likeBtn.selected = NO;
-//        likeCover.hidden = NO;
-//    }
-//    
-//    UILabel *likeLab = [UILabel creatLabel:frame(0, shareBtn.bottom + 5, 30, 12) inView:mvView text:mv.praise_num color:grayTextColor size:12    alignment:NSTextAlignmentCenter];
-//    likeLab.centerX = likeBtn.centerX;
-//
-//    
-//    [likeBtn whenTapped:^{
-//        if (likeBtn.selected) {
-//            [likeBtn deselect];
-//            likeCover.hidden = NO;
-//            likeLab.text = [NSString stringWithFormat:@"%ld",[likeLab.text integerValue] - 1];
-//        }else{
-//            [likeBtn select];
-//            likeCover.hidden = YES;
-//            likeLab.text = [NSString stringWithFormat:@"%ld",[likeLab.text integerValue] + 1];
-//        }
-//    }];
-//    mvView.height = introLab.height + 142;
-//    
-//    UIButton *joinBtn = [UIButton creatBtn:frame(KSW - Mar - 80, 16, 80, 32) inView:mvView bgColor:color_main title:@"加入学习" titleColor:appWhiteColor font:12 radius:5 action:^{
-//        
-//    }];
-//    
-//    UIView *avatarView = [UIView creatView:frame(0, mvView.bottom + 8, KSW, 56) inView:_scroll bgColor:appWhiteColor radius:0];
-//    UIImageView *avatar = [UIImageView creatImgView:frame(Mar, 8, 40, 40) inView:avatarView image:@"" radius:20];
-//    [avatar sd_setImageWithURL:Url(mv.user.avatar) placeholderImage:image(@"icon")];
-//    UILabel *nickName = [UILabel creatLabel:frame(avatar.right + 8, 12, 0, 14) inView:avatarView text:mv.user.nickname color:subColor boldSize:14 alignment:NSTextAlignmentLeft];
-//    nickName.width = [nickName.text widthForFont:BoldFont(14)];
-//    UILabel *fansLab = [UILabel creatLabel:frame(avatar.right + 8, 32, 100, 12) inView:avatarView text:@"12人关注" color:grayTextColor size:12 alignment:NSTextAlignmentLeft];
-//    __block UIButton *followBtn = [UIButton creatBtn:frame(KSW - 56 - Mar, 16, 56, 24) inView:avatarView bgColor:appWhiteColor title:@"关注" titleColor:color_main font:12 radius:5 action:^{
-//        followBtn.selected = !followBtn.selected;
-//    }];
-//    followBtn.layer.borderColor = color_main.CGColor;
-//    followBtn.layer.borderWidth = 1;
-//    [followBtn setBackgroundColor:color_main forState:UIControlStateSelected];
-//    [followBtn setTitle:@"已关注" forState:UIControlStateSelected];
-//    [followBtn setTitleColor:appWhiteColor forState:UIControlStateSelected];
-//    
-//    
-//    //======================================================================//
-//    //                              分集
-//    //======================================================================//
-//    UIView *episodeView = [UIView creatView:frame(0, avatarView.bottom + 8, KSW, 120) inView:_scroll bgColor:appWhiteColor radius:0];
-//    UILabel *episodeLab = [UILabel creatLabel:frame(Mar, 8, 34, 16) inView:episodeView text:@"选集" color:subColor boldSize:16 alignment:NSTextAlignmentLeft];
-//    UILabel *episodeCountLab = [UILabel creatLabel:frame(episodeLab.right + 8, 10, 50, 14) inView:episodeView text:[NSString stringWithFormat:@"共%d集",mv.collections_count] color:grayTextColor size:14 alignment:NSTextAlignmentLeft];
-//    UIScrollView *episodeScroll = [UIScrollView creatScroll:frame(0, 32, KSW, 80) inView:episodeView contentSize:CGSizeMake(mv.collections_count * 152 + Mar2, 80)];
-//    for (int i = 0; i < mv.collections.count; i ++) {
-//        __block UIButton *collectionBtn = [UIButton creatBtn:frame(Mar + 152*i, 0, 144, 80) inView:episodeScroll bgImage:@"details_bg" action:^{
-//            if (collectionBtn.selected == YES) {
-//                return;
-//            }
-//            for (int j = 1 ; j< mv.collections.count + 1; j ++) {
-//                UIButton *btn = (UIButton *)[self.view viewWithTag:j];
-//                btn.selected = NO;
-//            }
-//            collectionBtn.selected = YES;
-//            if ([self.delegate respondsToSelector:@selector(changeCollection:)]) {
-//                [self.delegate changeCollection:(collectionBtn.tag - 1)];
-//            }
-//            
-//        }];
-//        collectionBtn.tag = i + 1;
-//        if (Equals([mv.collections[i] objectForKey:@"episode"], mv.last_episode)) {
-//            collectionBtn.selected = YES;
-//        }
-//        [collectionBtn setBackgroundImage:image(@"details_icon_play") forState:UIControlStateSelected];
-//        UILabel *titleLab = [UILabel creatLabel:frame(8, 8, 128, 0) inView:collectionBtn text:[mv.collections[i] objectForKey:@"collection_name"] color:subColor size:14 alignment:NSTextAlignmentLeft];
-//        titleLab.numberOfLines = 2;
-//        titleLab.height = [titleLab.text heightForFont:Font(14) width:128];
-//        UILabel *durationLab = [UILabel creatLabel:frame(8, 60, 128, 12) inView:collectionBtn text:@"20:00" color:grayTextColor size:12 alignment:NSTextAlignmentRight];
-//    }
-//}
+- (void)setMv:(MioMvModel *)mv{
+    _mv = mv;
+    [self.view removeAllSubviews];
+    _scroll = [UIScrollView creatScroll:frame(0, 0, KSW, KSH - StatusH - KSW *9/16 - 44) inView:self.view contentSize:CGSizeMake(KSW, 1000)];
+    UIImageView *avatar = [UIImageView creatImgView:frame(Mar, 12, 46, 46) inView:_scroll image:@"" radius:23];
+    [avatar sd_setImageWithURL:Url(mv.singer[@"cover_image_path"]) placeholderImage:image(@"qxt_geshou")];
+    MioLabel *nameLab = [MioLabel creatLabel:frame(71, 17, KSW - 71 - 120, 20) inView:_scroll text:mv.singer_name colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+    UILabel *fansLab = [UILabel creatLabel:frame(71, 37, 200, 17) inView:_scroll text:[NSString stringWithFormat:@"%@人喜欢",mv.singer[@"like_num"]] color:color_text_two size:12 alignment:NSTextAlignmentLeft];
+    UILabel *contentLab = [UILabel creatLabel:frame(Mar, 70, KSW_Mar2, 20) inView:_scroll text:mv.title color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+    UILabel *playCountLab  = [UILabel creatLabel:frame(Mar, 98, KSW_Mar2, 17) inView:_scroll text:[NSString stringWithFormat:@"%@次播放",mv.hits_all] color:color_text_two size:12 alignment:NSTextAlignmentLeft];
+    
+    MioButton *DowloadBtn = [MioButton creatBtn:frame(KSW-72 - 20, Mar, 20, 20) inView:_scroll bgImage:@"download_player" bgTintColorName:name_icon_one action:^{
+        
+    }];
 
+    _likeBtn = [MioButton creatBtn:frame(KSW-18 - 20, Mar, 20, 20) inView:_scroll bgImage:@"me_like_putong" bgTintColorName:name_icon_one action:^{
+        [self likeClick];
+    }];
+    [_likeBtn setBackgroundImage:image(@"me_like_xuanzhon") forState:UIControlStateSelected];
+    if (mv.is_like) {
+        _likeBtn.selected = YES;
+    }
+    UILabel *downloadLab = [UILabel creatLabel:frame(DowloadBtn.left -5 , 37, 30, 17) inView:_scroll text:@"下载" color:color_text_two size:12 alignment:NSTextAlignmentCenter];
+    UILabel *likeLab = [UILabel creatLabel:frame(_likeBtn.left -5 , 37, 30, 17) inView:_scroll text:@"喜欢" color:color_text_two size:12 alignment:NSTextAlignmentCenter];
+    
+    
+    UILabel *relatLab  = [UILabel creatLabel:frame(Mar, 135, KSW_Mar2, 20) inView:_scroll text:@"相关推荐" color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+    
+    [self requestRelated];
+}
+
+-(void)requestRelated{
+    [MioGetReq(api_mvrRelated(_mv.mv_id), @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        for (int i = 0;i < data.count; i++) {
+            MioMvModel *model = [MioMvModel mj_objectWithKeyValues:data[i]];
+            UIView *mvView = [UIView creatView:frame(0, 163 + 73*i, KSW, 61) inView:_scroll bgColor:appClearColor radius:0];
+            UIImageView *cover = [UIImageView creatImgView:frame(Mar, 6, 109, 61) inView:mvView image:@"qxt_mv" radius:4];
+            UIImageView *shadow = [UIImageView creatImgView:frame(0, cover.height - 22, 109, 22) inView:cover image:@"zhuanji_mengban" radius:0];
+            [cover sd_setImageWithURL:model.cover_image_path.mj_url placeholderImage:image(@"qxt_mv")];
+            UIImageView *playCountIcon = [UIImageView creatImgView:frame(6, cover.height - 15 , 11, 11) inView:cover image:@"bofangliang" radius:0];
+            UILabel *playCountLab = [UILabel creatLabel:frame(18, cover.height - 17, 50, 15) inView:cover text:model.hits_all color:appWhiteColor size:10 alignment:NSTextAlignmentLeft];
+            MioLabel *titleLab = [MioLabel creatLabel:frame(133, 14, KSW - 133 - Mar, 22) inView:mvView text:model.title colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
+            MioLabel *singerLab = [MioLabel creatLabel:frame(133, 40, KSW - 133 - Mar, 17) inView:mvView text:model.singer_name colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
+            _scroll.contentSize = CGSizeMake(KSW, data.count * 73 + 180);
+            [mvView whenTapped:^{
+                if (self.delegate && [self.delegate respondsToSelector:@selector(changeMV:)]) {
+                    [self.delegate changeMV:model.mv_id];
+                }
+            }];
+        }
+    } failure:^(NSString *errorInfo) {}];
+}
+
+-(void)likeClick{
+    [MioPostReq(api_likes, (@{@"model_name":@"mv",@"model_id":_mv.mv_id})) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _likeBtn.selected = !_likeBtn.selected;
+        [UIWindow showSuccess:@"操作成功"];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
+}
 @end

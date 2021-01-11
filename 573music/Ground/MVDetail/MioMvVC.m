@@ -17,7 +17,7 @@
 #import "MioMvCmtVC.h"
 #import "MioMvModel.h"
 
-@interface MioMvVC ()<WMPageControllerDelegate,WMPageControllerDataSource,ChangeCollectionDelegate>
+@interface MioMvVC ()<WMPageControllerDelegate,WMPageControllerDataSource,ChangeMVDelegate>
 @property (nonatomic, strong) MioMvModel *mv;
 
 @property (nonatomic, strong) ZFPlayerController *player;
@@ -27,15 +27,20 @@
 
 @property (nonatomic, strong) WMPageController *pageController;
 @property (nonatomic, strong) UIView *contentView;
+
+@property (nonatomic, strong) MioMvIntroVC *info;
+@property (nonatomic, strong) MioMvCmtVC *cmtVC;
 @end
 
 @implementation MioMvVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self creatView];
     [self request];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popVC) name:@"playerBackClick" object:nil];
+    [self creatView];
+    
+    RecieveNotice(@"playerBackClick", popVC);
+    RecieveNotice(@"mvCmtSuccess", refreshCmtCount);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,10 +59,14 @@
 }
 
 -(void)request{
-    [MioGetReq(api_mvs, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSArray *data = [result objectForKey:@"data"];
-        _mv = [MioMvModel mj_objectWithKeyValues:data[0]];
-        
+    [MioGetReq(api_mvrDetail(_mvId), @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _mv = [MioMvModel mj_objectWithKeyValues:data];
+        [_pageController updateTitle:[NSString stringWithFormat:@"评论(%@)",_mv.comment_num] atIndex:1];
+        _pageController.titles = @[@"简介",[NSString stringWithFormat:@"评论(%@)",_mv.comment_num]];
+        _info.mv = _mv;
+        self.player.assetURLs = @[Url(@"http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8")];//@[_mv.mv_path.mj_url];
+        [self.player playTheIndex:0];
     } failure:^(NSString *errorInfo) {}];
 }
 
@@ -80,7 +89,7 @@
     self.player.controlView = self.controlView;
     /// 设置退到后台继续播放
     self.player.pauseWhenAppResignActive = NO;
-//    self.player.resumePlayRecord = YES;
+
     
     @zf_weakify(self)
     self.player.orientationWillChange = ^(ZFPlayerController * _Nonnull player, BOOL isFullScreen) {
@@ -98,13 +107,9 @@
 //            [self.player stop];
 //        }
     };
+
+    [self.controlView showTitle:@"" coverURLString:@"" fullScreenMode:ZFFullScreenModeAutomatic];
     
-    self.player.assetURLs = @[[NSURL URLWithString:@"https://www.apple.com/105/media/us/iphone-x/2017/01df5b43-28e4-4848-bf20-490c34a926a7/films/feature/iphone-x-feature-tpl-cc-us-20170912_1280x720h.mp4"],[NSURL URLWithString:@"https://www.apple.com/105/media/cn/mac/family/2018/46c4b917_abfd_45a3_9b51_4e3054191797/films/bruce/mac-bruce-tpl-cn-2018_1280x720h.mp4"],];
-    [self.player playTheIndex:0];
-    [self.controlView showTitle:@"" coverURLString:@"https://upload-images.jianshu.io/upload_images/635942-14593722fe3f0695.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" fullScreenMode:ZFFullScreenModeAutomatic];
-    
-//    [self.navView.leftButton setImage:backArrowWhiteIcon forState:UIControlStateNormal];
-//    self.navView.mainView.backgroundColor = appClearColor;
     
     
     _contentView = [[UIView alloc] initWithFrame:frame(0,StatusH + KSW * 9/16, KSW, KSH - StatusH - TabH)];
@@ -153,15 +158,14 @@
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        MioMvIntroVC *info = [[MioMvIntroVC alloc] init];
-        info.mv = _mv;
-        info.delegate = self;
-        return info;
+        _info = [[MioMvIntroVC alloc] init];
+        _info.delegate = self;
+        return _info;
     }
     if (index == 1) {
-        MioMvCmtVC *vc = [[MioMvCmtVC alloc] init];
-        vc.mvId = @"1";
-        return vc;
+        _cmtVC = [[MioMvCmtVC alloc] init];
+        _cmtVC.mvId = _mvId;
+        return _cmtVC;
     }
     return [[UIViewController alloc] init];
     
@@ -173,7 +177,12 @@
         return @"简介";
     }
     else if (index == 1) {
-        return @"评论(1)";
+        if (_mv) {
+            return [NSString stringWithFormat:@"评论(%@)",_mv.comment_num];
+        }else{
+            return @"评论(0)";
+        }
+        
     }
     return @"";
 }
@@ -198,6 +207,20 @@
         _controlView.prepareShowControlView = NO;
     }
     return _controlView;
+}
+
+- (void)changeMV:(NSString *)mvId{
+    _mvId = mvId;
+    _cmtVC.mvId = mvId;
+    [_cmtVC refreshCmt];
+    [self request];
+}
+
+-(void)refreshCmtCount{
+    NSString *str = [_pageController.titles[1] substringFromIndex:3];
+    NSString *str2 =  [str substringToIndex:str.length - 1];
+    [_pageController updateTitle:[NSString stringWithFormat:@"评论(%d)",[str2 intValue] + 1] atIndex:1];
+    _pageController.titles = @[@"简介",[NSString stringWithFormat:@"评论(%d)",[str2 intValue] + 1]];
 }
 
 

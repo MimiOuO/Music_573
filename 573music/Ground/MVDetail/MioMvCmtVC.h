@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MioMvCmtVC : MioViewController
 @property (nonatomic,copy) NSString * mvId;
+-(void)refreshCmt;
 @end
 
 NS_ASSUME_NONNULL_END

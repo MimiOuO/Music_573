@@ -272,7 +272,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define currentUserId           [userdefault objectForKey:@"user_id"]
 #define currentUserNickName     [userdefault objectForKey:@"nickname"]
 #define currentUserAvatar       [userdefault objectForKey:@"avatar"]
-
+#define currentUserPhone        [userdefault objectForKey:@"phone"]
 
 /** 是否登录 */
 #define goLogin \
@@ -303,8 +303,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 #define api_getVerifyCode           @"" api_base"/verification_codes"
 #define api_login                   @"" api_base"/users"
-#define api_passwordLogin           @"" api_base"/shop/login-password"
-
+#define api_passwordLogin           @"" api_base"/auth/login"
+#define api_changePassword          @"" api_base"/change-password"
 //分类
 #define api_categories                @"" api_base"/categories"
 
@@ -315,6 +315,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 //歌手
 #define api_singers               @"" api_base"/singers"
+#define api_singerDetail(singer_id)  [NSString stringWithFormat:@"" api_base"/singers/%@",singer_id]
 #define api_singersGroup               @"" api_base"/singers/group"
 #define api_singerSongs(singer_id)  [NSString stringWithFormat:@"" api_base"/singers/%@/songs",singer_id]
 #define api_singerAlbums(singer_id)  [NSString stringWithFormat:@"" api_base"/singers/%@/albums",singer_id]
@@ -325,10 +326,14 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_songListDetail(songlist_id)                [NSString stringWithFormat:@"" api_base"/song-lists/%@",songlist_id]
 //专辑
 #define api_albums                @"" api_base"/albums"
-
+#define api_albumDetail(album_id)                [NSString stringWithFormat:@"" api_base"/albums/%@",album_id]
 //MV
-#define api_mvs                @"" api_base"/mvs"
 #define api_mvTabs                @"" api_base"/mvs/tabs"
+#define api_mvs                @"" api_base"/mvs"
+#define api_mvrDetail(mv_id)  [NSString stringWithFormat:@"" api_base"/mvs/%@",mv_id]
+#define api_mvrRelated(mv_id)  [NSString stringWithFormat:@"" api_base"/mvs/%@/related",mv_id]
+#define api_mvCmt(mv_id)  [NSString stringWithFormat:@"" api_base"/comments/mv/%@",mv_id]
+
 //排行榜
 #define api_ranks                @"" api_base"/ranks"
 #define api_rankDetail(rank_id)               [NSString stringWithFormat:@"" api_base"/ranks/%@",rank_id]
@@ -346,7 +351,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_likeSinger                @"" api_base"/likes/singer"
 #define api_likeSonglist                @"" api_base"/likes/songlist"
 #define api_likeAlbum                @"" api_base"/likes/album"
-#define api_likeMV                @"" api_base"/likes/MV"
+#define api_likeMV                @"" api_base"/likes/mv"
 
 //广告
 #define api_startAd              @"" api_base"/banners/start"

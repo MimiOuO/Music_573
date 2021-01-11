@@ -174,6 +174,7 @@
         [userdefault setObject:user.user_id forKey:@"user_id"];
         [userdefault setObject:user.nickname forKey:@"nickname"];
         [userdefault setObject:user.avatar forKey:@"avatar"];
+        [userdefault setObject:user.phone forKey:@"phone"];
         [userdefault synchronize];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];

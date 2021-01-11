@@ -36,7 +36,7 @@
 }
 
 -(void)requestData{
-    [MioGetReq(api_songCmt(_mvId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
+    [MioGetReq(api_mvCmt(_mvId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [self.tableView.mj_footer endRefreshing];
         if (_page == 1) {
@@ -107,13 +107,13 @@
     NSDictionary *dic = @{};
     if (self.message == 0) {
         dic = @{
-            @"model_name":@"song",
+            @"model_name":@"mv",
             @"model_id":_mvId,
             @"content":content,
         };
     } else {
         dic = @{
-            @"model_name":@"song",
+            @"model_name":@"mv",
             @"model_id":_mvId,
             @"content":content,
             @"pid":self.commentInputView.pid,
@@ -126,6 +126,7 @@
         MioCmtModel *cmtModel = [MioCmtModel mj_objectWithKeyValues:data[0]];
         cmtModel.isBendi = @"1";
         [UIWindow showInfo:@"评论成功"];
+        PostNotice(@"mvCmtSuccess");
         _cmtTextField.text = @"";
         _page = 1;
         if (self.message == 0) {

@@ -18,7 +18,7 @@
 
 -(void)requestSingerGroup{
     [MioGetReq(api_singersGroup, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSDictionary *data = [result objectForKey:@"data"];
+        NSArray *data = [result objectForKey:@"data"];
         [userdefault setObject:data forKey:@"singerGroup"];
         [userdefault synchronize];
     } failure:^(NSString *errorInfo) {}];

@@ -48,7 +48,7 @@
     }];
 
     UILabel *titleLabel = [UILabel creatLabel:frame(Mar, StatusH + 60, 250, 30) inView:scroll text:@"修改密码" color:color_text_one boldSize:26 alignment:NSTextAlignmentLeft];
-    UILabel *tip = [UILabel creatLabel:frame(Mar, titleLabel.bottom + 8, KSW, 12) inView:scroll text:@"" color:color_text_two size:12 alignment:NSTextAlignmentLeft];
+    UILabel *tip = [UILabel creatLabel:frame(Mar, titleLabel.bottom + 8, KSW, 12) inView:scroll text:@"没有设置密码帮您设置成新密码" color:color_text_two size:12 alignment:NSTextAlignmentLeft];
     UIView *phoneView = [UIView creatView:frame(Mar, tip.bottom + 60, KSW - 2*Mar, 48) inView:scroll bgColor:color_search radius:8];
     UIView *passwordView = [UIView creatView:frame(Mar, phoneView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:color_search radius:8];
     UIView *passwordView2 = [UIView creatView:frame(Mar, passwordView.bottom + 8, KSW - 2*Mar, 48) inView:scroll bgColor:color_search radius:8];
@@ -61,6 +61,7 @@
     self.phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 48, 16)];
     self.phoneTF.delegate = self;
     self.phoneTF.font = [UIFont systemFontOfSize:16];
+    self.phoneTF.text = _phoneNumber;
     self.phoneTF.placeholder = @"请输入11位手机号码";
     self.phoneTF.textColor = color_text_one;
     self.phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -69,7 +70,7 @@
 
     
     self.passwordTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 48, 16)];
-    self.passwordTF.delegate = self;
+//    self.passwordTF.delegate = self;
     self.passwordTF.font = [UIFont systemFontOfSize:16];
     self.passwordTF.placeholder = @"请输入密码";
     self.passwordTF.textColor = color_text_one;
@@ -78,7 +79,7 @@
     [passwordView addSubview:self.passwordTF];
     
     self.passwordTF2 = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 48, 16)];
-    self.passwordTF2.delegate = self;
+//    self.passwordTF2.delegate = self;
     self.passwordTF2.font = [UIFont systemFontOfSize:16];
     self.passwordTF2.placeholder = @"请再输入一遍";
     self.passwordTF2.textColor = color_text_one;
@@ -115,12 +116,20 @@
 
 - (void)login{
 
-    NSString *telNumber = [self.passwordTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *telNumber = [self.phoneTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    if (_passwordTF.text.length != 13) {
+    if (telNumber.length != 11) {
         [UIWindow showInfo:@"请输入正确手机号"];
         return;
     }
+    if (_passwordTF.text.length < 6) {
+        [UIWindow showInfo:@"请输入大于6位密码"];
+    }
+    
+    if (_passwordTF.text != _passwordTF2.text) {
+        [UIWindow showInfo:@"两次输入密码不一致"];
+    }
+    
     if (_verifyTF.text.length != 4){
         [UIWindow showInfo:@"请输入验证码"];
         return;
@@ -133,37 +142,25 @@
     NSDictionary *dic = @{
                           @"verification_key":_key,
                           @"verification_code":self.verifyTF.text,
+                          @"password":_passwordTF.text
                           };
-    MioPostRequest *request = [[MioPostRequest alloc] initWithRequestUrl:api_login argument:dic];
+    MioPostRequest *request = [[MioPostRequest alloc] initWithRequestUrl:api_changePassword argument:dic];
     
     [request success:^(NSDictionary *result) {
         NSDictionary *data = [result objectForKey:@"data"];
-        [UIWindow showSuccess:@"登录成功"];
-        
-        NSString * token = [data objectForKey:@"access_token"];
-        MioUserInfo *user = [MioUserInfo mj_objectWithKeyValues:[data objectForKey:@"user"]];
-        [userdefault setObject:token forKey:@"token"];
-        [userdefault setObject:user.user_id forKey:@"user_id"];
-        [userdefault setObject:user.nickname forKey:@"nickname"];
-        [userdefault setObject:user.avatar forKey:@"avatar"];
-        [userdefault synchronize];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];
-        
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+        [UIWindow showSuccess:@"设置成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];
     }];
 }
 
 -(void)handlecountEvent:(WLCaptcheButton *)sender{
-    if (_passwordTF.text.length != 13) {
+    NSString *telNumber = [self.phoneTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (telNumber.length != 11) {
         [UIWindow showInfo:@"请输入正确手机号"];
         return;
     }
-    NSString *telNumber = [self.passwordTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     NSDictionary *dic = @{
         @"phone":telNumber,

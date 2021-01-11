@@ -40,7 +40,7 @@
 -(void)requestData{
 
     
-    [MioGetReq(api_albums, (@{@"page":Str(_page)})) success:^(NSDictionary *result){
+    [MioGetReq(api_likeAlbum, (@{@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_table.mj_footer endRefreshing];
         if (_page == 1) {

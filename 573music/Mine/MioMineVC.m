@@ -156,7 +156,7 @@
     MioView *localView = [MioView creatView:frame(songListView.right + (KSW - 164 - 104)/3, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
     MioView *downLoadView = [MioView creatView:frame(KSW - 30 -52, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
     MioImageView *likeImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:likeView image:@"me_like_biaodan" bgTintColorName:name_main radius:0];
-    MioImageView *songListImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:songListView image:@"me_playlist" bgTintColorName:name_main radius:0];
+    MioImageView *songListImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:songListView image:@"shouye_gedan" bgTintColorName:name_main radius:0];
     MioImageView *localImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:localView image:@"me_local" bgTintColorName:name_main radius:0];
     MioImageView *downloadImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:downLoadView image:@"me_download" bgTintColorName:name_main radius:0];
     MioLabel *likeLab = [MioLabel creatLabel:frame(likeView.left, 253, 52, 17) inView:bgScroll text:@"喜欢" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];

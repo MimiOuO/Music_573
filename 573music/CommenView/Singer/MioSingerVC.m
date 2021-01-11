@@ -25,6 +25,9 @@
 @property (nonatomic, assign) BOOL canScroll;
 @property (nonatomic, assign) CGFloat topHeiget;
 
+@property (nonatomic, strong) MioSingerModel *model;
+
+@property (nonatomic, strong) UIImageView *backgroundImg;
 @property (nonatomic, strong) UILabel *navLab;
 @property (nonatomic, strong) UILabel *nameLab;
 @property (nonatomic, strong) UILabel *fansLab;
@@ -52,7 +55,17 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
-//    [self request];
+    [self requestData];
+}
+
+-(void)requestData{
+    [MioGetReq(api_singerDetail(_singerId), @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _model = [MioSingerModel mj_objectWithKeyValues:data];
+        [self updateUI];
+        
+    } failure:^(NSString *errorInfo) {}];
+    
 }
 
 -(void)creatUI{
@@ -67,25 +80,17 @@
     _scrollView.backgroundColor = appClearColor;
     [self.view addSubview:_scrollView];
     
-    UIImageView *bgImg = [UIImageView creatImgView:frame(0, 0, KSW, 300) inView:_scrollView image:@"" radius:0];
-    [bgImg sd_setImageWithURL:_model.cover_image_path.mj_url placeholderImage:image(@"geshou_qst")];
+    _backgroundImg = [UIImageView creatImgView:frame(0, 0, KSW, 300) inView:_scrollView image:@"geshou_qst" radius:0];
     UIView *maskView = [UIView creatView:frame(0, 0, KSW, 300) inView:_scrollView bgColor:rgba(0, 0, 0, 0.3) radius:0];
     
-    _navLab = [UILabel creatLabel:frame(60, StatusH , KSW - 120, 44) inView:self.view text:_model.singer_name color:appWhiteColor boldSize:20 alignment:NSTextAlignmentCenter];
+    _navLab = [UILabel creatLabel:frame(60, StatusH , KSW - 120, 44) inView:self.view text:@"" color:appWhiteColor boldSize:20 alignment:NSTextAlignmentCenter];
     _navLab.alpha = 0;
     
-    if (_model.singer_intro.length > 2) {
-        UILabel *introLab = [UILabel creatLabel:frame(KSW_Mar - 50, StatusH , 50, 44) inView:self.navView.mainView text:@"简介" color:appWhiteColor size:14 alignment:NSTextAlignmentRight];
-        [introLab whenTapped:^{
-            [UIWindow showMessage:_model.singer_intro withTitle:_model.singer_name];
-        }];
-    }
-
     
-    _nameLab = [UILabel creatLabel:frame(Mar, 191, KSW_Mar2, 28) inView:_scrollView text:_model.singer_name color:appWhiteColor boldSize:20 alignment:NSTextAlignmentLeft];
-    _fansLab = [UILabel creatLabel:frame(Mar, 223, 100, 20) inView:_scrollView text:[NSString stringWithFormat:@"%@粉丝",_model.like_num] color:appWhiteColor size:14 alignment:NSTextAlignmentLeft];
+    _nameLab = [UILabel creatLabel:frame(Mar, 191, KSW_Mar2, 28) inView:_scrollView text:@"" color:appWhiteColor boldSize:20 alignment:NSTextAlignmentLeft];
+    _fansLab = [UILabel creatLabel:frame(Mar, 223, 100, 20) inView:_scrollView text:@"" color:appWhiteColor size:14 alignment:NSTextAlignmentLeft];
     _likeBtn = [UIButton creatBtn:frame(KSW_Mar - 50, 222, 50, 22) inView:_scrollView bgImage:@"xihuan" action:^{
-        _likeBtn.selected = !_likeBtn.selected;
+        [self likeClick];
     }];
     [_likeBtn setBackgroundImage:image(@"geshou_yixihuan") forState:UIControlStateSelected];
     
@@ -122,6 +127,32 @@
     [_pageController.menuView sendSubviewToBack:menuBg];
 }
 
+-(void)updateUI{
+    _nameLab.text = _model.singer_name;
+    _navLab.text = _model.singer_name;
+    _fansLab.text = [NSString stringWithFormat:@"%@粉丝",_model.like_num];
+    [_backgroundImg sd_setImageWithURL:_model.cover_image_path.mj_url placeholderImage:image(@"geshou_qst")];
+    if (_model.is_like) {
+        _likeBtn.selected = YES;
+    }
+    if (_model.singer_intro.length > 2) {
+        UILabel *introLab = [UILabel creatLabel:frame(KSW_Mar - 50, StatusH , 50, 44) inView:self.navView.mainView text:@"简介" color:appWhiteColor size:14 alignment:NSTextAlignmentRight];
+        [introLab whenTapped:^{
+            [UIWindow showMessage:_model.singer_intro withTitle:_model.singer_name];
+        }];
+    }
+}
+
+-(void)likeClick{
+    [UIWindow showMaskLoading:@"请稍后"];
+    [MioPostReq(api_likes, (@{@"model_name":@"singer",@"model_id":_singerId})) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _likeBtn.selected = !_likeBtn.selected;
+        [UIWindow showSuccess:@"操作成功"];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
+}
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     return 3;
@@ -131,17 +162,17 @@
 
     if (index == 0) {
         MioSingerSongsVC *vc = [[MioSingerSongsVC alloc] init];
-        vc.singerId = _model.singer_id;
+        vc.singerId = _singerId;
         return vc;
     }
     else if (index == 1) {
         MioSingerAlbumVC *vc = [[MioSingerAlbumVC alloc] init];
-        vc.singerId = _model.singer_id;
+        vc.singerId = _singerId;
         return vc;
     }
     else {
         MioSingerMVVC *vc = [[MioSingerMVVC alloc] init];
-        vc.singerId = _model.singer_id;
+        vc.singerId = _singerId;
         return vc;
     }
 

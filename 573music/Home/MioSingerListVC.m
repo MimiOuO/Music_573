@@ -13,7 +13,7 @@
 @interface MioSingerListVC ()<UITableViewDelegate,UITableViewDataSource,CYSectionIndexViewDelegate,CYSectionIndexViewDataSource,UIScrollViewDelegate>
 @property (nonatomic, strong) UITableView *table;
 @property (retain, nonatomic) NSMutableArray *sections;
-@property (retain, nonatomic) NSMutableDictionary *sectionDic;
+@property (retain, nonatomic) NSArray *sectionArr;
 @property (nonatomic, strong) CYSectionIndexView * sectionIndexView;
 @property (nonatomic, strong) NSArray *categoryArr;
 @property (nonatomic,copy) NSString * areaKey;
@@ -82,9 +82,8 @@
     
 }
 
-
 -(void)creatUI{
-
+    
     _table = [[UITableView alloc] initWithFrame:frame(0, NavH + 94, KSW, KSH - NavH - 94 - TabH) style:UITableViewStyleGrouped];
     _table.backgroundColor = appClearColor;
     _table.delegate = self;
@@ -120,7 +119,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return ((NSArray *)[self.sectionDic objectForKey:self.sections[section]]).count;
+    return ((NSArray *)self.sectionArr[section][@"datas"]).count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -134,13 +133,15 @@
         cell = [[MioSingerTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = [MioSingerModel mj_objectWithKeyValues:((NSArray *)[self.sectionDic objectForKey:self.sections[indexPath.section]])[indexPath.row]];
+    cell.model = [MioSingerModel mj_objectWithKeyValues:((NSArray *)self.sectionArr[indexPath.section][@"datas"])[indexPath.row]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MioSingerVC *vc = [[MioSingerVC alloc] init];
-    vc.model = [MioSingerModel mj_objectWithKeyValues:((NSArray *)[self.sectionDic objectForKey:self.sections[indexPath.section]])[indexPath.row]];
+    MioSingerModel *model = [MioSingerModel mj_objectWithKeyValues:((NSArray *)self.sectionArr[indexPath.section][@"datas"])[indexPath.row]];
+    vc.singerId = model.singer_id;
+//    vc.model = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -200,11 +201,12 @@
 
 - (void)createData
 {
-    self.sectionDic = [userdefault objectForKey:@"singerGroup"];
-    NSArray *temArr = [[self.sectionDic allKeys] mutableCopy];
-    self.sections = [[temArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        return [obj1 compare:obj2 options:NSNumericSearch];
-    }] mutableCopy];
+    self.sectionArr = [userdefault objectForKey:@"singerGroup"];
+    NSMutableArray *temArr = [[NSMutableArray alloc] init];
+    for (int i = 0;i <  self.sectionArr.count; i++) {
+        [temArr addObject:self.sectionArr[i][@"key"]];
+    }
+    self.sections = temArr;
 }
 
 @end

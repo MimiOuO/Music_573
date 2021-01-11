@@ -14,6 +14,7 @@
 #import "WBQRCodeVC.h"
 #import "MioAboutUsVC.h"
 #import "MioFeedBackVC.h"
+#import "MioModiPassWordVC.h"
 
 @interface MioMoreVC ()
 @property (nonatomic, strong) UILabel *timeLab;
@@ -117,7 +118,7 @@
         [userdefault setObject:nil forKey:@"user_id"];
         [userdefault setObject:nil forKey:@"nickname"];
         [userdefault setObject:nil forKey:@"avatar"];
-        [userdefault setObject:nil forKey:@"isMaster"];
+        [userdefault setObject:nil forKey:@"phone"];
         [userdefault synchronize];
         
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -134,6 +135,11 @@
 }
 
 -(void)click:(NSString *)title{
+    if (Equals(title, @"修改密码")) {
+        MioModiPassWordVC *timeOff = [[MioModiPassWordVC alloc] init];
+        timeOff.phoneNumber = currentUserPhone;
+        [self.navigationController pushViewController:timeOff animated:YES];
+    }
     if (Equals(title, @"清除缓存")) {
         [self clearFile];
     }
