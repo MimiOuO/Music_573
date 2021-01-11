@@ -17,7 +17,7 @@
 #import "MioSongListVC.h"
 #import "MioMusicCmtVC.h"
 
-@interface MioMainPlayerVC ()<MioPlayerDelegate,UITableViewDelegate,UITableViewDataSource,GKSliderViewDelegate,LyricViewDelegate>
+@interface MioMainPlayerVC ()<UITableViewDelegate,UITableViewDataSource,GKSliderViewDelegate,LyricViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) MioLrcView *lrcView;
@@ -59,12 +59,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
-    
     [self creatUI];
     [self registKVO];
-    
-    mioPlayer.delegate = self;
 
     RecieveNotice(switchMusic, changeMusic);
 
