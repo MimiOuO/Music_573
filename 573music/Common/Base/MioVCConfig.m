@@ -7,12 +7,14 @@
 //
 
 #import "MioVCConfig.h"
-
+@interface MioVCConfig()
+@property (nonatomic, strong) NSArray *allArr;
+@end
 
 @implementation MioVCConfig
 +(MioBottomType)getBottomType:(UIViewController *)VC{
     NSString *vcName = NSStringFromClass([VC class]);
-    NSArray *followArr = @[@"MioPlayListVC",@"MioMutipleVC"];
+    NSArray *followArr = @[@"MioPlayListVC"];
     if ([followArr containsObject:vcName]) {
         if (Equals([userdefault objectForKey:@"currentBottomType"], @"MioBottomNone")) {
             return MioBottomNone;
@@ -24,8 +26,8 @@
         
     }
     
-    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioMvIntroVC",@"MioMvCmtVC",@"MioMutipleVC",@"MioListenMusicVC",@"LBXScanBaseViewController",@"ScanSuccessJumpVC",@"MioMusicCmtVC",@"MioMusicAllCmtVC",@"MioMVAllCmtVC",@"MioAboutUsVC",@"MioFeedBackVC",@"MioSkinCenterVC"];
-    NSArray *allArr = @[@"MioHomeVC",@"MioGroudVC",@"MioMineVC",@"MioHomeRecommendVC",@"MioHomeMusicHallVC",@"MioGroudVC",@"MioRecommendMVVC",@"MioCategoryMVVC"];
+    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioMvIntroVC",@"MioMvCmtVC",@"MioMutipleVC",@"MioListenMusicVC",@"LBXScanBaseViewController",@"ScanSuccessJumpVC",@"MioMusicCmtVC",@"MioMusicAllCmtVC",@"MioMVAllCmtVC",@"MioAboutUsVC",@"MioFeedBackVC",@"MioSkinCenterVC",@"MioMutipleVC",@"MioAddToSonglistVC"];
+    NSArray *allArr = @[@"MioTabbarVC",@"MioHomeVC",@"MioGroudVC",@"MioMineVC",@"MioHomeRecommendVC",@"MioHomeMusicHallVC",@"MioGroudVC",@"MioRecommendMVVC",@"MioCategoryMVVC"];
     
     
     if ([noneArr containsObject:vcName]){
@@ -42,5 +44,6 @@
     }
 
 }
+
 
 @end

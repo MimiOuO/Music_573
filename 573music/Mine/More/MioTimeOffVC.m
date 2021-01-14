@@ -57,7 +57,7 @@
             [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"timeoff" object:nil userInfo:dict]];
             
             if (isFinished && !Equals([userdefault objectForKey:@"timeoff"], @"不开启")) {
-                [mioPlayer stop];
+                [mioM3U8Player stop];
                 [userdefault setObject:@"不开启" forKey:@"timeoff"];
             }
         }];

@@ -7,7 +7,7 @@
 //
 
 #import "MioLikeMusicVC.h"
-
+#import "MioMutipleVC.h"
 #import "MioMusicTableCell.h"
 
 @interface MioLikeMusicVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -28,6 +28,25 @@
     _page = 1;
     
     _table = [UITableView creatTable:frame(0, 0, KSW, KSH - NavH - 40 - TabH) inView:self.view vc:self];
+    UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSW, 48)];
+    
+    UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
+        
+    }];
+    MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
+    UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
+    UIButton *multipleBtn = [UIButton creatBtn:frame(KSW - 100, 0, 100, 48) inView:sectionHeader bgImage:@"" action:^{
+        MioMutipleVC *vc = [[MioMutipleVC alloc] init];
+        vc.musicArr = _dataArr;
+        vc.type = MioMutipleTypeSongList;
+        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
+        nav.modalPresentationStyle = 0;
+        [self presentViewController:nav animated:YES completion:nil];
+    }];
+    UIImageView *multipleIcon = [UIImageView creatImgView:frame(KSW - 24 -  18, 15, 18, 18) inView:sectionHeader image:@"liebiao_duoxuan" radius:0];
+    _table.tableHeaderView = sectionHeader;
+    _table.autoHideMjFooter = YES;
+    _table.ly_emptyView = [MioEmpty noDataEmpty];
     _table.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -50,7 +69,10 @@
         
         [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:data]];
         [_table reloadData];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        [_table.mj_footer endRefreshing];
+        [UIWindow showInfo:errorInfo];
+    }];
 }
 
 

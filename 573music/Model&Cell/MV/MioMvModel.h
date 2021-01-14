@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, assign) BOOL is_like;
 @property (nonatomic, strong) NSDictionary *singer;
+
+@property (nonatomic,copy) NSString * savetype;
 @end
 
 NS_ASSUME_NONNULL_END

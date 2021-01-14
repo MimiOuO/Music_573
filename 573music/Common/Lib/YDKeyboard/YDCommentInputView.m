@@ -99,7 +99,7 @@ static const CGFloat kNumberOfLinePerPage = 3;
     [self.commentInputTextField resignFirstResponder];
     self.commentInputTextField.text = @"";
     self.commentInputTextField.placeholder = nil;
-    [self.emjoyBtn setImage:image(@"keyboard_icon") forState:UIControlStateNormal];
+    [self.emjoyBtn setImage:image(@"expression_icon") forState:UIControlStateNormal];
     CGRect rect = self.frame;
     rect.origin.y = [ViewUtil screenHeight];
     [UIView animateWithDuration:0.3 animations:^{

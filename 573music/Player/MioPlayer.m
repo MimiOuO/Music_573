@@ -94,7 +94,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 
 -(BOOL)isCurrentPlay:(MioMusicModel *)music{
-    if (Equals(music, mioPlayer.currentMusic)) {
+    if (Equals(music, self.currentMusic)) {
         return YES;
     }else{
         return NO;

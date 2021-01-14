@@ -29,6 +29,8 @@
     _page = 1;
     
     _table = [UITableView creatTable:frame(0, 0, KSW, KSH - NavH - 40 - TabH) inView:self.view vc:self];
+    _table.autoHideMjFooter = YES;
+    _table.ly_emptyView = [MioEmpty noDataEmpty];
     _table.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -53,7 +55,8 @@
         [_dataArr addObjectsFromArray:[MioSingerModel mj_objectArrayWithKeyValuesArray:data]];
         [_table reloadData];
     } failure:^(NSString *errorInfo) {
-        NSLog(@"%@",errorInfo);
+        [_table.mj_footer endRefreshing];
+        [UIWindow showInfo:errorInfo];
     }];
 }
 

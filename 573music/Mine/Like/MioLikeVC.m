@@ -10,6 +10,7 @@
 #import <WMPageController.h>
 #import "MioLikeMusicVC.h"
 #import "MioLikeSingerVC.h"
+#import "MioLikeSonglistVC.h"
 #import "MioLikeAlbumVC.h"
 #import "MioLikeMVVC.h"
 
@@ -59,7 +60,7 @@
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     
-    return 4;
+    return 5;
 }
 
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
@@ -69,6 +70,8 @@
     }else if (index == 1) {
         return [MioLikeSingerVC new];
     }else if (index == 2) {
+        return [MioLikeSonglistVC new];
+    }else if (index == 3) {
         return [MioLikeAlbumVC new];
     }else{
         return [MioLikeMVVC new];
@@ -82,6 +85,8 @@
     }else if (index == 1) {
         return @"歌手";
     }else if (index == 2) {
+        return @"歌单";
+    }else if (index == 3) {
         return @"专辑";
     }else{
         return @"视频";

@@ -9,10 +9,12 @@
 #import "MioPlayListVC.h"
 #import "BTCoverVerticalTransition.h"
 #import "MioMutipleVC.h"
+#import "MioMusicPlaylistCell.h"
 
 @interface MioPlayListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) BTCoverVerticalTransition *aniamtion;
 @property (nonatomic, strong) UITableView *playList;
+@property (nonatomic, assign) MioBottomType beforeBottomType;
 @end
 
 @implementation MioPlayListVC
@@ -27,36 +29,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     self.view.backgroundColor = appClearColor;
+    [self.view addRoundedCorners:UIRectCornerTopLeft|UIRectCornerTopRight withRadii:CGSizeMake(16, 16)];
+
+    MioImageView *bgImg = [MioImageView creatImgView:frame(0, 0, KSW, KSH) inView:self.view skin:SkinName image:@"picture" radius:0];
     
-    UIVisualEffectView *effect = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-    effect.frame = frame(0, 0, KSW, 400 + SafeBotH);
-    effect.alpha = 1;
-    [self.view addSubview:effect];
-    UIVisualEffectView *effect2 = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
-    effect2.frame = frame(0, 0, KSW, 400 + SafeBotH);
-    effect2.alpha = 1;
-    [self.view addSubview:effect2];
-    
-    self.preferredContentSize = CGSizeMake(self.view.bounds.size.width,400 + SafeBotH);
+    self.preferredContentSize = CGSizeMake(self.view.bounds.size.width,450 + SafeBotH);
     WEAKSELF;
 
-    _playList = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, KSW, 300)];
+    _playList = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, KSW, 350)];
     _playList.dataSource = self;
     _playList.delegate = self;
     _playList.backgroundColor = appClearColor;
+    _playList.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_playList];
+    MioImageView *bgImg1 = [MioImageView creatImgView:frame(0, 0, KSW, 50) inView:self.view skin:SkinName image:@"picture_li" radius:0];
     
-    UIButton *mutiBtn = [UIButton creatBtn:frame(0, 0, 50, 50) inView:self.view bgImage:@"icon" action:^{
-
+    MioLabel *title = [MioLabel creatLabel:frame(Mar, 0, KSW, 50) inView:self.view text:@"当前播放" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+    MioButton *mutiBtn = [MioButton creatBtn:frame(KSW - 52 - 16, 16, 16, 16) inView:self.view bgImage:@"liebiao_add" bgTintColorName:name_icon_one action:^{
         MioMutipleVC *vc = [[MioMutipleVC alloc] init];
         vc.musicArr = mioPlayList.playListArr;
         vc.type = MioMutipleTypePlayList;
         MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
         nav.modalPresentationStyle = 0;
         [self presentViewController:nav animated:YES completion:nil];
-        
-        
+    }];
+    MioButton *clearbtn = [MioButton creatBtn:frame(KSW -16 -16, 16, 16, 16) inView:self.view bgImage:@"liebiao_shanchu" bgTintColorName:name_icon_one action:^{
+
+    }];
+
+    MioImageView *bgImg2 = [MioImageView creatImgView:frame(0, 400, KSW, 50 + SafeBotH) inView:self.view skin:SkinName image:@"picture_li" radius:0];
+    UIButton *closeBtn = [UIButton creatBtn:frame(0, 400, KSW, 50) inView:self.view bgColor:appClearColor title:@"关闭" titleColor:color_text_one font:14 radius:0 action:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     
     [mioPlayList xw_addObserverBlockForKeyPath:@"playListArr" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
@@ -68,31 +75,46 @@
     }];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    _beforeBottomType =  [MioVCConfig getBottomType:_beforeVC];
+    if (_beforeBottomType == MioBottomAll) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomAll" object:nil];
+    }
+    if (_beforeBottomType == MioBottomHalf) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomHalf" object:nil];
+    }
+    if (_beforeBottomType == MioBottomNone) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MioBottomNone" object:nil];;
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return mioPlayList.playListArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 30;
+    return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    MioMusicPlaylistCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[MioMusicPlaylistCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    cell.textLabel.text = mioPlayList.playListArr[indexPath.row].title;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.model = mioPlayList.playListArr[indexPath.row];
     if (mioPlayList.currentPlayIndex == indexPath.row) {
-        cell.backgroundColor = appClearColor;
+        cell.isplaying = YES;
     }else{
-        cell.backgroundColor = appClearColor;
+        cell.isplaying = NO;
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [mioPlayer playIndex:indexPath.row];
+    [mioM3U8Player playIndex:indexPath.row];
 }
 
 @end

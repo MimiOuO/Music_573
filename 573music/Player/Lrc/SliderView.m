@@ -110,7 +110,7 @@
 {
     self.hidden = YES;
     
-    [mioPlayer seekToTime:self.time];
+    [mioM3U8Player seekToTime:self.time];
 }
 #pragma mark setter和getter方法
 - (void)setTime:(NSTimeInterval)time

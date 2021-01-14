@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioPlayListVC : UIViewController
-
+@property (nonatomic, strong) UIViewController *beforeVC;
 @end
 
 NS_ASSUME_NONNULL_END

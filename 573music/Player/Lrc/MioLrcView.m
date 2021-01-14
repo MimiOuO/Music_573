@@ -358,7 +358,7 @@
         
         nextLyric = [[MusicLyric alloc]init];
         
-        nextLyric.time = mioPlayer.currentMusicDuration;
+        nextLyric.time = mioM3U8Player.currentMusicDuration;
         
     }else{
         
@@ -366,12 +366,12 @@
     }
     
     // 1.歌词太快
-    if (mioPlayer.currentTime < lyric.time && _currentLyricIndex != 0) {
+    if (mioM3U8Player.currentTime < lyric.time && _currentLyricIndex != 0) {
         NSLog(@"歌词——————%ld",(long)_currentLyricIndex);
         self.currentLyricIndex --; [self updateLrc];
     }
     // 1.歌词太慢
-    if (mioPlayer.currentTime > nextLyric.time && _currentLyricIndex != _lyrics.count - 1) {
+    if (mioM3U8Player.currentTime > nextLyric.time && _currentLyricIndex != _lyrics.count - 1) {
         NSLog(@"歌词++++++%ld",(long)_currentLyricIndex);
         self.currentLyricIndex ++; [self updateLrc];
     }

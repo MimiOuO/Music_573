@@ -26,7 +26,6 @@
 #endif
 @interface AppDelegate ()<XHLaunchAdDelegate>
 @property (nonatomic, assign) float tabbarHeight;
-
 @end
 
 @implementation AppDelegate
@@ -47,6 +46,11 @@
     [JJException startGuardException];
     
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    
+    // 告诉app支持后台播放
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [audioSession setActive:YES error:nil];
     
     [self configAd];
     
@@ -160,7 +164,14 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     MioTabbarVC *mt=(MioTabbarVC *)[UIApplication sharedApplication].delegate.window.rootViewController;
     _tabbarHeight = mt.tabBar.frame.origin.y;
+    
+    //开启后台处理多媒体事件
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    AVAudioSession *session=[AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
 }
+
+
 #pragma mark - 程序将要进入前台
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     

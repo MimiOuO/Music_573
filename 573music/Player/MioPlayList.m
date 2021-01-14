@@ -33,6 +33,9 @@
         _randomListArr = [[NSMutableArray alloc] init];
         _randomLocation = 0;
         _currentPlayIndex = -1;
+        
+        _playListArr = [[WHCSqlite query:[MioMusicModel class]  where:@"savetype = 'playList'"] mutableCopy];
+        _currentPlayIndex = getPlayIndex;
         WEAKSELF;
         [self xw_addObserverBlockForKeyPath:@"playListArr" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
             NSLog(@"播放列表变化");
@@ -84,6 +87,7 @@
 }
 
 -(void)saveCurrentIndex{
+    NSLog(@"%ld",(long)self.currentPlayIndex);
     setPlayIndex(self.currentPlayIndex);
 }
 
@@ -95,6 +99,7 @@
     }
     
     [WHCSqlite inserts:mioPlayList.playListArr];
+    
 }
 
 #pragma mark - KVO

@@ -12,11 +12,12 @@
 
 
 + (instancetype)noDataEmpty{
-    MioEmpty *emptyView =[MioEmpty emptyViewWithImageStr:@"empty" titleStr:@"" detailStr:@""];
+    MioEmpty *emptyView =[MioEmpty emptyViewWithImageStr:@"qst_kong" titleStr:@"" detailStr:@""];
     emptyView.contentViewOffset = -50;
     emptyView.titleLabFont = [UIFont systemFontOfSize:12.f];
     emptyView.titleLabTextColor = rgb(138, 206, 255);
     emptyView.emptyViewIsCompleteCoverSuperView = YES;
+    emptyView.backgroundColor = appClearColor;
     return emptyView;
 }
 

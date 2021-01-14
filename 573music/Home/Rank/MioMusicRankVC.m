@@ -8,6 +8,7 @@
 
 #import "MioMusicRankVC.h"
 #import "MioMusicTableCell.h"
+#import "MioMutipleVC.h"
 
 @interface MioMusicRankVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSDictionary *rankDic;
@@ -106,10 +107,14 @@
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
     UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
     UIButton *multipleBtn = [UIButton creatBtn:frame(KSW - 100, 0, 100, 48) inView:sectionHeader bgImage:@"" action:^{
-        
+        MioMutipleVC *vc = [[MioMutipleVC alloc] init];
+        vc.musicArr = _dataArr;
+        vc.type = MioMutipleTypeSongList;
+        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
+        nav.modalPresentationStyle = 0;
+        [self presentViewController:nav animated:YES completion:nil];
     }];
     UIImageView *multipleIcon = [UIImageView creatImgView:frame(KSW - 24 -  18, 15, 18, 18) inView:sectionHeader image:@"liebiao_duoxuan" radius:0];
-    
     return sectionHeader;
 }
 
@@ -136,6 +141,11 @@
     cell.model = _dataArr[indexPath.row];
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+}
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offsetY = scrollView.contentOffset.y;

@@ -21,7 +21,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = appClearColor;
-        NSLog(@"%f",self.contentView.width);
         CGFloat width = self.contentView.width;
         _coverImg = [UIImageView creatImgView:frame(0, 0, width, width) inView:self.contentView image:@"" radius:4];
         UIImageView *shadow = [UIImageView creatImgView:frame(0, width - 22, width, 22) inView:_coverImg image:@"zhuanji_mengban" radius:0];

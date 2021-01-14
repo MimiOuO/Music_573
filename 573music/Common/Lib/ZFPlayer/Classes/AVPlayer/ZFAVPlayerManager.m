@@ -126,9 +126,17 @@ static NSString *const kPresentationSize         = @"presentationSize";
     if (self) {
         _scalingMode = ZFPlayerScalingModeAspectFit;
         _shouldAutoPlay = YES;
+        NSTimer *time = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_timerAction:) userInfo:nil repeats:YES];
     }
     return self;
 }
+
+- (void)_timerAction:(id)timer
+{
+    
+    [self availableDuration];
+}
+
 
 - (void)prepareToPlay {
     if (!_assetURL) return;
@@ -280,7 +288,7 @@ static NSString *const kPresentationSize         = @"presentationSize";
         _playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = NO;
     }
     if (@available(iOS 10.0, *)) {
-        _playerItem.preferredForwardBufferDuration = 5;
+//        _playerItem.preferredForwardBufferDuration = 5;
     }
     [self itemObserving];
 }

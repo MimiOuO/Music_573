@@ -128,7 +128,7 @@
     }
     
     NSDictionary *dic = @{
-        @"avatar":_avatarPath,
+        @"cover_image_path":_avatarPath,
         @"title":_nameLab.text,
         @"song_list_description":_noteTV.tempText,
     };
@@ -137,7 +137,9 @@
         NSDictionary *data = [result objectForKey:@"data"];
         [UIWindow showSuccess:@"创建成功"];
         [self.navigationController popViewControllerAnimated:YES];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
 }
 
 
@@ -153,8 +155,6 @@
     }];
 }
 
-
-
 - (HXPhotoManager *)avatarManger {
     if (!_avatarManger) {
         _avatarManger = [[HXPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhoto];
@@ -165,7 +165,6 @@
     }
     return _avatarManger;
 }
-
 
 - (void)uploadPhoto:(UIImage *)image
 {

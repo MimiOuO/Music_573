@@ -10,4 +10,8 @@
 
 @implementation MioMvModel
 
+- (void)setSavetype:(NSString *)savetype{
+    _savetype = savetype;
+}
+
 @end

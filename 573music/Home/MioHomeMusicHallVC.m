@@ -24,6 +24,9 @@
 #import "MioSongListVC.h"
 #import "MioAlbumVC.h"
 #import "MioMusicRankVC.h"
+
+#import "MioMvVC.h"
+#import "MioTestVC.h"
 @interface MioHomeMusicHallVC ()<SDCycleScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *bgScroll;
 @property (nonatomic, strong) SDCycleScrollView *adScroll;
@@ -48,6 +51,10 @@
     
     [self creatUI];
     [self request];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"111");
 }
 
 -(void)request{
@@ -119,6 +126,7 @@
     MioLabel *categoryLab = [MioLabel creatLabel:frame(categoryView.left, 238, 52, 17) inView:_bgScroll text:@"分类" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     
     [rankView whenTapped:^{
+        
         MioMusicRankListVC *vc = [[MioMusicRankListVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
@@ -129,7 +137,6 @@
     [singerView whenTapped:^{
         MioSingerListVC *vc = [[MioSingerListVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
-
     }];
     [albumView whenTapped:^{
         MioAlbumListPageVC *vc = [[MioAlbumListPageVC alloc] init];
@@ -178,7 +185,7 @@
         musicCell.model = _musicArr[i];
         [_musicScroll addSubview:musicCell];
         [musicCell whenTapped:^{
-            
+            [mioM3U8Player playWithMusicList:_musicArr andIndex:i];
         }];
     }
     for (int i = 0;i < _albumArr.count; i++) {

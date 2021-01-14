@@ -71,13 +71,21 @@
     statusBarLight;
 }
 
+-(void)changeMusic{
+    [self updateUI];
+    [self downLoadLrc];
+    _currentLyricIndex = 0;
+}
+
+
 #pragma mark - UI
 
 -(void)creatUI{
     WEAKSELF;
+    MioMusicModel *music = mioM3U8Player.currentMusic;
+    _backgroundImg = [UIImageView creatImgView:frame(-KSW/2, -KSH/2, 2*KSW, 2*KSH) inView:self.view image:@"gequ_zhanweitu" radius:0];
+    [_backgroundImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
     
-    _backgroundImg = [UIImageView creatImgView:frame(-KSW/2, -KSH/2, 2*KSW, 2*KSH) inView:self.view image:@"WX20201210-181259" radius:0];
-
     UIVisualEffectView *effect = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
     effect.frame = frame(KSW/2, KSH/2, KSW, KSH);
     effect.alpha = 1;
@@ -99,20 +107,33 @@
     
     _nameLab = [UILabel creatLabel:frame(60, StatusH + 10, KSW - 120, 25) inView:self.view text:@"光年之外" color:appWhiteColor boldSize:18 alignment:NSTextAlignmentCenter];
     _nameLab.alpha = 0.5;
+    _nameLab.text = music.title;
+    
     _singerLab = [UILabel creatLabel:frame(60, StatusH + 35, KSW - 120, 17) inView:self.view text:@"光年之外" color:rgba(255, 255, 255, 0.7) boldSize:12 alignment:NSTextAlignmentCenter];
+    _singerLab.text = music.singer_name;
+    
     _qualityBtn = [UIButton creatBtn:frame(KSW2 - 26 - 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"standard_player_player" action:^{
         
     }];
+    
     _mvButton = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"mv_player_player" action:^{
         
     }];
+    
+    if (music.hasMV) {
+        _mvButton.hidden = NO;
+        _qualityBtn.left = KSW2 - 26 - 7;
+    }else{
+        _mvButton.hidden = YES;
+        _qualityBtn.left = KSW2 - 13;
+    }
 
     _scrollView = [UIScrollView creatScroll:frame(0, StatusH + 86, KSW, 5 + KSW-56 + (KSH - StatusH - 91 - (KSW - 56) - SafeBotH)/2) inView:self.view contentSize:CGSizeMake(KSW*2, KSH - NavH - 50 - 300)];
     _scrollView.bounces = NO;
     _scrollView.pagingEnabled = YES;
     UIImageView *coverShadow = [UIImageView creatImgView:frame(0, -8, KSW, 400*KSW/375) inView:_scrollView image:@"shadow" radius:0];
-    _coverImg = [UIImageView creatImgView:frame(28, 5, KSW - 56, KSW - 56) inView:_scrollView image:@"2041607506147_.pic_hd" radius:12];
-    
+    _coverImg = [UIImageView creatImgView:frame(28, 5, KSW - 56, KSW - 56) inView:_scrollView image:@"gequ_zhanweitu" radius:12];
+    [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
     float divHeight = (_scrollView.height - 5 - (KSW - 56))/10;
     
     _singleLrcLab = [UILabel creatLabel:frame(28, 0, KSW - 56, 22) inView:_scrollView text:@"如果世间万物能相爱" color:appWhiteColor size:16 alignment:NSTextAlignmentCenter];
@@ -179,18 +200,24 @@
     _playListBtn.centerY = _scrollView.bottom + divHeight*2;
 
     
-    _likeBtn = [UIButton creatBtn:frame(28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"like_ordinary_player" action:^{
+    _likeBtn = [UIButton creatBtn:frame(73, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"like_ordinary_player" action:^{
         
     }];
-    _downloadBtn = [UIButton creatBtn:frame(28 + (KSW - 56)/3 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"download_player" action:^{
-        
-    }];
-    _cmtBtn = [UIButton creatBtn:frame(28 + (KSW - 56)*2/3 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_digital_player" action:^{
+    [_likeBtn setBackgroundImage:image(@"like_player") forState:UIControlStateSelected];
+    if (music.is_like) {
+        _likeBtn.selected = YES;
+    }else{
+        _likeBtn.selected = NO;
+    }
+//    _downloadBtn = [UIButton creatBtn:frame(28 + (KSW - 56)/3 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"download_player" action:^{
+//
+//    }];
+    _cmtBtn = [UIButton creatBtn:frame(KSW2 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_digital_player" action:^{
         MioMusicCmtVC *vc = [[MioMusicCmtVC alloc] init];
         vc.musicId = @"1";
         [self.navigationController pushViewController:vc animated:YES];
     }];
-    _moreBtn = [UIButton creatBtn:frame(KSW - 24 -28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
+    _moreBtn = [UIButton creatBtn:frame(KSW - 24 - 73, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
         
         goLogin
         
@@ -202,42 +229,64 @@
 //        nav.modalPresentationStyle = 0;
 //        [self presentViewController:nav animated:YES completion:nil];
     }];
-    _cmtCountLab = [UILabel creatLabel:frame(16.5, -5, 30, 17) inView:_cmtBtn text:@"0" color:appWhiteColor size:12 alignment:NSTextAlignmentLeft];
+    _cmtCountLab = [UILabel creatLabel:frame(16.5, -5, 30, 17) inView:_cmtBtn text:music.comment_num color:appWhiteColor size:12 alignment:NSTextAlignmentLeft];
 
 }
 
 -(void)updateUI{
-    
+    MioMusicModel *music = mioM3U8Player.currentMusic;
+    [_backgroundImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
+    [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
+    _nameLab.text = music.title;
+    _singerLab.text = music.singer_name;
+    if (music.hasMV) {
+        _mvButton.hidden = NO;
+        _qualityBtn.left = KSW2 - 26 - 7;
+    }else{
+        _mvButton.hidden = YES;
+        _qualityBtn.left = KSW2 - 13;
+    }
+    if (music.is_like) {
+        _likeBtn.selected = YES;
+    }else{
+        _likeBtn.selected = NO;
+    }
+    _cmtCountLab.text = music.comment_num;
 }
 
 #pragma mark - KVO
 -(void)registKVO{
     WEAKSELF;
-    [mioPlayer xw_addObserverBlockForKeyPath:@"status" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+    [mioM3U8Player xw_addObserverBlockForKeyPath:@"status" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
         [weakSelf playerStatusChanged];
     }];
     
 
     
-    [mioPlayer xw_addObserverBlockForKeyPath:@"currentMusicDuration" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
-        weakSelf.durationLab.text = [NSDate stringDuartion:mioPlayer.currentMusicDuration];
+    [mioM3U8Player xw_addObserverBlockForKeyPath:@"currentMusicDuration" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+        weakSelf.durationLab.text = [NSDate stringDuartion:mioM3U8Player.currentMusicDuration];
     }];
     
-    [mioPlayer xw_addObserverBlockForKeyPath:@"bufferProgress" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
-        NSLog(@"___!!!%f",mioPlayer.bufferProgress);
-        _slider.bufferValue = mioPlayer.bufferProgress;
-        [self.slider layoutIfNeeded];
+    [mioM3U8Player xw_addObserverBlockForKeyPath:@"bufferProgress" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+//        NSLog(@"___!!!%f",mioM3U8Player.bufferProgress);
+        if (isnan(mioM3U8Player.bufferProgress)) {
+            NSLog(@"nananannanananan");
+        }else{
+            _slider.bufferValue = mioM3U8Player.bufferProgress;
+            [self.slider layoutIfNeeded];
+        }
+
     }];
     
-    [mioPlayer xw_addObserverBlockForKeyPath:@"currentTime" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
-        NSLog(@"___%f",mioPlayer.currentTime / mioPlayer.currentMusicDuration);
-        if (isnan(mioPlayer.currentTime / mioPlayer.currentMusicDuration)) {
+    [mioM3U8Player xw_addObserverBlockForKeyPath:@"currentTime" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
+//        NSLog(@"___%f",mioM3U8Player.currentTime / mioM3U8Player.currentMusicDuration);
+        if (isnan(mioM3U8Player.currentTime / mioM3U8Player.currentMusicDuration)) {
             NSLog(@"nananannanananan");
         }else{
             [_lrcView updateLrc];
             if (!self.isDraging) {
-                _currentTimeLab.text = [NSDate stringDuartion:mioPlayer.currentTime];
-                _slider.value = mioPlayer.currentTime / mioPlayer.currentMusicDuration;
+                _currentTimeLab.text = [NSDate stringDuartion:mioM3U8Player.currentTime];
+                _slider.value = mioM3U8Player.currentTime / mioM3U8Player.currentMusicDuration;
                 [self.slider layoutIfNeeded];
             }
         }
@@ -245,18 +294,14 @@
     }];
 }
 
--(void)changeMusic{
-    [self downLoadLrc];
-    _currentLyricIndex = 0;
-}
 
 -(void)downLoadLrc{
 
-//    MioDownloadRequest *req = [[MioDownloadRequest alloc] initWinthUrl:mioPlayer.currentMusic.lrc_url fileName:[NSString stringWithFormat:@"%@.lrc",mioPlayer.currentMusic.id]];
+//    MioDownloadRequest *req = [[MioDownloadRequest alloc] initWinthUrl:mioM3U8Player.currentMusic.lrc_url fileName:[NSString stringWithFormat:@"%@.lrc",mioM3U8Player.currentMusic.id]];
 //    [req startWithCompletionBlockWithSuccess:^(__kindof MioDownloadRequest * _Nonnull request) {
 //        NSLog(@"%s res:%@", __func__, request.lrcName);
-//        if ([request.lrcName containsString:mioPlayer.currentMusic.id]) {
-//            NSArray *lyrics = [LyricParser parserLyricWithFileName:[NSString stringWithFormat:@"%@/%@.lrc",LRCDownloadDir,mioPlayer.currentMusic.id]];
+//        if ([request.lrcName containsString:mioM3U8Player.currentMusic.id]) {
+//            NSArray *lyrics = [LyricParser parserLyricWithFileName:[NSString stringWithFormat:@"%@/%@.lrc",LRCDownloadDir,mioM3U8Player.currentMusic.id]];
 //            _lrcView.lyrics = lyrics;
 //        }
 //    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -267,37 +312,31 @@
 
 
 -(void)playerStatusChanged{
-    switch (mioPlayer.status) {
-        case DOUAudioStreamerPlaying:
+    switch (mioM3U8Player.status) {
+        case MioPlayerStatePlaying:
             NSLog(@"播放中");
             [_playBtn setBackgroundImage:image(@"suspended_player") forState:UIControlStateNormal];
-            _bufferImg.hidden = YES;
             break;
-
-        case DOUAudioStreamerPaused:
+            
+        case MioPlayerStatePaused:
             NSLog(@"暂停");
             [_playBtn setBackgroundImage:image(@"play_player") forState:UIControlStateNormal];
-            _bufferImg.hidden = YES;
             break;
-
-        case DOUAudioStreamerIdle:
-            NSLog(@"空闲");
-            break;
-
-        case DOUAudioStreamerFinished:
+            
+        case MioPlayerStatePlayStopped:
             NSLog(@"结束");
             [_playBtn setBackgroundImage:image(@"play_player") forState:UIControlStateNormal];
-            _bufferImg.hidden = YES;
             break;
-
-        case DOUAudioStreamerBuffering:
-            NSLog(@"缓冲中");
-            _bufferImg.hidden = NO;
+            
+        case MioPlayerStatePlayEnded:
+            NSLog(@"播放完成");
             break;
-
-        case DOUAudioStreamerError:
+            
+        case MioPlayerStatePlayFailed:
             NSLog(@"错误");
-            _bufferImg.hidden = YES;
+            break;
+            
+        case MioPlayerStateUnknown:
             break;
     }
 }
@@ -324,18 +363,18 @@
 }
 
 -(void)preBtnClick{
-    [mioPlayer playPre];
+    [mioM3U8Player playPre];
 }
 
 -(void)nextBtnClick{
-    [mioPlayer playNext];
+    [mioM3U8Player playNext];
 }
 
 -(void)playClick{
-    if (mioPlayer.status == DOUAudioStreamerPlaying) {
-        [mioPlayer pause];
+    if (mioM3U8Player.status == ZFPlayerPlayStatePlaying) {
+        [mioM3U8Player pause];
     }else{
-        [mioPlayer play];
+        [mioM3U8Player play];
     }
 }
 
@@ -344,6 +383,7 @@
 -(void)playListClick{
     
     MioPlayListVC * vc = [[MioPlayListVC alloc]init];
+    vc.beforeVC = self;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -358,12 +398,12 @@
 }
 - (void)sliderTouchEnded:(float)value{//拖拽结束
     self.isDraging = NO;
-    NSInteger seekTime = (int)(mioPlayer.currentMusicDuration * value);
-    [mioPlayer seekToTime:seekTime];
+    NSInteger seekTime = (int)(mioM3U8Player.currentMusicDuration * value);
+    [mioM3U8Player seekToTime:seekTime];
 }
 - (void)sliderTapped:(float)value{//点击进度条
-    NSInteger seekTime = (int)(mioPlayer.currentMusicDuration * value);
-    [mioPlayer seekToTime:seekTime];
+    NSInteger seekTime = (int)(mioM3U8Player.currentMusicDuration * value);
+    [mioM3U8Player seekToTime:seekTime];
 }
 
 - (void)lyricView:(MioLrcView *)lyricView withProgress:(CGFloat)progress{

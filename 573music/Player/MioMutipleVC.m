@@ -11,6 +11,7 @@
 #import "YLButton.h"
 #import "SODownloader.h"
 #import "SODownloader+MusicDownloader.h"
+#import "MioAddToSonglistVC.h"
 
 @interface MioMutipleVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView       *tableView;
@@ -66,14 +67,56 @@
 }
 
 -(void)playClick{
-    
+    NSMutableArray *selectArr = [[NSMutableArray alloc] init];
+    [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [selectArr addObject:_musicArr[obj.row]];
+    }];
 }
 
 -(void)addClick{
-    
+//    goLogin;
+    NSMutableArray *selectArr = [[NSMutableArray alloc] init];
+    [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [selectArr addObject:_musicArr[obj.row]];
+    }];
+//    if (selectArr.count == 0) {
+//        [UIWindow showInfo:@"请选择歌曲"];
+//        return;
+//    }
+    MioAddToSonglistVC *vc = [[MioAddToSonglistVC alloc] init];
+    vc.musicArr = selectArr;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)deleteClick{
+    goLogin;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定删除？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再想想" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+
+        
+        NSMutableArray<MioMusicModel *> *selectArr = [[NSMutableArray alloc] init];
+        [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [selectArr addObject:_musicArr[obj.row]];
+        }];
+        NSMutableArray *idArr = [[NSMutableArray alloc] init];
+        for (int i = 0;i < selectArr.count; i++) {
+            [idArr addObject:selectArr[i].song_id];
+        }
+        
+        [MioPostReq(api_deleteInSonglist(_songlistId), @{@"ids":idArr}) success:^(NSDictionary *result){
+            [UIWindow showSuccess:@"删除成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } failure:^(NSString *errorInfo) {}];
+
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    alertController.modalPresentationStyle = 0;
+    [self presentViewController:alertController animated:YES completion:nil];
     
 }
 
@@ -136,7 +179,7 @@
     
     _downloadBtn = [[YLButton alloc] initWithFrame:frame(-30, 4, 30, 40)];
     [_downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
-    [_downloadBtn setTitleColor:subColor forState:UIControlStateNormal];
+    [_downloadBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _downloadBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _downloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [_downloadBtn setImage:image(@"download_choose") forState:UIControlStateNormal];
@@ -147,18 +190,18 @@
     
     _playBtn = [[YLButton alloc] initWithFrame:frame(-30, 4, 30, 40)];
     [_playBtn setTitle:@"稍后播" forState:UIControlStateNormal];
-    [_playBtn setTitleColor:subColor forState:UIControlStateNormal];
+    [_playBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _playBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _playBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [_playBtn setImage:image(@"download_choose") forState:UIControlStateNormal];
     _playBtn.imageRect = CGRectMake(3, 0, 24, 24);
-    _playBtn.titleRect = CGRectMake(0, 26, 30, 14);
+    _playBtn.titleRect = CGRectMake(-5, 26, 40, 14);
     [_playBtn addTarget:self action:@selector(playClick) forControlEvents:UIControlEventTouchUpInside];
     [_bottomView addSubview:_playBtn];
     
     _addBtn = [[YLButton alloc] initWithFrame:frame(-30, 4, 30, 40)];
     [_addBtn setTitle:@"添加" forState:UIControlStateNormal];
-    [_addBtn setTitleColor:subColor forState:UIControlStateNormal];
+    [_addBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _addBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _addBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [_addBtn setImage:image(@"add_choose") forState:UIControlStateNormal];
@@ -169,7 +212,7 @@
     
     _deleteBtn = [[YLButton alloc] initWithFrame:frame(-30, 4, 30, 40)];
     [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
-    [_deleteBtn setTitleColor:subColor forState:UIControlStateNormal];
+    [_deleteBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _deleteBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [_deleteBtn setImage:image(@"delete_choose") forState:UIControlStateNormal];
@@ -180,23 +223,23 @@
     
     switch (_type) {
         case MioMutipleTypePlayList://下载 加入歌单
-            _downloadBtn.centerX = 1*KSW/3;
-            _addBtn.centerX = 2*KSW/3;
+//            _downloadBtn.centerX = 1*KSW/3;
+            _addBtn.centerX = 1*KSW/2;
             break;
         case MioMutipleTypeSongList://下载 稍后播 加入歌单
-            _playBtn.centerX = 1*KSW/4;
-            _downloadBtn.centerX = 2*KSW/4;
-            _addBtn.centerX = 3*KSW/4;
+            _playBtn.centerX = 1*KSW/3;
+//            _downloadBtn.centerX = 2*KSW/4;
+            _addBtn.centerX = 2*KSW/3;
             
             break;
         case MioMutipleTypeOwnSongList://删除 下载 稍后播 加入歌单
-            _deleteBtn.centerX = 1*KSW/5;
-            _downloadBtn.centerX = 2*KSW/5;
-            _addBtn.centerX = 3*KSW/5;
-            _deleteBtn.centerX = 4*KSW/5;
+            _playBtn.centerX = 1*KSW/4;
+//            _downloadBtn.centerX = 2*KSW/5;
+            _addBtn.centerX = 2*KSW/4;
+            _deleteBtn.centerX = 3*KSW/4;
             break;
         case MioMutipleTypeDownloadList://删除 稍后播 加入歌单
-            _downloadBtn.centerX = 1*KSW/4;
+//            _downloadBtn.centerX = 1*KSW/4;
             _addBtn.centerX = 2*KSW/4;
             _deleteBtn.centerX = 3*KSW/4;
             break;

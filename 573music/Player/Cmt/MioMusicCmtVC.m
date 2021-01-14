@@ -107,7 +107,7 @@
     if (self.message == 0) {
         dic = @{
             @"model_name":@"song",
-            @"model_id":_musicId,
+            @"model_ids":_musicId,
             @"content":content,
         };
     } else {

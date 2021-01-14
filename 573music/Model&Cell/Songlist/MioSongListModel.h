@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *song_ids;
 @property (nonatomic, strong) NSArray *songs;
 @property (nonatomic, assign) BOOL is_like;
+@property (nonatomic,copy) NSString * like_num;
+@property (nonatomic, strong) NSDictionary *songs_paginate;
 @end
 
 NS_ASSUME_NONNULL_END

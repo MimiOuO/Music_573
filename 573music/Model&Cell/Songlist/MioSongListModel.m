@@ -10,4 +10,8 @@
 
 @implementation MioSongListModel
 
+- (NSArray *)songs{
+    return self.songs_paginate[@"data"];
+}
+
 @end

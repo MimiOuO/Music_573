@@ -86,5 +86,17 @@
 //    [aCoder encodeInteger:self.index forKey:NSStringFromSelector(@selector(index))];
 }
 
++(NSString *)whc_SqliteVersion
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    // app版本
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+
+    // app build版本
+
+    NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+
+    return [app_Version stringByAppendingString:app_build];
+}
 
 @end

@@ -78,7 +78,7 @@
 }
 
 -(void)likeClick{
-    [MioPostReq(api_likes, (@{@"model_name":@"mv",@"model_id":_mv.mv_id})) success:^(NSDictionary *result){
+    [MioPostReq(api_likes, (@{@"model_name":@"mv",@"model_ids":@[_mv.mv_id]})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         _likeBtn.selected = !_likeBtn.selected;
         [UIWindow showSuccess:@"操作成功"];

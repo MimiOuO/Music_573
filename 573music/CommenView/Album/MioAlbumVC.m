@@ -9,6 +9,7 @@
 #import "MioAlbumVC.h"
 #import "MioAlbumModel.h"
 #import "MioMusicTableCell.h"
+#import "MioMutipleVC.h"
 
 @interface MioAlbumVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) MioAlbumModel *album;
@@ -91,7 +92,7 @@
     
     UIImageView *coverBg = [UIImageView creatImgView:frame(14, 28, 120, 128) inView:headerView image:@"gedan_shadow" radius:0];
     UIImageView *coverBg2 = [UIImageView creatImgView:frame(35, 34, 96, 96) inView:headerView image:@"zhuanji_heijiao" radius:0];
-    _coverImg = [UIImageView creatImgView:frame(20, 34, 96, 96) inView:headerView image:@"qxt_zhuanji" radius:0];
+    _coverImg = [UIImageView creatImgView:frame(20, 34, 96, 96) inView:headerView image:@"qxt_zhuanji" radius:4];
     
     _titleLab = [UILabel creatLabel:frame(150, 35.5, KSW - 183, 22) inView:headerView text:@"" color:appWhiteColor boldSize:16 alignment:NSTextAlignmentLeft];
     _nameLab = [UILabel creatLabel:frame(150, 59.5, KSW - 183, 20) inView:headerView text:@"" color:rgba(255, 255, 255, 0.7) size:14 alignment:NSTextAlignmentLeft];
@@ -125,7 +126,7 @@
 }
 
 -(void)likeClick{
-    [MioPostReq(api_likes, (@{@"model_name":@"album",@"model_id":_album_id})) success:^(NSDictionary *result){
+    [MioPostReq(api_likes, (@{@"model_name":@"album",@"model_ids":@[_album_id]})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         _likeBtn.selected = !_likeBtn.selected;
         [UIWindow showSuccess:@"操作成功"];
@@ -145,7 +146,12 @@
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
     UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
     UIButton *multipleBtn = [UIButton creatBtn:frame(KSW - 100, 0, 100, 48) inView:sectionHeader bgImage:@"" action:^{
-        
+        MioMutipleVC *vc = [[MioMutipleVC alloc] init];
+        vc.musicArr = _dataArr;
+        vc.type = MioMutipleTypeSongList;
+        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
+        nav.modalPresentationStyle = 0;
+        [self presentViewController:nav animated:YES completion:nil];
     }];
     UIImageView *multipleIcon = [UIImageView creatImgView:frame(KSW - 24 -  18, 15, 18, 18) inView:sectionHeader image:@"liebiao_duoxuan" radius:0];
     

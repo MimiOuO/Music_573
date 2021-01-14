@@ -16,6 +16,7 @@
 #import "MioMvIntroVC.h"
 #import "MioMvCmtVC.h"
 #import "MioMvModel.h"
+#import <WHC_ModelSqlite.h>
 
 @interface MioMvVC ()<WMPageControllerDelegate,WMPageControllerDataSource,ChangeMVDelegate>
 @property (nonatomic, strong) MioMvModel *mv;
@@ -39,6 +40,8 @@
     [self request];
     [self creatView];
     
+    [mioM3U8Player pause];
+    
     RecieveNotice(@"playerBackClick", popVC);
     RecieveNotice(@"mvCmtSuccess", refreshCmtCount);
 }
@@ -59,18 +62,28 @@
 }
 
 -(void)request{
+
     [MioGetReq(api_mvrDetail(_mvId), @{@"k":@"v"}) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         _mv = [MioMvModel mj_objectWithKeyValues:data];
+        
+        [WHCSqlite delete:[MioMvModel class] where:[NSString stringWithFormat:@"savetype = 'recentMV' AND mv_id = '%@'",_mv.mv_id]];
+        _mv.savetype = @"recentMV";
+        [WHCSqlite insert:_mv];
+        
+        
         [_pageController updateTitle:[NSString stringWithFormat:@"评论(%@)",_mv.comment_num] atIndex:1];
         _pageController.titles = @[@"简介",[NSString stringWithFormat:@"评论(%@)",_mv.comment_num]];
         _info.mv = _mv;
+        
         self.player.assetURLs = @[Url(@"http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8")];//@[_mv.mv_path.mj_url];
         [self.player playTheIndex:0];
     } failure:^(NSString *errorInfo) {}];
 }
 
 -(void)creatView{
+    
+    
     //======================================================================//
     //                              播放器
     //======================================================================//
@@ -141,6 +154,19 @@
     
     MioImageView *menuBg = [MioImageView creatImgView:frame(0, 0, KSW, 44) inView:_pageController.menuView skin:SkinName image:@"picture_li" radius:0];
     [_pageController.menuView sendSubviewToBack:menuBg];
+    
+    NSTimer *time = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_timerAction:) userInfo:nil repeats:YES];
+}
+
+- (void)_timerAction:(id)timer
+{
+    NSLog(@"---------");
+//    NSLog(@"%f",self.player.currentPlayerManager.currentTime);
+    NSLog(@"%f",self.player.bufferTime);
+    NSLog(@"%f",self.player.bufferProgress);
+//    NSLog(@"%@",self.player.playerBufferTimeChanged);
+    
+    NSLog(@"---------");
 }
 
 -(void)changeCollection:(int)index{
