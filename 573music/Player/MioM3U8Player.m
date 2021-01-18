@@ -89,6 +89,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     
 }
 
+-(void)switchQuailty{
+    [self resetAudiostreamer:self.currentMusic];
+    [self seekToTime:self.currentTime];
+}
+
 #pragma mark - MioPlayer基础操作
 
 //统一播放方法
@@ -165,7 +170,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)stop{
-    
+    [self.player.currentPlayerManager stop];
 }
 
 - (void)seekToTime:(NSInteger)location{

@@ -81,6 +81,11 @@ typedef NS_ENUM(NSUInteger, MioPlayerState) {
 - (void)playPre;
 
 /**
+切换音质
+ */
+-(void)switchQuailty;
+
+/**
  播放音频，如果当前为暂停状态，那么会继续播放
  */
 - (void)play;
@@ -101,6 +106,7 @@ typedef NS_ENUM(NSUInteger, MioPlayerState) {
  停止播放
  */
 - (void)stop;
+
 
 @end
 

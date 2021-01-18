@@ -55,16 +55,15 @@
     _mainPlayerVC = [[MioMainPlayerVC alloc] init];
     _bottomPlayer = [[MioBottomPlayView alloc] initWithFrame:frame(0, -50, KSW, 50)];
     [_bottomPlayer whenTapped:^{
-
-        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:_mainPlayerVC];
-        nav.modalPresentationStyle = 0;
-        [self presentViewController:nav animated:YES completion:nil];
+        if (mioM3U8Player.currentMusic) {
+            MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:_mainPlayerVC];
+            nav.modalPresentationStyle = 0;
+            [self presentViewController:nav animated:YES completion:nil];
+        }
     }];
     [self.tabbar addSubview:_bottomPlayer];
     [self.tabbar sendSubviewToBack:_bottomPlayer];
     
-
-
 
     
     RecieveChangeSkin;
@@ -91,7 +90,6 @@
 
 -(void)changeSkin{
 
-    
     NSArray<UITabBarItem *> *items = self.tabBar.items;
     
     items[0].image = [UIImage imageWithCGImage:imagePath(@"tab_yingyue_putong").CGImage scale:3 orientation:UIImageOrientationUp];

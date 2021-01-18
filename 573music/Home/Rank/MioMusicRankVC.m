@@ -51,10 +51,20 @@
 
 -(void)requestData{
     [MioGetReq(api_rankDetail(_rankId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
-        _rankDic = result;
-        _dataArr = [MioMusicModel mj_objectArrayWithKeyValuesArray:_rankDic[@"data"]];
-    
+        _rankDic = result[@"data"];
         [self updateData];
+        
+        NSArray *data = [MioMusicModel mj_objectArrayWithKeyValuesArray:_rankDic[@"data_paginate"][@"data"]];
+    
+        [_tableView.mj_footer endRefreshing];
+        if (_page == 1) {
+            [_dataArr removeAllObjects];
+        }
+        if (data.count < 10) {
+            [_tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        
+        [_dataArr addObjectsFromArray:data];
 
         [_tableView reloadData];
         
@@ -76,7 +86,11 @@
     _tableView.backgroundColor = appClearColor;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.bounces = NO;
-    
+    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        _page = _page + 1;
+        [self requestData];
+    }];
+
     [self.view addSubview:_tableView];
     
     

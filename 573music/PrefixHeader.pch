@@ -298,10 +298,10 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 //正式服务器
 //#define api_base @"https://duoduo.apphw.com/api"
 //测试服务器
-//#define api_base @"http://edu.giggsgame.com/api"
+#define api_base @"http://edu.giggsgame.com/api"
 
 //本地服务器
-#define api_base @"http://new-music.jigesi.test/api"
+//#define api_base @"http://new-music.jigesi.test/api"
 
 //登录
 

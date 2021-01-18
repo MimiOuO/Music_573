@@ -15,8 +15,8 @@
 @property (nonatomic, strong) UILabel *content;
 @property (nonatomic, strong) UILabel *timeAndAdress;
 @property (nonatomic, strong) UIView *replayView;
-@property (nonatomic, strong) UIButton *praiseButton;
-@property (nonatomic, strong) UILabel *praiseLab;
+@property (nonatomic, strong) UIButton *likeBtn;
+@property (nonatomic, strong) UILabel *likeLab;
 @end
 
 @implementation MioAllCmtCell
@@ -33,6 +33,12 @@
 
         _nickName = [UILabel creatLabelinView:self.contentView text:@"" color:color_text_one size:14];
         _nickName.font = [UIFont boldSystemFontOfSize:14];
+        
+        _likeBtn = [MioButton creatBtn:frame(KSW_Mar - 20, 10, 20, 20) inView:self.contentView bgImage:@"pinglun_wiedianzan" bgTintColorName:name_icon_three action:nil];
+        
+        _likeLab = [UILabel creatLabel:frame(KSW - 38 - 50, 12, 50, 18) inView:self.contentView text:@"0" color:color_text_three size:14 alignment:NSTextAlignmentRight];
+
+        
         _content = [UILabel creatLabelinView:self.contentView text:@"" color:color_text_two size:14];
         _content.numberOfLines = 0;
 //        [_content whenTapped:^{
@@ -42,18 +48,18 @@
 //        }];
         _timeAndAdress = [UILabel creatLabelinView:self.contentView text:@"" color:color_text_two size:12];
         
-        _praiseButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        _praiseButton.frame = CGRectMake(KSW - 70, 14, 40, 40);
-        [_praiseButton setImage:[UIImage imageNamed:@"icon_dianzan1"] forState:UIControlStateNormal];
-        [_praiseButton setImage:[UIImage imageNamed:@"icon_dianzan"] forState:UIControlStateSelected];
-        [_praiseButton setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, -5)];
-        [_praiseButton addTarget:self action:@selector(clickPraise:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_praiseButton];
-
-        _praiseLab = [[UILabel alloc] initWithFrame:CGRectMake(_praiseButton.right - 5, 14, 50, 40)];
-        _praiseLab.textColor = grayTextColor;
-        [self.contentView addSubview:_praiseLab];
-        _praiseLab.font = [UIFont boldSystemFontOfSize:14];
+//        _praiseButton=[UIButton buttonWithType:UIButtonTypeCustom];
+//        _praiseButton.frame = CGRectMake(KSW - 70, 14, 40, 40);
+//        [_praiseButton setImage:[UIImage imageNamed:@"icon_dianzan1"] forState:UIControlStateNormal];
+//        [_praiseButton setImage:[UIImage imageNamed:@"icon_dianzan"] forState:UIControlStateSelected];
+//        [_praiseButton setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, -5)];
+//        [_praiseButton addTarget:self action:@selector(clickPraise:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.contentView addSubview:_praiseButton];
+//
+//        _praiseLab = [[UILabel alloc] initWithFrame:CGRectMake(_praiseButton.right - 5, 14, 50, 40)];
+//        _praiseLab.textColor = grayTextColor;
+//        [self.contentView addSubview:_praiseLab];
+//        _praiseLab.font = [UIFont boldSystemFontOfSize:14];
         
         UIView *split = [[UIView alloc] init];
         split.backgroundColor = grayTextColor;
@@ -89,17 +95,37 @@
     _content.attributedText = AttributedStr;
     _timeAndAdress.text = [NSDate intervalFromNoewDateWithString:timeStr];
    
+    
+    _likeLab.text = replyModel.like_num;
+    [_likeBtn whenTapped:^{
+        [self likeClick:replyModel.comment_id];
+    }];
+    if (replyModel.is_like) {
+        _likeBtn.selected = YES;
+        [_likeBtn setTintColor:color_main];
+        _likeLab.textColor = color_main;
+    }else{
+        _likeBtn.selected = NO;
+        [_likeBtn setTintColor:color_text_three];
+        _likeLab.textColor = color_text_three;
+    }
 }
 
--(void)clickPraise:(UIButton *)btn{
-    if (btn.selected == NO) {
-        _praiseLab.text = [NSString stringWithFormat:@"%d",[_praiseLab.text intValue]+1];
-    }
-    btn.selected = YES;
-
-    if (self.tapReplyPraiseBlock) {
-        self.tapReplyPraiseBlock(self);
-    }
+-(void)likeClick:(NSString *)cmtId{
+    [MioPostReq(api_likes, (@{@"model_name":@"comment",@"model_ids":@[cmtId]})) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _likeBtn.selected = !_likeBtn.selected;
+        if (_likeBtn.selected == YES) {
+            [_likeBtn setTintColor:color_main];
+            _likeLab.textColor = color_main;
+        }else{
+            [_likeBtn setTintColor:color_text_three];
+            _likeLab.textColor = color_text_three;
+        }
+        [UIWindow showSuccess:@"操作成功"];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
 }
 
 @end

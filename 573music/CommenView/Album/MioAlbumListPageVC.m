@@ -67,13 +67,10 @@
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        
         return [[MioAlbumListVC alloc] init];
     }else{
         return [[MioAlbumListVC alloc] init];
     }
-    
-    
 }
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{

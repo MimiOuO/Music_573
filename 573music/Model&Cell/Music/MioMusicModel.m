@@ -12,9 +12,93 @@
 @synthesize so_downloadProgress, so_downloadState = _so_downloadState, so_downloadError, so_downloadSpeed = _so_downloadSpeed;
 
 
-
 - (NSURL *)audioFileURL{
-    return [NSURL URLWithString:[Str(_standard[@"url"]) stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSString *quailty = @"";
+    if (_quailty) {
+        quailty = _quailty;
+    }else{
+        quailty = [userdefault objectForKey:@"defaultQuailty"];
+    }
+    if (Equals(quailty, @"标清")) {
+        if (self.hasSQ) {
+            return Str(_standard[@"url"]).mj_url;
+        }else if(self.hasHQ){
+            return Str(_high[@"url"]).mj_url;
+        }else{
+            return Str(_lossless[@"url"]).mj_url;
+        }
+    }
+    if (Equals(quailty, @"高清")) {
+        if (self.hasHQ) {
+            return Str(_high[@"url"]).mj_url;
+        }else if(self.hasSQ){
+            return Str(_standard[@"url"]).mj_url;
+        }else{
+            return Str(_lossless[@"url"]).mj_url;
+        }
+    }
+    if (Equals(quailty, @"无损")) {
+        if (self.hasFlac) {
+            return Str(_lossless[@"url"]).mj_url;
+        }else if(self.hasHQ){
+            return Str(_high[@"url"]).mj_url;
+        }else{
+            return Str(_standard[@"url"]).mj_url;
+        }
+    }
+    return @"".mj_url;
+}
+
+//- (NSString *)quailty{
+//
+//}
+
+- (NSString *)defaultQuailty{
+    NSString * quailty = [userdefault objectForKey:@"defaultQuailty"];
+    if (Equals(quailty, @"标清")) {
+        if (self.hasSQ) {
+            return @"标清";
+        }else if(self.hasHQ){
+            return @"高清";
+        }else{
+            return @"无损";
+        }
+    }
+    if (Equals(quailty, @"高清")) {
+        if (self.hasHQ) {
+            return @"高清";
+        }else if(self.hasSQ){
+            return @"标清";
+        }else{
+            return @"无损";
+        }
+    }
+    if (Equals(quailty, @"无损")) {
+        if (self.hasFlac) {
+            return @"无损";
+        }else if(self.hasHQ){
+            return @"高清";
+        }else{
+            return @"标清";
+        }
+    }
+    return @"";
+}
+
+- (BOOL)hasSQ{
+    if (((NSString *)_standard[@"url"]).length > 0) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+- (BOOL)hasHQ{
+    if (((NSString *)_high[@"url"]).length > 0) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 - (BOOL)hasFlac{

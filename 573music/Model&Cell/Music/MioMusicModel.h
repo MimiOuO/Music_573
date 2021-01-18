@@ -20,7 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * album_name;
 @property (nonatomic,copy) NSString * title;
 @property (nonatomic,copy) NSString * cover_image_path;
+@property (nonatomic,copy) NSString * lrc_url;
 
+@property (nonatomic,copy) NSString * quailty;
+@property (nonatomic,copy) NSString * defaultQuailty;
 @property (nonatomic, strong) NSDictionary *standard;
 @property (nonatomic, strong) NSDictionary *high;
 @property (nonatomic, strong) NSDictionary *lossless;
@@ -31,7 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *hits_all;
 @property (nonatomic, assign) BOOL is_like;
 
-@property (nonatomic, assign) BOOL hasFlac;
+@property (nonatomic, assign) BOOL hasSQ;//标清
+@property (nonatomic, assign) BOOL hasHQ;//高清
+@property (nonatomic, assign) BOOL hasFlac;//无损
 @property (nonatomic, assign) BOOL hasMV;
 
 @property (nonatomic, strong) NSURL * audioFileURL;

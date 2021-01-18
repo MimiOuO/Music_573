@@ -16,8 +16,10 @@
 #import "UIButton+MioExtension.h"
 #import "MioSongListVC.h"
 #import "MioMusicCmtVC.h"
+#import "MioMoreFuncView.h"
+#import "MioChooseQuantityView.h"
 
-@interface MioMainPlayerVC ()<UITableViewDelegate,UITableViewDataSource,GKSliderViewDelegate,LyricViewDelegate>
+@interface MioMainPlayerVC ()<GKSliderViewDelegate,LyricViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) MioLrcView *lrcView;
@@ -60,10 +62,11 @@
     [super viewDidLoad];
 
     [self creatUI];
+    [self downLoadLrc];
     [self registKVO];
 
     RecieveNotice(switchMusic, changeMusic);
-
+    RecieveNotice(@"clearPlaylist", clearMusic);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,10 +80,19 @@
     _currentLyricIndex = 0;
 }
 
+-(void)clearMusic{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    });
+}
 
 #pragma mark - UI
 
 -(void)creatUI{
+    
+    
     WEAKSELF;
     MioMusicModel *music = mioM3U8Player.currentMusic;
     _backgroundImg = [UIImageView creatImgView:frame(-KSW/2, -KSH/2, 2*KSW, 2*KSH) inView:self.view image:@"gequ_zhanweitu" radius:0];
@@ -105,15 +117,17 @@
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     };
     
-    _nameLab = [UILabel creatLabel:frame(60, StatusH + 10, KSW - 120, 25) inView:self.view text:@"光年之外" color:appWhiteColor boldSize:18 alignment:NSTextAlignmentCenter];
+    _nameLab = [UILabel creatLabel:frame(60, StatusH + 10, KSW - 120, 25) inView:self.view text:@"" color:appWhiteColor boldSize:18 alignment:NSTextAlignmentCenter];
     _nameLab.alpha = 0.5;
     _nameLab.text = music.title;
     
-    _singerLab = [UILabel creatLabel:frame(60, StatusH + 35, KSW - 120, 17) inView:self.view text:@"光年之外" color:rgba(255, 255, 255, 0.7) boldSize:12 alignment:NSTextAlignmentCenter];
+    _singerLab = [UILabel creatLabel:frame(60, StatusH + 35, KSW - 120, 17) inView:self.view text:@"" color:rgba(255, 255, 255, 0.7) boldSize:12 alignment:NSTextAlignmentCenter];
     _singerLab.text = music.singer_name;
     
     _qualityBtn = [UIButton creatBtn:frame(KSW2 - 26 - 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"standard_player_player" action:^{
-        
+        MioChooseQuantityView *chooseView = [[MioChooseQuantityView alloc] init];
+        chooseView.model = mioM3U8Player.currentMusic;
+        [chooseView show];
     }];
     
     _mvButton = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"mv_player_player" action:^{
@@ -136,7 +150,7 @@
     [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
     float divHeight = (_scrollView.height - 5 - (KSW - 56))/10;
     
-    _singleLrcLab = [UILabel creatLabel:frame(28, 0, KSW - 56, 22) inView:_scrollView text:@"如果世间万物能相爱" color:appWhiteColor size:16 alignment:NSTextAlignmentCenter];
+    _singleLrcLab = [UILabel creatLabel:frame(28, 0, KSW - 56, 22) inView:_scrollView text:@"" color:appWhiteColor size:16 alignment:NSTextAlignmentCenter];
     _singleLrcLab.centerY = 5 + (KSW - 56) + divHeight*3;
 
     _slider = [[GKSliderView alloc] initWithFrame:frame(28, 5 + (KSW - 56) + divHeight * 6 - 4.5, KSW - 56, 20)];
@@ -218,16 +232,13 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     _moreBtn = [UIButton creatBtn:frame(KSW - 24 - 73, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
+
+        MioMoreFuncView *view = [[MioMoreFuncView alloc] init];
+        view.model = mioM3U8Player.currentMusic;
+        view.fatherVC = self;
+        view.lrcView = _lrcView;
+        [view show];
         
-        goLogin
-        
-//        MioSongListVC *vc = [[MioSongListVC alloc] init];
-//        vc.view.height = KSH;
-//        [self.navigationController pushViewController:vc animated:YES];
-        
-//        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
-//        nav.modalPresentationStyle = 0;
-//        [self presentViewController:nav animated:YES completion:nil];
     }];
     _cmtCountLab = [UILabel creatLabel:frame(16.5, -5, 30, 17) inView:_cmtBtn text:music.comment_num color:appWhiteColor size:12 alignment:NSTextAlignmentLeft];
 
@@ -252,6 +263,7 @@
         _likeBtn.selected = NO;
     }
     _cmtCountLab.text = music.comment_num;
+    _singleLrcLab.text = @"";
 }
 
 #pragma mark - KVO
@@ -279,7 +291,6 @@
     }];
     
     [mioM3U8Player xw_addObserverBlockForKeyPath:@"currentTime" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
-//        NSLog(@"___%f",mioM3U8Player.currentTime / mioM3U8Player.currentMusicDuration);
         if (isnan(mioM3U8Player.currentTime / mioM3U8Player.currentMusicDuration)) {
             NSLog(@"nananannanananan");
         }else{
@@ -288,26 +299,43 @@
                 _currentTimeLab.text = [NSDate stringDuartion:mioM3U8Player.currentTime];
                 _slider.value = mioM3U8Player.currentTime / mioM3U8Player.currentMusicDuration;
                 [self.slider layoutIfNeeded];
+                
+                _singleLrcLab.text = _lrcView.lyrics[_lrcView.currentLyricIndex].content;
+                if (Equals(_singleLrcLab.text, @"暂无歌词")) {
+                    _singleLrcLab.text = @"";
+                }
             }
         }
-
     }];
 }
 
-
 -(void)downLoadLrc{
+    if (mioM3U8Player.currentMusic.lrc_url.length > 0) {
+        NSString *dirPath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"lrcDownload"];
 
-//    MioDownloadRequest *req = [[MioDownloadRequest alloc] initWinthUrl:mioM3U8Player.currentMusic.lrc_url fileName:[NSString stringWithFormat:@"%@.lrc",mioM3U8Player.currentMusic.id]];
-//    [req startWithCompletionBlockWithSuccess:^(__kindof MioDownloadRequest * _Nonnull request) {
-//        NSLog(@"%s res:%@", __func__, request.lrcName);
-//        if ([request.lrcName containsString:mioM3U8Player.currentMusic.id]) {
-//            NSArray *lyrics = [LyricParser parserLyricWithFileName:[NSString stringWithFormat:@"%@/%@.lrc",LRCDownloadDir,mioM3U8Player.currentMusic.id]];
-//            _lrcView.lyrics = lyrics;
-//        }
-//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//
-//    }];
-
+        NSString *lrcName=[NSString stringWithFormat:@"%@.lrc",mioM3U8Player.currentMusic.song_id];
+        NSString *lrcPath = [NSString stringWithFormat:@"%@/%@",dirPath,lrcName];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:lrcPath]) {//歌词已存在
+            NSArray *lrcArr = [LyricParser parserLyricWithFileName:lrcPath];
+            _lrcView.lyrics = lrcArr;
+        } else{//歌词不存在
+            MioDownloadRequest *req = [[MioDownloadRequest alloc] initWinthUrl:[NSString stringWithFormat:@"%@",mioM3U8Player.currentMusic.lrc_url.mj_url] fileName:[NSString stringWithFormat:@"%@.lrc",mioM3U8Player.currentMusic.song_id]];
+            [req success:^(NSDictionary * _Nonnull result) {
+                NSLog(@"歌词下载成功");
+                NSArray *lrcArr = [LyricParser parserLyricWithFileName:lrcPath];
+                _lrcView.lyrics = lrcArr;
+            } failure:^(NSString * _Nonnull errorInfo) {
+                NSLog(@"歌词下载失败");
+            }];
+        };
+    }else{//没有歌词
+        MusicLyric *lyric = [[MusicLyric alloc]init];
+        lyric.content = @"暂无歌词";
+        lyric.time = 0;
+        _lrcView.lyrics = @[lyric];
+    }
 }
 
 
@@ -378,8 +406,6 @@
     }
 }
 
-
-
 -(void)playListClick{
     
     MioPlayListVC * vc = [[MioPlayListVC alloc]init];
@@ -409,7 +435,5 @@
 - (void)lyricView:(MioLrcView *)lyricView withProgress:(CGFloat)progress{
     NSLog(@"%f",progress);
 }
-
-
 
 @end

@@ -26,6 +26,7 @@
     if (self) {
         
         RecieveNotice(switchMusic, changeMusic);
+        RecieveNotice(@"clearPlaylist", changeMusic);
         WEAKSELF;
         [mioM3U8Player xw_addObserverBlockForKeyPath:@"status" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
             [weakSelf playerStatusChanged];
@@ -64,9 +65,18 @@
 
 -(void)updateUI{
     MioMusicModel *music = mioM3U8Player.currentMusic;
-    [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"qxt_gequ")];
-    _songNameLab.text = music.title;
-    _singerLab.text = music.singer_name;
+    [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"qxt_logo")];
+    _songNameLab.text = music?music.title:@"573音乐";
+    _singerLab.text = music?music.singer_name:@"欢迎来到573音乐";
+    if (music) {
+        _playListBtn.enabled = YES;
+        _playBtn.enabled = YES;
+        _playNextBtn.enabled = YES;
+    }else{
+        _playListBtn.enabled = NO;
+        _playBtn.enabled = NO;
+        _playNextBtn.enabled = NO;
+    }
 }
 
 

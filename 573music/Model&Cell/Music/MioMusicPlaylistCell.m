@@ -27,6 +27,11 @@
         _mvImg = [MioImageView creatImgView:frame(0, Mar, 22, 12) inView:self.contentView image:@"playlist_mv" bgTintColorName:name_main radius:0];
         _singerLab = [MioLabel creatLabel:frame(0, 0, 0, 44) inView:self.contentView text:@"" colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
         MioImageView *icon = [MioImageView creatImgView:frame(KSW - 32, 14, 16, 16) inView:self.contentView image:@"liebiao_qingchu" bgTintColorName:name_icon_three radius:0];
+        [icon whenTapped:^{
+            if (self.deleteBlock) {
+                self.deleteBlock(self);
+            }
+        }];
     }
     return self;
 }

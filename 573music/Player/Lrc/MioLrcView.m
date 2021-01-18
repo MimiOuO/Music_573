@@ -8,7 +8,6 @@
 
 #import "MioLrcView.h"
 #import "UIColorLabel.h"
-#import "MusicLyric.h"
 #import "SliderView.h"
 //#import "MusicTableView.h"
 
@@ -245,6 +244,8 @@
 #pragma mark setter 和 getter方法
 - (void)setLyrics:(NSArray *)lyrics
 {
+    _adjustLrcSec = 0;
+    
     _lyrics = lyrics;
     // 避免切歌时重复加载label
     [self.vScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -366,12 +367,12 @@
     }
     
     // 1.歌词太快
-    if (mioM3U8Player.currentTime < lyric.time && _currentLyricIndex != 0) {
+    if ((mioM3U8Player.currentTime + _adjustLrcSec)< lyric.time && _currentLyricIndex != 0) {
         NSLog(@"歌词——————%ld",(long)_currentLyricIndex);
         self.currentLyricIndex --; [self updateLrc];
     }
     // 1.歌词太慢
-    if (mioM3U8Player.currentTime > nextLyric.time && _currentLyricIndex != _lyrics.count - 1) {
+    if ((mioM3U8Player.currentTime + _adjustLrcSec)> nextLyric.time && _currentLyricIndex != _lyrics.count - 1) {
         NSLog(@"歌词++++++%ld",(long)_currentLyricIndex);
         self.currentLyricIndex ++; [self updateLrc];
     }

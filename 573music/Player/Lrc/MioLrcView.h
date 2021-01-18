@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MusicLyric.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @class MioLrcView;
@@ -24,13 +24,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id <LyricViewDelegate>delegate;
 /// 歌词数组
-@property (nonatomic, strong) NSArray *lyrics;
+@property (nonatomic, strong) NSArray<MusicLyric *> *lyrics;
 /// 每行歌词的高度
 @property (nonatomic, assign) NSInteger rowHeight;
 /// 当前显示的歌词索引
 @property (nonatomic, assign) NSInteger currentLyricIndex;
 
 @property (nonatomic, assign) CGFloat progress;
+
+@property (nonatomic, assign) NSInteger adjustLrcSec;
 
 -(void)updateLrc;
 @end

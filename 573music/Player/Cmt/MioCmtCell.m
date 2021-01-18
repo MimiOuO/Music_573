@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UILabel *timeAndAdress;
 @property (nonatomic, strong) UIView *replayView;
 @property (nonatomic, strong) UILabel *allcmtLab;
+@property (nonatomic, strong) UIButton *likeBtn;
+@property (nonatomic, strong) UILabel *likeLab;
 @end
 
 @implementation MioCmtCell
@@ -28,6 +30,11 @@
 
         _nickName = [UILabel creatLabel:frame(0, 0, 0, 0) inView:self.contentView text:@"" color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];
 
+        _likeBtn = [MioButton creatBtn:frame(KSW_Mar - 20, 10, 20, 20) inView:self.contentView bgImage:@"pinglun_wiedianzan" bgTintColorName:name_icon_three action:nil];
+        
+        _likeLab = [UILabel creatLabel:frame(KSW - 38 - 50, 12, 50, 18) inView:self.contentView text:@"0" color:color_text_three size:14 alignment:NSTextAlignmentRight];
+
+        
         _content = [UILabel creatLabel:frame(0, 0, 0, 0) inView:self.contentView text:@"" color:color_text_one size:14 alignment:NSTextAlignmentLeft];
         
         [_content whenTapped:^{
@@ -128,6 +135,37 @@
         _replayView.sd_layout.topSpaceToView(_allcmtLab, 0).heightIs(0);
     }
     
+    
+    _likeLab.text = cmtModel.like_num;
+    [_likeBtn whenTapped:^{
+        [self likeClick:cmtModel.comment_id];
+    }];
+    if (cmtModel.is_like) {
+        _likeBtn.selected = YES;
+        [_likeBtn setTintColor:color_main];
+        _likeLab.textColor = color_main;
+    }else{
+        _likeBtn.selected = NO;
+        [_likeBtn setTintColor:color_text_three];
+        _likeLab.textColor = color_text_three;
+    }
+}
+
+-(void)likeClick:(NSString *)cmtId{
+    [MioPostReq(api_likes, (@{@"model_name":@"comment",@"model_ids":@[cmtId]})) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _likeBtn.selected = !_likeBtn.selected;
+        if (_likeBtn.selected == YES) {
+            [_likeBtn setTintColor:color_main];
+            _likeLab.textColor = color_main;
+        }else{
+            [_likeBtn setTintColor:color_text_three];
+            _likeLab.textColor = color_text_three;
+        }
+        [UIWindow showSuccess:@"操作成功"];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
 }
 
 //-(void)clickPraise:(UIButton *)btn{

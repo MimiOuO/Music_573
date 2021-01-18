@@ -73,17 +73,42 @@
 }
 
 -(void)addLaterPlayList:(NSArray<MioMusicModel*> *)playListArr{
-    
+    if (self.playListArr.count == 0) {
+        [mioM3U8Player playWithMusicList:playListArr andIndex:0];
+    }else{
+        [self.playListArr insertObjects:playListArr atIndexes: [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.currentPlayIndex + 1,playListArr.count)]];
+        [self saveCurrentPlayList];
+    }
 }
 
 -(void)deletePlayListAtIndex:(NSInteger)index{
+    if (self.playListArr.count == 1) {
+        [self clearPlayList];
+    }
+
+    if (index == self.currentPlayIndex) {//删除的是当前播放的歌曲
+        [mioM3U8Player playNext];
+        
+    }
+    if (index < self.currentPlayIndex) {
+        self.currentPlayIndex = self.currentPlayIndex - 1;
+    }
     
+    [self.playListArr removeObjectAtIndex:index];
+    setPlayIndex(self.currentPlayIndex);
+    [self saveCurrentPlayList];
 }
 
 -(void)clearPlayList{
-//    NSArray *a = [WHCSqlite query:[MioMusicModel class]  where:@"savetype = 'playList'"];
-//    NSInteger b = getPlayIndex;
-//    NSLog(@"%@",a);
+
+    [self.playListArr removeAllObjects];
+    self.currentPlayIndex = -1;
+    setPlayIndex(self.currentPlayIndex);
+    mioM3U8Player.currentMusic = nil;
+    [mioM3U8Player stop];
+    [self saveCurrentPlayList];
+    PostNotice(@"clearPlaylist");
+    
 }
 
 -(void)saveCurrentIndex{
@@ -114,7 +139,10 @@
             return mioPlayList.currentPlayIndex - 1;
         }
     }else{//随机
-        NSInteger index = random()%self.playListArr.count;
+        NSInteger index;
+        do {
+            index = random()%self.playListArr.count;
+        } while (mioPlayList.currentPlayIndex == index);
         return index;
     }
 }
@@ -127,7 +155,10 @@
             return mioPlayList.currentPlayIndex + 1;
         }
     }else{//随机
-        NSInteger index = random()%self.playListArr.count;
+        NSInteger index;
+        do {
+            index = random()%self.playListArr.count;
+        } while (mioPlayList.currentPlayIndex == index);
         return index;
     }
 }
@@ -145,7 +176,10 @@
         }
 
     }else{//随机
-        NSInteger index = random()%self.playListArr.count;
+        NSInteger index;
+        do {
+            index = random()%self.playListArr.count;
+        } while (mioPlayList.currentPlayIndex == index);
         return index;
     }
 }

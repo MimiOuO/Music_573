@@ -120,6 +120,7 @@
         [userdefault setObject:@"1" forKey:@"first"];
         [userdefault setObject:@"bai" forKey:@"skin"];
         [userdefault setObject:@"1" forKey:@"showJifen"];
+        [userdefault setObject:@"标清" forKey:@"defaultQuailty"];
         setPlayOrder(MioPlayOrderCycle);
     }
 }

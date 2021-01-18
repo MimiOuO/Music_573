@@ -30,8 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     self.view.backgroundColor = appClearColor;
     [self.view addRoundedCorners:UIRectCornerTopLeft|UIRectCornerTopRight withRadii:CGSizeMake(16, 16)];
 
@@ -58,11 +56,28 @@
         [self presentViewController:nav animated:YES completion:nil];
     }];
     MioButton *clearbtn = [MioButton creatBtn:frame(KSW -16 -16, 16, 16, 16) inView:self.view bgImage:@"liebiao_shanchu" bgTintColorName:name_icon_one action:^{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定清空播放队列？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再想想" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+
+            [mioPlayList clearPlayList];
+            [self dismissViewControllerAnimated:YES completion:nil];
+
+
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        alertController.modalPresentationStyle = 0;
+        [self presentViewController:alertController animated:YES completion:nil];
+        
 
     }];
 
     MioImageView *bgImg2 = [MioImageView creatImgView:frame(0, 400, KSW, 50 + SafeBotH) inView:self.view skin:SkinName image:@"picture_li" radius:0];
-    UIButton *closeBtn = [UIButton creatBtn:frame(0, 400, KSW, 50) inView:self.view bgColor:appClearColor title:@"关闭" titleColor:color_text_one font:14 radius:0 action:^{
+    UIButton *closeBtn = [UIButton creatBtn:frame(0, 400, KSW, 50 + SafeBotH) inView:self.view bgColor:appClearColor title:@"关闭" titleColor:color_text_one font:14 radius:0 action:^{
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
     
@@ -110,6 +125,31 @@
     }else{
         cell.isplaying = NO;
     }
+    cell.deleteBlock = ^(MioMusicPlaylistCell * cell) {
+        if (mioPlayList.playListArr.count == 1) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定清空播放队列？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再想想" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+
+                [mioPlayList clearPlayList];
+                [self dismissViewControllerAnimated:YES completion:nil];
+
+            }];
+            [alertController addAction:cancelAction];
+            [alertController addAction:okAction];
+            alertController.modalPresentationStyle = 0;
+            [self presentViewController:alertController animated:YES completion:nil];
+        }else{
+            NSLog(@"%ld",(long)indexPath.row);
+            [mioPlayList deletePlayListAtIndex:indexPath.row];
+            [_playList deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [_playList reloadData];
+        }
+    };
+    
     return cell;
 }
 

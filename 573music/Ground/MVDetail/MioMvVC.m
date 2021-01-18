@@ -160,13 +160,13 @@
 
 - (void)_timerAction:(id)timer
 {
-    NSLog(@"---------");
+//    NSLog(@"---------");
 //    NSLog(@"%f",self.player.currentPlayerManager.currentTime);
-    NSLog(@"%f",self.player.bufferTime);
-    NSLog(@"%f",self.player.bufferProgress);
+//    NSLog(@"%f",self.player.bufferTime);
+//    NSLog(@"%f",self.player.bufferProgress);
 //    NSLog(@"%@",self.player.playerBufferTimeChanged);
     
-    NSLog(@"---------");
+//    NSLog(@"---------");
 }
 
 -(void)changeCollection:(int)index{

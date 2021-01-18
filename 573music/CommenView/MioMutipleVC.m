@@ -71,6 +71,13 @@
     [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [selectArr addObject:_musicArr[obj.row]];
     }];
+    if (selectArr.count == 0) {
+        [UIWindow showInfo:@"还未选择歌曲"];
+        return;
+    }
+    [mioPlayList addLaterPlayList:selectArr];
+    [UIWindow showSuccess:@"添加成功"];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)addClick{
@@ -79,10 +86,12 @@
     [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [selectArr addObject:_musicArr[obj.row]];
     }];
-//    if (selectArr.count == 0) {
-//        [UIWindow showInfo:@"请选择歌曲"];
-//        return;
-//    }
+    
+    if (selectArr.count == 0) {
+        [UIWindow showInfo:@"还未选择歌曲"];
+        return;
+    }
+
     MioAddToSonglistVC *vc = [[MioAddToSonglistVC alloc] init];
     vc.musicArr = selectArr;
     [self.navigationController pushViewController:vc animated:YES];
@@ -90,6 +99,15 @@
 
 -(void)deleteClick{
     goLogin;
+    NSMutableArray<MioMusicModel *> *selectArr = [[NSMutableArray alloc] init];
+    [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [selectArr addObject:_musicArr[obj.row]];
+    }];
+    if (selectArr.count == 0) {
+        [UIWindow showInfo:@"还未选择歌曲"];
+        return;
+    }
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定删除？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再想想" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -98,10 +116,7 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 
         
-        NSMutableArray<MioMusicModel *> *selectArr = [[NSMutableArray alloc] init];
-        [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [selectArr addObject:_musicArr[obj.row]];
-        }];
+      
         NSMutableArray *idArr = [[NSMutableArray alloc] init];
         for (int i = 0;i < selectArr.count; i++) {
             [idArr addObject:selectArr[i].song_id];

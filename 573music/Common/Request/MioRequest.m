@@ -102,10 +102,11 @@
         if (self.responseStatusCode == 401) {
             info = @"授权失败";
             //[svprogressHUD showErrorWithStatus:@"登录已过期，请重新登录"];
-            
+            NSArray *noLokenArr = @[api_mySongLists];
+            if ([noLokenArr containsObject:self.requestUrl]) {
+                return info;
+            }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:nil];
-
-            
         }else if (self.responseStatusCode== 500) {
             info = @"服务器报错,请稍后再试!";
         }else

@@ -15,8 +15,8 @@
 #import "MioAboutUsVC.h"
 #import "MioFeedBackVC.h"
 #import "MioModiPassWordVC.h"
-
-@interface MioMoreVC ()
+#import "MioChooseDefaultQuailtyView.h"
+@interface MioMoreVC ()<defaultQuailtyDelegate>
 @property (nonatomic, strong) UILabel *timeLab;
 @property (nonatomic, strong) UISwitch *jifenSwitch;
 @property (nonatomic, strong) UISwitch *wifiSwitch;
@@ -81,7 +81,7 @@
             [bgView1 addSubview:_wifiSwitch];
         }
         if (Equals(fuc1Arr[i], @"默认播放音质")) {
-            _defaultPlay = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"标清" color:color_text_two size:14 alignment:NSTextAlignmentRight];
+            _defaultPlay = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:[userdefault objectForKey:@"defaultQuailty"] color:color_text_two size:14 alignment:NSTextAlignmentRight];
         }
         
     }
@@ -163,6 +163,11 @@
         MioFeedBackVC *vc = [[MioFeedBackVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if (Equals(title, @"默认播放音质")) {
+        MioChooseDefaultQuailtyView *vc = [[MioChooseDefaultQuailtyView alloc] init];
+        vc.delegate = self;
+        [vc show];
+    }
 }
 
 -(void)jifenClick{
@@ -190,6 +195,10 @@
 
 -(void)wifiClick{
     NSLog(@"%d",_wifiSwitch.on);
+}
+
+- (void)changeDefaultQuailty{
+    _defaultPlay.text = [userdefault objectForKey:@"defaultQuailty"];
 }
 
 #pragma mark - timeoff

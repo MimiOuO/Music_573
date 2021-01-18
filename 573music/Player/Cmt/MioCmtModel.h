@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * created_at;
 @property (nonatomic, strong) NSArray *sub_comments;
 @property (nonatomic, copy) NSString * isBendi;
+@property (nonatomic, assign) BOOL is_like;
+@property (nonatomic,copy) NSString * like_num;
 @end
 
 NS_ASSUME_NONNULL_END

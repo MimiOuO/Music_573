@@ -14,8 +14,9 @@
 }
 - (instancetype)initWinthUrl:(NSString *)url fileName:(NSString *)name{
     if (self = [super init]) {
-        _url = url;
+//        _url = url;
         _lrcName = name;
+        self.requestUrl = url;
         NSString *libPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         _cachePath = [libPath stringByAppendingPathComponent:@"lrcDownload"];
         
@@ -27,9 +28,37 @@
     return self;
 }
 
-- (NSString *)requestUrl {
-    return _url;
+- (void)success:(nullable MioRequestCompletionBlock)success
+                                    failure:(nullable MioRequestCompletionFailureBlock)failure
+{
+    if ([super loadCacheWithError:nil]) {
+        NSDictionary *result = [super responseJSONObject];
+        success(result);
+    }
+    [super setIgnoreCache:YES];
+    
+    [super startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        NSDictionary *result = [request responseJSONObject];
+        
+        BOOL isSuccess = YES;
+        
+        //校验格式
+//        if (self.verifyJSONFormat) {
+//            isSuccess = [[result objectForKey:@"success"] boolValue];
+//        }
+        
+        success(result);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        failure(self.errorInfo);
+    }];
 }
+
+//- (NSString *)requestUrl {
+//    return _url;
+//}
 - (NSString *)resumableDownloadPath {
 
     NSString *filePath = [_cachePath stringByAppendingPathComponent:_lrcName];

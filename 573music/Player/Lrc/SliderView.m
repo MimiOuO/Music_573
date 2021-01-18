@@ -72,7 +72,7 @@
     self.playBtn = playBtn;
     [self addSubview:playBtn];
     
-    UIImageView *lineImg = [UIImageView creatImgView:frame(KSW - 56 - 104 - 30, 14, 104, 1) inView:self image:@"play_line" radius:0];
+    UIImageView *lineImg = [UIImageView creatImgView:frame(KSW - 56 - 104 - 30, 14, 104, 1) inView:self image:@"bfq_xian" radius:0];
     
     // 背景图片
     bgImageView.image = [UIImage imageNamed:@"lyric_tipview_backimg"];

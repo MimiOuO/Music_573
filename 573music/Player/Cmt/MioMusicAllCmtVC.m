@@ -16,8 +16,8 @@
 @property (nonatomic, strong) UITableView *replyTable;
 @property (strong, nonatomic) YDCommentInputView *commentInputView;
 @property (nonatomic, strong) NSMutableArray *replyArr;
-@property (nonatomic, strong) UIButton *praiseButton;
-@property (nonatomic, strong) UILabel *praiseLab;
+@property (nonatomic, strong) UIButton *likeBtn;
+@property (nonatomic, strong) UILabel *likeLab;
 
 @end
 
@@ -50,31 +50,28 @@
     avatatImage.layer.masksToBounds = YES;
     [avatatImage sd_setImageWithURL:cmtModel.from_user.avatar.mj_url placeholderImage:image(@"qxt_yonhu")];
     
-    _praiseButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    _praiseButton.frame = CGRectMake(cmtView.width - 70, 14, 40, 40);
-    [_praiseButton setImage:[UIImage imageNamed:@"icon_dianzan1"] forState:UIControlStateNormal];
-    [_praiseButton setImage:[UIImage imageNamed:@"icon_dianzan"] forState:UIControlStateSelected];
-    [_praiseButton setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, -5)];
-    [_praiseButton addTarget:self action:@selector(clickPraise:) forControlEvents:UIControlEventTouchUpInside];
-    [cmtView addSubview:_praiseButton];
 
-    _praiseLab = [[UILabel alloc] initWithFrame:CGRectMake(_praiseButton.right - 5, 14, 50, 40)];
-    _praiseLab.textColor = grayTextColor;
-    [cmtView addSubview:_praiseLab];
-    _praiseLab.font = [UIFont boldSystemFontOfSize:14];
-    
-    
-//    if ([cmtModel.comment_status isEqualToString:@"1"]) {
-//        _praiseButton.selected = YES;
-//    } else {
-//        _praiseButton.selected = NO;
-//    }
-//    _praiseLab.text = cmtModel.zan_num;
-    
-//    UILabel *nickName = [MioNameLabel creatNameLab:CGRectMake(avatatImage.right + 6, 13, 200, 14) inView:cmtView text:cmtModel.user.nickname levelNum:cmtModel.user.levelNum size:14];
     UILabel *nickName = [UILabel creatLabelinView:cmtView text:cmtModel.from_user.nickname color:appBlackColor size:14];
     nickName.frame = CGRectMake(avatatImage.right + 6, 13, 200, 14);
 
+    _likeBtn = [MioButton creatBtn:frame(KSW_Mar2 - 28, 18, 20, 20) inView:cmtView bgImage:@"pinglun_wiedianzan" bgTintColorName:name_icon_three action:nil];
+    
+    _likeLab = [UILabel creatLabel:frame(KSW_Mar - 46 - 50, 20, 50, 18) inView:cmtView text:@"0" color:color_text_three size:14 alignment:NSTextAlignmentRight];
+
+    _likeLab.text = cmtModel.like_num;
+    [_likeBtn whenTapped:^{
+        [self likeClick:cmtModel.comment_id];
+    }];
+    if (cmtModel.is_like) {
+        _likeBtn.selected = YES;
+        [_likeBtn setTintColor:color_main];
+        _likeLab.textColor = color_main;
+    }else{
+        _likeBtn.selected = NO;
+        [_likeBtn setTintColor:color_text_three];
+        _likeLab.textColor = color_text_three;
+    }
+    
     UILabel *timeAndAdress = [UILabel creatLabel:CGRectMake(avatatImage.right + 6, nickName.bottom + 4, 200, 12) inView:cmtView text:cmtModel.created_at color:rgba(125, 142, 165, 1) size:12 alignment:NSTextAlignmentLeft];
     
     UILabel *content = [UILabel creatLabel:CGRectMake(52, 51, KSW - 86, 0) inView:cmtView text:cmtModel.content color:color_text_one size:14];
@@ -146,6 +143,24 @@
     }];
 }
 
+-(void)likeClick:(NSString *)cmtId{
+    [MioPostReq(api_likes, (@{@"model_name":@"comment",@"model_ids":@[cmtId]})) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _likeBtn.selected = !_likeBtn.selected;
+        if (_likeBtn.selected == YES) {
+            [_likeBtn setTintColor:color_main];
+            _likeLab.textColor = color_main;
+        }else{
+            [_likeBtn setTintColor:color_text_three];
+            _likeLab.textColor = color_text_three;
+        }
+        [UIWindow showSuccess:@"操作成功"];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _replyArr.count;
 }
@@ -183,20 +198,6 @@
     [self.commentInputView showInputView];
 }
 
-
--(void)addCommentWith:(NSString *)message {
-
-    
-}
-
--(void)clickPraise:(UIButton *)btn{
-  
-}
-
-
--(void)replayWith:(NSIndexPath *)indexPath{
-
-}
 
 #pragma mark - 键盘代理
 - (void)commentInputView:(YDCommentInputView *)anInputView onSendText:(NSString *)aText

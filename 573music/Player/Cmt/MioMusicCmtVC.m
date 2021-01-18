@@ -51,7 +51,7 @@
 }
 
 -(void)creatUI{
-    _tableView = [UITableView creatTable:frame(0, NavH, KSW, KSH - NavH - TabH) inView:self.view vc:self];
+    _tableView = [UITableView creatTable:frame(0, NavH, KSW, KSH - NavH - 44 - SafeBotH) inView:self.view vc:self];
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -107,7 +107,7 @@
     if (self.message == 0) {
         dic = @{
             @"model_name":@"song",
-            @"model_ids":_musicId,
+            @"model_id":_musicId,
             @"content":content,
         };
     } else {
