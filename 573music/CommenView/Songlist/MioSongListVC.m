@@ -38,8 +38,6 @@
     _page = 1;
     [self creatUI];
     
-
-    
     [self.navView.centerButton setTitle:@"歌单" forState:UIControlStateNormal];
     [self.navView.centerButton setTitleColor:appWhiteColor forState:UIControlStateNormal];
     [self.navView.leftButton setImage:backArrowWhiteIcon forState:UIControlStateNormal];
@@ -176,7 +174,7 @@
 }
 
 -(void)likeClick{
-    
+    goLogin;
     [MioPostReq(api_likes, (@{@"model_name":@"song_list",@"model_ids":@[_songlistId]})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         _likeBtn.selected = !_likeBtn.selected;

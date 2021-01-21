@@ -52,6 +52,9 @@
     _pageController.progressViewCornerRadius = 1.5;
     _pageController.progressViewBottomSpace = 4;
     _pageController.viewFrame = CGRectMake(0, StatusH , KSW , KSH - StatusH  - TabH);
+    if (_index) {
+        _pageController.selectIndex        = _index;
+    }
     [_contentView addSubview:self.pageController.view];
     
     UIButton *backBtn = [UIButton creatBtn:frame(0, StatusH, 50, 44) inView:self.view bgColor:appClearColor title:@"" titleColor:appClearColor font:10 radius:0  action:^{
@@ -76,7 +79,7 @@
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        return @"推荐专辑";
+        return @"热门专辑";
     }else{
         return @"最新专辑";
     }

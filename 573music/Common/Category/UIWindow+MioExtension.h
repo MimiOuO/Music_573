@@ -16,8 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)showLoading:(NSString *)text;
 +(void)showMaskLoading:(NSString *)text;
 +(void)hiddenLoading;
++(void)showNewVersion:(NSString *)message link:(NSString *)url;
 
 +(void)showMessage:(NSString *)message withTitle:(NSString *)title;
++(void)showOnlyWifiTip;
 @end
 
 @interface MioHUD : UIView

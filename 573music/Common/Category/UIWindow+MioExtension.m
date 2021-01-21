@@ -189,6 +189,54 @@
 
 }
 
++(void)showNewVersion:(NSString *)message link:(NSString *)url
+{
+    UIWindow * window = [UIApplication sharedApplication].keyWindow;
+   
+    
+    UIView *bgView = [UIView creatView:frame(0, 0, KSW, KSH) inView:window bgColor:rgba(0, 0, 0, 0.3) radius:0];
+    MioView *view = [MioView creatView:frame(40, 0, KSW - 80, KSH) inView:bgView bgColorName:name_hud radius:8];
+    
+//    UIImageView *icon = [UIImageView creatImgView:frame(20, view.top - 13, ksw, 69) inView:bgView image:@"gengxin_yinfu" radius:0];
+    MioImageView *icon = [MioImageView creatImgView:frame(20, view.top - 13, KSW - 50, 80) inView:bgView image:@"gengxin_yinfu" bgTintColorName:name_main radius:0];
+    
+    MioLabel *titleLab1 = [MioLabel creatLabel:frame(0, 68, KSW -  80, 14) inView:view text:@"Discover new version" colorName:name_text_two size:10 alignment:NSTextAlignmentCenter];
+    MioLabel *titleLab2 = [MioLabel creatLabel:frame(0, 84, KSW -  80, 34) inView:view text:@"发现新版本" colorName:name_text_one size:24 alignment:NSTextAlignmentCenter];
+    
+    MioLabel *tip = [MioLabel creatLabel:frame(20, 136, KSW - 130, 0) inView:view text:message colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
+    tip.numberOfLines = 0;
+
+    
+    UIButton *knowBtn = [UIButton creatBtn:frame(20, tip.bottom + 20, view.width - 40, 38) inView:view bgColor:color_main title:@"立即更新" titleColor:appWhiteColor font:14 radius:6 action:^{
+        [[UIApplication sharedApplication] openURL:url.mj_url];
+    }];
+    
+    UIButton *ignoreBtn = [UIButton creatBtn:frame(20, knowBtn.bottom + 10, view.width - 40, 38) inView:view bgColor:appClearColor title:@"忽略此版本" titleColor:color_text_two font:14 radius:6 action:^{
+        [UIView animateWithDuration:0.3 animations:^{
+            bgView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [bgView removeFromSuperview];
+        }];
+    }];
+    
+    tip.height = [tip.text heightForFont:Font(14) width:KSW - 130];
+    view.height = tip.height + 136 + 130;
+    view.centerY = KSH/2;
+    knowBtn.top = tip.bottom + 20;
+    ignoreBtn.top = knowBtn.bottom + 15;
+    icon.top = view.top - 13;
+
+}
+
+
++(void)showOnlyWifiTip{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [UIWindow showMessage:@"当前网络模式为“仅WIFI可用”,不能访问网络" withTitle:@"提示"];
+    });
+}
+
+
 @end
 
 

@@ -36,6 +36,7 @@
         
         _playListArr = [[WHCSqlite query:[MioMusicModel class]  where:@"savetype = 'playList'"] mutableCopy];
         _currentPlayIndex = getPlayIndex;
+        
         WEAKSELF;
         [self xw_addObserverBlockForKeyPath:@"playListArr" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
             NSLog(@"播放列表变化");

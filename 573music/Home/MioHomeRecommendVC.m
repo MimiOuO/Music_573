@@ -15,6 +15,9 @@
 #import "MioHallRankView.h"
 #import "MioRadioView.h"
 #import "MioSingerView.h"
+#import "MioAlbumListPageVC.h"
+#import "MioSonglistPageVC.h"
+#import "MioMusicListPageVC.h"
 
 #import "MioSongListVC.h"
 #import "MioAlbumVC.h"
@@ -49,6 +52,7 @@
 
 -(void)request{
     [MioGetCacheReq(api_ranks, @{@"page":@"推荐"}) success:^(NSDictionary *result){
+        
         NSArray *data = [result objectForKey:@"data"];
         for (int i = 0;i < data.count; i++) {
             if (Equals(@"歌曲", data[i][@"type"])) {
@@ -65,13 +69,15 @@
             }
         }
         [self updateUI];
-        
+        [_bgScroll.mj_header endRefreshing];
     } failure:^(NSString *errorInfo) {}];
 }
 
 -(void)creatUI{
     _bgScroll = [UIScrollView creatScroll:frame(0, 44 , KSW,KSH - NavH - TabH - 44 -49) inView:self.view contentSize:CGSizeMake(KSW, 1490)];
-    
+    _bgScroll.mj_header = [MioRefreshHeader headerWithRefreshingBlock:^{
+        [self request];
+    }];
     UIImageView *radioImg = [UIImageView creatImgView:frame(29, 14, 72, 13) inView:_bgScroll image:@"diantai" radius:0];
     MioView *radioBg = [MioView creatView:frame(Mar, 26, KSW_Mar2, 136) inView:_bgScroll bgColorName:name_sup_one radius:6];
     
@@ -80,8 +86,25 @@
     for (int i = 0;i < titleYArr.count; i++) {
         MioLabel *titleLab = [MioLabel creatLabel:frame(Mar, [titleYArr[i] intValue], 100, 20) inView:_bgScroll text:titleArr[i] colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
         if (i < 3) {
-            MioLabel *moreSonglistLab = [MioLabel creatLabel:frame(KSW_Mar - 50, [titleYArr[i] intValue], 50, 20) inView:_bgScroll text:@"更多" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
+            MioLabel *moreLab = [MioLabel creatLabel:frame(KSW_Mar - 50, [titleYArr[i] intValue], 50, 20) inView:_bgScroll text:@"更多" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
             MioImageView *arrow1 = [MioImageView creatImgView:frame(KSW_Mar -  14,[titleYArr[i] intValue] + 3, 14, 14) inView:_bgScroll image:@"return_more" bgTintColorName:name_icon_two radius:0];
+            [moreLab whenTapped:^{
+                if (Equals(titleArr[i], @"热门歌单")) {
+                    MioSonglistPageVC *vc = [[MioSonglistPageVC alloc] init];
+                    vc.index = 0;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                if (Equals(titleArr[i], @"热门单曲")) {
+                    MioMusicListPageVC *vc = [[MioMusicListPageVC alloc] init];
+                    vc.index = 0;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                if (Equals(titleArr[i], @"热门专辑")) {
+                    MioAlbumListPageVC *vc = [[MioAlbumListPageVC alloc] init];
+                    vc.index = 0;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+            }];
         }
     }
     

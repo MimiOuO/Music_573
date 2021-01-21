@@ -144,6 +144,7 @@
 }
 
 -(void)likeClick{
+    goLogin;
     [UIWindow showMaskLoading:@"请稍后"];
     [MioPostReq(api_likes, (@{@"model_name":@"singer",@"model_ids":@[_singerId]})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];

@@ -37,7 +37,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         mioPlayList.delegate = self;
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_timerAction:) userInfo:nil repeats:YES];
         
-        self.currentMusic = mioPlayList.playListArr[mioPlayList.currentPlayIndex];
+        if (mioPlayList.currentPlayIndex > 0) {
+            self.currentMusic = mioPlayList.playListArr[mioPlayList.currentPlayIndex];
+        }
+        
         
         ZFAVPlayerManager *playerManager = [[ZFAVPlayerManager alloc] init];
 
@@ -60,7 +63,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             self.player.assetURLs = @[self.currentMusic.audioFileURL];
         }
         
+        [self setupLockScreenControlInfo];
         
+        // 插拔耳机
+        RecieveNotice(AVAudioSessionRouteChangeNotification, audioSessionRouteChange:);
+        RecieveNotice(AVAudioSessionInterruptionNotification, audioSessionInterruption:)
     }
     return self;
 }
@@ -98,6 +105,14 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 //统一播放方法
 - (void)playWithMusic:(MioMusicModel *)music withMusicList:(NSArray<MioMusicModel *> *)musicList{
+    if (Equals([userdefault objectForKey:@"openNewtwork"], @"0")) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [UIWindow showMessage:@"当前网络模式为“仅WIFI可用”,不能访问网络" withTitle:@"提示"];
+        });
+        return;
+    }
+    
     if (![self isCurrentPlay:music]) {//不是当前歌曲
         //重设Mioplayer模型
         self.currentMusic = music;
@@ -155,6 +170,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)play{
+    [MPRemoteCommandCenter sharedCommandCenter].playCommand.enabled = YES;
     static dispatch_once_t onceToken;
     if (onceToken >= 0) {//第一次调用
         dispatch_once(&onceToken, ^{
@@ -166,6 +182,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)pause{
+    
     [self.player.currentPlayerManager pause];
 }
 
@@ -208,25 +225,30 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 //播放进度
 - (void)_timerAction:(id)timer
 {
-//    NSLog(@"---------");
-//    NSLog(@"%f",self.player.currentTime);
-//    NSLog(@"%f",self.player.bufferTime);
-//
-//    NSLog(@"---------");
     
     self.currentMusicDuration = self.player.totalTime;
     self.currentTime = self.player.currentTime;
     self.bufferProgress = self.player.bufferProgress;
     
+    if (mioM3U8Player.currentMusic) {
+        //锁屏界面
+        UIImageView *imageView = [[UIImageView alloc] init];
+        [imageView sd_setImageWithURL:mioM3U8Player.currentMusic.cover_image_path.mj_url placeholderImage:image(@"qxt_logo")];
+
+
+        MPMediaItemArtwork *artWork = [[MPMediaItemArtwork alloc] initWithImage:imageView.image];
+        NSDictionary *dic = @{
+            MPMediaItemPropertyTitle:mioM3U8Player.currentMusic.title,
+            MPMediaItemPropertyArtist:mioM3U8Player.currentMusic.singer_name,
+            MPMediaItemPropertyArtwork:artWork,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime:[NSNumber numberWithInteger:mioM3U8Player.currentTime],
+            MPMediaItemPropertyPlaybackDuration:[NSNumber numberWithFloat:mioM3U8Player.currentMusicDuration],
+                 };
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dic];
+    }
 }
 
-//缓存进度
-- (void)_updateBufferingStatus
-{
-//    if (!isnan([_streamer bufferingRatio])) {
-//        self.bufferProgress = [_streamer bufferingRatio];
-//    }
-}
+
 //播放状态改变
 - (void)updateState:(ZFPlayerPlaybackState)state
 {
@@ -268,8 +290,96 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 
-//缓存文件成功
+- (void)setupLockScreenControlInfo {
+    MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
+    // 锁屏播放
+    [commandCenter.playCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+        NSLog(@"锁屏暂停后点击播放");
+        [self play];
+        return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    // 锁屏暂停
+    [commandCenter.pauseCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+        NSLog(@"锁屏正在播放点击后暂停");
+        [self pause];
+        return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    
 
-#pragma mark - 播放列表代理
+    
+    // 播放和暂停按钮（耳机控制）
+    MPRemoteCommand *playPauseCommand = commandCenter.togglePlayPauseCommand;
+    playPauseCommand.enabled = YES;
+    [playPauseCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+        
+        if (self.status == MioPlayerStatePlaying) {
+            [self pause];
+        }else {
+            [self play];
+        }
+        
+        return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    
+    // 上一曲
+    MPRemoteCommand *previousCommand = commandCenter.previousTrackCommand;
+    [previousCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+        
+        [self playPre];
+        
+        return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    
+    // 下一曲
+    MPRemoteCommand *nextCommand = commandCenter.nextTrackCommand;
+    nextCommand.enabled = YES;
+    [nextCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+        
+        [self playNext];
+        
+        return MPRemoteCommandHandlerStatusSuccess;
+    }];
+}
+
+- (void)audioSessionRouteChange:(NSNotification *)notify {
+    NSDictionary *interuptionDict = notify.userInfo;
+    
+    NSInteger routeChangeReason = [[interuptionDict valueForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
+    switch (routeChangeReason) {
+        case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
+            NSLog(@"耳机插入");
+            // 继续播放音频，什么也不用做
+            break;
+        case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
+        {
+            NSLog(@"耳机拔出");
+            
+            if (self.status == MioPlayerStatePlaying) {
+                [self pause];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)audioSessionInterruption:(NSNotification *)notify {
+    NSDictionary *interuptionDict = notify.userInfo;
+    
+    NSInteger interruptionType = [interuptionDict[AVAudioSessionInterruptionTypeKey] integerValue];
+    NSInteger interruptionOption = [interuptionDict[AVAudioSessionInterruptionOptionKey] integerValue];
+    
+    if (interruptionType == AVAudioSessionInterruptionTypeBegan) {
+        // 收到播放中断的通知，暂停播放
+        if (self.status == MioPlayerStatePlaying) {
+            [self pause];
+        }
+    }else if (interruptionType == AVAudioSessionInterruptionTypeEnded){
+        
+    }
+}
+
 
 @end

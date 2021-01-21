@@ -64,6 +64,14 @@
     }
     [super setIgnoreCache:YES];
     
+    if (Equals([userdefault objectForKey:@"openNewtwork"], @"0")) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [UIWindow showMessage:@"当前网络模式为“仅WIFI可用”,不能访问网络" withTitle:@"提示"];
+        });
+        return;
+    }
+
     [super startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         NSDictionary *result = [request responseJSONObject];

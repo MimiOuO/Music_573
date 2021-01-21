@@ -10,6 +10,7 @@
 
 @interface MioChooseQuantityView()
 @property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UIView *quailtyView;
 @end
 
 @implementation MioChooseQuantityView
@@ -36,6 +37,7 @@
         UIButton *closeBtn = [UIButton creatBtn:frame(0, 160, KSW, 50 + SafeBotH) inView:_bgView bgColor:appClearColor title:@"关闭" titleColor:color_text_one font:14 radius:0 action:^{
             [self hiddenView];
         }];
+        _quailtyView = [UIView creatView:frame(0, 0, KSW, 210 + SafeBotH) inView:_bgView bgColor:appClearColor radius:0];
     }
     return self;
 }
@@ -62,12 +64,8 @@
 -(void)creatUI{
     
     
-    NSString *quailty = @"";
-    if (_model.quailty) {
-        quailty = _model.quailty;
-    }else{
-        quailty = _model.defaultQuailty;
-    }
+    NSString *quailty = _model.defaultQuailty;
+
     
     NSMutableArray *titleArr = [[NSMutableArray alloc] init];
     NSMutableArray *imgArr = [[NSMutableArray alloc] init];
@@ -83,14 +81,23 @@
         [titleArr addObject:@"无损"];
         [imgArr addObject:@"yz_ws"];
     }
-    
+
+    [_quailtyView removeAllSubviews];
     for (int i = 0;i < titleArr.count; i++) {
-        UIView *bgView = [UIView creatView:frame((KSW - 48*titleArr.count - 26*(titleArr.count - 1))/2 + i * 74 , 73, 48, 48) inView:_bgView bgColor:color_sup_four radius:6];
-        MioImageView *icon = [MioImageView creatImgView:frame(13, 13, 22, 22) inView:bgView image:imgArr[i] bgTintColorName:name_icon_one radius:0];
-        MioLabel *title = [MioLabel creatLabel:frame(bgView.left - 5, 123, 58, 17) inView:_bgView text:titleArr[i] colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+        UIView *bgView = [UIView creatView:frame((KSW - 48*titleArr.count - 26*(titleArr.count - 1))/2 + i * 74 , 73, 48, 48) inView:_quailtyView bgColor:Equals(titleArr[i], quailty)?color_sup_one:color_sup_four radius:6];
+        MioImageView *icon = [MioImageView creatImgView:frame(13, 13, 22, 22) inView:bgView image:imgArr[i] bgTintColorName:Equals(titleArr[i], quailty)?name_main:name_icon_one radius:0];
+        MioLabel *title = [MioLabel creatLabel:frame(bgView.left - 5, 123, 58, 17) inView:_quailtyView text:titleArr[i] colorName:Equals(titleArr[i], quailty)?name_main:name_text_one size:12 alignment:NSTextAlignmentCenter];
         [bgView whenTapped:^{
-            mioM3U8Player.currentMusic.quailty = titleArr[i];
+            if (Equals(titleArr[i], _model.defaultQuailty)) {
+                return;
+            }
+            [userdefault setObject:titleArr[i] forKey:_model.song_id];
+            [userdefault synchronize];
             [mioM3U8Player switchQuailty];
+            if ([self.delegate respondsToSelector:@selector(changeQuailty)]) {
+                [self.delegate changeQuailty];
+            }
+            [self hiddenView];
         }];
     }
 }

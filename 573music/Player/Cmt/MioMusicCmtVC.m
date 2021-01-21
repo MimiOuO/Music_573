@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray<MioCmtModel *> *dataArr;
 @end
 
 @implementation MioMusicCmtVC
@@ -125,6 +125,7 @@
         MioCmtModel *cmtModel = [MioCmtModel mj_objectWithKeyValues:data[0]];
         cmtModel.isBendi = @"1";
         [UIWindow showInfo:@"评论成功"];
+        PostNotice(@"updateCmt");
         _cmtTextField.text = @"";
         _page = 1;
         if (self.message == 0) {
@@ -181,7 +182,7 @@
     cell.replyBlock = ^(MioCmtCell * cell) {
         MioMusicAllCmtVC *vc = [[MioMusicAllCmtVC alloc] init];
         vc.delegate = self;
-        vc.cmtModel = cmtModel;
+        vc.cmtModel = _dataArr[indexPath.row];
         [self.navigationController pushViewController:vc animated:YES];
     };
     cell.cmtBlock = ^(MioCmtCell * cell) {
@@ -191,6 +192,9 @@
         self.commentInputView.commentInputTextField.placeholder = [NSString stringWithFormat:@"回复%@(最多120字)...",cmtModel.from_user.nickname];
         [self.commentInputView showInputView];
     };
+    cell.likeBlock = ^(MioCmtCell * cell) {
+        [_dataArr replaceObjectAtIndex:indexPath.row withObject:cell.cmtModel];
+    };
     return cell;
 }
 
@@ -198,4 +202,15 @@
     _page = 1;
     [self requestData];
 }
+
+- (void)likeCmt:(MioCmtModel *)cmtModel{
+    for (int i = 0;i < _dataArr.count; i++) {
+        if (Equals(_dataArr[i].comment_id, cmtModel.comment_id)) {
+            [_dataArr replaceObjectAtIndex:i withObject:cmtModel];
+            [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:i inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    }
+}
+
+
 @end

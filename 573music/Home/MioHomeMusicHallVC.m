@@ -12,6 +12,7 @@
 #import "ScanSuccessJumpVC.h"
 #import "MioAlbumListPageVC.h"
 #import "MioSonglistPageVC.h"
+#import "MioMusicListPageVC.h"
 #import "MioCategoryListVC.h"
 #import "MioMusicRankListVC.h"
 #import "MioSingerListVC.h"
@@ -72,6 +73,7 @@
             }
         }
         [self updateUI];
+        [_bgScroll.mj_header endRefreshing];
         
     } failure:^(NSString *errorInfo) {}];
     
@@ -95,9 +97,7 @@
 -(void)creatUI{
     _bgScroll = [UIScrollView creatScroll:frame(0, 44 , KSW,KSH - NavH - TabH - 44 -49) inView:self.view contentSize:CGSizeMake(KSW, 1443)];
     _bgScroll.mj_header = [MioRefreshHeader headerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_bgScroll.mj_header endRefreshing];
-        });
+        [self request];
     }];
     
     _adScroll = [SDCycleScrollView cycleScrollViewWithFrame:frame(Mar,12, KSW_Mar2, 140) delegate:self placeholderImage:nil];
@@ -154,6 +154,28 @@
         MioLabel *titleLab = [MioLabel creatLabel:frame(Mar, [titleYArr[i] intValue], 100, 20) inView:_bgScroll text:titleArr[i] colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
         MioLabel *moreLab = [MioLabel creatLabel:frame(KSW_Mar - 50, [titleYArr[i] intValue], 50, 20) inView:_bgScroll text:@"更多" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
         MioImageView *arrow1 = [MioImageView creatImgView:frame(KSW_Mar -  14,[titleYArr[i] intValue] + 3, 14, 14) inView:_bgScroll image:@"return_more" bgTintColorName:name_icon_two radius:0];
+        [moreLab whenTapped:^{
+            if (Equals(titleArr[i], @"最新歌单")) {
+                MioSonglistPageVC *vc = [[MioSonglistPageVC alloc] init];
+                vc.index = 1;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            if (Equals(titleArr[i], @"最新单曲")) {
+                MioMusicListPageVC *vc = [[MioMusicListPageVC alloc] init];
+                vc.index = 1;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            if (Equals(titleArr[i], @"排行榜")) {
+                MioMusicRankListVC *vc = [[MioMusicRankListVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            if (Equals(titleArr[i], @"最新专辑")) {
+                MioAlbumListPageVC *vc = [[MioAlbumListPageVC alloc] init];
+                vc.index = 1;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
+        }];
     }
     
     _songlistScroll = [UIScrollView creatScroll:frame(0, 313, KSW, 149*2 + 12) inView:_bgScroll contentSize:CGSizeMake(0,0)];

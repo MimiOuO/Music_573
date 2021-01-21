@@ -41,6 +41,11 @@
     _collection.ly_emptyView = [MioEmpty noDataEmpty];
 }
 
+-(void)clearData{
+    _dataArr = @[];
+    [_collection reloadData];
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake((KSW_Mar2 - 10)/2,(KSW_Mar2 - 10)/2 * 10/17 + 70);
 }

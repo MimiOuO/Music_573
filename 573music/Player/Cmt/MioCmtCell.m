@@ -81,6 +81,7 @@
 }
 
 - (void)setCmtModel:(MioCmtModel *)cmtModel{
+    _cmtModel = cmtModel;
     [_avatatImage sd_setImageWithURL:Url(cmtModel.from_user.avatar) placeholderImage:[UIImage imageNamed:@"qxt_yonhu"]];
     _nickName.text = cmtModel.from_user.nickname;
 //    if ([cmtModel.comment_status isEqualToString:@"1"]) {
@@ -158,22 +159,26 @@
         if (_likeBtn.selected == YES) {
             [_likeBtn setTintColor:color_main];
             _likeLab.textColor = color_main;
+            _likeLab.text = [NSString stringWithFormat:@"%d",([_likeLab.text intValue] + 1)];
+            _cmtModel.is_like = YES;
+            _cmtModel.like_num = _likeLab.text;
         }else{
             [_likeBtn setTintColor:color_text_three];
             _likeLab.textColor = color_text_three;
+            _likeLab.text = [NSString stringWithFormat:@"%d",([_likeLab.text intValue] - 1)];
+            _cmtModel.is_like = NO;
+            _cmtModel.like_num = _likeLab.text;
         }
+        WEAKSELF;
+       
+        if (weakSelf.likeBlock) {
+            weakSelf.likeBlock(self);
+        }
+
         [UIWindow showSuccess:@"操作成功"];
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];
     }];
 }
-
-//-(void)clickPraise:(UIButton *)btn{
-//    btn.selected = YES;
-//    if (self.tapPraiseBlock) {
-//        self.tapPraiseBlock(self);
-//    }
-//}
-
 
 @end

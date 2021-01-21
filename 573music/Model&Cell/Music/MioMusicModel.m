@@ -13,12 +13,7 @@
 
 
 - (NSURL *)audioFileURL{
-    NSString *quailty = @"";
-    if (_quailty) {
-        quailty = _quailty;
-    }else{
-        quailty = [userdefault objectForKey:@"defaultQuailty"];
-    }
+    NSString *quailty = self.defaultQuailty;
     if (Equals(quailty, @"标清")) {
         if (self.hasSQ) {
             return Str(_standard[@"url"]).mj_url;
@@ -49,12 +44,12 @@
     return @"".mj_url;
 }
 
-//- (NSString *)quailty{
-//
-//}
 
 - (NSString *)defaultQuailty{
     NSString * quailty = [userdefault objectForKey:@"defaultQuailty"];
+    if ([userdefault objectForKey:_song_id]) {
+        quailty = [userdefault objectForKey:_song_id];
+    }
     if (Equals(quailty, @"标清")) {
         if (self.hasSQ) {
             return @"标清";

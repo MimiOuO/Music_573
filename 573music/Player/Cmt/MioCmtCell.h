@@ -12,12 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 @class MioCmtCell;
 typedef void (^cmtBlock) (MioCmtCell *);
 typedef void (^replyBlock) (MioCmtCell *);
-typedef void (^avatarBlock) (MioCmtCell *);
+typedef void (^likeBlock) (MioCmtCell *);
 @interface MioCmtCell : UITableViewCell
 @property (nonatomic, strong) MioCmtModel *cmtModel;
 @property (nonatomic, copy) cmtBlock cmtBlock;
 @property (nonatomic, copy) replyBlock replyBlock;
-@property (nonatomic, copy) avatarBlock avatarBlock;
+@property (nonatomic, copy) likeBlock likeBlock;
 @end
 
 NS_ASSUME_NONNULL_END

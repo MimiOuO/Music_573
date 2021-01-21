@@ -128,6 +128,7 @@
         NSArray *data = [result objectForKey:@"data"];
         MioCmtModel *currentReplyModel = [MioCmtModel mj_objectWithKeyValues:data[0]];
 //        cmtModel.isBendi = @"1";
+        PostNotice(@"updateCmt");
         [UIWindow showInfo:@"评论成功"];
         PostNotice(@"commentRefresh");
         NSMutableArray *tempSubArr = [_cmtModel.sub_comments mutableCopy];
@@ -150,9 +151,18 @@
         if (_likeBtn.selected == YES) {
             [_likeBtn setTintColor:color_main];
             _likeLab.textColor = color_main;
+            _likeLab.text = [NSString stringWithFormat:@"%d",([_likeLab.text intValue] + 1)];
+            _cmtModel.is_like = YES;
+            _cmtModel.like_num = _likeLab.text;
         }else{
             [_likeBtn setTintColor:color_text_three];
             _likeLab.textColor = color_text_three;
+            _likeLab.text = [NSString stringWithFormat:@"%d",([_likeLab.text intValue] - 1)];
+            _cmtModel.is_like = YES;
+            _cmtModel.like_num = _likeLab.text;
+        }
+        if (self.delegate && [self.delegate respondsToSelector:@selector(refreshCmt)]) {
+            [self.delegate refreshCmt];
         }
         [UIWindow showSuccess:@"操作成功"];
     } failure:^(NSString *errorInfo) {

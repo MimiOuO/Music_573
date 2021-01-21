@@ -37,6 +37,10 @@
                          @"input_icon",
 
                          ];
+//    NSLog(@"%@",SkinName);
+//    NSLog(@"%@",colorPath);
+//    NSLog(@"%@",colorDic);
+    
     NSArray *colorArr = @[color_main,
                           
                           color_sup_one,

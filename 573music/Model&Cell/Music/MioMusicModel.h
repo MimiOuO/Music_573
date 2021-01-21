@@ -22,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * cover_image_path;
 @property (nonatomic,copy) NSString * lrc_url;
 
-@property (nonatomic,copy) NSString * quailty;
 @property (nonatomic,copy) NSString * defaultQuailty;
 @property (nonatomic, strong) NSDictionary *standard;
 @property (nonatomic, strong) NSDictionary *high;

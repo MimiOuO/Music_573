@@ -18,8 +18,9 @@
 #import "MioMusicCmtVC.h"
 #import "MioMoreFuncView.h"
 #import "MioChooseQuantityView.h"
+#import "MioMvVC.h"
 
-@interface MioMainPlayerVC ()<GKSliderViewDelegate,LyricViewDelegate>
+@interface MioMainPlayerVC ()<GKSliderViewDelegate,LyricViewDelegate,ChangeQuailtyDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) MioLrcView *lrcView;
@@ -67,6 +68,7 @@
 
     RecieveNotice(switchMusic, changeMusic);
     RecieveNotice(@"clearPlaylist", clearMusic);
+    RecieveNotice(@"updateCmt", updateCmtCount);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -124,14 +126,18 @@
     _singerLab = [UILabel creatLabel:frame(60, StatusH + 35, KSW - 120, 17) inView:self.view text:@"" color:rgba(255, 255, 255, 0.7) boldSize:12 alignment:NSTextAlignmentCenter];
     _singerLab.text = music.singer_name;
     
-    _qualityBtn = [UIButton creatBtn:frame(KSW2 - 26 - 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"standard_player_player" action:^{
+    _qualityBtn = [UIButton creatBtn:frame(KSW2 - 26 - 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"" action:^{
         MioChooseQuantityView *chooseView = [[MioChooseQuantityView alloc] init];
+        chooseView.delegate = self;
         chooseView.model = mioM3U8Player.currentMusic;
         [chooseView show];
     }];
+    [self updateQuailty];
     
     _mvButton = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"mv_player_player" action:^{
-        
+        MioMvVC *vc = [[MioMvVC alloc] init];
+        vc.mvId = mioM3U8Player.currentMusic.mv_id;
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     
     if (music.hasMV) {
@@ -215,7 +221,7 @@
 
     
     _likeBtn = [UIButton creatBtn:frame(73, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"like_ordinary_player" action:^{
-        
+        [self likeClick];
     }];
     [_likeBtn setBackgroundImage:image(@"like_player") forState:UIControlStateSelected];
     if (music.is_like) {
@@ -228,7 +234,7 @@
 //    }];
     _cmtBtn = [UIButton creatBtn:frame(KSW2 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_digital_player" action:^{
         MioMusicCmtVC *vc = [[MioMusicCmtVC alloc] init];
-        vc.musicId = @"1";
+        vc.musicId = mioM3U8Player.currentMusic.song_id;
         [self.navigationController pushViewController:vc animated:YES];
     }];
     _moreBtn = [UIButton creatBtn:frame(KSW - 24 - 73, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
@@ -264,6 +270,7 @@
     }
     _cmtCountLab.text = music.comment_num;
     _singleLrcLab.text = @"";
+    [self updateQuailty];
 }
 
 #pragma mark - KVO
@@ -273,7 +280,6 @@
         [weakSelf playerStatusChanged];
     }];
     
-
     
     [mioM3U8Player xw_addObserverBlockForKeyPath:@"currentMusicDuration" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
         weakSelf.durationLab.text = [NSDate stringDuartion:mioM3U8Player.currentMusicDuration];
@@ -413,6 +419,19 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
+-(void)likeClick{
+    goLogin;
+    [MioPostReq(api_likes, (@{@"model_name":@"song",@"model_ids":@[mioM3U8Player.currentMusic.song_id]})) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _likeBtn.selected = !_likeBtn.selected;
+        mioM3U8Player.currentMusic.is_like = _likeBtn.selected;
+        [mioPlayList.playListArr replaceObjectAtIndex:mioPlayList.currentPlayIndex withObject:mioM3U8Player.currentMusic];
+        [UIWindow showSuccess:@"操作成功"];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
+}
+
 #pragma mark - slider代理
 - (void)sliderTouchBegin:(float)value{//拖拽开始
     self.isDraging = YES;
@@ -434,6 +453,27 @@
 
 - (void)lyricView:(MioLrcView *)lyricView withProgress:(CGFloat)progress{
     NSLog(@"%f",progress);
+}
+
+#pragma mark - chooseQuailty代理
+- (void)changeQuailty{
+    [self updateQuailty];
+}
+
+-(void)updateQuailty{
+    if (Equals(mioM3U8Player.currentMusic.defaultQuailty, @"标清")) {
+        [_qualityBtn setBackgroundImage:image(@"standard_player_player") forState:UIControlStateNormal];
+    }else if(Equals(mioM3U8Player.currentMusic.defaultQuailty, @"高清")){
+        [_qualityBtn setBackgroundImage:image(@"hd_player_player") forState:UIControlStateNormal];
+    }else{
+        [_qualityBtn setBackgroundImage:image(@"nondestructive_player_player") forState:UIControlStateNormal];
+    }
+}
+
+-(void)updateCmtCount{
+    _cmtCountLab.text = [NSString stringWithFormat:@"%d",[_cmtCountLab.text intValue] + 1];
+    mioM3U8Player.currentMusic.comment_num = _cmtCountLab.text;
+    [mioPlayList.playListArr replaceObjectAtIndex:mioPlayList.currentPlayIndex withObject:mioM3U8Player.currentMusic];
 }
 
 @end

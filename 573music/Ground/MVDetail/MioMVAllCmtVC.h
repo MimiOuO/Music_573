@@ -12,7 +12,7 @@
 @optional
 
 - (void)refreshCmt;
-
+- (void)likeCmt:(MioCmtModel *)cmtModel;
 @end
 @interface MioMVAllCmtVC : MioViewController
 //@property (nonatomic,strong)MusicInfo *musicInfo;

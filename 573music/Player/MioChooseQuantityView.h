@@ -10,9 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ChangeQuailtyDelegate <NSObject>
+@optional
+-(void)changeQuailty;
+@end
+
 @interface MioChooseQuantityView : UIView
 @property (nonatomic, strong) MioMusicModel *model;
 -(void)show;
+@property (nonatomic,weak) id<ChangeQuailtyDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

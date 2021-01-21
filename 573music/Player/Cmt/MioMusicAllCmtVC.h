@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 
 - (void)refreshCmt;
-
+- (void)likeCmt:(MioCmtModel *)cmtModel;
 @end
 @interface MioMusicAllCmtVC : MioViewController
 //@property (nonatomic,strong)MusicInfo *musicInfo;

@@ -50,6 +50,7 @@
         if (data.count < 10) {
             [self.collection.mj_footer endRefreshingWithNoMoreData];
         }
+        [self.collection.mj_header endRefreshing];
         [self.collection.mj_footer endRefreshing];
         [_dataArr addObjectsFromArray:[MioMvModel mj_objectArrayWithKeyValuesArray:data]];
         [self.collection reloadData];
@@ -82,6 +83,11 @@
     [_collection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     _collection.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_collection];
+    
+    _collection.mj_header = [MioRefreshHeader headerWithRefreshingBlock:^{
+        _page = 1;
+        [self requestData];
+    }];
     
     _collection.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;

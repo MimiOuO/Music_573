@@ -17,12 +17,12 @@
 #import "MioModiPassWordVC.h"
 #import "MioChooseDefaultQuailtyView.h"
 @interface MioMoreVC ()<defaultQuailtyDelegate>
-@property (nonatomic, strong) UILabel *timeLab;
+@property (nonatomic, strong) MioLabel *timeLab;
 @property (nonatomic, strong) UISwitch *jifenSwitch;
 @property (nonatomic, strong) UISwitch *wifiSwitch;
 @property (nonatomic, strong) UISwitch *nightSwitch;
-@property (nonatomic, strong) UILabel *defaultPlay;
-@property (nonatomic, strong) UILabel *cacheSize;
+@property (nonatomic, strong) MioLabel *defaultPlay;
+@property (nonatomic, strong) MioLabel *cacheSize;
 @end
 
 @implementation MioMoreVC
@@ -43,16 +43,19 @@
     
     MioView *bgView1 = [MioView creatView:frame(Mar, 12, KSW - Mar2 , 44*fuc1Arr.count) inView:bgscroll bgColorName:name_card radius:6];
     for (int i = 0;i < fuc1Arr.count; i++) {
-        UILabel *title = [UILabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView1 text:fuc1Arr[i] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
+        MioLabel *title = [MioLabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView1 text:fuc1Arr[i] colorName:name_text_one size:16 alignment:NSTextAlignmentLeft];
         [title whenTapped:^{
             [self click:fuc1Arr[i]];
         }];
-        UIView *split = [UIView creatView:frame(10, 44 * (i + 1), KSW_Mar2 - 20, 0.5) inView:bgView1 bgColor:color_split radius:0];
+
+        MioView *split = [MioView creatView:frame(10, 44 * (i + 1), KSW_Mar2 - 20, 0.5) inView:bgView1 bgColorName:name_split radius:0];
         if ([arrowArr containsObject:fuc1Arr[i]]) {
-            UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView1 image:@"right" bgTintColor:color_icon_three radius:0];
+            MioImageView *arrow = [MioImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView1 image:@"right" bgTintColorName:name_icon_three radius:0];
         }
         if (Equals(fuc1Arr[i], @"定时关闭")) {
-            _timeLab = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"关" color:color_text_two size:14 alignment:NSTextAlignmentRight];
+
+            _timeLab = [MioLabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:@"关" colorName:name_text_two size:14 alignment:NSTextAlignmentRight];
+
         }
         if (Equals(fuc1Arr[i], @"显示积分倒计时")) {
             _jifenSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(KSW_Mar2 - 38 - 20, 7.5 +44*i, 38, 23)];
@@ -72,6 +75,8 @@
             [bgView1 addSubview:_nightSwitch];
             if (Equals(SkinName, @"hei")) {
                 _nightSwitch.on = YES;
+            }else{
+                _nightSwitch.on = NO;
             }
         }
         if (Equals(fuc1Arr[i], @"仅WIFI联网")) {
@@ -79,32 +84,40 @@
             _wifiSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
             [_wifiSwitch addTarget:self action:@selector(wifiClick) forControlEvents:(UIControlEventValueChanged)];
             [bgView1 addSubview:_wifiSwitch];
+            if (Equals([userdefault objectForKey:@"onlyWifi"], @"1")) {
+                _wifiSwitch.on = YES;
+            }else{
+                _wifiSwitch.on = NO;
+            }
         }
         if (Equals(fuc1Arr[i], @"默认播放音质")) {
-            _defaultPlay = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:[userdefault objectForKey:@"defaultQuailty"] color:color_text_two size:14 alignment:NSTextAlignmentRight];
+            _defaultPlay = [MioLabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:[userdefault objectForKey:@"defaultQuailty"] colorName:name_text_two size:14 alignment:NSTextAlignmentRight];
         }
         
     }
 
     MioView *bgView2 = [MioView creatView:frame(Mar, bgView1.bottom + 8, KSW_Mar2 , 44*fuc2Arr.count) inView:bgscroll bgColorName:name_card radius:6];
     for (int i = 0;i < fuc2Arr.count; i++) {
-        UILabel *title = [UILabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView2 text:fuc2Arr[i] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
+        MioLabel *title = [MioLabel creatLabel:frame(12, i * 44, KSW - Mar2 - 12 , 44) inView:bgView2 text:fuc2Arr[i] colorName:name_text_one size:16 alignment:NSTextAlignmentLeft];
         [title whenTapped:^{
             [self click:fuc2Arr[i]];
         }];
-        UIView *split = [UIView creatView:frame(10, 44 * (i + 1), KSW - Mar2 - 20, 0.5) inView:bgView2 bgColor:color_split radius:0];
+        MioView *split = [MioView creatView:frame(10, 44 * (i + 1), KSW_Mar2 - 20, 0.5) inView:bgView2 bgColorName:name_split radius:0];
         if ([arrowArr containsObject:fuc2Arr[i]]) {
-            UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView2 image:@"right" bgTintColor:color_icon_three radius:0];
+            MioImageView *arrow = [MioImageView creatImgView:frame(KSW_Mar2 - 12 -20, 12 + 44*i, 20, 20) inView:bgView2 image:@"right" bgTintColorName:name_icon_three radius:0];
         }
         if (i == 0) {
-            _cacheSize = [UILabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView2 text:[NSString stringWithFormat:@"%.1fM",[self filePath]] color:color_text_two size:14 alignment:NSTextAlignmentRight];
+            _cacheSize = [MioLabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView2 text:[NSString stringWithFormat:@"%.1fM",[self filePath]] colorName:name_text_two size:14 alignment:NSTextAlignmentRight];
         }
     }
     
-    MioView *bgView3 = [MioView creatView:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColorName:name_card radius:6];
-    UIButton *logoutBtn = [UIButton creatBtn:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColor:appClearColor title:@"退出登录" titleColor:redTextColor font:16 radius:6 action:^{
-        [self logout];
-    }];
+    if (islogin) {
+        MioView *bgView3 = [MioView creatView:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColorName:name_card radius:6];
+        UIButton *logoutBtn = [UIButton creatBtn:frame(Mar, bgView2.bottom + 8, KSW_Mar2, 44) inView:bgscroll bgColor:appClearColor title:@"退出登录" titleColor:redTextColor font:16 radius:6 action:^{
+            [self logout];
+        }];
+    }
+
 }
 
 -(void)logout{
@@ -191,10 +204,17 @@
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
+    
+    [self.navView.centerButton setTitleColor:color_text_one forState:UIControlStateNormal];
+    self.navView.leftButton.tintColor = color_text_one;
 }
 
 -(void)wifiClick{
-    NSLog(@"%d",_wifiSwitch.on);
+    if (_wifiSwitch.on) {
+        [userdefault setObject:@"1" forKey:@"onlyWifi"];
+    }else{
+        [userdefault setObject:@"0" forKey:@"onlyWifi"];
+    }
 }
 
 - (void)changeDefaultQuailty{

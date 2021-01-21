@@ -8,12 +8,15 @@
 
 #import "MioRecentVC.h"
 #import <WMPageController.h>
+#import <WHC_ModelSqlite.h>
+#import "MioMvModel.h"
 #import "MioRecentMusicVC.h"
 #import "MioRecentMVVC.h"
 @interface MioRecentVC ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) WMPageController *pageController;
-
+@property (nonatomic, strong) MioRecentMusicVC *recentMusic;
+@property (nonatomic, strong) MioRecentMVVC *recentMV;
 @end
 
 @implementation MioRecentVC
@@ -25,6 +28,9 @@
     [self.view addSubview:_contentView];
     
     MioImageView *bgimg = [MioImageView creatImgView:frame(0, - NavH, KSW, NavH + 40) inView:_contentView skin:SkinName image:@"picture_li" radius:0];
+    
+    _recentMusic = [[MioRecentMusicVC alloc] init];
+    _recentMV = [[MioRecentMVVC alloc] init];
     
     _pageController = [[WMPageController alloc] init];
     [self addChildViewController:_pageController];
@@ -45,9 +51,27 @@
     _pageController.progressViewBottomSpace = 4;
     _pageController.viewFrame = CGRectMake(0, 0 , KSW , KSH - NavH - TabH);
     [_contentView addSubview:self.pageController.view];
-
+    WEAKSELF;
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"最近播放" forState:UIControlStateNormal];
+    [self.navView.rightButton setTitle:@"清空" forState:UIControlStateNormal];
+    self.navView.rightButtonBlock = ^{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定清空最近播放歌曲和视频？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再想想" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [WHCSqlite delete:[MioMusicModel class] where:@"savetype = 'recentMusic'"];
+            [WHCSqlite delete:[MioMvModel class] where:@"savetype = 'recentMV'"];
+            [weakSelf.recentMusic clearData];
+            [weakSelf.recentMV clearData];
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        alertController.modalPresentationStyle = 0;
+        [weakSelf presentViewController:alertController animated:YES completion:nil];
+    };
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
@@ -58,9 +82,9 @@
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        return [MioRecentMusicVC new];
+        return _recentMusic;
     }else{
-        return [MioRecentMVVC new];
+        return _recentMV;
     }
 }
 

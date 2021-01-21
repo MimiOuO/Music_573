@@ -184,7 +184,7 @@
         MioMVAllCmtVC *vc = [[MioMVAllCmtVC alloc] init];
         vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         vc.delegate = self;
-        vc.cmtModel = cmtModel;
+        vc.cmtModel = _dataArr[indexPath.row];
         [self presentViewController:vc animated:YES completion:nil];
 
 //        [self.navigationController pushViewController:vc animated:YES];
@@ -195,6 +195,9 @@
         self.commentInputView.pid = cmtModel.comment_id;
         self.commentInputView.commentInputTextField.placeholder = [NSString stringWithFormat:@"回复%@(最多120字)...",cmtModel.from_user.nickname];
         [self.commentInputView showInputView];
+    };
+    cell.likeBlock = ^(MioCmtCell * cell) {
+        [_dataArr replaceObjectAtIndex:indexPath.row withObject:cell.cmtModel];
     };
     return cell;
 }

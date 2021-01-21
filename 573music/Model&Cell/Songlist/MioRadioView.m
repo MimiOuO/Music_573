@@ -20,7 +20,7 @@
 }
 
 - (void)setModel:(MioSongListModel *)model{
-    UIImageView *cover = [UIImageView creatImgView:frame(0, 0, 90, 90) inView:self image:@"" radius:0];
+    UIImageView *cover = [UIImageView creatImgView:frame(0, 0, 90, 90) inView:self image:@"" radius:4];
     [cover sd_setImageWithURL:[model.cover_image_path mj_url] placeholderImage:image(@"qxt_zhuanji")];
     MioView *tipBg = [MioView creatView:frame(0, 0, 26, 13) inView:self bgColorName:name_main radius:0];
     [tipBg addRoundedCorners:UIRectCornerTopLeft|UIRectCornerBottomRight withRadii:CGSizeMake(4, 4)];

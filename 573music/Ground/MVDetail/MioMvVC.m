@@ -155,18 +155,6 @@
     MioImageView *menuBg = [MioImageView creatImgView:frame(0, 0, KSW, 44) inView:_pageController.menuView skin:SkinName image:@"picture_li" radius:0];
     [_pageController.menuView sendSubviewToBack:menuBg];
     
-    NSTimer *time = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_timerAction:) userInfo:nil repeats:YES];
-}
-
-- (void)_timerAction:(id)timer
-{
-//    NSLog(@"---------");
-//    NSLog(@"%f",self.player.currentPlayerManager.currentTime);
-//    NSLog(@"%f",self.player.bufferTime);
-//    NSLog(@"%f",self.player.bufferProgress);
-//    NSLog(@"%@",self.player.playerBufferTimeChanged);
-    
-//    NSLog(@"---------");
 }
 
 -(void)changeCollection:(int)index{
@@ -213,8 +201,6 @@
     return @"";
 }
 
-
-
 - (BOOL)shouldAutorotate {
     return NO;
 }
@@ -249,5 +235,9 @@
     _pageController.titles = @[@"简介",[NSString stringWithFormat:@"评论(%d)",[str2 intValue] + 1]];
 }
 
+- (void)dealloc
+{
+    NSLog(@"1111");
+}
 
 @end

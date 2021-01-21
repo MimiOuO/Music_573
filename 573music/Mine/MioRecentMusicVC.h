@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioRecentMusicVC : MioViewController
-
+-(void)clearData;
 @end
 
 NS_ASSUME_NONNULL_END

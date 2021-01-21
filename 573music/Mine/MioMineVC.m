@@ -20,6 +20,9 @@
 #import <WHC_ModelSqlite.h>
 #import "MioRecentVC.h"
 #import "MioMySonglistListVC.h"
+#import "MioNoticeCenterVC.h"
+#import "MioLocalVC.h"
+
 @interface MioMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) MioUserInfo *user;
 
@@ -49,6 +52,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _mySonglistArr = [[NSArray alloc] init];
+    _recentPlayArr = [[NSArray alloc] init];
     [self creatUI];
 }
 
@@ -100,7 +105,8 @@
 -(void)creatUI{
     MioLabel *titleLab = [MioLabel creatLabel:frame(Mar, StatusH + 8, 50, 28) inView:self.view text:@"我的" colorName:name_main boldSize:20 alignment:NSTextAlignmentLeft];
     MioButton *messegeBtn = [MioButton creatBtn:frame(KSW - 56 - 20, StatusH + 12, 20, 20) inView:self.view bgImage:@"me_yidu" bgTintColorName:name_icon_one action:^{
-        
+        MioNoticeCenterVC *vc = [[MioNoticeCenterVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     MioButton *moreBtn = [MioButton creatBtn:frame(KSW - 16 - 20, StatusH + 12, 20, 20) inView:self.view bgImage:@"me_more" bgTintColorName:name_icon_one action:^{
         MioMoreVC *vc = [[MioMoreVC alloc] init];
@@ -211,7 +217,14 @@
         goLogin;
     }];
     [shareLab whenTapped:^{
-            
+        UIPasteboard * pastboard = [UIPasteboard generalPasteboard];
+        if (islogin) {
+            pastboard.string =[NSString stringWithFormat:@"http://test.aw998.com/api/user/share?code=%d",[currentUserId intValue]*93-9];
+            [UIWindow showSuccess:@"邀请链接已复制到剪切板"];
+        }else{
+            pastboard.string = @"http://test.aw998.com/api/user/share";
+            [UIWindow showSuccess:@"邀请链接已复制到剪切板，登录后分享才能获取积分奖励哦"];
+        }
     }];
     [skinLab whenTapped:^{
         MioSkinCenterVC *vc = [[MioSkinCenterVC alloc] init];
@@ -230,7 +243,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     [localView whenTapped:^{
-            
+        if ([self isMediaPlayerService]) {
+            MioLocalVC *vc = [[MioLocalVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        };
     }];
     [downLoadView whenTapped:^{
         MioDownloadVC *vc = [[MioDownloadVC alloc] init];
@@ -276,12 +292,11 @@
         }
         return _recentPlayArr.count;
     }
-    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == _mySonglistCollection) {
-        if ((indexPath.row <= _mySonglistArr.count - 1) && _mySonglistArr) {
+        if ((indexPath.row <= _mySonglistArr.count - 1) && (_mySonglistArr.count > 0)) {
             MioSonglistCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MioSonglistCollectionCell" forIndexPath:indexPath];
             cell.model = _mySonglistArr[indexPath.row];
             return cell;
@@ -301,7 +316,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == _mySonglistCollection) {
-        if (indexPath.row <= _mySonglistArr.count - 1) {
+        if (indexPath.row <= (_mySonglistArr.count - 1) && (_mySonglistArr.count > 0)) {
             MioSongListVC *vc = [[MioSongListVC alloc] init];
             vc.songlistId = _mySonglistArr[indexPath.row].song_list_id;
             [self.navigationController pushViewController:vc animated:YES];
@@ -318,6 +333,22 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:
 (UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     return 8.0;
+}
+
+// MARK:- 判断是否有权限
+- (BOOL)isMediaPlayerService{
+
+    MPMediaLibraryAuthorizationStatus authStatus = [MPMediaLibrary authorizationStatus];
+    if (authStatus == MPMediaLibraryAuthorizationStatusNotDetermined) {
+        [MPMediaLibrary requestAuthorization:^(MPMediaLibraryAuthorizationStatus status) {
+            
+        }];
+        return NO;
+    }else if (authStatus == MPMediaLibraryAuthorizationStatusAuthorized){
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 

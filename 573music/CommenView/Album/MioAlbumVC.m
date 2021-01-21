@@ -126,6 +126,7 @@
 }
 
 -(void)likeClick{
+    goLogin;
     [MioPostReq(api_likes, (@{@"model_name":@"album",@"model_ids":@[_album_id]})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         _likeBtn.selected = !_likeBtn.selected;

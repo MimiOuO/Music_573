@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
     
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"" forState:UIControlStateNormal];
@@ -52,6 +51,9 @@
     _pageController.progressViewCornerRadius = 1.5;
     _pageController.progressViewBottomSpace = 4;
     _pageController.viewFrame = CGRectMake(0, StatusH , KSW , KSH - StatusH  - TabH);
+    if (_index) {
+        _pageController.selectIndex        = _index;
+    }
     [_contentView addSubview:self.pageController.view];
     
     UIButton *backBtn = [UIButton creatBtn:frame(0, StatusH, 50, 44) inView:self.view bgColor:appClearColor title:@"" titleColor:appClearColor font:10 radius:0  action:^{
@@ -59,7 +61,7 @@
     }];
 }
 
-- (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
+-(NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     
     return 2;
 }
@@ -72,19 +74,14 @@
     }else{
         return [[MioSonglistListVC alloc] init];
     }
-    
-    
 }
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        return @"推荐歌单";
+        return @"热门歌单";
     }else{
         return @"最新歌单";
     }
-    
 }
-
-
 @end

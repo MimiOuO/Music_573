@@ -23,9 +23,12 @@
 #import "ScanSuccessJumpVC.h"
 
 #import "AFNetworkReachabilityManager.h"
+
+#import "HcdGuideView.h"
 #endif
 @interface AppDelegate ()<XHLaunchAdDelegate>
 @property (nonatomic, assign) float tabbarHeight;
+@property (nonatomic, strong) HcdGuideView *guideView;
 @end
 
 @implementation AppDelegate
@@ -37,14 +40,13 @@
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
    
-        
 
 //
     JJException.exceptionWhenTerminate = NO;
 
     [JJException configExceptionCategory:JJExceptionGuardNSStringContainer | JJExceptionGuardArrayContainer | JJExceptionGuardUnrecognizedSelector | JJExceptionGuardDictionaryContainer];
     [JJException startGuardException];
-    
+//    
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     
     // 告诉app支持后台播放
@@ -52,23 +54,36 @@
     [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
     [audioSession setActive:YES error:nil];
     
+    [self initSettings];
+    
+    [self changeSkinLocation];
+    
+    self.window.rootViewController = [[MioTabbarVC alloc] init];
+    [self.window makeKeyAndVisible];
+    
+    [self configGuideView];
+    
     [self configAd];
     
     [self initalData];
     
-    
-    [self changeSkinLocation];
-    
-    [self initSettings];
-    
     [self listenNetwork];
     
-    self.window.rootViewController = [[MioTabbarVC alloc] init];
-
-    
-    [self.window makeKeyAndVisible];
+    [self checkVersion];
     
     return YES;
+}
+
+-(void)configGuideView{
+    
+    self.guideView = [HcdGuideView sharedInstance];
+    self.guideView.delegate = self;
+    self.guideView.window = self.window;
+    [self.guideView showGuideViewWithImages:@[@"1",@"2",@"3"]
+                        andButtonTitle:@""
+                   andButtonTitleColor:[UIColor clearColor]
+                      andButtonBGColor:[UIColor clearColor]
+                  andButtonBorderColor:[UIColor clearColor]];
 }
 
 -(void)configAd{
@@ -121,8 +136,16 @@
         [userdefault setObject:@"bai" forKey:@"skin"];
         [userdefault setObject:@"1" forKey:@"showJifen"];
         [userdefault setObject:@"标清" forKey:@"defaultQuailty"];
+        [userdefault setObject:@"-1" forKey:@"currentPlayIndex"];
+        [userdefault setObject:@"0" forKey:@"onlyWifi"];
+        [userdefault setObject:@"1" forKey:@"openNewtwork"];
         setPlayOrder(MioPlayOrderCycle);
+        [userdefault synchronize];
     }
+}
+
+-(void)checkVersion{
+    
 }
 
 #pragma mark - 监听网络状态
@@ -146,10 +169,16 @@
             case AFNetworkReachabilityStatusReachableViaWWAN:
                 
                 NSLog(@"3G|4G");
+                if (Equals([userdefault objectForKey:@"onlyWifi"], @"1")) {
+                    [userdefault setObject:@"0" forKey:@"openNewtwork"];
+                }else{
+                    [userdefault setObject:@"1" forKey:@"openNewtwork"];
+                }
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
                 
                 NSLog(@"WiFi");
+                [userdefault setObject:@"1" forKey:@"openNewtwork"];
                 break;
             default:
                 break;
