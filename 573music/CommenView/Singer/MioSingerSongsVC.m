@@ -42,6 +42,8 @@
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.backgroundColor = appClearColor;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.autoHideMjFooter = YES;
+    _tableView.ly_emptyView = [MioEmpty noDataEmpty];
     [self.view addSubview:_tableView];
     [self requestData];
     
@@ -60,7 +62,7 @@
     [MioGetReq(api_singerSongs(_singerId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [self.tableView.mj_footer endRefreshing];
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
@@ -107,7 +109,7 @@
     UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSW, 48)];
 
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
-        
+        [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
     UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
@@ -146,6 +148,10 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = _dataArr[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
 }
 
 @end

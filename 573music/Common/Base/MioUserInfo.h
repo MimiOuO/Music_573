@@ -28,6 +28,9 @@
 /** 是否登录 */
 @property (nonatomic, assign) BOOL      isLogin;
 
+/** 是否积分 */
+@property (nonatomic, copy) NSString    *coin;
+
 /**
  *  单例
  *

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MioMusicListVC : MioViewController
-
+@property (nonatomic,copy) NSString * rankId;
 @end
 
 NS_ASSUME_NONNULL_END

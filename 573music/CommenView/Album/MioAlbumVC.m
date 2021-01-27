@@ -55,11 +55,13 @@
         _album = [MioAlbumModel mj_objectWithKeyValues:data];
         [self updateData];
         
-        if (_album.songs.count < 10) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
         [self.tableView.mj_footer endRefreshing];
-        [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:data]];
+
+        if (Equals(data[@"songs_paginate"][@"next_page_url"], @"<null>")) {
+            [_tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        
+        [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:data[@"songs_paginate"][@"data"]]];
         [_tableView reloadData];
         
     } failure:^(NSString *errorInfo) {}];
@@ -80,6 +82,8 @@
     _tableView.backgroundColor = appClearColor;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.bounces = NO;
+    _tableView.autoHideMjFooter = YES;
+    _tableView.ly_emptyView = [MioEmpty noDataEmpty];
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -142,7 +146,7 @@
     [sectionHeader addRoundedCorners:UIRectCornerTopRight|UIRectCornerTopLeft withRadii:CGSizeMake(16, 16)];
     MioImageView *bgImg = [MioImageView creatImgView:frame(0, 0, KSW, 48) inView:sectionHeader skin:SkinName image:@"picture_li" radius:0];
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
-        
+        [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
     UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
@@ -181,6 +185,10 @@
     cell.backgroundColor = appClearColor;
     cell.model = _dataArr[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

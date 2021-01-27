@@ -58,7 +58,7 @@
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [_collection.mj_footer endRefreshingWithNoMoreData];
         }
         

@@ -69,6 +69,8 @@
     RecieveNotice(switchMusic, changeMusic);
     RecieveNotice(@"clearPlaylist", clearMusic);
     RecieveNotice(@"updateCmt", updateCmtCount);
+    RecieveNotice(@"hiddenPlaylistIcon", hiddenPlaylistIcon);
+    RecieveNotice(@"showPlaylistIcon", showPlaylistIcon);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -113,7 +115,7 @@
     [self.navView.leftButton setImage:image(@"right_player") forState:UIControlStateNormal];
     self.navView.leftButton.left = 13;
     self.navView.mainView.backgroundColor = appClearColor;
-    self.navView.bgImg.image = [UIImage imageNamed:@""];
+    self.navView.bgImg.hidden = YES;
     
     self.navView.leftButtonBlock = ^{
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
@@ -132,6 +134,7 @@
         chooseView.model = mioM3U8Player.currentMusic;
         [chooseView show];
     }];
+
     [self updateQuailty];
     
     _mvButton = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"mv_player_player" action:^{
@@ -200,6 +203,9 @@
     _playBtn = [UIButton creatBtn:frame(KSW2 - 30, 0, 60, 60) inView:self.view bgImage:@"play_player" action:^{
         [weakSelf playClick];
     }];
+    if (mioM3U8Player.status == MioPlayerStatePlaying) {
+        [_playBtn setBackgroundImage:image(@"suspended_player") forState:UIControlStateNormal];
+    }
     
     _bufferImg = [UIImageView creatImgView:frame(KSW2 - 30, 0, 60, 60) inView:self.view  image:@"loading_player" radius:0];
     _bufferImg.hidden = YES;
@@ -248,6 +254,18 @@
     }];
     _cmtCountLab = [UILabel creatLabel:frame(16.5, -5, 30, 17) inView:_cmtBtn text:music.comment_num color:appWhiteColor size:12 alignment:NSTextAlignmentLeft];
 
+    if (mioM3U8Player.currentMusic.local) {
+        _qualityBtn.hidden = YES;
+        _likeBtn.hidden = YES;
+        _cmtBtn.hidden = YES;
+        _cmtCountLab.hidden = YES;
+        _moreBtn.hidden = YES;
+    }
+    
+    if (Equals([userdefault objectForKey:@"isRadio"], @"1")) {
+        _playListBtn.hidden = YES;
+        _playOrderBtn.hidden = YES;
+    }
 }
 
 -(void)updateUI{
@@ -271,7 +289,31 @@
     _cmtCountLab.text = music.comment_num;
     _singleLrcLab.text = @"";
     [self updateQuailty];
+    if (mioM3U8Player.currentMusic.local) {
+        _qualityBtn.hidden = YES;
+        _likeBtn.hidden = YES;
+        _cmtBtn.hidden = YES;
+        _cmtCountLab.hidden = YES;
+        _moreBtn.hidden = YES;
+    }else{
+        _qualityBtn.hidden = NO;
+        _likeBtn.hidden = NO;
+        _cmtBtn.hidden = NO;
+        _cmtCountLab.hidden = NO;
+        _moreBtn.hidden = NO;
+    }
 }
+
+-(void)hiddenPlaylistIcon{
+    _playListBtn.hidden = YES;
+    _playOrderBtn.hidden = YES;
+}
+
+-(void)showPlaylistIcon{
+    _playListBtn.hidden = NO;
+    _playOrderBtn.hidden = NO;
+}
+
 
 #pragma mark - KVO
 -(void)registKVO{

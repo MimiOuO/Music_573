@@ -23,7 +23,7 @@
 }
 
 -(void)request{
-    [MioGetReq(api_ranks,(@{@"type":@"MV",@"limit":@"3"})) success:^(NSDictionary *result){
+    [MioGetReq(api_ranks,(@{@"type":@"MV",@"lock":@"0"})) success:^(NSDictionary *result){
         _data = [result objectForKey:@"data"];
         
         [self creatUI];

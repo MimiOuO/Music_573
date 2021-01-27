@@ -22,6 +22,7 @@
 #import "MioMySonglistListVC.h"
 #import "MioNoticeCenterVC.h"
 #import "MioLocalVC.h"
+#import "MioIntegralVC.h"
 
 @interface MioMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) MioUserInfo *user;
@@ -81,9 +82,10 @@
         [MioGetReq(api_otherUserinfo(currentUserId), @{@"k":@"v"}) success:^(NSDictionary *result){
             NSDictionary *data = [result objectForKey:@"data"];
             _user = [MioUserInfo mj_objectWithKeyValues:data];
-            [_avatar sd_setImageWithURL:currentUserAvatar placeholderImage:image(@"icon")];
+            [_avatar sd_setImageWithURL:_user.avatar.mj_url placeholderImage:image(@"icon")];
             _nicknameLab.text = _user.nickname;
             _nicknameLab.width = [_nicknameLab.text widthForFont:BoldFont(16)];
+            _signLab.text = _user.sign;
             _editBtn.left = _nicknameLab.right + 4;
         } failure:^(NSString *errorInfo) {}];
     }else{
@@ -108,10 +110,12 @@
         MioNoticeCenterVC *vc = [[MioNoticeCenterVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
+    messegeBtn.clickArea = @"2";
     MioButton *moreBtn = [MioButton creatBtn:frame(KSW - 16 - 20, StatusH + 12, 20, 20) inView:self.view bgImage:@"me_more" bgTintColorName:name_icon_one action:^{
         MioMoreVC *vc = [[MioMoreVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
+    moreBtn.clickArea = @"2";
 
     UIScrollView *bgScroll = [UIScrollView creatScroll:frame(0, NavH, KSW, KSH - NavH - TabH - 50) inView:self.view contentSize:CGSizeMake(KSW, 698)];
     _userBgView = [MioView creatView:frame(Mar,31, KSW_Mar2, 136) inView:bgScroll bgColorName:name_card radius:8];
@@ -131,9 +135,11 @@
     _nicknameLab.width = [_nicknameLab.text widthForFont:BoldFont(16)];
     _editBtn = [MioButton creatBtn:frame(_nicknameLab.right + 4, 8, 14, 14) inView:_userBgView bgImage:@"bianji_icon" bgTintColorName:name_icon_three action:^{
         MioEditInfoVC *vc = [[MioEditInfoVC alloc] init];
+        vc.user = _user;
         [self.navigationController pushViewController:vc animated:YES];
     }];
-
+    _editBtn.clickArea = @"3";
+    
     _LvBg = [UIView creatView:frame(92, 28, 30, 16) inView:_userBgView bgColor:rgba(0, 0, 0, 0.15) radius:8];
     _LvLab = [UILabel creatLabel:frame(0, 0, 30, 16) inView:_LvBg text:@"Lv.1" color:appWhiteColor size:10 alignment:NSTextAlignmentCenter];
     _listenTimeBg = [UIView creatView:frame(_LvBg.right + 4, 28, 60, 16) inView:_userBgView bgColor:rgba(0, 0, 0, 0.15) radius:8];
@@ -164,18 +170,18 @@
     MioLabel *signLab = [MioLabel creatLabel:frame(KSW_Mar2*3/4, 92, KSW_Mar2/4, 44) inView:_userBgView text:@"签到" colorName:name_text_one size:14 alignment:NSTextAlignmentCenter];
     
     
-    MioView *likeView = [MioView creatView:frame(30, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
-    MioView *recentView = [MioView creatView:frame(likeView.right + (KSW - 164 - 104)/3, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
-    MioView *localView = [MioView creatView:frame(recentView.right + (KSW - 164 - 104)/3, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
-    MioView *downLoadView = [MioView creatView:frame(KSW - 30 -52, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
+    MioView *likeView = [MioView creatView:frame(50, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
+    MioView *recentView = [MioView creatView:frame((KSW/2 - 26), 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
+    MioView *localView = [MioView creatView:frame(KSW - 102, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
+//    MioView *downLoadView = [MioView creatView:frame(KSW - 30 -52, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
     MioImageView *likeImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:likeView image:@"me_like_biaodan" bgTintColorName:name_main radius:0];
     MioImageView *songListImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:recentView image:@"shouye_gedan" bgTintColorName:name_main radius:0];
     MioImageView *localImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:localView image:@"me_local" bgTintColorName:name_main radius:0];
-    MioImageView *downloadImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:downLoadView image:@"me_download" bgTintColorName:name_main radius:0];
+//    MioImageView *downloadImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:downLoadView image:@"me_download" bgTintColorName:name_main radius:0];
     MioLabel *likeLab = [MioLabel creatLabel:frame(likeView.left, 253, 52, 17) inView:bgScroll text:@"喜欢" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     MioLabel *songlistLab = [MioLabel creatLabel:frame(recentView.left, 253, 52, 17) inView:bgScroll text:@"最近" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     MioLabel *loalLab = [MioLabel creatLabel:frame(localView.left, 253, 52, 17) inView:bgScroll text:@"本地" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
-    MioLabel *downloadLab = [MioLabel creatLabel:frame(downLoadView.left, 253, 52, 17) inView:bgScroll text:@"下载" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+//    MioLabel *downloadLab = [MioLabel creatLabel:frame(downLoadView.left, 253, 52, 17) inView:bgScroll text:@"下载" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     
 
     MioLabel *mySonglistLab = [MioLabel creatLabel:frame(Mar, 300, 100, 20) inView:bgScroll text:@"我的歌单" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
@@ -215,6 +221,8 @@
     
     [memberLab whenTapped:^{
         goLogin;
+        MioIntegralVC *vc = [[MioIntegralVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     [shareLab whenTapped:^{
         UIPasteboard * pastboard = [UIPasteboard generalPasteboard];
@@ -232,6 +240,12 @@
     }];
     [signLab whenTapped:^{
         goLogin;
+        [MioPostReq(api_sign, @{@"k":@"v"}) success:^(NSDictionary *result){
+            NSString *data = [result objectForKey:@"message"];
+            [UIWindow showSuccess:data];
+        } failure:^(NSString *errorInfo) {
+            [UIWindow showInfo:errorInfo];
+        }];
     }];
     [likeView whenTapped:^{
         goLogin;
@@ -248,10 +262,10 @@
             [self.navigationController pushViewController:vc animated:YES];
         };
     }];
-    [downLoadView whenTapped:^{
-        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-    }];
+//    [downLoadView whenTapped:^{
+//        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }];
     
     [newSonglistLab whenTapped:^{
         goLogin;
@@ -302,6 +316,7 @@
             return cell;
         }else{
             UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MioCreatSonglistCollectionCell" forIndexPath:indexPath];
+            [cell removeAllSubviews];
             MioView *iconBg = [MioView creatView:frame(0, 0, 109, 109) inView:cell bgColorName:name_card radius:4];
             MioImageView *icon = [MioImageView creatImgView:frame(39.5, 39.5, 30, 30) inView:iconBg image:@"me_xinjiangedan" bgTintColorName:name_icon_three radius:0];
             MioLabel *title = [MioLabel creatLabel:frame(0, 113, 109, 17) inView:cell text:@"新建歌单" colorName:name_text_one size:12 alignment:NSTextAlignmentLeft];

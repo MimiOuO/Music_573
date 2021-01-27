@@ -23,12 +23,16 @@
     [self.navView.centerButton setTitle:@"本地歌曲" forState:UIControlStateNormal];
     _localArr = [[NSMutableArray alloc] init];
     [self getItunesMusic];
+//    [self getMusic];
     
     _table = [UITableView creatTable:frame(0, NavH, KSW, KSH - NavH - TabH) inView:self.view vc:self];
+    _table.ly_emptyView = [MioEmpty noDataEmpty];
     UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSW, 48)];
-
 }
 
+-(void)getMusic{
+
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _localArr.count;
@@ -50,10 +54,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [UIWindow showInfo:@"还未对接"];
+    [mioM3U8Player playWithMusicList:_localArr andIndex:indexPath.row];
 }
-
-
 
 
 - (void)getItunesMusic {
@@ -104,7 +106,8 @@
     
     MioMusicModel *model  = [[MioMusicModel alloc] init];
     model.title = name;
-    model.audioFileURL = fileURL;
+    model.local = YES;
+    model.localUrl = fileURL;
     model.singer_name = singer;
 //    model.cover_image_path = image;
     

@@ -76,7 +76,7 @@
         _pageController.titles = @[@"简介",[NSString stringWithFormat:@"评论(%@)",_mv.comment_num]];
         _info.mv = _mv;
         
-        self.player.assetURLs = @[Url(@"http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8")];//@[_mv.mv_path.mj_url];
+        self.player.assetURLs = @[_mv.mv_path.mj_url];
         [self.player playTheIndex:0];
     } failure:^(NSString *errorInfo) {}];
 }

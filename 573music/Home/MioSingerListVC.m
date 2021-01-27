@@ -16,6 +16,8 @@
 @property (retain, nonatomic) NSArray *sectionArr;
 @property (nonatomic, strong) CYSectionIndexView * sectionIndexView;
 @property (nonatomic, strong) NSArray *categoryArr;
+@property (nonatomic, strong) NSMutableArray *areaArr;
+@property (nonatomic, strong) NSArray *genderArr;
 @property (nonatomic,copy) NSString * areaKey;
 @property (nonatomic,copy) NSString * genderKey;
 @end
@@ -27,7 +29,7 @@
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"热门歌手" forState:UIControlStateNormal];
     
-    _categoryArr = [userdefault objectForKey:@"category"];
+    _categoryArr = [userdefault objectForKey:@"singerCategory"];
     
     [self creatCategory];
     [self createData];
@@ -36,14 +38,14 @@
 
 -(void)creatCategory{
     
-    NSMutableArray *areaArr = [((NSArray *)_categoryArr[0][@"tags"]) mutableCopy];
-    [areaArr insertObject:@"全部" atIndex:0];
-    UIScrollView *areaScroll = [UIScrollView creatScroll:frame(0, NavH + 16, KSW, 28) inView:self.view contentSize:CGSizeMake(areaArr.count * 64 + 24, 28)];
+    _areaArr = [((NSArray *)_categoryArr[0][@"tags"]) mutableCopy];
+    [_areaArr insertObject:@"全部" atIndex:0];
+    UIScrollView *areaScroll = [UIScrollView creatScroll:frame(0, NavH + 16, KSW, 28) inView:self.view contentSize:CGSizeMake(_areaArr.count * 64 + 24, 28)];
 
-    for (int i = 0;i < areaArr.count; i++) {
+    for (int i = 0;i < _areaArr.count; i++) {
         
-        __block UIButton *titleBtn = [UIButton creatBtn:frame(16 + i*64, 0, 56, 28) inView:areaScroll bgColor:color_card title:areaArr[i] titleColor:color_text_one font:14 radius:14 action:^{
-            for (int j = 0;j < areaArr.count; j++) {
+        __block UIButton *titleBtn = [UIButton creatBtn:frame(16 + i*64, 0, 56, 28) inView:areaScroll bgColor:color_card title:_areaArr[i] titleColor:color_text_one font:14 radius:14 action:^{
+            for (int j = 0;j < _areaArr.count; j++) {
                 UIButton *btn = (UIButton *)[self.view viewWithTag:100 + j];
                 btn.selected = NO;
             }
@@ -56,14 +58,14 @@
         if (i == 0) titleBtn.selected = YES;
     }
     
-    NSMutableArray *genderArr = [((NSArray *)_categoryArr[1][@"tags"]) mutableCopy];
-    [genderArr insertObject:@"全部" atIndex:0];
-    UIScrollView *genderScroll = [UIScrollView creatScroll:frame(0, NavH + 52, KSW, 28) inView:self.view contentSize:CGSizeMake(genderArr.count * 64 + 24, 28)];
+    _genderArr = @[@"全部",@"男",@"女",@"组合"];
 
-    for (int i = 0;i < genderArr.count; i++) {
+    UIScrollView *genderScroll = [UIScrollView creatScroll:frame(0, NavH + 52, KSW, 28) inView:self.view contentSize:CGSizeMake(_genderArr.count * 64 + 24, 28)];
+
+    for (int i = 0;i < _genderArr.count; i++) {
         
-        __block UIButton *titleBtn = [UIButton creatBtn:frame(16 + i*64, 0, 56, 28) inView:genderScroll bgColor:color_card title:genderArr[i] titleColor:color_text_one font:14 radius:14 action:^{
-            for (int j = 0;j < genderArr.count; j++) {
+        __block UIButton *titleBtn = [UIButton creatBtn:frame(16 + i*64, 0, 56, 28) inView:genderScroll bgColor:color_card title:_genderArr[i] titleColor:color_text_one font:14 radius:14 action:^{
+            for (int j = 0;j < _genderArr.count; j++) {
                 UIButton *btn = (UIButton *)[self.view viewWithTag:200 + j];
                 btn.selected = NO;
             }
@@ -80,6 +82,50 @@
 
 -(void)requestData{
     
+    for (int i = 0;i < _areaArr.count; i++) {
+        UIButton *btn = (UIButton *)[self.view viewWithTag:100 + i];
+        if (btn.selected == YES) {
+            _areaKey = _areaArr[i];
+        }
+    }
+    for (int i = 0;i < _genderArr.count; i++) {
+        UIButton *btn = (UIButton *)[self.view viewWithTag:200 + i];
+        if (btn.selected == YES) {
+            _genderKey = _genderArr[i];
+        }
+    }
+    
+    NSLog(@"%@",_areaKey);
+    NSLog(@"%@",_genderKey);
+    NSMutableDictionary *dic =[[NSMutableDictionary alloc] init];
+    if (!Equals(_areaKey, @"全部")) {
+        [dic setObject:_areaKey forKey:@"tag"];
+    }
+    if (!Equals(_genderKey, @"全部")) {
+        if (Equals(_genderKey, @"男")) {
+            [dic setObject:@"1" forKey:@"gender"];
+        }
+        if (Equals(_genderKey, @"女")) {
+            [dic setObject:@"0" forKey:@"gender"];
+        }
+        if (Equals(_genderKey, @"组合")) {
+            [dic setObject:@"3" forKey:@"gender"];
+        }
+        
+    }
+    [UIWindow showLoading:@"加载中"];
+    [MioGetReq(api_singersGroup, dic) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        [UIWindow hiddenLoading];
+        self.sectionArr = data;
+        NSMutableArray *temArr = [[NSMutableArray alloc] init];
+        for (int i = 0;i <  self.sectionArr.count; i++) {
+            [temArr addObject:self.sectionArr[i][@"key"]];
+        }
+        self.sections = temArr;
+        [self.sectionIndexView reloadItems];
+        [_table reloadData];
+    } failure:^(NSString *errorInfo) {}];
 }
 
 -(void)creatUI{

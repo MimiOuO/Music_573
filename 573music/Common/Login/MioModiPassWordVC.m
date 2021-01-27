@@ -122,8 +122,8 @@
         [UIWindow showInfo:@"请输入正确手机号"];
         return;
     }
-    if (_passwordTF.text.length < 6) {
-        [UIWindow showInfo:@"请输入大于6位密码"];
+    if (_passwordTF.text.length < 8) {
+        [UIWindow showInfo:@"请输入大于8位密码"];
     }
     
     if (_passwordTF.text != _passwordTF2.text) {

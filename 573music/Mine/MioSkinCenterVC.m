@@ -56,7 +56,8 @@
     [_backGroundImg addSubview:effect];
     UIView *alphaView = [UIView creatView:frame(0, 0, KSW, KSH) inView:self.view bgColor:rgba(0, 0, 0, 0.2) radius:0];
     
-    _pageFlowView = [[HQFlowView alloc] initWithFrame:frame(0,NavH + 100, KSW, 500)];
+    _pageFlowView = [[HQFlowView alloc] initWithFrame:frame(0,0, KSW, 500)];
+    _pageFlowView.centerY = KSH/2;
     _pageFlowView.delegate = self;
     _pageFlowView.dataSource = self;
     _pageFlowView.minimumPageAlpha = 0.3;
@@ -67,7 +68,7 @@
     [self.view addSubview:_pageFlowView];
     [_pageFlowView reloadData];
     
-    _titleLab = [UILabel creatLabel:frame(0, NavH + 600, KSW, 29) inView:self.view text:_dataArr[0][@"name"] color:appWhiteColor boldSize:14 alignment:NSTextAlignmentCenter];
+//    _titleLab = [UILabel creatLabel:frame(0,_pageFlowView.bottom, KSW, 29) inView:self.view text:_dataArr[0][@"name"] color:appWhiteColor boldSize:14 alignment:NSTextAlignmentCenter];
     _useBtn = [UIButton creatBtn:frame(KSW/2 - 183/2, KSH - SafeBotH - 40 - 40, 183, 40) inView:self.view bgColor:appClearColor title:@"立即使用" titleColor:appWhiteColor font:14 radius:8 action:^{
         if (_useBtn.selected == NO) {
             [self switchSkin];
@@ -94,6 +95,9 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:filepath]) {
         [userdefault setObject:fileName forKey:@"skin"];
+        [userdefault synchronize];
+        [userdefault setObject:colorDic forKey:@"colorJson"];
+        [userdefault synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
         [UIWindow showSuccess:@"换肤成功"];
         _useBtn.selected = YES;
@@ -132,13 +136,15 @@
     [self.downloadManger download:self.downloadInfo];
     WEAKSELF;
     [UIWindow showLoading:@"皮肤下载中"];
-    [self.downloadInfo setDownloadBlock:^(DownloadInfo * _Nonnull downloadInfo) {
-        
-        if (downloadInfo.status == DownloadStatusCompleted) {
-            [weakSelf unzipWithPath:downloadInfo.path];
-        }
-    }];
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.downloadInfo setDownloadBlock:^(DownloadInfo * _Nonnull downloadInfo) {
+            
+            if (downloadInfo.status == DownloadStatusCompleted) {
+                [weakSelf unzipWithPath:downloadInfo.path];
+            }
+        }];
+    });
 }
 
 -(void)unzipWithPath:(NSString *)path{
@@ -165,6 +171,9 @@
     if (success) {
         
         [userdefault setObject:[((NSString *)[path componentsSeparatedByString:@"/"].lastObject) componentsSeparatedByString:@"."][0] forKey:@"skin"];
+        [userdefault synchronize];
+        [userdefault setObject:colorDic forKey:@"colorJson"];
+        [userdefault synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
         [UIWindow showSuccess:@"换肤成功"];
         _useBtn.selected = YES;

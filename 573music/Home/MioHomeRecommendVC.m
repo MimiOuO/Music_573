@@ -32,7 +32,7 @@
 @property (nonatomic, strong) UIScrollView *singerScroll;
 @property (nonatomic, strong) UIScrollView *albumScroll;
 
-@property (nonatomic, strong) NSArray *radioArr;
+@property (nonatomic, strong) NSArray<MioSongListModel *> *radioArr;
 @property (nonatomic, strong) NSArray<MioSongListModel *> *songlistArr;
 @property (nonatomic, strong) NSArray<MioMusicModel *> *musicArr;
 @property (nonatomic, strong) NSArray<MioSingerModel *>*singerArr;
@@ -48,7 +48,9 @@
 
     [self creatUI];
     [self request];
+    
 }
+
 
 -(void)request{
     [MioGetCacheReq(api_ranks, @{@"page":@"推荐"}) success:^(NSDictionary *result){
@@ -70,6 +72,11 @@
         }
         [self updateUI];
         [_bgScroll.mj_header endRefreshing];
+    } failure:^(NSString *errorInfo) {}];
+    [MioGetCacheReq(api_radios, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        _radioArr = [MioSongListModel mj_objectArrayWithKeyValuesArray:data];
+        [self updateRadio];
     } failure:^(NSString *errorInfo) {}];
 }
 
@@ -112,26 +119,26 @@
     _radioScroll = [UIScrollView creatScroll:frame(22, 32, KSW - 44 , 124) inView:_bgScroll contentSize:CGSizeMake(0,0)];
     _songlistScroll = [UIScrollView creatScroll:frame(0, 210, KSW, 149*2 + 12) inView:_bgScroll contentSize:CGSizeMake(0,0)];
     _musicScroll = [UIScrollView creatScroll:frame(0, 577, KSW, 60*3 + 24) inView:_bgScroll contentSize:CGSizeMake(0,0)];
+
     _albumScroll = [UIScrollView creatScroll:frame(0, 839, KSW, 132*2 + 12) inView:_bgScroll contentSize:CGSizeMake(0,0)];
     _singerScroll = [UIScrollView creatScroll:frame(0, 1177, KSW, 56*4 + 36) inView:_bgScroll contentSize:CGSizeMake(0,0)];
+    _singerScroll.contentInset = UIEdgeInsetsMake(0, 0, 0, Mar);
     _singerScroll.pagingEnabled = YES;
 }
 
 -(void)updateUI{
-    _radioScroll.contentSize = CGSizeMake(_radioArr.count*96 + 6, 124);
+    
     _songlistScroll.contentSize = CGSizeMake(ceilf(_songlistArr.count/2.0)*118 + 24, 149*2 + 12);
     _musicScroll.contentSize = CGSizeMake(ceilf(_musicArr.count/3.0)*KSW_Mar2 + 24, 60*3 + 24);
     _albumScroll.contentSize = CGSizeMake(ceilf(_albumArr.count/2.0)*118 + 24, 132*2 + 12);
     _singerScroll.contentSize = CGSizeMake(ceilf(_singerArr.count/4.0)*KSW_Mar2 + 24, 56*4 + 36);
     
-    for (int i = 0;i < _songlistArr.count; i++) {
-        MioRadioView *radioCell = [[MioRadioView alloc] initWithFrame:CGRectMake( 6 + i * 96, 0, 90, 124)];
-        radioCell.model = _songlistArr[i];
-        [_radioScroll addSubview:radioCell];
-        [radioCell whenTapped:^{
+    
+    [_songlistScroll removeAllSubviews];
+    [_musicScroll removeAllSubviews];
+    [_albumScroll removeAllSubviews];
+    [_singerScroll removeAllSubviews];
 
-        }];
-    }
     
     for (int i = 0;i < _songlistArr.count; i++) {
         MioSonglistCollectionCell *songlistCell = [[MioSonglistCollectionCell alloc] initWithFrame:CGRectMake( Mar + (i/2) * 117, 160*(i%2), 109, 149)];
@@ -158,7 +165,7 @@
         [_albumScroll addSubview:albumCell];
         [albumCell whenTapped:^{
             MioAlbumVC *vc = [[MioAlbumVC alloc] init];
-            vc.album_id = ((MioAlbumModel *)_albumArr[i]).album_id;
+            vc.album_id = @"1";//((MioAlbumModel *)_albumArr[i]).album_id;
             [self.navigationController pushViewController:vc animated:YES];
         }];
     }
@@ -172,7 +179,24 @@
             [self.navigationController pushViewController:vc animated:YES];
         }];
     }
-    
+}
+
+-(void)updateRadio{
+    _radioScroll.contentSize = CGSizeMake(_radioArr.count*96 + 6, 124);
+    [_radioScroll removeAllSubviews];
+    for (int i = 0;i < _radioArr.count; i++) {
+        MioRadioView *radioCell = [[MioRadioView alloc] initWithFrame:CGRectMake( 6 + i * 96, 0, 90, 124)];
+        radioCell.model = _radioArr[i];
+        [_radioScroll addSubview:radioCell];
+        [radioCell whenTapped:^{
+            setPlayOrder(MioPlayOrderSingle);
+            [userdefault synchronize];
+            [mioM3U8Player playWithMusicList:[MioMusicModel mj_objectArrayWithKeyValuesArray:_radioArr[i].songs] andIndex:0];
+            PostNotice(@"hiddenPlaylistIcon");
+            [userdefault setObject:@"1" forKey:@"isRadio"];
+            [userdefault synchronize];
+        }];
+    }
 }
 
 @end

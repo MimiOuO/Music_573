@@ -32,9 +32,9 @@
 }
 
 -(void)requestData{
-    [MioGetReq(api_albums, @{@"page":Str(_page)}) success:^(NSDictionary *result){
-        NSArray *data = [result objectForKey:@"data"];
-        if (data.count < 10) {
+    [MioGetReq(api_rankDetail(_rankId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
+        NSArray *data = result[@"data"][@"data_paginate"][@"data"];
+        if (Equals(result[@"data"][@"data_paginate"][@"next_page_url"], @"<null>")) {
             [self.collection.mj_footer endRefreshingWithNoMoreData];
         }
         [self.collection.mj_footer endRefreshing];
@@ -54,7 +54,8 @@
     [_collection registerClass:[MioAlbumCollectionCell class] forCellWithReuseIdentifier:@"MioAlbumCollectionCell"];
     _collection.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_collection];
-    
+    _collection.autoHideMjFooter = YES;
+    _collection.ly_emptyView = [MioEmpty noDataEmpty];
     _collection.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];

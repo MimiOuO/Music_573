@@ -31,7 +31,7 @@
     UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSW, 48)];
     
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
-        
+        [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
     UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
@@ -56,13 +56,13 @@
 
 -(void)requestData{
 
-    [MioGetReq(api_likeMusic, (@{@"page":Str(_page)})) success:^(NSDictionary *result){
-        NSArray *data = [result objectForKey:@"data"];
+    [MioGetReq(api_rankDetail(_rankId), (@{@"page":Str(_page)})) success:^(NSDictionary *result){
+        NSArray *data = result[@"data"][@"data_paginate"][@"data"];
         [_table.mj_footer endRefreshing];
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
-        if (data.count < 10) {
+        if (Equals(result[@"data"][@"data_paginate"][@"next_page_url"], @"<null>")) {
             [_table.mj_footer endRefreshingWithNoMoreData];
         }
         
@@ -95,7 +95,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [UIWindow showInfo:@"还未对接"];
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
 }
 
 @end

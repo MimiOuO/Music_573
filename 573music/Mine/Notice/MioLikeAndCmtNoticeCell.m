@@ -7,7 +7,9 @@
 //
 
 #import "MioLikeAndCmtNoticeCell.h"
-
+#import "MioMusicCmtVC.h"
+#import "MioMvVC.h"
+#import "MioSongListVC.h"
 @interface MioLikeAndCmtNoticeCell()
 @property (nonatomic, strong) UIImageView *avatar;
 @property (nonatomic, strong) MioLabel *nameLab;
@@ -77,6 +79,24 @@
     }
     _split.top = _fromeLab.bottom + 12;
     _bgView.height = _fromeLab.bottom + 12;
+    
+    [_fromeLab whenTapped:^{
+        if ([_fromeLab.text containsString:@"来自歌曲"]) {
+            MioMusicCmtVC *vc = [[MioMusicCmtVC alloc] init];
+            vc.musicId = dic[@"data"][@"from"][@"id"];
+            [self.viewController.navigationController pushViewController:vc animated:YES];
+        }
+        if ([_fromeLab.text containsString:@"来自视频"]) {
+            MioMvVC *vc = [[MioMvVC alloc] init];
+            vc.mvId = dic[@"data"][@"from"][@"id"];
+            [self.viewController.navigationController pushViewController:vc animated:YES];
+        }
+        if ([_fromeLab.text containsString:@"来自歌单"]) {
+            MioSongListVC *vc = [[MioSongListVC alloc] init];
+            vc.songlistId = dic[@"data"][@"from"][@"id"];
+            [self.viewController.navigationController pushViewController:vc animated:YES];
+        }
+    }];
 }
 
 @end

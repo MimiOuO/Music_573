@@ -59,7 +59,7 @@
 }
 
 -(void)request{
-    [MioGetCacheReq(api_ranks, @{@"page":@"推荐"}) success:^(NSDictionary *result){
+    [MioGetCacheReq(api_ranks, @{@"page":@"音乐馆"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         for (int i = 0;i < data.count; i++) {
             if (Equals(@"歌曲", data[i][@"type"])) {
@@ -77,7 +77,7 @@
         
     } failure:^(NSString *errorInfo) {}];
     
-    [MioGetCacheReq(api_ranks,(@{@"type":@"歌曲",@"limit":@"3"})) success:^(NSDictionary *result){
+    [MioGetCacheReq(api_ranks,(@{@"type":@"歌曲",@"lock":@"0"})) success:^(NSDictionary *result){
         _rankArr = [result objectForKey:@"data"];
         [self updateRank];
     } failure:^(NSString *errorInfo) {}];
@@ -190,6 +190,11 @@
     _musicScroll.contentSize = CGSizeMake(ceilf(_musicArr.count/3.0)*KSW_Mar2 + 24, 60*3 + 24);
    
     _albumScroll.contentSize = CGSizeMake(ceilf(_albumArr.count/2.0)*118 + 24, 132*2 + 12);
+    
+    [_musicScroll removeAllSubviews];
+    [_albumScroll removeAllSubviews];
+    [_songlistScroll removeAllSubviews];
+    
     
     for (int i = 0;i < _songlistArr.count; i++) {
         MioSonglistCollectionCell *songlistCell = [[MioSonglistCollectionCell alloc] initWithFrame:CGRectMake( Mar + (i/2) * 117, 160*(i%2), 109, 149)];

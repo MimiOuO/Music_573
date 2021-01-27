@@ -24,6 +24,8 @@
     _page = 1;
     _table = [UITableView creatTable:frame(Mar, 0, KSW_Mar2, KSH-NavH-TabH) inView:self.view vc:self];
     _table.contentInset = UIEdgeInsetsMake(Mar, 0, Mar, 0);
+    _table.autoHideMjFooter = YES;
+    _table.ly_emptyView = [MioEmpty noDataEmpty];
     _table.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -36,7 +38,7 @@
     [MioGetReq(api_notifications, (@{@"type":@"from_system",@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_table.mj_footer endRefreshing];
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [_table.mj_footer endRefreshingWithNoMoreData];
         }
         [_dataArr addObjectsFromArray:data];
@@ -59,6 +61,7 @@
     if (!cell) {
         cell = [[MioSystemNoticeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.dic = _dataArr[indexPath.row];
     if (_dataArr.count == 1) {
         ViewRadius(cell.bgView, 8);

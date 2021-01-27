@@ -36,6 +36,8 @@
     
     _tableView = [UITableView creatTable:frame(0, 0, KSW, KSH - NavH - TabH - 44) inView:self.view vc:self];
     _tableView.backgroundColor = appClearColor;
+    _tableView.autoHideMjFooter = YES;
+    _tableView.ly_emptyView = [MioEmpty noDataEmpty];
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -52,7 +54,7 @@
     [MioGetReq(api_singerAlbums(_singerId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [self.tableView.mj_footer endRefreshing];
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         

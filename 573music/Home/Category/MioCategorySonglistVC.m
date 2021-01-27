@@ -34,7 +34,7 @@
     [MioGetReq(api_songLists, (@{@"s":_tag,@"columns":@[@"tags"],@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [self.collection.mj_footer endRefreshing];
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [self.collection.mj_footer endRefreshingWithNoMoreData];
         }
         
@@ -54,7 +54,8 @@
     [_collection registerClass:[MioSonglistCollectionCell class] forCellWithReuseIdentifier:@"MioSonglistCollectionCell"];
     _collection.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_collection];
-    
+    _collection.autoHideMjFooter = YES;
+    _collection.ly_emptyView = [MioEmpty noDataEmpty];
     _collection.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];

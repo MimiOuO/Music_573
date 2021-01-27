@@ -9,6 +9,7 @@
 #import "SGQRCodeObtain.h"
 #import "SGQRCodeObtainConfigure.h"
 #import <Photos/Photos.h>
+#import <AVFoundation/AVCaptureDevice.h>
 
 @interface SGQRCodeObtain () <AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, weak) UIViewController *controller;

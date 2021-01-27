@@ -37,7 +37,8 @@
     _collection.backgroundColor = appClearColor;
     [_collection registerClass:[MioMVCollectionCell class] forCellWithReuseIdentifier:@"MioMVCollectionCell"];
     [self.view addSubview:_collection];
-    
+    _collection.autoHideMjFooter = YES;
+    _collection.ly_emptyView = [MioEmpty noDataEmpty];
     _collection.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -56,17 +57,17 @@
         return;
     }
     
-    [MioGetReq(api_songs, (@{@"s":_searchKey,@"page":Str(_page)})) success:^(NSDictionary *result){
+    [MioGetReq(api_mvs, (@{@"s":_searchKey,@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_collection.mj_footer endRefreshing];
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [_collection.mj_footer endRefreshingWithNoMoreData];
         }
         
-        [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:data]];
+        [_dataArr addObjectsFromArray:[MioMvModel mj_objectArrayWithKeyValuesArray:data]];
         [_collection reloadData];
     } failure:^(NSString *errorInfo) {}];
 }

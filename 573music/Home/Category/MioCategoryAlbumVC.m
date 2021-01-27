@@ -35,7 +35,7 @@
     [MioGetReq(api_albums, (@{@"s":_tag,@"columns":@[@"tags"],@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [self.collection.mj_footer endRefreshing];
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [self.collection.mj_footer endRefreshingWithNoMoreData];
         }
         
@@ -55,7 +55,8 @@
     [_collection registerClass:[MioAlbumCollectionCell class] forCellWithReuseIdentifier:@"MioAlbumCollectionCell"];
     _collection.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_collection];
-    
+    _collection.autoHideMjFooter = YES;
+    _collection.ly_emptyView = [MioEmpty noDataEmpty];
     _collection.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];

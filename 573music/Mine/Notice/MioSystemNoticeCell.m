@@ -20,9 +20,11 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.backgroundColor = appClearColor;
         
+
+        _bgView = [UIView creatView:frame(0, 0, KSW_Mar2, 100) inView:self bgColor:color_card radius:0];
+        
         UIView *iconView = [UIView creatView:frame(12, 12, 50, 50) inView:self bgColor:color_main radius:25];
         UIImageView *icon = [UIImageView creatImgView:frame(14, 14, 22, 22) inView:iconView image:@"xiaoxi_os" radius:0];
-        _bgView = [UIView creatView:frame(0, 0, KSW_Mar2, 100) inView:self bgColor:color_card radius:0];
         
         _contentLab = [MioLabel creatLabel:frame(70, 17, (KSW - 86 -28), 0) inView:self.contentView text:@"" colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
         _timeLab = [MioLabel creatLabel:frame(70, _contentLab.bottom + 13, 200, 14) inView:self.contentView text:@"" colorName:name_text_two size:10 alignment:NSTextAlignmentLeft];

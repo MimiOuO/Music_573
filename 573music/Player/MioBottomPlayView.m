@@ -27,6 +27,8 @@
         
         RecieveNotice(switchMusic, changeMusic);
         RecieveNotice(@"clearPlaylist", changeMusic);
+        RecieveNotice(@"hiddenPlaylistIcon", hiddenPlaylistIcon);
+        RecieveNotice(@"showPlaylistIcon", showPlaylistIcon);
         WEAKSELF;
         [mioM3U8Player xw_addObserverBlockForKeyPath:@"status" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
             [weakSelf playerStatusChanged];
@@ -54,6 +56,10 @@
             [mioM3U8Player playNext];
         }];
         
+        if (Equals([userdefault objectForKey:@"isRadio"], @"1")) {
+            _playListBtn.hidden = YES;
+        }
+        
         [self updateUI];
     }
     return self;
@@ -61,6 +67,14 @@
 
 -(void)changeMusic{
     [self updateUI];
+}
+
+-(void)hiddenPlaylistIcon{
+    _playListBtn.hidden = YES;
+}
+
+-(void)showPlaylistIcon{
+    _playListBtn.hidden = NO;
 }
 
 -(void)updateUI{

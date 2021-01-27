@@ -37,7 +37,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         mioPlayList.delegate = self;
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_timerAction:) userInfo:nil repeats:YES];
         
-        if (mioPlayList.currentPlayIndex > 0) {
+        if (mioPlayList.currentPlayIndex >= 0) {
             self.currentMusic = mioPlayList.playListArr[mioPlayList.currentPlayIndex];
         }
         
@@ -76,6 +76,9 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 #pragma mark - 各种形式播放
 - (void)playWithMusicList:(NSArray<MioMusicModel *> *)musicList andIndex:(NSInteger)index{
     [self playWithMusic:musicList[index] withMusicList:musicList];
+    PostNotice(@"showPlaylistIcon");
+    [userdefault setObject:@"0" forKey:@"isRadio"];
+    [userdefault synchronize];
 }
 
 
@@ -126,11 +129,13 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         self.currentTime = 0;
         //重设streamer
         [self resetAudiostreamer:music];
-        //添加到最近播放
-        [WHCSqlite delete:[MioMusicModel class] where:[NSString stringWithFormat:@"savetype = 'recentMusic' AND song_id = '%@'",music.song_id]];
-        
-        music.savetype = @"recentMusic";
-        [WHCSqlite insert:music];
+        if (!music.local) {
+            //添加到最近播放
+            [WHCSqlite delete:[MioMusicModel class] where:[NSString stringWithFormat:@"savetype = 'recentMusic' AND song_id = '%@'",music.song_id]];
+            
+            music.savetype = @"recentMusic";
+            [WHCSqlite insert:music];
+        }
         //通知更新UI
         PostNotice(switchMusic);
         
@@ -164,9 +169,13 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void)resetAudiostreamer:(MioMusicModel *)music{
 //    [self _cancelStreamer];
-    self.player.assetURLs = @[music.audioFileURL];
-    [self.player playTheIndex:0];
-
+    if (music.local) {
+        self.player.assetURLs = @[music.localUrl];
+        [self.player playTheIndex:0];
+    }else{
+        self.player.assetURLs = @[music.audioFileURL];
+        [self.player playTheIndex:0];
+    }
 }
 
 - (void)play{

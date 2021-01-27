@@ -76,7 +76,8 @@ static const char *autoHideMjFooterKey = "autoHideMjFooter";
 		if (!self.mj_footer.hidden) { // 没有隐藏
 			actualHeight = actualHeight + self.mj_footer.frame.size.height + 10; // 默认的mj_footer高度为44  默认实际偏移了54
 		}
-		if (actualHeight >= heightOfContentSize) { // 实际显示高度大于内容高度 代表第一页都没有占满
+//		if (actualHeight >= heightOfContentSize) { // 实际显示高度大于内容高度 代表第一页都没有占满
+        if (heightOfContentSize < 440) {
 			self.mj_footer.hidden = YES;
 		} else {
 			self.mj_footer.hidden = NO;

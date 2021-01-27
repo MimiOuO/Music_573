@@ -28,6 +28,8 @@
     _page = 1;
     
     _table = [UITableView creatTable:frame(0, 0, KSW, KSH - NavH - 40 - TabH) inView:self.view vc:self];
+    _table.autoHideMjFooter = YES;
+    _table.ly_emptyView = [MioEmpty noDataEmpty];
     _table.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -51,7 +53,7 @@
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [_table.mj_footer endRefreshingWithNoMoreData];
         }
         
@@ -81,7 +83,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [UIWindow showInfo:@"还未对接"];
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
 }
 
 @end

@@ -125,8 +125,8 @@
         [UIWindow showInfo:@"请输入正确手机号"];
         return;
     }
-    if (_verifyTF.text.length < 6){
-        [UIWindow showInfo:@"请输入不少于6位密码"];
+    if (_verifyTF.text.length < 8){
+        [UIWindow showInfo:@"请输入不少于8位密码"];
         return;
     }
 

@@ -70,9 +70,13 @@
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        return [[MioAlbumListVC alloc] init];
+        MioAlbumListVC *vc = [[MioAlbumListVC alloc] init];
+        vc.rankId = @"3";
+        return vc;
     }else{
-        return [[MioAlbumListVC alloc] init];
+        MioAlbumListVC *vc = [[MioAlbumListVC alloc] init];
+        vc.rankId = @"7";
+        return vc;
     }
 }
 

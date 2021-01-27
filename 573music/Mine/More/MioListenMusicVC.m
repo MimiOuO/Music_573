@@ -12,6 +12,8 @@
 #import "YSCRippleView.h"
 #import "PYSearchViewController.h"
 #import "MioSearchResultVC.h"
+
+#import <AVFoundation/AVCaptureDevice.h>
 @interface MioListenMusicVC ()
 @property (nonatomic, strong) ACRCloudRecognition *client;
 @property (nonatomic, strong) ACRCloudConfig *config;
@@ -28,7 +30,17 @@
     
     [self creatUI];
     _start = NO;
-    
+
+
+    AVAuthorizationStatus authStatus =  [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+
+    if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied) {
+    //无权限
+        [UIWindow showInfo:@"检测到您暂未开启麦克风权限，请到设置中打开麦克风权限再试"];
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
+
     _config = [[ACRCloudConfig alloc] init];
     
     _config.accessKey = @"91faff5dc1b1e1163da0864d88658672";

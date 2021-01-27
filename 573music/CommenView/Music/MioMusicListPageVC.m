@@ -67,10 +67,13 @@
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        
-        return [[MioMusicListVC alloc] init];
+        MioMusicListVC *vc = [[MioMusicListVC alloc] init];
+        vc.rankId = @"2";
+        return vc;
     }else{
-        return [[MioMusicListVC alloc] init];
+        MioMusicListVC *vc = [[MioMusicListVC alloc] init];
+        vc.rankId = @"6";
+        return vc;
     }
 }
 

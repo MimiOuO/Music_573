@@ -19,14 +19,13 @@
 
 #import "AppDelegate+MioInitalData.h"
 
-#import <XHLaunchAd.h>
-#import "ScanSuccessJumpVC.h"
+
 
 #import "AFNetworkReachabilityManager.h"
 
 #import "HcdGuideView.h"
 #endif
-@interface AppDelegate ()<XHLaunchAdDelegate>
+@interface AppDelegate ()
 @property (nonatomic, assign) float tabbarHeight;
 @property (nonatomic, strong) HcdGuideView *guideView;
 @end
@@ -54,22 +53,18 @@
     [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
     [audioSession setActive:YES error:nil];
     
-    [self initSettings];
-    
     [self changeSkinLocation];
+    
+    [self initSettings];
     
     self.window.rootViewController = [[MioTabbarVC alloc] init];
     [self.window makeKeyAndVisible];
     
     [self configGuideView];
     
-    [self configAd];
-    
     [self initalData];
     
     [self listenNetwork];
-    
-    [self checkVersion];
     
     return YES;
 }
@@ -86,66 +81,23 @@
                   andButtonBorderColor:[UIColor clearColor]];
 }
 
--(void)configAd{
-    [XHLaunchAd setLaunchSourceType:SourceTypeLaunchScreen];
-    [XHLaunchAd setWaitDataDuration:2];
-    [MioGetCacheReq(api_startAd, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSDictionary *data = [result objectForKey:@"data"];
-        
-        //配置广告数据
-        XHLaunchImageAdConfiguration *imageAdconfiguration = [XHLaunchImageAdConfiguration defaultConfiguration];
-        
-        imageAdconfiguration.imageNameOrURLString = data[@"url"];
-        
-        imageAdconfiguration.openModel = @"http://www.baidu.com";
-        imageAdconfiguration.frame = CGRectMake(0, 0, KSW, KSH- 78 - SafeBotH);
-        imageAdconfiguration.skipButtonType = SkipTypeTimeText;
-       
-        UIImageView *icon = [UIImageView creatImgView:frame(KSW2 - 98/2, KSH - 25 - 28 - SafeBotH, 98, 28) inView:nil image:@"573logo" radius:0];
-        imageAdconfiguration.subViews = [NSArray arrayWithObject:icon];
-        
-        //显示图片开屏广告
-        [XHLaunchAd imageAdWithImageAdConfiguration:imageAdconfiguration delegate:self];
-    } failure:^(NSString *errorInfo) {}];
- 
-}
-
--(BOOL)xhLaunchAd:(XHLaunchAd *)launchAd clickAtOpenModel:(id)openModel clickPoint:(CGPoint)clickPoint{
-    
-    NSLog(@"广告点击事件");
-    
-    //openModel即配置广告数据设置的点击广告时打开页面参数(configuration.openModel)
-    
-    if(openModel == nil) return NO;
-    
-    ScanSuccessJumpVC *vc = [[ScanSuccessJumpVC alloc] init];
-    NSString *urlString = (NSString *)openModel;
-    vc.jump_URL = urlString;
-    //此处不要直接取keyWindow
-    UIViewController* rootVC = [[UIApplication sharedApplication].delegate window].rootViewController;
-    [((UITabBarController*)rootVC).selectedViewController pushViewController:vc animated:YES];
-    
-    return YES;//YES移除广告,NO不移除广告
-}
-
-
 -(void)initSettings{
-    [userdefault setObject:@"不开启" forKey:@"timeoff"];
+    [userdefault setObject:@"不开启" forKey:@"timeoff"];//定时关闭
     if (![userdefault objectForKey:@"first"]) {
-        [userdefault setObject:@"1" forKey:@"first"];
-        [userdefault setObject:@"bai" forKey:@"skin"];
-        [userdefault setObject:@"1" forKey:@"showJifen"];
-        [userdefault setObject:@"标清" forKey:@"defaultQuailty"];
-        [userdefault setObject:@"-1" forKey:@"currentPlayIndex"];
-        [userdefault setObject:@"0" forKey:@"onlyWifi"];
-        [userdefault setObject:@"1" forKey:@"openNewtwork"];
-        setPlayOrder(MioPlayOrderCycle);
+        [userdefault setObject:@"1" forKey:@"first"];//是否是第一次启动
+        [userdefault setObject:@"bai" forKey:@"skin"];//默认皮肤
+        [userdefault setObject:@"1" forKey:@"showJifen"];//是否显示积分
+        [userdefault setObject:@"标清" forKey:@"defaultQuailty"];//默认音质
+        [userdefault setObject:@"-1" forKey:@"currentPlayIndex"];//当前播放的index
+        [userdefault setObject:@"0" forKey:@"onlyWifi"];//是否开启仅wifi
+        [userdefault setObject:@"1" forKey:@"openNewtwork"];//是否允许访问网络
+        [userdefault setObject:@"0" forKey:@"isRadio"];//播放的是不是电台
+        setPlayOrder(MioPlayOrderCycle);//播放顺序
+        [userdefault synchronize];
+
+        [userdefault setObject:colorDic forKey:@"colorJson"];
         [userdefault synchronize];
     }
-}
-
--(void)checkVersion{
-    
 }
 
 #pragma mark - 监听网络状态

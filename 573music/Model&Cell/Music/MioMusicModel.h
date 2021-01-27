@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSURL * audioFileURL;
 
+@property (nonatomic, assign) BOOL local;
+@property (nonatomic, strong) NSURL * localUrl;
 @property (nonatomic,copy) NSString * savetype;
 @property (nonatomic,copy) NSString * savePath;
 

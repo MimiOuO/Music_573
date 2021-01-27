@@ -34,9 +34,9 @@
     UILabel *contentLab = [UILabel creatLabel:frame(Mar, 70, KSW_Mar2, 20) inView:_scroll text:mv.title color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];
     UILabel *playCountLab  = [UILabel creatLabel:frame(Mar, 98, KSW_Mar2, 17) inView:_scroll text:[NSString stringWithFormat:@"%@次播放",mv.hits_all] color:color_text_two size:12 alignment:NSTextAlignmentLeft];
     
-    MioButton *DowloadBtn = [MioButton creatBtn:frame(KSW-72 - 20, Mar, 20, 20) inView:_scroll bgImage:@"download_player" bgTintColorName:name_icon_one action:^{
-        
-    }];
+//    MioButton *DowloadBtn = [MioButton creatBtn:frame(KSW-72 - 20, Mar, 20, 20) inView:_scroll bgImage:@"download_player" bgTintColorName:name_icon_one action:^{
+//        
+//    }];
 
     _likeBtn = [MioButton creatBtn:frame(KSW-18 - 20, Mar, 20, 20) inView:_scroll bgImage:@"me_like_putong" bgTintColorName:name_icon_one action:^{
         [self likeClick];
@@ -45,7 +45,7 @@
     if (mv.is_like) {
         _likeBtn.selected = YES;
     }
-    UILabel *downloadLab = [UILabel creatLabel:frame(DowloadBtn.left -5 , 37, 30, 17) inView:_scroll text:@"下载" color:color_text_two size:12 alignment:NSTextAlignmentCenter];
+//    UILabel *downloadLab = [UILabel creatLabel:frame(DowloadBtn.left -5 , 37, 30, 17) inView:_scroll text:@"下载" color:color_text_two size:12 alignment:NSTextAlignmentCenter];
     UILabel *likeLab = [UILabel creatLabel:frame(_likeBtn.left -5 , 37, 30, 17) inView:_scroll text:@"喜欢" color:color_text_two size:12 alignment:NSTextAlignmentCenter];
     
     

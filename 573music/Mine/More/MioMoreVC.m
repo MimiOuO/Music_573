@@ -91,6 +91,7 @@
             }
         }
         if (Equals(fuc1Arr[i], @"默认播放音质")) {
+            NSLog(@"%@",[userdefault objectForKey:@"defaultQuailty"]);
             _defaultPlay = [MioLabel creatLabel:frame(KSW_Mar2 - 12 - 100, 44*i, 100, 44) inView:bgView1 text:[userdefault objectForKey:@"defaultQuailty"] colorName:name_text_two size:14 alignment:NSTextAlignmentRight];
         }
         
@@ -193,17 +194,23 @@
 }
 
 -(void)nightClick{
-
+    [UIWindow showInfo:@"模式切换中，请耐心等待"];
     if (_nightSwitch.on) {
         [userdefault setObject:[userdefault objectForKey:@"skin"] forKey:@"boforeSkin"];
         [userdefault setObject:@"hei" forKey:@"skin"];
         [userdefault synchronize];
+        [userdefault setObject:colorDic forKey:@"colorJson"];
+        [userdefault synchronize];
     }else{
         [userdefault setObject:[userdefault objectForKey:@"boforeSkin"] forKey:@"skin"];
         [userdefault synchronize];
+        [userdefault setObject:colorDic forKey:@"colorJson"];
+        [userdefault synchronize];
     }
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
+    });
     
     [self.navView.centerButton setTitleColor:color_text_one forState:UIControlStateNormal];
     self.navView.leftButton.tintColor = color_text_one;

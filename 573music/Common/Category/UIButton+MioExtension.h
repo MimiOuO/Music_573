@@ -25,6 +25,6 @@ typedef void(^ButtonSenderBlock) (UIButton* sender);
 +(UIButton *)creatBtn:(CGRect)frame inView:(UIView *)view bgColor:(UIColor *)color title:(NSString *)title titleColor:(UIColor *)titleColor font:(CGFloat)fontSize radius:(CGFloat)radius action:(void (^)())block;
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state;
-
+@property (nonatomic, copy) NSString * clickArea;
 @end
 NS_ASSUME_NONNULL_END

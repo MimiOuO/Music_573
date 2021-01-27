@@ -61,7 +61,7 @@
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
-        if (_songlist.songs.count < 10) {
+        if (Equals(data[@"songs_paginate"][@"next_page_url"], @"<null>")) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
@@ -86,6 +86,8 @@
     _tableView.backgroundColor = appClearColor;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.bounces = NO;
+    _tableView.autoHideMjFooter = YES;
+    _tableView.ly_emptyView = [MioEmpty noDataEmpty];
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -190,7 +192,7 @@
     [sectionHeader addRoundedCorners:UIRectCornerTopRight|UIRectCornerTopLeft withRadii:CGSizeMake(16, 16)];
     MioImageView *bgImg = [MioImageView creatImgView:frame(0, 0, KSW, 48) inView:sectionHeader skin:SkinName image:@"picture_li" radius:0];
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
-        
+        [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
     UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
@@ -224,6 +226,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 72;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";

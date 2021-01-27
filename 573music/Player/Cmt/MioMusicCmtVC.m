@@ -41,7 +41,7 @@
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         [_dataArr addObjectsFromArray:[MioCmtModel mj_objectArrayWithKeyValuesArray:data]];
@@ -52,6 +52,8 @@
 
 -(void)creatUI{
     _tableView = [UITableView creatTable:frame(0, NavH, KSW, KSH - NavH - 44 - SafeBotH) inView:self.view vc:self];
+    _tableView.autoHideMjFooter = YES;
+    _tableView.ly_emptyView = [MioEmpty noDataEmpty];
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];

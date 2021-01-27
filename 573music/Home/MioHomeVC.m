@@ -78,7 +78,7 @@
     UIImageView *bgImg3 = [UIImageView creatImgView:frame(31, 12, 20, 0.5) inView:_countDownView image:@"daojishi_xian" radius:0];
     [self startCutDown];
     [_countDownView whenTapped:^{
-        [UIWindow showMessage:@"11111at" withTitle:@"积分说明"];
+        [UIWindow showMessage:@"积分说明11111at积分说明11111at积分说明11111at积分说明11111at积分说明11111at积分说明11111at积分说明11111at" withTitle:@"积分说明"];
     }];
 }
 
@@ -96,15 +96,15 @@
         NSInteger time = count%300;
         _minuteLab.text = [NSString stringWithFormat:@"%02ld",time/60];
         _secondLab.text = [NSString stringWithFormat:@"%02ld",time%60];
-        if (time == 1) {
-            [UIWindow showInfo:@"积分添加成功"];
+        if (time == 0) {
+            [UIWindow showSuccess:@"积分添加成功"];
             [self addJifen];
         }
     }];
 }
 
 -(void)addJifen{
-    [CountdownTimer stopTimerWithKey:cutdown];
+    
     
     
 }

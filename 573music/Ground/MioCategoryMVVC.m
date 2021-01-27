@@ -34,19 +34,21 @@
 }
 
 -(void)requestData{
-    [MioGetReq(api_mvs, @{@"page":Str(_page)}) success:^(NSDictionary *result){
+    [MioGetReq(api_mvs, (@{@"columns":@[@"tags"],@"s":_tagStr,@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
-        if (data.count < 10) {
+        if (Equals(result[@"links"][@"next"], @"<null>")) {
             [self.collection.mj_footer endRefreshingWithNoMoreData];
         }
         [self.collection.mj_header endRefreshing];
         [self.collection.mj_footer endRefreshing];
         [_dataArr addObjectsFromArray:[MioMvModel mj_objectArrayWithKeyValuesArray:data]];
         [self.collection reloadData];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow showInfo:errorInfo];
+    }];
 }
 -(void)creatUI{
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
@@ -60,7 +62,8 @@
     [_collection registerClass:[MioMVBigCollectionCell class] forCellWithReuseIdentifier:@"MioMVBigCollectionCell"];
     _collection.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_collection];
-    
+    _collection.autoHideMjFooter = YES;
+    _collection.ly_emptyView = [MioEmpty noDataEmpty];
     _collection.mj_header = [MioRefreshHeader headerWithRefreshingBlock:^{
         _page = 1;
         [self requestData];
