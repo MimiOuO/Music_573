@@ -140,10 +140,11 @@
         [UIWindow showInfo:@"内容不能为空！"];
         return;
     }
-    
+    [UIWindow showMaskLoading:@"请稍后"];
     [MioPostReq(api_feedback, @{@"content":_noteTextView.text}) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         [UIWindow showSuccess:@"提交成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];
     }];

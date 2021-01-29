@@ -9,6 +9,7 @@
 #import "MioSingerMVVC.h"
 #import "MioMvModel.h"
 #import "MioMVTableCell.h"
+#import "MioMvVC.h"
 
 /****进入置顶通知****/
 #define kHomeGoTopNotification               @"Home_Go_Top"
@@ -20,7 +21,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray<MioMvModel *> *dataArr;
 @end
 
 @implementation MioSingerMVVC
@@ -119,6 +120,12 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = _dataArr[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MioMvVC *vc = [[MioMvVC alloc] init];
+    vc.mvId = _dataArr[indexPath.row].mv_id;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

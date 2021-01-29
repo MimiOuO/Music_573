@@ -34,6 +34,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     self = [super init];
     if (self) {
 
+        [userdefault setObject:@"1" forKey:@"firstPlay"];//第一次点击play
+        
         mioPlayList.delegate = self;
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_timerAction:) userInfo:nil repeats:YES];
         
@@ -57,6 +59,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         };
         self.player.currentPlayerManager.playerDidToEnd = ^(id<ZFPlayerMediaPlayback>  _Nonnull asset) {
             NSLog(@"自动播放完成");
+            [MioPostReq(api_addCoin, @{@"action":@"listen_song"}) success:^(NSDictionary *result){} failure:^(NSString *errorInfo) {}];
             [weakSelf autoPlayNext];
         };
         if (self.currentMusic) {
@@ -143,8 +146,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self play];
 }
 
-
-
 #pragma mark - 基础判断方法
 
 
@@ -170,7 +171,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 - (void)resetAudiostreamer:(MioMusicModel *)music{
 //    [self _cancelStreamer];
     if (music.local) {
-        self.player.assetURLs = @[music.localUrl];
+        self.player.assetURLs = @[Url(music.localUrl)];
         [self.player playTheIndex:0];
     }else{
         self.player.assetURLs = @[music.audioFileURL];
@@ -180,11 +181,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void)play{
     [MPRemoteCommandCenter sharedCommandCenter].playCommand.enabled = YES;
-    static dispatch_once_t onceToken;
-    if (onceToken >= 0) {//第一次调用
-        dispatch_once(&onceToken, ^{
-            [self.player playTheIndex:0];
-        });
+
+    if (Equals([userdefault objectForKey:@"firstPlay"], @"1")) {
+        [userdefault setObject:@"0" forKey:@"firstPlay"];
+        [self resetAudiostreamer:self.currentMusic];
+        [self playIndex:mioPlayList.currentPlayIndex];
     }else{
         [self.player.currentPlayerManager play];
     }

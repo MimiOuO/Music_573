@@ -11,10 +11,13 @@
 @protocol GKSliderViewDelegate <NSObject>
 
 @optional
-
-- (void)sliderTouchBegin:(float)value;
+// 滑块滑动开始
+- (void)sliderTouchBegan:(float)value;
+// 滑块滑动中
 - (void)sliderValueChanged:(float)value;
+// 滑块滑动结束
 - (void)sliderTouchEnded:(float)value;
+// 滑杆点击
 - (void)sliderTapped:(float)value;
 
 @end
@@ -23,6 +26,7 @@
 
 @property (nonatomic, weak) id<GKSliderViewDelegate> delegate;
 
+#pragma mark - 滑杆相关属性及方法
 /** 默认滑杆的颜色 */
 @property (nonatomic, strong) UIColor *maximumTrackTintColor;
 /** 滑杆进度颜色 */
@@ -42,42 +46,52 @@
 /** 缓存进度 */
 @property (nonatomic, assign) float bufferValue;
 
-/** 是否允许点击，默认是yes */
-@property (nonatomic, assign) BOOL allowTapped;
+/** 滑杆是否允许点击，默认是YES */
+@property (nonatomic, assign) BOOL isSliderAllowTapped;
 
+/** 设置滑杆的高度,默认3 */
 @property (nonatomic, assign) CGFloat sliderHeight;
 
-// 设置滑块的属性
-// 滑块背景
+/** 滑杆圆角半径 */
+@property (nonatomic, assign) CGFloat cornerRadius;
+
+/** 滑杆背景圆角半径，设置此属性滑杆进度和缓冲进度不为1时只会左边切圆角，为1时左右都切圆角 */
+@property (nonatomic, assign) CGFloat bgCornerRadius;
+
+/** 忽略间距，设置次属性，滑杆左右会有响应的距离不计入滑杆的进度，默认0 */
+@property (nonatomic, assign) CGFloat ignoreMargin;
+
+#pragma mark - 滑块相关属性及方法
+/** 滑块中心点的Y值，默认0：表示GKSliderView的中心 */
+@property (nonatomic, assign) CGFloat sliderBlockCenterY;
+
+/** 是否隐藏滑块（默认为NO） */
+@property (nonatomic, assign) BOOL isHideSliderBlock;
+
+/** 滑块是否允许点击，默认YES */
+@property (nonatomic, assign) BOOL isSliderBlockAllowTapped;
+
+// 设置滑块背景色
 - (void)setBackgroundImage:(UIImage *)image forState:(UIControlState)state;
-// 滑块图片
+// 设置滑块图片
 - (void)setThumbImage:(UIImage *)image forState:(UIControlState)state;
 
+// 显示菊花动画
 - (void)showLoading;
+// 隐藏菊花动画
 - (void)hideLoading;
-
-// 隐藏滑块
-- (void)showSliderBlock;
-- (void)hideSliderBlock;
-
-@end
-
-@interface GKSliderButton : UIButton
-
-- (void)showActivityAnim;
-- (void)hideActivityAnim;
 
 @end
 
 @interface UIView (GKFrame)
 
-@property (nonatomic, assign) CGFloat top;
-@property (nonatomic, assign) CGFloat left;
-@property (nonatomic, assign) CGFloat right;
-@property (nonatomic, assign) CGFloat bottom;
-@property (nonatomic, assign) CGFloat width;
-@property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) CGFloat centerX;
-@property (nonatomic, assign) CGFloat centerY;
+@property (nonatomic, assign) CGFloat gk_top;
+@property (nonatomic, assign) CGFloat gk_left;
+@property (nonatomic, assign) CGFloat gk_right;
+@property (nonatomic, assign) CGFloat gk_bottom;
+@property (nonatomic, assign) CGFloat gk_width;
+@property (nonatomic, assign) CGFloat gk_height;
+@property (nonatomic, assign) CGFloat gk_centerX;
+@property (nonatomic, assign) CGFloat gk_centerY;
 
 @end

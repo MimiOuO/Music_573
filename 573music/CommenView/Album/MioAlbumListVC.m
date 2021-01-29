@@ -34,10 +34,10 @@
 -(void)requestData{
     [MioGetReq(api_rankDetail(_rankId), @{@"page":Str(_page)}) success:^(NSDictionary *result){
         NSArray *data = result[@"data"][@"data_paginate"][@"data"];
+        [self.collection.mj_footer endRefreshing];
         if (Equals(result[@"data"][@"data_paginate"][@"next_page_url"], @"<null>")) {
             [self.collection.mj_footer endRefreshingWithNoMoreData];
         }
-        [self.collection.mj_footer endRefreshing];
         [_dataArr addObjectsFromArray:[MioAlbumModel mj_objectArrayWithKeyValuesArray:data]];
         [self.collection reloadData];
     } failure:^(NSString *errorInfo) {}];
@@ -63,7 +63,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((KSW_Mar2 - 20)/3,(KSW_Mar2 - 20)/3 + 36);
+    return CGSizeMake((KSW_Mar2 - 21)/3,(KSW_Mar2 - 21)/3 + 36);
 //    return CGSizeMake((KSW_Mar2 - 16)/3, (KSW_Mar2 - 16)/3 + 40);
 }
 

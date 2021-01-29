@@ -335,6 +335,7 @@
         emptyButton.titleLabel.font = self.searchHistoryHeader.font;
         [emptyButton setTitleColor:PYTextColor forState:UIControlStateNormal];
         [emptyButton setTitle:[NSBundle py_localizedStringForKey:PYSearchEmptyButtonText] forState:UIControlStateNormal];
+        [emptyButton setTitleColor:color_text_one forState:UIControlStateNormal];
         [emptyButton setImage:[NSBundle py_imageNamed:@"empty"] forState:UIControlStateNormal];
         [emptyButton addTarget:self action:@selector(emptySearchHistoryDidClick) forControlEvents:UIControlEventTouchUpInside];
         [emptyButton sizeToFit];
@@ -366,6 +367,7 @@
 {
     if (!_searchHistoryHeader) {
         UILabel *titleLabel = [self setupTitleLabel:[NSBundle py_localizedStringForKey:PYSearchSearchHistoryText]];
+        titleLabel.textColor = color_text_one;
         [self.searchHistoryView addSubview:titleLabel];
         _searchHistoryHeader = titleLabel;
     }
@@ -495,6 +497,11 @@
         self.searchBar.searchTextField.font = [UIFont systemFontOfSize:14];
     }
     [self.searchBar setImage:[UIImage imageNamed:@"searchIcon"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+    if (@available(iOS 13.0, *)) {
+        self.searchBar.searchTextField.leftView.tintColor = color_icon_one;
+    } else {
+        // Fallback on earlier versions
+    }
     ViewRadius(self.searchBar, 15);
     [self.navView.mainView addSubview:self.searchBar];
     self.navView.leftButton.hidden = YES;
@@ -519,6 +526,7 @@
     hotSearchView.py_width = headerView.py_width - hotSearchView.py_x * 2;
     hotSearchView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     UILabel *titleLabel = [self setupTitleLabel:[NSBundle py_localizedStringForKey:PYSearchHotSearchText]];
+    titleLabel.textColor = color_text_one;
     self.hotSearchHeader = titleLabel;
     [hotSearchView addSubview:titleLabel];
     UIView *hotSearchTagsContentView = [[UIView alloc] init];

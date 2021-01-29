@@ -40,7 +40,7 @@
     _pageController.menuViewLayoutMode = WMMenuViewLayoutModeCenter;
     _pageController.automaticallyCalculatesItemWidths = YES;
     _pageController.itemMargin         = 16;
-    _pageController.menuHeight         = 48;
+    _pageController.menuHeight         = 44;
     _pageController.titleFontName      = @"PingFangSC-Medium";
     _pageController.titleSizeNormal    = 14;
     _pageController.titleSizeSelected  = 14;

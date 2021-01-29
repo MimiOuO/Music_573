@@ -32,7 +32,7 @@
 - (void)setModel:(MioSongListModel *)model{
     [_cover sd_setImageWithURL:model.cover_image_path.mj_url placeholderImage:image(@"qxt_zhuanji")];
     _songlistNameLab.text = model.title;
-    _playCountLab.text = model.hits_all;
+    _playCountLab.text = [NSString stringWithFormat:@"%@次播放",model.hits_all];
 }
 
 @end

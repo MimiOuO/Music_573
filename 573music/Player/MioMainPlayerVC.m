@@ -162,7 +162,7 @@
     _singleLrcLab = [UILabel creatLabel:frame(28, 0, KSW - 56, 22) inView:_scrollView text:@"" color:appWhiteColor size:16 alignment:NSTextAlignmentCenter];
     _singleLrcLab.centerY = 5 + (KSW - 56) + divHeight*3;
 
-    _slider = [[GKSliderView alloc] initWithFrame:frame(28, 5 + (KSW - 56) + divHeight * 6 - 4.5, KSW - 56, 20)];
+    _slider = [[GKSliderView alloc] initWithFrame:frame(28, 5 + (KSW - 56) + divHeight * 6 - 4.5 - 20, KSW - 56, 60)];
     [_slider setBackgroundImage:[UIImage imageNamed:@"progress_point_player"] forState:UIControlStateNormal];
 //    [_slider setThumbImage:[UIImage imageNamed:@"cm2_fm_playbar_btn_dot"] forState:UIControlStateNormal];
     _slider.maximumTrackImage = [UIImage imageNamed:@"progress_bg_player"];
@@ -274,6 +274,8 @@
     [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
     _nameLab.text = music.title;
     _singerLab.text = music.singer_name;
+    _slider.bufferValue = 0;
+    _slider.value = 0;
     if (music.hasMV) {
         _mvButton.hidden = NO;
         _qualityBtn.left = KSW2 - 26 - 7;

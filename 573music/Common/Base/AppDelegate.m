@@ -95,7 +95,7 @@
         setPlayOrder(MioPlayOrderCycle);//播放顺序
         [userdefault synchronize];
 
-        [userdefault setObject:colorDic forKey:@"colorJson"];
+        [userdefault setObject:colorDic forKey:@"colorJson"];//color写入
         [userdefault synchronize];
     }
 }

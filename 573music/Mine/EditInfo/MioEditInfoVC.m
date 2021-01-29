@@ -52,7 +52,7 @@
         
     }
     _avatar = [UIImageView creatImgView:frame(KSW_Mar2 - 39 - 48, 6, 48, 48) inView:[bgView viewWithTag:100] image:@"" radius:24];
-    [_avatar sd_setImageWithURL:Url(_user.avatar) placeholderImage:image(@"icon")];
+    [_avatar sd_setImageWithURL:Url(_user.avatar) placeholderImage:image(@"qxt_yonhu")];
     
     _nickNameLab = [UILabel creatLabel:frame(KSW_Mar2 - 39 - 200 , 0, 200, 44) inView:[bgView viewWithTag:101] text:_user.nickname color:color_text_two size:15 alignment:NSTextAlignmentRight];
 

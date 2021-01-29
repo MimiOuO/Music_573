@@ -197,10 +197,11 @@
     [_downloadBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _downloadBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _downloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [_downloadBtn setImage:image(@"download_choose") forState:UIControlStateNormal];
+    [_downloadBtn setImage:[image(@"download_choose") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
     _downloadBtn.imageRect = CGRectMake(3, 0, 24, 24);
     _downloadBtn.titleRect = CGRectMake(0, 26, 30, 14);
     [_downloadBtn addTarget:self action:@selector(downloadClick) forControlEvents:UIControlEventTouchUpInside];
+    _downloadBtn.imageView.tintColor = color_text_one;
     [_bottomView addSubview:_downloadBtn];
     
     _playBtn = [[YLButton alloc] initWithFrame:frame(-30, 4, 30, 40)];
@@ -208,10 +209,11 @@
     [_playBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _playBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _playBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [_playBtn setImage:image(@"download_choose") forState:UIControlStateNormal];
+    [_playBtn setImage:[image(@"download_choose") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
     _playBtn.imageRect = CGRectMake(3, 0, 24, 24);
     _playBtn.titleRect = CGRectMake(-5, 26, 40, 14);
     [_playBtn addTarget:self action:@selector(playClick) forControlEvents:UIControlEventTouchUpInside];
+    _playBtn.imageView.tintColor = color_text_one;
     [_bottomView addSubview:_playBtn];
     
     _addBtn = [[YLButton alloc] initWithFrame:frame(-30, 4, 30, 40)];
@@ -219,10 +221,11 @@
     [_addBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _addBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _addBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [_addBtn setImage:image(@"add_choose") forState:UIControlStateNormal];
+    [_addBtn setImage:[image(@"add_choose") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
     _addBtn.imageRect = CGRectMake(3, 0, 24, 24);
     _addBtn.titleRect = CGRectMake(0, 26, 30, 14);
     [_addBtn addTarget:self action:@selector(addClick) forControlEvents:UIControlEventTouchUpInside];
+    _addBtn.imageView.tintColor = color_text_one;
     [_bottomView addSubview:_addBtn];
     
     _deleteBtn = [[YLButton alloc] initWithFrame:frame(-30, 4, 30, 40)];
@@ -230,10 +233,11 @@
     [_deleteBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _deleteBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [_deleteBtn setImage:image(@"delete_choose") forState:UIControlStateNormal];
+    [_deleteBtn setImage:[image(@"delete_choose") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
     _deleteBtn.imageRect = CGRectMake(3, 0, 24, 24);
     _deleteBtn.titleRect = CGRectMake(0, 26, 30, 14);
     [_deleteBtn addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
+    _deleteBtn.imageView.tintColor = color_text_one;
     [_bottomView addSubview:_deleteBtn];
     
     switch (_type) {

@@ -68,22 +68,22 @@
 
 #pragma mark - 搜索
 -(void)searchClick{
-        NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
-        PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索品类、ID、昵称"];
-        searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-        MioSearchResultVC *resultVC = [[MioSearchResultVC alloc] init];
-        searchViewController.searchResultController = resultVC;
-        searchViewController.delegate = resultVC;
-        searchViewController.searchBarBackgroundColor = rgb(246, 247, 249);
-        searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
-        searchViewController.hotSearchStyle = PYHotSearchStyleNormalTag;
+    NSArray *hotSeaches = [userdefault objectForKey:@"hotsearch"];
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索品类、ID、昵称"];
+    searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
+    MioSearchResultVC *resultVC = [[MioSearchResultVC alloc] init];
+    searchViewController.searchResultController = resultVC;
+    searchViewController.delegate = resultVC;
+    searchViewController.searchBarBackgroundColor = rgb(246, 247, 249);
+    searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
+    searchViewController.hotSearchStyle = PYHotSearchStyleNormalTag;
 
-        CATransition* transition = [CATransition animation];
-        transition.type = kCATransitionMoveIn;//可更改为其他方式
-        transition.subtype = kCATransitionFromTop;//可更改为其他方式
-        [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    CATransition* transition = [CATransition animation];
+    transition.type = kCATransitionMoveIn;//可更改为其他方式
+    transition.subtype = kCATransitionFromTop;//可更改为其他方式
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
 
-        [self.navigationController pushViewController:searchViewController animated:NO];
+    [self.navigationController pushViewController:searchViewController animated:NO];
 }
 
 -(void)changeSkin{

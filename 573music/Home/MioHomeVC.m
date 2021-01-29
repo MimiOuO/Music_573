@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UIView *countDownView;
 @property (nonatomic, strong) MioLabel *minuteLab;
 @property (nonatomic, strong) MioLabel *secondLab;
+@property (nonatomic, assign) BOOL jifenLimit;
 @end
 
 @implementation MioHomeVC
@@ -32,6 +33,8 @@
     [super viewDidLoad];
     
     RecieveChangeSkin;
+    RecieveNotice(@"loginSuccess", startCutDown);
+    RecieveNotice(@"logout", stopCutDown);
     
     _contentView = [[UIView alloc] initWithFrame:frame(0, 0, KSW, KSH - TabH)];
     _contentView.backgroundColor = appClearColor;
@@ -70,13 +73,15 @@
    
     _countDownView = [UIView creatView:frame(KSW_Mar - 54, StatusH + 13, 54, 24) inView:self.view bgColor:appClearColor radius:0];
     UIImageView *bgImg = [UIImageView creatImgView:frame(0, 0, 54, 24) inView:_countDownView image:@"daojishi_bg" radius:0];
-    _minuteLab = [MioLabel creatLabel:frame(2, 0, 20, 28) inView:_countDownView text:@"" colorName:name_main size:14 alignment:NSTextAlignmentCenter];
-    _secondLab = [MioLabel creatLabel:frame(31, 0, 20, 28) inView:_countDownView text:@"" colorName:name_main size:14 alignment:NSTextAlignmentCenter];
+    _minuteLab = [MioLabel creatLabel:frame(2, 0, 20, 28) inView:_countDownView text:@"00" colorName:name_main size:14 alignment:NSTextAlignmentCenter];
+    _secondLab = [MioLabel creatLabel:frame(31, 0, 20, 28) inView:_countDownView text:@"00" colorName:name_main size:14 alignment:NSTextAlignmentCenter];
     _minuteLab.font = [UIFont fontWithName:@"DIN Condensed" size:16];
     _secondLab.font = [UIFont fontWithName:@"DIN Condensed" size:16];
     UIImageView *bgImg2 = [UIImageView creatImgView:frame(2, 12, 20, 0.5) inView:_countDownView image:@"daojishi_xian" radius:0];
     UIImageView *bgImg3 = [UIImageView creatImgView:frame(31, 12, 20, 0.5) inView:_countDownView image:@"daojishi_xian" radius:0];
-    [self startCutDown];
+    if (islogin) {
+        [self startCutDown];
+    }
     [_countDownView whenTapped:^{
         [UIWindow showMessage:@"积分说明11111at积分说明11111at积分说明11111at积分说明11111at积分说明11111at积分说明11111at积分说明11111at" withTitle:@"积分说明"];
     }];
@@ -92,20 +97,47 @@
 }
 
 -(void)startCutDown{
-    [CountdownTimer startTimerWithKey:cutdown count:300*1000 callBack:^(NSInteger count, BOOL isFinished) {
-        NSInteger time = count%300;
-        _minuteLab.text = [NSString stringWithFormat:@"%02ld",time/60];
-        _secondLab.text = [NSString stringWithFormat:@"%02ld",time%60];
-        if (time == 0) {
-            [UIWindow showSuccess:@"积分添加成功"];
+    [CountdownTimer startTimerWithKey:cutdown count:24*60*60 callBack:^(NSInteger count, BOOL isFinished) {
+        int interval = [[userdefault objectForKey:@"timeInterval"] intValue];
+        if (interval <= 0) {
+            return;
+        }
+        NSInteger time = count%interval;
+        if (_jifenLimit) {
+            _minuteLab.text = @"00";
+            _secondLab.text = @"00";
+        }else{
+            _minuteLab.text = [NSString stringWithFormat:@"%02ld",time/60];
+            _secondLab.text = [NSString stringWithFormat:@"%02ld",time%60];
+        }
+        if (time == 1) {
+            
             [self addJifen];
         }
     }];
 }
 
+-(void)stopCutDown{
+    [CountdownTimer stopTimerWithKey:cutdown];
+    _minuteLab.text = @"00";
+    _secondLab.text = @"00";
+}
+
 -(void)addJifen{
     
-    
+    [MioPostReq(api_addCoin, @{@"action":@"online"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        if (Equals(data[@"status"], 1)) {
+            [UIWindow showSuccess:result[@"message"]];
+            _jifenLimit = NO;
+        }else{
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                [UIWindow showInfo:result[@"message"]];
+            });
+            _jifenLimit = YES;
+        }
+    } failure:^(NSString *errorInfo) {}];
     
 }
 
@@ -130,22 +162,22 @@
 
 #pragma mark - 搜索
 -(void)searchClick{
-        NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
-        PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索品类、ID、昵称"];
-        searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-        MioSearchResultVC *resultVC = [[MioSearchResultVC alloc] init];
-        searchViewController.searchResultController = resultVC;
-        searchViewController.delegate = resultVC;
-        searchViewController.searchBarBackgroundColor = rgb(246, 247, 249);
-        searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
-        searchViewController.hotSearchStyle = PYHotSearchStyleNormalTag;
+    NSArray *hotSeaches = [userdefault objectForKey:@"hotsearch"];
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索品类、ID、昵称"];
+    searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
+    MioSearchResultVC *resultVC = [[MioSearchResultVC alloc] init];
+    searchViewController.searchResultController = resultVC;
+    searchViewController.delegate = resultVC;
+    searchViewController.searchBarBackgroundColor = rgb(246, 247, 249);
+    searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
+    searchViewController.hotSearchStyle = PYHotSearchStyleNormalTag;
 
-        CATransition* transition = [CATransition animation];
-        transition.type = kCATransitionMoveIn;//可更改为其他方式
-        transition.subtype = kCATransitionFromTop;//可更改为其他方式
-        [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    CATransition* transition = [CATransition animation];
+    transition.type = kCATransitionMoveIn;//可更改为其他方式
+    transition.subtype = kCATransitionFromTop;//可更改为其他方式
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
 
-        [self.navigationController pushViewController:searchViewController animated:NO];
+    [self.navigationController pushViewController:searchViewController animated:NO];
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{

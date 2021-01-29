@@ -135,6 +135,8 @@
         [userdefault setObject:nil forKey:@"phone"];
         [userdefault synchronize];
         
+        PostNotice(@"logout");
+        
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         MioTabbarVC *tab = (MioTabbarVC *)delegate.window.rootViewController;
         tab.selectedIndex = 0;

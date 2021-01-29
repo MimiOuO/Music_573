@@ -8,6 +8,7 @@
 
 #import "MioSingerAlbumVC.h"
 #import "MioAlbumTableCell.h"
+#import "MioAlbumVC.h"
 /****进入置顶通知****/
 #define kHomeGoTopNotification               @"Home_Go_Top"
 /****离开置顶通知****/
@@ -18,7 +19,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray<MioAlbumModel *> *dataArr;
 @end
 
 @implementation MioSingerAlbumVC
@@ -117,6 +118,12 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = _dataArr[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MioAlbumVC *vc = [[MioAlbumVC alloc] init];
+    vc.album_id = _dataArr[indexPath.row].album_id;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

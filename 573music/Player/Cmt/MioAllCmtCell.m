@@ -88,7 +88,7 @@
 //    }
 //    _praiseLab.text = replyModel.zan_num;
 //    _nickName.textColor = appNickColor(replyModel.user.levelNum);
-     NSString *timeStr = [NSString stringWithFormat:@"%@",replyModel.created_at];
+     NSString *timeStr = [NSDate intervalFromNoewDateWithString:replyModel.created_at];
     NSString *replyDicStr = [NSString stringWithFormat:@"回复%@：%@",replyModel.to_user.nickname,replyModel.content];
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:replyDicStr];
     [AttributedStr addAttribute:NSForegroundColorAttributeName value:color_text_one range:NSMakeRange(2, replyModel.to_user.nickname.length)];

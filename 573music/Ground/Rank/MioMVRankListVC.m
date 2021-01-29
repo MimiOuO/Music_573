@@ -43,7 +43,7 @@
             [self.navigationController pushViewController:vc animated:YES];
         }];
         UIImageView *coverImg = [UIImageView creatImgView:frame(0, 0, KSW_Mar2, 184) inView:bgView image:@"" radius:4];
-        [coverImg sd_setImageWithURL:((MioMusicModel *)[MioMusicModel mj_objectWithKeyValues:rankDic[@"data"][0]]).cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
+        [coverImg sd_setImageWithURL:((NSString *)rankDic[@"cover_image_path"]).mj_url placeholderImage:image(@"gequ_zhanweitu")];
         UIView *shadow = [UIView creatView:frame(0, 0, KSW_Mar2, 184) inView:coverImg bgColor:rgba(0, 0, 0, 0.3) radius:4];
         
         UILabel *titleLab = [UILabel creatLabel:frame(12, 12, 150, 20) inView:bgView text:rankDic[@"rank_title"] color:appWhiteColor boldSize:14 alignment:NSTextAlignmentLeft];

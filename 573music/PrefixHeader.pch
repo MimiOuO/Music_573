@@ -155,7 +155,7 @@
 #define appMemberColor      rgb(255,149,51)
 #define botLineColor 	    rgb(225,225,225)
 #define grayTextColor 	    rgb(153,153,153)
-#define redTextColor        rgb(255, 81, 81)
+#define redTextColor        rgb(253, 58, 105)
 #define appClearColor 		[UIColor clearColor]
 #define appWhiteColor 		[UIColor whiteColor]
 #define appBlackColor 		[UIColor blackColor]
@@ -338,7 +338,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_albums                @"" api_base"/albums"
 #define api_albumDetail(album_id)                [NSString stringWithFormat:@"" api_base"/albums/%@",album_id]
 //MV
-#define api_mvTabs                @"" api_base"/mvs/tabs"
+#define api_mvTabs                @"" api_base"/categories"
 #define api_mvs                @"" api_base"/mvs"
 #define api_mvrDetail(mv_id)  [NSString stringWithFormat:@"" api_base"/mvs/%@",mv_id]
 #define api_mvrRelated(mv_id)  [NSString stringWithFormat:@"" api_base"/mvs/%@/related",mv_id]
@@ -358,12 +358,13 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_otherUserinfo(user_id)  [NSString stringWithFormat:@"" api_base"/users/%@",user_id]
 #define api_skin                @"" api_base"/themes"
 #define api_notifications               @"" api_base"/notifications"
+#define api_unread               @"" api_base"/notifications/unread"
 
 //like
 #define api_likes                @"" api_base"/likes"
 #define api_likeMusic                @"" api_base"/likes/song"
 #define api_likeSinger                @"" api_base"/likes/singer"
-#define api_likeSonglist                @"" api_base"/likes/songlist"
+#define api_likeSonglist                @"" api_base"/likes/song_list"
 #define api_likeAlbum                @"" api_base"/likes/album"
 #define api_likeMV                @"" api_base"/likes/mv"
 
@@ -373,6 +374,11 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_version             @"" api_base"/configs/version"
 #define api_feedback             @"" api_base"/feedbacks"
 #define api_sign            @"" api_base"/sign"
-#define api_addCoin            @"" api_base"/coin/add"/my/coin-logs
+#define api_addCoin            @"" api_base"/coin/add"
 #define api_CoinLog            @"" api_base"/my/coin-logs"
+#define api_hotSearch            @"" api_base"/configs/hot-search"
+#define api_timeInterval            @"" api_base"/configs/frequency"
+#define api_shareUrl            @"" api_base"/share/url"
+
+
 #endif

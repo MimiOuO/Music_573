@@ -33,7 +33,7 @@
             [self click:i];
         }];
         UIView *split = [UIView creatView:frame(10, 44 * (i + 1), KSW_Mar2 - 20, 0.5) inView:bgView1 bgColor:color_split radius:0];
-        UIImageView *arrow = [UIImageView creatImgView:frame(KSW_Mar2 - 12 - 24, 10 + i * 44 , 24, 24) inView:bgView1 image:@"xuanze_duigou" bgTintColor:color_main radius:0];
+        MioImageView *arrow = [MioImageView creatImgView:frame(KSW_Mar2 - 12 - 24, 10 + i * 44 , 24, 24) inView:bgView1 image:@"xuanze_duigou" bgTintColorName:name_main radius:0];
         arrow.tag = 100 + i;
         arrow.hidden = YES;
         if (Equals(i, [_timeArr indexOfObject:[userdefault objectForKey:@"timeoff"]])) {

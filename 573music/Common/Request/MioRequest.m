@@ -110,7 +110,7 @@
         if (self.responseStatusCode == 401) {
             info = @"授权失败";
             //[svprogressHUD showErrorWithStatus:@"登录已过期，请重新登录"];
-            NSArray *noLokenArr = @[api_mySongLists];
+            NSArray *noLokenArr = @[api_mySongLists,api_unread,api_addCoin];
             if ([noLokenArr containsObject:self.requestUrl]) {
                 return info;
             }

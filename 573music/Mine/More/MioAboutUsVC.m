@@ -23,20 +23,20 @@
 }
 
 -(void)creatUI{
-    UIImageView *icon = [UIImageView creatImgView:frame(KSW/2 - 50, NavH + 34, 100, 100) inView:self.view image:@"ios-template-1024" radius:0];
-    UILabel *titleLab = [UILabel creatLabel:frame(0, icon.bottom + 5, KSW, 30) inView:self.view text:@"多多陪玩" color:color_text_one size:22];
+    UIImageView *icon = [UIImageView creatImgView:frame(KSW/2 - 40, NavH + 34, 80, 100) inView:self.view image:@"aboutLogo" radius:0];
+    UILabel *titleLab = [UILabel creatLabel:frame(0, icon.bottom + 5, KSW, 30) inView:self.view text:@"573音乐" color:color_text_one size:22];
     titleLab.textAlignment = NSTextAlignmentCenter;
     titleLab.font = [UIFont boldSystemFontOfSize:22];
     
-    UILabel *descLab = [UILabel creatLabel:frame(30, 227+ NavH, KSW - 60, 141) inView:self.view text:@"多多陪玩App汇聚了各个领域的高颜值技术大神，他(她)们通过专业的技能、优质的服务帮助用户练习游戏。节省用户的学习时间，体验更好的游戏乐趣。在多多陪玩App，用户不仅可以学习到新的技能，还可以通过注册成为大神共享自己的游戏技能，实现立马赚钱。" color:color_text_one size:16];
+    UILabel *descLab = [UILabel creatLabel:frame(30, 227+ NavH, KSW - 60, 141) inView:self.view text:@"573音乐是国内专业的网络音乐原创基地,平台内聚集了上千优质网络音乐人,为您提供优秀的Mc喊麦、网络歌曲、电子音乐、Mc伴奏、说唱歌曲等网络流行音乐试听,带给大家悦耳动听的音乐,全方位满足用户对网络流行音乐的试听需求。" color:color_text_one size:16];
     descLab.numberOfLines = 0;
     
-    UILabel *telLab = [UILabel creatLabel:frame(0, KSH - 70 - SafeBotH, KSW, 20) inView:self.view text:@"客服电话：028-86112645" color:color_text_one size:14];
+    UILabel *telLab = [UILabel creatLabel:frame(0, KSH - 70 - SafeBotH, KSW, 20) inView:self.view text:[NSString stringWithFormat:@"当前版本：%@",[[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleShortVersionString"]] color:color_text_one size:14];
     telLab.textAlignment = NSTextAlignmentCenter;
     
     
-    UILabel *banquanLab = [UILabel creatLabel:frame(0, KSH - 35 - SafeBotH , KSW, 20) inView:self.view text:@"吉格斯科技版权所有 ©2019" color:color_text_two size:12];
-    banquanLab.textAlignment = NSTextAlignmentCenter;
+//    UILabel *banquanLab = [UILabel creatLabel:frame(0, KSH - 35 - SafeBotH , KSW, 20) inView:self.view text:@"吉格斯科技版权所有 ©2019" color:color_text_two size:12];
+//    banquanLab.textAlignment = NSTextAlignmentCenter;
 
 }
 

@@ -133,6 +133,10 @@
 
 #pragma mark - 获取上一曲 下一曲
 -(NSInteger)getPreIndex{
+    if (self.playListArr.count == 1) {
+        mioM3U8Player.currentMusic = nil;
+        return 0;
+    }
     if (!Equals(currentPlayOrder, MioPlayOrderRandom)) {//非随机
         if (mioPlayList.currentPlayIndex == 0) {
             return self.playListArr.count - 1;
@@ -149,6 +153,10 @@
 }
 
 -(NSInteger)getNextIndex{
+    if (self.playListArr.count == 1) {
+        mioM3U8Player.currentMusic = nil;
+        return 0;
+    }
     if (!Equals(currentPlayOrder, MioPlayOrderRandom)) {//非随机
         if (mioPlayList.currentPlayIndex == self.playListArr.count - 1) {
             return 0;
@@ -165,6 +173,10 @@
 }
 
 -(NSInteger)getAutoPlayIndex{
+    if (self.playListArr.count == 1) {
+        mioM3U8Player.currentMusic = nil;
+        return 0;
+    }
     if (!Equals(currentPlayOrder, MioPlayOrderRandom)) {//非随机
         if (Equals(currentPlayOrder, MioPlayOrderCycle)) {//循环
             if (mioPlayList.currentPlayIndex == self.playListArr.count - 1) {
@@ -173,6 +185,8 @@
                 return mioPlayList.currentPlayIndex + 1;
             }
         }else{//单曲
+//            NSLog(@"%ld",(long)mioPlayList.currentPlayIndex);
+            mioM3U8Player.currentMusic = nil;
             return mioPlayList.currentPlayIndex;
         }
 

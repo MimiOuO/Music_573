@@ -35,6 +35,10 @@
         _page = _page + 1;
         [self requestData];
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self requestData];
 }
 

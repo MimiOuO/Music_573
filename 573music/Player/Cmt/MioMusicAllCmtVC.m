@@ -72,7 +72,7 @@
         _likeLab.textColor = color_text_three;
     }
     
-    UILabel *timeAndAdress = [UILabel creatLabel:CGRectMake(avatatImage.right + 6, nickName.bottom + 4, 200, 12) inView:cmtView text:cmtModel.created_at color:rgba(125, 142, 165, 1) size:12 alignment:NSTextAlignmentLeft];
+    UILabel *timeAndAdress = [UILabel creatLabel:CGRectMake(avatatImage.right + 6, nickName.bottom + 4, 200, 12) inView:cmtView text:[NSDate intervalFromNoewDateWithString:cmtModel.created_at] color:rgba(125, 142, 165, 1) size:12 alignment:NSTextAlignmentLeft];
     
     UILabel *content = [UILabel creatLabel:CGRectMake(52, 51, KSW - 86, 0) inView:cmtView text:cmtModel.content color:color_text_one size:14];
     content.numberOfLines = 0;

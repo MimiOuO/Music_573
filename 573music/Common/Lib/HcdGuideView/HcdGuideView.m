@@ -9,6 +9,8 @@
 #import "HcdGuideView.h"
 #import "HcdGuideViewCell.h"
 #import "Lottie.h"
+#import "AppDelegate.h"
+#import "AppDelegate+MioInitalData.h"
 
 @interface HcdGuideView()<UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate>
 
@@ -180,6 +182,11 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
     self.pageControl.currentPage = (scrollView.contentOffset.x / kHcdGuideViewBounds.size.width);
+    if (self.pageControl.currentPage == 1) {//防止授权之前没有网络
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [delegate initalData];
+        PostNotice(@"firstLaunch");
+    }
 }
 
 /**

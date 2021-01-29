@@ -100,7 +100,7 @@
         _allcmtLab.sd_layout.topSpaceToView(_content, 0).heightIs(0);
     }
     
-    _timeAndAdress.text = cmtModel.created_at;
+    _timeAndAdress.text = [NSDate intervalFromNoewDateWithString:cmtModel.created_at];
     [_replayView removeAllSubviews];
     NSMutableArray *bendiArr = [[NSMutableArray alloc] init];
     

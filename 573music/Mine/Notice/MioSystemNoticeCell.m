@@ -12,6 +12,7 @@
 @property (nonatomic, strong) MioLabel *contentLab;
 @property (nonatomic, strong) MioLabel *timeLab;
 @property (nonatomic, strong) MioView *split;
+@property (nonatomic, strong) UIImageView *reddot;
 @end
 
 @implementation MioSystemNoticeCell
@@ -29,6 +30,8 @@
         _contentLab = [MioLabel creatLabel:frame(70, 17, (KSW - 86 -28), 0) inView:self.contentView text:@"" colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
         _timeLab = [MioLabel creatLabel:frame(70, _contentLab.bottom + 13, 200, 14) inView:self.contentView text:@"" colorName:name_text_two size:10 alignment:NSTextAlignmentLeft];
         _split = [MioView creatView:frame(60, _timeLab.bottom + 12, KSW - 76 -28, 0.5) inView:self bgColorName:name_split radius:0];
+        _reddot = [UIImageView creatImgView:frame(KSW_Mar2-14, 0, 14, 14) inView:_bgView image:@"tongzhi_new" radius:0];
+        _reddot.hidden = YES;
     }
     return self;
 }
@@ -36,9 +39,15 @@
 - (void)setDic:(NSDictionary *)dic{
     _contentLab.text = dic[@"data"][@"content"];
     _contentLab.height = [_contentLab.text heightForFont:Font(14) width:(KSW - 86 -28)];
-    _timeLab.text = dic[@"created_at"];
+    _timeLab.text = [NSDate intervalFromNoewDateWithString:dic[@"created_at"]];
     _timeLab.top = _contentLab.bottom + 13;
     _split.top = _timeLab.bottom + 12;
     _bgView.height = 56 + [dic[@"data"][@"content"] heightForFont:Font(14) width:(KSW - 86 -28)];
+    NSString *isread = dic[@"is_read"];
+    if ([isread intValue] == 0) {
+        _reddot.hidden = NO;
+    }else{
+        _reddot.hidden = YES;
+    }
 }
 @end

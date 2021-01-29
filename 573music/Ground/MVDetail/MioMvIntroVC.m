@@ -62,6 +62,7 @@
             UIView *mvView = [UIView creatView:frame(0, 163 + 73*i, KSW, 61) inView:_scroll bgColor:appClearColor radius:0];
             UIImageView *cover = [UIImageView creatImgView:frame(Mar, 6, 109, 61) inView:mvView image:@"qxt_mv" radius:4];
             UIImageView *shadow = [UIImageView creatImgView:frame(0, cover.height - 22, 109, 22) inView:cover image:@"zhuanji_mengban" radius:0];
+            shadow.contentMode = UIViewContentModeScaleToFill;
             [cover sd_setImageWithURL:model.cover_image_path.mj_url placeholderImage:image(@"qxt_mv")];
             UIImageView *playCountIcon = [UIImageView creatImgView:frame(6, cover.height - 15 , 11, 11) inView:cover image:@"bofangliang" radius:0];
             UILabel *playCountLab = [UILabel creatLabel:frame(18, cover.height - 17, 50, 15) inView:cover text:model.hits_all color:appWhiteColor size:10 alignment:NSTextAlignmentLeft];

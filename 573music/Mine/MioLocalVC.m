@@ -107,7 +107,7 @@
     MioMusicModel *model  = [[MioMusicModel alloc] init];
     model.title = name;
     model.local = YES;
-    model.localUrl = fileURL;
+    model.localUrl = [NSString stringWithFormat:@"%@",fileURL];
     model.singer_name = singer;
 //    model.cover_image_path = image;
     

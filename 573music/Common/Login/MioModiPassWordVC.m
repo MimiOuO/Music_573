@@ -124,10 +124,12 @@
     }
     if (_passwordTF.text.length < 8) {
         [UIWindow showInfo:@"请输入大于8位密码"];
+        return;
     }
     
     if (_passwordTF.text != _passwordTF2.text) {
         [UIWindow showInfo:@"两次输入密码不一致"];
+        return;
     }
     
     if (_verifyTF.text.length != 4){

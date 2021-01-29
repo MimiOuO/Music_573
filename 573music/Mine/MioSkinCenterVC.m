@@ -27,9 +27,9 @@
     [super viewDidLoad];
     NSMutableArray *tempArr = [[userdefault objectForKey:@"skinlist"] mutableCopy];
     NSDictionary *baiDic = @{
-        @"name":@"利休白",
-        @"cover":@"lixiubai",
-        @"package":@"bai"
+        @"title":@"利休白",
+        @"cover_image_path":@"lixiubai",
+        @"theme_path":@"bai"
     };
     [tempArr insertObject:baiDic atIndex:0];
     _dataArr = tempArr;
@@ -87,7 +87,7 @@
 }
 
 -(void)switchSkin{
-    NSString *url = _dataArr[_pageFlowView.currentPageIndex][@"package"];
+    NSString *url = _dataArr[_pageFlowView.currentPageIndex][@"theme_path"];
 
     NSString *fileName=[((NSString *)[url componentsSeparatedByString:@"/"].lastObject) componentsSeparatedByString:@"."][0];
     NSString *documentPath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -135,8 +135,7 @@
     //Start download.
     [self.downloadManger download:self.downloadInfo];
     WEAKSELF;
-    [UIWindow showLoading:@"皮肤下载中"];
-    
+    [UIWindow showMaskLoading:@"皮肤下载中"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.downloadInfo setDownloadBlock:^(DownloadInfo * _Nonnull downloadInfo) {
             
@@ -202,7 +201,7 @@
     if (index == 0) {
         bannerView.mainImageView.image = image(@"lixiubai");
     }else{
-        [bannerView.mainImageView sd_setImageWithURL:Url(_dataArr[index][@"cover"]) placeholderImage:nil];
+        [bannerView.mainImageView sd_setImageWithURL:Url(_dataArr[index][@"cover_image_path"]) placeholderImage:nil];
     }
     
     return bannerView;
@@ -216,11 +215,11 @@
     if (pageNumber == 0) {
         _backGroundImg.image = image(@"lixiubai");
     }else{
-        [_backGroundImg sd_setImageWithURL:Url(_dataArr[pageNumber][@"cover"]) placeholderImage:nil];
+        [_backGroundImg sd_setImageWithURL:Url(_dataArr[pageNumber][@"cover_image_path"]) placeholderImage:nil];
     }
     
-    _titleLab.text = _dataArr[pageNumber][@"name"];
-    NSString *skinName=[((NSString *)[_dataArr[pageNumber][@"package"] componentsSeparatedByString:@"/"].lastObject) componentsSeparatedByString:@"."][0];
+    _titleLab.text = _dataArr[pageNumber][@"title"];
+    NSString *skinName=[((NSString *)[_dataArr[pageNumber][@"theme_path"] componentsSeparatedByString:@"/"].lastObject) componentsSeparatedByString:@"."][0];
     if (Equals([userdefault objectForKey:@"skin"], skinName)) {
         _useBtn.selected = YES;
     }else{

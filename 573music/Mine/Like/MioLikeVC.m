@@ -38,7 +38,8 @@
     _pageController.delegate           = self;
     _pageController.dataSource         = self;
     _pageController.menuViewStyle      = WMMenuViewStyleLine;
-    _pageController.itemMargin         = 16;
+    _pageController.menuViewLayoutMode = WMMenuViewLayoutModeCenter;
+    _pageController.itemMargin         = 5;
     _pageController.menuHeight         = 40;
     _pageController.titleFontName      = @"PingFangSC-Medium";
     _pageController.titleSizeNormal    = 14;

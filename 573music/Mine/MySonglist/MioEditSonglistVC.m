@@ -59,7 +59,7 @@
         }];
         
     }
-    _avatar = [UIImageView creatImgView:frame(KSW_Mar2 - 39 - 48, 6, 48, 48) inView:[bgView viewWithTag:100] image:@"icon" radius:24];
+    _avatar = [UIImageView creatImgView:frame(KSW_Mar2 - 39 - 48, 6, 48, 48) inView:[bgView viewWithTag:100] image:@"qxt_yinyue" radius:24];
     
     
     _nameLab = [UILabel creatLabel:frame(KSW_Mar2 - 39 - 200 , 0, 200, 44) inView:[bgView viewWithTag:101] text:@"" color:color_text_two size:15 alignment:NSTextAlignmentRight];

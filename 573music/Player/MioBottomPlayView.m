@@ -97,26 +97,26 @@
 -(void)playerStatusChanged{
     switch (mioM3U8Player.status) {
         case MioPlayerStatePlaying:
-            NSLog(@"播放中");
+//            NSLog(@"播放中");
             [_playBtn setBackgroundImage:[image(@"suspended_dibu") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
             break;
             
         case MioPlayerStatePaused:
-            NSLog(@"暂停");
+//            NSLog(@"暂停");
             [_playBtn setBackgroundImage:[image(@"play_dibu") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
             break;
             
         case MioPlayerStatePlayStopped:
-            NSLog(@"结束");
+//            NSLog(@"结束");
             [_playBtn setBackgroundImage:[image(@"play_dibu") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
             break;
             
         case MioPlayerStatePlayEnded:
-            NSLog(@"播放完成");
+//            NSLog(@"播放完成");
             break;
             
         case MioPlayerStatePlayFailed:
-            NSLog(@"错误");
+//            NSLog(@"错误");
             break;
             
         case MioPlayerStateUnknown:

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UICollectionView *collection;
 @property (nonatomic, strong) SDCycleScrollView *adScroll;
 @property (nonatomic, strong) NSMutableArray *adUrlArr;
+@property (nonatomic, strong) NSMutableArray *adJumpArr;
 @property (nonatomic, strong) UIScrollView *rankScroll;
 
 @property (nonatomic, strong) NSArray *rankArr;
@@ -37,6 +38,7 @@
     self.view.backgroundColor = appClearColor;
     
     _dataArr = [[NSMutableArray alloc] init];
+    _adJumpArr = [[NSMutableArray alloc] init];
     _page = 1;
     [self creatUI];
     [self requestData];
@@ -68,11 +70,12 @@
         _rankArr = [result objectForKey:@"data"];
     } failure:^(NSString *errorInfo) {}];
     
-    [MioGetCacheReq(api_banners,nil) success:^(NSDictionary *result){
+    [MioGetCacheReq(api_banners,@{@"position":@"MV推荐"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         NSMutableArray *tempArr = [[NSMutableArray alloc] init];
         for (int i = 0;i < data.count; i++) {
             [tempArr addObject:data[i][@"cover_image_path"]];
+            [_adJumpArr addObject:data[i][@"href"]];
         }
         _adUrlArr = tempArr;
         
@@ -207,7 +210,7 @@
 #pragma mark - 广告
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     ScanSuccessJumpVC *vc = [[ScanSuccessJumpVC alloc] init];
-    vc.jump_URL = @"http://www.baidu.com";
+    vc.jump_URL = _adJumpArr[index];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -40,6 +40,7 @@
 @property (nonatomic, strong) UILabel *LvLab;
 @property (nonatomic, strong) UIImageView *listenIcon;
 @property (nonatomic, strong) UILabel *listenLab;
+@property (nonatomic, strong) UIView *reddot;
 
 @property (nonatomic, strong) UICollectionView *mySonglistCollection;
 @property (nonatomic, strong) UICollectionView *recentPlayCollection;
@@ -62,8 +63,10 @@
     [super viewWillAppear:animated];
     [self updateInfo];
     [self requestMySonglist];
+    [self requestUnred];
     _recentPlayArr = [[[WHCSqlite query:[MioMusicModel class] where:@"savetype = 'recentMusic'"] reverseObjectEnumerator] allObjects];
     [_recentPlayCollection reloadData];
+    
 }
 
 -(void)updateInfo{
@@ -82,16 +85,32 @@
         [MioGetReq(api_otherUserinfo(currentUserId), @{@"k":@"v"}) success:^(NSDictionary *result){
             NSDictionary *data = [result objectForKey:@"data"];
             _user = [MioUserInfo mj_objectWithKeyValues:data];
-            [_avatar sd_setImageWithURL:_user.avatar.mj_url placeholderImage:image(@"icon")];
+            [_avatar sd_setImageWithURL:_user.avatar.mj_url placeholderImage:image(@"qxt_yonhu")];
             _nicknameLab.text = _user.nickname;
             _nicknameLab.width = [_nicknameLab.text widthForFont:BoldFont(16)];
-            _signLab.text = _user.sign;
+            _signLab.text = (_user.sign.length > 0)?_user.sign:@"暂时没有个性签名哦，赶快去编写一个吧~~~";
             _editBtn.left = _nicknameLab.right + 4;
+            _LvLab.text = [NSString stringWithFormat:@"Lv.%@",_user.level];
+            _listenLab.text = [NSString stringWithFormat:@"%d小时",(int)round([_user.listen_time intValue]/3600.0)];
+            _listenLab.width = [_listenLab.text widthForFont:Font(10)];
+            _listenTimeBg.width = 21 + _listenLab.width;
+            if (_user.gender == 0) {
+                _gender.hidden = NO;
+                _gender.image = image(@"xingbie_nvsheng");
+            }
+            if (_user.gender == 1) {
+                _gender.hidden = NO;
+                _gender.image = image(@"xingbie_nansheng");
+            }
+            if (_user.gender == 2) {
+                _gender.hidden = YES;
+            }
+
         } failure:^(NSString *errorInfo) {}];
     }else{
         _loginLab.hidden = NO;
         _tipLab.hidden = NO;
-        _avatar.image = image(@"icon");
+        _avatar.image = image(@"qxt_yonhu");
         _gender.hidden = YES;
         _editBtn.hidden = YES;
         _nicknameLab.hidden = YES;
@@ -107,10 +126,14 @@
 -(void)creatUI{
     MioLabel *titleLab = [MioLabel creatLabel:frame(Mar, StatusH + 8, 50, 28) inView:self.view text:@"我的" colorName:name_main boldSize:20 alignment:NSTextAlignmentLeft];
     MioButton *messegeBtn = [MioButton creatBtn:frame(KSW - 56 - 20, StatusH + 12, 20, 20) inView:self.view bgImage:@"me_yidu" bgTintColorName:name_icon_one action:^{
+        goLogin;
         MioNoticeCenterVC *vc = [[MioNoticeCenterVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
     messegeBtn.clickArea = @"2";
+    _reddot = [UIView creatView:frame(16, 0, 6, 6) inView:messegeBtn bgColor:redTextColor radius:3];
+    _reddot.hidden = YES;
+    
     MioButton *moreBtn = [MioButton creatBtn:frame(KSW - 16 - 20, StatusH + 12, 20, 20) inView:self.view bgImage:@"me_more" bgTintColorName:name_icon_one action:^{
         MioMoreVC *vc = [[MioMoreVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
@@ -127,9 +150,9 @@
         goLogin;
     }];
     
-    _avatar = [UIImageView creatImgView:frame(Mar + 12, 20, 70, 70) inView:bgScroll image:@"icon" radius:35];
-    [_avatar sd_setImageWithURL:currentUserAvatar placeholderImage:image(@"icon")];
-    _gender = [UIImageView creatImgView:frame(48, 56, 14, 14) inView:_avatar image:@"xb_nan" radius:0];
+    _avatar = [UIImageView creatImgView:frame(Mar + 12, 20, 70, 70) inView:bgScroll image:@"qxt_yonhu" radius:35];
+    [_avatar sd_setImageWithURL:currentUserAvatar placeholderImage:image(@"qxt_yonhu")];
+    _gender = [UIImageView creatImgView:frame(76, 76, 14, 14) inView:bgScroll image:@"" radius:0];
     _nicknameLab = [MioLabel creatLabel:frame(92, 4, 0, 22) inView:_userBgView text:@"" colorName:name_text_one boldSize:16 alignment:NSTextAlignmentLeft];
     _nicknameLab.text = currentUserNickName;
     _nicknameLab.width = [_nicknameLab.text widthForFont:BoldFont(16)];
@@ -144,7 +167,7 @@
     _LvLab = [UILabel creatLabel:frame(0, 0, 30, 16) inView:_LvBg text:@"Lv.1" color:appWhiteColor size:10 alignment:NSTextAlignmentCenter];
     _listenTimeBg = [UIView creatView:frame(_LvBg.right + 4, 28, 60, 16) inView:_userBgView bgColor:rgba(0, 0, 0, 0.15) radius:8];
     _listenIcon = [UIImageView creatImgView:frame(4, 2.5, 11, 11) inView:_listenTimeBg image:@"tinggeliang" radius:0];
-    _listenLab = [UILabel creatLabel:frame(17, 1, 38, 14) inView:_listenTimeBg text:@"1小时" color:appWhiteColor size:10 alignment:NSTextAlignmentCenter];
+    _listenLab = [UILabel creatLabel:frame(17, 1, 38, 14) inView:_listenTimeBg text:@"0小时" color:appWhiteColor size:10 alignment:NSTextAlignmentCenter];
     _listenLab.width = [_listenLab.text widthForFont:Font(10)];
     _listenTimeBg.width = 21 + [_listenLab.text widthForFont:Font(10)];
     _signLab = [MioLabel creatLabel:frame(92, 46, KSW - 108 - 39, 34) inView:_userBgView text:@"暂时没有个性签名哦，赶快去编写一个吧~~~" colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
@@ -227,10 +250,10 @@
     [shareLab whenTapped:^{
         UIPasteboard * pastboard = [UIPasteboard generalPasteboard];
         if (islogin) {
-            pastboard.string =[NSString stringWithFormat:@"http://test.aw998.com/api/user/share?code=%d",[currentUserId intValue]*93-9];
+            pastboard.string = _user.share_url;
             [UIWindow showSuccess:@"邀请链接已复制到剪切板"];
         }else{
-            pastboard.string = @"http://test.aw998.com/api/user/share";
+            pastboard.string = [userdefault objectForKey:@"shareUrl"];
             [UIWindow showSuccess:@"邀请链接已复制到剪切板，登录后分享才能获取积分奖励哦"];
         }
     }];
@@ -288,6 +311,17 @@
         _mySonglistArr = [MioSongListModel mj_objectArrayWithKeyValuesArray:[result objectForKey:@"data"]];
         [_mySonglistCollection reloadData];
         
+    } failure:^(NSString *errorInfo) {}];
+}
+
+-(void)requestUnred{
+    [MioGetReq(api_unread, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSString *count = [result objectForKey:@"data"][@"count"];
+        if ([count intValue] == 0) {
+            _reddot.hidden = YES;
+        }else{
+            _reddot.hidden = NO;
+        }
     } failure:^(NSString *errorInfo) {}];
 }
 

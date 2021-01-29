@@ -27,8 +27,11 @@
     _dataArr = [[NSMutableArray alloc] init];
     _page = 1;
     [self creatUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self requestData];
-    
 }
 
 -(void)requestData{
@@ -63,7 +66,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((KSW_Mar2 - 20)/3,(KSW_Mar2 - 20)/3 + 36);
+    return CGSizeMake((KSW_Mar2 - 21)/3,(KSW_Mar2 - 21)/3 + 36);
 //    return CGSizeMake((KSW_Mar2 - 16)/3, (KSW_Mar2 - 16)/3 + 40);
 }
 

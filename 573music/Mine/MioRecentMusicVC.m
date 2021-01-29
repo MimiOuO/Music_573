@@ -32,19 +32,23 @@
     UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSW, 48)];
     
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
-        [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
+        if (_dataArr.count > 0) {
+            [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
+        }
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
     UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
     UIButton *multipleBtn = [UIButton creatBtn:frame(KSW - 100, 0, 100, 48) inView:sectionHeader bgImage:@"" action:^{
-        MioMutipleVC *vc = [[MioMutipleVC alloc] init];
-        vc.musicArr = _dataArr;
-        vc.type = MioMutipleTypeSongList;
-        MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
-        nav.modalPresentationStyle = 0;
-        [self presentViewController:nav animated:YES completion:nil];
+        if (_dataArr.count > 0) {
+            MioMutipleVC *vc = [[MioMutipleVC alloc] init];
+            vc.musicArr = _dataArr;
+            vc.type = MioMutipleTypeSongList;
+            MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
+            nav.modalPresentationStyle = 0;
+            [self presentViewController:nav animated:YES completion:nil];
+        }
     }];
-    UIImageView *multipleIcon = [UIImageView creatImgView:frame(KSW - 24 -  18, 15, 18, 18) inView:sectionHeader image:@"liebiao_duoxuan" radius:0];
+    MioImageView *multipleIcon = [MioImageView creatImgView:frame(KSW - 24 -  18, 15, 18, 18) inView:sectionHeader image:@"liebiao_duoxuan" bgTintColorName:name_icon_one radius:0];
     _table.tableHeaderView = sectionHeader;
 //    _table = [[UITableView  alloc] initWithFrame:frame(0, 0, KSW, KSH - NavH - 40 - TabH) style:UITableViewStyleGrouped];
 

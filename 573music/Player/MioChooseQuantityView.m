@@ -37,7 +37,7 @@
         UIButton *closeBtn = [UIButton creatBtn:frame(0, 160, KSW, 50 + SafeBotH) inView:_bgView bgColor:appClearColor title:@"关闭" titleColor:color_text_one font:14 radius:0 action:^{
             [self hiddenView];
         }];
-        _quailtyView = [UIView creatView:frame(0, 0, KSW, 210 + SafeBotH) inView:_bgView bgColor:appClearColor radius:0];
+        _quailtyView = [UIView creatView:frame(0, 0, KSW, 160) inView:_bgView bgColor:appClearColor radius:0];
     }
     return self;
 }

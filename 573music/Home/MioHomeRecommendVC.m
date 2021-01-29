@@ -51,7 +51,6 @@
     
 }
 
-
 -(void)request{
     [MioGetCacheReq(api_ranks, @{@"page":@"推荐"}) success:^(NSDictionary *result){
         
@@ -156,7 +155,7 @@
         musicCell.model = _musicArr[i];
         [_musicScroll addSubview:musicCell];
         [musicCell whenTapped:^{
-            
+            [mioM3U8Player playWithMusicList:_musicArr andIndex:i];
         }];
     }
     for (int i = 0;i < _albumArr.count; i++) {
@@ -165,7 +164,7 @@
         [_albumScroll addSubview:albumCell];
         [albumCell whenTapped:^{
             MioAlbumVC *vc = [[MioAlbumVC alloc] init];
-            vc.album_id = @"1";//((MioAlbumModel *)_albumArr[i]).album_id;
+            vc.album_id = ((MioAlbumModel *)_albumArr[i]).album_id;
             [self.navigationController pushViewController:vc animated:YES];
         }];
     }

@@ -28,8 +28,17 @@
 /** 是否登录 */
 @property (nonatomic, assign) BOOL      isLogin;
 
-/** 是否积分 */
+/** 积分 */
 @property (nonatomic, copy) NSString    *coin;
+
+/** 听歌时长 */
+@property (nonatomic, copy) NSString    *listen_time;
+
+
+/** 等级 */
+@property (nonatomic, copy) NSString    *level;
+/** 分享链接 */
+@property (nonatomic, copy) NSString    *share_url;
 
 /**
  *  单例

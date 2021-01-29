@@ -18,6 +18,7 @@
     emptyView.titleLabTextColor = rgb(138, 206, 255);
     emptyView.emptyViewIsCompleteCoverSuperView = YES;
     emptyView.backgroundColor = appClearColor;
+    emptyView.userInteractionEnabled = NO;
     return emptyView;
 }
 

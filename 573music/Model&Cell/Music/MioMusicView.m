@@ -28,7 +28,7 @@
         _flacImg = [MioImageView creatImgView:frame(_cover.right + 8, _nameLab.bottom + 5, 22, 12) inView:self image:@"playlist_nondestructive" bgTintColorName:name_main radius:0];
         _mvImg = [MioImageView creatImgView:frame(_flacImg.right + 4, _nameLab.bottom + 5, 22, 12) inView:self image:@"playlist_mv" bgTintColorName:name_main radius:0];
         _singerLab = [MioLabel creatLabel:frame(_mvImg.right + 8, _nameLab.bottom + 2, self.width  - 136 - 45, 17) inView:self text:@"" colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
-        UIImageView *icon = [UIImageView creatImgView:frame(self.width - 46, 29, 22, 22) inView:self image:@"play" radius:0];
+        MioImageView *icon = [MioImageView creatImgView:frame(self.width - 46, 29, 22, 22) inView:self image:@"play" bgTintColorName:name_icon_three radius:0];
     }
     return self;
 }

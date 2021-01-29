@@ -87,7 +87,7 @@
     invitaView.alpha = 0;
     
     self.invitaTF = [[UITextField alloc] initWithFrame:CGRectMake(8, 16 ,  KSW - 90, 16)];
-    self.invitaTF.maxLength(4);
+    self.invitaTF.maxLength(8);
     self.invitaTF.font = [UIFont systemFontOfSize:16];
     self.invitaTF.placeholder = @"请输入邀请码";
     self.invitaTF.textColor = color_text_one;
@@ -157,11 +157,22 @@
         [UIWindow showInfo:@"请获取验证码"];
         return;
     }
+    NSDictionary *dic;
+    
+    if (_invitaTF.text.length > 0) {
+        dic = @{
+            @"verification_key":_key,
+            @"verification_code":self.verifyTF.text,
+            @"invite_code":self.invitaTF.text,
+        };
+    }else{
+        dic = @{
+            @"verification_key":_key,
+            @"verification_code":self.verifyTF.text,
+        };
+    }
+    
 
-    NSDictionary *dic = @{
-                          @"verification_key":_key,
-                          @"verification_code":self.verifyTF.text,
-                          };
     MioPostRequest *request = [[MioPostRequest alloc] initWithRequestUrl:api_login argument:dic];
     
     [request success:^(NSDictionary *result) {

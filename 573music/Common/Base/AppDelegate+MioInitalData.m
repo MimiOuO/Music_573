@@ -17,9 +17,12 @@
     [self requestSingerGroup];
     [self requestSingerCategory];
     [self requestCategory];
+    [self requestHotSearch];
+    [self requesttimeInterval];
     [self requestMVTabs];
     [self requestSkin];
     [self requestVersion];
+    [self requestShareUrl];
     [self configAd];
 }
 
@@ -47,9 +50,18 @@
     } failure:^(NSString *errorInfo) {}];
 }
 
+
+-(void)requestHotSearch{
+    [MioGetReq(api_hotSearch, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
+        [userdefault setObject:data forKey:@"hotsearch"];
+        [userdefault synchronize];
+    } failure:^(NSString *errorInfo) {}];
+}
+
 -(void)requestMVTabs{
-    [MioGetReq(api_mvTabs, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSArray *data = [result objectForKey:@"data"][@"list"];
+    [MioGetReq(api_mvTabs, @{@"position":@"mv"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"][0][@"tags"];
         [userdefault setObject:data forKey:@"mvtabs"];
         [userdefault synchronize];
     } failure:^(NSString *errorInfo) {}];
@@ -75,18 +87,37 @@
     } failure:^(NSString *errorInfo) {}];
 }
 
+-(void)requesttimeInterval{
+    [MioGetReq(api_timeInterval, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        NSString *interval = [NSString stringWithFormat:@"%@",data[@"seconds"]];
+        [userdefault setObject:interval forKey:@"timeInterval"];
+        [userdefault synchronize];
+    } failure:^(NSString *errorInfo) {}];
+}
+
+-(void)requestShareUrl{
+    [MioGetReq(api_shareUrl, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        NSString *shareUrl = data[@"url"];
+        [userdefault setObject:shareUrl forKey:@"shareUrl"];
+        [userdefault synchronize];
+    } failure:^(NSString *errorInfo) {}];
+}
+
 -(void)configAd{
     [XHLaunchAd setLaunchSourceType:SourceTypeLaunchScreen];
     [XHLaunchAd setWaitDataDuration:2];
-    [MioGetCacheReq(api_startAd, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSDictionary *data = [result objectForKey:@"data"];
+    
+    [MioGetCacheReq(api_banners, @{@"position":IPHONE_X?@"启动页大":@"启动页小"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"];
         
         //配置广告数据
         XHLaunchImageAdConfiguration *imageAdconfiguration = [XHLaunchImageAdConfiguration defaultConfiguration];
         
-        imageAdconfiguration.imageNameOrURLString = data[@"url"];
+        imageAdconfiguration.imageNameOrURLString = data[0][@"cover_image_path"];
         
-        imageAdconfiguration.openModel = @"http://www.baidu.com";
+        imageAdconfiguration.openModel = data[0][@"href"];
         imageAdconfiguration.frame = CGRectMake(0, 0, KSW, KSH- 78 - SafeBotH);
         imageAdconfiguration.skipButtonType = SkipTypeTimeText;
        

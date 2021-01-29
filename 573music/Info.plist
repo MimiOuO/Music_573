@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>App需要访问你的麦克风</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>App需要您的同意,才能访问媒体资料库</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -39,6 +35,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>App需要您的同意,才能访问媒体资料库</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_adhp._tcp</string>
@@ -51,6 +49,8 @@
 	<string>定位可以让我们提供您附近的大神和动态，以便于找到更适合你的内容</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>定位可以让我们提供您附近的大神和动态，以便于找到更适合你的内容</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>App需要访问你的麦克风</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>我们需要照片以用于您的头像或者发布的动态，以便于更多人了解你</string>
 	<key>NSPhotoLibraryUsageDescription</key>

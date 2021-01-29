@@ -32,6 +32,7 @@
 @property (nonatomic, strong) UIScrollView *bgScroll;
 @property (nonatomic, strong) SDCycleScrollView *adScroll;
 @property (nonatomic, strong) NSMutableArray *adUrlArr;
+@property (nonatomic, strong) NSMutableArray *adJumpArr;
 @property (nonatomic, strong) UIScrollView *songlistScroll;
 @property (nonatomic, strong) UIScrollView *musicScroll;
 @property (nonatomic, strong) UIScrollView *rankScroll;
@@ -49,13 +50,11 @@
     [super viewDidLoad];
     self.bgImg.hidden = YES;
     self.view.backgroundColor = appClearColor;
+    RecieveNotice(@"firstLaunch", request);
     
+    _adJumpArr = [[NSMutableArray alloc] init];
     [self creatUI];
     [self request];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"111");
 }
 
 -(void)request{
@@ -82,11 +81,12 @@
         [self updateRank];
     } failure:^(NSString *errorInfo) {}];
     
-    [MioGetCacheReq(api_banners,nil) success:^(NSDictionary *result){
+    [MioGetCacheReq(api_banners, @{@"position":@"音乐馆"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         NSMutableArray *tempArr = [[NSMutableArray alloc] init];
         for (int i = 0;i < data.count; i++) {
             [tempArr addObject:data[i][@"cover_image_path"]];
+            [_adJumpArr addObject:data[i][@"href"]];
         }
         _adUrlArr = tempArr;
         _adScroll.imageURLStringsGroup = _adUrlArr;
@@ -245,7 +245,7 @@
 #pragma mark - 广告
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     ScanSuccessJumpVC *vc = [[ScanSuccessJumpVC alloc] init];
-    vc.jump_URL = @"http://www.baidu.com";
+    vc.jump_URL = _adJumpArr[index];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
