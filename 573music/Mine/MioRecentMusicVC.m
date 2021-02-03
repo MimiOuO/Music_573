@@ -11,7 +11,7 @@
 #import "MioMusicTableCell.h"
 #import "MioMutipleVC.h"
 
-@interface MioRecentMusicVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface MioRecentMusicVC ()<UITableViewDelegate,UITableViewDataSource,MutipleDeleteDelegate>
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSArray *dataArr;
@@ -42,7 +42,8 @@
         if (_dataArr.count > 0) {
             MioMutipleVC *vc = [[MioMutipleVC alloc] init];
             vc.musicArr = _dataArr;
-            vc.type = MioMutipleTypeSongList;
+            vc.type = MioMutipleTypeOwnSongList;
+            vc.delegate = self;
             MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
             nav.modalPresentationStyle = 0;
             [self presentViewController:nav animated:YES completion:nil];
@@ -80,6 +81,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+}
+
+-(void)mutipleDelete:(NSArray<MioMusicModel *> *)selectArr{
+
+    for (int i = 0;i < selectArr.count; i++) {
+        [WHCSqlite delete:[MioMusicModel class] where:[NSString stringWithFormat:@"savetype = 'recentMusic' and song_id = %@",selectArr[i].song_id]];
+    }
+    
+    _dataArr = [[[WHCSqlite query:[MioMusicModel class] where:@"savetype = 'recentMusic'"] reverseObjectEnumerator] allObjects];
+    [_table reloadData];
 }
 
 @end

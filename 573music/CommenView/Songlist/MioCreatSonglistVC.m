@@ -102,10 +102,6 @@
         })
         .LeeCancelAction(@"取消", nil)
         .LeeAction(@"确认", ^{
-            if (noteTV.tempText.length == 0) {
-                [UIWindow showInfo:@"名称不能为空"];
-                return;
-            }
             _nameLab.text = noteTV.tempText;
         })
         .LeeShow();
@@ -128,12 +124,20 @@
         return;
     }
     
-    NSDictionary *dic = @{
-        @"cover_image_path":_avatarPath,
-        @"title":_nameLab.text,
-        @"song_list_description":_noteTV.tempText,
-    };
-
+    NSDictionary *dic = [[NSDictionary alloc] init];
+    if (_noteTV.tempText.length > 0) {
+        dic = @{
+            @"cover_image_path":_avatarPath,
+            @"title":_nameLab.text,
+            @"song_list_description":_noteTV.tempText,
+        };
+    }else{
+        dic = @{
+            @"cover_image_path":_avatarPath,
+            @"title":_nameLab.text,
+        };
+    }
+    
     [MioPostReq(api_songLists, dic) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         [UIWindow showSuccess:@"创建成功"];

@@ -104,21 +104,16 @@
     self.player.pauseWhenAppResignActive = NO;
 
     
-    @zf_weakify(self)
+    WEAKSELF;
     self.player.orientationWillChange = ^(ZFPlayerController * _Nonnull player, BOOL isFullScreen) {
         ((AppDelegate*)[[UIApplication sharedApplication] delegate]).allowOrentitaionRotation = isFullScreen;
     };
     
     /// 播放完成
     self.player.playerDidToEnd = ^(id  _Nonnull asset) {
-//        @zf_strongify(self)
-//        if (!self.player.isLastAssetURL) {
-//            [self.player playTheNext];
-//            NSString *title = [NSString stringWithFormat:@"视频标题%zd",self.player.currentPlayIndex];
-//            [self.controlView showTitle:title coverURLString:kVideoCover fullScreenMode:ZFFullScreenModeLandscape];
-//        } else {
-//            [self.player stop];
-//        }
+        if (weakSelf. info.relatedMVArr.count > 0) {
+            [weakSelf changeMV:weakSelf.info.relatedMVArr[0].mv_id];
+        }
     };
 
     [self.controlView showTitle:@"" coverURLString:@"" fullScreenMode:ZFFullScreenModeAutomatic];

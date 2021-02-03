@@ -11,7 +11,7 @@
 #import "MioMusicTableCell.h"
 #import "MioMutipleVC.h"
 #import "MioEditSonglistVC.h"
-@interface MioSongListVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface MioSongListVC ()<UITableViewDelegate,UITableViewDataSource,MutipleDeleteDelegate>
 @property (nonatomic, strong) MioSongListModel *songlist;
 @property (nonatomic, strong) UIView *headerView;
 
@@ -204,7 +204,7 @@
             vc.musicArr = _dataArr;
             if (_songlist.user_id == currentUserId) {
                 vc.type = MioMutipleTypeOwnSongList;
-                vc.songlistId = _songlistId;
+                vc.delegate = self;
             }else{
                 vc.type = MioMutipleTypeSongList;
             }
@@ -259,5 +259,18 @@
     
     [self.navView.centerButton setTitle:offsetY > 100?_songlist.title:@"专辑" forState:UIControlStateNormal];
     _coverBg.top = -offsetY;
+}
+
+-(void)mutipleDelete:(NSArray<MioMusicModel *> *)selectArr{
+    NSMutableArray *idArr = [[NSMutableArray alloc] init];
+    for (int i = 0;i < selectArr.count; i++) {
+        [idArr addObject:selectArr[i].song_id];
+    }
+    
+    [MioPostReq(api_deleteInSonglist(_songlistId), @{@"ids":idArr}) success:^(NSDictionary *result){
+        [UIWindow showSuccess:@"删除成功"];
+        
+    } failure:^(NSString *errorInfo) {}];
+
 }
 @end

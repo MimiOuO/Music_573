@@ -393,6 +393,7 @@
 		237D061E257DC3BA00697F3A /* BTCoverHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D061B257DC3BA00697F3A /* BTCoverHorizontalTransition.m */; };
 		237D061F257DC3BA00697F3A /* BTCoverVerticalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D061C257DC3BA00697F3A /* BTCoverVerticalTransition.m */; };
 		237D0622257DC3FE00697F3A /* MioPlayListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D0621257DC3FE00697F3A /* MioPlayListVC.m */; };
+		237FDDC525CA7F210064CC42 /* MioChooseFavoriteTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 237FDDC425CA7F210064CC42 /* MioChooseFavoriteTagView.m */; };
 		23870E5F25BFEB6900FA65BA /* MioMVListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23870E5E25BFEB6900FA65BA /* MioMVListVC.m */; };
 		2388759C25A54E230097FCEE /* MioMVRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2388759B25A54E220097FCEE /* MioMVRankView.m */; };
 		2388759F25A551190097FCEE /* MioMVRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2388759E25A551190097FCEE /* MioMVRankVC.m */; };
@@ -522,6 +523,7 @@
 		23E5B6AF25B1294F0017F0CC /* MioMVRankListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5B6AE25B1294F0017F0CC /* MioMVRankListVC.m */; };
 		23E5B6B225B17AC10017F0CC /* MioMoreFuncView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5B6B125B17AC10017F0CC /* MioMoreFuncView.m */; };
 		23E5B6B525B199790017F0CC /* MioChooseQuantityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5B6B425B199790017F0CC /* MioChooseQuantityView.m */; };
+		23EAEEB825C7A7A300B18C61 /* 3434.m3u8 in Resources */ = {isa = PBXBuildFile; fileRef = 23EAEEB725C7A7A300B18C61 /* 3434.m3u8 */; };
 		23F3716F25906DDE006053B1 /* MioSonglistCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3716E25906DDE006053B1 /* MioSonglistCollectionCell.m */; };
 		23FF98332547BB26008CC170 /* GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF98282547BB25008CC170 /* GCD.m */; };
 		23FF98342547BB26008CC170 /* GCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF98292547BB25008CC170 /* GCDQueue.m */; };
@@ -1313,6 +1315,8 @@
 		237D061D257DC3BA00697F3A /* BTCoverHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverHorizontalTransition.h; sourceTree = "<group>"; };
 		237D0620257DC3FE00697F3A /* MioPlayListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioPlayListVC.h; sourceTree = "<group>"; };
 		237D0621257DC3FE00697F3A /* MioPlayListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioPlayListVC.m; sourceTree = "<group>"; };
+		237FDDC325CA7F210064CC42 /* MioChooseFavoriteTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioChooseFavoriteTagView.h; sourceTree = "<group>"; };
+		237FDDC425CA7F210064CC42 /* MioChooseFavoriteTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioChooseFavoriteTagView.m; sourceTree = "<group>"; };
 		23870E5D25BFEB6900FA65BA /* MioMVListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVListVC.h; sourceTree = "<group>"; };
 		23870E5E25BFEB6900FA65BA /* MioMVListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMVListVC.m; sourceTree = "<group>"; };
 		2388759A25A54E220097FCEE /* MioMVRankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVRankView.h; sourceTree = "<group>"; };
@@ -1571,6 +1575,7 @@
 		23E5B6B125B17AC10017F0CC /* MioMoreFuncView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMoreFuncView.m; sourceTree = "<group>"; };
 		23E5B6B325B199790017F0CC /* MioChooseQuantityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioChooseQuantityView.h; sourceTree = "<group>"; };
 		23E5B6B425B199790017F0CC /* MioChooseQuantityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioChooseQuantityView.m; sourceTree = "<group>"; };
+		23EAEEB725C7A7A300B18C61 /* 3434.m3u8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3434.m3u8; sourceTree = "<group>"; };
 		23F3716D25906DDE006053B1 /* MioSonglistCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSonglistCollectionCell.h; sourceTree = "<group>"; };
 		23F3716E25906DDE006053B1 /* MioSonglistCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSonglistCollectionCell.m; sourceTree = "<group>"; };
 		23FF98272547BB25008CC170 /* GCDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSemaphore.h; sourceTree = "<group>"; };
@@ -1632,6 +1637,8 @@
 			children = (
 				230273E12589B59800937C04 /* MioEditInfoVC.h */,
 				230273E22589B59800937C04 /* MioEditInfoVC.m */,
+				237FDDC325CA7F210064CC42 /* MioChooseFavoriteTagView.h */,
+				237FDDC425CA7F210064CC42 /* MioChooseFavoriteTagView.m */,
 			);
 			path = EditInfo;
 			sourceTree = "<group>";
@@ -3561,6 +3568,7 @@
 			children = (
 				2312AC292595D8B900EF45AA /* AudioToolbox.framework */,
 				2312AC272595D8B100EF45AA /* AVFoundation.framework */,
+				23EAEEB725C7A7A300B18C61 /* 3434.m3u8 */,
 				2312AC252595D8A600EF45AA /* libc++.tbd */,
 				2312AC232595D89C00EF45AA /* Security.framework */,
 				DAB6069E29C029B2B9430D85 /* libPods-573music.a */,
@@ -3647,6 +3655,7 @@
 				2302750F2589FD6D00937C04 /* PYSearch.bundle in Resources */,
 				2338261D2518ACDD00DC9021 /* LICENSE in Resources */,
 				233825E82518796900DC9021 /* HSSetTableViewController.bundle in Resources */,
+				23EAEEB825C7A7A300B18C61 /* 3434.m3u8 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4074,6 +4083,7 @@
 				23C24FD22446A4CA00EE0BE2 /* STPickerViewUI.m in Sources */,
 				230274F62589B67700937C04 /* HXPhotoEditGraffitiColorViewCell.m in Sources */,
 				236DB782250F6668001CC2F3 /* ZFIJKPlayerManager.m in Sources */,
+				237FDDC525CA7F210064CC42 /* MioChooseFavoriteTagView.m in Sources */,
 				2305A219256BA9A90099EFE3 /* MioView.m in Sources */,
 				2378094924FF4DF900007883 /* NERUtils.m in Sources */,
 				23CEA0362587381A0083AA75 /* MioHomeRecommendVC.m in Sources */,
@@ -4350,7 +4360,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1.1;
+				CURRENT_PROJECT_VERSION = 1.0.1.4;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = X7B59Z8L2P;
 				GCC_PREFIX_HEADER = 573music/PrefixHeader.pch;
@@ -4386,7 +4396,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1.1;
+				CURRENT_PROJECT_VERSION = 1.0.1.4;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = X7B59Z8L2P;
 				GCC_PREFIX_HEADER = 573music/PrefixHeader.pch;

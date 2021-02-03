@@ -13,6 +13,7 @@
 #import "UITextField+NumberFormat.h"
 #import "MioLargeButton.h"
 #import "MioModiPassWordVC.h"
+#import "MioChooseFavoriteTagView.h"
 @interface MioPasswordLoginVC ()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *phoneTF;
 @property (nonatomic, strong) UITextField *verifyTF;
@@ -152,7 +153,10 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];
         
         [self dismissViewControllerAnimated:YES completion:^{
-            
+            if (user.favorite_tags.count == 0) {
+                MioChooseFavoriteTagView *view = [MioChooseFavoriteTagView new];
+                [view showFavoriteTagViewWithArr:user.favorite_tags];
+            }
         }];
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];

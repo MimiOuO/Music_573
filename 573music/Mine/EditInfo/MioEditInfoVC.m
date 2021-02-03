@@ -11,12 +11,14 @@
 #import "XMTextView.h"
 #import <LEEAlert.h>
 #import <AFHTTPSessionManager.h>
+#import "MioChooseFavoriteTagView.h"
 
-@interface MioEditInfoVC ()
+@interface MioEditInfoVC ()<favoriteDelegate>
 @property (nonatomic, strong) UIImageView *avatar;
 @property (nonatomic, strong) UILabel *nickNameLab;
 @property (nonatomic, strong) UILabel *signLab;
 @property (nonatomic, strong) UILabel *genderLab;
+@property (nonatomic, strong) UILabel *favoriteLab;
 @property (nonatomic, strong) HXPhotoManager *avatarManger;
 
 @end
@@ -31,18 +33,18 @@
 }
 
 -(void)creatUI{
-    UIView *bgView = [UIView creatView:frame(Mar, NavH + 12, KSW_Mar2 , 44*3 + 64 + 60) inView:self.view bgColor:color_card radius:6];
+    UIView *bgView = [UIView creatView:frame(Mar, NavH + 12, KSW_Mar2 , 44*4 + 64 + 60) inView:self.view bgColor:color_card radius:6];
     
-    NSArray *titleArr = @[@"头像",@"昵称",@"性别",@"个性签名",@""];
-    NSArray *heightArr = @[@60,@44,@44,@44,@64];
-    NSArray *topArr = @[@0,@60,@104,@148,@192];
+    NSArray *titleArr = @[@"头像",@"昵称",@"性别",@"我想听",@"个性签名",@""];
+    NSArray *heightArr = @[@60,@44,@44,@44,@44,@64];
+    NSArray *topArr = @[@0,@60,@104,@148,@192,@236];
     for (int i = 0; i < titleArr.count ; i++) {
         
         UIView *infoView = [UIView creatView:frame(0, [topArr[i] intValue], KSW_Mar2, [heightArr[i] intValue]) inView:bgView bgColor:appClearColor radius:8];
         infoView.tag = i+100;
         UILabel *titleLab = [UILabel creatLabel:frame(12, [heightArr[i] intValue]/2 - 22, 100, 44) inView:infoView text:titleArr[i] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
         UIView *split = [UIView creatView:frame(10, [topArr[i] intValue] + [heightArr[i] intValue], KSW_Mar2 - 20, 0.5) inView:bgView bgColor:color_split radius:0];
-        if (i < 4) {
+        if (i < 5) {
             MioImageView *arrow = [MioImageView creatImgView:frame(KSW_Mar2 - 20 - 12 , [heightArr[i] intValue]/2 - 10, 20, 20) inView:infoView image:@"right" bgTintColorName:name_icon_three radius:0];
         }
         
@@ -57,7 +59,8 @@
     _nickNameLab = [UILabel creatLabel:frame(KSW_Mar2 - 39 - 200 , 0, 200, 44) inView:[bgView viewWithTag:101] text:_user.nickname color:color_text_two size:15 alignment:NSTextAlignmentRight];
 
     _genderLab = [UILabel creatLabel:frame(KSW_Mar2 - 39 - 200 , 0, 200, 44) inView:[bgView viewWithTag:102] text:((_user.gender == 1) ? (@"男") :(_user.gender == 0 ? @"女" : @"")) color:color_text_two size:15 alignment:NSTextAlignmentRight];
-    _signLab = [UILabel creatLabel:frame(12 , 12, KSW_Mar2 - 24, 60) inView:[bgView viewWithTag:104] text:_user.sign.length > 0?_user.sign:@"暂时还没有个性签名哦..." color:color_text_two size:15 alignment:NSTextAlignmentLeft];
+    _favoriteLab = [UILabel creatLabel:frame(KSW_Mar2 - 39 - 200 , 0, 200, 44) inView:[bgView viewWithTag:103] text:[_user.favorite_tags componentsJoinedByString:@"、"] color:color_text_two size:15 alignment:NSTextAlignmentRight];
+    _signLab = [UILabel creatLabel:frame(12 , 12, KSW_Mar2 - 24, 60) inView:[bgView viewWithTag:105] text:_user.sign.length > 0?_user.sign:@"暂时还没有个性签名哦..." color:color_text_two size:15 alignment:NSTextAlignmentLeft];
     _signLab.numberOfLines = 2;
     _signLab.height = [_signLab.text heightForFont:Font(14) width:KSW_Mar2 - 24];
 }
@@ -110,7 +113,12 @@
         [alertController addAction:famaleAction];
         [self presentViewController:alertController animated:YES completion:nil];
     }
-    if (Equals(view.tag, 103)) {//签名
+    if (Equals(view.tag, 103)) {//兴趣
+        MioChooseFavoriteTagView *view = [MioChooseFavoriteTagView new];
+        view.delegate = self;
+        [view showFavoriteTagViewWithArr:_user.favorite_tags];
+    }
+    if (view.tag >= 104) {//签名
         XMTextView *noteTV = [[XMTextView alloc] initWithFrame:CGRectMake(0, 0, 240, 100)];
         noteTV.textFont = [UIFont systemFontOfSize:14];
         noteTV.textColor = subColor;
@@ -149,6 +157,10 @@
     } failure:^(NSString *errorInfo) {}];
 }
 
+- (void)chooseFavorite:(NSArray *)tagArr{
+    _user.favorite_tags = tagArr;
+    _favoriteLab.text = [tagArr componentsJoinedByString:@"、"];
+}
 
 #pragma mark - 选择照片
 -(void)selectAvatar{

@@ -79,7 +79,7 @@
     //首页
     [self addChildVc:_homeVC title:@"首页" image:imagePath(@"tab_yingyue_putong") selectedImage:imagePath(@"tab_yingyue")];
     //发现
-    [self addChildVc:_groundVC title:@"广场" image:imagePath(@"tab_mv_putong") selectedImage:imagePath(@"tab_mv")];
+    [self addChildVc:_groundVC title:@"视频" image:imagePath(@"tab_mv_putong") selectedImage:imagePath(@"tab_mv")];
  
     //我的
     [self addChildVc:_mineVC title:@"我的" image:imagePath(@"tab_me_putong") selectedImage:imagePath(@"tab_me")];

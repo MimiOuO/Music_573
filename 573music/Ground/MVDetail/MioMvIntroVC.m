@@ -11,6 +11,7 @@
 #import "MioMvVC.h"
 @interface MioMvIntroVC ()
 @property (nonatomic, strong) UIScrollView *scroll;
+@property (nonatomic, strong) UIView *relatedView;
 @property (nonatomic, strong) UIButton *likeBtn;
 @end
 
@@ -50,16 +51,20 @@
     
     
     UILabel *relatLab  = [UILabel creatLabel:frame(Mar, 135, KSW_Mar2, 20) inView:_scroll text:@"相关推荐" color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];
-    
+    _relatedView = [UIView creatView:frame(0, 0, KSW, 6 * 73) inView:_scroll bgColor:appClearColor radius:0];
     [self requestRelated];
 }
 
 -(void)requestRelated{
-    [MioGetReq(api_mvrRelated(_mv.mv_id), @{@"k":@"v"}) success:^(NSDictionary *result){
+    
+    [MioGetReq(api_mvRelated(_mv.mv_id), @{@"k":@"v"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
+        
+        self.relatedMVArr = [MioMvModel mj_objectArrayWithKeyValuesArray:data];
+        [_relatedView removeAllSubviews];
         for (int i = 0;i < data.count; i++) {
             MioMvModel *model = [MioMvModel mj_objectWithKeyValues:data[i]];
-            UIView *mvView = [UIView creatView:frame(0, 163 + 73*i, KSW, 61) inView:_scroll bgColor:appClearColor radius:0];
+            UIView *mvView = [UIView creatView:frame(0, 163 + 73*i, KSW, 61) inView:_relatedView bgColor:appClearColor radius:0];
             UIImageView *cover = [UIImageView creatImgView:frame(Mar, 6, 109, 61) inView:mvView image:@"qxt_mv" radius:4];
             UIImageView *shadow = [UIImageView creatImgView:frame(0, cover.height - 22, 109, 22) inView:cover image:@"zhuanji_mengban" radius:0];
             shadow.contentMode = UIViewContentModeScaleToFill;
@@ -69,6 +74,7 @@
             MioLabel *titleLab = [MioLabel creatLabel:frame(133, 14, KSW - 133 - Mar, 22) inView:mvView text:model.title colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
             MioLabel *singerLab = [MioLabel creatLabel:frame(133, 40, KSW - 133 - Mar, 17) inView:mvView text:model.singer_name colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
             _scroll.contentSize = CGSizeMake(KSW, data.count * 73 + 180);
+            
             [mvView whenTapped:^{
                 if (self.delegate && [self.delegate respondsToSelector:@selector(changeMV:)]) {
                     [self.delegate changeMV:model.mv_id];

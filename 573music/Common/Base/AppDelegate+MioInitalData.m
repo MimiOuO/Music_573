@@ -22,6 +22,7 @@
     [self requestMVTabs];
     [self requestSkin];
     [self requestVersion];
+    [self requestTreaties];
     [self requestShareUrl];
     [self configAd];
 }
@@ -101,6 +102,21 @@
         NSDictionary *data = [result objectForKey:@"data"];
         NSString *shareUrl = data[@"url"];
         [userdefault setObject:shareUrl forKey:@"shareUrl"];
+        [userdefault synchronize];
+    } failure:^(NSString *errorInfo) {}];
+}
+
+-(void)requestTreaties{
+    [MioGetReq(api_treaties, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"][@"urls"];
+        NSString *levelTip = data[@"等级说明"][@"value"];
+        NSString *jifenTip = data[@"积分说明"][@"value"];
+        NSString *xieyiUrl = data[@"用户协议"][@"url"];
+        NSString *yinsiUrl = data[@"服务条款"][@"url"];
+        [userdefault setObject:levelTip forKey:@"levelTip"];
+        [userdefault setObject:jifenTip forKey:@"jifenTip"];
+        [userdefault setObject:xieyiUrl forKey:@"xieyiUrl"];
+        [userdefault setObject:yinsiUrl forKey:@"yinsiUrl"];
         [userdefault synchronize];
     } failure:^(NSString *errorInfo) {}];
 }

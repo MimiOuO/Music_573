@@ -48,14 +48,14 @@
     //最新mv
     [MioGetCacheReq(api_mvs, @{@"page":Str(_page)}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
+        [self.collection.mj_header endRefreshing];
+        [self.collection.mj_footer endRefreshing];
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
         if (Equals(result[@"links"][@"next"], @"<null>")) {
             [self.collection.mj_footer endRefreshingWithNoMoreData];
         }
-        [self.collection.mj_header endRefreshing];
-        [self.collection.mj_footer endRefreshing];
         [_dataArr addObjectsFromArray:[MioMvModel mj_objectArrayWithKeyValuesArray:data]];
         [self.collection reloadData];
     } failure:^(NSString *errorInfo) {}];

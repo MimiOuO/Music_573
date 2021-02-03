@@ -58,7 +58,7 @@
         if (_page == 1) {
             [_dataArr removeAllObjects];
         }
-        if (Equals(result[@"links"][@"next"], @"<null>")) {
+        if (Equals(result[@"data"][@"data_paginate"][@"next_page_url"], @"<null>")) {
             [_collection.mj_footer endRefreshingWithNoMoreData];
         }
         

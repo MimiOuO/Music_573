@@ -172,7 +172,7 @@
     [request success:^(NSDictionary *result) {
         NSDictionary *data = [result objectForKey:@"data"];
         [sender fire];
-        [UIWindow showInfo:@"验证码发送成功"];
+        [UIWindow showSuccess:@"验证码发送成功"];
         _key = [data objectForKey:@"key"];
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];

@@ -39,6 +39,9 @@
 @property (nonatomic, copy) NSString    *level;
 /** 分享链接 */
 @property (nonatomic, copy) NSString    *share_url;
+/** 兴趣 */
+@property (nonatomic, strong) NSArray    *favorite_tags;
+
 
 /**
  *  单例

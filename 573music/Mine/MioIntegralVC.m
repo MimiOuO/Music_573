@@ -44,11 +44,13 @@
     UIView *levelView = [UIView creatView:frame(KSW_Mar2/2 - 21, 96, 42, 19) inView:integralView bgColor:rgba(0, 0, 0, 0.06) radius:9.5];
     _levelLab = [UILabel creatLabel:frame(KSW_Mar2/2 - 21, 96, 42, 19) inView:integralView text:@"Lv.0>" color:appWhiteColor size:12 alignment:NSTextAlignmentCenter];
     [levelView whenTapped:^{
-        [UIWindow showMessage:@"1111" withTitle:@"等级说明"];
+        NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[[userdefault objectForKey:@"levelTip"] dataUsingEncoding:NSUnicodeStringEncoding]options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+        [UIWindow showMessage:[attrStr string] withTitle:@"等级说明"];
     }];
     UIImageView *tipView = [UIImageView creatImgView:frame(KSW_Mar2 - 8 - 14, 8, 14, 14) inView:integralView image:@"bangzhu" radius:0];
     [tipView whenTapped:^{
-        [UIWindow showMessage:@"1111" withTitle:@"积分说明"];
+        NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[[userdefault objectForKey:@"jifenTip"] dataUsingEncoding:NSUnicodeStringEncoding]options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+        [UIWindow showMessage:[attrStr string] withTitle:@"积分说明"];
     }];
     _titleView = [UIView creatView:frame(Mar, 158, KSW_Mar2, 44) inView:headerView bgColor:color_card radius:0];
     [_titleView addRoundedCorners:UIRectCornerTopLeft|UIRectCornerTopRight withRadii:CGSizeMake(8, 8)];

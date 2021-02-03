@@ -1,0 +1,8 @@
+#EXTM3U
+#EXT-X-TARGETDURATION:452
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:250, no desc
+http://file.duoduo.apphw.com/music34/3.mp3
+#EXTINF:202, no desc
+http://file.duoduo.apphw.com/music34/4.mp3
+#EXT-X-ENDLIST

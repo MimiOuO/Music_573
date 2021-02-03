@@ -341,7 +341,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_mvTabs                @"" api_base"/categories"
 #define api_mvs                @"" api_base"/mvs"
 #define api_mvrDetail(mv_id)  [NSString stringWithFormat:@"" api_base"/mvs/%@",mv_id]
-#define api_mvrRelated(mv_id)  [NSString stringWithFormat:@"" api_base"/mvs/%@/related",mv_id]
+#define api_mvRelated(mv_id)  [NSString stringWithFormat:@"" api_base"/mvs/%@/related",mv_id]
 #define api_mvCmt(mv_id)  [NSString stringWithFormat:@"" api_base"/comments/mv/%@",mv_id]
 
 //电台
@@ -354,6 +354,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 //个人中心
 #define api_userInfo                @"" api_base"/auth/me"
 #define api_modifyInfo                @"" api_base"/me"
+#define api_favoriteTag               @"" api_base"/favorite_tags"
 #define api_uploadPic                @"" api_base"/upload"
 #define api_otherUserinfo(user_id)  [NSString stringWithFormat:@"" api_base"/users/%@",user_id]
 #define api_skin                @"" api_base"/themes"
@@ -379,6 +380,6 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_hotSearch            @"" api_base"/configs/hot-search"
 #define api_timeInterval            @"" api_base"/configs/frequency"
 #define api_shareUrl            @"" api_base"/share/url"
-
-
+#define api_treaties            @"" api_base"/configs/treaties"
+#define api_addPlayCount            @"" api_base"/model/add/num"
 #endif

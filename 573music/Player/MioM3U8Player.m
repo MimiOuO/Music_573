@@ -141,7 +141,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         }
         //通知更新UI
         PostNotice(switchMusic);
-        
     }
     [self play];
 }
@@ -176,6 +175,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     }else{
         self.player.assetURLs = @[music.audioFileURL];
         [self.player playTheIndex:0];
+        //添加播放量
+        [MioPostReq(api_addPlayCount, (@{@"model_name":@"song",@"columns":@"hits_all",@"model_id":music.song_id})) success:^(NSDictionary *result){} failure:^(NSString *errorInfo) {}];
     }
 }
 

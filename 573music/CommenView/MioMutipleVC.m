@@ -115,18 +115,10 @@
     }];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 
-        
-      
-        NSMutableArray *idArr = [[NSMutableArray alloc] init];
-        for (int i = 0;i < selectArr.count; i++) {
-            [idArr addObject:selectArr[i].song_id];
-        }
-        
-        [MioPostReq(api_deleteInSonglist(_songlistId), @{@"ids":idArr}) success:^(NSDictionary *result){
-            [UIWindow showSuccess:@"删除成功"];
+        if ([self.delegate respondsToSelector:@selector(mutipleDelete:)]) {
+            [self.delegate mutipleDelete:selectArr];
             [self dismissViewControllerAnimated:YES completion:nil];
-        } failure:^(NSString *errorInfo) {}];
-
+        }
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];

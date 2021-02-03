@@ -12,6 +12,7 @@
 #import "UITextField+NumberFormat.h"
 #import "MioLargeButton.h"
 #import "MioPasswordLoginVC.h"
+#import "MioChooseFavoriteTagView.h"
 @interface MioLoginVC ()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *phoneTF;
 @property (nonatomic, strong) UITextField *verifyTF;
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) MioLargeButton *friendshipBtn1;
 @property (nonatomic, strong) UILabel *password;
 @property (nonatomic, strong) UILabel *invita;
+
 @end
 
 @implementation MioLoginVC
@@ -130,11 +132,11 @@
     tip2.str(attStr).multiline.lineGap(8).centerAlignment.onLink(^(NSString *text) {
         if (Equals(text, @"用户协议")) {
             MioUserAgreementVC *vc = [[MioUserAgreementVC alloc] init];
-            vc.url = @"https://duoduo.apphw.com/policy.html";
+            vc.url = [userdefault objectForKey:@"xieyiUrl"];
             [self.navigationController pushViewController:vc animated:YES];
         }else{
             MioUserAgreementVC *vc = [[MioUserAgreementVC alloc] init];
-            vc.url = @"https://duoduo.apphw.com/policy.html";
+            vc.url = [userdefault objectForKey:@"yinsiUrl"];
             [self.navigationController pushViewController:vc animated:YES];
         }
 
@@ -191,7 +193,10 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];
         
         [self dismissViewControllerAnimated:YES completion:^{
-            
+            if (user.favorite_tags.count == 0) {
+                MioChooseFavoriteTagView *view = [MioChooseFavoriteTagView new];
+                [view showFavoriteTagViewWithArr:user.favorite_tags];
+            }
         }];
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MioMvIntroVC : MioViewController
 @property (nonatomic, strong) MioMvModel *mv;
+@property (nonatomic, strong) NSArray<MioMvModel *> *relatedMVArr;
 @property (nonatomic, weak)id <ChangeMVDelegate>delegate;
 @end
 

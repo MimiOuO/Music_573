@@ -19,7 +19,14 @@ typedef NS_ENUM(NSUInteger, MioMutipleType) {
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+@protocol MutipleDeleteDelegate <NSObject>
+@optional
+- (void)mutipleDelete:(NSArray<MioMusicModel *> *)selectArr;
+@end
+
 @interface MioMutipleVC : MioViewController
+@property (nonatomic, weak) id<MutipleDeleteDelegate> delegate;
 @property (nonatomic, strong) NSArray<MioMusicModel *> *musicArr;
 @property (nonatomic, assign) MioMutipleType type;
 @property (nonatomic,copy) NSString * songlistId;
