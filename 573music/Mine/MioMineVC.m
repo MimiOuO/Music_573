@@ -152,6 +152,11 @@
     
     _avatar = [UIImageView creatImgView:frame(Mar + 12, 20, 70, 70) inView:bgScroll image:@"qxt_yonhu" radius:35];
     [_avatar sd_setImageWithURL:currentUserAvatar placeholderImage:image(@"qxt_yonhu")];
+    [_avatar whenTapped:^{
+        MioEditInfoVC *vc = [[MioEditInfoVC alloc] init];
+        vc.user = _user;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
     _gender = [UIImageView creatImgView:frame(76, 76, 14, 14) inView:bgScroll image:@"" radius:0];
     _nicknameLab = [MioLabel creatLabel:frame(92, 4, 0, 22) inView:_userBgView text:@"" colorName:name_text_one boldSize:16 alignment:NSTextAlignmentLeft];
     _nicknameLab.text = currentUserNickName;
@@ -301,8 +306,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     [moreRecentLab whenTapped:^{
-        MioRecentVC *vc = [[MioRecentVC alloc] init];
+        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+//        MioRecentVC *vc = [[MioRecentVC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
     }];
 }
 
@@ -311,7 +318,12 @@
         _mySonglistArr = [MioSongListModel mj_objectArrayWithKeyValuesArray:[result objectForKey:@"data"]];
         [_mySonglistCollection reloadData];
         
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        if (Equals(errorInfo, @"授权失败") ) {
+            _mySonglistArr = @[];
+            [_mySonglistCollection reloadData];
+        }
+    }];
 }
 
 -(void)requestUnred{

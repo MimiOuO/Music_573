@@ -17,11 +17,12 @@
 #import "MioMvCmtVC.h"
 #import "MioMvModel.h"
 #import <WHC_ModelSqlite.h>
+#import <SJVideoPlayer/SJVideoPlayer.h>
 
 @interface MioMvVC ()<WMPageControllerDelegate,WMPageControllerDataSource,ChangeMVDelegate>
 @property (nonatomic, strong) MioMvModel *mv;
 
-@property (nonatomic, strong) ZFPlayerController *player;
+//@property (nonatomic, strong) ZFPlayerController *player;
 @property (nonatomic, strong) UIImageView *containerView;
 @property (nonatomic, strong) ZFPlayerControlView *controlView;
 @property (nonatomic, strong) UIButton *playBtn;
@@ -31,6 +32,8 @@
 
 @property (nonatomic, strong) MioMvIntroVC *info;
 @property (nonatomic, strong) MioMvCmtVC *cmtVC;
+
+@property (nonatomic, strong) SJVideoPlayer *player;
 @end
 
 @implementation MioMvVC
@@ -48,13 +51,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.player.viewControllerDisappear = NO;
+    [_player vc_viewDidAppear];
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.player.viewControllerDisappear = YES;
+    [_player vc_viewWillDisappear];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [_player vc_viewDidDisappear];
 }
 
 -(void)popVC{
@@ -75,9 +83,9 @@
         [_pageController updateTitle:[NSString stringWithFormat:@"评论(%@)",_mv.comment_num] atIndex:1];
         _pageController.titles = @[@"简介",[NSString stringWithFormat:@"评论(%@)",_mv.comment_num]];
         _info.mv = _mv;
-        
-        self.player.assetURLs = @[_mv.mv_path.mj_url];
-        [self.player playTheIndex:0];
+
+        SJVideoPlayerURLAsset *asset = [SJVideoPlayerURLAsset.alloc initWithURL:_mv.mv_path.mj_url startPosition:0];
+        _player.URLAsset = asset;
     } failure:^(NSString *errorInfo) {}];
 }
 
@@ -89,36 +97,23 @@
     //======================================================================//
     UIView *statusView = [UIView creatView:frame(0, 0, KSW, NavH) inView:self.view bgColor:[UIColor blackColor] radius:0];
     
-    _containerView = [[UIImageView alloc] initWithFrame:frame(0, StatusH, KSW, KSW * 9/16)];
-    _containerView.image = [UIImage hx_imageWithColor:[UIColor blackColor] havingSize:CGSizeMake(1, 1)];
-    [self.view addSubview:_containerView];
-    
-    ZFAVPlayerManager *playerManager = [[ZFAVPlayerManager alloc] init];
-
-    playerManager.shouldAutoPlay = YES;
-    
-    /// 播放器相关
-    self.player = [ZFPlayerController playerWithPlayerManager:playerManager containerView:self.containerView];
-    self.player.controlView = self.controlView;
-    /// 设置退到后台继续播放
-    self.player.pauseWhenAppResignActive = NO;
 
     
     WEAKSELF;
-    self.player.orientationWillChange = ^(ZFPlayerController * _Nonnull player, BOOL isFullScreen) {
-        ((AppDelegate*)[[UIApplication sharedApplication] delegate]).allowOrentitaionRotation = isFullScreen;
-    };
-    
-    /// 播放完成
-    self.player.playerDidToEnd = ^(id  _Nonnull asset) {
+    _player = SJVideoPlayer.player;
+    _player.view.frame = frame(0, StatusH, KSW, KSW * 9.0/16);
+    if (@available(iOS 14.0, *)) {
+        _player.defaultEdgeControlLayer.automaticallyShowsPictureInPictureItem = NO;
+    }
+    _player.defaultEdgeControlLayer.showsMoreItem = NO;
+    [self.view addSubview:_player.view];
+    _player.playbackObserver.playbackDidFinishExeBlock = ^(__kindof SJBaseVideoPlayer * _Nonnull player) {
         if (weakSelf. info.relatedMVArr.count > 0) {
             [weakSelf changeMV:weakSelf.info.relatedMVArr[0].mv_id];
         }
     };
 
-    [self.controlView showTitle:@"" coverURLString:@"" fullScreenMode:ZFFullScreenModeAutomatic];
-    
-    
+
     
     _contentView = [[UIView alloc] initWithFrame:frame(0,StatusH + KSW * 9/16, KSW, KSH - StatusH - TabH)];
     [self.view addSubview:_contentView];
@@ -150,10 +145,6 @@
     MioImageView *menuBg = [MioImageView creatImgView:frame(0, 0, KSW, 44) inView:_pageController.menuView skin:SkinName image:@"picture_li" radius:0];
     [_pageController.menuView sendSubviewToBack:menuBg];
     
-}
-
--(void)changeCollection:(int)index{
-    [self.player playTheIndex:index];
 }
 
 
@@ -200,9 +191,9 @@
     return NO;
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+//    return UIInterfaceOrientationMaskPortrait;
+//}
 
 - (ZFPlayerControlView *)controlView {
     if (!_controlView) {

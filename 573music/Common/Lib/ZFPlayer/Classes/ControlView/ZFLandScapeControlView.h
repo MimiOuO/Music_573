@@ -58,9 +58,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 视频总时间
 @property (nonatomic, strong, readonly) UILabel *totalTimeLabel;
 
-/// 倍率按钮
-@property (nonatomic, strong) UIButton *rateBtn;
-
 /// 锁定屏幕按钮
 @property (nonatomic, strong, readonly) UIButton *lockBtn;
 
@@ -72,9 +69,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// slider滑动结束
 @property (nonatomic, copy, nullable) void(^sliderValueChanged)(CGFloat value);
-
-/// 倍率
-@property (nonatomic, copy, nullable) void(^rateValueChanged)(NSString *value);
 
 /// 返回按钮点击回调
 @property (nonatomic, copy) void(^backBtnClickCallback)(void);

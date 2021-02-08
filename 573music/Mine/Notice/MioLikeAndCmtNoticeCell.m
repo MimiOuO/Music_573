@@ -107,6 +107,7 @@
     }else{
         _reddot.hidden = YES;
     }
+    [self sendSubviewToBack:_bgView];
 }
 
 @end

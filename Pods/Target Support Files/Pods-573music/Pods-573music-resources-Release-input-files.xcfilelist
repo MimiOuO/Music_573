@@ -1,4 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-573music/Pods-573music-resources.sh
 ${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle
 ${PODS_ROOT}/SGQRCode/SGQRCode/SGQRCode.bundle
-${PODS_ROOT}/YBImageBrowser/YBImageBrowser/YBImageBrowser.bundle
+${PODS_ROOT}/SJBaseVideoPlayer/SJBaseVideoPlayer/ResourceLoader/SJBaseVideoPlayerResources.bundle
+${PODS_ROOT}/SJDownloadDataTask/SJDownloadDataTask/Core/ResourceLoader/SJDownloadDataTask.bundle
+${PODS_ROOT}/SJVideoPlayer/SJVideoPlayer/ResourceLoader/SJVideoPlayer.bundle

@@ -51,8 +51,6 @@
 /// 锁定屏幕按钮
 @property (nonatomic, strong) UIButton *lockBtn;
 
-
-
 @property (nonatomic, assign) BOOL isShow;
 
 @end
@@ -74,7 +72,6 @@
         
         [self.bottomToolView addSubview:self.slider];
         [self.bottomToolView addSubview:self.totalTimeLabel];
-        [self.bottomToolView addSubview:self.rateBtn];
         [self addSubview:self.lockBtn];
         
         // 设置子控件的响应事件
@@ -140,16 +137,8 @@
     self.currentTimeLabel.frame = CGRectMake(min_x, min_y, min_w, min_h);
     self.currentTimeLabel.zf_centerY = self.playOrPauseBtn.zf_centerY;
     
-    min_w = 36;
-    min_h = 28;
-    min_x = self.bottomToolView.zf_width - min_w - 4 - ((iPhoneX && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) ? 44: min_margin);
-    min_y = 0;
-    self.rateBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
-    self.rateBtn.zf_centerY = self.currentTimeLabel.zf_centerY;
-    
-    
     min_w = 62;
-    min_x = self.rateBtn.zf_left - min_w - 4;
+    min_x = self.bottomToolView.zf_width - min_w - ((iPhoneX && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) ? 44: min_margin);
     min_y = 0;
     min_h = 30;
     self.totalTimeLabel.frame = CGRectMake(min_x, min_y, min_w, min_h);
@@ -189,7 +178,6 @@
     [self.backBtn addTarget:self action:@selector(backBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.playOrPauseBtn addTarget:self action:@selector(playPauseButtonClickAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.lockBtn addTarget:self action:@selector(lockButtonClickAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.rateBtn addTarget:self action:@selector(rateBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - action
@@ -213,15 +201,6 @@
 
 - (void)playPauseButtonClickAction:(UIButton *)sender {
     [self playOrPause];
-}
-
--(void)rateBtnClickAction:(UIButton *)sender{
-    NSArray *rateArr = @[@"0.8x",@"1.0x",@"1.25x",@"1.5x",@"2.0x",@"0.8x"];
-    
-    NSInteger index= [rateArr indexOfObject:self.rateBtn.titleLabel.text];
-    [self.rateBtn setTitle:rateArr[index + 1] forState:UIControlStateNormal];
-    self.rateValueChanged(_rateBtn.titleLabel.text);
-    self.player.currentPlayerManager.rate = [[_rateBtn.titleLabel.text  substringToIndex:3] floatValue];
 }
 
 /// 根据当前播放状态取反
@@ -470,18 +449,6 @@
     }
     return _totalTimeLabel;
 }
-
-- (UIButton *)rateBtn {
-    if (!_rateBtn) {
-        _rateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_rateBtn setTitle:@"1.0x" forState:UIControlStateNormal];
-        _rateBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        
-        
-    }
-    return _rateBtn;
-}
-
 
 - (UIButton *)lockBtn {
     if (!_lockBtn) {

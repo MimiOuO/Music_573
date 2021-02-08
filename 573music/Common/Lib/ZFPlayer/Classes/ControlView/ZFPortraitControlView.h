@@ -55,9 +55,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 视频总时间
 @property (nonatomic, strong, readonly) UILabel *totalTimeLabel;
 
-/// 倍率按钮
-@property (nonatomic, strong) UIButton *rateBtn;
-
 /// 全屏按钮
 @property (nonatomic, strong, readonly) UIButton *fullScreenBtn;
 
@@ -69,9 +66,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// slider滑动结束
 @property (nonatomic, copy, nullable) void(^sliderValueChanged)(CGFloat value);
-
-/// 倍率
-@property (nonatomic, copy, nullable) void(^rateValueChanged)(NSString *value);
 
 /// 如果是暂停状态，seek完是否播放，默认YES
 @property (nonatomic, assign) BOOL seekToPlay;

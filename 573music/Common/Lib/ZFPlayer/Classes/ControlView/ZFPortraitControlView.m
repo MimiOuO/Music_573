@@ -38,8 +38,6 @@
 @property (nonatomic, strong) UIView *topToolView;
 /// 标题
 @property (nonatomic, strong) UILabel *titleLabel;
-/// 返回按钮
-@property (nonatomic, strong) UIButton *backBtn;
 /// 播放或暂停按钮
 @property (nonatomic, strong) UIButton *playOrPauseBtn;
 /// 播放的当前时间 
@@ -48,7 +46,6 @@
 @property (nonatomic, strong) ZFSliderView *slider;
 /// 视频总时间
 @property (nonatomic, strong) UILabel *totalTimeLabel;
-
 /// 全屏按钮
 @property (nonatomic, strong) UIButton *fullScreenBtn;
 
@@ -64,12 +61,10 @@
         [self addSubview:self.topToolView];
         [self addSubview:self.bottomToolView];
         [self addSubview:self.playOrPauseBtn];
-        [self.topToolView addSubview:self.backBtn];
         [self.topToolView addSubview:self.titleLabel];
         [self.bottomToolView addSubview:self.currentTimeLabel];
         [self.bottomToolView addSubview:self.slider];
         [self.bottomToolView addSubview:self.totalTimeLabel];
-        [self.bottomToolView addSubview:self.rateBtn];
         [self.bottomToolView addSubview:self.fullScreenBtn];
         
         // 设置子控件的响应事件
@@ -98,11 +93,7 @@
     min_h = 40;
     self.topToolView.frame = CGRectMake(min_x, min_y, min_w, min_h);
     
-    min_w = 40;
-    min_h = 40;
-    self.backBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
-    
-    min_x = self.backBtn.zf_right + 5;
+    min_x = 15;
     min_y = 5;
     min_w = min_view_w - min_x - 15;
     min_h = 30;
@@ -134,16 +125,9 @@
     self.fullScreenBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
     self.fullScreenBtn.zf_centerY = self.currentTimeLabel.zf_centerY;
     
-    min_w = 36;
-    min_h = 28;
-    min_x = self.fullScreenBtn.zf_left - min_w - 4;
-    min_y = 0;
-    self.rateBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
-    self.rateBtn.zf_centerY = self.currentTimeLabel.zf_centerY;
-    
     min_w = 62;
     min_h = 28;
-    min_x = self.rateBtn.zf_left - min_w - 4;
+    min_x = self.fullScreenBtn.zf_left - min_w - 4;
     min_y = 0;
     self.totalTimeLabel.frame = CGRectMake(min_x, min_y, min_w, min_h);
     self.totalTimeLabel.zf_centerY = self.currentTimeLabel.zf_centerY;
@@ -167,17 +151,11 @@
 }
 
 - (void)makeSubViewsAction {
-    [self.backBtn addTarget:self action:@selector(backBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.playOrPauseBtn addTarget:self action:@selector(playPauseButtonClickAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.fullScreenBtn addTarget:self action:@selector(fullScreenButtonClickAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.rateBtn addTarget:self action:@selector(rateBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - action
-- (void)backBtnClickAction:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"playerBackClick" object:nil];
-}
-
 
 - (void)playPauseButtonClickAction:(UIButton *)sender {
     [self playOrPause];
@@ -185,15 +163,6 @@
 
 - (void)fullScreenButtonClickAction:(UIButton *)sender {
     [self.player enterFullScreen:YES animated:YES];
-}
-
--(void)rateBtnClickAction:(UIButton *)sender{
-    NSArray *rateArr = @[@"0.8x",@"1.0x",@"1.25x",@"1.5x",@"2.0x",@"0.8x"];
-    
-    NSInteger index= [rateArr indexOfObject:self.rateBtn.titleLabel.text];
-    [self.rateBtn setTitle:rateArr[index + 1] forState:UIControlStateNormal];
-    self.rateValueChanged(_rateBtn.titleLabel.text);
-    self.player.currentPlayerManager.rate = [[_rateBtn.titleLabel.text  substringToIndex:3] floatValue];
 }
 
 /// 根据当前播放状态取反
@@ -356,15 +325,6 @@
     return _titleLabel;
 }
 
-- (UIButton *)backBtn{
-    if (!_backBtn) {
-        _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_backBtn setImage:image(@"navigation_back_white") forState:UIControlStateNormal];
-    }
-    return _backBtn;
-}
-
-
 - (UIView *)bottomToolView {
     if (!_bottomToolView) {
         _bottomToolView = [[UIView alloc] init];
@@ -414,16 +374,6 @@
         _totalTimeLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _totalTimeLabel;
-}
-
-- (UIButton *)rateBtn {
-    if (!_rateBtn) {
-        _rateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_rateBtn setTitle:@"1.0x" forState:UIControlStateNormal];
-        _rateBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-//        [_rateBtn setImage:ZFPlayer_Image(@"ZFPlayer_fullscreen") forState:UIControlStateNormal];
-    }
-    return _rateBtn;
 }
 
 - (UIButton *)fullScreenBtn {

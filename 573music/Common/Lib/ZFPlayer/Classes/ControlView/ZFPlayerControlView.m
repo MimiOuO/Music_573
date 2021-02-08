@@ -700,10 +700,6 @@
             self.bottomPgrogress.value = value;
             [self autoFadeOutControlView];
         };
-        _portraitControlView.rateValueChanged = ^(NSString * _Nonnull value) {
-            @zf_strongify(self)
-            [self.landScapeControlView.rateBtn setTitle:value forState:UIControlStateNormal];
-        };
     }
     return _portraitControlView;
 }
@@ -729,10 +725,6 @@
             self.bottomPgrogress.isdragging = NO;
             self.bottomPgrogress.value = value;
             [self autoFadeOutControlView];
-        };
-        _landScapeControlView.rateValueChanged = ^(NSString * _Nonnull value) {
-            @zf_strongify(self)
-            [self.portraitControlView.rateBtn setTitle:value forState:UIControlStateNormal];
         };
     }
     return _landScapeControlView;

@@ -1,1 +1,0 @@
-../../../Qiniu/QiniuSDK/Http/Request/QNHttpRegionRequest.h

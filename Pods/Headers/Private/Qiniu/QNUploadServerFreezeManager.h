@@ -1,1 +1,0 @@
-../../../Qiniu/QiniuSDK/Http/ServerRegion/QNUploadServerFreezeManager.h

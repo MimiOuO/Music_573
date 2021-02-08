@@ -86,7 +86,7 @@
         NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[[userdefault objectForKey:@"jifenTip"] dataUsingEncoding:NSUnicodeStringEncoding]options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
         [UIWindow showMessage:[attrStr string] withTitle:@"积分说明"];
     }];
-    [self readm3u8];
+//    [self readm3u8];
 }
 
 -(void)readm3u8{

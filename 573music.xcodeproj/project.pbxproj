@@ -108,7 +108,6 @@
 		2305A216256BA4CE0099EFE3 /* MioLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A215256BA4CE0099EFE3 /* MioLabel.m */; };
 		2305A219256BA9A90099EFE3 /* MioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A218256BA9A90099EFE3 /* MioView.m */; };
 		2305A21F256BAC150099EFE3 /* MioImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305A21E256BAC150099EFE3 /* MioImageView.m */; };
-		230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 230779472435CA9C00EFCD1D /* MyUploadManager.m */; };
 		2312AC172595830700EF45AA /* MioDownloadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC162595830700EF45AA /* MioDownloadingCell.m */; };
 		2312AC1A2595D41500EF45AA /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC192595D41400EF45AA /* libACRCloud_IOS_SDK.a */; };
 		2312AC1F2595D45000EF45AA /* MioListenMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC1E2595D45000EF45AA /* MioListenMusicVC.m */; };
@@ -117,10 +116,51 @@
 		2312AC262595D8A600EF45AA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC252595D8A600EF45AA /* libc++.tbd */; };
 		2312AC282595D8B100EF45AA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC272595D8B100EF45AA /* AVFoundation.framework */; };
 		2312AC2A2595D8B900EF45AA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2312AC292595D8B900EF45AA /* AudioToolbox.framework */; };
-		2312AC362595E89300EF45AA /* WBQRCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC352595E89300EF45AA /* WBQRCodeVC.m */; };
 		2312AC452595EB4300EF45AA /* ScanSuccessJumpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC432595EB4200EF45AA /* ScanSuccessJumpVC.m */; };
 		2312AC482595EB5200EF45AA /* SGWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2312AC462595EB5200EF45AA /* SGWebView.m */; };
 		2314389F2464F59D005E0B15 /* MioFeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2314389D2464F59D005E0B15 /* MioFeedBackVC.m */; };
+		23182DD325CF82250065441B /* ZFPlayerGestureControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182D9125CF82250065441B /* ZFPlayerGestureControl.m */; };
+		23182DD425CF82250065441B /* ZFPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182D9225CF82250065441B /* ZFPlayerController.m */; };
+		23182DD525CF82250065441B /* ZFLandscapeWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182D9525CF82250065441B /* ZFLandscapeWindow.m */; };
+		23182DD625CF82250065441B /* ZFOrientationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182D9825CF82250065441B /* ZFOrientationObserver.m */; };
+		23182DD725CF82250065441B /* ZFPlayerLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182D9B25CF82250065441B /* ZFPlayerLogManager.m */; };
+		23182DD825CF82250065441B /* ZFPersentInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182D9D25CF82250065441B /* ZFPersentInteractiveTransition.m */; };
+		23182DD925CF82250065441B /* UIScrollView+ZFPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182D9F25CF82250065441B /* UIScrollView+ZFPlayer.m */; };
+		23182DDA25CF82250065441B /* ZFPlayerNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DA225CF82250065441B /* ZFPlayerNotification.m */; };
+		23182DDB25CF82250065441B /* ZFPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DA325CF82250065441B /* ZFPresentTransition.m */; };
+		23182DDC25CF82250065441B /* ZFFloatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DA425CF82250065441B /* ZFFloatView.m */; };
+		23182DDD25CF82250065441B /* ZFPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DA725CF82250065441B /* ZFPlayerView.m */; };
+		23182DDE25CF82250065441B /* ZFPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DA925CF82250065441B /* ZFPortraitViewController.m */; };
+		23182DDF25CF82250065441B /* ZFKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DAC25CF82250065441B /* ZFKVOController.m */; };
+		23182DE025CF82250065441B /* ZFLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DAD25CF82250065441B /* ZFLandscapeViewController.m */; };
+		23182DE125CF82250065441B /* ZFReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DB025CF82250065441B /* ZFReachabilityManager.m */; };
+		23182DE225CF82250065441B /* UIViewController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DB225CF82250065441B /* UIViewController+ZFPlayerRotation.m */; };
+		23182DE325CF82250065441B /* ZFIJKPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DB525CF82250065441B /* ZFIJKPlayerManager.m */; };
+		23182DE425CF82250065441B /* ZFAVPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DB725CF82250065441B /* ZFAVPlayerManager.m */; };
+		23182DE525CF82250065441B /* ZFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DBA25CF82250065441B /* ZFUtilities.m */; };
+		23182DE625CF82250065441B /* UIView+ZFFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DBB25CF82250065441B /* UIView+ZFFrame.m */; };
+		23182DE725CF82250065441B /* ZFVolumeBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DBF25CF82250065441B /* ZFVolumeBrightnessView.m */; };
+		23182DE825CF82250065441B /* ZFLandScapeControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DC225CF82250065441B /* ZFLandScapeControlView.m */; };
+		23182DE925CF82250065441B /* ZFNetworkSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DC325CF82250065441B /* ZFNetworkSpeedMonitor.m */; };
+		23182DEA25CF82250065441B /* ZFPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23182DC625CF82250065441B /* ZFPlayer.bundle */; };
+		23182DEB25CF82250065441B /* ZFSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DC925CF82250065441B /* ZFSliderView.m */; };
+		23182DEC25CF82250065441B /* ZFPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DCA25CF82250065441B /* ZFPlayerControlView.m */; };
+		23182DED25CF82250065441B /* ZFSmallFloatControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DCB25CF82250065441B /* ZFSmallFloatControlView.m */; };
+		23182DEE25CF82250065441B /* ZFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DCC25CF82250065441B /* ZFLoadingView.m */; };
+		23182DEF25CF82250065441B /* ZFSpeedLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DCD25CF82250065441B /* ZFSpeedLoadingView.m */; };
+		23182DF025CF82250065441B /* ZFPortraitControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DCF25CF82250065441B /* ZFPortraitControlView.m */; };
+		23182DF125CF82250065441B /* UIImageView+ZFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182DD025CF82250065441B /* UIImageView+ZFCache.m */; };
+		23182E2025CF929C0065441B /* LandscapeRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E0D25CF929B0065441B /* LandscapeRightViewController.m */; };
+		23182E2125CF929C0065441B /* WMPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E0F25CF929B0065441B /* WMPlayerModel.m */; };
+		23182E2225CF929C0065441B /* FullScreenHelperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E1125CF929B0065441B /* FullScreenHelperViewController.m */; };
+		23182E2325CF929C0065441B /* LandscapeLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E1225CF929B0065441B /* LandscapeLeftViewController.m */; };
+		23182E2425CF929C0065441B /* EnterFullScreenTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E1325CF929B0065441B /* EnterFullScreenTransition.m */; };
+		23182E2525CF929C0065441B /* ExitFullScreenTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E1425CF929B0065441B /* ExitFullScreenTransition.m */; };
+		23182E2625CF929C0065441B /* WMPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23182E1525CF929B0065441B /* WMPlayer.bundle */; };
+		23182E2725CF929C0065441B /* WMLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E1825CF929B0065441B /* WMLightView.m */; };
+		23182E2825CF929C0065441B /* FastForwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E1D25CF929B0065441B /* FastForwardView.m */; };
+		23182E2925CF929C0065441B /* WMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182E1F25CF929B0065441B /* WMPlayer.m */; };
+		23182EF425CFC01E0065441B /* UIViewController+SJConfigureRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23182EF325CFC01E0065441B /* UIViewController+SJConfigureRotation.m */; };
 		23189449258AEE9D0092C31B /* MioSongListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189448258AEE9D0092C31B /* MioSongListModel.m */; };
 		2318944C258AEEAE0092C31B /* MioAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318944B258AEEAE0092C31B /* MioAlbumModel.m */; };
 		23189456258AEFDC0092C31B /* MioSingerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23189455258AEFDC0092C31B /* MioSingerModel.m */; };
@@ -317,37 +357,6 @@
 		236DB70F250F0DD8001CC2F3 /* LOTCompositionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB6C3250F0DD8001CC2F3 /* LOTCompositionContainer.m */; };
 		236DB710250F0DD8001CC2F3 /* LOTMaskContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB6C4250F0DD8001CC2F3 /* LOTMaskContainer.m */; };
 		236DB720250F5BC0001CC2F3 /* MioGroudVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB71F250F5BC0001CC2F3 /* MioGroudVC.m */; };
-		236DB772250F6668001CC2F3 /* ZFPlayerGestureControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB730250F6667001CC2F3 /* ZFPlayerGestureControl.m */; };
-		236DB773250F6668001CC2F3 /* ZFPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB731250F6667001CC2F3 /* ZFPlayerController.m */; };
-		236DB774250F6668001CC2F3 /* ZFLandscapeWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB734250F6667001CC2F3 /* ZFLandscapeWindow.m */; };
-		236DB775250F6668001CC2F3 /* ZFOrientationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB737250F6668001CC2F3 /* ZFOrientationObserver.m */; };
-		236DB776250F6668001CC2F3 /* ZFPlayerLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB73A250F6668001CC2F3 /* ZFPlayerLogManager.m */; };
-		236DB777250F6668001CC2F3 /* ZFPersentInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB73C250F6668001CC2F3 /* ZFPersentInteractiveTransition.m */; };
-		236DB778250F6668001CC2F3 /* UIScrollView+ZFPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB73E250F6668001CC2F3 /* UIScrollView+ZFPlayer.m */; };
-		236DB779250F6668001CC2F3 /* ZFPlayerNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB741250F6668001CC2F3 /* ZFPlayerNotification.m */; };
-		236DB77A250F6668001CC2F3 /* ZFPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB742250F6668001CC2F3 /* ZFPresentTransition.m */; };
-		236DB77B250F6668001CC2F3 /* ZFFloatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB743250F6668001CC2F3 /* ZFFloatView.m */; };
-		236DB77C250F6668001CC2F3 /* ZFPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB746250F6668001CC2F3 /* ZFPlayerView.m */; };
-		236DB77D250F6668001CC2F3 /* ZFPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB748250F6668001CC2F3 /* ZFPortraitViewController.m */; };
-		236DB77E250F6668001CC2F3 /* ZFKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB74B250F6668001CC2F3 /* ZFKVOController.m */; };
-		236DB77F250F6668001CC2F3 /* ZFLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB74C250F6668001CC2F3 /* ZFLandscapeViewController.m */; };
-		236DB780250F6668001CC2F3 /* ZFReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB74F250F6668001CC2F3 /* ZFReachabilityManager.m */; };
-		236DB781250F6668001CC2F3 /* UIViewController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB751250F6668001CC2F3 /* UIViewController+ZFPlayerRotation.m */; };
-		236DB782250F6668001CC2F3 /* ZFIJKPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB754250F6668001CC2F3 /* ZFIJKPlayerManager.m */; };
-		236DB783250F6668001CC2F3 /* ZFAVPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB756250F6668001CC2F3 /* ZFAVPlayerManager.m */; };
-		236DB784250F6668001CC2F3 /* ZFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB759250F6668001CC2F3 /* ZFUtilities.m */; };
-		236DB785250F6668001CC2F3 /* UIView+ZFFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB75A250F6668001CC2F3 /* UIView+ZFFrame.m */; };
-		236DB786250F6668001CC2F3 /* ZFVolumeBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB75E250F6668001CC2F3 /* ZFVolumeBrightnessView.m */; };
-		236DB787250F6668001CC2F3 /* ZFLandScapeControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB761250F6668001CC2F3 /* ZFLandScapeControlView.m */; };
-		236DB788250F6668001CC2F3 /* ZFNetworkSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB762250F6668001CC2F3 /* ZFNetworkSpeedMonitor.m */; };
-		236DB789250F6668001CC2F3 /* ZFPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 236DB765250F6668001CC2F3 /* ZFPlayer.bundle */; };
-		236DB78A250F6668001CC2F3 /* ZFSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB768250F6668001CC2F3 /* ZFSliderView.m */; };
-		236DB78B250F6668001CC2F3 /* ZFPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB769250F6668001CC2F3 /* ZFPlayerControlView.m */; };
-		236DB78C250F6668001CC2F3 /* ZFSmallFloatControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB76A250F6668001CC2F3 /* ZFSmallFloatControlView.m */; };
-		236DB78D250F6668001CC2F3 /* ZFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB76B250F6668001CC2F3 /* ZFLoadingView.m */; };
-		236DB78E250F6668001CC2F3 /* ZFSpeedLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB76C250F6668001CC2F3 /* ZFSpeedLoadingView.m */; };
-		236DB78F250F6668001CC2F3 /* ZFPortraitControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB76E250F6668001CC2F3 /* ZFPortraitControlView.m */; };
-		236DB790250F6668001CC2F3 /* UIImageView+ZFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB76F250F6668001CC2F3 /* UIImageView+ZFCache.m */; };
 		236DB79D250F6F8D001CC2F3 /* LEECoolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB79C250F6F8C001CC2F3 /* LEECoolButton.m */; };
 		236DB7A0250F6FBC001CC2F3 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 236DB79E250F6FBB001CC2F3 /* NSDate+Helper.m */; };
 		23746CAA25806D7A0072A4C8 /* MioBugModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23746CA925806D7A0072A4C8 /* MioBugModel.m */; };
@@ -394,6 +403,7 @@
 		237D061F257DC3BA00697F3A /* BTCoverVerticalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D061C257DC3BA00697F3A /* BTCoverVerticalTransition.m */; };
 		237D0622257DC3FE00697F3A /* MioPlayListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D0621257DC3FE00697F3A /* MioPlayListVC.m */; };
 		237FDDC525CA7F210064CC42 /* MioChooseFavoriteTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 237FDDC425CA7F210064CC42 /* MioChooseFavoriteTagView.m */; };
+		237FDDE825CBC7EF0064CC42 /* WBQRCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 237FDDE625CBC7EE0064CC42 /* WBQRCodeVC.m */; };
 		23870E5F25BFEB6900FA65BA /* MioMVListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23870E5E25BFEB6900FA65BA /* MioMVListVC.m */; };
 		2388759C25A54E230097FCEE /* MioMVRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2388759B25A54E220097FCEE /* MioMVRankView.m */; };
 		2388759F25A551190097FCEE /* MioMVRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2388759E25A551190097FCEE /* MioMVRankVC.m */; };
@@ -523,7 +533,6 @@
 		23E5B6AF25B1294F0017F0CC /* MioMVRankListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5B6AE25B1294F0017F0CC /* MioMVRankListVC.m */; };
 		23E5B6B225B17AC10017F0CC /* MioMoreFuncView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5B6B125B17AC10017F0CC /* MioMoreFuncView.m */; };
 		23E5B6B525B199790017F0CC /* MioChooseQuantityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5B6B425B199790017F0CC /* MioChooseQuantityView.m */; };
-		23EAEEB825C7A7A300B18C61 /* 3434.m3u8 in Resources */ = {isa = PBXBuildFile; fileRef = 23EAEEB725C7A7A300B18C61 /* 3434.m3u8 */; };
 		23F3716F25906DDE006053B1 /* MioSonglistCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3716E25906DDE006053B1 /* MioSonglistCollectionCell.m */; };
 		23FF98332547BB26008CC170 /* GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF98282547BB25008CC170 /* GCD.m */; };
 		23FF98342547BB26008CC170 /* GCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF98292547BB25008CC170 /* GCDQueue.m */; };
@@ -741,8 +750,6 @@
 		2305A218256BA9A90099EFE3 /* MioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioView.m; sourceTree = "<group>"; };
 		2305A21D256BAC150099EFE3 /* MioImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioImageView.h; sourceTree = "<group>"; };
 		2305A21E256BAC150099EFE3 /* MioImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioImageView.m; sourceTree = "<group>"; };
-		230779472435CA9C00EFCD1D /* MyUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUploadManager.m; sourceTree = "<group>"; };
-		230779482435CA9C00EFCD1D /* MyUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUploadManager.h; sourceTree = "<group>"; };
 		2312AC152595830700EF45AA /* MioDownloadingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioDownloadingCell.h; sourceTree = "<group>"; };
 		2312AC162595830700EF45AA /* MioDownloadingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioDownloadingCell.m; sourceTree = "<group>"; };
 		2312AC192595D41400EF45AA /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
@@ -756,14 +763,97 @@
 		2312AC252595D8A600EF45AA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		2312AC272595D8B100EF45AA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2312AC292595D8B900EF45AA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		2312AC342595E89300EF45AA /* WBQRCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBQRCodeVC.h; path = "../../../../Downloads/SGQRCode-master/SGQRCodeExample/Controller/WBQRCodeVC.h"; sourceTree = "<group>"; };
-		2312AC352595E89300EF45AA /* WBQRCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBQRCodeVC.m; path = "../../../../Downloads/SGQRCode-master/SGQRCodeExample/Controller/WBQRCodeVC.m"; sourceTree = "<group>"; };
 		2312AC432595EB4200EF45AA /* ScanSuccessJumpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanSuccessJumpVC.m; sourceTree = "<group>"; };
 		2312AC442595EB4300EF45AA /* ScanSuccessJumpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanSuccessJumpVC.h; sourceTree = "<group>"; };
 		2312AC462595EB5200EF45AA /* SGWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGWebView.m; sourceTree = "<group>"; };
 		2312AC472595EB5200EF45AA /* SGWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGWebView.h; sourceTree = "<group>"; };
 		2314389D2464F59D005E0B15 /* MioFeedBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MioFeedBackVC.m; sourceTree = "<group>"; };
 		2314389E2464F59D005E0B15 /* MioFeedBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MioFeedBackVC.h; sourceTree = "<group>"; };
+		23182D9025CF82250065441B /* ZFPlayerNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerNotification.h; sourceTree = "<group>"; };
+		23182D9125CF82250065441B /* ZFPlayerGestureControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerGestureControl.m; sourceTree = "<group>"; };
+		23182D9225CF82250065441B /* ZFPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerController.m; sourceTree = "<group>"; };
+		23182D9325CF82250065441B /* ZFFloatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFFloatView.h; sourceTree = "<group>"; };
+		23182D9425CF82250065441B /* ZFPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPresentTransition.h; sourceTree = "<group>"; };
+		23182D9525CF82250065441B /* ZFLandscapeWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLandscapeWindow.m; sourceTree = "<group>"; };
+		23182D9625CF82250065441B /* ZFKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFKVOController.h; sourceTree = "<group>"; };
+		23182D9725CF82250065441B /* ZFLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLandscapeViewController.h; sourceTree = "<group>"; };
+		23182D9825CF82250065441B /* ZFOrientationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFOrientationObserver.m; sourceTree = "<group>"; };
+		23182D9925CF82250065441B /* ZFPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPortraitViewController.h; sourceTree = "<group>"; };
+		23182D9A25CF82250065441B /* ZFPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerView.h; sourceTree = "<group>"; };
+		23182D9B25CF82250065441B /* ZFPlayerLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerLogManager.m; sourceTree = "<group>"; };
+		23182D9C25CF82250065441B /* ZFPlayerMediaPlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerMediaPlayback.h; sourceTree = "<group>"; };
+		23182D9D25CF82250065441B /* ZFPersentInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPersentInteractiveTransition.m; sourceTree = "<group>"; };
+		23182D9E25CF82250065441B /* ZFReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFReachabilityManager.h; sourceTree = "<group>"; };
+		23182D9F25CF82250065441B /* UIScrollView+ZFPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ZFPlayer.m"; sourceTree = "<group>"; };
+		23182DA025CF82250065441B /* ZFPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayer.h; sourceTree = "<group>"; };
+		23182DA125CF82250065441B /* ZFPlayerGestureControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerGestureControl.h; sourceTree = "<group>"; };
+		23182DA225CF82250065441B /* ZFPlayerNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerNotification.m; sourceTree = "<group>"; };
+		23182DA325CF82250065441B /* ZFPresentTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPresentTransition.m; sourceTree = "<group>"; };
+		23182DA425CF82250065441B /* ZFFloatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFFloatView.m; sourceTree = "<group>"; };
+		23182DA525CF82250065441B /* ZFPlayerMediaControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerMediaControl.h; sourceTree = "<group>"; };
+		23182DA625CF82250065441B /* ZFPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerController.h; sourceTree = "<group>"; };
+		23182DA725CF82250065441B /* ZFPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerView.m; sourceTree = "<group>"; };
+		23182DA825CF82250065441B /* ZFPlayerLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerLogManager.h; sourceTree = "<group>"; };
+		23182DA925CF82250065441B /* ZFPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPortraitViewController.m; sourceTree = "<group>"; };
+		23182DAA25CF82250065441B /* ZFOrientationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFOrientationObserver.h; sourceTree = "<group>"; };
+		23182DAB25CF82250065441B /* ZFPlayerConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerConst.h; sourceTree = "<group>"; };
+		23182DAC25CF82250065441B /* ZFKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFKVOController.m; sourceTree = "<group>"; };
+		23182DAD25CF82250065441B /* ZFLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLandscapeViewController.m; sourceTree = "<group>"; };
+		23182DAE25CF82250065441B /* ZFLandscapeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLandscapeWindow.h; sourceTree = "<group>"; };
+		23182DAF25CF82250065441B /* UIScrollView+ZFPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ZFPlayer.h"; sourceTree = "<group>"; };
+		23182DB025CF82250065441B /* ZFReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFReachabilityManager.m; sourceTree = "<group>"; };
+		23182DB125CF82250065441B /* ZFPersentInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPersentInteractiveTransition.h; sourceTree = "<group>"; };
+		23182DB225CF82250065441B /* UIViewController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
+		23182DB425CF82250065441B /* ZFIJKPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFIJKPlayerManager.h; sourceTree = "<group>"; };
+		23182DB525CF82250065441B /* ZFIJKPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFIJKPlayerManager.m; sourceTree = "<group>"; };
+		23182DB725CF82250065441B /* ZFAVPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFAVPlayerManager.m; sourceTree = "<group>"; };
+		23182DB825CF82250065441B /* ZFAVPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFAVPlayerManager.h; sourceTree = "<group>"; };
+		23182DBA25CF82250065441B /* ZFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFUtilities.m; sourceTree = "<group>"; };
+		23182DBB25CF82250065441B /* UIView+ZFFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZFFrame.m"; sourceTree = "<group>"; };
+		23182DBC25CF82250065441B /* ZFSmallFloatControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFSmallFloatControlView.h; sourceTree = "<group>"; };
+		23182DBD25CF82250065441B /* ZFPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerControlView.h; sourceTree = "<group>"; };
+		23182DBE25CF82250065441B /* ZFSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFSliderView.h; sourceTree = "<group>"; };
+		23182DBF25CF82250065441B /* ZFVolumeBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFVolumeBrightnessView.m; sourceTree = "<group>"; };
+		23182DC025CF82250065441B /* ZFSpeedLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFSpeedLoadingView.h; sourceTree = "<group>"; };
+		23182DC125CF82250065441B /* ZFLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLoadingView.h; sourceTree = "<group>"; };
+		23182DC225CF82250065441B /* ZFLandScapeControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLandScapeControlView.m; sourceTree = "<group>"; };
+		23182DC325CF82250065441B /* ZFNetworkSpeedMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFNetworkSpeedMonitor.m; sourceTree = "<group>"; };
+		23182DC425CF82250065441B /* UIImageView+ZFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ZFCache.h"; sourceTree = "<group>"; };
+		23182DC525CF82250065441B /* ZFPortraitControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPortraitControlView.h; sourceTree = "<group>"; };
+		23182DC625CF82250065441B /* ZFPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZFPlayer.bundle; sourceTree = "<group>"; };
+		23182DC725CF82250065441B /* UIView+ZFFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZFFrame.h"; sourceTree = "<group>"; };
+		23182DC825CF82250065441B /* ZFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFUtilities.h; sourceTree = "<group>"; };
+		23182DC925CF82250065441B /* ZFSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSliderView.m; sourceTree = "<group>"; };
+		23182DCA25CF82250065441B /* ZFPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerControlView.m; sourceTree = "<group>"; };
+		23182DCB25CF82250065441B /* ZFSmallFloatControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSmallFloatControlView.m; sourceTree = "<group>"; };
+		23182DCC25CF82250065441B /* ZFLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLoadingView.m; sourceTree = "<group>"; };
+		23182DCD25CF82250065441B /* ZFSpeedLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSpeedLoadingView.m; sourceTree = "<group>"; };
+		23182DCE25CF82250065441B /* ZFVolumeBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFVolumeBrightnessView.h; sourceTree = "<group>"; };
+		23182DCF25CF82250065441B /* ZFPortraitControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPortraitControlView.m; sourceTree = "<group>"; };
+		23182DD025CF82250065441B /* UIImageView+ZFCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ZFCache.m"; sourceTree = "<group>"; };
+		23182DD125CF82250065441B /* ZFNetworkSpeedMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFNetworkSpeedMonitor.h; sourceTree = "<group>"; };
+		23182DD225CF82250065441B /* ZFLandScapeControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLandScapeControlView.h; sourceTree = "<group>"; };
+		23182E0D25CF929B0065441B /* LandscapeRightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeRightViewController.m; sourceTree = "<group>"; };
+		23182E0E25CF929B0065441B /* WMLightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLightView.h; sourceTree = "<group>"; };
+		23182E0F25CF929B0065441B /* WMPlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayerModel.m; sourceTree = "<group>"; };
+		23182E1025CF929B0065441B /* FastForwardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastForwardView.h; sourceTree = "<group>"; };
+		23182E1125CF929B0065441B /* FullScreenHelperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenHelperViewController.m; sourceTree = "<group>"; };
+		23182E1225CF929B0065441B /* LandscapeLeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeLeftViewController.m; sourceTree = "<group>"; };
+		23182E1325CF929B0065441B /* EnterFullScreenTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterFullScreenTransition.m; sourceTree = "<group>"; };
+		23182E1425CF929B0065441B /* ExitFullScreenTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExitFullScreenTransition.m; sourceTree = "<group>"; };
+		23182E1525CF929B0065441B /* WMPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WMPlayer.bundle; sourceTree = "<group>"; };
+		23182E1625CF929B0065441B /* WMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPlayer.h; sourceTree = "<group>"; };
+		23182E1725CF929B0065441B /* WMPlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPlayerModel.h; sourceTree = "<group>"; };
+		23182E1825CF929B0065441B /* WMLightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLightView.m; sourceTree = "<group>"; };
+		23182E1925CF929B0065441B /* LandscapeRightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeRightViewController.h; sourceTree = "<group>"; };
+		23182E1A25CF929B0065441B /* EnterFullScreenTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterFullScreenTransition.h; sourceTree = "<group>"; };
+		23182E1B25CF929B0065441B /* LandscapeLeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeLeftViewController.h; sourceTree = "<group>"; };
+		23182E1C25CF929B0065441B /* FullScreenHelperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenHelperViewController.h; sourceTree = "<group>"; };
+		23182E1D25CF929B0065441B /* FastForwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastForwardView.m; sourceTree = "<group>"; };
+		23182E1E25CF929B0065441B /* ExitFullScreenTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExitFullScreenTransition.h; sourceTree = "<group>"; };
+		23182E1F25CF929B0065441B /* WMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayer.m; sourceTree = "<group>"; };
+		23182EF225CFC01D0065441B /* UIViewController+SJConfigureRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SJConfigureRotation.h"; sourceTree = "<group>"; };
+		23182EF325CFC01E0065441B /* UIViewController+SJConfigureRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SJConfigureRotation.m"; sourceTree = "<group>"; };
 		23189447258AEE9D0092C31B /* MioSongListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSongListModel.h; sourceTree = "<group>"; };
 		23189448258AEE9D0092C31B /* MioSongListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSongListModel.m; sourceTree = "<group>"; };
 		2318944A258AEEAE0092C31B /* MioAlbumModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioAlbumModel.h; sourceTree = "<group>"; };
@@ -1157,70 +1247,6 @@
 		236DB6D3250F0DD8001CC2F3 /* LOTBlockCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTBlockCallback.h; sourceTree = "<group>"; };
 		236DB71E250F5BC0001CC2F3 /* MioGroudVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioGroudVC.h; sourceTree = "<group>"; };
 		236DB71F250F5BC0001CC2F3 /* MioGroudVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioGroudVC.m; sourceTree = "<group>"; };
-		236DB72F250F6667001CC2F3 /* ZFPlayerNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerNotification.h; sourceTree = "<group>"; };
-		236DB730250F6667001CC2F3 /* ZFPlayerGestureControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerGestureControl.m; sourceTree = "<group>"; };
-		236DB731250F6667001CC2F3 /* ZFPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerController.m; sourceTree = "<group>"; };
-		236DB732250F6667001CC2F3 /* ZFFloatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFFloatView.h; sourceTree = "<group>"; };
-		236DB733250F6667001CC2F3 /* ZFPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPresentTransition.h; sourceTree = "<group>"; };
-		236DB734250F6667001CC2F3 /* ZFLandscapeWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLandscapeWindow.m; sourceTree = "<group>"; };
-		236DB735250F6667001CC2F3 /* ZFKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFKVOController.h; sourceTree = "<group>"; };
-		236DB736250F6668001CC2F3 /* ZFLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLandscapeViewController.h; sourceTree = "<group>"; };
-		236DB737250F6668001CC2F3 /* ZFOrientationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFOrientationObserver.m; sourceTree = "<group>"; };
-		236DB738250F6668001CC2F3 /* ZFPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPortraitViewController.h; sourceTree = "<group>"; };
-		236DB739250F6668001CC2F3 /* ZFPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerView.h; sourceTree = "<group>"; };
-		236DB73A250F6668001CC2F3 /* ZFPlayerLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerLogManager.m; sourceTree = "<group>"; };
-		236DB73B250F6668001CC2F3 /* ZFPlayerMediaPlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerMediaPlayback.h; sourceTree = "<group>"; };
-		236DB73C250F6668001CC2F3 /* ZFPersentInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPersentInteractiveTransition.m; sourceTree = "<group>"; };
-		236DB73D250F6668001CC2F3 /* ZFReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFReachabilityManager.h; sourceTree = "<group>"; };
-		236DB73E250F6668001CC2F3 /* UIScrollView+ZFPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ZFPlayer.m"; sourceTree = "<group>"; };
-		236DB73F250F6668001CC2F3 /* ZFPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayer.h; sourceTree = "<group>"; };
-		236DB740250F6668001CC2F3 /* ZFPlayerGestureControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerGestureControl.h; sourceTree = "<group>"; };
-		236DB741250F6668001CC2F3 /* ZFPlayerNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerNotification.m; sourceTree = "<group>"; };
-		236DB742250F6668001CC2F3 /* ZFPresentTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPresentTransition.m; sourceTree = "<group>"; };
-		236DB743250F6668001CC2F3 /* ZFFloatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFFloatView.m; sourceTree = "<group>"; };
-		236DB744250F6668001CC2F3 /* ZFPlayerMediaControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerMediaControl.h; sourceTree = "<group>"; };
-		236DB745250F6668001CC2F3 /* ZFPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerController.h; sourceTree = "<group>"; };
-		236DB746250F6668001CC2F3 /* ZFPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerView.m; sourceTree = "<group>"; };
-		236DB747250F6668001CC2F3 /* ZFPlayerLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerLogManager.h; sourceTree = "<group>"; };
-		236DB748250F6668001CC2F3 /* ZFPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPortraitViewController.m; sourceTree = "<group>"; };
-		236DB749250F6668001CC2F3 /* ZFOrientationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFOrientationObserver.h; sourceTree = "<group>"; };
-		236DB74A250F6668001CC2F3 /* ZFPlayerConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerConst.h; sourceTree = "<group>"; };
-		236DB74B250F6668001CC2F3 /* ZFKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFKVOController.m; sourceTree = "<group>"; };
-		236DB74C250F6668001CC2F3 /* ZFLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLandscapeViewController.m; sourceTree = "<group>"; };
-		236DB74D250F6668001CC2F3 /* ZFLandscapeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLandscapeWindow.h; sourceTree = "<group>"; };
-		236DB74E250F6668001CC2F3 /* UIScrollView+ZFPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ZFPlayer.h"; sourceTree = "<group>"; };
-		236DB74F250F6668001CC2F3 /* ZFReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFReachabilityManager.m; sourceTree = "<group>"; };
-		236DB750250F6668001CC2F3 /* ZFPersentInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPersentInteractiveTransition.h; sourceTree = "<group>"; };
-		236DB751250F6668001CC2F3 /* UIViewController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
-		236DB753250F6668001CC2F3 /* ZFIJKPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFIJKPlayerManager.h; sourceTree = "<group>"; };
-		236DB754250F6668001CC2F3 /* ZFIJKPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFIJKPlayerManager.m; sourceTree = "<group>"; };
-		236DB756250F6668001CC2F3 /* ZFAVPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFAVPlayerManager.m; sourceTree = "<group>"; };
-		236DB757250F6668001CC2F3 /* ZFAVPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFAVPlayerManager.h; sourceTree = "<group>"; };
-		236DB759250F6668001CC2F3 /* ZFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFUtilities.m; sourceTree = "<group>"; };
-		236DB75A250F6668001CC2F3 /* UIView+ZFFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZFFrame.m"; sourceTree = "<group>"; };
-		236DB75B250F6668001CC2F3 /* ZFSmallFloatControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFSmallFloatControlView.h; sourceTree = "<group>"; };
-		236DB75C250F6668001CC2F3 /* ZFPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerControlView.h; sourceTree = "<group>"; };
-		236DB75D250F6668001CC2F3 /* ZFSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFSliderView.h; sourceTree = "<group>"; };
-		236DB75E250F6668001CC2F3 /* ZFVolumeBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFVolumeBrightnessView.m; sourceTree = "<group>"; };
-		236DB75F250F6668001CC2F3 /* ZFSpeedLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFSpeedLoadingView.h; sourceTree = "<group>"; };
-		236DB760250F6668001CC2F3 /* ZFLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLoadingView.h; sourceTree = "<group>"; };
-		236DB761250F6668001CC2F3 /* ZFLandScapeControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLandScapeControlView.m; sourceTree = "<group>"; };
-		236DB762250F6668001CC2F3 /* ZFNetworkSpeedMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFNetworkSpeedMonitor.m; sourceTree = "<group>"; };
-		236DB763250F6668001CC2F3 /* UIImageView+ZFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ZFCache.h"; sourceTree = "<group>"; };
-		236DB764250F6668001CC2F3 /* ZFPortraitControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPortraitControlView.h; sourceTree = "<group>"; };
-		236DB765250F6668001CC2F3 /* ZFPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZFPlayer.bundle; sourceTree = "<group>"; };
-		236DB766250F6668001CC2F3 /* UIView+ZFFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZFFrame.h"; sourceTree = "<group>"; };
-		236DB767250F6668001CC2F3 /* ZFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFUtilities.h; sourceTree = "<group>"; };
-		236DB768250F6668001CC2F3 /* ZFSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSliderView.m; sourceTree = "<group>"; };
-		236DB769250F6668001CC2F3 /* ZFPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerControlView.m; sourceTree = "<group>"; };
-		236DB76A250F6668001CC2F3 /* ZFSmallFloatControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSmallFloatControlView.m; sourceTree = "<group>"; };
-		236DB76B250F6668001CC2F3 /* ZFLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLoadingView.m; sourceTree = "<group>"; };
-		236DB76C250F6668001CC2F3 /* ZFSpeedLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSpeedLoadingView.m; sourceTree = "<group>"; };
-		236DB76D250F6668001CC2F3 /* ZFVolumeBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFVolumeBrightnessView.h; sourceTree = "<group>"; };
-		236DB76E250F6668001CC2F3 /* ZFPortraitControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPortraitControlView.m; sourceTree = "<group>"; };
-		236DB76F250F6668001CC2F3 /* UIImageView+ZFCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ZFCache.m"; sourceTree = "<group>"; };
-		236DB770250F6668001CC2F3 /* ZFNetworkSpeedMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFNetworkSpeedMonitor.h; sourceTree = "<group>"; };
-		236DB771250F6668001CC2F3 /* ZFLandScapeControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLandScapeControlView.h; sourceTree = "<group>"; };
 		236DB79B250F6F8C001CC2F3 /* LEECoolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEECoolButton.h; sourceTree = "<group>"; };
 		236DB79C250F6F8C001CC2F3 /* LEECoolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEECoolButton.m; sourceTree = "<group>"; };
 		236DB79E250F6FBB001CC2F3 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
@@ -1317,6 +1343,8 @@
 		237D0621257DC3FE00697F3A /* MioPlayListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioPlayListVC.m; sourceTree = "<group>"; };
 		237FDDC325CA7F210064CC42 /* MioChooseFavoriteTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioChooseFavoriteTagView.h; sourceTree = "<group>"; };
 		237FDDC425CA7F210064CC42 /* MioChooseFavoriteTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioChooseFavoriteTagView.m; sourceTree = "<group>"; };
+		237FDDE625CBC7EE0064CC42 /* WBQRCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBQRCodeVC.m; sourceTree = "<group>"; };
+		237FDDE725CBC7EE0064CC42 /* WBQRCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBQRCodeVC.h; sourceTree = "<group>"; };
 		23870E5D25BFEB6900FA65BA /* MioMVListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVListVC.h; sourceTree = "<group>"; };
 		23870E5E25BFEB6900FA65BA /* MioMVListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMVListVC.m; sourceTree = "<group>"; };
 		2388759A25A54E220097FCEE /* MioMVRankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioMVRankView.h; sourceTree = "<group>"; };
@@ -1575,7 +1603,6 @@
 		23E5B6B125B17AC10017F0CC /* MioMoreFuncView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioMoreFuncView.m; sourceTree = "<group>"; };
 		23E5B6B325B199790017F0CC /* MioChooseQuantityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioChooseQuantityView.h; sourceTree = "<group>"; };
 		23E5B6B425B199790017F0CC /* MioChooseQuantityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioChooseQuantityView.m; sourceTree = "<group>"; };
-		23EAEEB725C7A7A300B18C61 /* 3434.m3u8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3434.m3u8; sourceTree = "<group>"; };
 		23F3716D25906DDE006053B1 /* MioSonglistCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSonglistCollectionCell.h; sourceTree = "<group>"; };
 		23F3716E25906DDE006053B1 /* MioSonglistCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSonglistCollectionCell.m; sourceTree = "<group>"; };
 		23FF98272547BB25008CC170 /* GCDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSemaphore.h; sourceTree = "<group>"; };
@@ -1962,6 +1989,135 @@
 			path = AcrCloud;
 			sourceTree = "<group>";
 		};
+		23182D8E25CF82250065441B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				23182D8F25CF82250065441B /* Core */,
+				23182DB325CF82250065441B /* ijkplayer */,
+				23182DB625CF82250065441B /* AVPlayer */,
+				23182DB925CF82250065441B /* ControlView */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		23182D8F25CF82250065441B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				23182D9025CF82250065441B /* ZFPlayerNotification.h */,
+				23182D9125CF82250065441B /* ZFPlayerGestureControl.m */,
+				23182D9225CF82250065441B /* ZFPlayerController.m */,
+				23182D9325CF82250065441B /* ZFFloatView.h */,
+				23182D9425CF82250065441B /* ZFPresentTransition.h */,
+				23182D9525CF82250065441B /* ZFLandscapeWindow.m */,
+				23182D9625CF82250065441B /* ZFKVOController.h */,
+				23182D9725CF82250065441B /* ZFLandscapeViewController.h */,
+				23182D9825CF82250065441B /* ZFOrientationObserver.m */,
+				23182D9925CF82250065441B /* ZFPortraitViewController.h */,
+				23182D9A25CF82250065441B /* ZFPlayerView.h */,
+				23182D9B25CF82250065441B /* ZFPlayerLogManager.m */,
+				23182D9C25CF82250065441B /* ZFPlayerMediaPlayback.h */,
+				23182D9D25CF82250065441B /* ZFPersentInteractiveTransition.m */,
+				23182D9E25CF82250065441B /* ZFReachabilityManager.h */,
+				23182D9F25CF82250065441B /* UIScrollView+ZFPlayer.m */,
+				23182DA025CF82250065441B /* ZFPlayer.h */,
+				23182DA125CF82250065441B /* ZFPlayerGestureControl.h */,
+				23182DA225CF82250065441B /* ZFPlayerNotification.m */,
+				23182DA325CF82250065441B /* ZFPresentTransition.m */,
+				23182DA425CF82250065441B /* ZFFloatView.m */,
+				23182DA525CF82250065441B /* ZFPlayerMediaControl.h */,
+				23182DA625CF82250065441B /* ZFPlayerController.h */,
+				23182DA725CF82250065441B /* ZFPlayerView.m */,
+				23182DA825CF82250065441B /* ZFPlayerLogManager.h */,
+				23182DA925CF82250065441B /* ZFPortraitViewController.m */,
+				23182DAA25CF82250065441B /* ZFOrientationObserver.h */,
+				23182DAB25CF82250065441B /* ZFPlayerConst.h */,
+				23182DAC25CF82250065441B /* ZFKVOController.m */,
+				23182DAD25CF82250065441B /* ZFLandscapeViewController.m */,
+				23182DAE25CF82250065441B /* ZFLandscapeWindow.h */,
+				23182DAF25CF82250065441B /* UIScrollView+ZFPlayer.h */,
+				23182DB025CF82250065441B /* ZFReachabilityManager.m */,
+				23182DB125CF82250065441B /* ZFPersentInteractiveTransition.h */,
+				23182DB225CF82250065441B /* UIViewController+ZFPlayerRotation.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		23182DB325CF82250065441B /* ijkplayer */ = {
+			isa = PBXGroup;
+			children = (
+				23182DB425CF82250065441B /* ZFIJKPlayerManager.h */,
+				23182DB525CF82250065441B /* ZFIJKPlayerManager.m */,
+			);
+			path = ijkplayer;
+			sourceTree = "<group>";
+		};
+		23182DB625CF82250065441B /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				23182DB725CF82250065441B /* ZFAVPlayerManager.m */,
+				23182DB825CF82250065441B /* ZFAVPlayerManager.h */,
+			);
+			path = AVPlayer;
+			sourceTree = "<group>";
+		};
+		23182DB925CF82250065441B /* ControlView */ = {
+			isa = PBXGroup;
+			children = (
+				23182DBA25CF82250065441B /* ZFUtilities.m */,
+				23182DBB25CF82250065441B /* UIView+ZFFrame.m */,
+				23182DBC25CF82250065441B /* ZFSmallFloatControlView.h */,
+				23182DBD25CF82250065441B /* ZFPlayerControlView.h */,
+				23182DBE25CF82250065441B /* ZFSliderView.h */,
+				23182DBF25CF82250065441B /* ZFVolumeBrightnessView.m */,
+				23182DC025CF82250065441B /* ZFSpeedLoadingView.h */,
+				23182DC125CF82250065441B /* ZFLoadingView.h */,
+				23182DC225CF82250065441B /* ZFLandScapeControlView.m */,
+				23182DC325CF82250065441B /* ZFNetworkSpeedMonitor.m */,
+				23182DC425CF82250065441B /* UIImageView+ZFCache.h */,
+				23182DC525CF82250065441B /* ZFPortraitControlView.h */,
+				23182DC625CF82250065441B /* ZFPlayer.bundle */,
+				23182DC725CF82250065441B /* UIView+ZFFrame.h */,
+				23182DC825CF82250065441B /* ZFUtilities.h */,
+				23182DC925CF82250065441B /* ZFSliderView.m */,
+				23182DCA25CF82250065441B /* ZFPlayerControlView.m */,
+				23182DCB25CF82250065441B /* ZFSmallFloatControlView.m */,
+				23182DCC25CF82250065441B /* ZFLoadingView.m */,
+				23182DCD25CF82250065441B /* ZFSpeedLoadingView.m */,
+				23182DCE25CF82250065441B /* ZFVolumeBrightnessView.h */,
+				23182DCF25CF82250065441B /* ZFPortraitControlView.m */,
+				23182DD025CF82250065441B /* UIImageView+ZFCache.m */,
+				23182DD125CF82250065441B /* ZFNetworkSpeedMonitor.h */,
+				23182DD225CF82250065441B /* ZFLandScapeControlView.h */,
+			);
+			path = ControlView;
+			sourceTree = "<group>";
+		};
+		23182E0C25CF929B0065441B /* WMPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				23182E0D25CF929B0065441B /* LandscapeRightViewController.m */,
+				23182E0E25CF929B0065441B /* WMLightView.h */,
+				23182E0F25CF929B0065441B /* WMPlayerModel.m */,
+				23182E1025CF929B0065441B /* FastForwardView.h */,
+				23182E1125CF929B0065441B /* FullScreenHelperViewController.m */,
+				23182E1225CF929B0065441B /* LandscapeLeftViewController.m */,
+				23182E1325CF929B0065441B /* EnterFullScreenTransition.m */,
+				23182E1425CF929B0065441B /* ExitFullScreenTransition.m */,
+				23182E1525CF929B0065441B /* WMPlayer.bundle */,
+				23182E1625CF929B0065441B /* WMPlayer.h */,
+				23182E1725CF929B0065441B /* WMPlayerModel.h */,
+				23182E1825CF929B0065441B /* WMLightView.m */,
+				23182E1925CF929B0065441B /* LandscapeRightViewController.h */,
+				23182E1A25CF929B0065441B /* EnterFullScreenTransition.h */,
+				23182E1B25CF929B0065441B /* LandscapeLeftViewController.h */,
+				23182E1C25CF929B0065441B /* FullScreenHelperViewController.h */,
+				23182E1D25CF929B0065441B /* FastForwardView.m */,
+				23182E1E25CF929B0065441B /* ExitFullScreenTransition.h */,
+				23182E1F25CF929B0065441B /* WMPlayer.m */,
+			);
+			path = WMPlayer;
+			sourceTree = "<group>";
+		};
 		2318944D258AEF510092C31B /* Model&Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2166,10 +2322,10 @@
 				232603EF2588BC5700754659 /* MioTimeOffVC.m */,
 				2312AC1D2595D45000EF45AA /* MioListenMusicVC.h */,
 				2312AC1E2595D45000EF45AA /* MioListenMusicVC.m */,
-				2312AC342595E89300EF45AA /* WBQRCodeVC.h */,
-				2312AC352595E89300EF45AA /* WBQRCodeVC.m */,
 				2312AC442595EB4300EF45AA /* ScanSuccessJumpVC.h */,
 				2312AC432595EB4200EF45AA /* ScanSuccessJumpVC.m */,
+				237FDDE725CBC7EE0064CC42 /* WBQRCodeVC.h */,
+				237FDDE625CBC7EE0064CC42 /* WBQRCodeVC.m */,
 				2312AC472595EB5200EF45AA /* SGWebView.h */,
 				2312AC462595EB5200EF45AA /* SGWebView.m */,
 				238875A025A55C800097FCEE /* MioAboutUsVC.h */,
@@ -2804,112 +2960,9 @@
 		236DB72C250F6667001CC2F3 /* ZFPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				236DB72D250F6667001CC2F3 /* Classes */,
+				23182D8E25CF82250065441B /* Classes */,
 			);
 			path = ZFPlayer;
-			sourceTree = "<group>";
-		};
-		236DB72D250F6667001CC2F3 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				236DB72E250F6667001CC2F3 /* Core */,
-				236DB752250F6668001CC2F3 /* ijkplayer */,
-				236DB755250F6668001CC2F3 /* AVPlayer */,
-				236DB758250F6668001CC2F3 /* ControlView */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		236DB72E250F6667001CC2F3 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				236DB74E250F6668001CC2F3 /* UIScrollView+ZFPlayer.h */,
-				236DB73E250F6668001CC2F3 /* UIScrollView+ZFPlayer.m */,
-				236DB751250F6668001CC2F3 /* UIViewController+ZFPlayerRotation.m */,
-				236DB732250F6667001CC2F3 /* ZFFloatView.h */,
-				236DB743250F6668001CC2F3 /* ZFFloatView.m */,
-				236DB735250F6667001CC2F3 /* ZFKVOController.h */,
-				236DB74B250F6668001CC2F3 /* ZFKVOController.m */,
-				236DB736250F6668001CC2F3 /* ZFLandscapeViewController.h */,
-				236DB74C250F6668001CC2F3 /* ZFLandscapeViewController.m */,
-				236DB74D250F6668001CC2F3 /* ZFLandscapeWindow.h */,
-				236DB734250F6667001CC2F3 /* ZFLandscapeWindow.m */,
-				236DB749250F6668001CC2F3 /* ZFOrientationObserver.h */,
-				236DB737250F6668001CC2F3 /* ZFOrientationObserver.m */,
-				236DB750250F6668001CC2F3 /* ZFPersentInteractiveTransition.h */,
-				236DB73C250F6668001CC2F3 /* ZFPersentInteractiveTransition.m */,
-				236DB73F250F6668001CC2F3 /* ZFPlayer.h */,
-				236DB74A250F6668001CC2F3 /* ZFPlayerConst.h */,
-				236DB745250F6668001CC2F3 /* ZFPlayerController.h */,
-				236DB731250F6667001CC2F3 /* ZFPlayerController.m */,
-				236DB740250F6668001CC2F3 /* ZFPlayerGestureControl.h */,
-				236DB730250F6667001CC2F3 /* ZFPlayerGestureControl.m */,
-				236DB747250F6668001CC2F3 /* ZFPlayerLogManager.h */,
-				236DB73A250F6668001CC2F3 /* ZFPlayerLogManager.m */,
-				236DB744250F6668001CC2F3 /* ZFPlayerMediaControl.h */,
-				236DB73B250F6668001CC2F3 /* ZFPlayerMediaPlayback.h */,
-				236DB72F250F6667001CC2F3 /* ZFPlayerNotification.h */,
-				236DB741250F6668001CC2F3 /* ZFPlayerNotification.m */,
-				236DB739250F6668001CC2F3 /* ZFPlayerView.h */,
-				236DB746250F6668001CC2F3 /* ZFPlayerView.m */,
-				236DB738250F6668001CC2F3 /* ZFPortraitViewController.h */,
-				236DB748250F6668001CC2F3 /* ZFPortraitViewController.m */,
-				236DB733250F6667001CC2F3 /* ZFPresentTransition.h */,
-				236DB742250F6668001CC2F3 /* ZFPresentTransition.m */,
-				236DB73D250F6668001CC2F3 /* ZFReachabilityManager.h */,
-				236DB74F250F6668001CC2F3 /* ZFReachabilityManager.m */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		236DB752250F6668001CC2F3 /* ijkplayer */ = {
-			isa = PBXGroup;
-			children = (
-				236DB753250F6668001CC2F3 /* ZFIJKPlayerManager.h */,
-				236DB754250F6668001CC2F3 /* ZFIJKPlayerManager.m */,
-			);
-			path = ijkplayer;
-			sourceTree = "<group>";
-		};
-		236DB755250F6668001CC2F3 /* AVPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				236DB757250F6668001CC2F3 /* ZFAVPlayerManager.h */,
-				236DB756250F6668001CC2F3 /* ZFAVPlayerManager.m */,
-			);
-			path = AVPlayer;
-			sourceTree = "<group>";
-		};
-		236DB758250F6668001CC2F3 /* ControlView */ = {
-			isa = PBXGroup;
-			children = (
-				236DB759250F6668001CC2F3 /* ZFUtilities.m */,
-				236DB75A250F6668001CC2F3 /* UIView+ZFFrame.m */,
-				236DB75B250F6668001CC2F3 /* ZFSmallFloatControlView.h */,
-				236DB75C250F6668001CC2F3 /* ZFPlayerControlView.h */,
-				236DB75D250F6668001CC2F3 /* ZFSliderView.h */,
-				236DB75E250F6668001CC2F3 /* ZFVolumeBrightnessView.m */,
-				236DB75F250F6668001CC2F3 /* ZFSpeedLoadingView.h */,
-				236DB760250F6668001CC2F3 /* ZFLoadingView.h */,
-				236DB761250F6668001CC2F3 /* ZFLandScapeControlView.m */,
-				236DB762250F6668001CC2F3 /* ZFNetworkSpeedMonitor.m */,
-				236DB763250F6668001CC2F3 /* UIImageView+ZFCache.h */,
-				236DB764250F6668001CC2F3 /* ZFPortraitControlView.h */,
-				236DB765250F6668001CC2F3 /* ZFPlayer.bundle */,
-				236DB766250F6668001CC2F3 /* UIView+ZFFrame.h */,
-				236DB767250F6668001CC2F3 /* ZFUtilities.h */,
-				236DB768250F6668001CC2F3 /* ZFSliderView.m */,
-				236DB769250F6668001CC2F3 /* ZFPlayerControlView.m */,
-				236DB76A250F6668001CC2F3 /* ZFSmallFloatControlView.m */,
-				236DB76B250F6668001CC2F3 /* ZFLoadingView.m */,
-				236DB76C250F6668001CC2F3 /* ZFSpeedLoadingView.m */,
-				236DB76D250F6668001CC2F3 /* ZFVolumeBrightnessView.h */,
-				236DB76E250F6668001CC2F3 /* ZFPortraitControlView.m */,
-				236DB76F250F6668001CC2F3 /* UIImageView+ZFCache.m */,
-				236DB770250F6668001CC2F3 /* ZFNetworkSpeedMonitor.h */,
-				236DB771250F6668001CC2F3 /* ZFLandScapeControlView.h */,
-			);
-			path = ControlView;
 			sourceTree = "<group>";
 		};
 		236DB79A250F6F8C001CC2F3 /* LEECoolButton */ = {
@@ -3037,6 +3090,7 @@
 		237B77752501D18D006272E5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				23DE1F0D25D0CF1100E1551F /* SJVideoConfig */,
 				2348220125B6D2C1009B0190 /* HcdGuideView */,
 				23189EF625A5B79500D7EBDC /* HQFlowView */,
 				23C913FE259D6B32006FA6EB /* TableViewSectionIndex */,
@@ -3057,6 +3111,7 @@
 				2393DCFB2511AEFD002483A9 /* YDKeyboard */,
 				2393DCE82511AE9B002483A9 /* CardSlider */,
 				236DB79A250F6F8C001CC2F3 /* LEECoolButton */,
+				23182E0C25CF929B0065441B /* WMPlayer */,
 				236DB72C250F6667001CC2F3 /* ZFPlayer */,
 				236DB646250F0DD7001CC2F3 /* Classes */,
 				23673F6D25076E2300C599CB /* countDownBtn */,
@@ -3297,8 +3352,6 @@
 		23AB232A2431C89800DBB427 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				230779482435CA9C00EFCD1D /* MyUploadManager.h */,
-				230779472435CA9C00EFCD1D /* MyUploadManager.m */,
 				23AB23362431C89800DBB427 /* MioDeleteRequest.h */,
 				23AB23302431C89800DBB427 /* MioDeleteRequest.m */,
 				23AB23382431C89800DBB427 /* MioGetRequest.h */,
@@ -3544,6 +3597,15 @@
 			path = XMTextView;
 			sourceTree = "<group>";
 		};
+		23DE1F0D25D0CF1100E1551F /* SJVideoConfig */ = {
+			isa = PBXGroup;
+			children = (
+				23182EF225CFC01D0065441B /* UIViewController+SJConfigureRotation.h */,
+				23182EF325CFC01E0065441B /* UIViewController+SJConfigureRotation.m */,
+			);
+			path = SJVideoConfig;
+			sourceTree = "<group>";
+		};
 		23FF98262547BB25008CC170 /* HYGCD */ = {
 			isa = PBXGroup;
 			children = (
@@ -3568,7 +3630,6 @@
 			children = (
 				2312AC292595D8B900EF45AA /* AudioToolbox.framework */,
 				2312AC272595D8B100EF45AA /* AVFoundation.framework */,
-				23EAEEB725C7A7A300B18C61 /* 3434.m3u8 */,
 				2312AC252595D8A600EF45AA /* libc++.tbd */,
 				2312AC232595D89C00EF45AA /* Security.framework */,
 				DAB6069E29C029B2B9430D85 /* libPods-573music.a */,
@@ -3641,6 +3702,8 @@
 				2393DD062511AEFD002483A9 /* YDCommentInputView.xib in Resources */,
 				23AB23202431C77A00DBB427 /* LaunchScreen.storyboard in Resources */,
 				2348221325B6DBAF009B0190 /* jifeng.json in Resources */,
+				23182DEA25CF82250065441B /* ZFPlayer.bundle in Resources */,
+				23182E2625CF929C0065441B /* WMPlayer.bundle in Resources */,
 				2348221225B6DBAF009B0190 /* zhuti.json in Resources */,
 				2338261E2518ACDD00DC9021 /* README.md in Resources */,
 				23248016259424B500C1F68B /* .gitkeep in Resources */,
@@ -3648,14 +3711,12 @@
 				23C24FCE2446A4CA00EE0BE2 /* area.plist in Resources */,
 				2348221125B6DBAF009B0190 /* tingge.json in Resources */,
 				23C9140A259D6B32006FA6EB /* TableViewSectionIndex.bundle in Resources */,
-				236DB789250F6668001CC2F3 /* ZFPlayer.bundle in Resources */,
 				23AB231D2431C77A00DBB427 /* Assets.xcassets in Resources */,
 				2393DD082511AEFD002483A9 /* YDEmojiCell.xib in Resources */,
 				234E401625C153CB006B2C4B /* hei.zip in Resources */,
 				2302750F2589FD6D00937C04 /* PYSearch.bundle in Resources */,
 				2338261D2518ACDD00DC9021 /* LICENSE in Resources */,
 				233825E82518796900DC9021 /* HSSetTableViewController.bundle in Resources */,
-				23EAEEB825C7A7A300B18C61 /* 3434.m3u8 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3731,13 +3792,13 @@
 				2393DCF32511AE9C002483A9 /* JJCardSliderView.m in Sources */,
 				230274B32589B67700937C04 /* UIColor+HXExtension.m in Sources */,
 				233825EF2518796900DC9021 /* HSCustomCellModel.m in Sources */,
+				23182DE025CF82250065441B /* ZFLandscapeViewController.m in Sources */,
 				236DB6DA250F0DD8001CC2F3 /* LOTValueInterpolator.m in Sources */,
 				2348222D25B92EC9009B0190 /* MioMusicListPageVC.m in Sources */,
 				23189EFE25A5B79500D7EBDC /* HQIndexBannerSubview.m in Sources */,
 				230274E12589B67700937C04 /* HXPhotoEditGraffitiColorModel.m in Sources */,
 				2348222325B7D2A1009B0190 /* MioLikeAndCmtNoticeCell.m in Sources */,
-				236DB78C250F6668001CC2F3 /* ZFSmallFloatControlView.m in Sources */,
-				236DB775250F6668001CC2F3 /* ZFOrientationObserver.m in Sources */,
+				23182E2525CF929C0065441B /* ExitFullScreenTransition.m in Sources */,
 				2393DD142512055C002483A9 /* UIImage+MioExtension.m in Sources */,
 				230274B62589B67700937C04 /* UILabel+HXExtension.m in Sources */,
 				2378093224FF4DF900007883 /* NERStack+NERChainable.m in Sources */,
@@ -3750,7 +3811,7 @@
 				230275102589FD6D00937C04 /* NSBundle+PYSearchExtension.m in Sources */,
 				236DB6E5250F0DD8001CC2F3 /* LOTGradientFillRender.m in Sources */,
 				230274BE2589B67700937C04 /* HXAlbumListViewController.m in Sources */,
-				236DB77A250F6668001CC2F3 /* ZFPresentTransition.m in Sources */,
+				23182DD725CF82250065441B /* ZFPlayerLogManager.m in Sources */,
 				23C24FD52446A4CA00EE0BE2 /* STPickerDouble.m in Sources */,
 				2399052825AD3BF400ABCF83 /* MioM3U8Player.m in Sources */,
 				2302751B258A0AC200937C04 /* MioSearchResultVC.m in Sources */,
@@ -3759,15 +3820,18 @@
 				233825F12518796900DC9021 /* HSTitleCellModel.m in Sources */,
 				2348220725B6D2C1009B0190 /* HcdGuideViewCell.m in Sources */,
 				233825F32518796900DC9021 /* HSImageCellModel.m in Sources */,
+				23182DE925CF82250065441B /* ZFNetworkSpeedMonitor.m in Sources */,
 				23AB23932431D32A00DBB427 /* MioAgeView.m in Sources */,
 				23248022259439E400C1F68B /* SOSimulateDB.m in Sources */,
 				23C24FD32446A4CA00EE0BE2 /* STPickerSingle.m in Sources */,
 				236DB6F4250F0DD8001CC2F3 /* LOTAsset.m in Sources */,
 				230274E72589B67700937C04 /* HXPhotoEditClippingToolBar.m in Sources */,
+				23182DDC25CF82250065441B /* ZFFloatView.m in Sources */,
 				2399054D25AE932E00ABCF83 /* MioLikeSonglistVC.m in Sources */,
 				2378092A24FF4DF900007883 /* UIVisualEffectView+NERChainable.m in Sources */,
 				2366F661257F1F21006E1D7D /* MusicLyric.m in Sources */,
 				23746CAA25806D7A0072A4C8 /* MioBugModel.m in Sources */,
+				23182DDA25CF82250065441B /* ZFPlayerNotification.m in Sources */,
 				2378094624FF4DF900007883 /* NERAlertMaker.m in Sources */,
 				230274CC2589B67700937C04 /* HXPhotoPreviewVideoViewCell.m in Sources */,
 				2378093724FF4DF900007883 /* UISegmentedControl+NERChainable.m in Sources */,
@@ -3776,6 +3840,7 @@
 				230274B92589B67700937C04 /* HXAssetManager.m in Sources */,
 				230274DC2589B67700937C04 /* HXPhotoPreviewImageViewCell.m in Sources */,
 				2378093924FF4DF900007883 /* NERStyle+NERChainable.m in Sources */,
+				23182E2925CF929C0065441B /* WMPlayer.m in Sources */,
 				2393DD042511AEFD002483A9 /* ViewUtil.m in Sources */,
 				230274E32589B67700937C04 /* HXPhotoClippingView.m in Sources */,
 				230274E42589B67700937C04 /* HXPhotoEditStickerTrashView.m in Sources */,
@@ -3783,7 +3848,6 @@
 				230274F92589B67700937C04 /* HXPhotoEditGridLayer.m in Sources */,
 				233825ED2518796900DC9021 /* HSFooterModel.m in Sources */,
 				2348222625B80134009B0190 /* MioSystemNoticeCell.m in Sources */,
-				236DB78E250F6668001CC2F3 /* ZFSpeedLoadingView.m in Sources */,
 				230274EC2589B67700937C04 /* HXPhotoEditStickerView.m in Sources */,
 				2399054025ADA71400ABCF83 /* MioRecentMVVC.m in Sources */,
 				23AB23902431D32A00DBB427 /* MioAvatarView.m in Sources */,
@@ -3798,18 +3862,18 @@
 				23C91417259D807B006FA6EB /* MioSearchSingerResultVC.m in Sources */,
 				23C9141D259D809B006FA6EB /* MioSearchAlbumResultVC.m in Sources */,
 				230274E02589B67700937C04 /* HXMECancelBlock.m in Sources */,
+				23182E2425CF929C0065441B /* EnterFullScreenTransition.m in Sources */,
 				230274CA2589B67700937C04 /* HXCollectionView.m in Sources */,
 				2348221D25B7C7D6009B0190 /* MioSystemNoticeVC.m in Sources */,
-				236DB772250F6668001CC2F3 /* ZFPlayerGestureControl.m in Sources */,
 				230274DE2589B67700937C04 /* HX_PhotoEditViewController.m in Sources */,
 				23FF98352547BB26008CC170 /* GCDTimer.m in Sources */,
 				23C913FD259D65AF006FA6EB /* MioSingerListVC.m in Sources */,
+				23182DEB25CF82250065441B /* ZFSliderView.m in Sources */,
 				230274B22589B67700937C04 /* NSDate+HXExtension.m in Sources */,
 				230274E82589B67700937C04 /* HX_PhotoEditBottomView.m in Sources */,
 				2338261F2518ACDD00DC9021 /* SDCycleScrollView.m in Sources */,
 				2378093E24FF4DF900007883 /* NERConstraint+NERChainable.m in Sources */,
 				236DB6E1250F0DD8001CC2F3 /* LOTPolygonAnimator.m in Sources */,
-				236DB783250F6668001CC2F3 /* ZFAVPlayerManager.m in Sources */,
 				2366F65E257F1F0D006E1D7D /* UIColorLabel.m in Sources */,
 				2348220625B6D2C1009B0190 /* HcdGuideView.m in Sources */,
 				23FF98362547BB26008CC170 /* GCDGroup.m in Sources */,
@@ -3821,12 +3885,10 @@
 				2393DD072511AEFD002483A9 /* YDEmojiCell.m in Sources */,
 				230274A72589B67700937C04 /* HXPhotoViewPresentTransition.m in Sources */,
 				233825EE2518796900DC9021 /* HSTextCellModel.m in Sources */,
-				236DB780250F6668001CC2F3 /* ZFReachabilityManager.m in Sources */,
 				2312AC452595EB4300EF45AA /* ScanSuccessJumpVC.m in Sources */,
 				236DB706250F0DD8001CC2F3 /* LOTAnimationTransitionController.m in Sources */,
 				2378094124FF4DF900007883 /* UIView+NERFrame.m in Sources */,
 				2378093124FF4DF900007883 /* UITextView+NERChainable.m in Sources */,
-				2312AC362595E89300EF45AA /* WBQRCodeVC.m in Sources */,
 				23C91414259D8068006FA6EB /* MioSearchMusicResultVC.m in Sources */,
 				2324801F2594397300C1F68B /* SODownloader+MusicDownloader.m in Sources */,
 				231AE58325998801006AFA89 /* MioAlbumListPageVC.m in Sources */,
@@ -3834,6 +3896,7 @@
 				2378092F24FF4DF900007883 /* NERStaticTableView+NERChainable.m in Sources */,
 				23746CB72580AD150072A4C8 /* MioMutipleCell.m in Sources */,
 				2378093824FF4DF900007883 /* UIPageControl+NERChainable.m in Sources */,
+				23182DD925CF82250065441B /* UIScrollView+ZFPlayer.m in Sources */,
 				230274C22589B67700937C04 /* HXCustomNavigationController.m in Sources */,
 				230274C32589B67700937C04 /* HXPhotoEditViewController.m in Sources */,
 				233825EC2518796900DC9021 /* HSBaseCellModel.m in Sources */,
@@ -3842,6 +3905,7 @@
 				236DB705250F0DD8001CC2F3 /* LOTAnimationView.m in Sources */,
 				233825F02518796900DC9021 /* HSSwitchCellModel.m in Sources */,
 				2378092824FF4DF900007883 /* UIView+NERChainable.m in Sources */,
+				23182DDD25CF82250065441B /* ZFPlayerView.m in Sources */,
 				236DB6FF250F0DD8001CC2F3 /* LOTRadialGradientLayer.m in Sources */,
 				2324801C259429AF00C1F68B /* MioDownloadVC.m in Sources */,
 				236DB6F8250F0DD8001CC2F3 /* LOTShapePath.m in Sources */,
@@ -3857,21 +3921,19 @@
 				23C24FCD2446A4CA00EE0BE2 /* STPickerDate.m in Sources */,
 				236DB6EF250F0DD8001CC2F3 /* LOTAssetGroup.m in Sources */,
 				2378092E24FF4DF900007883 /* UIColor+NERChainable.m in Sources */,
-				236DB77F250F6668001CC2F3 /* ZFLandscapeViewController.m in Sources */,
 				233825F82518796900DC9021 /* HSSwitchTableViewCell.m in Sources */,
 				230274D12589B67700937C04 /* HXPhotoViewFlowLayout.m in Sources */,
 				23746CB42580A8160072A4C8 /* MioMutipleVC.m in Sources */,
-				236DB774250F6668001CC2F3 /* ZFLandscapeWindow.m in Sources */,
 				236DB6E0250F0DD8001CC2F3 /* LOTPolystarAnimator.m in Sources */,
 				238875B825A597810097FCEE /* MioLikeMVVC.m in Sources */,
 				2312AC1F2595D45000EF45AA /* MioListenMusicVC.m in Sources */,
 				23FF983A2547BE09008CC170 /* UITableView+MioExtension.m in Sources */,
 				236DB6FD250F0DD8001CC2F3 /* CGGeometry+LOTAdditions.m in Sources */,
+				23182DEF25CF82250065441B /* ZFSpeedLoadingView.m in Sources */,
 				236DB79D250F6F8D001CC2F3 /* LEECoolButton.m in Sources */,
 				235055A52567A57500F96AFC /* DownloadInfo.m in Sources */,
 				236DB6FB250F0DD8001CC2F3 /* LOTShapeTransform.m in Sources */,
 				23C91408259D6B32006FA6EB /* CYSectionIndexViewCell.m in Sources */,
-				236DB78F250F6668001CC2F3 /* ZFPortraitControlView.m in Sources */,
 				230274C52589B67700937C04 /* HXPhotoModel.m in Sources */,
 				230274D52589B67700937C04 /* HXFullScreenCameraPlayView.m in Sources */,
 				2399053425AD6F9700ABCF83 /* MioAddToSonglistVC.m in Sources */,
@@ -3894,6 +3956,7 @@
 				2378093624FF4DF900007883 /* UIImageView+NERChainable.m in Sources */,
 				230274A92589B67700937C04 /* HXPhotoViewTransition.m in Sources */,
 				236DB6E7250F0DD8001CC2F3 /* LOTFillRenderer.m in Sources */,
+				23182DE825CF82250065441B /* ZFLandScapeControlView.m in Sources */,
 				235055A32567A57500F96AFC /* DownloadConfig.m in Sources */,
 				235055A62567A57500F96AFC /* DownloadDispatch.m in Sources */,
 				2378094024FF4DF900007883 /* UILabel+NERLink.m in Sources */,
@@ -3901,14 +3964,14 @@
 				237B77742500839B006272E5 /* UIWindow+MioExtension.m in Sources */,
 				23189459258AEFE70092C31B /* MioMvModel.m in Sources */,
 				236DB70F250F0DD8001CC2F3 /* LOTCompositionContainer.m in Sources */,
-				236DB78D250F6668001CC2F3 /* ZFLoadingView.m in Sources */,
+				237FDDE825CBC7EF0064CC42 /* WBQRCodeVC.m in Sources */,
+				23182DDE25CF82250065441B /* ZFPortraitViewController.m in Sources */,
 				233826242518ACDD00DC9021 /* TAAnimatedDotView.m in Sources */,
 				23C913CE259C164E006FA6EB /* MioMVTableCell.m in Sources */,
 				230274AD2589B67700937C04 /* NSBundle+HXPhotoPicker.m in Sources */,
 				23C91423259DA5B9006FA6EB /* MioSonglistTableCell.m in Sources */,
 				23AB23562431C8BA00DBB427 /* NSString+MioExtension.m in Sources */,
 				230274B72589B67700937C04 /* HXPhotoCommon.m in Sources */,
-				236DB788250F6668001CC2F3 /* ZFNetworkSpeedMonitor.m in Sources */,
 				23673F7225076E2300C599CB /* WLButtonCountdownManager.m in Sources */,
 				23C9141A259D808E006FA6EB /* MioSearchSonglistResultVC.m in Sources */,
 				233826232518ACDD00DC9021 /* TAPageControl.m in Sources */,
@@ -3928,18 +3991,17 @@
 				2393DCF22511AE9C002483A9 /* JJCardSliderCell.m in Sources */,
 				236DB6F6250F0DD8001CC2F3 /* LOTShapeRectangle.m in Sources */,
 				2302750B2589FD6D00937C04 /* UIColor+PYSearchExtension.m in Sources */,
-				236DB786250F6668001CC2F3 /* ZFVolumeBrightnessView.m in Sources */,
 				2378093D24FF4DF900007883 /* NSAttributedString+NERChainable.m in Sources */,
 				23C91426259DB68B006FA6EB /* MioCategoryVC.m in Sources */,
 				2312AC222595D4F600EF45AA /* YSCRippleView.m in Sources */,
 				23C24FCF2446A4CA00EE0BE2 /* STPickerArea.m in Sources */,
+				23182DE625CF82250065441B /* UIView+ZFFrame.m in Sources */,
+				23182DF125CF82250065441B /* UIImageView+ZFCache.m in Sources */,
 				23C24FD02446A4CA00EE0BE2 /* STPickerView.m in Sources */,
-				236DB785250F6668001CC2F3 /* UIView+ZFFrame.m in Sources */,
 				23F3716F25906DDE006053B1 /* MioSonglistCollectionCell.m in Sources */,
 				2393DCF42511AE9C002483A9 /* JJCardSliderFlowLayout.m in Sources */,
 				2302750E2589FD6D00937C04 /* PYSearchConst.m in Sources */,
 				231AE5A1259B142D006AFA89 /* MioSingerSongsVC.m in Sources */,
-				236DB773250F6668001CC2F3 /* ZFPlayerController.m in Sources */,
 				23693FAB25A2EC8E00696C74 /* MioMusicView.m in Sources */,
 				2312AC172595830700EF45AA /* MioDownloadingCell.m in Sources */,
 				233825E92518796900DC9021 /* HSSetTableViewMainController.m in Sources */,
@@ -3965,7 +4027,6 @@
 				2393DD052511AEFD002483A9 /* YDCommentInputView.m in Sources */,
 				23AB233C2431C89800DBB427 /* MioGetRequest.m in Sources */,
 				236DB6FE250F0DD8001CC2F3 /* LOTBezierPath.m in Sources */,
-				236DB77E250F6668001CC2F3 /* ZFKVOController.m in Sources */,
 				233825F62518796900DC9021 /* HSTitleTableViewCell.m in Sources */,
 				238875AF25A597570097FCEE /* MioLikeMusicVC.m in Sources */,
 				233825E62518796900DC9021 /* NSBundle+HSImage.m in Sources */,
@@ -3976,7 +4037,6 @@
 				2378092B24FF4DF900007883 /* UITextField+NERChainable.m in Sources */,
 				236DB6EB250F0DD8001CC2F3 /* NSValue+Compat.m in Sources */,
 				236DB6D6250F0DD8001CC2F3 /* LOTColorInterpolator.m in Sources */,
-				236DB787250F6668001CC2F3 /* ZFLandScapeControlView.m in Sources */,
 				2399054A25AE92AA00ABCF83 /* UICollectionView+FooterManager.m in Sources */,
 				230274B52589B67700937C04 /* UIButton+HXExtension.m in Sources */,
 				239930B625777DFA00584486 /* DOUAudioPlaybackItem.m in Sources */,
@@ -3984,16 +4044,15 @@
 				230274C92589B67700937C04 /* HXPhotoPreviewLivePhotoCell.m in Sources */,
 				230274DA2589B67700937C04 /* HXCircleProgressView.m in Sources */,
 				2324802B2594614200C1F68B /* MioDownloadingVC.m in Sources */,
+				23182DE425CF82250065441B /* ZFAVPlayerManager.m in Sources */,
 				23AB23122431C77700DBB427 /* AppDelegate.m in Sources */,
 				230274B02589B67700937C04 /* UIView+HXExtension.m in Sources */,
 				239B0346251464C300B310D2 /* MioMineVC.m in Sources */,
 				231AE5AE259B2498006AFA89 /* MioScrollView.m in Sources */,
 				2399055025AECE9200ABCF83 /* MioMusicPlaylistCell.m in Sources */,
 				2378093324FF4DF900007883 /* UIButton+NERChainable.m in Sources */,
-				236DB790250F6668001CC2F3 /* UIImageView+ZFCache.m in Sources */,
 				230274BC2589B67700937C04 /* HXCustomCameraViewController.m in Sources */,
 				2378094724FF4DF900007883 /* NERStyle.m in Sources */,
-				236DB781250F6668001CC2F3 /* UIViewController+ZFPlayerRotation.m in Sources */,
 				23AB238F2431D32A00DBB427 /* MioEmpty.m in Sources */,
 				2377AD2625B02C0C0044AB1D /* MioEditSonglistVC.m in Sources */,
 				230274FB2589B67700937C04 /* HXPhotoEdit.m in Sources */,
@@ -4001,30 +4060,35 @@
 				2366652D256B81D400609A05 /* MioTest2VC.m in Sources */,
 				233825E32518796900DC9021 /* UIView+HSFrame.m in Sources */,
 				231AE597259ADA46006AFA89 /* MioCategoryMVVC.m in Sources */,
-				236DB77B250F6668001CC2F3 /* ZFFloatView.m in Sources */,
 				230274AC2589B67700937C04 /* NSArray+HXExtension.m in Sources */,
 				231AE591259ABF15006AFA89 /* MioCreatSonglistVC.m in Sources */,
 				238C94F62566683100FA58FC /* MioTabbar.m in Sources */,
 				23C913EC259C54AE006FA6EB /* HeaderView.m in Sources */,
 				230274ED2589B67700937C04 /* HXPhotoEditChartletContentViewCell.m in Sources */,
+				23182DD825CF82250065441B /* ZFPersentInteractiveTransition.m in Sources */,
 				231AE5A4259B143F006AFA89 /* MioSingerAlbumVC.m in Sources */,
 				23FF98372547BB26008CC170 /* GCDSemaphore.m in Sources */,
 				2378094824FF4DF900007883 /* NERConstraintMaker.m in Sources */,
 				2350556C2567522900F96AFC /* MioVCConfig.m in Sources */,
 				23CB0A86254BF6F400A18B63 /* UITextView+XMExtension.m in Sources */,
+				23182E2225CF929C0065441B /* FullScreenHelperViewController.m in Sources */,
 				236DB7A0250F6FBC001CC2F3 /* NSDate+Helper.m in Sources */,
 				239930AA25777DFA00584486 /* DOUAudioStreamer+Options.m in Sources */,
+				23182EF425CFC01E0065441B /* UIViewController+SJConfigureRotation.m in Sources */,
 				23AB23922431D32A00DBB427 /* MioViewController.m in Sources */,
 				23AB233A2431C89800DBB427 /* MioPutRequest.m in Sources */,
 				23189449258AEE9D0092C31B /* MioSongListModel.m in Sources */,
 				236DB6F1250F0DD8001CC2F3 /* LOTShapeStar.m in Sources */,
+				23182DD525CF82250065441B /* ZFLandscapeWindow.m in Sources */,
 				23693FB525A3029E00696C74 /* MioCmtCell.m in Sources */,
 				232603ED2588BB6900754659 /* MioSetPasswordVC.m in Sources */,
 				23E5B6B525B199790017F0CC /* MioChooseQuantityView.m in Sources */,
+				23182DF025CF82250065441B /* ZFPortraitControlView.m in Sources */,
 				2348221A25B7C7C3009B0190 /* MioLikeAndCmtNoticeVC.m in Sources */,
 				2318945C258AF4B70092C31B /* MioMusicTableCell.m in Sources */,
 				239930BA25777DFA00584486 /* DOUMPMediaLibraryAssetLoader.m in Sources */,
 				236DB6D9250F0DD8001CC2F3 /* LOTPointInterpolator.m in Sources */,
+				23182E2325CF929C0065441B /* LandscapeLeftViewController.m in Sources */,
 				236B1EAE257A13C1001D00E3 /* GKSliderView.m in Sources */,
 				231AE59E259B141F006AFA89 /* MioSingerVC.m in Sources */,
 				233825EB2518796900DC9021 /* UIViewController+HSSetTableView.m in Sources */,
@@ -4032,6 +4096,7 @@
 				231AE58625998887006AFA89 /* MioAlbumListVC.m in Sources */,
 				230274D92589B67700937C04 /* HXPreviewVideoView.m in Sources */,
 				23AB233F2431C89800DBB427 /* MioRequest.m in Sources */,
+				23182E2825CF929C0065441B /* FastForwardView.m in Sources */,
 				2378093A24FF4DF900007883 /* UIImage+NERChainable.m in Sources */,
 				236DB710250F0DD8001CC2F3 /* LOTMaskContainer.m in Sources */,
 				236DB6E2250F0DD8001CC2F3 /* LOTCircleAnimator.m in Sources */,
@@ -4045,9 +4110,12 @@
 				239930B225777DFA00584486 /* DOUAudioLPCM.m in Sources */,
 				236DB6F0250F0DD8001CC2F3 /* LOTLayerGroup.m in Sources */,
 				230274D82589B67700937C04 /* HXCustomPreviewView.m in Sources */,
+				23182DDF25CF82250065441B /* ZFKVOController.m in Sources */,
 				232480252594612200C1F68B /* MioDownloadMusicVC.m in Sources */,
+				23182E2725CF929C0065441B /* WMLightView.m in Sources */,
 				236DB6E9250F0DD8001CC2F3 /* UIBezierPath.m in Sources */,
 				23AB235C2431C8BA00DBB427 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				23182E2025CF929C0065441B /* LandscapeRightViewController.m in Sources */,
 				23C91409259D6B32006FA6EB /* CYSectionIndexView.m in Sources */,
 				2305A216256BA4CE0099EFE3 /* MioLabel.m in Sources */,
 				230274F72589B67700937C04 /* HXPhotoEditStickerItemView.m in Sources */,
@@ -4057,7 +4125,6 @@
 				236DB704250F0DD8001CC2F3 /* LOTBlockCallback.m in Sources */,
 				23673F6C2507165E00C599CB /* UIScrollView+MioExtension.m in Sources */,
 				233825F52518796900DC9021 /* HSBaseTableViewCell.m in Sources */,
-				236DB778250F6668001CC2F3 /* UIScrollView+ZFPlayer.m in Sources */,
 				230274BD2589B67700937C04 /* HXPhoto3DTouchViewController.m in Sources */,
 				233826052518A8D500DC9021 /* MioRefreshHeader.m in Sources */,
 				2366F670257F2590006E1D7D /* NSDateFormatter + Extension.m in Sources */,
@@ -4073,6 +4140,7 @@
 				2318946E258B32940092C31B /* MioMvVC.m in Sources */,
 				236DB6F2250F0DD8001CC2F3 /* LOTShapeTrimPath.m in Sources */,
 				23E5B6AF25B1294F0017F0CC /* MioMVRankListVC.m in Sources */,
+				23182DED25CF82250065441B /* ZFSmallFloatControlView.m in Sources */,
 				23C913F4259C75B0006FA6EB /* MioMusicRankListVC.m in Sources */,
 				236DB6F3250F0DD8001CC2F3 /* LOTShapeGradientFill.m in Sources */,
 				231AE59A259ADFE4006AFA89 /* MioMVCollectionCell.m in Sources */,
@@ -4080,9 +4148,9 @@
 				236DB703250F0DD8001CC2F3 /* LOTValueCallback.m in Sources */,
 				2350556F25675F4600F96AFC /* MioTestVC.m in Sources */,
 				23693FBE25A4389300696C74 /* MioMVAllCmtVC.m in Sources */,
+				23182E2125CF929C0065441B /* WMPlayerModel.m in Sources */,
 				23C24FD22446A4CA00EE0BE2 /* STPickerViewUI.m in Sources */,
 				230274F62589B67700937C04 /* HXPhotoEditGraffitiColorViewCell.m in Sources */,
-				236DB782250F6668001CC2F3 /* ZFIJKPlayerManager.m in Sources */,
 				237FDDC525CA7F210064CC42 /* MioChooseFavoriteTagView.m in Sources */,
 				2305A219256BA9A90099EFE3 /* MioView.m in Sources */,
 				2378094924FF4DF900007883 /* NERUtils.m in Sources */,
@@ -4096,12 +4164,12 @@
 				2318946D258B32940092C31B /* MioMvCmtVC.m in Sources */,
 				23AB23AA2431DA5300DBB427 /* HWTFCursorView.m in Sources */,
 				235055A12567A57500F96AFC /* DownloadTask.m in Sources */,
+				23182DE325CF82250065441B /* ZFIJKPlayerManager.m in Sources */,
 				230274F82589B67700937C04 /* HXPhotoEditGraffitiColorView.m in Sources */,
 				2318944C258AEEAE0092C31B /* MioAlbumModel.m in Sources */,
 				236DB720250F5BC0001CC2F3 /* MioGroudVC.m in Sources */,
 				231AE594259ADA1E006AFA89 /* MioRecommendMVVC.m in Sources */,
 				238875A225A55C800097FCEE /* MioAboutUsVC.m in Sources */,
-				236DB77D250F6668001CC2F3 /* ZFPortraitViewController.m in Sources */,
 				236DB6FC250F0DD8001CC2F3 /* LOTShapeStroke.m in Sources */,
 				23870E5F25BFEB6900FA65BA /* MioMVListVC.m in Sources */,
 				23AB23582431C8BA00DBB427 /* UIView+MioExtension.m in Sources */,
@@ -4118,42 +4186,44 @@
 				239930B725777DFA00584486 /* DOUAudioEventLoop.m in Sources */,
 				23C9142A259DB6EA006FA6EB /* MioCategoryMusicVC.m in Sources */,
 				23C91411259D7617006FA6EB /* MioSingerTableCell.m in Sources */,
+				23182DEE25CF82250065441B /* ZFLoadingView.m in Sources */,
 				236DB70B250F0DD8001CC2F3 /* LOTAnimatedSwitch.m in Sources */,
 				237D061E257DC3BA00697F3A /* BTCoverHorizontalTransition.m in Sources */,
 				233826252518ACDD00DC9021 /* TAAbstractDotView.m in Sources */,
 				230274C62589B67700937C04 /* HXCustomAssetModel.m in Sources */,
 				2378093F24FF4DF900007883 /* NERStack.m in Sources */,
-				236DB78A250F6668001CC2F3 /* ZFSliderView.m in Sources */,
 				236DB70A250F0DD8001CC2F3 /* LOTInterpolatorCallback.m in Sources */,
 				230274AE2589B67700937C04 /* UIImageView+HXExtension.m in Sources */,
 				2369369A258321E7005DB8CA /* MioButton.m in Sources */,
 				231AE58925998DBA006AFA89 /* MioAlbumCollectionCell.m in Sources */,
 				232480282594613300C1F68B /* MioDownloadMVVC.m in Sources */,
-				236DB777250F6668001CC2F3 /* ZFPersentInteractiveTransition.m in Sources */,
 				23615E12257493CA00EAD39D /* MioPlayer.m in Sources */,
 				230274EB2589B67700937C04 /* HXPhotoEditGraffitiColorSizeView.m in Sources */,
 				23AB235B2431C8BA00DBB427 /* NSArray+jlExtension.m in Sources */,
-				236DB776250F6668001CC2F3 /* ZFPlayerLogManager.m in Sources */,
 				230274CB2589B67700937C04 /* HXCameraBottomView.m in Sources */,
+				23182DD425CF82250065441B /* ZFPlayerController.m in Sources */,
 				235055A42567A57500F96AFC /* DownloadManager.m in Sources */,
 				236DB70C250F0DD8001CC2F3 /* LOTKeyframe.m in Sources */,
 				2366F667257F1F6D006E1D7D /* TimeTool.m in Sources */,
 				236DB70D250F0DD8001CC2F3 /* LOTBezierData.m in Sources */,
+				23182DDB25CF82250065441B /* ZFPresentTransition.m in Sources */,
 				23AB23AB2431DA5300DBB427 /* MioLoginVC.m in Sources */,
 				2399053725AD93B300ABCF83 /* MioMusicCollectionCell.m in Sources */,
 				2312AC482595EB5200EF45AA /* SGWebView.m in Sources */,
 				23C913ED259C54AE006FA6EB /* CustomCell.m in Sources */,
+				23182DE225CF82250065441B /* UIViewController+ZFPlayerRotation.m in Sources */,
 				23693FC525A45C0E00696C74 /* MioRadioView.m in Sources */,
 				233825F22518796900DC9021 /* HSHeaderModel.m in Sources */,
 				238875B225A597640097FCEE /* MioLikeSingerVC.m in Sources */,
 				23693FBB25A30E7600696C74 /* MioAllCmtCell.m in Sources */,
-				236DB78B250F6668001CC2F3 /* ZFPlayerControlView.m in Sources */,
 				2366F66D257F246E006E1D7D /* LyricParser.m in Sources */,
 				238875B525A597720097FCEE /* MioLikeAlbumVC.m in Sources */,
 				236DB6EA250F0DD8001CC2F3 /* UIColor.m in Sources */,
 				230274DF2589B67700937C04 /* HXPhotoEditChartletModel.m in Sources */,
 				23AB23232431C77A00DBB427 /* main.m in Sources */,
 				2399053D25ADA70400ABCF83 /* MioRecentMusicVC.m in Sources */,
+				23182DEC25CF82250065441B /* ZFPlayerControlView.m in Sources */,
+				23182DE125CF82250065441B /* ZFReachabilityManager.m in Sources */,
 				230274E62589B67700937C04 /* HXPhotoEditSplashView.m in Sources */,
 				2367ADB1251DD80300935CF3 /* HLZIrregulatBtn.m in Sources */,
 				23693FB825A302E500696C74 /* MioCmtModel.m in Sources */,
@@ -4164,7 +4234,6 @@
 				239930AD25777DFA00584486 /* DOUAudioAnalyzer+Default.m in Sources */,
 				233825F42518796900DC9021 /* HSTextTableViewCell.m in Sources */,
 				230274F02589B67700937C04 /* HXPhotoEditChartletListView.m in Sources */,
-				236DB779250F6668001CC2F3 /* ZFPlayerNotification.m in Sources */,
 				236DB700250F0DD8001CC2F3 /* UIColor+Expanded.m in Sources */,
 				2348223625BA7423009B0190 /* MioIntegralVC.m in Sources */,
 				23AB23B12431DAB500DBB427 /* MioLargeButton.m in Sources */,
@@ -4173,6 +4242,7 @@
 				230275112589FD6D00937C04 /* UIView+PYSearchExtension.m in Sources */,
 				231AE58E2599B721006AFA89 /* MioAlbumVC.m in Sources */,
 				239F549A25B5788300C81817 /* MioChooseDefaultQuailtyView.m in Sources */,
+				23182DD325CF82250065441B /* ZFPlayerGestureControl.m in Sources */,
 				23693FCB25A46A6200696C74 /* MioMVBigCollectionCell.m in Sources */,
 				23AB23A92431DA5300DBB427 /* MioModiPassWordVC.m in Sources */,
 				2378093524FF4DF900007883 /* NSString+NERChainable.m in Sources */,
@@ -4180,8 +4250,6 @@
 				23C91420259D80AC006FA6EB /* MioSearchMVResultVC.m in Sources */,
 				23E5B6B225B17AC10017F0CC /* MioMoreFuncView.m in Sources */,
 				2302750C2589FD6D00937C04 /* PYSearchViewController.m in Sources */,
-				236DB784250F6668001CC2F3 /* ZFUtilities.m in Sources */,
-				230779492435CA9D00EFCD1D /* MyUploadManager.m in Sources */,
 				23AB23552431C8BA00DBB427 /* UIButton+MioExtension.m in Sources */,
 				2369369E258322F3005DB8CA /* YLButton.m in Sources */,
 				2378092C24FF4DF900007883 /* UILabel+NERChainable.m in Sources */,
@@ -4212,16 +4280,18 @@
 				233826212518ACDD00DC9021 /* SDCollectionViewCell.m in Sources */,
 				236DB6DB250F0DD8001CC2F3 /* LOTTransformInterpolator.m in Sources */,
 				230274D32589B67700937C04 /* HXCustomCollectionReusableView.m in Sources */,
+				23182DD625CF82250065441B /* ZFOrientationObserver.m in Sources */,
 				230274A42589B67700937C04 /* HXPhotoConfiguration.m in Sources */,
 				2348223025B92ED6009B0190 /* MioMusicListVC.m in Sources */,
 				236DB6F9250F0DD8001CC2F3 /* LOTShapeGroup.m in Sources */,
 				230274C02589B67700937C04 /* HXPhotoViewController.m in Sources */,
-				236DB77C250F6668001CC2F3 /* ZFPlayerView.m in Sources */,
 				23189EFD25A5B79500D7EBDC /* HQFlowView.m in Sources */,
 				236DB6F5250F0DD8001CC2F3 /* LOTShapeRepeater.m in Sources */,
 				236DB6E8250F0DD8001CC2F3 /* LOTRepeaterRenderer.m in Sources */,
 				239930AC25777DFA00584486 /* DOUAudioRenderer.m in Sources */,
 				23FF98342547BB26008CC170 /* GCDQueue.m in Sources */,
+				23182DE725CF82250065441B /* ZFVolumeBrightnessView.m in Sources */,
+				23182DE525CF82250065441B /* ZFUtilities.m in Sources */,
 				230274C12589B67700937C04 /* HXCustomCameraController.m in Sources */,
 				239930B025777DFA00584486 /* DOUAudioVisualizer.m in Sources */,
 				236DB6DD250F0DD8001CC2F3 /* LOTNumberInterpolator.m in Sources */,
@@ -4360,7 +4430,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1.4;
+				CURRENT_PROJECT_VERSION = 1.0.4.1;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = X7B59Z8L2P;
 				GCC_PREFIX_HEADER = 573music/PrefixHeader.pch;
@@ -4374,7 +4444,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/573music/Common/Lib/AcrCloud",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.573music.jgs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "573music/573music-Bridging-Header.h";
@@ -4396,7 +4466,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1.4;
+				CURRENT_PROJECT_VERSION = 1.0.4.1;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = X7B59Z8L2P;
 				GCC_PREFIX_HEADER = 573music/PrefixHeader.pch;
@@ -4410,7 +4480,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/573music/Common/Lib/AcrCloud",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.573music.jgs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "573music/573music-Bridging-Header.h";

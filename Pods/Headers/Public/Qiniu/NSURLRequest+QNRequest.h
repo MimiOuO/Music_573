@@ -1,1 +1,0 @@
-../../../Qiniu/QiniuSDK/Http/Request/HttpClient/UrlProtocol/NSURLRequest+QNRequest.h

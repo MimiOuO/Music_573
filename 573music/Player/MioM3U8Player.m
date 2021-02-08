@@ -49,6 +49,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         playerManager.shouldAutoPlay = YES;
         
         self.player = [ZFPlayerController playerWithPlayerManager:playerManager containerView:nil];
+        self.player.allowOrentitaionRotation = NO;
         self.player.pauseWhenAppResignActive = NO;
         WEAKSELF;
         self.player.currentPlayerManager.playerPlayStateChanged = ^(id<ZFPlayerMediaPlayback>  _Nonnull asset, ZFPlayerPlaybackState playState) {
@@ -211,10 +212,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
   if (context == kStatusKVOKey) {
-    [self performSelector:@selector(_updateStatus)
-                 onThread:[NSThread mainThread]
-               withObject:nil
-            waitUntilDone:NO];
+//    [self performSelector:@selector(_updateStatus)
+//                 onThread:[NSThread mainThread]
+//               withObject:nil
+//            waitUntilDone:NO];
   }
   else if (context == kDurationKVOKey) {
     [self performSelector:@selector(_timerAction:)
@@ -223,10 +224,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             waitUntilDone:NO];
   }
   else if (context == kBufferingRatioKVOKey) {
-    [self performSelector:@selector(_updateBufferingStatus)
-                 onThread:[NSThread mainThread]
-               withObject:nil
-            waitUntilDone:NO];
+//    [self performSelector:@selector(_updateBufferingStatus)
+//                 onThread:[NSThread mainThread]
+//               withObject:nil
+//            waitUntilDone:NO];
   }
   else {
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

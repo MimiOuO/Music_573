@@ -86,9 +86,6 @@
 /// 返回按钮点击回调
 @property (nonatomic, copy) void(^backBtnClickCallback)(void);
 
-/// 倍率按钮回调
-@property (nonatomic, copy) void(^rateBtnClickCallback)(void);
-
 /// 控制层显示或者隐藏
 @property (nonatomic, readonly) BOOL controlViewAppeared;
 

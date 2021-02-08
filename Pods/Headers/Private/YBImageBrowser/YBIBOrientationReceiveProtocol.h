@@ -1,1 +1,0 @@
-../../../YBImageBrowser/YBImageBrowser/Protocol/YBIBOrientationReceiveProtocol.h

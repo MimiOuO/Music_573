@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "MioTabbarVC.h"
 #import <JJException.h>
-#import <JPUSHService.h>
+//#import <JPUSHService.h>
 
 #import "MioLoginVC.h"
 
@@ -170,12 +170,15 @@
 
 /// 在这里写支持的旋转方向，为了防止横屏方向，应用启动时候界面变为横屏模式
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    
+    return UIInterfaceOrientationMaskAll;
     // 可以这么写
-    if (self.allowOrentitaionRotation) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    }
-    return UIInterfaceOrientationMaskPortrait;
+//    if (self.allowOrentitaionRotation) {
+//        return UIInterfaceOrientationMaskAllButUpsideDown;
+//    }
+//    return UIInterfaceOrientationMaskPortrait;
 }
+
 
 #pragma mark - 移动皮肤包
 -(void)changeSkinLocation{
