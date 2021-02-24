@@ -9,6 +9,7 @@
 #import "MioMvIntroVC.h"
 #import "LEECoolButton.h"
 #import "MioMvVC.h"
+#import "MioSingerVC.h"
 @interface MioMvIntroVC ()
 @property (nonatomic, strong) UIScrollView *scroll;
 @property (nonatomic, strong) UIView *relatedView;
@@ -29,7 +30,12 @@
     _scroll = [UIScrollView creatScroll:frame(0, 0, KSW, KSH - StatusH - KSW *9/16 - 44) inView:self.view contentSize:CGSizeMake(KSW, 1000)];
     _relatedView = [UIView creatView:frame(0, 0, KSW, 6 * 73) inView:_scroll bgColor:appClearColor radius:0];
     UIImageView *avatar = [UIImageView creatImgView:frame(Mar, 12, 46, 46) inView:_scroll image:@"" radius:23];
-    [avatar sd_setImageWithURL:Url(mv.singer[@"cover_image_path"]) placeholderImage:image(@"qxt_geshou")];
+    [avatar sd_setImageWithURL:[mv.singer[@"cover_image_path"] mj_url] placeholderImage:image(@"qxt_geshou")];
+    [avatar whenTapped:^{
+        MioSingerVC *vc = [[MioSingerVC alloc] init];
+        vc.singerId = mv.singer_id;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
     MioLabel *nameLab = [MioLabel creatLabel:frame(71, 17, KSW - 71 - 120, 20) inView:_scroll text:mv.singer_name colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
     UILabel *fansLab = [UILabel creatLabel:frame(71, 37, 200, 17) inView:_scroll text:[NSString stringWithFormat:@"%@粉丝",mv.singer[@"like_num"]] color:color_text_two size:12 alignment:NSTextAlignmentLeft];
     UILabel *contentLab = [UILabel creatLabel:frame(Mar, 70, KSW_Mar2, 20) inView:_scroll text:mv.title color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];

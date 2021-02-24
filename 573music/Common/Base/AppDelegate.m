@@ -24,6 +24,9 @@
 #import "AFNetworkReachabilityManager.h"
 
 #import "HcdGuideView.h"
+
+#import <SJM3U8Download.h>
+#import <SJM3U8DownloadListController.h>
 #endif
 @interface AppDelegate ()
 @property (nonatomic, assign) float tabbarHeight;
@@ -165,6 +168,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application{
     NSLog(@"杀后台了");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"killApp" object:nil];
+    [SJM3U8DownloadListController.shared suspendAllItems];//取消所有下载任务
 }
 
 

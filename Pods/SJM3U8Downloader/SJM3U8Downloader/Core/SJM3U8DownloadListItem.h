@@ -10,10 +10,9 @@
 #import <SJUIKit/SJSQLiteTableModelProtocol.h>
 #import "SJM3U8DownloadListControllerDefines.h"
 #import "SJM3U8DownloadListOperation.h"
-
 NS_ASSUME_NONNULL_BEGIN
 @interface SJM3U8DownloadListItem : NSObject<SJM3U8DownloadListItem, SJSQLiteTableModelProtocol>
-- (instancetype)initWithUrl:(NSString *)url folderName:(nullable NSString *)name;
+- (instancetype)initWithUrl:(NSString *)url folderName:(nullable NSString *)name withMusic:(NSDictionary *)musicJson;
 @property (nonatomic, weak, nullable) id<SJM3U8DownloadListItemDelegate> delegate;
 @property (nonatomic, copy, readonly, nullable) NSString *folderName;
 
@@ -23,5 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) float progress;
 @property (nonatomic) double speed;
 @property (nonatomic, strong, nullable) SJM3U8DownloadListOperation *operation;
+@property (nonatomic, strong) NSDictionary *musicJson;
+@property (nonatomic, strong) NSString *musicJsonString;
 @end
 NS_ASSUME_NONNULL_END

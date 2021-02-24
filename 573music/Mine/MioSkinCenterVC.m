@@ -201,7 +201,7 @@
     if (index == 0) {
         bannerView.mainImageView.image = image(@"lixiubai");
     }else{
-        [bannerView.mainImageView sd_setImageWithURL:Url(_dataArr[index][@"cover_image_path"]) placeholderImage:nil];
+        [bannerView.mainImageView sd_setImageWithURL:[_dataArr[index][@"cover_image_path"] mj_url] placeholderImage:nil];
     }
     
     return bannerView;
@@ -215,7 +215,7 @@
     if (pageNumber == 0) {
         _backGroundImg.image = image(@"lixiubai");
     }else{
-        [_backGroundImg sd_setImageWithURL:Url(_dataArr[pageNumber][@"cover_image_path"]) placeholderImage:nil];
+        [_backGroundImg sd_setImageWithURL:[_dataArr[pageNumber][@"cover_image_path"] mj_url] placeholderImage:nil];
     }
     
     _titleLab.text = _dataArr[pageNumber][@"title"];

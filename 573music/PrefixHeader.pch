@@ -297,7 +297,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 
 //正式服务器
-//#define api_base @"http://216.250.254.49/api"
+//#define api_base @"http://216.250.254.49:88/api"
 //测试服务器
 #define api_base @"http://edu.giggsgame.com/api"
 

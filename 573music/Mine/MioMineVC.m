@@ -23,7 +23,8 @@
 #import "MioNoticeCenterVC.h"
 #import "MioLocalVC.h"
 #import "MioIntegralVC.h"
-
+#import <SJM3U8DownloadListController.h>
+#import <SJM3U8DownloadListItem.h>
 @interface MioMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) MioUserInfo *user;
 
@@ -198,18 +199,18 @@
     MioLabel *signLab = [MioLabel creatLabel:frame(KSW_Mar2*3/4, 92, KSW_Mar2/4, 44) inView:_userBgView text:@"签到" colorName:name_text_one size:14 alignment:NSTextAlignmentCenter];
     
     
-    MioView *likeView = [MioView creatView:frame(50, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
-    MioView *recentView = [MioView creatView:frame((KSW/2 - 26), 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
-    MioView *localView = [MioView creatView:frame(KSW - 102, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
-//    MioView *downLoadView = [MioView creatView:frame(KSW - 30 -52, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
+    MioView *likeView = [MioView creatView:frame(30, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
+    MioView *recentView = [MioView creatView:frame((KSW/2 - (KSW-82*2 - 52*2)/6 - 52), 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
+    MioView *localView = [MioView creatView:frame(KSW/2 + (KSW-82*2 - 52*2)/6, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
+    MioView *downLoadView = [MioView creatView:frame(KSW - 30 -52, 197, 52, 52) inView:bgScroll bgColorName:name_sup_one radius:26];
     MioImageView *likeImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:likeView image:@"me_like_biaodan" bgTintColorName:name_main radius:0];
     MioImageView *songListImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:recentView image:@"shouye_gedan" bgTintColorName:name_main radius:0];
     MioImageView *localImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:localView image:@"me_local" bgTintColorName:name_main radius:0];
-//    MioImageView *downloadImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:downLoadView image:@"me_download" bgTintColorName:name_main radius:0];
+    MioImageView *downloadImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:downLoadView image:@"me_download" bgTintColorName:name_main radius:0];
     MioLabel *likeLab = [MioLabel creatLabel:frame(likeView.left, 253, 52, 17) inView:bgScroll text:@"喜欢" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     MioLabel *songlistLab = [MioLabel creatLabel:frame(recentView.left, 253, 52, 17) inView:bgScroll text:@"最近" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     MioLabel *loalLab = [MioLabel creatLabel:frame(localView.left, 253, 52, 17) inView:bgScroll text:@"本地" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
-//    MioLabel *downloadLab = [MioLabel creatLabel:frame(downLoadView.left, 253, 52, 17) inView:bgScroll text:@"下载" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+    MioLabel *downloadLab = [MioLabel creatLabel:frame(downLoadView.left, 253, 52, 17) inView:bgScroll text:@"下载" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     
 
     MioLabel *mySonglistLab = [MioLabel creatLabel:frame(Mar, 300, 100, 20) inView:bgScroll text:@"我的歌单" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
@@ -283,17 +284,47 @@
     [recentView whenTapped:^{
         MioRecentVC *vc = [[MioRecentVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+//        NSArray<NSString *> *urls =
+//    @[@"https://mp32.aw998.com/Simone%20Altavilla/Lego(Markus%20Masuhr%20Reshape)/mp3.m3u8",@"https://mp32.aw998.com/Simon/Hey%20Little%20Shollgirl/mp3.m3u8",@"https://mp32.aw998.com/Simon/Homeward%20Bound/mp3.m3u8"
+//        ];
+//
+//        for ( NSString *url in urls ) {
+//            [SJM3U8DownloadListController.shared addItemWithUrl:url withMusic:[mioM3U8Player.currentMusic mj_JSONObject]];
+//            id<SJM3U8DownloadListItem> item = [SJM3U8DownloadListController.shared itemByUrl:url];
+////            NSLog(@"%@",item.musicJson);
+//        }
+//
+//        NSInteger urlHash =  [Url(@"https://mp32.aw998.com/Simone%20Altavilla/Lego(Markus%20Masuhr%20Reshape)/mp3.m3u8") hash];
+//
+//        NSString *downloadPath = [NSString stringWithFormat:@"%@/sj.download.files",
+//                               NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+//
+//        NSFileManager *fileManager = [NSFileManager defaultManager];
+//
+//
+//        if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/%ld",downloadPath,(long)urlHash]]) {
+//            NSLog(@"歌曲已存在");
+//        }else{
+//            NSLog(@"歌曲不存在");
+//        }
+//
+
     }];
     [localView whenTapped:^{
+//        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
+        
         if ([self isMediaPlayerService]) {
             MioLocalVC *vc = [[MioLocalVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         };
     }];
-//    [downLoadView whenTapped:^{
-//        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }];
+    [downLoadView whenTapped:^{
+//        [UIWindow showInfo:@"开发中"];
+//        return;
+        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
     
     [newSonglistLab whenTapped:^{
         goLogin;
@@ -306,10 +337,8 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     [moreRecentLab whenTapped:^{
-        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
+        MioRecentVC *vc = [[MioRecentVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
-//        MioRecentVC *vc = [[MioRecentVC alloc] init];
-//        [self.navigationController pushViewController:vc animated:YES];
     }];
 }
 

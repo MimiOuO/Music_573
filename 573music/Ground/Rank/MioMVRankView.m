@@ -21,7 +21,7 @@
 - (void)setRankDic:(NSDictionary *)rankDic{
     
     UIImageView *bgImg = [UIImageView creatImgView:frame(0, 0, 234, 140) inView:self image:@"" radius:6];
-    [bgImg sd_setImageWithURL:Url(rankDic[@"cover_image_path"]) placeholderImage:image(@"gequ_zhanweitu")];
+    [bgImg sd_setImageWithURL:[rankDic[@"cover_image_path"] mj_url] placeholderImage:image(@"gequ_zhanweitu")];
     UIView *bgView = [UIView creatView:frame(0, 0, 234, 140) inView:self bgColor:rgba(0, 0, 0, 0.3) radius:6];
     
     

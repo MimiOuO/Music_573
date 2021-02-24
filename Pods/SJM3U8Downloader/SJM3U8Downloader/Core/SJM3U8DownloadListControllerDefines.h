@@ -49,8 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)suspendAllItems;
 
 /// 添加到下载队列
-- (NSInteger)addItemWithUrl:(NSString *)url;
-- (NSInteger)addItemWithUrl:(NSString *)url folderName:(nullable NSString *)name;
+- (NSInteger)addItemWithUrl:(NSString *)url withMusic:(NSDictionary *)musicJson;
+- (NSInteger)addItemWithUrl:(NSString *)url folderName:(nullable NSString *)name withMusic:(NSDictionary *)musicJson;
 
 /// 主动同步当前item的信息
 - (void)updateContentsForItemAtIndex:(NSInteger)idx;
@@ -91,6 +91,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) SJDownloadState state;
 @property (nonatomic, readonly) float progress;
 @property (nonatomic, readonly) double speed; ///< m/s   兆/每秒
+@property (nonatomic, strong) NSDictionary *musicJson;
 @end
 
 @protocol SJM3U8DownloadListItemDelegate <NSObject>

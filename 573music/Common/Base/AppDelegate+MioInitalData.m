@@ -20,6 +20,7 @@
     [self requestHotSearch];
     [self requesttimeInterval];
     [self requestMVTabs];
+    [self requestDJTabs];
     [self requestSkin];
     [self requestVersion];
     [self requestTreaties];
@@ -64,6 +65,14 @@
     [MioGetReq(api_mvTabs, @{@"position":@"mv"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"][0][@"tags"];
         [userdefault setObject:data forKey:@"mvtabs"];
+        [userdefault synchronize];
+    } failure:^(NSString *errorInfo) {}];
+}
+
+-(void)requestDJTabs{
+    [MioGetReq(api_mvTabs, @{@"position":@"DJ专区"}) success:^(NSDictionary *result){
+        NSArray *data = [result objectForKey:@"data"][0][@"tags"];
+        [userdefault setObject:data forKey:@"djtabs"];
         [userdefault synchronize];
     } failure:^(NSString *errorInfo) {}];
 }
@@ -128,20 +137,23 @@
     [MioGetCacheReq(api_banners, @{@"position":IPHONE_X?@"启动页大":@"启动页小"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         
-        //配置广告数据
-        XHLaunchImageAdConfiguration *imageAdconfiguration = [XHLaunchImageAdConfiguration defaultConfiguration];
-        
-        imageAdconfiguration.imageNameOrURLString = data[0][@"cover_image_path"];
-        
-        imageAdconfiguration.openModel = data[0][@"href"];
-        imageAdconfiguration.frame = CGRectMake(0, 0, KSW, KSH- 78 - SafeBotH);
-        imageAdconfiguration.skipButtonType = SkipTypeTimeText;
-       
-        UIImageView *icon = [UIImageView creatImgView:frame(KSW2 - 98/2, KSH - 25 - 28 - SafeBotH, 98, 28) inView:nil image:@"573logo" radius:0];
-        imageAdconfiguration.subViews = [NSArray arrayWithObject:icon];
-        
-        //显示图片开屏广告
-        [XHLaunchAd imageAdWithImageAdConfiguration:imageAdconfiguration delegate:self];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            //配置广告数据
+            XHLaunchImageAdConfiguration *imageAdconfiguration = [XHLaunchImageAdConfiguration defaultConfiguration];
+            
+            imageAdconfiguration.imageNameOrURLString = data[0][@"cover_image_path"];
+            
+            imageAdconfiguration.openModel = data[0][@"href"];
+            imageAdconfiguration.frame = CGRectMake(0, 0, KSW, KSH- 78 - SafeBotH);
+            imageAdconfiguration.skipButtonType = SkipTypeTimeText;
+           
+            UIImageView *icon = [UIImageView creatImgView:frame(KSW2 - 98/2, KSH - 25 - 28 - SafeBotH, 98, 28) inView:nil image:@"573logo" radius:0];
+            imageAdconfiguration.subViews = [NSArray arrayWithObject:icon];
+            
+            //显示图片开屏广告
+            [XHLaunchAd imageAdWithImageAdConfiguration:imageAdconfiguration delegate:self];
+        });
     } failure:^(NSString *errorInfo) {}];
  
 }

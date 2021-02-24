@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = WoodPeckeriOS;
+			productName = WoodPeckeriOS;
 		};
 		638FEAAFC575BB76BC6AC055CDDA3506 /* LookinServer */ = {
 			isa = PBXAggregateTarget;
@@ -24,6 +25,7 @@
 			dependencies = (
 			);
 			name = LookinServer;
+			productName = LookinServer;
 		};
 /* End PBXAggregateTarget section */
 
@@ -1261,7 +1263,7 @@
 		008896DD4D20154582C4484654CFD680 /* MJExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJExtension-prefix.pch"; sourceTree = "<group>"; };
 		00A2D00203D062512D13CE45BDBAFF40 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoStateFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.h; sourceTree = "<group>"; };
 		00F0336938F8309AF38BD4EFFB07B391 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebCache.h"; path = "SDWebImage/Core/UIImageView+WebCache.h"; sourceTree = "<group>"; };
-		011E91F5D67C0D6E0C3092FAFEABDFC7 /* libWHC_ModelSqliteKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libWHC_ModelSqliteKit.a; path = libWHC_ModelSqliteKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		011E91F5D67C0D6E0C3092FAFEABDFC7 /* libWHC_ModelSqliteKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWHC_ModelSqliteKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		014E2537B9F691EF36DC9EFB61B4AF39 /* SGQRCodeScanView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SGQRCodeScanView.h; path = SGQRCode/SGQRCodeScanView.h; sourceTree = "<group>"; };
 		025F05A858B2E33A93B4F4EF583DE92F /* SJM3U8DownloadListItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJM3U8DownloadListItem.h; path = SJM3U8Downloader/Core/SJM3U8DownloadListItem.h; sourceTree = "<group>"; };
 		02D0E52F0E85E56900C86C27DD7D8645 /* SJRotationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJRotationManager.h; path = SJBaseVideoPlayer/Common/Implements/SJRotationManager.h; sourceTree = "<group>"; };
@@ -1302,7 +1304,7 @@
 		0C3DB544B7F231E821EFF0F413BD45C4 /* SJTaskQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJTaskQueue.h; path = SJUIKit/Queues/SJTaskQueue.h; sourceTree = "<group>"; };
 		0D0BD40ED38DA4438C31AE0937129590 /* SJClipsSaveResultToAlbumHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJClipsSaveResultToAlbumHandler.m; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/Model/SJClipsSaveResultToAlbumHandler.m; sourceTree = "<group>"; };
 		0DC8249EE1BA735DE7E3CCABE24A01C9 /* SJUTRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJUTRecorder.h; path = SJUIKit/AttributesFactory/UIKitText/SJUTRecorder.h; sourceTree = "<group>"; };
-		0DE46762C16AFA797BDAAD77C77D762A /* libPPBadgeView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPPBadgeView.a; path = libPPBadgeView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DE46762C16AFA797BDAAD77C77D762A /* libPPBadgeView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPPBadgeView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF6C85E99B49046A5DA4952EAE55B51 /* YYTextAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextAttribute.m; path = YYText/String/YYTextAttribute.m; sourceTree = "<group>"; };
 		0E09BB393D37D56D56769E14BEAA70A7 /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/Core/SDWebImageOperation.h; sourceTree = "<group>"; };
 		0E771B6FF3A0B146B15E5870C7C725A3 /* MJRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoNormalFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.m; sourceTree = "<group>"; };
@@ -1341,7 +1343,7 @@
 		151DDC43AFBC88C1E3CCA6A60309EE69 /* AFNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.release.xcconfig; sourceTree = "<group>"; };
 		1589946E9F8761C89A8B26A75377A3A0 /* SJPlayerAutoplayConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJPlayerAutoplayConfig.m; path = SJBaseVideoPlayer/Common/Implements/SJPlayerAutoplayConfig.m; sourceTree = "<group>"; };
 		15D04A340FC6219DA484BFF1431680E8 /* SJQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJQueue.m; path = SJUIKit/Queues/SJQueue.m; sourceTree = "<group>"; };
-		16427E92326DD9D7A544B4EC641BBCB1 /* libLEEAlert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libLEEAlert.a; path = libLEEAlert.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		16427E92326DD9D7A544B4EC641BBCB1 /* libLEEAlert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLEEAlert.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1650EC555BC3FC401503A4569B432979 /* SJSQLite3TableClassCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJSQLite3TableClassCache.m; path = SJUIKit/SQLite3/Core/SJSQLite3TableClassCache.m; sourceTree = "<group>"; };
 		16545623FC66FBEBAD430AA28F0455AC /* MJRefreshFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshFooter.h; path = MJRefresh/Base/MJRefreshFooter.h; sourceTree = "<group>"; };
 		169E8384710B59762C98CA85F5FB6654 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
@@ -1374,7 +1376,7 @@
 		1A4D67FA8D48552A3D824C6FC1167F2F /* mz_zip_rw.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mz_zip_rw.h; path = SSZipArchive/minizip/mz_zip_rw.h; sourceTree = "<group>"; };
 		1A9F5F8B9B6CA8B16E93E330C94733BE /* SJClipsResultsControlLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJClipsResultsControlLayer.h; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/ControlLayer/SJClipsResultsControlLayer.h; sourceTree = "<group>"; };
 		1B18AFAD9355F8F7B4446C7639C953C4 /* YYTextMagnifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextMagnifier.h; path = YYText/Component/YYTextMagnifier.h; sourceTree = "<group>"; };
-		1B45F2956EA23A74D904AF8BC9C637B6 /* mz_zip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_zip.c; path = SSZipArchive/minizip/mz_zip.c; sourceTree = "<group>"; };
+		1B45F2956EA23A74D904AF8BC9C637B6 /* mz_zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_zip.c; path = SSZipArchive/minizip/mz_zip.c; sourceTree = "<group>"; };
 		1BC2E4909D6C75FB80CE65FD2394DB47 /* NSAttributedString+SJMake.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+SJMake.h"; path = "SJUIKit/AttributesFactory/NSAttributedString+SJMake.h"; sourceTree = "<group>"; };
 		1BC32965CD750E1D6B670642FF0C4FB5 /* SDImageCoderHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCoderHelper.m; path = SDWebImage/Core/SDImageCoderHelper.m; sourceTree = "<group>"; };
 		1C073F34D0AEA8FA7D64D75EFC5C8329 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FLAnimatedImageView.m; path = FLAnimatedImage/FLAnimatedImageView.m; sourceTree = "<group>"; };
@@ -1388,19 +1390,19 @@
 		1EA5D07C42E90FC43E1976266AF4F850 /* NSString+SJBaseVideoPlayerExtended.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+SJBaseVideoPlayerExtended.m"; path = "SJBaseVideoPlayer/Common/Foundation/NSString+SJBaseVideoPlayerExtended.m"; sourceTree = "<group>"; };
 		1F07DD1B486847795304EA1F0106C516 /* MultipartMessageHeaderField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeaderField.m; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/Mime/MultipartMessageHeaderField.m; sourceTree = "<group>"; };
 		1F9E3DFAF32F931F988DFF97EE1B31BA /* SJUTRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJUTRecorder.m; path = SJUIKit/AttributesFactory/UIKitText/SJUTRecorder.m; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFED36A657123030ABB700256D73F15 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20200CC5660CD4B4E2211F78CA764E98 /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUITextFieldView+Additions.m"; path = "IQKeyboardManager/Categories/IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
 		2061CC62D22C2CCE7968CD78133AABCB /* JJException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JJException.h; path = JJException/Source/Main/JJException.h; sourceTree = "<group>"; };
 		20793ADD04CAF92C27DD91F1D705EAA7 /* SJUTRangeHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJUTRangeHandler.m; path = SJUIKit/AttributesFactory/UIKitText/SJUTRangeHandler.m; sourceTree = "<group>"; };
 		2088614D42ED1B908863A5634CD6F0FB /* YYTextKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextKeyboardManager.h; path = YYText/Component/YYTextKeyboardManager.h; sourceTree = "<group>"; };
 		20950FD9F3EB0444480A5714DB288AE2 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
-		20C977F95A9E43F126DCB0B6029E4E96 /* mz_strm_os_posix.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_strm_os_posix.c; path = SSZipArchive/minizip/mz_strm_os_posix.c; sourceTree = "<group>"; };
+		20C977F95A9E43F126DCB0B6029E4E96 /* mz_strm_os_posix.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_strm_os_posix.c; path = SSZipArchive/minizip/mz_strm_os_posix.c; sourceTree = "<group>"; };
 		20FA515571390079E973443204DD4CA6 /* SJPlaybackHistoryController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJPlaybackHistoryController.h; path = SJBaseVideoPlayer/Common/Implements/SJPlaybackHistoryController.h; sourceTree = "<group>"; };
 		210D9DF522E0BAEEA55E9DA481B97F43 /* SJUTRegexHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJUTRegexHandler.m; path = SJUIKit/AttributesFactory/UIKitText/SJUTRegexHandler.m; sourceTree = "<group>"; };
 		21828B57594892A4F200A6B9470B9B3A /* SJOutPutStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJOutPutStream.m; path = SJDownloadDataTask/Core/SJOutPutStream.m; sourceTree = "<group>"; };
 		219AD630197711A63F155C6C8586E261 /* SDDisplayLink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDDisplayLink.m; path = SDWebImage/Private/SDDisplayLink.m; sourceTree = "<group>"; };
 		21AA817F3BD2C153B61044EE4D2CB2D9 /* SSZipArchive.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSZipArchive.m; path = SSZipArchive/SSZipArchive.m; sourceTree = "<group>"; };
-		21B36C58B63F486BEB91CAFE492C84F8 /* libSJUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSJUIKit.a; path = libSJUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B36C58B63F486BEB91CAFE492C84F8 /* libSJUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSJUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		228E232C1B93433BBFB91881A6EF4A12 /* SJReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJReachability.h; path = SJBaseVideoPlayer/Common/Implements/SJReachability.h; sourceTree = "<group>"; };
 		22F6447E876EA0698BC31BDC9FD4D8AD /* SJControlLayerIdentifiers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJControlLayerIdentifiers.m; path = SJVideoPlayer/Common/Consts/SJControlLayerIdentifiers.m; sourceTree = "<group>"; };
 		231414894C59FA72DD3F0D2F49A00C29 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderOperation.m; path = SDWebImage/Core/SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
@@ -1415,7 +1417,7 @@
 		255108B980B36E353AD754985D474E84 /* SJSQLiteObjectInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJSQLiteObjectInfo.h; path = SJUIKit/SQLite3/Core/SJSQLiteObjectInfo.h; sourceTree = "<group>"; };
 		255CEB663E283F25F216616BE7787543 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		25A9BE23DB6C15F389588D6C0DC65B3F /* NSAttributedString+YYText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+YYText.m"; path = "YYText/Utility/NSAttributedString+YYText.m"; sourceTree = "<group>"; };
-		25E5AB77408A8799248EC0CB277624C0 /* mz_strm.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_strm.c; path = SSZipArchive/minizip/mz_strm.c; sourceTree = "<group>"; };
+		25E5AB77408A8799248EC0CB277624C0 /* mz_strm.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_strm.c; path = SSZipArchive/minizip/mz_strm.c; sourceTree = "<group>"; };
 		25EB5296AB91E060C1E94B7806893670 /* UIScrollView+ListViewAutoplaySJAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+ListViewAutoplaySJAdd.h"; path = "SJBaseVideoPlayer/UIScrollView+ListViewAutoplaySJAdd.h"; sourceTree = "<group>"; };
 		26082C2F5FF2B80D92BA1D2D858623B0 /* CocoaAsyncSocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.release.xcconfig; sourceTree = "<group>"; };
 		26B16ED7DE0FF2774EA2B9083406080D /* SDAnimatedImageRep.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageRep.m; path = SDWebImage/Core/SDAnimatedImageRep.m; sourceTree = "<group>"; };
@@ -1435,7 +1437,7 @@
 		2A726013233711B2373A0CBC6D28AC1E /* NSTimer+SJDownloadDataTaskAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTimer+SJDownloadDataTaskAdd.h"; path = "SJDownloadDataTask/Core/NSTimer+SJDownloadDataTaskAdd.h"; sourceTree = "<group>"; };
 		2B0F15020D1355F4B1BA2CEACEC107A0 /* SJUTUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJUTUtils.h; path = SJUIKit/AttributesFactory/UIKitText/SJUTUtils.h; sourceTree = "<group>"; };
 		2B1E63C8B6896B97D773FC735392DA34 /* JJExceptionMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JJExceptionMacros.h; path = JJException/Source/Main/JJExceptionMacros.h; sourceTree = "<group>"; };
-		2B276B0A79173A1D6E83C9B4FB9A4A57 /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJExtension.a; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B276B0A79173A1D6E83C9B4FB9A4A57 /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B2E8C6D559891F46C7DF967F2B6FBA4 /* UIImage+GIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+GIF.h"; path = "SDWebImage/Core/UIImage+GIF.h"; sourceTree = "<group>"; };
 		2B38EAF98949299099F609821DAC3C65 /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshNormalHeader.m; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.m; sourceTree = "<group>"; };
 		2B4BC80EB79F69A75BCD35C21E891D47 /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
@@ -1450,7 +1452,7 @@
 		2C8DBE483E9E36CEC3FB62ADD92379D9 /* CHTCollectionViewWaterfallLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CHTCollectionViewWaterfallLayout-dummy.m"; sourceTree = "<group>"; };
 		2C9963308742CA0AC4BAEE3732810CF8 /* SJClipsVideoRecordsControlLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJClipsVideoRecordsControlLayer.m; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/ControlLayer/SJClipsVideoRecordsControlLayer.m; sourceTree = "<group>"; };
 		2CAFED0092C41874BDAA21AE4428BCF7 /* HTTPResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPResponse.h; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/HTTPResponse.h; sourceTree = "<group>"; };
-		2D24B4853EF5CE5AD7D4FA5E183BD6E2 /* libSDAutoLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSDAutoLayout.a; path = libSDAutoLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D24B4853EF5CE5AD7D4FA5E183BD6E2 /* libSDAutoLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDAutoLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D2B8A5F22BF6081A33FA27D7002F513 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		2D9D55A4EA1B8947E878237F778DBD6E /* SJM3U8Data.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJM3U8Data.h; path = SJM3U8Downloader/Core/SJM3U8Data.h; sourceTree = "<group>"; };
 		2E1A455EDFCFA3F5566820B5D0137803 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+SDAutoLayout.h"; path = "SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
@@ -1518,7 +1520,7 @@
 		411E51089C1D8C1449245B66945BB3A4 /* JJExceptionProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JJExceptionProxy.m; path = JJException/Source/Main/JJExceptionProxy.m; sourceTree = "<group>"; };
 		41E909F7A1584AB9DFE4BCF2929AE7EA /* NSObject+MJProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJProperty.m"; path = "MJExtension/NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		4216685B0867A4725040C3719345F287 /* SJSubtitlesPromptController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJSubtitlesPromptController.h; path = SJBaseVideoPlayer/Common/Implements/SJSubtitlesPromptController.h; sourceTree = "<group>"; };
-		4238243497B868D05D7EC92C81CBDFD4 /* mz_strm_pkcrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_strm_pkcrypt.c; path = SSZipArchive/minizip/mz_strm_pkcrypt.c; sourceTree = "<group>"; };
+		4238243497B868D05D7EC92C81CBDFD4 /* mz_strm_pkcrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_strm_pkcrypt.c; path = SSZipArchive/minizip/mz_strm_pkcrypt.c; sourceTree = "<group>"; };
 		424196005867475F56EF6AC1429713AC /* IQToolbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQToolbar.h; path = IQKeyboardManager/IQToolbar/IQToolbar.h; sourceTree = "<group>"; };
 		4284203C6467F5B0F3D25C193ACB5CF9 /* SJScrollingTextMarqueeView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJScrollingTextMarqueeView.m; path = SJVideoPlayer/Common/Implements/SJScrollingTextMarqueeView.m; sourceTree = "<group>"; };
 		429DA632A3126E3B01E393DA6D914570 /* SDWebImageCacheKeyFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCacheKeyFilter.h; path = SDWebImage/Core/SDWebImageCacheKeyFilter.h; sourceTree = "<group>"; };
@@ -1527,7 +1529,7 @@
 		445C9658EC88F9C64B58779DB8438900 /* NSObject+UnrecognizedSelectorHook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+UnrecognizedSelectorHook.m"; path = "JJException/Source/MRC/NSObject+UnrecognizedSelectorHook.m"; sourceTree = "<group>"; };
 		4461D7CCC7F61EE87F61D658421B39FA /* LYEmptyView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LYEmptyView.m; path = LYEmptyView/LYEmptyView.m; sourceTree = "<group>"; };
 		44ADED5BB609F40F4AD9135FF7EB8C81 /* mz_zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mz_zip.h; path = SSZipArchive/minizip/mz_zip.h; sourceTree = "<group>"; };
-		44C1E3A162081C80EDEC8B5994F16B80 /* mz_strm_zlib.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_strm_zlib.c; path = SSZipArchive/minizip/mz_strm_zlib.c; sourceTree = "<group>"; };
+		44C1E3A162081C80EDEC8B5994F16B80 /* mz_strm_zlib.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_strm_zlib.c; path = SSZipArchive/minizip/mz_strm_zlib.c; sourceTree = "<group>"; };
 		453535CE0B63C32B3894956D4545CF45 /* SJVideoPlayer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SJVideoPlayer-prefix.pch"; sourceTree = "<group>"; };
 		4574F679091F66F2E947EC9023A25D6E /* SGQRCodeScanView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SGQRCodeScanView.m; path = SGQRCode/SGQRCodeScanView.m; sourceTree = "<group>"; };
 		4584B43838EC0B962FE4A212A8F7EE66 /* SDWeakProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWeakProxy.h; path = SDWebImage/Private/SDWeakProxy.h; sourceTree = "<group>"; };
@@ -1539,7 +1541,7 @@
 		4753000A753D549D8C71F72B43AC6F5F /* SJM3U8Downloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJM3U8Downloader.m; path = SJM3U8Downloader/Core/SJM3U8Downloader.m; sourceTree = "<group>"; };
 		478397A39E944B7F738D18F22AB0A382 /* FSTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSTextView.m; path = FSTextView/FSTextView.m; sourceTree = "<group>"; };
 		47D07B35510A0757843E55E7041D6490 /* UIImage+Transform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Transform.m"; path = "SDWebImage/Core/UIImage+Transform.m"; sourceTree = "<group>"; };
-		4857921D7409914FAD8B91B5CED1C5FE /* libSJDownloadDataTask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSJDownloadDataTask.a; path = libSJDownloadDataTask.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4857921D7409914FAD8B91B5CED1C5FE /* libSJDownloadDataTask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSJDownloadDataTask.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4874936B23BE3F0480BBDC7EC5D609D3 /* SDImageGIFCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageGIFCoder.m; path = SDWebImage/Core/SDImageGIFCoder.m; sourceTree = "<group>"; };
 		48961B597FB5D5683D2D15A9F71DB386 /* MultipartFormDataParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultipartFormDataParser.h; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/Mime/MultipartFormDataParser.h; sourceTree = "<group>"; };
 		48BB013B30D5D88980BD7AA187AF537C /* JJException.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JJException.release.xcconfig; sourceTree = "<group>"; };
@@ -1578,12 +1580,12 @@
 		4FF50AC629D3F2255B28E24D223F8589 /* NSTimer+CleanTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTimer+CleanTimer.h"; path = "JJException/Source/ARC/NSTimer+CleanTimer.h"; sourceTree = "<group>"; };
 		503D4D14F73F28B5656939C5CB9327A8 /* SDWebImageOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageOperation.m; path = SDWebImage/Core/SDWebImageOperation.m; sourceTree = "<group>"; };
 		503FE8E02F326BD421FCCA3A35583458 /* YTKNetworkConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTKNetworkConfig.h; path = YTKNetwork/YTKNetworkConfig.h; sourceTree = "<group>"; };
-		5056A136F139CA265CDFB491EEF18E9D /* mz_strm_wzaes.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_strm_wzaes.c; path = SSZipArchive/minizip/mz_strm_wzaes.c; sourceTree = "<group>"; };
+		5056A136F139CA265CDFB491EEF18E9D /* mz_strm_wzaes.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_strm_wzaes.c; path = SSZipArchive/minizip/mz_strm_wzaes.c; sourceTree = "<group>"; };
 		5083532FC89B4D1185F0A9A886E33129 /* YTKNetwork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTKNetwork.h; path = YTKNetwork/YTKNetwork.h; sourceTree = "<group>"; };
 		511140C68E668D7752637F8CAAAE8EBC /* SJSubtitleItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJSubtitleItem.m; path = SJBaseVideoPlayer/Common/Implements/SJSubtitleItem.m; sourceTree = "<group>"; };
 		5119AB9A835EB53CA879701D4E7384FF /* HTTPServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/HTTPServer.h; sourceTree = "<group>"; };
 		5170470C940DFA192D3BD17486EC9EDA /* SJEdgeControlButtonItemAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJEdgeControlButtonItemAdapter.h; path = SJVideoPlayer/Common/Utils/Adapters/Core/SJEdgeControlButtonItemAdapter.h; sourceTree = "<group>"; };
-		51AF23CB92C8BB88C0B20DB5A47901DE /* libSJBaseVideoPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSJBaseVideoPlayer.a; path = libSJBaseVideoPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		51AF23CB92C8BB88C0B20DB5A47901DE /* libSJBaseVideoPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSJBaseVideoPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		51B8DC9623C62758EFB59ABC089C86CF /* YTKNetworkAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTKNetworkAgent.h; path = YTKNetwork/YTKNetworkAgent.h; sourceTree = "<group>"; };
 		51ED2385918AE8E2D5CAD8197B57F498 /* NSMutableDictionary+MutableDictionaryHook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableDictionary+MutableDictionaryHook.m"; path = "JJException/Source/MRC/NSMutableDictionary+MutableDictionaryHook.m"; sourceTree = "<group>"; };
 		521D787CA67D2C9C85E552039426CB8E /* HTTPDataResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPDataResponse.m; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/Responses/HTTPDataResponse.m; sourceTree = "<group>"; };
@@ -1594,7 +1596,7 @@
 		546DA0394DF10CB6592FC0B8D30ABE3C /* YYTextRubyAnnotation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextRubyAnnotation.m; path = YYText/String/YYTextRubyAnnotation.m; sourceTree = "<group>"; };
 		5484C41AE653178E4EF7A23FA47FB719 /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImageRep.h; path = SDWebImage/Core/SDAnimatedImageRep.h; sourceTree = "<group>"; };
 		54BCE3E855E1A9BBA1A669E73046F5B2 /* SJEdgeControlButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJEdgeControlButtonItem.h; path = SJVideoPlayer/Common/Utils/Adapters/Core/SJEdgeControlButtonItem.h; sourceTree = "<group>"; };
-		54DD298A0CBFAB0A63E3B9814D373773 /* mz_os_posix.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_os_posix.c; path = SSZipArchive/minizip/mz_os_posix.c; sourceTree = "<group>"; };
+		54DD298A0CBFAB0A63E3B9814D373773 /* mz_os_posix.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_os_posix.c; path = SSZipArchive/minizip/mz_os_posix.c; sourceTree = "<group>"; };
 		551AFC3E1A9BA2E29B2A90168B38EC3A /* mz_os.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mz_os.h; path = SSZipArchive/minizip/mz_os.h; sourceTree = "<group>"; };
 		55AEE461D354D6DB864CCA6DF4D2CB8B /* SJVideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SJVideoPlayer.release.xcconfig; sourceTree = "<group>"; };
 		562265476FC3372114ADB16DCA28074B /* WMMenuItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WMMenuItem.m; path = WMPageController/WMMenuView/WMMenuItem.m; sourceTree = "<group>"; };
@@ -1628,7 +1630,7 @@
 		5DAA604DAE9A57507B9CC7478107FA5E /* SJBaseVideoPlayer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SJBaseVideoPlayer-prefix.pch"; sourceTree = "<group>"; };
 		5DD7ACEC6472031D4EFCE8EF65081BA9 /* FLAnimatedImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImage-dummy.m"; sourceTree = "<group>"; };
 		5DE4A46E4A60A8B11ECC9EEB2E4F4AAA /* SJVideoPlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SJVideoPlayer-dummy.m"; sourceTree = "<group>"; };
-		5E096E08483F5F553481B6AC47BD0C63 /* libCHTCollectionViewWaterfallLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCHTCollectionViewWaterfallLayout.a; path = libCHTCollectionViewWaterfallLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E096E08483F5F553481B6AC47BD0C63 /* libCHTCollectionViewWaterfallLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCHTCollectionViewWaterfallLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8119B9921A1D511B142142E0805AB9 /* SJVideoPlayerURLAsset+SJControlAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SJVideoPlayerURLAsset+SJControlAdd.m"; path = "SJVideoPlayer/Common/Implements/SJVideoPlayerURLAsset+SJControlAdd.m"; sourceTree = "<group>"; };
 		5E82CBFB856B11E74D70A6908D9635A9 /* FLAnimatedImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FLAnimatedImage.release.xcconfig; sourceTree = "<group>"; };
 		5EA425E4C0BA65EA19EA91C2BF9597AD /* MJRefreshHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshHeader.m; path = MJRefresh/Base/MJRefreshHeader.m; sourceTree = "<group>"; };
@@ -1640,7 +1642,7 @@
 		5FCCD24C48D5AD5435B0BBFAE1BCB905 /* LYEmptyBaseView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LYEmptyBaseView.h; path = LYEmptyView/LYEmptyBaseView.h; sourceTree = "<group>"; };
 		5FF717474A61403278ACFF53F58A2302 /* LYEmptyView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LYEmptyView-prefix.pch"; sourceTree = "<group>"; };
 		6008268FA4C1347B3E09F4C12CC8778A /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJExtension.h"; path = "MJRefresh/UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
-		601EEA66C9A6080A11C1ADE5E2A91AE1 /* libYTKNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libYTKNetwork.a; path = libYTKNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		601EEA66C9A6080A11C1ADE5E2A91AE1 /* libYTKNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYTKNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C81153939A3F0F174859C69F78CA8F /* SJFloatSmallViewControlLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJFloatSmallViewControlLayer.m; path = SJVideoPlayer/ControlLayers/SJFloatSmallViewControlLayer/SJFloatSmallViewControlLayer.m; sourceTree = "<group>"; };
 		60FE1E1B53E171733B3F5B0AB3F731F4 /* SDWebImageOptionsProcessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOptionsProcessor.h; path = SDWebImage/Core/SDWebImageOptionsProcessor.h; sourceTree = "<group>"; };
 		6105FD0C81ECF2FE08FA5E12BB1F89A6 /* SJMediaCacheServer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SJMediaCacheServer-dummy.m"; sourceTree = "<group>"; };
@@ -1668,13 +1670,13 @@
 		66B3385FA068A5D01FC8A78152CF31BD /* SJEdgeControlLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJEdgeControlLayer.m; path = SJVideoPlayer/ControlLayers/SJEdgeControlLayer/SJEdgeControlLayer.m; sourceTree = "<group>"; };
 		66BB372DB1FC8457D0E81932F2BD42C5 /* YTKChainRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTKChainRequest.m; path = YTKNetwork/YTKChainRequest.m; sourceTree = "<group>"; };
 		66BD58316CD7E065C1F298EFB4C82290 /* SJUTAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJUTAttributes.m; path = SJUIKit/AttributesFactory/UIKitText/SJUTAttributes.m; sourceTree = "<group>"; };
-		670FB8D4E923E886C90E998C66D597A3 /* mz_zip_rw.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_zip_rw.c; path = SSZipArchive/minizip/mz_zip_rw.c; sourceTree = "<group>"; };
+		670FB8D4E923E886C90E998C66D597A3 /* mz_zip_rw.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_zip_rw.c; path = SSZipArchive/minizip/mz_zip_rw.c; sourceTree = "<group>"; };
 		67583DC541EEF0F3C4D135BB8F91ED07 /* SJBaseVideoPlayer+TestLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SJBaseVideoPlayer+TestLog.m"; path = "SJBaseVideoPlayer/SJBaseVideoPlayer+TestLog.m"; sourceTree = "<group>"; };
 		677618248BA8EB0798DDC7D2DB86CC4E /* SJBarrageItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJBarrageItem.h; path = SJBaseVideoPlayer/Common/Implements/SJBarrageItem.h; sourceTree = "<group>"; };
 		67CC9BB25FE37A0C3B98964B1786A1D0 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Source/GCD/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		68057E4E9E0E083CEB8A7D4FFCBA91CD /* YYModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYModel.h; path = YYModel/YYModel.h; sourceTree = "<group>"; };
 		680607B0287A0E07B301F81801919985 /* XHLaunchAdImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XHLaunchAdImageManager.m; path = XHLaunchAd/XHLaunchAd/XHLaunchAdImageManager.m; sourceTree = "<group>"; };
-		682DAA604A85FD21EE2F69D5DB4C7D65 /* mz_crypt_apple.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_crypt_apple.c; path = SSZipArchive/minizip/mz_crypt_apple.c; sourceTree = "<group>"; };
+		682DAA604A85FD21EE2F69D5DB4C7D65 /* mz_crypt_apple.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_crypt_apple.c; path = SSZipArchive/minizip/mz_crypt_apple.c; sourceTree = "<group>"; };
 		688F2CB0414E8C8CC82A91ABC3E6552A /* HTTPFileResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPFileResponse.h; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/Responses/HTTPFileResponse.h; sourceTree = "<group>"; };
 		68AC18E681D29488389AF9FE260831B0 /* YYTextRunDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextRunDelegate.h; path = YYText/String/YYTextRunDelegate.h; sourceTree = "<group>"; };
 		68ADC1022E10A3CD1CFA8B474017CEA8 /* SJPlayerAutoplayConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJPlayerAutoplayConfig.h; path = SJBaseVideoPlayer/Common/Implements/SJPlayerAutoplayConfig.h; sourceTree = "<group>"; };
@@ -1689,7 +1691,7 @@
 		6A02212B4343E7C5081C83C9B2210DBC /* SJControlLayerSwitcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJControlLayerSwitcher.h; path = SJVideoPlayer/Common/Utils/Switcher/SJControlLayerSwitcher.h; sourceTree = "<group>"; };
 		6A2F13CE8344CF11E770F253161A2F84 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackFooter.h; path = MJRefresh/Base/MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		6A3DB26682E38A91D4DA644F6DAFB3F6 /* SJVideoPlayerURLAsset+SJSubtitlesAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SJVideoPlayerURLAsset+SJSubtitlesAdd.h"; path = "SJBaseVideoPlayer/Common/Implements/SJVideoPlayerURLAsset+SJSubtitlesAdd.h"; sourceTree = "<group>"; };
-		6A9276DE79D44F877C1412D81BD97C85 /* mz_compat.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_compat.c; path = SSZipArchive/minizip/mz_compat.c; sourceTree = "<group>"; };
+		6A9276DE79D44F877C1412D81BD97C85 /* mz_compat.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_compat.c; path = SSZipArchive/minizip/mz_compat.c; sourceTree = "<group>"; };
 		6B47F67E9134223BF02E8659810B3EBD /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		6BC9915220F4652503D60E9D53A440DE /* SJVideoPlayerLocalizedStringKeys.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJVideoPlayerLocalizedStringKeys.h; path = SJVideoPlayer/Common/Consts/SJVideoPlayerLocalizedStringKeys.h; sourceTree = "<group>"; };
 		6BD3F4502ACA9FE7841C0C17ADEBDC3F /* MJFoundation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJFoundation.m; path = MJExtension/MJFoundation.m; sourceTree = "<group>"; };
@@ -1698,7 +1700,7 @@
 		6C5AA86D3510774FB2E502E0E0E47E2C /* SJAVMediaPlaybackController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJAVMediaPlaybackController.m; path = SJBaseVideoPlayer/AVPlayer/SJAVMediaPlaybackController.m; sourceTree = "<group>"; };
 		6C811FFB86E674A7B89799F5AD6FF336 /* SDImageCachesManagerOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCachesManagerOperation.m; path = SDWebImage/Private/SDImageCachesManagerOperation.m; sourceTree = "<group>"; };
 		6C84BB4A90FC589D8F533583A3DB51C7 /* YYTextArchiver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextArchiver.h; path = YYText/String/YYTextArchiver.h; sourceTree = "<group>"; };
-		6CBEFE4F9E22AFDC6347A739BB35FF8C /* libCocoaAsyncSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCocoaAsyncSocket.a; path = libCocoaAsyncSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CBEFE4F9E22AFDC6347A739BB35FF8C /* libCocoaAsyncSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaAsyncSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CE0983AC38F67DA0021ED4C4ACCA630 /* PPBadgeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPBadgeView.h; path = PPBadgeView/objc/PPBadgeView.h; sourceTree = "<group>"; };
 		6D9E7E7EF248B85A564C9932D373EDC3 /* SDImageIOAnimatedCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageIOAnimatedCoder.m; path = SDWebImage/Core/SDImageIOAnimatedCoder.m; sourceTree = "<group>"; };
 		6DC098AAF972139818D6EDB54430E36D /* YTKRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTKRequest.h; path = YTKNetwork/YTKRequest.h; sourceTree = "<group>"; };
@@ -1714,7 +1716,7 @@
 		6F6B847682FC165D147A8918E5E67E95 /* NSObject+ZombieHook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+ZombieHook.m"; path = "JJException/Source/MRC/NSObject+ZombieHook.m"; sourceTree = "<group>"; };
 		6F9AD6C8AF88AA102D4D6DF652C795DD /* SDmetamacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDmetamacros.h; path = SDWebImage/Private/SDmetamacros.h; sourceTree = "<group>"; };
 		6FA7A9C9E8E8DED8752D049FA3EBA57B /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "SDWebImage/Core/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
-		6FDBC42DC77E971151CD0142DFAF6E69 /* libXHLaunchAd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libXHLaunchAd.a; path = libXHLaunchAd.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FDBC42DC77E971151CD0142DFAF6E69 /* libXHLaunchAd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXHLaunchAd.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FE3837D30EA34CB3570E0C02B18D435 /* SJAttributesRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJAttributesRecorder.m; path = SJUIKit/AttributesFactory/Deprecated/SJAttributesRecorder.m; sourceTree = "<group>"; };
 		6FFE03E77FE336CEF7C8C33354358736 /* NSNotificationCenter+ClearNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+ClearNotification.m"; path = "JJException/Source/ARC/NSNotificationCenter+ClearNotification.m"; sourceTree = "<group>"; };
 		7090B2124B1175654872AB915B2EFBD3 /* SJScrollingTextMarqueeViewDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJScrollingTextMarqueeViewDefines.h; path = SJVideoPlayer/Common/Interfaces/SJScrollingTextMarqueeViewDefines.h; sourceTree = "<group>"; };
@@ -1722,7 +1724,7 @@
 		70E85543BA125ADCDF7B4870984FF7E3 /* SJVideoPlayerPresentViewDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJVideoPlayerPresentViewDefines.h; path = SJBaseVideoPlayer/Common/Interfaces/SJVideoPlayerPresentViewDefines.h; sourceTree = "<group>"; };
 		70F6222BA99F23CF507B39D802FC236F /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJExtension.m"; path = "MJRefresh/UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
 		716D6EAF679784DB8075FE30F425E182 /* SJURLSessionDataTaskServer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJURLSessionDataTaskServer.m; path = SJDownloadDataTask/Core/SJURLSessionDataTaskServer.m; sourceTree = "<group>"; };
-		71762A728913EB440C97D3616D291AF3 /* libYYText.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libYYText.a; path = libYYText.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		71762A728913EB440C97D3616D291AF3 /* libYYText.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYYText.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7195C3AE14AA843B1F6BE49F54362836 /* WMPageController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WMPageController-dummy.m"; sourceTree = "<group>"; };
 		720CA24053B617B0C86D7F48309A67B8 /* YTKBaseRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTKBaseRequest.h; path = YTKNetwork/YTKBaseRequest.h; sourceTree = "<group>"; };
 		726BF8AE89096EDF1105A30265A22B95 /* SJSQLite3TableClassCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJSQLite3TableClassCache.h; path = SJUIKit/SQLite3/Core/SJSQLite3TableClassCache.h; sourceTree = "<group>"; };
@@ -1790,7 +1792,7 @@
 		84479912F9296C914F14430EEB6C7623 /* SDWebImageError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageError.m; path = SDWebImage/Core/SDWebImageError.m; sourceTree = "<group>"; };
 		846F8C0CFDA5CE7A9A25644E19806025 /* SJDownloadDataTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJDownloadDataTask.h; path = SJDownloadDataTask/SJDownloadDataTask.h; sourceTree = "<group>"; };
 		849498CDD95377CD75E884211CA9E1F0 /* LEEAlertHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LEEAlertHelper.h; path = LEEAlert/LEEAlertHelper.h; sourceTree = "<group>"; };
-		85538C21F2B9D8C2EB5F57DE2EFEB2AF /* mz_os.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_os.c; path = SSZipArchive/minizip/mz_os.c; sourceTree = "<group>"; };
+		85538C21F2B9D8C2EB5F57DE2EFEB2AF /* mz_os.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_os.c; path = SSZipArchive/minizip/mz_os.c; sourceTree = "<group>"; };
 		8560C3A956A660D44FF6F5097C7BEDE7 /* SJVideoPlayerClipsGeneratedResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJVideoPlayerClipsGeneratedResult.m; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/Model/SJVideoPlayerClipsGeneratedResult.m; sourceTree = "<group>"; };
 		8579A708C68B88FCDF3F59223FF343F1 /* SJPlayModelPropertiesObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJPlayModelPropertiesObserver.h; path = SJBaseVideoPlayer/Common/Implements/SJPlayModelPropertiesObserver.h; sourceTree = "<group>"; };
 		8585CABA6EE8BA68366844C6CF7B37A6 /* YYTextSelectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextSelectionView.h; path = YYText/Component/YYTextSelectionView.h; sourceTree = "<group>"; };
@@ -1801,7 +1803,7 @@
 		87B1C16EA8C600E4B98DAB5A3A9151E6 /* SJDownloadDataTaskResourceLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJDownloadDataTaskResourceLoader.h; path = SJDownloadDataTask/Core/ResourceLoader/SJDownloadDataTaskResourceLoader.h; sourceTree = "<group>"; };
 		87C18E6FA6BFDCF6699432238EF36B8E /* SJSwitchVideoDefinitionControlLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJSwitchVideoDefinitionControlLayer.h; path = SJVideoPlayer/ControlLayers/SJSwitchVideoDefinitionControlLayer/SJSwitchVideoDefinitionControlLayer.h; sourceTree = "<group>"; };
 		884EC45E0E206E444AE666EFAA995BAC /* SDWebImageError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageError.h; path = SDWebImage/Core/SDWebImageError.h; sourceTree = "<group>"; };
-		88E0B06183E82D2FD1A20EC93C42916D /* mz_strm_mem.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_strm_mem.c; path = SSZipArchive/minizip/mz_strm_mem.c; sourceTree = "<group>"; };
+		88E0B06183E82D2FD1A20EC93C42916D /* mz_strm_mem.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_strm_mem.c; path = SSZipArchive/minizip/mz_strm_mem.c; sourceTree = "<group>"; };
 		88E2A210C5147D7A1C5E3EADFAFD22DD /* FSTextView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSTextView.debug.xcconfig; sourceTree = "<group>"; };
 		89017169F5F82B5D9E7C380B86BFF871 /* SJLoadFailedControlLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJLoadFailedControlLayer.h; path = SJVideoPlayer/ControlLayers/SJLoadFailedControlLayer/SJLoadFailedControlLayer.h; sourceTree = "<group>"; };
 		8903BB806B59582B7F534FD1C347CE43 /* WoodPeckeriOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WoodPeckeriOS.release.xcconfig; sourceTree = "<group>"; };
@@ -1829,7 +1831,7 @@
 		8CAEC5D3B6C909485081759E5B629941 /* IQTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQTextView.h; path = IQKeyboardManager/IQTextView/IQTextView.h; sourceTree = "<group>"; };
 		8CC5857EE76ADE556D2357F935DD6B9B /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		8CFD06F22545AB3CBFDFF78F8CCAD63D /* SJTaskQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJTaskQueue.m; path = SJUIKit/Queues/SJTaskQueue.m; sourceTree = "<group>"; };
-		8D1EE56EBEDDF86D4EBA1BCB57070AA9 /* libSJVideoPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSJVideoPlayer.a; path = libSJVideoPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1EE56EBEDDF86D4EBA1BCB57070AA9 /* libSJVideoPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSJVideoPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D7B7AE7AC771121409CEED7C35294EA /* SJFlipTransitionManagerDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJFlipTransitionManagerDefines.h; path = SJBaseVideoPlayer/Common/Interfaces/SJFlipTransitionManagerDefines.h; sourceTree = "<group>"; };
 		8D9DCF2ED6A710208DA4C4861FD52ACF /* SDImageLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageLoader.m; path = SDWebImage/Core/SDImageLoader.m; sourceTree = "<group>"; };
 		8E3FFD640EC02B9ABC0FD05B7582C870 /* UIColor+SDHexString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+SDHexString.m"; path = "SDWebImage/Private/UIColor+SDHexString.m"; sourceTree = "<group>"; };
@@ -1846,7 +1848,7 @@
 		90FC831184DB6BCB8C6D3A28BD3C901C /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
 		91836D11BD03C8367F029478914E8497 /* SJSpeedupPlaybackPopupView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJSpeedupPlaybackPopupView.h; path = SJVideoPlayer/Common/Implements/SJSpeedupPlaybackPopupView.h; sourceTree = "<group>"; };
 		91A05D4774032F7CFA13AF86B0DF2EC4 /* CocoaAsyncSocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.debug.xcconfig; sourceTree = "<group>"; };
-		91B23470DEB9A986332BEB5034234BC7 /* libSSZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSSZipArchive.a; path = libSSZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		91B23470DEB9A986332BEB5034234BC7 /* libSSZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSSZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		92567B5E42D8A0074425565C2B8063F1 /* SDWebImageIndicator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageIndicator.m; path = SDWebImage/Core/SDWebImageIndicator.m; sourceTree = "<group>"; };
 		925B3B37F01C62770F129F96395DAD70 /* SDWebImageDownloaderRequestModifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderRequestModifier.m; path = SDWebImage/Core/SDWebImageDownloaderRequestModifier.m; sourceTree = "<group>"; };
 		92A9D8E22DE1C8E0B2F15106E0E9B947 /* SDWebImageDefine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDefine.m; path = SDWebImage/Core/SDWebImageDefine.m; sourceTree = "<group>"; };
@@ -1873,7 +1875,7 @@
 		97DE3C0B38C2451BADA9233A28F1B4C0 /* SJClipsSaveResultToAlbumHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJClipsSaveResultToAlbumHandler.h; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/Model/SJClipsSaveResultToAlbumHandler.h; sourceTree = "<group>"; };
 		97FB2E605EDE913413B2914602341D28 /* SDWebImageIndicator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageIndicator.h; path = SDWebImage/Core/SDWebImageIndicator.h; sourceTree = "<group>"; };
 		98144BD005C77B975E90AFC0ADACDE9B /* SGQRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SGQRCode.debug.xcconfig; sourceTree = "<group>"; };
-		98527D7196957AAB07B79E2E2AFDE23E /* libIQKeyboardManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libIQKeyboardManager.a; path = libIQKeyboardManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		98527D7196957AAB07B79E2E2AFDE23E /* libIQKeyboardManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIQKeyboardManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		98DD86BF72ECEEA9745F2B714D5F807E /* SJClipsVideoRecordsControlLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJClipsVideoRecordsControlLayer.h; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/ControlLayer/SJClipsVideoRecordsControlLayer.h; sourceTree = "<group>"; };
 		99069453C67EA1B02F1B0F5DE580F4E2 /* mz_compat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mz_compat.h; path = SSZipArchive/minizip/mz_compat.h; sourceTree = "<group>"; };
 		99AB178BAA1C3FB30D9F39053BF23BB0 /* SJSQLite3+TableExtended.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SJSQLite3+TableExtended.m"; path = "SJUIKit/SQLite3/SJSQLite3+TableExtended.m"; sourceTree = "<group>"; };
@@ -1886,7 +1888,7 @@
 		9A752E9D12BB3683A36E669732741A41 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		9A77422D0AFEC4D279A910F4546F59A9 /* SSZipArchive-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SSZipArchive-dummy.m"; sourceTree = "<group>"; };
 		9A94760C8AD92D09DF363E55CAAFE7DB /* MJFoundation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJFoundation.h; path = MJExtension/MJFoundation.h; sourceTree = "<group>"; };
-		9AA850F959464C5B214AFF7F338402E5 /* mz_crypt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_crypt.c; path = SSZipArchive/minizip/mz_crypt.c; sourceTree = "<group>"; };
+		9AA850F959464C5B214AFF7F338402E5 /* mz_crypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_crypt.c; path = SSZipArchive/minizip/mz_crypt.c; sourceTree = "<group>"; };
 		9B08FA5AABAA000C3EA24F30C1E31D8B /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		9B166ABCE02F5910F7414D4E81CE1593 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 		9BB62AA37732F41CE905DCE8EC766B81 /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQTitleBarButtonItem.h; path = IQKeyboardManager/IQToolbar/IQTitleBarButtonItem.h; sourceTree = "<group>"; };
@@ -1895,7 +1897,7 @@
 		9C3F2FDAFEBBCAE71FF8150D4087A52E /* SDWeakProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWeakProxy.m; path = SDWebImage/Private/SDWeakProxy.m; sourceTree = "<group>"; };
 		9C6E70E1C2379F2DCEEF5B211F413F7D /* WHC_ModelSqlite.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WHC_ModelSqlite.h; path = WHC_ModelSqliteKit/WHC_ModelSqliteKit/WHC_ModelSqlite.h; sourceTree = "<group>"; };
 		9CE70C9F9A624829E45B82AAEADE7EC8 /* XHLaunchAdButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XHLaunchAdButton.h; path = XHLaunchAd/XHLaunchAd/XHLaunchAdButton.h; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DA1FBD992BCF14112FAA4BBB89EE31A /* YTKBatchRequestAgent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTKBatchRequestAgent.m; path = YTKNetwork/YTKBatchRequestAgent.m; sourceTree = "<group>"; };
 		9DDE477E27C57B1575139431BA52E93D /* FSTextView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSTextView-dummy.m"; sourceTree = "<group>"; };
 		9E007D747C9D0A587281118B6CB9110B /* SJVideoPlayerURLAsset+SJAVMediaPlaybackAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SJVideoPlayerURLAsset+SJAVMediaPlaybackAdd.m"; path = "SJBaseVideoPlayer/AVPlayer/Core/SJVideoPlayerURLAsset+SJAVMediaPlaybackAdd.m"; sourceTree = "<group>"; };
@@ -1905,7 +1907,7 @@
 		9E682187C4AA70215F28B2707609FC33 /* YYTextAsyncLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextAsyncLayer.h; path = YYText/Utility/YYTextAsyncLayer.h; sourceTree = "<group>"; };
 		9E73F4CFF094225AF6D60F0AEC6947AF /* SJControlLayerDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJControlLayerDefines.h; path = SJVideoPlayer/Common/Interfaces/SJControlLayerDefines.h; sourceTree = "<group>"; };
 		9ECFCC80B0FB8A8964BE03C13B3923CA /* SJSQLiteCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJSQLiteCore.h; path = SJUIKit/SQLite3/Core/SJSQLiteCore.h; sourceTree = "<group>"; };
-		9EDD9C481C2D9F4E6933593380C015E3 /* mz_strm_buf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_strm_buf.c; path = SSZipArchive/minizip/mz_strm_buf.c; sourceTree = "<group>"; };
+		9EDD9C481C2D9F4E6933593380C015E3 /* mz_strm_buf.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_strm_buf.c; path = SSZipArchive/minizip/mz_strm_buf.c; sourceTree = "<group>"; };
 		9EE61225650160B3B435EF733ADE17FC /* LEEAlert-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LEEAlert-prefix.pch"; sourceTree = "<group>"; };
 		9F1594D13896C360732363C4D90089C3 /* SJTimerControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJTimerControl.h; path = SJBaseVideoPlayer/Common/Utils/SJTimerControl.h; sourceTree = "<group>"; };
 		9F1D70F4E1C2F45532C37BBF187B03AF /* SJPrompt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJPrompt.m; path = SJBaseVideoPlayer/Common/Implements/SJPrompt.m; sourceTree = "<group>"; };
@@ -1926,7 +1928,7 @@
 		A46D90DDD3CFC185F73FE1008DCCD17C /* SJClipsButtonContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJClipsButtonContainerView.m; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/View/SJClipsButtonContainerView.m; sourceTree = "<group>"; };
 		A47B4108B81225022328122CDD05F292 /* FSTextView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSTextView.release.xcconfig; sourceTree = "<group>"; };
 		A4F89939B496785F36F37CAE370513FA /* YTKRequestEventAccessory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTKRequestEventAccessory.m; path = YTKNetwork/YTKRequestEventAccessory.m; sourceTree = "<group>"; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A560A51A35D86B7EA07CEFB7B2E3C8D7 /* SDImageAPNGCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageAPNGCoder.h; path = SDWebImage/Core/SDImageAPNGCoder.h; sourceTree = "<group>"; };
 		A566CF56C13079AA627F87E9F9B025E7 /* SJPlaybackRecordSaveHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJPlaybackRecordSaveHandler.h; path = SJBaseVideoPlayer/SJPlaybackRecordSaveHandler.h; sourceTree = "<group>"; };
 		A5FD6AECD7FA2B09140A8A3E0FF0C371 /* SJPromptDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJPromptDefines.h; path = SJBaseVideoPlayer/Common/Interfaces/SJPromptDefines.h; sourceTree = "<group>"; };
@@ -1953,7 +1955,7 @@
 		AAEE99171F4E0DA06DBBC77DE2AE71E1 /* MJRefreshComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshComponent.m; path = MJRefresh/Base/MJRefreshComponent.m; sourceTree = "<group>"; };
 		AB079C7FDAF0AB8B0030C92AD389A83D /* NSObject+MJProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJProperty.h"; path = "MJExtension/NSObject+MJProperty.h"; sourceTree = "<group>"; };
 		AB40628FD33B2E03BD1AB8F6C6E3115C /* HTTPFileResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPFileResponse.m; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/Responses/HTTPFileResponse.m; sourceTree = "<group>"; };
-		AB7FE8ECADB7C9FD6CE0E489E0AC16D8 /* libFSTextView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFSTextView.a; path = libFSTextView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB7FE8ECADB7C9FD6CE0E489E0AC16D8 /* libFSTextView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFSTextView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC2F2FB96D45D859509CE262BB40383 /* MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefresh.h; path = MJRefresh/MJRefresh.h; sourceTree = "<group>"; };
 		AC4742CC65C1876F4468EC7BC6C43316 /* SJSQLite3+RemoveExtended.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SJSQLite3+RemoveExtended.m"; path = "SJUIKit/SQLite3/SJSQLite3+RemoveExtended.m"; sourceTree = "<group>"; };
 		AC872AA647882287371EF7C3D30838BC /* SJVideoPlayerClipsParameters.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJVideoPlayerClipsParameters.m; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/Model/SJVideoPlayerClipsParameters.m; sourceTree = "<group>"; };
@@ -1976,7 +1978,7 @@
 		B0030F2A697014CE0364916E5E98F715 /* SJDeviceVolumeAndBrightnessManagerDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJDeviceVolumeAndBrightnessManagerDefines.h; path = SJBaseVideoPlayer/Common/Interfaces/SJDeviceVolumeAndBrightnessManagerDefines.h; sourceTree = "<group>"; };
 		B0742A2B3F7A4A7AA28B0A9445B2D9F5 /* SJButtonProgressSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJButtonProgressSlider.m; path = SJVideoPlayer/Common/Utils/SJProgressSlider/SJButtonProgressSlider.m; sourceTree = "<group>"; };
 		B0B1EC8387CC0333C03365AA8DD5F084 /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUITextFieldView+Additions.h"; path = "IQKeyboardManager/Categories/IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
-		B0B214D775196BA7CA8E17E53048A493 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSDWebImage.a; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B214D775196BA7CA8E17E53048A493 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0DB4635A99D85CD945110144174F802 /* SDImageAssetManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageAssetManager.h; path = SDWebImage/Private/SDImageAssetManager.h; sourceTree = "<group>"; };
 		B12A2AD5AB46AE928899AD6445EBF177 /* WMMenuView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WMMenuView.h; path = WMPageController/WMMenuView/WMMenuView.h; sourceTree = "<group>"; };
 		B137699A4551D53FEA4EC4FB5290167B /* SDAutoLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDAutoLayout-dummy.m"; sourceTree = "<group>"; };
@@ -1985,7 +1987,7 @@
 		B1FBB70EDA8C2BBC97C9D2A37CF4E76C /* YYTextSelectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextSelectionView.m; path = YYText/Component/YYTextSelectionView.m; sourceTree = "<group>"; };
 		B2618FBC7B4EA0157872C646DB4F9BCC /* MultipartMessageHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultipartMessageHeader.h; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/Mime/MultipartMessageHeader.h; sourceTree = "<group>"; };
 		B29FED2F280DE513F6697D049FF68DB5 /* MultipartMessageHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeader.m; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/Mime/MultipartMessageHeader.m; sourceTree = "<group>"; };
-		B2F87D7A5B43AD4DA6D11963CF14C902 /* mz_strm_split.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mz_strm_split.c; path = SSZipArchive/minizip/mz_strm_split.c; sourceTree = "<group>"; };
+		B2F87D7A5B43AD4DA6D11963CF14C902 /* mz_strm_split.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mz_strm_split.c; path = SSZipArchive/minizip/mz_strm_split.c; sourceTree = "<group>"; };
 		B3439582BAA332CEEC446A0819192FE8 /* MJRefreshConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshConfig.m; path = MJRefresh/MJRefreshConfig.m; sourceTree = "<group>"; };
 		B3495DD6CBB81F2613DA9D2D311D1459 /* SDImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCache.h; path = SDWebImage/Core/SDImageCache.h; sourceTree = "<group>"; };
 		B3DC58F14700893368CE806909B9DCB4 /* SJEdgeControlLayerAdapters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJEdgeControlLayerAdapters.h; path = SJVideoPlayer/Common/Utils/Adapters/SJEdgeControlLayerAdapters.h; sourceTree = "<group>"; };
@@ -2005,7 +2007,7 @@
 		B690B8D44150A2EA652ED1E7E2874310 /* SJDeviceVolumeAndBrightnessManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJDeviceVolumeAndBrightnessManager.h; path = SJBaseVideoPlayer/Common/Implements/SJDeviceVolumeAndBrightnessManager.h; sourceTree = "<group>"; };
 		B6A7F838E083A7C5BD3E0672C496932F /* SJVideoPlayerURLAssetPrefetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJVideoPlayerURLAssetPrefetcher.m; path = SJBaseVideoPlayer/AVPlayer/Core/SJVideoPlayerURLAssetPrefetcher.m; sourceTree = "<group>"; };
 		B71D14774FDC0E66ECAC7DE0B988B8D3 /* SJSQLite3ColumnOrder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJSQLite3ColumnOrder.h; path = SJUIKit/SQLite3/Core/SJSQLite3ColumnOrder.h; sourceTree = "<group>"; };
-		B725F96A98CB22A783C643BB02401232 /* libSGQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSGQRCode.a; path = libSGQRCode.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B725F96A98CB22A783C643BB02401232 /* libSGQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSGQRCode.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B775FBB1535B57408880F1797D3CA9C0 /* SJPlayModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJPlayModel.h; path = SJBaseVideoPlayer/Common/Implements/SJPlayModel.h; sourceTree = "<group>"; };
 		B7B02D377C50C7FBB6933517E5DD64E8 /* MJPropertyKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJPropertyKey.m; path = MJExtension/MJPropertyKey.m; sourceTree = "<group>"; };
 		B7E7319C933339FDEEE7840D77E98E86 /* SJRotationManagerDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJRotationManagerDefines.h; path = SJBaseVideoPlayer/Common/Interfaces/SJRotationManagerDefines.h; sourceTree = "<group>"; };
@@ -2183,9 +2185,9 @@
 		E40E6AF2DF4E34B1B078C0F132D0C2E6 /* SJBarrageQueueController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJBarrageQueueController.m; path = SJBaseVideoPlayer/Common/Implements/SJBarrageQueueController.m; sourceTree = "<group>"; };
 		E438EB25D6CF7D4C94EB37C40CB53328 /* YYTextAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextAttribute.h; path = YYText/String/YYTextAttribute.h; sourceTree = "<group>"; };
 		E451F8A2D17E592E8961248CF6F03E9A /* YYTextTransaction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextTransaction.m; path = YYText/Utility/YYTextTransaction.m; sourceTree = "<group>"; };
-		E460D5B0416D36F66EE8EC89E5D2FA0A /* libYYModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libYYModel.a; path = libYYModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E460D5B0416D36F66EE8EC89E5D2FA0A /* libYYModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYYModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E471625DDF19541DA057B93968AB1883 /* NSImage+Compatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSImage+Compatibility.h"; path = "SDWebImage/Core/NSImage+Compatibility.h"; sourceTree = "<group>"; };
-		E49D6D248DD1CEE584E6776B9164A1B2 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJRefresh.a; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49D6D248DD1CEE584E6776B9164A1B2 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AEF3FAB616EEF2A495302D16579499 /* SJBaseVideoPlayerConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJBaseVideoPlayerConst.m; path = SJBaseVideoPlayer/Common/Const/SJBaseVideoPlayerConst.m; sourceTree = "<group>"; };
 		E4EAF8CC21D84C1C956D4D08774520E6 /* SJSQLite3ColumnOrder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJSQLite3ColumnOrder.m; path = SJUIKit/SQLite3/Core/SJSQLite3ColumnOrder.m; sourceTree = "<group>"; };
 		E5014D9053271C6E2FEBC78D3186F73A /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MultiFormat.h"; path = "SDWebImage/Core/UIImage+MultiFormat.h"; sourceTree = "<group>"; };
@@ -2224,7 +2226,7 @@
 		EA6905431315E1598F831EA967536680 /* SDAssociatedObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAssociatedObject.m; path = SDWebImage/Private/SDAssociatedObject.m; sourceTree = "<group>"; };
 		EA93A787108C8428266B037B215ECD29 /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManagerConstantsInternal.h; path = IQKeyboardManager/Constants/IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
 		EAA17EB64BCEBC1CA29A8AC6E95AEFAC /* YYTextParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextParser.m; path = YYText/String/YYTextParser.m; sourceTree = "<group>"; };
-		EAD41F9BF8DF31595D25FE7CA59B0E3B /* libJJException.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libJJException.a; path = libJJException.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD41F9BF8DF31595D25FE7CA59B0E3B /* libJJException.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJJException.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0BC90CCDF003AB8D47C0C2966D5D76 /* IQKeyboardManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManager.debug.xcconfig; sourceTree = "<group>"; };
 		EB554044124C249F7ECBFB978D4D6C93 /* SDAnimatedImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SDAnimatedImageView+WebCache.h"; path = "SDWebImage/Core/SDAnimatedImageView+WebCache.h"; sourceTree = "<group>"; };
 		EBB8643361782038ECB6B0822CBA3394 /* SJMoreSettingControlLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJMoreSettingControlLayer.h; path = SJVideoPlayer/ControlLayers/SJMoreSettingControlLayer/SJMoreSettingControlLayer.h; sourceTree = "<group>"; };
@@ -2239,7 +2241,7 @@
 		EDBEF6D5593DB82E13586FA46012D170 /* XHLaunchAd-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XHLaunchAd-prefix.pch"; sourceTree = "<group>"; };
 		EDDBF80FE99B172F891DE2C4B95A99CA /* MJProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJProperty.m; path = MJExtension/MJProperty.m; sourceTree = "<group>"; };
 		EEB26D01191DADDB086C953413EE1F91 /* SJDraggingProgressPopupViewDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJDraggingProgressPopupViewDefines.h; path = SJVideoPlayer/Common/Interfaces/SJDraggingProgressPopupViewDefines.h; sourceTree = "<group>"; };
-		EEB5224BF1CABA409B3D3760EDDAEA0A /* libLYEmptyView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libLYEmptyView.a; path = libLYEmptyView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEB5224BF1CABA409B3D3760EDDAEA0A /* libLYEmptyView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLYEmptyView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBC624FF920C642CD0693973A3616B1 /* SDFileAttributeHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDFileAttributeHelper.h; path = SDWebImage/Private/SDFileAttributeHelper.h; sourceTree = "<group>"; };
 		EEBE9C721A0E23C83225B89F606C8385 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/Core/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		EED8D283E13BE1276CEC7FEAB989FF14 /* XHLaunchImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XHLaunchImageView.m; path = XHLaunchAd/XHLaunchAd/XHLaunchImageView.m; sourceTree = "<group>"; };
@@ -2255,7 +2257,7 @@
 		F216D38C40AC6EE71E87EBDC75B24863 /* SJPlaybackObservation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJPlaybackObservation.m; path = SJBaseVideoPlayer/Common/Implements/SJPlaybackObservation.m; sourceTree = "<group>"; };
 		F222BA7863FFA3AF4E0E4CEE4EE9BC04 /* SGQRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SGQRCode.release.xcconfig; sourceTree = "<group>"; };
 		F2CDD3BBC7A06C271AAE683AAEC3A5DE /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
-		F2E52495C3EFCA59B17641C6279CC735 /* libSJM3U8Downloader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSJM3U8Downloader.a; path = libSJM3U8Downloader.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2E52495C3EFCA59B17641C6279CC735 /* libSJM3U8Downloader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSJM3U8Downloader.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F396C377C5432A9126B46F99A6C680BB /* SJRunLoopTaskQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJRunLoopTaskQueue.m; path = SJUIKit/Queues/SJRunLoopTaskQueue.m; sourceTree = "<group>"; };
 		F3BD40FC819052AE4A643B3A65DE5799 /* SJClipsGIFCountDownView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJClipsGIFCountDownView.h; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/View/SJClipsGIFCountDownView.h; sourceTree = "<group>"; };
 		F475251A6628ACF6DB2BB15F7ABD733D /* NSDictionary+DictionaryHook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+DictionaryHook.h"; path = "JJException/Source/MRC/NSDictionary+DictionaryHook.h"; sourceTree = "<group>"; };
@@ -2272,7 +2274,7 @@
 		F6E04B80722B1BD477AF52B8B67B4881 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "SDWebImage/Core/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
 		F726C77A0A831172CCE428AABB5A6D80 /* LYEmptyView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LYEmptyView.h; path = LYEmptyView/LYEmptyView.h; sourceTree = "<group>"; };
 		F72ED13C127A549CEB4B61A7A1074CFE /* SDAutoLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDAutoLayout.debug.xcconfig; sourceTree = "<group>"; };
-		F7785B72FFA7AD5738D7E285153CEECD /* libSJMediaCacheServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSJMediaCacheServer.a; path = libSJMediaCacheServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7785B72FFA7AD5738D7E285153CEECD /* libSJMediaCacheServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSJMediaCacheServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82468E85A100EDE9344F06F48D88A96 /* MJRefreshNormalTrailer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshNormalTrailer.m; path = MJRefresh/Custom/Trailer/MJRefreshNormalTrailer.m; sourceTree = "<group>"; };
 		F836C76BA0D5DE790F7CE64E8E300C58 /* SJEdgeControlButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJEdgeControlButtonItem.m; path = SJVideoPlayer/Common/Utils/Adapters/Core/SJEdgeControlButtonItem.m; sourceTree = "<group>"; };
 		F853784728F4E0C531ABBA1BB8024ADF /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
@@ -2284,10 +2286,10 @@
 		FA23BCE912FCEE4987A1E3233BE9D7C9 /* SJSQLiteCore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJSQLiteCore.m; path = SJUIKit/SQLite3/Core/SJSQLiteCore.m; sourceTree = "<group>"; };
 		FA4D0E3A685EE81AD0AE6F088FBCC841 /* NSTimer+CleanTimer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+CleanTimer.m"; path = "JJException/Source/ARC/NSTimer+CleanTimer.m"; sourceTree = "<group>"; };
 		FAA1C3A8B3D2C0BE13CD399F00156EEC /* SJClipsVideoCountDownView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SJClipsVideoCountDownView.m; path = SJVideoPlayer/ControlLayers/SJClipsControlLayer/Core/View/SJClipsVideoCountDownView.m; sourceTree = "<group>"; };
-		FAA5F2D71B90788C908800A94534AA92 /* libFLAnimatedImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFLAnimatedImage.a; path = libFLAnimatedImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAA5F2D71B90788C908800A94534AA92 /* libFLAnimatedImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFLAnimatedImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFFEFA6A3FCD75CA352CAE334AD6BBB /* SDImageCachesManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManager.h; path = SDWebImage/Core/SDImageCachesManager.h; sourceTree = "<group>"; };
 		FB2DE2E2030FB374680756C67E7E5DAA /* NSNotificationCenter+ClearNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+ClearNotification.h"; path = "JJException/Source/ARC/NSNotificationCenter+ClearNotification.h"; sourceTree = "<group>"; };
-		FB4DD2CD9E6286B9CB4B358E95FE3F6D /* libWMPageController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libWMPageController.a; path = libWMPageController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB4DD2CD9E6286B9CB4B358E95FE3F6D /* libWMPageController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWMPageController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC15026AE35570BEDF82A4A5A3B3A9BC /* YYModel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YYModel-dummy.m"; sourceTree = "<group>"; };
 		FC354424D5AFAC9981259C2665DD63EF /* YTKNetwork-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YTKNetwork-prefix.pch"; sourceTree = "<group>"; };
 		FD39081A1A372C7756DD4DA77BC50ABA /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
@@ -2296,7 +2298,7 @@
 		FE29E300D2A93E3B7F0D96C12756347B /* SDWebImageCacheSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCacheSerializer.m; path = SDWebImage/Core/SDWebImageCacheSerializer.m; sourceTree = "<group>"; };
 		FE35FE7D685C2A8922DF174EB91BA17E /* UIView+SJAnimationAdded.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+SJAnimationAdded.m"; path = "SJVideoPlayer/Common/UIKit/UIView+SJAnimationAdded.m"; sourceTree = "<group>"; };
 		FE5D756A684BC4EF4A8414D13C0AD120 /* YYText-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YYText-prefix.pch"; sourceTree = "<group>"; };
-		FE8BD581DE196BDE92C790B062C2C849 /* libPods-573music.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-573music.a"; path = "libPods-573music.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE8BD581DE196BDE92C790B062C2C849 /* libPods-573music.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-573music.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA75127BCEBF3E94F9DA81556102AC8 /* MJRefreshGifHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshGifHeader.m; path = MJRefresh/Custom/Header/MJRefreshGifHeader.m; sourceTree = "<group>"; };
 		FF5F323A7E7F74E75F183F52A9CAFA60 /* SJSubtitlesPromptControllerDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SJSubtitlesPromptControllerDefines.h; path = SJBaseVideoPlayer/Common/Interfaces/SJSubtitlesPromptControllerDefines.h; sourceTree = "<group>"; };
 		FFC350C013EBEB7447BE62A7318C014D /* HTTPRedirectResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPRedirectResponse.h; path = SJMediaCacheServer/KTVCocoaHTTPServer/Classes/Responses/HTTPRedirectResponse.h; sourceTree = "<group>"; };
@@ -2647,7 +2649,6 @@
 				27BC2E7D4189B375BBE58905C2BD7890 /* Resources */,
 				06D401DB7028CCCE2E00468FD1FE3356 /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -2690,7 +2691,6 @@
 				EED8D283E13BE1276CEC7FEAB989FF14 /* XHLaunchImageView.m */,
 				973E1E5313B181E4B3955362149007E7 /* Support Files */,
 			);
-			name = XHLaunchAd;
 			path = XHLaunchAd;
 			sourceTree = "<group>";
 		};
@@ -2737,7 +2737,6 @@
 				D9E81F2E40B4218E6C4AADE46B0DCC6E /* KTVCocoaHTTPServer */,
 				8B629C49A3C9E05BBCCDAE66B2F1347B /* Support Files */,
 			);
-			name = SJMediaCacheServer;
 			path = SJMediaCacheServer;
 			sourceTree = "<group>";
 		};
@@ -2881,7 +2880,6 @@
 				F1A37E5C51603CB51B4B57AD7A0B41DD /* Resources */,
 				55AFFAC007116702451DD8A3CBF93B13 /* Support Files */,
 			);
-			name = SGQRCode;
 			path = SGQRCode;
 			sourceTree = "<group>";
 		};
@@ -3175,7 +3173,6 @@
 				5D021094B5A9492C0F522C1729B0726D /* ResourceLoader */,
 				C39A4492FC265A10BD4F90412208EB30 /* Support Files */,
 			);
-			name = SJBaseVideoPlayer;
 			path = SJBaseVideoPlayer;
 			sourceTree = "<group>";
 		};
@@ -3185,7 +3182,6 @@
 				2D677A2FCE346C5D31ECBA19858F29C3 /* Frameworks */,
 				E180423F7852C827B12E459A9A08EA52 /* Support Files */,
 			);
-			name = LookinServer;
 			path = LookinServer;
 			sourceTree = "<group>";
 		};
@@ -3253,7 +3249,6 @@
 				6447F10E7EB6C9546802A96FAEE2B39D /* ViewController+MASAdditions.m */,
 				984BABEE18CE14FBBAACD8CAA4A17EFB /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -3276,7 +3271,6 @@
 				2E0794C161041627066F2C74F0DF28B5 /* Core */,
 				BB7673E7F60298E1ABCBE37CB3A75312 /* Support Files */,
 			);
-			name = SJDownloadDataTask;
 			path = SJDownloadDataTask;
 			sourceTree = "<group>";
 		};
@@ -3330,7 +3324,6 @@
 				478397A39E944B7F738D18F22AB0A382 /* FSTextView.m */,
 				9158DC5C04BA9B61CF3760DE722DA29F /* Support Files */,
 			);
-			name = FSTextView;
 			path = FSTextView;
 			sourceTree = "<group>";
 		};
@@ -3343,7 +3336,6 @@
 				D3AF1AD13E4E9C7BA452B0879F587C10 /* GCDAsyncUdpSocket.m */,
 				284EE042CCD2DBDE83F261CA53FD8C67 /* Support Files */,
 			);
-			name = CocoaAsyncSocket;
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
@@ -3379,7 +3371,6 @@
 				79B25CAE9BEFA50302F68E079892241D /* UIView+SDAutoLayout.m */,
 				6B92906C4505EE32A591840F81367D4E /* Support Files */,
 			);
-			name = SDAutoLayout;
 			path = SDAutoLayout;
 			sourceTree = "<group>";
 		};
@@ -3437,7 +3428,6 @@
 				68057E4E9E0E083CEB8A7D4FFCBA91CD /* YYModel.h */,
 				777C296DC3DB7AB4FE371266EC5990FE /* Support Files */,
 			);
-			name = YYModel;
 			path = YYModel;
 			sourceTree = "<group>";
 		};
@@ -3474,7 +3464,6 @@
 				73862CF5567B2DBDFCE9F64305DD6EE8 /* IQUIViewController+Additions.m */,
 				F7A473A1907142669B6CA12DFD4275BA /* Support Files */,
 			);
-			name = IQKeyboardManager;
 			path = IQKeyboardManager;
 			sourceTree = "<group>";
 		};
@@ -3486,7 +3475,6 @@
 				85115F331A3D2FF08BCF4FEF5037A9C4 /* standard */,
 				655D824A11B7D38C72D5228691DB97D3 /* Support Files */,
 			);
-			name = WHC_ModelSqliteKit;
 			path = WHC_ModelSqliteKit;
 			sourceTree = "<group>";
 		};
@@ -3511,7 +3499,6 @@
 				1C073F34D0AEA8FA7D64D75EFC5C8329 /* FLAnimatedImageView.m */,
 				C3480FA6176E93C40DBDC717790D53C7 /* Support Files */,
 			);
-			name = FLAnimatedImage;
 			path = FLAnimatedImage;
 			sourceTree = "<group>";
 		};
@@ -3540,7 +3527,6 @@
 				D6318AADFA60B482283CABC87CC601E8 /* ObjC */,
 				2639A042E6225095E1708D828FC0A774 /* Support Files */,
 			);
-			name = CHTCollectionViewWaterfallLayout;
 			path = CHTCollectionViewWaterfallLayout;
 			sourceTree = "<group>";
 		};
@@ -3570,7 +3556,6 @@
 				1D61389EEBA020C05311FD2A6752B801 /* NSString+MJExtension.m */,
 				5837F5C4CE6CDC3C7B966991B7FA0AA0 /* Support Files */,
 			);
-			name = MJExtension;
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
@@ -3701,7 +3686,6 @@
 				23ED581814C77276DC62277A5B6D245A /* YYTextWeakProxy.m */,
 				4C9A32AAD35D9436A80E673DC362B1F5 /* Support Files */,
 			);
-			name = YYText;
 			path = YYText;
 			sourceTree = "<group>";
 		};
@@ -3727,7 +3711,6 @@
 				3AB7D4B1BDA2E6BE39DC5D4AA5A28E9A /* Support Files */,
 				97D605F39274F54610A8F982F1367B37 /* Swizzle */,
 			);
-			name = JJException;
 			path = JJException;
 			sourceTree = "<group>";
 		};
@@ -3789,7 +3772,6 @@
 				3539DB172AEC3C2889D5FC4E71732E6E /* ZipArchive.h */,
 				DF9B54EE04DF3FB623086FED8DCA8C75 /* Support Files */,
 			);
-			name = SSZipArchive;
 			path = SSZipArchive;
 			sourceTree = "<group>";
 		};
@@ -3801,7 +3783,6 @@
 				FB08AE9A71D901EB52989008A0B10F9F /* Core */,
 				124A9F2472D18DDAA1178CD1F9A5356D /* Support Files */,
 			);
-			name = SJM3U8Downloader;
 			path = SJM3U8Downloader;
 			sourceTree = "<group>";
 		};
@@ -3926,7 +3907,6 @@
 				0B9F9D80FDC86ACD9E53D73BF1FE6027 /* Support Files */,
 				E2CCDF02C43E0F2EC692835C808C4090 /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -4007,7 +3987,6 @@
 				C75548B3EE764AE2C8435ADFFBFCC57C /* UIView+LYExtension.m */,
 				00E2B9C2D18AF5F86AB686BD633FD55D /* Support Files */,
 			);
-			name = LYEmptyView;
 			path = LYEmptyView;
 			sourceTree = "<group>";
 		};
@@ -4113,7 +4092,6 @@
 				4C6F4F71508FFC3EB43D4CCA3DCEB6E8 /* ResourceLoader */,
 				F9C11EF27C4BD2F94508E39288F8D036 /* Support Files */,
 			);
-			name = SJVideoPlayer;
 			path = SJVideoPlayer;
 			sourceTree = "<group>";
 		};
@@ -4143,7 +4121,6 @@
 				A4F89939B496785F36F37CAE370513FA /* YTKRequestEventAccessory.m */,
 				1370E7B0D5C3E967920F96577606317B /* Support Files */,
 			);
-			name = YTKNetwork;
 			path = YTKNetwork;
 			sourceTree = "<group>";
 		};
@@ -4214,7 +4191,6 @@
 				849498CDD95377CD75E884211CA9E1F0 /* LEEAlertHelper.h */,
 				D98E7A32177386224548A96B1E2DC3BB /* Support Files */,
 			);
-			name = LEEAlert;
 			path = LEEAlert;
 			sourceTree = "<group>";
 		};
@@ -4232,7 +4208,6 @@
 				BE66349BF6A9F9E32E1C4238AAC416FF /* UIView+PPBadgeView.m */,
 				F2DFCB9F1A0E8FEE7650D0E270389C7B /* Support Files */,
 			);
-			name = PPBadgeView;
 			path = PPBadgeView;
 			sourceTree = "<group>";
 		};
@@ -4242,7 +4217,6 @@
 				3B381C327942E6A6584C03DB79051704 /* Core */,
 				285DA65BC16A085FDB9C1C2D8C6BA901 /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -4274,7 +4248,6 @@
 				6CBA870C377AA15E6EC9EEA9B5A68B74 /* Frameworks */,
 				411E02CC26178336B22F852D70F9CC30 /* Support Files */,
 			);
-			name = WoodPeckeriOS;
 			path = WoodPeckeriOS;
 			sourceTree = "<group>";
 		};
@@ -4344,7 +4317,6 @@
 				28D07B423C51B22DFFBA78638464B695 /* WMScrollView.m */,
 				7076A9028DBCDB84A9CB02CE9303AEB0 /* Support Files */,
 			);
-			name = WMPageController;
 			path = WMPageController;
 			sourceTree = "<group>";
 		};
@@ -4466,7 +4438,6 @@
 				9D0974F1CDB712B2441A67929BC764E8 /* SQLite3 */,
 				4A1CB3DCC64F07735D57FF1311235991 /* Support Files */,
 			);
-			name = SJUIKit;
 			path = SJUIKit;
 			sourceTree = "<group>";
 		};
@@ -7115,6 +7086,18 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/SJM3U8Downloader/SJM3U8Downloader-prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Private\"",
+					"\"${PODS_ROOT}/Headers/Private/SJM3U8Downloader\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/SJDownloadDataTask\"",
+					"\"${PODS_ROOT}/Headers/Public/SJM3U8Downloader\"",
+					"\"${PODS_ROOT}/Headers/Public/SJMediaCacheServer\"",
+					"\"${PODS_ROOT}/Headers/Public/SJUIKit\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -7163,6 +7146,18 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/SJM3U8Downloader/SJM3U8Downloader-prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Private\"",
+					"\"${PODS_ROOT}/Headers/Private/SJM3U8Downloader\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/SJDownloadDataTask\"",
+					"\"${PODS_ROOT}/Headers/Public/SJM3U8Downloader\"",
+					"\"${PODS_ROOT}/Headers/Public/SJMediaCacheServer\"",
+					"\"${PODS_ROOT}/Headers/Public/SJUIKit\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";

@@ -95,6 +95,7 @@
 - (void)setValue:(id)value forObject:(id)object
 {
     if (self.type.KVCDisabled || value == nil) return;
+    if ( self.srcClass == [NSProgress class]) return;
     [object setValue:value forKey:self.name];
 }
 

@@ -87,6 +87,9 @@
         SJVideoPlayerURLAsset *asset = [SJVideoPlayerURLAsset.alloc initWithURL:_mv.mv_path.mj_url startPosition:0];
         _player.URLAsset = asset;
     } failure:^(NSString *errorInfo) {}];
+    
+    //添加播放量
+    [MioPostReq(api_addPlayCount, (@{@"model_name":@"mv",@"columns":@"hits_all",@"model_id":_mvId})) success:^(NSDictionary *result){} failure:^(NSString *errorInfo) {}];
 }
 
 -(void)creatView{

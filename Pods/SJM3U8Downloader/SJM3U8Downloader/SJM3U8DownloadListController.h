@@ -56,8 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// 添加到下载队列
 ///
-- (NSInteger)addItemWithUrl:(NSString *)url;
-- (NSInteger)addItemWithUrl:(NSString *)url folderName:(nullable NSString *)name;
+- (NSInteger)addItemWithUrl:(NSString *)url withMusic:(NSDictionary *)musicJson;
+- (NSInteger)addItemWithUrl:(NSString *)url folderName:(nullable NSString *)name withMusic:(NSDictionary *)musicJson;
 
 ///
 /// 主动同步当前item的信息到数据库

@@ -54,8 +54,7 @@
 {
     return _categoryArr[section][@"title"];
 }
-- (nullable UIImage  *)collectionView:(ZYCollectionView *)collectionView imageForHeaderInSection
-                                     :(NSInteger)section
+- (nullable UIImage  *)collectionView:(ZYCollectionView *)collectionView imageForHeaderInSection:(NSInteger)section
 {
     return nil;
 }

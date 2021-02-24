@@ -11,8 +11,11 @@
 #import "MioDownloadMusicVC.h"
 #import "MioDownloadMVVC.h"
 #import "MioDownloadingVC.h"
-#import "SODownloader+MusicDownloader.h"
-#import "SOSimulateDB.h"
+#import <SJM3U8Download.h>
+#import <SJM3U8DownloadListController.h>
+#import <SJM3U8DownloadListControllerDefines.h>
+//#import "SODownloader+MusicDownloader.h"
+//#import "SOSimulateDB.h"
 
 static void * kDownloaderCompleteArrayKVOContext = &kDownloaderCompleteArrayKVOContext;
 static void * kDownloaderKVOContext = &kDownloaderKVOContext;
@@ -30,6 +33,8 @@ static void * kDownloaderKVOContext = &kDownloaderKVOContext;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    RecieveNotice(@"downloadCountChange", reloadCount);
+    
     _downloadMusicVC = [[MioDownloadMusicVC alloc] init];
     _downloadMVVC = [[MioDownloadMVVC alloc] init];
     _downloadingVC = [[MioDownloadingVC alloc] init];
@@ -38,7 +43,7 @@ static void * kDownloaderKVOContext = &kDownloaderKVOContext;
     _contentView.backgroundColor = appClearColor;
     [self.view addSubview:_contentView];
     
-    MioImageView *bgimg = [MioImageView creatImgView:frame(0, - NavH, KSW, NavH + 48) inView:_contentView skin:SkinName image:@"picture_li" radius:0];
+    MioImageView *bgimg = [MioImageView creatImgView:frame(0, - NavH, KSW, NavH + 40) inView:_contentView skin:SkinName image:@"picture_li" radius:0];
     
     _pageController = [[WMPageController alloc] init];
     [self addChildViewController:_pageController];
@@ -67,21 +72,21 @@ static void * kDownloaderKVOContext = &kDownloaderKVOContext;
     [self.navView.centerButton setTitle:@"下载" forState:UIControlStateNormal];
     
     
-    [[SODownloader musicDownloader] addObserver:self forKeyPath:SODownloaderCompleteArrayObserveKeyPath options:NSKeyValueObservingOptionNew context:kDownloaderCompleteArrayKVOContext];
+//    [[SODownloader musicDownloader] addObserver:self forKeyPath:SODownloaderCompleteArrayObserveKeyPath options:NSKeyValueObservingOptionNew context:kDownloaderCompleteArrayKVOContext];
 }
 
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if (context == kDownloaderCompleteArrayKVOContext) {
-        [_downloadingVC reload];
-        [_downloadMusicVC reload];
-        NSLog(@"——————%lu",(unsigned long)[SODownloader musicDownloader].downloadArray.count);
-        NSLog(@"——————%lu",(unsigned long)[SODownloader musicDownloader].completeArray.count);
-        [_pageController reloadData];
-    } else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+//    if (context == kDownloaderCompleteArrayKVOContext) {
+//        [_downloadingVC reload];
+//        [_downloadMusicVC reload];
+////        NSLog(@"——————%lu",(unsigned long)[SODownloader musicDownloader].downloadArray.count);
+////        NSLog(@"——————%lu",(unsigned long)[SODownloader musicDownloader].completeArray.count);
+//        [_pageController reloadData];
+//    } else {
+//        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+//    }
+//}
 
 
 
@@ -105,21 +110,30 @@ static void * kDownloaderKVOContext = &kDownloaderKVOContext;
     
 }
 
+
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        return [NSString stringWithFormat:@"音乐 %lu",(unsigned long)[SODownloader musicDownloader].completeArray.count];
+        return @"音乐";
+//        return [NSString stringWithFormat:@"音乐 %lu",(unsigned long)[SODownloader musicDownloader].completeArray.count];
     }else if (index == 1) {
         return @"视频";
     }else{
-        return [NSString stringWithFormat:@"正在下载 %lu",(unsigned long)[SODownloader musicDownloader].downloadArray.count];;
+//        return @"正在下载";
+        
+        return [NSString stringWithFormat:@"正在下载 %lu",SJM3U8DownloadListController.shared.count];
     }
     
 }
 
+-(void)reloadCount{
+    [_pageController reloadData];
+}
+
+
 - (void)dealloc {
     // 移除对"已下载"列表的观察
-    [[SODownloader musicDownloader]removeObserver:self forKeyPath:SODownloaderCompleteArrayObserveKeyPath];
+//    [[SODownloader musicDownloader]removeObserver:self forKeyPath:SODownloaderCompleteArrayObserveKeyPath];
 //    [[SODownloader musicDownloader]removeObserver:self forKeyPath:SODownloaderCompleteArrayObserveKeyPath];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "MioMusicModel.h"
-#import "SOSimulateDB.h"
+#import <WHC_ModelSqlite.h>
 @implementation MioMusicModel
 @synthesize so_downloadProgress, so_downloadState = _so_downloadState, so_downloadError, so_downloadSpeed = _so_downloadSpeed;
 
@@ -144,14 +144,14 @@
     }
 }
 
--(void)changeSo_downloadState:(SODownloadState)so_downloadState {
-    self.so_downloadState = so_downloadState;
-    [SOSimulateDB save:self];
-}
-
-- (void)setSo_downloadState:(SODownloadState)so_downloadState {
-    _so_downloadState = so_downloadState;
-}
+//-(void)changeSo_downloadState:(SODownloadState)so_downloadState {
+//    self.so_downloadState = so_downloadState;
+//    [SOSimulateDB save:self];
+//}
+//
+//- (void)setSo_downloadState:(SODownloadState)so_downloadState {
+//    _so_downloadState = so_downloadState;
+//}
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super init];
@@ -177,5 +177,7 @@
 
     return [app_Version stringByAppendingString:app_build];
 }
+
+
 
 @end

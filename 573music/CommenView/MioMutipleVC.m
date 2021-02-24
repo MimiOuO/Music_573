@@ -12,8 +12,9 @@
 #import "SODownloader.h"
 #import "SODownloader+MusicDownloader.h"
 #import "MioAddToSonglistVC.h"
+#import "MioChooseDownloadQuantityView.h"
 
-@interface MioMutipleVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface MioMutipleVC ()<UITableViewDelegate,UITableViewDataSource,chooseDownloadDelegate>
 @property (strong, nonatomic) UITableView       *tableView;
 @property (nonatomic, strong) UIButton *allSelectBtn;
 @property (nonatomic, strong) UIView *bottomView;
@@ -56,14 +57,27 @@
 }
 
 -(void)downloadClick{
+//    [UIWindow showInfo:@"开发中"];
+//    return;
+    
+
     NSMutableArray *selectArr = [[NSMutableArray alloc] init];
     [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [selectArr addObject:_musicArr[obj.row]];
     }];
-    NSLog(@"%@",selectArr);
-    [[SODownloader musicDownloader] setValue:@"" forHTTPHeaderField:@"Accept-Encoding"];
-    [SODownloader musicDownloader].maximumActiveDownloads = 3;
-    [[SODownloader musicDownloader] downloadItems:selectArr];
+    if (selectArr.count == 0) {
+        [UIWindow showInfo:@"还未选择歌曲"];
+        return;
+    }
+    MioChooseDownloadQuantityView *view = [[MioChooseDownloadQuantityView alloc] init];
+    view.delegate = self;
+    view.musicArr = selectArr;
+    [view show];
+   
+}
+
+- (void)chooseDownloadQuailtyDone{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)playClick{
@@ -98,7 +112,6 @@
 }
 
 -(void)deleteClick{
-    goLogin;
     NSMutableArray<MioMusicModel *> *selectArr = [[NSMutableArray alloc] init];
     [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [selectArr addObject:_musicArr[obj.row]];
@@ -201,7 +214,7 @@
     [_playBtn setTitleColor:color_text_one forState:UIControlStateNormal];
     _playBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     _playBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [_playBtn setImage:[image(@"download_choose") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
+    [_playBtn setImage:[image(@"play_choose") imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)] forState:UIControlStateNormal];
     _playBtn.imageRect = CGRectMake(3, 0, 24, 24);
     _playBtn.titleRect = CGRectMake(-5, 26, 40, 14);
     [_playBtn addTarget:self action:@selector(playClick) forControlEvents:UIControlEventTouchUpInside];
@@ -234,23 +247,23 @@
     
     switch (_type) {
         case MioMutipleTypePlayList://下载 加入歌单
-//            _downloadBtn.centerX = 1*KSW/3;
-            _addBtn.centerX = 1*KSW/2;
+            _downloadBtn.centerX = 1*KSW/3;
+            _addBtn.centerX = 2*KSW/3;
             break;
         case MioMutipleTypeSongList://下载 稍后播 加入歌单
-            _playBtn.centerX = 1*KSW/3;
-//            _downloadBtn.centerX = 2*KSW/4;
-            _addBtn.centerX = 2*KSW/3;
+            _playBtn.centerX = 1*KSW/4;
+            _downloadBtn.centerX = 2*KSW/4;
+            _addBtn.centerX = 3*KSW/4;
             
             break;
         case MioMutipleTypeOwnSongList://删除 下载 稍后播 加入歌单
-            _playBtn.centerX = 1*KSW/4;
-//            _downloadBtn.centerX = 2*KSW/5;
-            _addBtn.centerX = 2*KSW/4;
-            _deleteBtn.centerX = 3*KSW/4;
+            _playBtn.centerX = 1*KSW/5;
+            _downloadBtn.centerX = 2*KSW/5;
+            _addBtn.centerX = 3*KSW/5;
+            _deleteBtn.centerX = 4*KSW/5;
             break;
         case MioMutipleTypeDownloadList://删除 稍后播 加入歌单
-//            _downloadBtn.centerX = 1*KSW/4;
+            _playBtn.centerX = 1*KSW/4;
             _addBtn.centerX = 2*KSW/4;
             _deleteBtn.centerX = 3*KSW/4;
             break;

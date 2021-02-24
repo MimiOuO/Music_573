@@ -226,6 +226,10 @@ static NSString * CATEGORY_CELL_IDENTIFIER = @"CATEGORY_CELL";
         _isSelectedCategoryOperation = true;
         [self selectCategoryRowAtIndexPath:indexPath];
         [_contextCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _isSelectedCategoryOperation = false;
+        });
     }
     return indexPath;
 }
@@ -253,7 +257,7 @@ static NSString * CATEGORY_CELL_IDENTIFIER = @"CATEGORY_CELL";
 }
 - (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0)
 {
-    if([elementKind isEqualToString:UICollectionElementKindSectionHeader])
+    if([elementKind isEqualToString:@"UICollectionElementKindSectionHeader"])
     {
         if(_isSelectedCategoryOperation)
             return;
@@ -271,7 +275,7 @@ static NSString * CATEGORY_CELL_IDENTIFIER = @"CATEGORY_CELL";
  */
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
-    if([elementKind isEqualToString:UICollectionElementKindSectionHeader])
+    if([elementKind isEqualToString:@"UICollectionElementKindSectionHeader"])
     {
         if(_isSelectedCategoryOperation)
             return;

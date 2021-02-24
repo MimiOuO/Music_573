@@ -122,7 +122,6 @@
     _albumScroll = [UIScrollView creatScroll:frame(0, 839, KSW, 132*2 + 12) inView:_bgScroll contentSize:CGSizeMake(0,0)];
     _singerScroll = [UIScrollView creatScroll:frame(0, 1177, KSW, 56*4 + 36) inView:_bgScroll contentSize:CGSizeMake(0,0)];
     _singerScroll.contentInset = UIEdgeInsetsMake(0, 0, 0, Mar);
-    _singerScroll.pagingEnabled = YES;
 }
 
 -(void)updateUI{

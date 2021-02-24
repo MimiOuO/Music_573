@@ -82,6 +82,14 @@
     }
 }
 
+-(void)deletePlayListById:(NSString *)song_id{
+    for (int i = 0;i < self.playListArr.count; i++) {
+        if (Equals(song_id, self.playListArr[i].song_id)) {
+            [self deletePlayListAtIndex:i];
+        }
+    }
+}
+
 -(void)deletePlayListAtIndex:(NSInteger)index{
     if (self.playListArr.count == 1) {
         [self clearPlayList];

@@ -8,6 +8,8 @@
 
 #import "MioM3U8Player.h"
 #import <WHC_ModelSqlite.h>
+#import <SJM3U8Downloader.h>
+#import <SJM3U8DownloadListController.h>
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
 static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
@@ -133,13 +135,14 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         self.currentTime = 0;
         //重设streamer
         [self resetAudiostreamer:music];
-        if (!music.local) {
+        if (!music.local) {//本地歌曲 不是下载歌曲
             //添加到最近播放
             [WHCSqlite delete:[MioMusicModel class] where:[NSString stringWithFormat:@"savetype = 'recentMusic' AND song_id = '%@'",music.song_id]];
             
             music.savetype = @"recentMusic";
             [WHCSqlite insert:music];
         }
+        
         //通知更新UI
         PostNotice(switchMusic);
     }
@@ -170,12 +173,29 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void)resetAudiostreamer:(MioMusicModel *)music{
 //    [self _cancelStreamer];
-    if (music.local) {
-        self.player.assetURLs = @[Url(music.localUrl)];
+    NSArray<MioMusicModel *> *dataArr = [WHCSqlite query:[MioMusicModel class]  where:@"savetype = 'downloaded'"];
+    NSMutableArray *musicIdArr = [[NSMutableArray alloc] init];
+    for (int i = 0;i < dataArr.count; i++) {
+        [musicIdArr addObject:dataArr[i].song_id];
+    }
+    
+    NSString *downloadPath = [NSString stringWithFormat:@"%@/sj.download.files",
+                           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([musicIdArr containsObject:music.song_id] && [fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[music.audioFileURL hash]]] ) {
+        self.player.assetURLs = @[[SJM3U8DownloadListController.shared localPlayUrlByUrl:[NSString stringWithFormat:@"%@",music.audioFileURL]].mj_url];
         [self.player playTheIndex:0];
     }else{
-        self.player.assetURLs = @[music.audioFileURL];
-        [self.player playTheIndex:0];
+        if (music.local) {//是本地歌曲 不是下载歌曲
+            self.player.assetURLs = @[music.localUrl];
+            [self.player playTheIndex:0];
+        }else{
+            self.player.assetURLs = @[music.audioFileURL];
+            [self.player playTheIndex:0];
+        }
+    }
+    
+    if (!music.local) {
         //添加播放量
         [MioPostReq(api_addPlayCount, (@{@"model_name":@"song",@"columns":@"hits_all",@"model_id":music.song_id})) success:^(NSDictionary *result){} failure:^(NSString *errorInfo) {}];
     }

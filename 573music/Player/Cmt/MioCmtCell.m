@@ -82,7 +82,7 @@
 
 - (void)setCmtModel:(MioCmtModel *)cmtModel{
     _cmtModel = cmtModel;
-    [_avatatImage sd_setImageWithURL:Url(cmtModel.from_user.avatar) placeholderImage:[UIImage imageNamed:@"qxt_yonhu"]];
+    [_avatatImage sd_setImageWithURL:cmtModel.from_user.avatar.mj_url placeholderImage:[UIImage imageNamed:@"qxt_yonhu"]];
     _nickName.text = cmtModel.from_user.nickname;
 //    if ([cmtModel.comment_status isEqualToString:@"1"]) {
 //        _praiseButton.selected = YES;

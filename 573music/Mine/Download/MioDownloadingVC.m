@@ -7,60 +7,122 @@
 //
 
 #import "MioDownloadingVC.h"
-#import "SODownloader+MusicDownloader.h"
-#import "SOSimulateDB.h"
-#import "MioDownloadingCell.h"
+#import <SJM3U8Download.h>
+#import <SJM3U8DownloadListController.h>
+#import <SJM3U8DownloadListControllerDefines.h>
+#import "MioDownloadMusicCell.h"
+#import <WHC_ModelSqlite.h>
 
 //static void * kDownloaderCompleteArrayKVOContext = &kDownloaderCompleteArrayKVOContext;
 //static void * kDownloaderKVOContext = &kDownloaderKVOContext;
-@interface MioDownloadingVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) UITableView *musicTable;
+@interface MioDownloadingVC ()<UITableViewDelegate,UITableViewDataSource,SJM3U8DownloadListControllerDelegate, SJM3U8DownloadListItemDelegate>
+@property (nonatomic, strong) UITableView *tableView;
 @property (copy, nonatomic) NSArray *dataArray;
 @end
 
 @implementation MioDownloadingVC
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     self.bgImg.hidden = YES;
     self.view.backgroundColor = appClearColor;
     
-    _musicTable = [UITableView creatTable:frame(0, 48, KSW, KSH - NavH - 48 - 48 - TabH) inView:self.view vc:self];
+    SJM3U8DownloadListController.shared.delegate = self;
     
-
-//    [[SODownloader musicDownloader]addObserver:self forKeyPath:SODownloaderCompleteArrayObserveKeyPath options:NSKeyValueObservingOptionNew context:kDownloaderKVOContext];
-    
-    self.dataArray = [SODownloader musicDownloader].downloadArray;
-   
+    _tableView = [UITableView creatTable:frame(0, 0, KSW, KSH - NavH - 48 - 0 - TabH) inView:self.view vc:self];
+    _tableView.contentInset = UIEdgeInsetsMake(12, 0, 0, 0);
 }
 
--(void)reload{
-    self.dataArray = [SODownloader musicDownloader].downloadArray;
-    [_musicTable reloadData];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    for ( id<SJM3U8DownloadListItem> item in SJM3U8DownloadListController.shared.items ) {
+        item.delegate = self;
+    }
 }
+
+- (void)listController:(id<SJM3U8DownloadListController>)controller itemsDidChange:(NSArray<id<SJM3U8DownloadListItem>> *)items {
+    [self.tableView reloadData];
+}
+
+- (void)downloadItemProgressDidChange:(id<SJM3U8DownloadListItem>)item {
+    NSInteger idx = [SJM3U8DownloadListController.shared indexOfItemByUrl:item.url];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+    [self _updateContentForCell:[self.tableView cellForRowAtIndexPath:indexPath] forRowAtIndexPath:indexPath];
+}
+
+- (void)downloadItemStateDidChange:(id<SJM3U8DownloadListItem>)item {
+    NSInteger idx = [SJM3U8DownloadListController.shared indexOfItemByUrl:item.url];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+    [self _updateContentForCell:[self.tableView cellForRowAtIndexPath:indexPath] forRowAtIndexPath:indexPath];
+}
+
+#pragma mark -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    NSLog(@"%ld",(long)SJM3U8DownloadListController.shared.count);
+    return SJM3U8DownloadListController.shared.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";
-    MioDownloadingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    MioDownloadMusicCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[MioDownloadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[MioDownloadMusicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    cell.music = ((MioMusicModel *)(self.dataArray[indexPath.row]));
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    id<SJM3U8DownloadListItem> item = [SJM3U8DownloadListController.shared itemAtIndex:indexPath.row];
+    cell.item = item;
     return cell;
 }
-/// 实现这个代理方法是为了当一个cell在界面消失时，移除cell对music模型的kvo。
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    MioDownloadingCell *musicCell = (MioDownloadingCell *)cell;
-    [musicCell setMusic:nil];
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 72;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(MioDownloadMusicCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self _updateContentForCell:cell forRowAtIndexPath:indexPath];
+}
+
+- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [SJM3U8DownloadListController.shared deleteItemAtIndex:indexPath.row];
+    }];
+    return @[action];
+}
+
+#pragma mark -
+
+- (void)_updateContentForCell:(MioDownloadMusicCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<SJM3U8DownloadListItem> item = [SJM3U8DownloadListController.shared itemAtIndex:indexPath.row];
+    cell.item = item;
+    
+    if (item.state == SJDownloadStateFinished) {
+        NSLog(@"%@",item.musicJson);
+        MioMusicModel *music = [MioMusicModel mj_objectWithKeyValues:item.musicJson];
+        music.savetype = @"downloaded";
+        [WHCSqlite insert:music];
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<SJM3U8DownloadListItem> item = [SJM3U8DownloadListController.shared itemAtIndex:indexPath.row];
+    switch ( item.state ) {
+        case SJDownloadStateWaiting:
+        case SJDownloadStateRunning: {
+            [SJM3U8DownloadListController.shared suspendItemAtIndex:indexPath.row];
+        }
+            break;
+        case SJDownloadStateSuspended:
+        case SJDownloadStateFailed: {
+            [SJM3U8DownloadListController.shared resumeItemAtIndex:indexPath.row];
+        }
+            break;
+        case SJDownloadStateCancelled:
+        case SJDownloadStateFinished:
+            break;
+    }
+}
 @end
+

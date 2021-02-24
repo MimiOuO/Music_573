@@ -10,6 +10,7 @@
 #import <WMPageController.h>
 #import "MioHomeMusicHallVC.h"
 #import "MioHomeRecommendVC.h"
+#import "MioHomeDJVC.h"
 #import "PYSearch.h"
 #import "MioSearchResultVC.h"
 
@@ -218,7 +219,7 @@
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     
-    return 2;
+    return 3;
 }
 
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
@@ -226,8 +227,11 @@
     if (index == 0) {
         
         return [[MioHomeRecommendVC alloc] init];
-    }else{
+    }if (index == 1) {
+        
         return [[MioHomeMusicHallVC alloc] init];
+    }else{
+        return [[MioHomeDJVC alloc] init];
     }
     
     
@@ -237,8 +241,10 @@
     
     if (index == 0) {
         return @"推荐";
-    }else{
+    }if (index == 1) {
         return @"音乐馆";
+    }else{
+        return @"DJ专区";
     }
     
 }

@@ -18,9 +18,11 @@
 #import "MioMusicCmtVC.h"
 #import "MioMoreFuncView.h"
 #import "MioChooseQuantityView.h"
+#import "MioChooseDownloadQuantityView.h"
 #import "MioMvVC.h"
+#import "MioSingerVC.h"
 
-@interface MioMainPlayerVC ()<GKSliderViewDelegate,LyricViewDelegate,ChangeQuailtyDelegate>
+@interface MioMainPlayerVC ()<GKSliderViewDelegate,LyricViewDelegate,ChangeQuailtyDelegate,chooseDownloadDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) MioLrcView *lrcView;
@@ -127,6 +129,11 @@
     
     _singerLab = [UILabel creatLabel:frame(60, StatusH + 35, KSW - 120, 17) inView:self.view text:@"" color:rgba(255, 255, 255, 0.7) boldSize:12 alignment:NSTextAlignmentCenter];
     _singerLab.text = music.singer_name;
+    [_singerLab whenTapped:^{
+        MioSingerVC *vc = [[MioSingerVC alloc] init];
+        vc.singerId = mioM3U8Player.currentMusic.singer_id;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
     
     _qualityBtn = [UIButton creatBtn:frame(KSW2 - 26 - 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"" action:^{
         MioChooseQuantityView *chooseView = [[MioChooseQuantityView alloc] init];
@@ -226,7 +233,7 @@
     _playListBtn.centerY = _scrollView.bottom + divHeight*2;
 
     
-    _likeBtn = [UIButton creatBtn:frame(73, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"like_ordinary_player" action:^{
+    _likeBtn = [UIButton creatBtn:frame(28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"like_ordinary_player" action:^{
         [self likeClick];
     }];
     [_likeBtn setBackgroundImage:image(@"like_player") forState:UIControlStateSelected];
@@ -235,15 +242,15 @@
     }else{
         _likeBtn.selected = NO;
     }
-//    _downloadBtn = [UIButton creatBtn:frame(28 + (KSW - 56)/3 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"download_player" action:^{
-//
-//    }];
-    _cmtBtn = [UIButton creatBtn:frame(KSW2 - 12, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_digital_player" action:^{
+    _downloadBtn = [UIButton creatBtn:frame(KSW/2 - (KSW_Mar2 - 24*4)/6 - 24, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"download_player" action:^{
+        [weakSelf downloadClick];
+    }];
+    _cmtBtn = [UIButton creatBtn:frame(KSW/2 + (KSW_Mar2 - 24*4)/6, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_digital_player" action:^{
         MioMusicCmtVC *vc = [[MioMusicCmtVC alloc] init];
         vc.musicId = mioM3U8Player.currentMusic.song_id;
         [self.navigationController pushViewController:vc animated:YES];
     }];
-    _moreBtn = [UIButton creatBtn:frame(KSW - 24 - 73, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
+    _moreBtn = [UIButton creatBtn:frame(KSW - 24 - 28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
 
         MioMoreFuncView *view = [[MioMoreFuncView alloc] init];
         view.model = mioM3U8Player.currentMusic;
@@ -332,7 +339,7 @@
     [mioM3U8Player xw_addObserverBlockForKeyPath:@"bufferProgress" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
 //        NSLog(@"___!!!%f",mioM3U8Player.bufferProgress);
         if (isnan(mioM3U8Player.bufferProgress)) {
-            NSLog(@"nananannanananan");
+//            NSLog(@"nananannanananan");
         }else{
             _slider.bufferValue = mioM3U8Player.bufferProgress;
             [self.slider layoutIfNeeded];
@@ -342,7 +349,7 @@
     
     [mioM3U8Player xw_addObserverBlockForKeyPath:@"currentTime" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
         if (isnan(mioM3U8Player.currentTime / mioM3U8Player.currentMusicDuration)) {
-            NSLog(@"nananannanananan");
+//            NSLog(@"nananannanananan");
         }else{
             [_lrcView updateLrc];
             if (!self.isDraging) {
@@ -472,8 +479,35 @@
         [mioPlayList.playListArr replaceObjectAtIndex:mioPlayList.currentPlayIndex withObject:mioM3U8Player.currentMusic];
         [UIWindow showSuccess:@"操作成功"];
     } failure:^(NSString *errorInfo) {
-        [UIWindow showInfo:errorInfo];
+        [UIWindow showInfo:errorInfo]; 
     }];
+}
+
+-(void)downloadClick{
+    
+//    [UIWindow showInfo:@"开发中"];
+//    return;
+    
+    MioChooseDownloadQuantityView *view = [[MioChooseDownloadQuantityView alloc] init];
+    view.delegate = self;
+    view.musicArr = @[mioM3U8Player.currentMusic];
+    [view show];
+    
+    
+//    NSInteger urlHash =  [Url(@"https://mp32.aw998.com/Simone%20Altavilla/Lego(Markus%20Masuhr%20Reshape)/mp3.m3u8") hash];
+//
+//    NSString *downloadPath = [NSString stringWithFormat:@"%@/sj.download.files",
+//                           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+//
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//
+//
+//    if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/%ld",downloadPath,(long)urlHash]]) {
+//        [UIWindow showInfo:@"歌曲已经下载过"];
+//    }else{
+//        NSArray<NSString *> *urls =@[];
+//        [UIWindow showSuccess:@"已加入下载列表"];
+//    }
 }
 
 #pragma mark - slider代理
@@ -513,6 +547,8 @@
         [_qualityBtn setBackgroundImage:image(@"nondestructive_player_player") forState:UIControlStateNormal];
     }
 }
+
+
 
 -(void)updateCmtCount{
     _cmtCountLab.text = [NSString stringWithFormat:@"%d",[_cmtCountLab.text intValue] + 1];

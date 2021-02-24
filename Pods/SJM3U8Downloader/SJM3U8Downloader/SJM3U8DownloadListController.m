@@ -177,15 +177,16 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
-- (NSInteger)addItemWithUrl:(NSString *)url {
-    return [self addItemWithUrl:url folderName:nil];
+- (NSInteger)addItemWithUrl:(NSString *)url withMusic:(NSDictionary *)musicJson{
+    return [self addItemWithUrl:url folderName:nil withMusic:(NSDictionary *)musicJson];
 }
 
-- (NSInteger)addItemWithUrl:(NSString *)url folderName:(nullable NSString *)name {
+- (NSInteger)addItemWithUrl:(NSString *)url folderName:(nullable NSString *)name withMusic:(NSDictionary *)musicJson{
     if ( url.length != 0 ) {
         NSInteger idx = (name.length == 0 ? [self indexOfItemByUrl:url] : [self indexOfItemByFolderName:name]);
+        NSLog(@"判断歌曲是否已下载__%d",idx == NSNotFound);
         if ( idx == NSNotFound ) {
-            SJM3U8DownloadListItem *listItem = [SJM3U8DownloadListItem.alloc initWithUrl:url folderName:name];
+            SJM3U8DownloadListItem *listItem = [SJM3U8DownloadListItem.alloc initWithUrl:url folderName:name withMusic:musicJson];
             [self.listItems addObject:listItem];
             [self.database save:listItem error:NULL];
             
@@ -275,6 +276,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark -
 
 - (void)_itemsDidChange {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"downloadCountChange" object:nil];
     if ( [self.delegate respondsToSelector:@selector(listController:itemsDidChange:)] ) {
         [self.delegate listController:self itemsDidChange:self.items];
     }

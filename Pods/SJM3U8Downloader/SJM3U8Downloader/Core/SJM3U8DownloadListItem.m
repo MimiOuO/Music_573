@@ -32,11 +32,15 @@ NS_ASSUME_NONNULL_BEGIN
     return @[@"operation", @"speed", @"delegate"];
 }
 
-- (instancetype)initWithUrl:(NSString *)url folderName:(nullable NSString *)name {
+- (instancetype)initWithUrl:(NSString *)url folderName:(nullable NSString *)name withMusic:(NSDictionary *)musicJson{
     self = [super init];
     if ( self ) {
         _url = url;
         _folderName = name;
+        _musicJson = musicJson;
+        NSData * jsonData = [NSJSONSerialization dataWithJSONObject:musicJson options:NSJSONWritingPrettyPrinted error:nil];
+        NSString * jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        _musicJsonString = jsonStr;
     }
     return self;
 }
@@ -52,6 +56,18 @@ NS_ASSUME_NONNULL_BEGIN
     _state = state;
     if ( [self.delegate respondsToSelector:@selector(downloadItemStateDidChange:)] ) {
         [self.delegate downloadItemStateDidChange:self];
+    }
+}
+
+- (NSDictionary *)musicJson{
+    if (_musicJson) {
+        return _musicJson;
+    }else{
+        if (_musicJsonString) {
+            NSData * getJsonData = [_musicJsonString dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary * getDict = [NSJSONSerialization JSONObjectWithData:getJsonData options:NSJSONReadingMutableContainers error:nil];
+            return getDict;
+        }
     }
 }
 @end

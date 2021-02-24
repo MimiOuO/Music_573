@@ -492,7 +492,7 @@
         }
     }
     self.searchBar = searchBar;
-    self.searchBar.backgroundColor = color_card;
+    self.searchBar.backgroundColor = color_search;
     if (@available(iOS 13.0, *)) {
         self.searchBar.searchTextField.font = [UIFont systemFontOfSize:14];
     }

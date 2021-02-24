@@ -26,10 +26,10 @@
 - (void)setRankDic:(NSDictionary *)rankDic{
     
     UIImageView *bgImg = [UIImageView creatImgView:frame(Mar, 10, KSW_Mar2, 100) inView:self image:@"" radius:4];
-    [bgImg sd_setImageWithURL:Url(rankDic[@"cover_image_path"]) placeholderImage:image(@"gequ_zhanweitu")];
+    [bgImg sd_setImageWithURL:[rankDic[@"cover_image_path"] mj_url] placeholderImage:image(@"gequ_zhanweitu")];
     MioView *bgView = [MioView creatView:frame(Mar, 10, KSW_Mar2, 100) inView:self bgColorName:name_sup_two radius:4];
     UIImageView *coverImg = [UIImageView creatImgView:frame(Mar, 0, 110, 110) inView:self image:@"" radius:4];
-    [coverImg sd_setImageWithURL:Url(rankDic[@"cover_image_path"]) placeholderImage:image(@"gequ_zhanweitu")];
+    [coverImg sd_setImageWithURL:[rankDic[@"cover_image_path"] mj_url] placeholderImage:image(@"gequ_zhanweitu")];
     
     
     MioLabel *titleLab = [MioLabel creatLabel:frame(123, 10, 150, 20) inView:bgView text:rankDic[@"rank_title"] colorName:name_text_white size:14 alignment:NSTextAlignmentLeft];

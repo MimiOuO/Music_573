@@ -64,10 +64,12 @@
         NSArray *data = result[@"data"][@"data_paginate"][@"data"];
         
         _hotArr = [MioMvModel mj_objectArrayWithKeyValuesArray:data];
+        [self.collection reloadData];
     } failure:^(NSString *errorInfo) {}];
     
     [MioGetCacheReq(api_ranks,(@{@"type":@"MV",@"lock":@"0"})) success:^(NSDictionary *result){
         _rankArr = [result objectForKey:@"data"];
+        [self.collection reloadData];
     } failure:^(NSString *errorInfo) {}];
     
     [MioGetCacheReq(api_banners,@{@"position":@"MV推荐"}) success:^(NSDictionary *result){
@@ -78,7 +80,7 @@
             [_adJumpArr addObject:data[i][@"href"]];
         }
         _adUrlArr = tempArr;
-        
+        [self.collection reloadData];
     } failure:^(NSString *errorInfo) {}];
 }
 
