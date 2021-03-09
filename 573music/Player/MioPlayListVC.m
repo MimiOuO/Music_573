@@ -10,11 +10,22 @@
 #import "BTCoverVerticalTransition.h"
 #import "MioMutipleVC.h"
 #import "MioMusicPlaylistCell.h"
+#import "UIViewController+MioExtension.h"
+#import "MioSingerVC.h"
+#import "MioAlbumVC.h"
+#import "MioSongListVC.h"
+#import "MioCategoryVC.h"
+#import "MioMusicRankVC.h"
+#import "MioLikeVC.h"
+#import "MioLocalVC.h"
+#import "MioRecentVC.h"
+#import "MioDownloadVC.h"
 
 @interface MioPlayListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) BTCoverVerticalTransition *aniamtion;
 @property (nonatomic, strong) UITableView *playList;
 @property (nonatomic, assign) MioBottomType beforeBottomType;
+@property (nonatomic, strong) MioLabel *listTitle;
 @property (nonatomic, strong) MioButton *mutiBtn;
 @end
 
@@ -47,8 +58,8 @@
     [self.view addSubview:_playList];
 //    MioImageView *bgImg1 = [MioImageView creatImgView:frame(0, 0, KSW, 50) inView:self.view skin:SkinName image:@"picture_li" radius:0];
     MioView *split1 = [MioView creatView:frame(0, 50, KSW, 0.5) inView:self.view bgColorName:name_split radius:0];
-    MioLabel *title = [MioLabel creatLabel:frame(Mar, 0, KSW, 50) inView:self.view text:@"当前播放" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
-    _mutiBtn = [MioButton creatBtn:frame(KSW - 52 - 16, 16, 16, 16) inView:self.view bgImage:@"liebiao_add" bgTintColorName:name_icon_one action:^{
+    _listTitle = [MioLabel creatLabel:frame(Mar, 0, KSW, 50) inView:self.view text:[NSString stringWithFormat:@"播放列表(共%lu首歌曲)",mioPlayList.playListArr.count] colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+    _mutiBtn = [MioButton creatBtn:frame(KSW - 52 - 16, 16, 16, 16) inView:self.view bgImage:@"liebiao_duoxuan" bgTintColorName:name_icon_one action:^{
         if (mioPlayList.playListArr.count > 0) {
             MioMutipleVC *vc = [[MioMutipleVC alloc] init];
             vc.musicArr = mioPlayList.playListArr;
@@ -87,6 +98,7 @@
     
     [mioPlayList xw_addObserverBlockForKeyPath:@"playListArr" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
         NSLog(@"播放列表变化");
+
     }];
 //
     [mioPlayList xw_addObserverBlockForKeyPath:@"currentPlayIndex" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
@@ -109,6 +121,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    _listTitle.text = [NSString stringWithFormat:@"播放列表(共%lu首歌曲)",mioPlayList.playListArr.count];
     return mioPlayList.playListArr.count;
 }
 
@@ -160,11 +173,62 @@
         }
     };
     
+    cell.fromClickBlock = ^(MioMusicPlaylistCell * cell) {
+//        NSLog(@"%@",self.beforeVC.navigationController.viewControllers);
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.beforeVC dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"%@",self.currentTabbarSelectedNavigationController);
+            if (cell.model.fromModel == MioFromSonglist) {
+                MioSongListVC *vc = [[MioSongListVC alloc] init];
+                vc.songlistId = cell.model.fromId;
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+            if (cell.model.fromModel == MioFromAlbum) {
+                MioAlbumVC *vc = [[MioAlbumVC alloc] init];
+                vc.album_id = cell.model.fromId;
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+            if (cell.model.fromModel == MioFromSinger) {
+                MioSingerVC *vc = [[MioSingerVC alloc] init];
+                vc.singerId = cell.model.fromId;
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+            if (cell.model.fromModel == MioFromCategory) {
+                MioCategoryVC *vc = [[MioCategoryVC alloc] init];
+                vc.tag = cell.model.fromId;
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+            if (cell.model.fromModel == MioFromRank) {
+                MioMusicRankVC *vc = [[MioMusicRankVC alloc] init];
+                vc.rankId = cell.model.fromId;
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+            if (cell.model.fromModel == MioFromMyLike) {
+                MioLikeVC *vc = [[MioLikeVC alloc] init];
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+            if (cell.model.fromModel == MioFromLocal) {
+                MioLocalVC *vc = [[MioLocalVC alloc] init];
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+            if (cell.model.fromModel == MioFromRecent) {
+                MioRecentVC *vc = [[MioRecentVC alloc] init];
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+            if (cell.model.fromModel == MioFromDownload) {
+                MioDownloadVC *vc = [[MioDownloadVC alloc] init];
+                [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+            }
+        }];
+    };
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [mioM3U8Player playIndex:indexPath.row];
 }
+
+
 
 @end

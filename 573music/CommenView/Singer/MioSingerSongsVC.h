@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MioSingerSongsVC : MioViewController
 
-@property (nonatomic,copy) NSString * singerId;
+@property (nonatomic, copy) NSString * singerId;
+@property (nonatomic, copy) NSString * songsCount;
 @end
 
 NS_ASSUME_NONNULL_END

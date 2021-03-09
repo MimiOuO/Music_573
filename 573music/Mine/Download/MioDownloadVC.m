@@ -92,7 +92,7 @@ static void * kDownloaderKVOContext = &kDownloaderKVOContext;
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     
-    return 3;
+    return 2;
 }
 
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
@@ -100,10 +100,12 @@ static void * kDownloaderKVOContext = &kDownloaderKVOContext;
     if (index == 0) {
         
         return _downloadMusicVC;
-    }else if (index == 1) {
-        
-        return _downloadMVVC;
-    }else{
+    }
+//    else if (index == 1) {
+//
+//        return _downloadMVVC;
+//    }
+    else{
         return _downloadingVC;
     }
     
@@ -116,9 +118,11 @@ static void * kDownloaderKVOContext = &kDownloaderKVOContext;
     if (index == 0) {
         return @"音乐";
 //        return [NSString stringWithFormat:@"音乐 %lu",(unsigned long)[SODownloader musicDownloader].completeArray.count];
-    }else if (index == 1) {
-        return @"视频";
-    }else{
+    }
+//    else if (index == 1) {
+//        return @"视频";
+//    }
+    else{
 //        return @"正在下载";
         
         return [NSString stringWithFormat:@"正在下载 %lu",SJM3U8DownloadListController.shared.count];

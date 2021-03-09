@@ -9,12 +9,12 @@
 #import "MioMusicModel.h"
 #import <WHC_ModelSqlite.h>
 @implementation MioMusicModel
-@synthesize so_downloadProgress, so_downloadState = _so_downloadState, so_downloadError, so_downloadSpeed = _so_downloadSpeed;
+//@synthesize so_downloadProgress, so_downloadState = _so_downloadState, so_downloadError, so_downloadSpeed = _so_downloadSpeed;
 
 
 - (NSURL *)audioFileURL{
     NSString *quailty = self.defaultQuailty;
-    if (Equals(quailty, @"标清")) {
+    if (Equals(quailty, @"标准")) {
         if (self.hasSQ) {
             return Str(_standard[@"url"]).mj_url;
         }else if(self.hasHQ){
@@ -23,7 +23,7 @@
             return Str(_lossless[@"url"]).mj_url;
         }
     }
-    if (Equals(quailty, @"高清")) {
+    if (Equals(quailty, @"超品")) {
         if (self.hasHQ) {
             return Str(_high[@"url"]).mj_url;
         }else if(self.hasSQ){
@@ -50,20 +50,20 @@
     if ([userdefault objectForKey:_song_id]) {
         quailty = [userdefault objectForKey:_song_id];
     }
-    if (Equals(quailty, @"标清")) {
+    if (Equals(quailty, @"标准")) {
         if (self.hasSQ) {
-            return @"标清";
+            return @"标准";
         }else if(self.hasHQ){
-            return @"高清";
+            return @"超品";
         }else{
             return @"无损";
         }
     }
-    if (Equals(quailty, @"高清")) {
+    if (Equals(quailty, @"超品")) {
         if (self.hasHQ) {
-            return @"高清";
+            return @"超品";
         }else if(self.hasSQ){
-            return @"标清";
+            return @"标准";
         }else{
             return @"无损";
         }
@@ -72,9 +72,9 @@
         if (self.hasFlac) {
             return @"无损";
         }else if(self.hasHQ){
-            return @"高清";
+            return @"超品";
         }else{
-            return @"标清";
+            return @"标准";
         }
     }
     return @"";
@@ -118,31 +118,28 @@
     _savetype = savetype;
 }
 
-- (NSURL *)so_downloadURL {
-    return [_standard[@"url"] mj_url];
-}
+//- (NSURL *)so_downloadURL {
+//    return [_standard[@"url"] mj_url];
+//}
 
-- (NSString *)savePath {
-    
-    return [[[[self class] musicDownloadFolder] stringByAppendingPathComponent:_song_id] stringByAppendingPathExtension:@"mp3"];
-}
 
-+ (NSString *)musicDownloadFolder {
-    NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
-    NSString *downloadFolder = [documents stringByAppendingPathComponent:@"musics"];
-    [self handleDownloadFolder:downloadFolder];
-    return downloadFolder;
-}
 
-+ (void)handleDownloadFolder:(NSString *)folder {
-    BOOL isDir = NO;
-    BOOL folderExist = [[NSFileManager defaultManager]fileExistsAtPath:folder isDirectory:&isDir];
-    if (!folderExist || !isDir) {
-        [[NSFileManager defaultManager]createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:nil];
-        NSURL *fileURL = [NSURL fileURLWithPath:folder];
-        [fileURL setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:nil];
-    }
-}
+//+ (NSString *)musicDownloadFolder {
+//    NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+//    NSString *downloadFolder = [documents stringByAppendingPathComponent:@"musics"];
+//    [self handleDownloadFolder:downloadFolder];
+//    return downloadFolder;
+//}
+//
+//+ (void)handleDownloadFolder:(NSString *)folder {
+//    BOOL isDir = NO;
+//    BOOL folderExist = [[NSFileManager defaultManager]fileExistsAtPath:folder isDirectory:&isDir];
+//    if (!folderExist || !isDir) {
+//        [[NSFileManager defaultManager]createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:nil];
+//        NSURL *fileURL = [NSURL fileURLWithPath:folder];
+//        [fileURL setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:nil];
+//    }
+//}
 
 //-(void)changeSo_downloadState:(SODownloadState)so_downloadState {
 //    self.so_downloadState = so_downloadState;
@@ -178,6 +175,15 @@
     return [app_Version stringByAppendingString:app_build];
 }
 
+- (NSString *)hits_all{
+    if ([_hits_all intValue] > 10000) {
+        return [NSString stringWithFormat:@"%.1fw",[_hits_all intValue]/10000.0];
+    }else if ([_hits_all intValue] > 1000) {
+        return [NSString stringWithFormat:@"%.1fk",[_hits_all intValue]/1000.0];
+    }else{
+        return _hits_all;
+    }
+}
 
 
 @end

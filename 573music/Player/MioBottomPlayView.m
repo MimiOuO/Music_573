@@ -8,9 +8,10 @@
 
 #import "MioBottomPlayView.h"
 #import "MioPlayListVC.h"
-
+#import <JhtMarquee/JhtHorizontalMarquee.h>
 @interface MioBottomPlayView()
 @property (nonatomic, strong) UIImageView *coverImg;
+@property (nonatomic, strong) JhtHorizontalMarquee *marquee;
 @property (nonatomic, strong) MioLabel *songNameLab;
 @property (nonatomic, strong) MioLabel *singerLab;
 @property (nonatomic, strong) MioButton *playListBtn;
@@ -24,20 +25,32 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         RecieveNotice(switchMusic, changeMusic);
         RecieveNotice(@"clearPlaylist", changeMusic);
         RecieveNotice(@"hiddenPlaylistIcon", hiddenPlaylistIcon);
         RecieveNotice(@"showPlaylistIcon", showPlaylistIcon);
+        RecieveChangeSkin;
         WEAKSELF;
         [mioM3U8Player xw_addObserverBlockForKeyPath:@"status" block:^(id  _Nonnull obj, id  _Nonnull oldVal, id  _Nonnull newVal) {
             [weakSelf playerStatusChanged];
         }];
         
         MioImageView *bottomImg = [MioImageView creatImgView:frame(0, 0, KSW, 50 + SafeBotH) inView:self skin:SkinName image:@"picture_bfq" radius:0];
+        bottomImg.userInteractionEnabled = YES;
         UIImageView *bgImg = [UIImageView creatImgView:frame(11, -11, 60, 60) inView:self image:@"dfq_yy" radius:0];
         _coverImg = [UIImageView creatImgView:frame(Mar, -9, 50, 50) inView:self image:@"qxt_logo" radius:4];
-        _songNameLab = [MioLabel creatLabel:frame(74, 6, KSW - 120 - 75, 20) inView:self text:@"573音乐" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+        [_coverImg whenTapped:^{
+            NSLog(@"YES");
+        }];
+        _marquee = [[JhtHorizontalMarquee alloc] initWithFrame:frame(74, 6, KSW - 120 - 75, 20) singleScrollDuration:5.0];
+
+        _marquee.text = [NSString stringWithFormat:@"573音乐          "];
+        _marquee.textColor = color_text_one;
+        _marquee.font = BoldFont(14);
+        [self addSubview:_marquee];
+        [_marquee marqueeOfSettingWithState:MarqueeStart_H];
+        
+//        _songNameLab = [MioLabel creatLabel:frame(74, 6, KSW - 120 - 75, 20) inView:self text:@"573音乐" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
         _singerLab = [MioLabel creatLabel:frame(74, 26, KSW - 120 - 75, 14) inView:self text:@"欢迎来到573音乐" colorName:name_text_two size:14 alignment:NSTextAlignmentLeft];
         
         _playListBtn = [MioButton creatBtn:frame(KSW - 102 - 17, 14.5, 17, 17) inView:self bgImage:@"bfq_bflb" bgTintColorName:name_main action:^{
@@ -65,6 +78,10 @@
     return self;
 }
 
+-(void)changeSkin{
+    _marquee.textColor = color_text_one;
+}
+
 -(void)changeMusic{
     [self updateUI];
 }
@@ -80,7 +97,9 @@
 -(void)updateUI{
     MioMusicModel *music = mioM3U8Player.currentMusic;
     [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"qxt_logo")];
-    _songNameLab.text = music?music.title:@"573音乐";
+//    _songNameLab.text = music?music.title:@"573音乐";
+    _marquee.text = [NSString stringWithFormat:@"%@          ",(music?music.title:@"573音乐")];
+    [_marquee marqueeOfSettingWithState:MarqueeStart_H];
     _singerLab.text = music?music.singer_name:@"欢迎来到573音乐";
     if (music) {
         _playListBtn.enabled = YES;

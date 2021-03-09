@@ -32,7 +32,7 @@
     
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
         if (_dataArr.count > 0) {
-            [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
+            [mioM3U8Player playWithMusicList:_dataArr andIndex:0 fromModel:MioFromMyLike andId:@""];
         }
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
@@ -42,6 +42,8 @@
             MioMutipleVC *vc = [[MioMutipleVC alloc] init];
             vc.musicArr = _dataArr;
             vc.type = MioMutipleTypeSongList;
+            vc.fromModel = MioFromMyLike;
+            vc.fromId = @"";
             MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
             nav.modalPresentationStyle = 0;
             [self presentViewController:nav animated:YES completion:nil];
@@ -55,6 +57,10 @@
         _page = _page + 1;
         [self requestData];
     }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,7 +83,9 @@
 
         [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:data]];
         [_table reloadData];
+        [UIWindow hiddenLoading];
     } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
         [_table.mj_footer endRefreshing];
         [UIWindow showInfo:errorInfo];
     }];
@@ -104,7 +112,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromMyLike andId:@""];
 }
 
 @end

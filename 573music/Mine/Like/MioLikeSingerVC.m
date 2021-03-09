@@ -8,7 +8,7 @@
 
 #import "MioLikeSingerVC.h"
 #import "MioSingerModel.h"
-#import "MioSingerTableCell.h"
+#import "MioLikeSingerTableCell.h"
 #import "MioSingerVC.h"
 
 @interface MioLikeSingerVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -35,6 +35,10 @@
         _page = _page + 1;
         [self requestData];
     }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,7 +62,9 @@
         
         [_dataArr addObjectsFromArray:[MioSingerModel mj_objectArrayWithKeyValuesArray:data]];
         [_table reloadData];
+        [UIWindow hiddenLoading];
     } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
         [_table.mj_footer endRefreshing];
         [UIWindow showInfo:errorInfo];
     }];
@@ -74,9 +80,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";
-    MioSingerTableCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    MioLikeSingerTableCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[MioSingerTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[MioLikeSingerTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = _dataArr[indexPath.row];

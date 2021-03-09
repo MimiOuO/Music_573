@@ -21,7 +21,7 @@
 #import "MioChooseDownloadQuantityView.h"
 #import "MioMvVC.h"
 #import "MioSingerVC.h"
-
+#import <JhtMarquee/JhtHorizontalMarquee.h>
 @interface MioMainPlayerVC ()<GKSliderViewDelegate,LyricViewDelegate,ChangeQuailtyDelegate,chooseDownloadDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -30,6 +30,7 @@
 @property(assign,nonatomic) NSInteger currentLyricIndex;
 
 @property (nonatomic, strong) UIImageView *backgroundImg;
+@property (nonatomic, strong) JhtHorizontalMarquee *marquee;
 @property (nonatomic, strong) UILabel *nameLab;
 @property (nonatomic, strong) UILabel *singerLab;
 @property (nonatomic, strong) UIButton *qualityBtn;
@@ -98,7 +99,6 @@
 
 -(void)creatUI{
     
-    
     WEAKSELF;
     MioMusicModel *music = mioM3U8Player.currentMusic;
     _backgroundImg = [UIImageView creatImgView:frame(-KSW/2, -KSH/2, 2*KSW, 2*KSH) inView:self.view image:@"gequ_zhanweitu" radius:0];
@@ -123,16 +123,25 @@
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     };
     
-    _nameLab = [UILabel creatLabel:frame(60, StatusH + 10, KSW - 120, 25) inView:self.view text:@"" color:appWhiteColor boldSize:18 alignment:NSTextAlignmentCenter];
-    _nameLab.alpha = 0.5;
-    _nameLab.text = music.title;
+    _marquee = [[JhtHorizontalMarquee alloc] initWithFrame:frame(60, StatusH + 10, KSW - 120, 25) singleScrollDuration:5.0];
+    _marquee.textAlignment = NSTextAlignmentCenter;
+    _marquee.text = [NSString stringWithFormat:@"%@          ",music.title];
+    _marquee.textColor = appWhiteColor;
+    _marquee.font = BoldFont(18);
+    [self.view addSubview:_marquee];
+    [_marquee marqueeOfSettingWithState:MarqueeStart_H];
+    
+//    _nameLab = [UILabel creatLabel:frame(60, StatusH + 10, KSW - 120, 25) inView:self.view text:@"" color:appWhiteColor boldSize:18 alignment:NSTextAlignmentCenter];
+//    _nameLab.text = music.title;
     
     _singerLab = [UILabel creatLabel:frame(60, StatusH + 35, KSW - 120, 17) inView:self.view text:@"" color:rgba(255, 255, 255, 0.7) boldSize:12 alignment:NSTextAlignmentCenter];
     _singerLab.text = music.singer_name;
     [_singerLab whenTapped:^{
-        MioSingerVC *vc = [[MioSingerVC alloc] init];
-        vc.singerId = mioM3U8Player.currentMusic.singer_id;
-        [self.navigationController pushViewController:vc animated:YES];
+        [weakSelf dismissViewControllerAnimated:YES completion:^{
+            MioSingerVC *vc = [[MioSingerVC alloc] init];
+            vc.singerId = mioM3U8Player.currentMusic.singer_id;
+            [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+        }];
     }];
     
     _qualityBtn = [UIButton creatBtn:frame(KSW2 - 26 - 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"" action:^{
@@ -145,9 +154,11 @@
     [self updateQuailty];
     
     _mvButton = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"mv_player_player" action:^{
-        MioMvVC *vc = [[MioMvVC alloc] init];
-        vc.mvId = mioM3U8Player.currentMusic.mv_id;
-        [self.navigationController pushViewController:vc animated:YES];
+        [weakSelf dismissViewControllerAnimated:YES completion:^{
+            MioMvVC *vc = [[MioMvVC alloc] init];
+            vc.mvId = mioM3U8Player.currentMusic.mv_id;
+            [self.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+        }];
     }];
     
     if (music.hasMV) {
@@ -245,13 +256,24 @@
     _downloadBtn = [UIButton creatBtn:frame(KSW/2 - (KSW_Mar2 - 24*4)/6 - 24, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"download_player" action:^{
         [weakSelf downloadClick];
     }];
+    NSString *downloadPath = [NSString stringWithFormat:@"%@/sj.download.files",
+                           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[mioM3U8Player.currentMusic.audioFileURL hash]]]) {
+        [_downloadBtn setBackgroundImage:image(@"complete_player") forState:UIControlStateNormal];
+    }else{
+        [_downloadBtn setBackgroundImage:image(@"download_player") forState:UIControlStateNormal];
+    }
+    
     _cmtBtn = [UIButton creatBtn:frame(KSW/2 + (KSW_Mar2 - 24*4)/6, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_digital_player" action:^{
         MioMusicCmtVC *vc = [[MioMusicCmtVC alloc] init];
         vc.musicId = mioM3U8Player.currentMusic.song_id;
         [self.navigationController pushViewController:vc animated:YES];
     }];
     _moreBtn = [UIButton creatBtn:frame(KSW - 24 - 28, _scrollView.bottom + divHeight*6 + 12, 24, 24) inView:self.view bgImage:@"group_genduo" action:^{
-
+        NSLog(@"%@",self.navigationController.viewControllers);
+        
         MioMoreFuncView *view = [[MioMoreFuncView alloc] init];
         view.model = mioM3U8Player.currentMusic;
         view.fatherVC = self;
@@ -279,6 +301,8 @@
     MioMusicModel *music = mioM3U8Player.currentMusic;
     [_backgroundImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
     [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
+    _marquee.text = [NSString stringWithFormat:@"%@          ",music.title];
+    [_marquee marqueeOfSettingWithState:MarqueeStart_H];
     _nameLab.text = music.title;
     _singerLab.text = music.singer_name;
     _slider.bufferValue = 0;
@@ -298,7 +322,7 @@
     _cmtCountLab.text = music.comment_num;
     _singleLrcLab.text = @"";
     [self updateQuailty];
-    if (mioM3U8Player.currentMusic.local) {
+    if (mioM3U8Player.currentMusic.local) {//本地歌曲不是下载歌曲
         _qualityBtn.hidden = YES;
         _likeBtn.hidden = YES;
         _cmtBtn.hidden = YES;
@@ -310,6 +334,15 @@
         _cmtBtn.hidden = NO;
         _cmtCountLab.hidden = NO;
         _moreBtn.hidden = NO;
+    }
+    NSString *downloadPath = [NSString stringWithFormat:@"%@/sj.download.files",
+                           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[mioM3U8Player.currentMusic.audioFileURL hash]]]) {
+        [_downloadBtn setBackgroundImage:image(@"complete_player") forState:UIControlStateNormal];
+    }else{
+        [_downloadBtn setBackgroundImage:image(@"download_player") forState:UIControlStateNormal];
     }
 }
 
@@ -477,7 +510,11 @@
         _likeBtn.selected = !_likeBtn.selected;
         mioM3U8Player.currentMusic.is_like = _likeBtn.selected;
         [mioPlayList.playListArr replaceObjectAtIndex:mioPlayList.currentPlayIndex withObject:mioM3U8Player.currentMusic];
-        [UIWindow showSuccess:@"操作成功"];
+        if (_likeBtn.selected) {
+            [UIWindow showSuccess:@"已收藏到我的喜欢"];
+        }else{
+            [UIWindow showSuccess:@"已取消收藏"];
+        }
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo]; 
     }];
@@ -487,27 +524,13 @@
     
 //    [UIWindow showInfo:@"开发中"];
 //    return;
+    goLogin;
     
     MioChooseDownloadQuantityView *view = [[MioChooseDownloadQuantityView alloc] init];
     view.delegate = self;
     view.musicArr = @[mioM3U8Player.currentMusic];
     [view show];
     
-    
-//    NSInteger urlHash =  [Url(@"https://mp32.aw998.com/Simone%20Altavilla/Lego(Markus%20Masuhr%20Reshape)/mp3.m3u8") hash];
-//
-//    NSString *downloadPath = [NSString stringWithFormat:@"%@/sj.download.files",
-//                           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
-//
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//
-//
-//    if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/%ld",downloadPath,(long)urlHash]]) {
-//        [UIWindow showInfo:@"歌曲已经下载过"];
-//    }else{
-//        NSArray<NSString *> *urls =@[];
-//        [UIWindow showSuccess:@"已加入下载列表"];
-//    }
 }
 
 #pragma mark - slider代理
@@ -538,10 +561,22 @@
     [self updateQuailty];
 }
 
+- (void)chooseDownloadQuailtyDone{
+    NSString *downloadPath = [NSString stringWithFormat:@"%@/sj.download.files",
+                           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[mioM3U8Player.currentMusic.audioFileURL hash]]]) {
+        [_downloadBtn setBackgroundImage:image(@"complete_player") forState:UIControlStateNormal];
+    }else{
+        [_downloadBtn setBackgroundImage:image(@"download_player") forState:UIControlStateNormal];
+    }
+}
+
 -(void)updateQuailty{
-    if (Equals(mioM3U8Player.currentMusic.defaultQuailty, @"标清")) {
+    if (Equals(mioM3U8Player.currentMusic.defaultQuailty, @"标准")) {
         [_qualityBtn setBackgroundImage:image(@"standard_player_player") forState:UIControlStateNormal];
-    }else if(Equals(mioM3U8Player.currentMusic.defaultQuailty, @"高清")){
+    }else if(Equals(mioM3U8Player.currentMusic.defaultQuailty, @"超品")){
         [_qualityBtn setBackgroundImage:image(@"hd_player_player") forState:UIControlStateNormal];
     }else{
         [_qualityBtn setBackgroundImage:image(@"nondestructive_player_player") forState:UIControlStateNormal];

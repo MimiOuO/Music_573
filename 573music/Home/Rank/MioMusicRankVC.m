@@ -42,6 +42,10 @@
     [self.navView.leftButton setImage:backArrowWhiteIcon forState:UIControlStateNormal];
     self.navView.mainView.backgroundColor = appClearColor;
     self.navView.bgImg.hidden = YES;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,8 +71,11 @@
         [_dataArr addObjectsFromArray:data];
 
         [_tableView reloadData];
+        [UIWindow hiddenLoading];
         
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
     
 }
 
@@ -119,7 +126,7 @@
     MioImageView *bgImg = [MioImageView creatImgView:frame(0, 0, KSW, 48) inView:sectionHeader skin:SkinName image:@"picture_li" radius:0];
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
         if (_dataArr.count > 0) {
-            [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
+            [mioM3U8Player playWithMusicList:_dataArr andIndex:0 fromModel:MioFromRank andId:_rankId];
         }
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
@@ -129,6 +136,8 @@
             MioMutipleVC *vc = [[MioMutipleVC alloc] init];
             vc.musicArr = _dataArr;
             vc.type = MioMutipleTypeSongList;
+            vc.fromModel = MioFromRank;
+            vc.fromId = _rankId;
             MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
             nav.modalPresentationStyle = 0;
             [self presentViewController:nav animated:YES completion:nil];
@@ -139,7 +148,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 48;
+    return 56;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -163,7 +172,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromRank andId:_rankId];
 }
 
 

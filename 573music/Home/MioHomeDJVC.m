@@ -170,7 +170,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+    if (Equals(_key, @"最热")){
+        [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromRank andId:@"27"];
+    }else if (Equals(_key, @"最新")){
+        [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromRank andId:@"26"];
+    }else{
+        [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromCategory andId:_key];
+    }
+    
 }
 
 @end

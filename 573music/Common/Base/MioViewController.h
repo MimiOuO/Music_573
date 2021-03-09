@@ -15,4 +15,7 @@
 @property (nonatomic, strong) MioNavView        *navView;
 @property (nonatomic, strong) MioImageView      *bgImg;
 
+-(UITabBarController *)currentTtabarController;
+-(UINavigationController *)currentTabbarSelectedNavigationController;
+
 @end

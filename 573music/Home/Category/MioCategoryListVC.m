@@ -10,6 +10,7 @@
 #import "ZYCollectionView.h"
 #import "CustomCell.h"
 #import "MioCategoryVC.h"
+#import "MioCategorySonglistListVC.h"
 @interface MioCategoryListVC ()<ZYCollectionViewDelegate,ZYCollectionViewDataSource>
 @property (nonatomic,readonly) ZYCollectionView * collectionView;
 @property (nonatomic, strong) NSArray *categoryArr;
@@ -60,9 +61,23 @@
 }
 - (void)collectionView:(ZYCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    MioCategoryVC *vc = [[MioCategoryVC alloc] init];
-    vc.tag = ((NSArray *)_categoryArr[indexPath.section][@"tags"])[indexPath.row];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (Equals(_from, @"songlist")) {
+        
+        NSMutableArray *songlistCategoryArr = [[NSMutableArray alloc] init];
+        NSMutableArray *newArr = [[userdefault objectForKey:@"newSonglistCategory"] mutableCopy];
+        [songlistCategoryArr addObjectsFromArray:newArr];
+        [songlistCategoryArr insertObject:((NSArray *)_categoryArr[indexPath.section][@"tags"])[indexPath.row] atIndex:0];
+        [userdefault setObject:songlistCategoryArr forKey:@"newSonglistCategory"];
+        [userdefault synchronize];
+        
+        MioCategorySonglistListVC *vc = [[MioCategorySonglistListVC alloc] init];
+        vc.tag = ((NSArray *)_categoryArr[indexPath.section][@"tags"])[indexPath.row];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        MioCategoryVC *vc = [[MioCategoryVC alloc] init];
+        vc.tag = ((NSArray *)_categoryArr[indexPath.section][@"tags"])[indexPath.row];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 @end

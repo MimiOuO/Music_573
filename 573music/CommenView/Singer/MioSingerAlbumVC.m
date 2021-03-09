@@ -115,6 +115,7 @@
     if (!cell) {
         cell = [[MioAlbumTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.width = KSW;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = _dataArr[indexPath.row];
     return cell;

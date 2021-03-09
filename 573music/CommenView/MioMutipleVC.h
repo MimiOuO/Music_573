@@ -29,7 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<MutipleDeleteDelegate> delegate;
 @property (nonatomic, strong) NSArray<MioMusicModel *> *musicArr;
 @property (nonatomic, assign) MioMutipleType type;
-@property (nonatomic,copy) NSString * songlistId;
+@property (nonatomic, copy) NSString * songlistId;
+@property (nonatomic, assign) MioFromType fromModel;
+@property (nonatomic,copy) NSString * fromId;
 @end
 
 NS_ASSUME_NONNULL_END

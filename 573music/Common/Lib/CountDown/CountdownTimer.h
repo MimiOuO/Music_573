@@ -12,6 +12,7 @@
 typedef enum : NSUInteger {
     timeoff = 0,
     cutdown,
+    vipCutDown,
     test2,
 } CountdownKey;
 

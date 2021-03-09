@@ -35,4 +35,5 @@ pod 'SGQRCode', '~> 3.0.1'
 pod 'XHLaunchAd'
 pod 'SJVideoPlayer'
 pod 'SJM3U8Downloader'
+pod 'JhtMarquee'
 end

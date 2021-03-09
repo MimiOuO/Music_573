@@ -67,6 +67,7 @@
 
     
     RecieveChangeSkin;
+    RecieveNotice(@"showMainPlayer", showMainPlayer);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomNone) name:@"MioBottomNone" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mioBottomHalf) name:@"MioBottomHalf" object:nil];
@@ -83,9 +84,12 @@
  
     //我的
     [self addChildVc:_mineVC title:@"我的" image:imagePath(@"tab_me_putong") selectedImage:imagePath(@"tab_me")];
-	
+}
 
-
+-(void)showMainPlayer{
+    MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:_mainPlayerVC];
+    nav.modalPresentationStyle = 0;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 -(void)changeSkin{

@@ -60,7 +60,7 @@
 
 -(void)creatUI{
     
-    NSArray *titleArr = @[@"标清",@"高清",@"无损"];
+    NSArray *titleArr = @[@"标准",@"超品",@"无损"];
     NSArray *imgArr = @[@"yz_bz",@"yz_gq",@"yz_ws"];
     
     for (int i = 0;i < titleArr.count; i++) {

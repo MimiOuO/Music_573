@@ -31,7 +31,6 @@
     SJM3U8DownloadListController.shared.delegate = self;
     
     _tableView = [UITableView creatTable:frame(0, 0, KSW, KSH - NavH - 48 - 0 - TabH) inView:self.view vc:self];
-    _tableView.contentInset = UIEdgeInsetsMake(12, 0, 0, 0);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -96,13 +95,7 @@
 - (void)_updateContentForCell:(MioDownloadMusicCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     id<SJM3U8DownloadListItem> item = [SJM3U8DownloadListController.shared itemAtIndex:indexPath.row];
     cell.item = item;
-    
-    if (item.state == SJDownloadStateFinished) {
-        NSLog(@"%@",item.musicJson);
-        MioMusicModel *music = [MioMusicModel mj_objectWithKeyValues:item.musicJson];
-        music.savetype = @"downloaded";
-        [WHCSqlite insert:music];
-    }
+
     
 }
 

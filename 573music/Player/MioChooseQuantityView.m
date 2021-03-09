@@ -38,6 +38,8 @@
             [self hiddenView];
         }];
         _quailtyView = [UIView creatView:frame(0, 0, KSW, 160) inView:_bgView bgColor:appClearColor radius:0];
+        
+        RecieveNotice(switchMusic, hiddenView);
     }
     return self;
 }
@@ -70,11 +72,11 @@
     NSMutableArray *titleArr = [[NSMutableArray alloc] init];
     NSMutableArray *imgArr = [[NSMutableArray alloc] init];
     if (!Equals(_model.standard[@"url"], @"")) {
-        [titleArr addObject:@"标清"];
+        [titleArr addObject:@"标准"];
         [imgArr addObject:@"yz_bz"];
     }
     if (!Equals(_model.high[@"url"], @"")) {
-        [titleArr addObject:@"高清"];
+        [titleArr addObject:@"超品"];
         [imgArr addObject:@"yz_gq"];
     }
     if (!Equals(_model.lossless[@"url"], @"")) {

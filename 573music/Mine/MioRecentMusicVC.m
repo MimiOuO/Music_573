@@ -29,11 +29,12 @@
     
     _table = [UITableView creatTable:frame(0, 0, KSW, KSH - NavH - 40 - TabH) inView:self.view vc:self];
     _table.ly_emptyView = [MioEmpty noDataEmpty];
+
     UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSW, 48)];
     
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
         if (_dataArr.count > 0) {
-            [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
+            [mioM3U8Player playWithMusicList:_dataArr andIndex:0 fromModel:MioFromRecent andId:@""];
         }
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
@@ -44,6 +45,8 @@
             vc.musicArr = _dataArr;
             vc.type = MioMutipleTypeOwnSongList;
             vc.delegate = self;
+            vc.fromModel = MioFromRecent;
+            vc.fromId = @"";
             MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
             nav.modalPresentationStyle = 0;
             [self presentViewController:nav animated:YES completion:nil];
@@ -80,7 +83,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromRecent andId:@""];
 }
 
 -(void)mutipleDelete:(NSArray<MioMusicModel *> *)selectArr{

@@ -21,6 +21,7 @@ PODS:
   - FLAnimatedImage (1.0.12)
   - FSTextView (1.8)
   - IQKeyboardManager (6.5.6)
+  - JhtMarquee (1.0.6)
   - JJException (0.2.8):
     - JJException/All (= 0.2.8)
   - JJException/All (0.2.8):
@@ -148,6 +149,7 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout
   - FSTextView
   - IQKeyboardManager
+  - JhtMarquee
   - JJException
   - LEEAlert
   - LookinServer
@@ -177,6 +179,7 @@ SPEC REPOS:
     - FLAnimatedImage
     - FSTextView
     - IQKeyboardManager
+    - JhtMarquee
     - JJException
     - LEEAlert
     - LookinServer
@@ -210,6 +213,7 @@ SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FSTextView: 9e2ca07bb6bb0fb7e77b49b2717adf81f3c620b5
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  JhtMarquee: 38eb0ceb3d515092e77a88b9005e2179c7cd1b2d
   JJException: 2c21abbd65fb977c0acc191ec2bfbb7a2aa0c540
   LEEAlert: 59d2af96812428844741f8290efdecbb90ffa79c
   LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
@@ -236,6 +240,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: b1ebd5d277ef201b536c1a46aa69e01cb0fdedbe
+PODFILE CHECKSUM: 2c890faa2c58c6315dc4abf4e09420fc989bf6dd
 
 COCOAPODS: 1.9.3

@@ -47,6 +47,11 @@
     [self requestData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)requestNewKeyData{
     _page = 1;
     [self requestData];
@@ -56,7 +61,7 @@
     if (_searchKey.length == 0 ) {
         return;
     }
-    
+    [UIWindow showLoading];
     [MioGetReq(api_mvs, (@{@"s":_searchKey,@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_collection.mj_footer endRefreshing];
@@ -69,7 +74,10 @@
         
         [_dataArr addObjectsFromArray:[MioMvModel mj_objectArrayWithKeyValuesArray:data]];
         [_collection reloadData];
-    } failure:^(NSString *errorInfo) {}];
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

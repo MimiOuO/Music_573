@@ -16,6 +16,7 @@
 #import "MioCategoryListVC.h"
 #import "MioMusicRankListVC.h"
 #import "MioSingerListVC.h"
+#import "MioCategorySonglistPageVC.h"
 
 #import "MioMusicView.h"
 #import "MioSonglistCollectionCell.h"
@@ -27,7 +28,7 @@
 #import "MioMusicRankVC.h"
 
 #import "MioMvVC.h"
-#import "MioTestVC.h"
+
 @interface MioHomeMusicHallVC ()<SDCycleScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *bgScroll;
 @property (nonatomic, strong) SDCycleScrollView *adScroll;
@@ -108,22 +109,22 @@
     [_bgScroll addSubview:_adScroll];
     
     MioView *rankView = [MioView creatView:frame(Mar, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
-    MioView *songListView = [MioView creatView:frame(rankView.right + (KSW - 136 - 156)/4, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
-    MioView *singerView = [MioView creatView:frame(songListView.right + (KSW - 136 - 156)/4, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
-    MioView *albumView = [MioView creatView:frame(singerView.right + (KSW - 136 - 156)/4, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
-    MioView *categoryView = [MioView creatView:frame(KSW - Mar -52, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+    MioView *songListView = [MioView creatView:frame(rankView.right + (KSW - 136 - 104)/3, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+    MioView *singerView = [MioView creatView:frame(songListView.right + (KSW - 136 - 104)/3, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+    MioView *albumView = [MioView creatView:frame(KSW - Mar - 52, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
+//    MioView *categoryView = [MioView creatView:frame(KSW - Mar -52, 182, 52, 52) inView:_bgScroll bgColorName:name_sup_one radius:26];
     
     MioImageView *rankImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:rankView image:@"shouye_ranking" bgTintColorName:name_main radius:0];
     MioImageView *songListImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:songListView image:@"shouye_gedan" bgTintColorName:name_main radius:0];
     MioImageView *singerImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:singerView image:@"shouye_singer" bgTintColorName:name_main radius:0];
     MioImageView *albumImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:albumView image:@"shouye_album" bgTintColorName:name_main radius:0];
-    MioImageView *categoryImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:categoryView image:@"shouye_system" bgTintColorName:name_main radius:0];
+//    MioImageView *categoryImg = [MioImageView creatImgView:frame(13, 13, 26, 26) inView:categoryView image:@"shouye_system" bgTintColorName:name_main radius:0];
     
     MioLabel *rankLab = [MioLabel creatLabel:frame(rankView.left, 238, 52, 17) inView:_bgScroll text:@"排行榜" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
-    MioLabel *songlistLab = [MioLabel creatLabel:frame(songListView.left, 238, 52, 17) inView:_bgScroll text:@"歌单" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+    MioLabel *songlistLab = [MioLabel creatLabel:frame(songListView.left, 238, 52, 17) inView:_bgScroll text:@"分类歌单" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     MioLabel *singerLab = [MioLabel creatLabel:frame(singerView.left, 238, 52, 17) inView:_bgScroll text:@"歌手" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     MioLabel *albumLab = [MioLabel creatLabel:frame(albumView.left, 238, 52, 17) inView:_bgScroll text:@"专辑" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
-    MioLabel *categoryLab = [MioLabel creatLabel:frame(categoryView.left, 238, 52, 17) inView:_bgScroll text:@"分类" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+//    MioLabel *categoryLab = [MioLabel creatLabel:frame(categoryView.left, 238, 52, 17) inView:_bgScroll text:@"分类" colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
     
     [rankView whenTapped:^{
         
@@ -131,7 +132,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     [songListView whenTapped:^{
-        MioSonglistPageVC *vc = [[MioSonglistPageVC alloc] init];
+        MioCategorySonglistPageVC *vc = [[MioCategorySonglistPageVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
     [singerView whenTapped:^{
@@ -142,11 +143,11 @@
         MioAlbumListPageVC *vc = [[MioAlbumListPageVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
-    [categoryView whenTapped:^{
-
-        MioCategoryListVC *vc = [[MioCategoryListVC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-    }];
+//    [categoryView whenTapped:^{
+//
+//        MioCategoryListVC *vc = [[MioCategoryListVC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }];
     
     NSArray *titleYArr = @[@285,@652,@914,@1082];
     NSArray *titleArr = @[@"最新歌单",@"最新单曲",@"排行榜",@"最新专辑"];
@@ -212,7 +213,7 @@
         musicCell.model = _musicArr[i];
         [_musicScroll addSubview:musicCell];
         [musicCell whenTapped:^{
-            [mioM3U8Player playWithMusicList:_musicArr andIndex:i];
+            [mioM3U8Player playWithMusicList:_musicArr andIndex:i fromModel:MioFromRank andId:@"6"];
         }];
     }
     for (int i = 0;i < _albumArr.count; i++) {

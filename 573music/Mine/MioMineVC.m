@@ -25,6 +25,8 @@
 #import "MioIntegralVC.h"
 #import <SJM3U8DownloadListController.h>
 #import <SJM3U8DownloadListItem.h>
+#import "MioShareResultVC.h"
+
 @interface MioMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) MioUserInfo *user;
 
@@ -83,7 +85,7 @@
         _LvLab.hidden = NO;
         _listenIcon.hidden = NO;
         _listenLab.hidden = NO;
-        [MioGetReq(api_otherUserinfo(currentUserId), @{@"k":@"v"}) success:^(NSDictionary *result){
+        [MioGetReq(api_userInfo, @{@"k":@"v"}) success:^(NSDictionary *result){
             NSDictionary *data = [result objectForKey:@"data"];
             _user = [MioUserInfo mj_objectWithKeyValues:data];
             [_avatar sd_setImageWithURL:_user.avatar.mj_url placeholderImage:image(@"qxt_yonhu")];
@@ -154,6 +156,7 @@
     _avatar = [UIImageView creatImgView:frame(Mar + 12, 20, 70, 70) inView:bgScroll image:@"qxt_yonhu" radius:35];
     [_avatar sd_setImageWithURL:currentUserAvatar placeholderImage:image(@"qxt_yonhu")];
     [_avatar whenTapped:^{
+        goLogin;
         MioEditInfoVC *vc = [[MioEditInfoVC alloc] init];
         vc.user = _user;
         [self.navigationController pushViewController:vc animated:YES];
@@ -172,7 +175,7 @@
     _LvBg = [UIView creatView:frame(92, 28, 30, 16) inView:_userBgView bgColor:rgba(0, 0, 0, 0.15) radius:8];
     _LvLab = [UILabel creatLabel:frame(0, 0, 30, 16) inView:_LvBg text:@"Lv.1" color:appWhiteColor size:10 alignment:NSTextAlignmentCenter];
     _listenTimeBg = [UIView creatView:frame(_LvBg.right + 4, 28, 60, 16) inView:_userBgView bgColor:rgba(0, 0, 0, 0.15) radius:8];
-    _listenIcon = [UIImageView creatImgView:frame(4, 2.5, 11, 11) inView:_listenTimeBg image:@"tinggeliang" radius:0];
+    _listenIcon = [UIImageView creatImgView:frame(4, 2.5, 11, 11) inView:_listenTimeBg image:@"bfl" radius:0];
     _listenLab = [UILabel creatLabel:frame(17, 1, 38, 14) inView:_listenTimeBg text:@"0小时" color:appWhiteColor size:10 alignment:NSTextAlignmentCenter];
     _listenLab.width = [_listenLab.text widthForFont:Font(10)];
     _listenTimeBg.width = 21 + [_listenLab.text widthForFont:Font(10)];
@@ -254,14 +257,19 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     [shareLab whenTapped:^{
-        UIPasteboard * pastboard = [UIPasteboard generalPasteboard];
-        if (islogin) {
-            pastboard.string = _user.share_url;
-            [UIWindow showSuccess:@"邀请链接已复制到剪切板"];
-        }else{
-            pastboard.string = [userdefault objectForKey:@"shareUrl"];
-            [UIWindow showSuccess:@"邀请链接已复制到剪切板，登录后分享才能获取积分奖励哦"];
-        }
+        goLogin;
+        MioShareResultVC *vc = [[MioShareResultVC alloc] init];
+        vc.jump_URL = _user.share_url;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+//        UIPasteboard * pastboard = [UIPasteboard generalPasteboard];
+//        if (islogin) {
+//            pastboard.string = _user.share_url;
+//            [UIWindow showSuccess:@"邀请链接已复制到剪切板"];
+//        }else{
+//            pastboard.string = [userdefault objectForKey:@"shareUrl"];
+//            [UIWindow showSuccess:@"邀请链接已复制到剪切板，登录后分享才能获取积分奖励哦"];
+//        }
     }];
     [skinLab whenTapped:^{
         MioSkinCenterVC *vc = [[MioSkinCenterVC alloc] init];
@@ -284,44 +292,16 @@
     [recentView whenTapped:^{
         MioRecentVC *vc = [[MioRecentVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
-//        NSArray<NSString *> *urls =
-//    @[@"https://mp32.aw998.com/Simone%20Altavilla/Lego(Markus%20Masuhr%20Reshape)/mp3.m3u8",@"https://mp32.aw998.com/Simon/Hey%20Little%20Shollgirl/mp3.m3u8",@"https://mp32.aw998.com/Simon/Homeward%20Bound/mp3.m3u8"
-//        ];
-//
-//        for ( NSString *url in urls ) {
-//            [SJM3U8DownloadListController.shared addItemWithUrl:url withMusic:[mioM3U8Player.currentMusic mj_JSONObject]];
-//            id<SJM3U8DownloadListItem> item = [SJM3U8DownloadListController.shared itemByUrl:url];
-////            NSLog(@"%@",item.musicJson);
-//        }
-//
-//        NSInteger urlHash =  [Url(@"https://mp32.aw998.com/Simone%20Altavilla/Lego(Markus%20Masuhr%20Reshape)/mp3.m3u8") hash];
-//
-//        NSString *downloadPath = [NSString stringWithFormat:@"%@/sj.download.files",
-//                               NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
-//
-//        NSFileManager *fileManager = [NSFileManager defaultManager];
-//
-//
-//        if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/%ld",downloadPath,(long)urlHash]]) {
-//            NSLog(@"歌曲已存在");
-//        }else{
-//            NSLog(@"歌曲不存在");
-//        }
-//
-
     }];
     [localView whenTapped:^{
-//        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
-//        [self.navigationController pushViewController:vc animated:YES];
-        
+
         if ([self isMediaPlayerService]) {
             MioLocalVC *vc = [[MioLocalVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         };
     }];
     [downLoadView whenTapped:^{
-//        [UIWindow showInfo:@"开发中"];
-//        return;
+
         MioDownloadVC *vc = [[MioDownloadVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }];
@@ -416,7 +396,7 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else{
-
+        [mioM3U8Player playWithMusicList:_recentPlayArr andIndex:indexPath.row fromModel:MioFromRecent andId:@""];
     }
 }
 

@@ -94,7 +94,7 @@
 
 
 - (NSString *)description {
-
+ 
     //打印自己认为重要的信息
     return [NSString stringWithFormat:@"%@ \nstatusCode:%ld\nresponseJSONObject:\n%@",super.description,self.responseStatusCode,self.responseJSONObject];
 }
@@ -110,7 +110,7 @@
         if (self.responseStatusCode == 401) {
             info = @"授权失败";
             //[svprogressHUD showErrorWithStatus:@"登录已过期，请重新登录"];
-            NSArray *noLokenArr = @[api_mySongLists,api_unread,api_addCoin];
+            NSArray *noLokenArr = @[api_mySongLists,api_unread,api_addCoin,api_userInfo];
             if ([noLokenArr containsObject:self.requestUrl]) {
                 return info;
             }

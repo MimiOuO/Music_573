@@ -14,6 +14,7 @@
 @property (nonatomic, strong) MioImageView *flacImg;
 @property (nonatomic, strong) MioImageView *mvImg;
 @property (nonatomic, strong) MioLabel *singerLab;
+@property (nonatomic, strong) MioLabel *countLab;
 @end
 
 @implementation MioMusicView
@@ -28,7 +29,8 @@
         _flacImg = [MioImageView creatImgView:frame(_cover.right + 8, _nameLab.bottom + 5, 22, 12) inView:self image:@"playlist_nondestructive" bgTintColorName:name_main radius:0];
         _mvImg = [MioImageView creatImgView:frame(_flacImg.right + 4, _nameLab.bottom + 5, 22, 12) inView:self image:@"playlist_mv" bgTintColorName:name_main radius:0];
         _singerLab = [MioLabel creatLabel:frame(_mvImg.right + 8, _nameLab.bottom + 2, self.width  - 136 - 45, 17) inView:self text:@"" colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
-        MioImageView *icon = [MioImageView creatImgView:frame(self.width - 46, 29, 22, 22) inView:self image:@"play" bgTintColorName:name_icon_three radius:0];
+        MioImageView *icon = [MioImageView creatImgView:frame(self.width - 46, 10, 22, 22) inView:self image:@"play" bgTintColorName:name_icon_three radius:0];
+        _countLab = [MioLabel creatLabel:frame(self.width - 51, 34, 32, 17) inView:self text:@"" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
     }
     return self;
 }
@@ -37,6 +39,7 @@
     [_cover sd_setImageWithURL:model.cover_image_path.mj_url placeholderImage:image(@"qxt_gequ")];
     _nameLab.text = model.title;
     _singerLab.text = model.singer_name;
+    _countLab.text = model.hits_all;
     if (model.hasFlac) {
         _flacImg.hidden = NO;
         _mvImg.left = 94;
@@ -60,3 +63,4 @@
     }
 }
 @end
+

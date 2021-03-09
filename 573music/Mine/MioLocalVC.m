@@ -54,7 +54,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [mioM3U8Player playWithMusicList:_localArr andIndex:indexPath.row];
+    [mioM3U8Player playWithMusicList:_localArr andIndex:indexPath.row fromModel:MioFromLocal andId:@""];
 }
 
 

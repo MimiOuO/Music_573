@@ -58,45 +58,45 @@
 
 - (void)save:(MioMusicModel *)music {
     
-    switch (music.so_downloadState) {
-        case SODownloadStateWait:
-        case SODownloadStateLoading:
-
-            if (![self.downloadingArray containsObject:music]) {
-                [self.downloadingArray addObject:music];
-            }
-            [self.pausedArray removeObject:music];
-            [self.complatedArray removeObject:music];
-            break;
-        case SODownloadStatePaused:
-
-            if (![self.pausedArray containsObject:music]) {
-                 [self.pausedArray addObject:music];
-            }
-            [self.downloadingArray removeObject:music];
-            [self.complatedArray removeObject:music];
-            break;
-        case SODownloadStateComplete:
-
-            if (![self.complatedArray containsObject:music]) {
-                [self.complatedArray addObject:music];
-            }
-            [self.downloadingArray removeObject:music];
-            [self.pausedArray removeObject:music];
-            break;
-        case SODownloadStateNormal:
-
-            [self.downloadingArray removeObject:music];
-            [self.pausedArray removeObject:music];
-            [self.complatedArray removeObject:music];
-        default:
-            break;
-    }
-    
-
-    [WHCSqlite delete:[MioMusicModel class] where:@"savetype = 'downloading'"];
-    [WHCSqlite delete:[MioMusicModel class] where:@"savetype = 'pause'"];
-    [WHCSqlite delete:[MioMusicModel class] where:@"savetype = 'complate'"];
+//    switch (music.so_downloadState) {
+//        case SODownloadStateWait:
+//        case SODownloadStateLoading:
+//
+//            if (![self.downloadingArray containsObject:music]) {
+//                [self.downloadingArray addObject:music];
+//            }
+//            [self.pausedArray removeObject:music];
+//            [self.complatedArray removeObject:music];
+//            break;
+//        case SODownloadStatePaused:
+//
+//            if (![self.pausedArray containsObject:music]) {
+//                 [self.pausedArray addObject:music];
+//            }
+//            [self.downloadingArray removeObject:music];
+//            [self.complatedArray removeObject:music];
+//            break;
+//        case SODownloadStateComplete:
+//
+//            if (![self.complatedArray containsObject:music]) {
+//                [self.complatedArray addObject:music];
+//            }
+//            [self.downloadingArray removeObject:music];
+//            [self.pausedArray removeObject:music];
+//            break;
+//        case SODownloadStateNormal:
+//
+//            [self.downloadingArray removeObject:music];
+//            [self.pausedArray removeObject:music];
+//            [self.complatedArray removeObject:music];
+//        default:
+//            break;
+//    }
+//
+//
+//    [WHCSqlite delete:[MioMusicModel class] where:@"savetype = 'downloading'"];
+//    [WHCSqlite delete:[MioMusicModel class] where:@"savetype = 'pause'"];
+//    [WHCSqlite delete:[MioMusicModel class] where:@"savetype = 'complate'"];
     
     if (self.downloadingArray.count > 0) {
         for (MioMusicModel *music in self.downloadingArray) {

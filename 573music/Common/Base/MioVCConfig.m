@@ -26,7 +26,7 @@
         
     }
     
-    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioMvIntroVC",@"MioMvCmtVC",@"MioMutipleVC",@"MioListenMusicVC",@"LBXScanBaseViewController",@"ScanSuccessJumpVC",@"MioMusicCmtVC",@"MioMusicAllCmtVC",@"MioMVAllCmtVC",@"MioAboutUsVC",@"MioFeedBackVC",@"MioSkinCenterVC",@"MioMutipleVC",@"MioAddToSonglistVC"];
+    NSArray *noneArr = @[@"MioLoginVC",@"MioTestVC",@"MioMainPlayerVC",@"MioMutipleVC",@"MioLoginVC",@"MioPasswordLoginVC",@"MioModiPassWordVC",@"MioMoreVC",@"MioTimeOffVC",@"MioEditInfoVC",@"PYSearchViewController",@"MioMvVC",@"MioMvIntroVC",@"MioMvCmtVC",@"MioMutipleVC",@"MioListenMusicVC",@"LBXScanBaseViewController",@"ScanSuccessJumpVC",@"MioMusicCmtVC",@"MioMusicAllCmtVC",@"MioMVAllCmtVC",@"MioAboutUsVC",@"MioFeedBackVC",@"MioSkinCenterVC",@"MioMutipleVC",@"MioAddToSonglistVC",@"MioShareResultVC"];
     NSArray *allArr = @[@"MioTabbarVC",@"MioHomeVC",@"MioGroudVC",@"MioMineVC",@"MioHomeRecommendVC",@"MioHomeMusicHallVC",@"MioHomeDJVC",@"MioGroudVC",@"MioRecommendMVVC",@"MioCategoryMVVC"];
     
     

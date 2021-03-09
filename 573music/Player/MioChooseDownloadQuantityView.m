@@ -43,6 +43,8 @@
             [self hiddenView];
         }];
         _quailtyView = [UIView creatView:frame(0, 0, KSW, 160) inView:_bgView bgColor:appClearColor radius:0];
+        
+        RecieveNotice(switchMusic, hiddenView);
     }
     return self;
 }
@@ -99,12 +101,12 @@
     }
     
     if (standardArr.count > 0) {
-        [titleArr addObject:@"标清"];
+        [titleArr addObject:@"标准"];
         [imgArr addObject:@"yz_bz"];
 //        [sizeArr addObject:[NSString stringWithFormat:@"%.2fM",standardSize/1024.0]];
     }
     if (highArr.count > 0) {
-        [titleArr addObject:@"高清"];
+        [titleArr addObject:@"超品"];
         [imgArr addObject:@"yz_gq"];
 //        [sizeArr addObject:[NSString stringWithFormat:@"%.2fM",highSize/1024.0]];
     }
@@ -130,7 +132,7 @@
             
             NSMutableArray *downloadUrlArr =  [[NSMutableArray alloc] init];
             
-            if (Equals(titleArr[i], @"标清")) {
+            if (Equals(titleArr[i], @"标准")) {
                 for (int j = 0;j < _musicArr.count; j++) {
                     if (_musicArr[j].hasSQ) {
                         [downloadUrlArr addObject:_musicArr[j].standard[@"url"]];
@@ -142,7 +144,7 @@
                 }
             }
             
-            if (Equals(titleArr[i], @"高清")) {
+            if (Equals(titleArr[i], @"超品")) {
                 for (int j = 0;j < _musicArr.count; j++) {
                     if (_musicArr[j].hasHQ) {
                         [downloadUrlArr addObject:_musicArr[j].high
@@ -186,43 +188,63 @@
             if (realDownloadUrlArr.count == 0) {
                 [UIWindow showInfo:@"该音质已经下载过"];
             }else{
-
-                //添加到下载列表
-                for (int l = 0;l < realDownloadUrlArr.count; l++) {
-                    
-                    //清理数据库中模型
-
-                    [WHCSqlite delete:[MioMusicModel class] where:[NSString stringWithFormat:@"savetype = 'downloaded' AND song_id = '%@'",realDownloadModelArr[l].song_id]];
-                    
-                    //清理已下载同一首歌曲的不同音质
-                    [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[[realDownloadModelArr[l].standard[@"url"] mj_url] hash]] error:nil];
-                    [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[[realDownloadModelArr[l].high[@"url"] mj_url] hash]] error:nil];
-                    [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[[realDownloadModelArr[l].lossless[@"url"] mj_url] hash]] error:nil];
-                    
-                    [SJM3U8DownloadListController.shared deleteItemForUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].standard[@"url"] mj_url]]];
-                    [SJM3U8DownloadListController.shared deleteItemForUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].high[@"url"] mj_url]]];
-                    [SJM3U8DownloadListController.shared deleteItemForUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].lossless[@"url"] mj_url]]];
-                    [SJM3U8DownloadListController.shared updateContentsForItemByUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].standard[@"url"] mj_url]]];
-                    [SJM3U8DownloadListController.shared updateContentsForItemByUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].high[@"url"] mj_url]]];
-                    [SJM3U8DownloadListController.shared updateContentsForItemByUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].lossless[@"url"] mj_url]]];
-                    
-                    
-                    [SJM3U8DownloadListController.shared addItemWithUrl:realDownloadUrlArr[l] withMusic:[realDownloadModelArr[l] mj_JSONObject]];
-                    
-                    
-                    //下载歌词
-                    if (realDownloadModelArr[l].lrc_url.length > 0) {
-                        MioDownloadRequest *req = [[MioDownloadRequest alloc] initWinthUrl:[NSString stringWithFormat:@"%@",realDownloadModelArr[l].lrc_url.mj_url] fileName:[NSString stringWithFormat:@"%@.lrc",realDownloadModelArr[l].song_id]];
-                        [req success:^(NSDictionary * _Nonnull result) {
-                            NSLog(@"批量歌词下载成功");
-                        } failure:^(NSString * _Nonnull errorInfo) {
-                            NSLog(@"批量歌词下载失败");
-                        }];
+                [MioGetReq(api_queryDownloadCount, @{@"k":@"v"}) success:^(NSDictionary *result){
+                    int leftCount = [[[result objectForKey:@"data"] objectForKey:@"left"] intValue];
+                    if (leftCount < realDownloadUrlArr.count) {
+                        [UIWindow showInfo:@"当月下载次数不足"];
+                        return;
                     }else{
-                        
+                        //添加到下载列表
+                        for (int l = 0;l < realDownloadUrlArr.count; l++) {
+                            
+                            //增加下载量
+                            [MioPostReq(api_addPlayCount, (@{@"model_name":@"song",@"columns":@"download_num",@"model_id":realDownloadModelArr[l].song_id})) success:^(NSDictionary *result){} failure:^(NSString *errorInfo) {}];
+                            
+                            //清理数据库中模型
+
+                            [WHCSqlite delete:[MioMusicModel class] where:[NSString stringWithFormat:@"savetype = 'downloaded' AND song_id = '%@'",realDownloadModelArr[l].song_id]];
+                            
+                            //清理已下载同一首歌曲的不同音质
+                            [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[[realDownloadModelArr[l].standard[@"url"] mj_url] hash]] error:nil];
+                            [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[[realDownloadModelArr[l].high[@"url"] mj_url] hash]] error:nil];
+                            [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%lu",downloadPath,[[realDownloadModelArr[l].lossless[@"url"] mj_url] hash]] error:nil];
+                            
+                            [SJM3U8DownloadListController.shared deleteItemForUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].standard[@"url"] mj_url]]];
+                            [SJM3U8DownloadListController.shared deleteItemForUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].high[@"url"] mj_url]]];
+                            [SJM3U8DownloadListController.shared deleteItemForUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].lossless[@"url"] mj_url]]];
+                            [SJM3U8DownloadListController.shared updateContentsForItemByUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].standard[@"url"] mj_url]]];
+                            [SJM3U8DownloadListController.shared updateContentsForItemByUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].high[@"url"] mj_url]]];
+                            [SJM3U8DownloadListController.shared updateContentsForItemByUrl:[NSString stringWithFormat:@"%@",[realDownloadModelArr[l].lossless[@"url"] mj_url]]];
+                            
+                            
+                            [SJM3U8DownloadListController.shared addItemWithUrl:realDownloadUrlArr[l] withMusic:[realDownloadModelArr[l] mj_JSONObject]];
+                            
+                            
+                            //下载歌词
+                            if (realDownloadModelArr[l].lrc_url.length > 0) {
+                                MioDownloadRequest *req = [[MioDownloadRequest alloc] initWinthUrl:[NSString stringWithFormat:@"%@",realDownloadModelArr[l].lrc_url.mj_url] fileName:[NSString stringWithFormat:@"%@.lrc",realDownloadModelArr[l].song_id]];
+                                [req success:^(NSDictionary * _Nonnull result) {
+                                    NSLog(@"批量歌词下载成功");
+                                } failure:^(NSString * _Nonnull errorInfo) {
+                                    NSLog(@"批量歌词下载失败");
+                                }];
+                                
+                                [MioPostReq(api_addDownloadCount, @{@"k":@"v"}) success:^(NSDictionary *result){
+                                    NSDictionary *data = [result objectForKey:@"data"];
+                                    
+                                } failure:^(NSString *errorInfo) {}];
+                            }else{
+                                
+                            }
+                        }
+                        [UIWindow showSuccess:@"已加入下载列表"];
                     }
-                }
-                [UIWindow showSuccess:@"已加入下载列表"];
+                    
+                } failure:^(NSString *errorInfo) {
+                    NSLog(@"%@",errorInfo);
+                }];
+                
+               
                 
             }
 

@@ -44,6 +44,10 @@
     }];
     
     [self requestData];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 }
 
 -(void)requestData{
@@ -60,7 +64,10 @@
         
         [_dataArr addObjectsFromArray:[MioMvModel mj_objectArrayWithKeyValuesArray:data]];
         [_collection reloadData];
-    } failure:^(NSString *errorInfo) {}];
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

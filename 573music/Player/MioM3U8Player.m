@@ -80,11 +80,17 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 
 #pragma mark - 各种形式播放
-- (void)playWithMusicList:(NSArray<MioMusicModel *> *)musicList andIndex:(NSInteger)index{
+- (void)playWithMusicList:(NSArray<MioMusicModel *> *)musicList andIndex:(NSInteger)index fromModel:(MioFromType)from andId:(NSString *)fromId{
+    for (MioMusicModel *music in musicList) {
+        music.fromModel = from;
+        music.fromId = fromId;
+    }
+    
     [self playWithMusic:musicList[index] withMusicList:musicList];
     PostNotice(@"showPlaylistIcon");
     [userdefault setObject:@"0" forKey:@"isRadio"];
     [userdefault synchronize];
+    PostNotice(@"showMainPlayer");
 }
 
 
@@ -190,11 +196,12 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             self.player.assetURLs = @[music.localUrl];
             [self.player playTheIndex:0];
         }else{
+            
             self.player.assetURLs = @[music.audioFileURL];
             [self.player playTheIndex:0];
         }
     }
-    
+
     if (!music.local) {
         //添加播放量
         [MioPostReq(api_addPlayCount, (@{@"model_name":@"song",@"columns":@"hits_all",@"model_id":music.song_id})) success:^(NSDictionary *result){} failure:^(NSString *errorInfo) {}];

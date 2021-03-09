@@ -133,7 +133,7 @@
     }
     
     if (indexPath.row == 1) {
-        LOTAnimationView *hud1 = [LOTAnimationView animationNamed:@"jifeng"];
+        LOTAnimationView *hud1 = [LOTAnimationView animationNamed:@"jifen"];
         hud1.frame = frame(KSW2 - 150, KSH * 0.2, 300, 300);
         hud1.loopAnimation = YES;
         [cell addSubview:hud1];

@@ -29,10 +29,10 @@
             // 下面这几行代码示例：将下载成功的文件移动到目标下载位置
             MioMusicModel *music = (MioMusicModel *)item;
             NSError *error;
-            BOOL result = [[NSFileManager defaultManager]moveItemAtURL:location toURL:[NSURL fileURLWithPath:music.savePath] error:&error];
-            if (!result) {
-                NSLog(@"下载处理失败：%@", [error localizedDescription]);
-            }
+//            BOOL result = [[NSFileManager defaultManager]moveItemAtURL:location toURL:[NSURL fileURLWithPath:music.savePath] error:&error];
+//            if (!result) {
+//                NSLog(@"下载处理失败：%@", [error localizedDescription]);
+//            }
             return error;
         }];
         // 设置同时下载数目

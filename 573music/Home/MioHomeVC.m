@@ -90,39 +90,7 @@
 //    [self readm3u8];
 }
 
--(void)readm3u8{
-    NSString *filepath = [[NSBundle mainBundle] pathForResource:@"3434" ofType:@"m3u8"];
-    NSString *dstPath = [NSString stringWithFormat:@"%@/3434.m3u8",
-                         NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
-    
-    BOOL success1 =  [[NSFileManager defaultManager] copyItemAtPath:filepath toPath:dstPath error:nil];
-    
-    //======================================================================//
-    //                           替换m3u8中的远程地址
-    //======================================================================//
-    // 读文件
-    NSString *str = [[NSString alloc] initWithContentsOfFile:dstPath
-    encoding:NSUTF8StringEncoding error:NULL];
-    
-    NSMutableArray *array = [[str componentsSeparatedByString:@"\n"] mutableCopy];
-    for (int i = 0;i < array.count; i++) {
-        if ([array[i] containsString:@"http"]) {
-            NSArray *linArray = [array[i] componentsSeparatedByString:@"/"];
-            [array replaceObjectAtIndex:i withObject:[linArray lastObject]];
-        }
-    }
-    // 编辑du内容
-    NSString *newStr = [array componentsJoinedByString:@"\n"];
-    // 写文件
-    [newStr writeToFile:dstPath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
-    //======================================================================//
-    
-    // 读文件
-    NSString *str2 = [[NSString alloc] initWithContentsOfFile:dstPath
-    encoding:NSUTF8StringEncoding error:NULL];
-    
-    NSLog(@"%@",str2);
-}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -135,6 +103,7 @@
 
 -(void)startCutDown{
     [CountdownTimer startTimerWithKey:cutdown count:24*60*60 callBack:^(NSInteger count, BOOL isFinished) {
+        
         int interval = [[userdefault objectForKey:@"timeInterval"] intValue];
         if (interval <= 0) {
             return;

@@ -7,9 +7,18 @@
 //
 
 #import "MioMoreFuncView.h"
+#import "MioFeedBackVC.h"
+#import "UIViewController+MioExtension.h"
 #import "MioSingerVC.h"
 #import "MioAlbumVC.h"
-#import "MioFeedBackVC.h"
+#import "MioSongListVC.h"
+#import "MioCategoryVC.h"
+#import "MioMusicRankVC.h"
+#import "MioLikeVC.h"
+#import "MioLocalVC.h"
+#import "MioRecentVC.h"
+#import "MioDownloadVC.h"
+
 @interface MioMoreFuncView()
 @property (nonatomic, strong) UIView *bgView;
 @end
@@ -38,6 +47,7 @@
         UIButton *closeBtn = [UIButton creatBtn:frame(0, 160, KSW, 50 + SafeBotH) inView:_bgView bgColor:appClearColor title:@"关闭" titleColor:color_text_one font:14 radius:0 action:^{
             [self hiddenView];
         }];
+        RecieveNotice(switchMusic, hiddenView);
     }
     return self;
 }
@@ -62,30 +72,48 @@
 }
 
 -(void)creatUI{
-    NSArray *imgArr = @[@"more_singer",@"more_album",@"more_forward",@"more_back",@"more_feedback"];
-    NSArray *titleArr = @[@"歌手",@"专辑",@"歌词快退",@"歌词快进",@"反馈"];
-    
-    if ([_model.album_id intValue] < 0) {
-        imgArr = @[@"more_singer",@"more_forward",@"more_back",@"more_feedback"];
-        titleArr = @[@"歌手",@"歌词快退",@"歌词快进",@"反馈"];
+    NSMutableArray *imgArr =[[NSMutableArray alloc] init];
+    NSMutableArray *titleArr = [[NSMutableArray alloc] init];
+    if ([_model.singer_id intValue] > 0) {
+        [imgArr addObject:@"more_singer"];
+        [titleArr addObject:@"歌手"];
     }
+    if ([_model.album_id intValue] > 0 ) {
+        [imgArr addObject:@"more_album"];
+        [titleArr addObject:@"专辑"];
+    }
+    if (_model.fromModel != MioFromUnkown) {
+        [imgArr addObject:@"lj"];
+        [titleArr addObject:@"播放来源"];
+    }
+    if (_model.lrc_url.length > 0) {
+        [imgArr addObject:@"more_forward"];
+        [imgArr addObject:@"more_back"];
+        [titleArr addObject:@"歌词快退"];
+        [titleArr addObject:@"歌词快进"];
+    }
+    [imgArr addObject:@"more_feedback"];
+    [titleArr addObject:@"反馈"];
+    
+    UIScrollView *scroll = [UIScrollView creatScroll:frame( (titleArr.count*64 + 16) > KSW? 0 : KSW/2 - (titleArr.count*64 + 16)/2, 0, KSW, 160) inView:_bgView contentSize:CGSizeMake(titleArr.count*64 + 16, 160)];
     
     for (int i = 0;i < titleArr.count; i++) {
-        UIView *bgView = [UIView creatView:frame((KSW - 48*titleArr.count - 26*(titleArr.count - 1))/2 + i * 74 , 73, 48, 48) inView:_bgView bgColor:color_sup_four radius:6];
+
+        UIView *bgView = [UIView creatView:frame(16 + i * 64 , 73, 48, 48) inView:scroll bgColor:color_sup_four radius:6];
         MioImageView *icon = [MioImageView creatImgView:frame(13, 13, 22, 22) inView:bgView image:imgArr[i] bgTintColorName:name_icon_one radius:0];
-        MioLabel *title = [MioLabel creatLabel:frame(bgView.left - 5, 123, 58, 17) inView:_bgView text:titleArr[i] colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
+        MioLabel *title = [MioLabel creatLabel:frame(bgView.left - 5, 123, 58, 17) inView:scroll text:titleArr[i] colorName:name_text_one size:12 alignment:NSTextAlignmentCenter];
         [bgView whenTapped:^{
             if (Equals(titleArr[i], @"歌手")) {
                 [self hiddenView];
                 MioSingerVC *vc = [[MioSingerVC alloc] init];
                 vc.singerId = _model.singer_id;
-                [_fatherVC.navigationController pushViewController:vc animated:YES];
+                [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
             }
             if (Equals(titleArr[i], @"专辑")) {
                 [self hiddenView];
                 MioAlbumVC *vc = [[MioAlbumVC alloc] init];
                 vc.album_id = _model.album_id;
-                [_fatherVC.navigationController pushViewController:vc animated:YES];
+                [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
             }
             if (Equals(titleArr[i], @"歌词快退")) {
                 _lrcView.adjustLrcSec = _lrcView.adjustLrcSec - 1;
@@ -99,6 +127,55 @@
                 [self hiddenView];
                 MioFeedBackVC *vc = [[MioFeedBackVC alloc] init];
                 [_fatherVC.navigationController pushViewController:vc animated:YES];
+            }
+            if (Equals(titleArr[i], @"播放来源")) {
+                [self hiddenView];
+                [_fatherVC dismissViewControllerAnimated:YES completion:^{
+                    if (_model.fromModel == MioFromSonglist) {
+                        MioSongListVC *vc = [[MioSongListVC alloc] init];
+                        vc.songlistId = _model.fromId;
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    if (_model.fromModel == MioFromAlbum) {
+                        MioAlbumVC *vc = [[MioAlbumVC alloc] init];
+                        vc.album_id = _model.fromId;
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    if (_model.fromModel == MioFromSinger) {
+                        MioSingerVC *vc = [[MioSingerVC alloc] init];
+                        vc.singerId = _model.fromId;
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    if (_model.fromModel == MioFromCategory) {
+                        MioCategoryVC *vc = [[MioCategoryVC alloc] init];
+                        vc.tag = _model.fromId;
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    if (_model.fromModel == MioFromRank) {
+                        MioMusicRankVC *vc = [[MioMusicRankVC alloc] init];
+                        vc.rankId = _model.fromId;
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    if (_model.fromModel == MioFromMyLike) {
+                        MioLikeVC *vc = [[MioLikeVC alloc] init];
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    if (_model.fromModel == MioFromLocal) {
+                        MioLocalVC *vc = [[MioLocalVC alloc] init];
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    if (_model.fromModel == MioFromRecent) {
+                        MioRecentVC *vc = [[MioRecentVC alloc] init];
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    if (_model.fromModel == MioFromDownload) {
+                        MioDownloadVC *vc = [[MioDownloadVC alloc] init];
+                        [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                    }
+                    
+                    
+                }];
+
             }
         }];
     }

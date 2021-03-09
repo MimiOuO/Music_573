@@ -20,14 +20,23 @@
     [self.navView.centerButton setTitle:@"排行榜" forState:UIControlStateNormal];
     
     [self request];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 }
 
 -(void)request{
+
     [MioGetReq(api_ranks,(@{@"type":@"歌曲",@"lock":@"0"})) success:^(NSDictionary *result){
+        
         _data = [result objectForKey:@"data"];
         
         [self creatUI];
-    } failure:^(NSString *errorInfo) {}];
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
 }
 
 -(void)creatUI{

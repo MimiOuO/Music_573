@@ -9,6 +9,7 @@
 #import "MioSearchResultVC.h"
 #import <WMPageController.h>
 
+#import "MioSearchTotalVC.h"
 #import "MioSearchMusicResultVC.h"
 #import "MioSearchSingerResultVC.h"
 #import "MioSearchSonglistResultVC.h"
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) WMPageController *pageController;
 
+@property (nonatomic, strong) MioSearchTotalVC *totalResult;
 @property (nonatomic, strong) MioSearchMusicResultVC *musicResult;
 @property (nonatomic, strong) MioSearchSingerResultVC *singerResult;
 @property (nonatomic, strong) MioSearchSonglistResultVC *songlistResult;
@@ -33,6 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    _totalResult = [[MioSearchTotalVC alloc] init];
     _musicResult = [[MioSearchMusicResultVC alloc] init];
     _singerResult = [[MioSearchSingerResultVC alloc] init];
     _songlistResult = [[MioSearchSonglistResultVC alloc] init];
@@ -69,23 +72,27 @@
     MioImageView *menuBg = [MioImageView creatImgView:frame(0, 0, KSW, 40) inView:_pageController.menuView skin:SkinName image:@"picture_bql" radius:0];
     [_pageController.menuView sendSubviewToBack:menuBg];
     
-
+    RecieveNotice(@"swithSongs", switchSongs);
+    RecieveNotice(@"swithSonglist", switchSonglist);
+    RecieveNotice(@"swithAlbum", switchAlbum);
+    RecieveNotice(@"swithMV", switchMV);
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     
-    return 5;
+    return 6;
 }
 
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
-    
     if (index == 0) {
+        return _totalResult;
+    }else if (index == 1) {
         return _musicResult;
-    }else if (index == 1){
-        return _singerResult;
     }else if (index == 2){
-        return _songlistResult;
+        return _singerResult;
     }else if (index == 3){
+        return _songlistResult;
+    }else if (index == 4){
         return _albumResult;
     }else{
         return _mvResult;
@@ -97,12 +104,14 @@
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
     
     if (index == 0) {
+        return @"综合";
+    }else if (index == 1) {
         return @"歌曲";
-    }else if (index == 1){
-        return @"歌手";
     }else if (index == 2){
-        return @"歌单";
+        return @"歌手";
     }else if (index == 3){
+        return @"歌单";
+    }else if (index == 4){
         return @"专辑";
     }else{
         return @"视频";
@@ -111,13 +120,32 @@
 
 #pragma mark - netWork
 -(void)serchRequest{
-    
+    _totalResult.searchKey = _key;
     _musicResult.searchKey = _key;
     _singerResult.searchKey = _key;
     _songlistResult.searchKey = _key;
     _albumResult.searchKey = _key;
     _mvResult.searchKey = _key;
     PostNotice(@"search");
+}
+
+-(void)switchSongs{
+    _pageController.selectIndex = 1;
+    [self serchRequest];
+}
+
+-(void)switchSonglist{
+    _pageController.selectIndex = 3;
+    [self serchRequest];
+}
+
+-(void)switchAlbum{
+    _pageController.selectIndex = 4;
+    [self serchRequest];
+}
+-(void)switchMV{
+    _pageController.selectIndex = 5;
+    [self serchRequest];
 }
 
 #pragma mark - PYSearchViewControllerDelegate

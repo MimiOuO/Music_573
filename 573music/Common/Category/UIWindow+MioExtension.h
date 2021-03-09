@@ -13,9 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIWindow (MioExtension)
 +(void)showInfo:(NSString *)text;
 +(void)showSuccess:(NSString *)text;
++(void)showLoading;
 +(void)showLoading:(NSString *)text;
 +(void)showMaskLoading:(NSString *)text;
 +(void)hiddenLoading;
++(void)hiddenEnterLoading;
 +(void)showNewVersion:(NSString *)message link:(NSString *)url;
 
 +(void)showMessage:(NSString *)message withTitle:(NSString *)title;

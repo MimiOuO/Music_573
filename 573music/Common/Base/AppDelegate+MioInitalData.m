@@ -9,6 +9,7 @@
 #import "AppDelegate+MioInitalData.h"
 #import <XHLaunchAd.h>
 #import "ScanSuccessJumpVC.h"
+#import "CountdownTimer.h"
 @interface AppDelegate()<XHLaunchAdDelegate>
 @end
 
@@ -25,6 +26,7 @@
     [self requestVersion];
     [self requestTreaties];
     [self requestShareUrl];
+    [self requestVipTimeLeft];
     [self configAd];
 }
 
@@ -41,6 +43,14 @@
         NSArray *data = [result objectForKey:@"data"];
         [userdefault setObject:data forKey:@"category"];
         [userdefault synchronize];
+        
+        NSMutableArray *songlistCategoryArr = [[NSMutableArray alloc] init];
+        for (int i = 0;i < data.count; i++) {
+            [songlistCategoryArr addObjectsFromArray:data[i][@"tags"]];
+        }
+        [userdefault setObject:songlistCategoryArr forKey:@"oldSonglistCategory"];
+        [userdefault synchronize];
+        
     } failure:^(NSString *errorInfo) {}];
 }
 
@@ -90,7 +100,13 @@
         NSDictionary *data = [result objectForKey:@"data"];
         NSString * remoteVersion = [[data objectForKey:@"ios_version"] stringByReplacingOccurrencesOfString:@"." withString:@""];
         NSString * currentVersion = [[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"] stringByReplacingOccurrencesOfString:@"." withString:@""];
-        if ([remoteVersion intValue] <= [currentVersion intValue]) {
+        if (remoteVersion.length < 4) {
+            remoteVersion = [remoteVersion stringByAppendingString:@"0"];
+        }
+        if (currentVersion.length < 4) {
+            currentVersion = [currentVersion stringByAppendingString:@"0"];
+        }
+        if ([remoteVersion intValue] == [currentVersion intValue]) {
             return;
         }
         [UIWindow showNewVersion:[data objectForKey:@"ios_info"] link:[data objectForKey:@"ios_spread_url"]];
@@ -128,6 +144,13 @@
         [userdefault setObject:yinsiUrl forKey:@"yinsiUrl"];
         [userdefault synchronize];
     } failure:^(NSString *errorInfo) {}];
+}
+
+-(void)requestVipTimeLeft{
+    [CountdownTimer startTimerWithKey:vipCutDown count:24*60*60 callBack:^(NSInteger count, BOOL isFinished) {
+        
+ 
+    }];
 }
 
 -(void)configAd{

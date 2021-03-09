@@ -28,10 +28,20 @@
     [self creatUI];
     [self requestData];
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 }
 
 -(void)requestData{
-    [MioGetReq(api_songLists, (@{@"s":_tag,@"columns":@[@"tags"],@"page":Str(_page)})) success:^(NSDictionary *result){
+    MioGetRequest *getreq;
+    if (Equals(@"全部", _tag)) {
+        NSDictionary *dic = @{@"hits_all":@"desc"};
+        getreq = MioGetReq(api_songLists, (@{@"orders":@[dic],@"page":Str(_page)}));
+    }else{
+        getreq = MioGetReq(api_songLists, (@{@"s":_tag,@"columns":@[@"tags"],@"page":Str(_page)}));
+    }
+    [getreq success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [self.collection.mj_footer endRefreshing];
         if (Equals(result[@"links"][@"next"], @"<null>")) {
@@ -40,7 +50,10 @@
         
         [_dataArr addObjectsFromArray:[MioSongListModel mj_objectArrayWithKeyValuesArray:data]];
         [self.collection reloadData];
-    } failure:^(NSString *errorInfo) {}];
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
 }
 
 -(void)creatUI{

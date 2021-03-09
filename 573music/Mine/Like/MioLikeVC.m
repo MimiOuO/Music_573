@@ -19,6 +19,12 @@
 @interface MioLikeVC ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) WMPageController *pageController;
+
+@property (nonatomic, assign) int songsCount;
+@property (nonatomic, assign) int songlistsCount;
+@property (nonatomic, assign) int albumsCount;
+@property (nonatomic, assign) int singersCount;
+@property (nonatomic, assign) int mvsCount;
 @end
 
 @implementation MioLikeVC
@@ -39,7 +45,7 @@
     _pageController.dataSource         = self;
     _pageController.menuViewStyle      = WMMenuViewStyleLine;
     _pageController.menuViewLayoutMode = WMMenuViewLayoutModeCenter;
-    _pageController.itemMargin         = 5;
+    _pageController.itemMargin         = 10;
     _pageController.menuHeight         = 40;
     _pageController.titleFontName      = @"PingFangSC-Medium";
     _pageController.titleSizeNormal    = 14;
@@ -56,8 +62,24 @@
  
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"我的喜欢" forState:UIControlStateNormal];
+    
+    [self requestCount];
 }
 
+-(void)requestCount{
+    [MioGetReq(api_likesCount, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"][@"likes"];
+        
+        _songsCount = [data[@"song"] intValue];
+        _singersCount = [data[@"singer"] intValue];
+        _songlistsCount = [data[@"song_list"] intValue];
+        _albumsCount = [data[@"album"] intValue];
+        _mvsCount = [data[@"mv"] intValue];
+        
+        [_pageController reloadData];
+        
+    } failure:^(NSString *errorInfo) {}];
+}
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     
@@ -82,15 +104,15 @@
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
     
     if (index == 0) {
-        return @"歌曲";
+        return [NSString stringWithFormat:@"歌曲 %d",_songsCount];
     }else if (index == 1) {
-        return @"歌手";
+        return [NSString stringWithFormat:@"歌手 %d",_singersCount];
     }else if (index == 2) {
-        return @"歌单";
+        return [NSString stringWithFormat:@"歌单 %d",_songlistsCount];
     }else if (index == 3) {
-        return @"专辑";
+        return [NSString stringWithFormat:@"专辑 %d",_albumsCount];
     }else{
-        return @"视频";
+        return [NSString stringWithFormat:@"视频 %d",_mvsCount];
     }
 }
 

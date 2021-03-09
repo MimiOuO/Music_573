@@ -10,10 +10,13 @@
 #import "LEECoolButton.h"
 #import "MioMvVC.h"
 #import "MioSingerVC.h"
+#import "MioMusicView.h"
 @interface MioMvIntroVC ()
 @property (nonatomic, strong) UIScrollView *scroll;
 @property (nonatomic, strong) UIView *relatedView;
 @property (nonatomic, strong) UIButton *likeBtn;
+@property (nonatomic, strong) MioMusicModel *relatedMusic;
+
 @end
 
 @implementation MioMvIntroVC
@@ -28,7 +31,7 @@
     _mv = mv;
     [self.view removeAllSubviews];
     _scroll = [UIScrollView creatScroll:frame(0, 0, KSW, KSH - StatusH - KSW *9/16 - 44) inView:self.view contentSize:CGSizeMake(KSW, 1000)];
-    _relatedView = [UIView creatView:frame(0, 0, KSW, 6 * 73) inView:_scroll bgColor:appClearColor radius:0];
+    _relatedView = [UIView creatView:frame(0, 0, KSW, 6 * 73 + ([_mv.song_id intValue] > 0 ? 278 : 163) ) inView:_scroll bgColor:appClearColor radius:0];
     UIImageView *avatar = [UIImageView creatImgView:frame(Mar, 12, 46, 46) inView:_scroll image:@"" radius:23];
     [avatar sd_setImageWithURL:[mv.singer[@"cover_image_path"] mj_url] placeholderImage:image(@"qxt_geshou")];
     [avatar whenTapped:^{
@@ -53,33 +56,53 @@
         _likeBtn.selected = YES;
     }
 //    UILabel *downloadLab = [UILabel creatLabel:frame(DowloadBtn.left -5 , 37, 30, 17) inView:_scroll text:@"下载" color:color_text_two size:12 alignment:NSTextAlignmentCenter];
-    UILabel *likeLab = [UILabel creatLabel:frame(_likeBtn.left -5 , 37, 30, 17) inView:_scroll text:@"喜欢" color:color_text_two size:12 alignment:NSTextAlignmentCenter];
+    UILabel *likeLab = [UILabel creatLabel:frame(_likeBtn.left -15 , 37, 50, 17) inView:_scroll text:@"收藏MV" color:color_text_two size:12 alignment:NSTextAlignmentCenter];
     
     
-    UILabel *relatLab  = [UILabel creatLabel:frame(Mar, 135, KSW_Mar2, 20) inView:_scroll text:@"相关推荐" color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+    if ([_mv.song_id intValue] > 0) {
+        UILabel *relatMusicLab  = [UILabel creatLabel:frame(Mar, 135, KSW_Mar2, 20) inView:_scroll text:@"相关歌曲" color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+        [self requestRelatedMusic];
+    }
 
-    [self requestRelated];
+    [self requestRelatedMV];
+    
+    UILabel *relatLab  = [UILabel creatLabel:frame(Mar, [_mv.song_id intValue] > 0 ? 250 : 135, KSW_Mar2, 20) inView:_scroll text:@"相关推荐" color:color_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+    
+}
+-(void)requestRelatedMusic{
+    [MioGetReq(api_songsDetail(_mv.song_id), @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        _relatedMusic = [MioMusicModel mj_objectWithKeyValues:data];
+        MioMusicView *musicCell = [[MioMusicView alloc] initWithFrame:CGRectMake( Mar,  165.5, KSW_Mar, 60)];
+        musicCell.model = _relatedMusic;
+        [_scroll addSubview:musicCell];
+        [musicCell whenTapped:^{
+            PostNotice(@"stopMV");
+            [mioM3U8Player playWithMusicList:@[_relatedMusic] andIndex:0 fromModel:MioFromUnkown andId:@""];
+        }];
+    } failure:^(NSString *errorInfo) {}];
 }
 
--(void)requestRelated{
+-(void)requestRelatedMV{
     
     [MioGetReq(api_mvRelated(_mv.mv_id), @{@"k":@"v"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         
+
         self.relatedMVArr = [MioMvModel mj_objectArrayWithKeyValuesArray:data];
         [_relatedView removeAllSubviews];
         for (int i = 0;i < data.count; i++) {
             MioMvModel *model = [MioMvModel mj_objectWithKeyValues:data[i]];
-            UIView *mvView = [UIView creatView:frame(0, 163 + 73*i, KSW, 61) inView:_relatedView bgColor:appClearColor radius:0];
+            UIView *mvView = [UIView creatView:frame(0, ([_mv.song_id intValue] > 0 ? 278 : 163) + 73*i, KSW, 61) inView:_relatedView bgColor:appClearColor radius:0];
             UIImageView *cover = [UIImageView creatImgView:frame(Mar, 6, 109, 61) inView:mvView image:@"qxt_mv" radius:4];
-            UIImageView *shadow = [UIImageView creatImgView:frame(0, cover.height - 22, 109, 22) inView:cover image:@"zhuanji_mengban" radius:0];
+            UIImageView *shadow = [UIImageView creatImgView:frame(0, cover.height - 22, 109, 22) inView:cover image:@"gedan_mengbang" radius:0];
             shadow.contentMode = UIViewContentModeScaleToFill;
             [cover sd_setImageWithURL:model.cover_image_path.mj_url placeholderImage:image(@"qxt_mv")];
             UIImageView *playCountIcon = [UIImageView creatImgView:frame(6, cover.height - 15 , 11, 11) inView:cover image:@"bofangliang" radius:0];
             UILabel *playCountLab = [UILabel creatLabel:frame(18, cover.height - 17, 50, 15) inView:cover text:model.hits_all color:appWhiteColor size:10 alignment:NSTextAlignmentLeft];
             MioLabel *titleLab = [MioLabel creatLabel:frame(133, 14, KSW - 133 - Mar, 22) inView:mvView text:model.title colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
             MioLabel *singerLab = [MioLabel creatLabel:frame(133, 40, KSW - 133 - Mar, 17) inView:mvView text:model.singer_name colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
-            _scroll.contentSize = CGSizeMake(KSW, data.count * 73 + 180);
+            _scroll.contentSize = CGSizeMake(KSW, data.count * 73 + ([_mv.song_id intValue] > 0 ? 195 : 180));
             
             [mvView whenTapped:^{
                 if (self.delegate && [self.delegate respondsToSelector:@selector(changeMV:)]) {
@@ -94,7 +117,11 @@
     [MioPostReq(api_likes, (@{@"model_name":@"mv",@"model_ids":@[_mv.mv_id]})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         _likeBtn.selected = !_likeBtn.selected;
-        [UIWindow showSuccess:@"操作成功"];
+        if (_likeBtn.selected) {
+            [UIWindow showSuccess:@"已收藏到我的喜欢"];
+        }else{
+            [UIWindow showSuccess:@"已取消收藏"];
+        }
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];
     }];

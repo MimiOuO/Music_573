@@ -12,11 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class MioMusicPlaylistCell;
 typedef void (^deleteBlock) (MioMusicPlaylistCell *);
+typedef void (^fromClickBlock) (MioMusicPlaylistCell *);
 
 @interface MioMusicPlaylistCell : UITableViewCell
 @property (nonatomic, strong) MioMusicModel *model;
 @property (nonatomic, assign) BOOL isplaying;
 @property(nonatomic, copy) deleteBlock deleteBlock;
+@property(nonatomic, copy) fromClickBlock fromClickBlock;
 @end
 
 NS_ASSUME_NONNULL_END

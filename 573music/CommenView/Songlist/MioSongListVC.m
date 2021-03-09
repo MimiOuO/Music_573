@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIView *headerView;
 
 @property (nonatomic, strong) UILabel *titleLab;
+@property (nonatomic, strong) UILabel *countLab;
 @property (nonatomic, strong) UILabel *nameLab;
 @property (nonatomic, strong) UILabel *introLab;
 @property (nonatomic, strong) UIImageView *arrow;
@@ -43,6 +44,10 @@
     [self.navView.leftButton setImage:backArrowWhiteIcon forState:UIControlStateNormal];
     self.navView.mainView.backgroundColor = appClearColor;
     self.navView.bgImg.hidden = YES;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,15 +72,17 @@
         
         [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:_songlist.songs]];
         [_tableView reloadData];
-        
-    } failure:^(NSString *errorInfo) {}];
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
     
 }
 
 -(void)creatUI{
-    _coverBg = [UIImageView creatImgView:frame(0, 0, KSW, 164 + NavH + 44) inView:self.view image:@"gequ_zhanweitu" radius:0];
+    _coverBg = [UIImageView creatImgView:frame(0, 0, KSW, 300 + NavH + 44) inView:self.view image:@"gequ_zhanweitu" radius:0];
     UIVisualEffectView *effect = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-    effect.frame = frame(0, 0, KSW, 300);
+    effect.frame = frame(0, 0, KSW, 300 + NavH + 44);
     effect.alpha = 1;
     [_coverBg addSubview:effect];
     
@@ -87,7 +94,7 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.bounces = NO;
     _tableView.autoHideMjFooter = YES;
-    _tableView.ly_emptyView = [MioEmpty noDataEmpty];
+//    _tableView.ly_emptyView = [MioEmpty noDataEmpty];
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _page = _page + 1;
         [self requestData];
@@ -95,34 +102,36 @@
     [self.view addSubview:_tableView];
     
     
-    _headerView = [UIView creatView:frame(0, 0, KSW, 164) inView:nil bgColor:appClearColor radius:0];
+    _headerView = [UIView creatView:frame(0, 0, KSW, 300) inView:nil bgColor:appClearColor radius:0];
     _tableView.tableHeaderView = _headerView;
     
-    UIImageView *coverBg = [UIImageView creatImgView:frame(14, 28, 120, 128) inView:_headerView image:@"gedan_shadow" radius:0];
-    _coverImg = [UIImageView creatImgView:frame(20, 27, 110, 110) inView:_headerView image:@"qxt_zhuanji" radius:4];
+    UIImageView *coverBg = [UIImageView creatImgView:frame(KSW/2 - 110, 15, 220, 220) inView:_headerView image:@"gedan_shadow" radius:0];
+    _coverImg = [UIImageView creatImgView:frame(KSW/2 - 90, 12, 180, 180) inView:_headerView image:@"qxt_zhuanji" radius:8];
     
-    _titleLab = [UILabel creatLabel:frame(150, 45.5, KSW - 183, 22) inView:_headerView text:@"" color:appWhiteColor boldSize:16 alignment:NSTextAlignmentLeft];
-    _introLab = [UILabel creatLabel:frame(150, 73.5, KSW - 183, 17) inView:_headerView text:@"" color:rgba(255, 255, 255, 0.7) size:12 alignment:NSTextAlignmentLeft];
-    _arrow = [UIImageView creatImgView:frame(KSW - 33 - 14, 75, 14, 14) inView:_headerView image:@"gedan_more" radius:0];
+    _titleLab = [UILabel creatLabel:frame(Mar, 220, KSW_Mar2, 22) inView:_headerView text:@"" color:appWhiteColor boldSize:16 alignment:NSTextAlignmentCenter];
+    _countLab = [UILabel creatLabel:frame(Mar, 244, KSW_Mar2, 17) inView:_headerView text:@"" color:rgba(255, 255, 255, 0.7) size:14 alignment:NSTextAlignmentCenter];
+    _introLab = [UILabel creatLabel:frame(Mar, 263, KSW_Mar2, 17) inView:_headerView text:@"" color:rgba(255, 255, 255, 0.7) size:12 alignment:NSTextAlignmentCenter];
+    _arrow = [UIImageView creatImgView:frame(KSW - 14, 264.5, 14, 14) inView:_headerView image:@"gedan_more" radius:0];
     _arrow.hidden = YES;
-    _likeBtn = [UIButton creatBtn:frame(150, 98.5, 50, 22) inView:_headerView bgImage:@"xihuan" action:^{
+    _likeBtn = [UIButton creatBtn:frame(KSW/2 - 40, 169, 80, 49) inView:_headerView bgImage:@"xihuan_no" action:^{
         [self likeClick];
     }];
-    [_likeBtn setBackgroundImage:image(@"xihuan_yixihuan") forState:UIControlStateSelected];
+    [_likeBtn setBackgroundImage:image(@"xihuan_yes") forState:UIControlStateSelected];
 }
 
 -(void)updateData{
     [_coverBg sd_setImageWithURL:_songlist.cover_image_path.mj_url   placeholderImage:image(@"gequ_zhanweitu")];
     [_coverImg sd_setImageWithURL:_songlist.cover_image_path.mj_url   placeholderImage:image(@"qxt_zhuanji")];
     _titleLab.text = _songlist.title;
-    _titleLab.width = [_titleLab.text widthForFont:BoldFont(16)];
+    _countLab.text = [NSString stringWithFormat:@"播放%@次",_songlist.hits_all];
+//    _titleLab.width = [_titleLab.text widthForFont:BoldFont(16)];
     _introLab.text = _songlist.song_list_description;
 
     if (_songlist.is_like) {
         _likeBtn.selected = YES;
     }
-    
-    if ([_introLab.text widthForFont:Font(12)] > KSW - 183 ) {
+
+    if ([_introLab.text widthForFont:Font(12)] > KSW_Mar2 ) {
         _arrow.hidden = NO;
         [_introLab whenTapped:^{
                 [UIWindow showMessage:_introLab.text withTitle:@"简介"];
@@ -133,12 +142,12 @@
     
     if(_songlist.user_id == currentUserId){
         _likeBtn.hidden = YES;
-        UIButton *editBtn = [UIButton creatBtn:frame(_titleLab.right + 4, _titleLab.top + 3, 16, 16) inView:_headerView bgImage:@"bianji_icon" action:^{
+        UIButton *editBtn = [UIButton creatBtn:frame(KSW - 44 - 26, StatusH + 9, 26, 26) inView:self.navView.mainView bgImage:@"bianji_icon-1" action:^{
             MioEditSonglistVC *vc = [[MioEditSonglistVC alloc] init];
             vc.model = _songlist;
             [self.navigationController pushViewController:vc animated:YES];
         }];
-        UILabel *likeNum = [UILabel creatLabel:frame(150, _introLab.bottom + 6, 100, 17) inView:_headerView text:[NSString stringWithFormat:@"%@人喜欢",_songlist.like_num] color:appWhiteColor size:12 alignment:NSTextAlignmentLeft];
+//        UILabel *likeNum = [UILabel creatLabel:frame(150, _introLab.bottom + 6, 100, 17) inView:_headerView text:[NSString stringWithFormat:@"%@人喜欢",_songlist.like_num] color:appWhiteColor size:12 alignment:NSTextAlignmentLeft];
         [self.navView.rightButton setImage:image(@"more") forState:UIControlStateNormal];
         WEAKSELF;
         self.navView.rightButtonBlock = ^{
@@ -180,7 +189,11 @@
     [MioPostReq(api_likes, (@{@"model_name":@"song_list",@"model_ids":@[_songlistId]})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         _likeBtn.selected = !_likeBtn.selected;
-        [UIWindow showSuccess:@"操作成功"];
+        if (_likeBtn.selected) {
+            [UIWindow showSuccess:@"已收藏到我的喜欢"];
+        }else{
+            [UIWindow showSuccess:@"已取消收藏"];
+        }
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];
     }];
@@ -193,11 +206,11 @@
     MioImageView *bgImg = [MioImageView creatImgView:frame(0, 0, KSW, 48) inView:sectionHeader skin:SkinName image:@"picture_li" radius:0];
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
         if (_dataArr.count > 0) {
-            [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
+            [mioM3U8Player playWithMusicList:_dataArr andIndex:0 fromModel:MioFromSonglist andId:_songlistId];
         }
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
-    UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 80, 22) inView:sectionHeader text:@"播放全部" color:color_text_one size:16 alignment:NSTextAlignmentLeft];
+    UILabel *playAllLab = [UILabel creatLabel:frame(40, 13, 200, 22) inView:sectionHeader text:[NSString stringWithFormat:@"播放全部(共%d首歌曲)",_songlist.song_num.intValue] color:color_text_one size:16 alignment:NSTextAlignmentLeft];
     UIButton *multipleBtn = [UIButton creatBtn:frame(KSW - 100, 0, 100, 48) inView:sectionHeader bgImage:@"" action:^{
         if (_dataArr.count > 0) {
             MioMutipleVC *vc = [[MioMutipleVC alloc] init];
@@ -208,7 +221,8 @@
             }else{
                 vc.type = MioMutipleTypeSongList;
             }
-            
+            vc.fromModel = MioFromSonglist;
+            vc.fromId = _songlistId;
             MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
             nav.modalPresentationStyle = 0;
             [self presentViewController:nav animated:YES completion:nil];
@@ -220,7 +234,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 48;
+    return 56;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -232,7 +246,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromSonglist andId:_songlistId];
 }
 
 
@@ -250,8 +264,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offsetY = scrollView.contentOffset.y;
-    if (offsetY > 164) {
-        offsetY = 164.0;
+    if (offsetY > 300) {
+        offsetY = 300.0;
     }
     if (offsetY  < 0) {
         offsetY = 0.0;

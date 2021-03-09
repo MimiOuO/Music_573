@@ -15,7 +15,7 @@
 #import "MioChooseDownloadQuantityView.h"
 
 @interface MioMutipleVC ()<UITableViewDelegate,UITableViewDataSource,chooseDownloadDelegate>
-@property (strong, nonatomic) UITableView       *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 @property (nonatomic, strong) UIButton *allSelectBtn;
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) YLButton *downloadBtn;
@@ -59,7 +59,7 @@
 -(void)downloadClick{
 //    [UIWindow showInfo:@"开发中"];
 //    return;
-    
+    goLogin;
 
     NSMutableArray *selectArr = [[NSMutableArray alloc] init];
     [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -89,7 +89,7 @@
         [UIWindow showInfo:@"还未选择歌曲"];
         return;
     }
-    [mioPlayList addLaterPlayList:selectArr];
+    [mioPlayList addLaterPlayList:selectArr fromModel:_fromModel andId:_fromId];
     [UIWindow showSuccess:@"添加成功"];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

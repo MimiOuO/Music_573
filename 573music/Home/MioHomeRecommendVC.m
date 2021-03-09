@@ -71,7 +71,9 @@
         }
         [self updateUI];
         [_bgScroll.mj_header endRefreshing];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        NSLog(@"%@",errorInfo);
+    }];
     [MioGetCacheReq(api_radios, @{@"k":@"v"}) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         _radioArr = [MioSongListModel mj_objectArrayWithKeyValuesArray:data];
@@ -154,7 +156,7 @@
         musicCell.model = _musicArr[i];
         [_musicScroll addSubview:musicCell];
         [musicCell whenTapped:^{
-            [mioM3U8Player playWithMusicList:_musicArr andIndex:i];
+            [mioM3U8Player playWithMusicList:_musicArr andIndex:i fromModel:MioFromRank andId:@"2"];
         }];
     }
     for (int i = 0;i < _albumArr.count; i++) {
@@ -189,7 +191,7 @@
         [radioCell whenTapped:^{
             setPlayOrder(MioPlayOrderSingle);
             [userdefault synchronize];
-            [mioM3U8Player playWithMusicList:[MioMusicModel mj_objectArrayWithKeyValuesArray:_radioArr[i].songs] andIndex:0];
+            [mioM3U8Player playWithMusicList:[MioMusicModel mj_objectArrayWithKeyValuesArray:_radioArr[i].songs] andIndex:0 fromModel:MioFromUnkown andId:@""];
             PostNotice(@"hiddenPlaylistIcon");
             [userdefault setObject:@"1" forKey:@"isRadio"];
             [userdefault synchronize];

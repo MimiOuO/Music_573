@@ -38,6 +38,11 @@
     [self requestData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)requestNewKeyData{
     _page = 1;
     [self requestData];
@@ -47,7 +52,7 @@
     if (_searchKey.length == 0 ) {
         return;
     }
-    
+    [UIWindow showLoading];
     [MioGetReq(api_albums, (@{@"s":_searchKey,@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_table.mj_footer endRefreshing];
@@ -60,7 +65,10 @@
         
         [_dataArr addObjectsFromArray:[MioAlbumModel mj_objectArrayWithKeyValuesArray:data]];
         [_table reloadData];
-    } failure:^(NSString *errorInfo) {}];
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -77,6 +85,7 @@
     if (!cell) {
         cell = [[MioAlbumTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.width = KSW;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = _dataArr[indexPath.row];
     return cell;

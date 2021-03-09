@@ -65,7 +65,9 @@
         
         _hotArr = [MioMvModel mj_objectArrayWithKeyValuesArray:data];
         [self.collection reloadData];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        NSLog(@"%@",errorInfo);
+    }];
     
     [MioGetCacheReq(api_ranks,(@{@"type":@"MV",@"lock":@"0"})) success:^(NSDictionary *result){
         _rankArr = [result objectForKey:@"data"];
@@ -81,7 +83,9 @@
         }
         _adUrlArr = tempArr;
         [self.collection reloadData];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        NSLog(@"%@",errorInfo);
+    }];
 }
 
 -(void)creatUI{

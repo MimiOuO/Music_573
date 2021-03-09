@@ -54,8 +54,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setState:(SJDownloadState)state {
     _state = state;
+    if (_state == SJDownloadStateFinished) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"downLoadFinish" object:self.musicJson];
+    }
     if ( [self.delegate respondsToSelector:@selector(downloadItemStateDidChange:)] ) {
         [self.delegate downloadItemStateDidChange:self];
+        
     }
 }
 

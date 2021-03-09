@@ -47,6 +47,8 @@
     
     RecieveNotice(@"playerBackClick", popVC);
     RecieveNotice(@"mvCmtSuccess", refreshCmtCount);
+    RecieveNotice(@"stopMV", stopMV);
+    WEAKSELF;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -111,12 +113,15 @@
     _player.defaultEdgeControlLayer.showsMoreItem = NO;
     [self.view addSubview:_player.view];
     _player.playbackObserver.playbackDidFinishExeBlock = ^(__kindof SJBaseVideoPlayer * _Nonnull player) {
-        if (weakSelf. info.relatedMVArr.count > 0) {
+        if (weakSelf.info.relatedMVArr.count > 0) {
             [weakSelf changeMV:weakSelf.info.relatedMVArr[0].mv_id];
         }
     };
-
-
+    _player.playbackObserver.timeControlStatusDidChangeExeBlock = ^(__kindof SJBaseVideoPlayer * _Nonnull player) {
+        if (player.isPlaying) {
+            [mioM3U8Player pause];
+        }
+    };
     
     _contentView = [[UIView alloc] initWithFrame:frame(0,StatusH + KSW * 9/16, KSW, KSH - StatusH - TabH)];
     [self.view addSubview:_contentView];
@@ -208,6 +213,10 @@
         _controlView.prepareShowControlView = NO;
     }
     return _controlView;
+}
+
+-(void)stopMV{
+    [_player pause];
 }
 
 - (void)changeMV:(NSString *)mvId{

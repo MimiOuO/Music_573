@@ -34,7 +34,14 @@
         _page = _page + 1;
         [self requestData];
     }];
+    _table.contentInset = UIEdgeInsetsMake(12, 0, 0, 0);
     RecieveNotice(@"search", requestNewKeyData);
+    [self requestData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)requestNewKeyData{
@@ -43,10 +50,11 @@
 }
 
 -(void)requestData{
+    
     if (_searchKey.length == 0 ) {
         return;
     }
-    
+    [UIWindow showLoading];
     [MioGetReq(api_songs, (@{@"s":_searchKey,@"page":Str(_page)})) success:^(NSDictionary *result){
         NSArray *data = [result objectForKey:@"data"];
         [_table.mj_footer endRefreshing];
@@ -59,7 +67,11 @@
         
         [_dataArr addObjectsFromArray:[MioMusicModel mj_objectArrayWithKeyValuesArray:data]];
         [_table reloadData];
-    } failure:^(NSString *errorInfo) {}];
+
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
 }
 
 
@@ -83,7 +95,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromUnkown andId:@""];
 }
+
 
 @end

@@ -24,7 +24,7 @@
         self.backgroundColor = appClearColor;
         
         _cover = [UIImageView creatImgView:frame(Mar, 6, 109, 61) inView:self.contentView image:@"qxt_mv" radius:4];
-        UIImageView *shadow = [UIImageView creatImgView:frame(0, _cover.height - 22, 109, 22) inView:_cover image:@"zhuanji_mengban" radius:0];
+        UIImageView *shadow = [UIImageView creatImgView:frame(0, _cover.height - 22, 109, 22) inView:_cover image:@"gedan_mengbang" radius:0];
         shadow.contentMode = UIViewContentModeScaleToFill;
         UIImageView *playCountIcon = [UIImageView creatImgView:frame(6, _cover.height - 15 , 11, 11) inView:_cover image:@"bofangliang" radius:0];
         _playCountLab = [UILabel creatLabel:frame(18, _cover.height - 17, 50, 15) inView:_cover text:@"0" color:appWhiteColor size:10 alignment:NSTextAlignmentLeft];
@@ -35,6 +35,9 @@
 }
 
 - (void)setModel:(MioMvModel *)model{
+    _titleLab.width = self.width - 133 - Mar;
+    _singerLab.width = self.width - 133 - Mar;
+    
     [_cover sd_setImageWithURL:model.cover_image_path.mj_url placeholderImage:image(@"qxt_mv")];
     _playCountLab.text = model.hits_all;
     _titleLab.text = model.title;

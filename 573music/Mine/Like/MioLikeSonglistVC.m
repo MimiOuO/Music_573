@@ -8,7 +8,7 @@
 
 #import "MioLikeSonglistVC.h"
 #import "MioSongListModel.h"
-#import "MioSonglistTableCell.h"
+#import "MioLikeSonglistTableCell.h"
 #import "MioSongListVC.h"
 @interface MioLikeSonglistVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
@@ -34,6 +34,10 @@
         _page = _page + 1;
         [self requestData];
     }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,7 +60,12 @@
         
         [_dataArr addObjectsFromArray:[MioSongListModel mj_objectArrayWithKeyValuesArray:data]];
         [_table reloadData];
-    } failure:^(NSString *errorInfo) {}];
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+        [_table.mj_footer endRefreshing];
+        [UIWindow showInfo:errorInfo];
+    }];
 }
  
 
@@ -70,9 +79,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";
-    MioSonglistTableCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    MioLikeSonglistTableCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[MioSonglistTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[MioLikeSonglistTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = _dataArr[indexPath.row];

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * title;
 @property (nonatomic,copy) NSString * singer_name;
 @property (nonatomic,copy) NSString * singer_id;
+@property (nonatomic,copy) NSString * song_id;
 @property (nonatomic,copy) NSString * mv_description;
 @property (nonatomic,copy) NSString * mv_path;
 @property (nonatomic,copy) NSString * cover_image_path;

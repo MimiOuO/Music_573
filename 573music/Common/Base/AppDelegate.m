@@ -27,6 +27,7 @@
 
 #import <SJM3U8Download.h>
 #import <SJM3U8DownloadListController.h>
+#import <WHC_ModelSqlite.h>
 #endif
 @interface AppDelegate ()
 @property (nonatomic, assign) float tabbarHeight;
@@ -69,6 +70,8 @@
     
     [self listenNetwork];
     
+    RecieveNotice(@"downLoadFinish", downloadFinish:);
+    
     return YES;
 }
 
@@ -90,7 +93,7 @@
         [userdefault setObject:@"1" forKey:@"first"];//是否是第一次启动
         [userdefault setObject:@"bai" forKey:@"skin"];//默认皮肤
         [userdefault setObject:@"1" forKey:@"showJifen"];//是否显示积分
-        [userdefault setObject:@"标清" forKey:@"defaultQuailty"];//默认音质
+        [userdefault setObject:@"标准" forKey:@"defaultQuailty"];//默认音质
         [userdefault setObject:@"-1" forKey:@"currentPlayIndex"];//当前播放的index
         [userdefault setObject:@"0" forKey:@"onlyWifi"];//是否开启仅wifi
         [userdefault setObject:@"1" forKey:@"openNewtwork"];//是否允许访问网络
@@ -142,7 +145,14 @@
     
 }
 
+-(void)downloadFinish:(NSNotification *)notification{
+    NSDictionary * musicJson = [notification object];
 
+    MioMusicModel *music = [MioMusicModel mj_objectWithKeyValues:musicJson];
+    music.savetype = @"downloaded";
+    [WHCSqlite insert:music];
+    
+}
 
 
 #pragma mark - 程序将要进入后台

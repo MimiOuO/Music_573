@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, MioPlayerState) {
 /**
  播放音频列表
  */
-- (void)playWithMusicList:(NSArray<MioMusicModel *> *)musicList andIndex:(NSInteger)index;
+- (void)playWithMusicList:(NSArray<MioMusicModel *> *)musicList andIndex:(NSInteger)index fromModel:(MioFromType)from andId:(NSString *)fromId;
 
 /**
  播放列表中的某个歌曲

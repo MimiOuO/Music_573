@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)updateCurrentIndex:(MioMusicModel *)music;
 
 -(void)updatePlayList:(NSArray<MioMusicModel*> *)playListArr;
--(void)addLaterPlayList:(NSArray<MioMusicModel*> *)playListArr;
+-(void)addLaterPlayList:(NSArray<MioMusicModel*> *)playListArr fromModel:(MioFromType)from andId:(NSString *)fromId;
 -(void)deletePlayListAtIndex:(NSInteger)index;
 -(void)deletePlayListById:(NSString *)song_id;
 -(void)clearPlayList;

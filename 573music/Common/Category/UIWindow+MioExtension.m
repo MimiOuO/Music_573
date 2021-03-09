@@ -65,6 +65,28 @@
     [self performSelector:@selector(handleGraceTimer) withObject:nil afterDelay:1.75f inModes:@[NSRunLoopCommonModes]];
 }
 
++(void)showLoading{
+ 
+
+    CGFloat width = 95;
+    CGFloat height = 95;
+
+    MioHUD *hud = [[MioHUD alloc] initWithFrame:CGRectMake(0, 0, width, height) imageName:nil text:nil];
+    [hud showloading];
+    hud.alpha = 1;
+    [[UIApplication sharedApplication].keyWindow addSubview:hud];
+    hud.center = CGPointMake(KSW / 2, KSH / 2);
+//    if (immediately) {
+//        hud.alpha = 1;
+//    }else {
+    hud.transform = CGAffineTransformMakeScale(0.4, 0.4);
+    [UIWindow animateWithDuration:0.25 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1 options:0 animations:^{
+        hud.alpha = 1;
+        hud.transform = CGAffineTransformIdentity;
+    } completion:nil];
+//    }
+}
+
 +(void)showLoading:(NSString *)text{
     CGFloat hudW = [text widthForFont:[UIFont systemFontOfSize:14]];
     if (hudW > KSW - 60) {
@@ -140,6 +162,21 @@
                     [view removeFromSuperview];
                 }];
 
+        }
+    }
+}
+
++(void)hiddenEnterLoading{
+    for (UIView *view in [UIApplication sharedApplication].keyWindow.subviews) {
+        if ([view isKindOfClass:[MioHUD class]] || [view isKindOfClass:[MioBgView class]]) {
+            if (view.width < 100) {
+                [UIWindow animateWithDuration:0.3 animations:^{
+                        view.alpha = 0;
+                        view.transform = CGAffineTransformMakeScale(0.5, 0.5);
+                    } completion:^(BOOL finished) {
+                        [view removeFromSuperview];
+                    }];
+            }
         }
     }
 }

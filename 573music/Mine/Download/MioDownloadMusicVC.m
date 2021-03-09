@@ -31,12 +31,11 @@ static void * kDownloaderCompleteArrayKVOContext = &kDownloaderCompleteArrayKVOC
     RecieveNotice(@"downloadCountChange", reloadCount);
     
     _tableView = [UITableView creatTable:frame(0, 0, KSW, KSH - NavH - 48  - TabH) inView:self.view vc:self];
-    
     UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSW, 48)];
     
     UIButton *playAllBtn = [UIButton creatBtn:frame(0, 0, 150, 48) inView:sectionHeader bgImage:@"" action:^{
         if (_dataArr.count > 0) {
-            [mioM3U8Player playWithMusicList:_dataArr andIndex:0];
+            [mioM3U8Player playWithMusicList:_dataArr andIndex:0 fromModel:MioFromDownload andId:@""];
         }
     }];
     MioImageView *playAllIcon = [MioImageView creatImgView:frame(Mar, 14, 20, 20) inView:sectionHeader image:@"exclude_play" bgTintColorName:name_main radius:0];
@@ -47,6 +46,8 @@ static void * kDownloaderCompleteArrayKVOContext = &kDownloaderCompleteArrayKVOC
             vc.delegate = self;
             vc.musicArr = _dataArr;
             vc.type = MioMutipleTypeDownloadList;
+            vc.fromModel = MioFromDownload;
+            vc.fromId = @"";
             MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
             nav.modalPresentationStyle = 0;
             [self presentViewController:nav animated:YES completion:nil];
@@ -85,7 +86,7 @@ static void * kDownloaderCompleteArrayKVOContext = &kDownloaderCompleteArrayKVOC
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row];
+    [mioM3U8Player playWithMusicList:_dataArr andIndex:indexPath.row fromModel:MioFromDownload andId:@""];
 }
 
 -(void)reloadCount{

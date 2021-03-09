@@ -11,6 +11,8 @@
 #import "MioSingerSongsVC.h"
 #import "MioSingerAlbumVC.h"
 #import "MioSingerMVVC.h"
+#import "MioMainPlayerVC.h"
+#import "MioBottomPlayView.h"
 
 /****进入置顶通知****/
 #define kHomeGoTopNotification               @"Home_Go_Top"
@@ -32,6 +34,8 @@
 @property (nonatomic, strong) UILabel *nameLab;
 @property (nonatomic, strong) UILabel *fansLab;
 @property (nonatomic, strong) UIButton *likeBtn;
+
+@property (nonatomic, strong) WMPageController *pageController;
 @end
 
 
@@ -39,6 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(acceptMsg:) name:kHomeLeaveTopNotification object:nil];
     _canScroll = YES;
     
@@ -48,14 +53,26 @@
     self.navView.bgImg.hidden = YES;
     self.navView.mainView.backgroundColor = rgba(0, 0, 0, 0);
 
-    
+    if ([self.navigationController.viewControllers[0] isKindOfClass:[MioMainPlayerVC class]]) {
+        MioBottomPlayView *bottomPlayer = [[MioBottomPlayView alloc] initWithFrame:frame(0, KSH - 50 - SafeBotH, KSW, 50 + SafeBotH)];
+        [self.view addSubview:bottomPlayer];
+        [bottomPlayer whenTapped:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
 
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
+    
     [self requestData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.view.frame = frame(0, 0, KSW, KSH);
 }
 
 -(void)requestData{
@@ -63,7 +80,7 @@
         NSDictionary *data = [result objectForKey:@"data"];
         _model = [MioSingerModel mj_objectWithKeyValues:data];
         [self updateUI];
-        
+        [_pageController reloadData];
     } failure:^(NSString *errorInfo) {}];
     
 }
@@ -89,10 +106,10 @@
     
     _nameLab = [UILabel creatLabel:frame(Mar, 191, KSW_Mar2, 28) inView:_scrollView text:@"" color:appWhiteColor boldSize:20 alignment:NSTextAlignmentLeft];
     _fansLab = [UILabel creatLabel:frame(Mar, 223, 100, 20) inView:_scrollView text:@"" color:appWhiteColor size:14 alignment:NSTextAlignmentLeft];
-    _likeBtn = [UIButton creatBtn:frame(KSW_Mar - 50, 222, 50, 22) inView:_scrollView bgImage:@"xihuan" action:^{
+    _likeBtn = [UIButton creatBtn:frame(KSW_Mar - 68, 214, 68, 28) inView:_scrollView bgImage:@"xihuan" action:^{
         [self likeClick];
     }];
-    [_likeBtn setBackgroundImage:image(@"geshou_yixihuan") forState:UIControlStateSelected];
+    [_likeBtn setBackgroundImage:image(@"yixihuan") forState:UIControlStateSelected];
     
     //======================================================================//
     //                                page
@@ -102,7 +119,7 @@
     [_scrollView addSubview:contentView];
 
 
-    WMPageController *_pageController = [[WMPageController alloc] init];
+    _pageController = [[WMPageController alloc] init];
     [self addChildViewController:_pageController];
     _pageController.delegate           = self;
     _pageController.dataSource         = self;
@@ -149,7 +166,13 @@
     [MioPostReq(api_likes, (@{@"model_name":@"singer",@"model_ids":@[_singerId]})) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         _likeBtn.selected = !_likeBtn.selected;
-        [UIWindow showSuccess:@"操作成功"];
+        if (_likeBtn.selected) {
+            [UIWindow showSuccess:@"已收藏到我的喜欢"];
+            _fansLab.text = [NSString stringWithFormat:@"%d粉丝",[_fansLab.text substringToIndex:([_fansLab.text length]-2)].intValue + 1];
+        }else{
+            _fansLab.text = [NSString stringWithFormat:@"%d粉丝",[_fansLab.text substringToIndex:([_fansLab.text length]-2)].intValue - 1];
+            [UIWindow showSuccess:@"已取消收藏"];
+        }
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];
     }];
@@ -164,6 +187,7 @@
     if (index == 0) {
         MioSingerSongsVC *vc = [[MioSingerSongsVC alloc] init];
         vc.singerId = _singerId;
+        vc.songsCount = _model.songs_num?_model.songs_num:@"0";
         return vc;
     }
     else if (index == 1) {

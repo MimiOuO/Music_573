@@ -73,10 +73,14 @@
     self.playListArr = [playListArr mutableCopy];
 }
 
--(void)addLaterPlayList:(NSArray<MioMusicModel*> *)playListArr{
+-(void)addLaterPlayList:(NSArray<MioMusicModel*> *)playListArr fromModel:(MioFromType)from andId:(NSString *)fromId{
     if (self.playListArr.count == 0) {
-        [mioM3U8Player playWithMusicList:playListArr andIndex:0];
+        [mioM3U8Player playWithMusicList:playListArr andIndex:0 fromModel:MioFromUnkown andId:@""];
     }else{
+        for (MioMusicModel *music in playListArr) {
+            music.fromModel = from;
+            music.fromId = fromId;
+        }
         [self.playListArr insertObjects:playListArr atIndexes: [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.currentPlayIndex + 1,playListArr.count)]];
         [self saveCurrentPlayList];
     }

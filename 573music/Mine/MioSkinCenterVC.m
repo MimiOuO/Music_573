@@ -27,8 +27,8 @@
     [super viewDidLoad];
     NSMutableArray *tempArr = [[userdefault objectForKey:@"skinlist"] mutableCopy];
     NSDictionary *baiDic = @{
-        @"title":@"利休白",
-        @"cover_image_path":@"lixiubai",
+        @"title":@"赛博朋克",
+        @"cover_image_path":@"saibopengke",
         @"theme_path":@"bai"
     };
     [tempArr insertObject:baiDic atIndex:0];
@@ -50,7 +50,7 @@
 -(void)creatUI{
     _backGroundImg = [UIImageView creatImgView:frame(0, 0, KSW, KSH) inView:self.view image:@"" radius:0];
 //    [_backGroundImg sd_setImageWithURL:Url(_dataArr[0][@"cover"]) placeholderImage:image(@"")];
-    _backGroundImg.image = image(@"lixiubai");
+    _backGroundImg.image = image(@"saibopengke");
     UIVisualEffectView *effect = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
     effect.frame = frame(0, 0, KSW, KSH);
     [_backGroundImg addSubview:effect];
@@ -199,7 +199,7 @@
         
     }
     if (index == 0) {
-        bannerView.mainImageView.image = image(@"lixiubai");
+        bannerView.mainImageView.image = image(@"saibopengke");
     }else{
         [bannerView.mainImageView sd_setImageWithURL:[_dataArr[index][@"cover_image_path"] mj_url] placeholderImage:nil];
     }
@@ -213,7 +213,7 @@
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(HQFlowView *)flowView{
     if (pageNumber == 0) {
-        _backGroundImg.image = image(@"lixiubai");
+        _backGroundImg.image = image(@"saibopengke");
     }else{
         [_backGroundImg sd_setImageWithURL:[_dataArr[pageNumber][@"cover_image_path"] mj_url] placeholderImage:nil];
     }
