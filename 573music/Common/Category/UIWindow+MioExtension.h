@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(void)showMessage:(NSString *)message withTitle:(NSString *)title;
 +(void)showOnlyWifiTip;
+
++(void)showShare;
++(void)showLucky;
 @end
 
 @interface MioHUD : UIView

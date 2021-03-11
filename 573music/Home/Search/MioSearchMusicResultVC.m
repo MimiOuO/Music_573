@@ -35,14 +35,11 @@
         [self requestData];
     }];
     _table.contentInset = UIEdgeInsetsMake(12, 0, 0, 0);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     RecieveNotice(@"search", requestNewKeyData);
     [self requestData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 -(void)requestNewKeyData{
     _page = 1;

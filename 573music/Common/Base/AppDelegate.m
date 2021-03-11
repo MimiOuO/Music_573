@@ -98,6 +98,7 @@
         [userdefault setObject:@"0" forKey:@"onlyWifi"];//是否开启仅wifi
         [userdefault setObject:@"1" forKey:@"openNewtwork"];//是否允许访问网络
         [userdefault setObject:@"0" forKey:@"isRadio"];//播放的是不是电台
+        [userdefault setObject:@"0" forKey:@"isVip"];//vip
         setPlayOrder(MioPlayOrderCycle);//播放顺序
         [userdefault synchronize];
 

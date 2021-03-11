@@ -190,13 +190,15 @@
         [userdefault setObject:user.phone forKey:@"phone"];
         [userdefault synchronize];
         
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];
         
         [self dismissViewControllerAnimated:YES completion:^{
-            if (user.favorite_tags.count == 0) {
-                MioChooseFavoriteTagView *view = [MioChooseFavoriteTagView new];
-                [view showFavoriteTagViewWithArr:user.favorite_tags];
-            }
+            //暂时先不弹喜好
+//            if (user.favorite_tags.count == 0) {
+//                MioChooseFavoriteTagView *view = [MioChooseFavoriteTagView new];
+//                [view showFavoriteTagViewWithArr:user.favorite_tags];
+//            }
         }];
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];
@@ -218,7 +220,7 @@
     [request success:^(NSDictionary *result) {
         NSDictionary *data = [result objectForKey:@"data"];
         [sender fire];
-        [UIWindow showInfo:@"验证码发送成功"];
+        [UIWindow showSuccess:@"验证码发送成功"];
         _key = [data objectForKey:@"key"];
     } failure:^(NSString *errorInfo) {
         [UIWindow showInfo:errorInfo];

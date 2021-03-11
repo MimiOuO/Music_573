@@ -18,6 +18,7 @@
 #import "MioLabel.h"
 #import "MioPlayListVC.h"
 #import "CountdownTimer.h"
+#import "Lottie.h"
 
 @interface MioHomeVC ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong) UIView *contentView;
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) MioLabel *minuteLab;
 @property (nonatomic, strong) MioLabel *secondLab;
 @property (nonatomic, assign) BOOL jifenLimit;
+@property (nonatomic, strong) LOTAnimationView *gift;
 @end
 
 @implementation MioHomeVC
@@ -72,6 +74,17 @@
         [self searchClick];
     }];
    
+    _gift = [LOTAnimationView animationNamed:@"gift"];
+    _gift.frame = frame(KSW_Mar - 28, StatusH + 11, 28, 28);
+    [self.view addSubview:_gift];
+    _gift.loopAnimation = YES;
+    _gift.animationSpeed = 0.8;
+    [_gift play];
+    [_gift whenTapped:^{
+        [UIWindow showShare];
+    }];
+    
+    
     _countDownView = [UIView creatView:frame(KSW_Mar - 54, StatusH + 13, 54, 24) inView:self.view bgColor:appClearColor radius:0];
     UIImageView *bgImg = [UIImageView creatImgView:frame(0, 0, 54, 24) inView:_countDownView image:@"daojishi_bg" radius:0];
     _minuteLab = [MioLabel creatLabel:frame(2, 0, 20, 28) inView:_countDownView text:@"00" colorName:name_main size:14 alignment:NSTextAlignmentCenter];
@@ -85,7 +98,8 @@
     }
     [_countDownView whenTapped:^{
         NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[[userdefault objectForKey:@"jifenTip"] dataUsingEncoding:NSUnicodeStringEncoding]options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
-        [UIWindow showMessage:[attrStr string] withTitle:@"积分说明"];
+        [UIWindow showShare];
+//        [UIWindow showMessage:[attrStr string] withTitle:@"积分说明"];
     }];
 //    [self readm3u8];
 }
@@ -95,10 +109,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (Equals([userdefault objectForKey:@"showJifen"], @"1")) {
-        _countDownView.hidden = NO;
+        _countDownView.hidden = YES;
     }else{
         _countDownView.hidden = YES;
     }
+
+    
 }
 
 -(void)startCutDown{

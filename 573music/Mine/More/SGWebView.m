@@ -7,11 +7,10 @@
 //
 
 #import "SGWebView.h"
-#import <WebKit/WebKit.h>
+
 
 @interface SGWebView () <WKNavigationDelegate, WKUIDelegate>
-/// WKWebView
-@property (nonatomic, strong) WKWebView *wkWebView;
+
 /// 进度条
 @property (nonatomic, strong) UIProgressView *progressView;
 @end
@@ -36,6 +35,9 @@ static CGFloat const progressViewHeight = 1;
 - (WKWebView *)wkWebView {
     if (!_wkWebView) {
         _wkWebView = [[WKWebView alloc] initWithFrame:self.bounds];
+        _wkWebView.backgroundColor = appClearColor;
+        _wkWebView.scrollView.backgroundColor = appClearColor;
+        _wkWebView.opaque = NO;
         _wkWebView.navigationDelegate = self;
         _wkWebView.UIDelegate = self;
         // KVO
@@ -115,6 +117,8 @@ static CGFloat const progressViewHeight = 1;
     }
     
     self.progressView.alpha = 0.0;
+    
+
 }
 /// 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {

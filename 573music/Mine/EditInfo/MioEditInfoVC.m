@@ -73,7 +73,7 @@
         XMTextView *noteTV = [[XMTextView alloc] initWithFrame:CGRectMake(0, 0, 240, 70)];
         noteTV.textFont = [UIFont systemFontOfSize:14];
         noteTV.textColor = subColor;
-        noteTV.textMaxNum = 20;
+        noteTV.textMaxNum = 12;
         noteTV.isSetBorder = YES;
         noteTV.borderLineWidth = 0.5;
         noteTV.placeholderColor = grayTextColor;
@@ -154,7 +154,9 @@
     [MioPutReq(api_modifyInfo, @{key:value}) success:^(NSDictionary *result){
         NSDictionary *data = [result objectForKey:@"data"];
         [UIWindow showSuccess:@"修改成功"];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        NSLog(@"%@",errorInfo);
+    }];
 }
 
 - (void)chooseFavorite:(NSArray *)tagArr{

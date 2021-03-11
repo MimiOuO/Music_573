@@ -8,10 +8,12 @@
 
 #import "MioBottomPlayView.h"
 #import "MioPlayListVC.h"
-#import <JhtMarquee/JhtHorizontalMarquee.h>
+//#import <JhtMarquee/JhtHorizontalMarquee.h>
+//#import "STRAutoScrollLabel.h"
 @interface MioBottomPlayView()
 @property (nonatomic, strong) UIImageView *coverImg;
-@property (nonatomic, strong) JhtHorizontalMarquee *marquee;
+//@property (nonatomic, strong) JhtHorizontalMarquee *marquee;
+//@property (nonatomic, strong) STRAutoScrollLabel *titleLab;
 @property (nonatomic, strong) MioLabel *songNameLab;
 @property (nonatomic, strong) MioLabel *singerLab;
 @property (nonatomic, strong) MioButton *playListBtn;
@@ -42,15 +44,17 @@
         [_coverImg whenTapped:^{
             NSLog(@"YES");
         }];
-        _marquee = [[JhtHorizontalMarquee alloc] initWithFrame:frame(74, 6, KSW - 120 - 75, 20) singleScrollDuration:5.0];
 
-        _marquee.text = [NSString stringWithFormat:@"573音乐          "];
-        _marquee.textColor = color_text_one;
-        _marquee.font = BoldFont(14);
-        [self addSubview:_marquee];
-        [_marquee marqueeOfSettingWithState:MarqueeStart_H];
         
-//        _songNameLab = [MioLabel creatLabel:frame(74, 6, KSW - 120 - 75, 20) inView:self text:@"573音乐" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+//        _titleLab = [[STRAutoScrollLabel alloc] initWithFrame:CGRectMake(74, 6, ([(@"573音乐") widthForFont:BoldFont(14)] > (KSW - 120 - 80))?(KSW - 120 - 80):[(@"573音乐") widthForFont:BoldFont(14)], 20)];
+//        _titleLab.text = @"573音乐";
+//        _titleLab.textFont = BoldFont(14);
+//        _titleLab.labelBetweenGap = 10;
+//        _titleLab.textColor = color_text_one;
+//        [self addSubview:_titleLab];
+//        _titleLab.width = [_titleLab.text widthForFont:BoldFont(14)];
+        
+        _songNameLab = [MioLabel creatLabel:frame(74, 6, KSW - 120 - 75, 20) inView:self text:@"573音乐" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
         _singerLab = [MioLabel creatLabel:frame(74, 26, KSW - 120 - 75, 14) inView:self text:@"欢迎来到573音乐" colorName:name_text_two size:14 alignment:NSTextAlignmentLeft];
         
         _playListBtn = [MioButton creatBtn:frame(KSW - 102 - 17, 14.5, 17, 17) inView:self bgImage:@"bfq_bflb" bgTintColorName:name_main action:^{
@@ -79,7 +83,7 @@
 }
 
 -(void)changeSkin{
-    _marquee.textColor = color_text_one;
+//    _titleLab.textColor = color_text_one;
 }
 
 -(void)changeMusic{
@@ -97,9 +101,19 @@
 -(void)updateUI{
     MioMusicModel *music = mioM3U8Player.currentMusic;
     [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"qxt_logo")];
-//    _songNameLab.text = music?music.title:@"573音乐";
-    _marquee.text = [NSString stringWithFormat:@"%@          ",(music?music.title:@"573音乐")];
-    [_marquee marqueeOfSettingWithState:MarqueeStart_H];
+    _songNameLab.text = music?music.title:@"573音乐";
+
+    
+//    [_titleLab removeFromSuperview];
+//    _titleLab = [[STRAutoScrollLabel alloc] initWithFrame:CGRectMake(74, 6, ([(music?music.title:@"573音乐") widthForFont:BoldFont(14)] > (KSW - 120 - 80))?(KSW - 120 - 80):[(music?music.title:@"573音乐") widthForFont:BoldFont(14)], 20)];
+//    _titleLab.text = music?music.title:@"573音乐";
+//    _titleLab.labelBetweenGap = 10;
+//    _titleLab.textFont = BoldFont(14);
+//    _titleLab.textColor = color_text_one;
+//    _titleLab.width = ([(music?music.title:@"573音乐") widthForFont:BoldFont(14)] > (KSW - 120 - 80))?(KSW - 120 - 80):[(music?music.title:@"573音乐") widthForFont:BoldFont(14)];
+//    NSLog(@"%f",([(music?music.title:@"573音乐") widthForFont:BoldFont(14)] > (KSW - 120 - 80))?(KSW - 120 - 80):[(music?music.title:@"573音乐") widthForFont:BoldFont(14)]);
+//    [self addSubview:_titleLab];
+    
     _singerLab.text = music?music.singer_name:@"欢迎来到573音乐";
     if (music) {
         _playListBtn.enabled = YES;

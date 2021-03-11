@@ -8,6 +8,10 @@
 
 #import "UIWindow+MioExtension.h"
 #import "UIView+MioExtension.h"
+#import "SGWebView.h"
+#import "MioShareResultVC.h"
+#import "MioNavView.h"
+#import "MioShareView.h"
 //#import <HXPhotoPicker/HXPhotoCommon.h>
 
 @implementation UIWindow (MioExtension)
@@ -198,18 +202,20 @@
 +(void)showMessage:(NSString *)message withTitle:(NSString *)title
 {
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
-   
-    
+
     
     UIView *bgView = [UIView creatView:frame(0, 0, KSW, KSH) inView:window bgColor:rgba(0, 0, 0, 0.3) radius:0];
+
+
     MioView *view = [MioView creatView:frame(40, 0, KSW - 80, KSH) inView:bgView bgColorName:name_hud radius:8];
-    
+
+
     MioLabel *titleLab = [MioLabel creatLabel:frame(0, 0, KSW -  80, 50) inView:view text:title colorName:name_text_one boldSize:16 alignment:NSTextAlignmentCenter];
     MioView *split = [MioView creatView:frame(0, 49.5, KSW - 80, 0.5) inView:view bgColorName:name_split radius:0];
     MioLabel *tip = [MioLabel creatLabel:frame(Mar, 60, KSW_Mar2 -  80, 0) inView:view text:message colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
     tip.numberOfLines = 0;
 
-    
+
     UIButton *knowBtn = [UIButton creatBtn:frame(20, tip.bottom + 20, view.width - 40, 38) inView:view bgColor:color_main title:@"我知道了" titleColor:appWhiteColor font:14 radius:6 action:^{
         [UIView animateWithDuration:0.3 animations:^{
             bgView.alpha = 0;
@@ -217,14 +223,98 @@
             [bgView removeFromSuperview];
         }];
     }];
-    
+
     tip.height = [tip.text heightForFont:Font(14) width:KSW_Mar2 - 80];
     view.height = tip.height + 60 + 20 + 38 + 16;
     view.centerY = KSH/2;
     knowBtn.top = tip.bottom + 20;
-
-
 }
+
++(void)showLucky{
+    UIWindow * window = [UIApplication sharedApplication].keyWindow;
+    UIView *bgView = [UIView creatView:frame(0, 0, KSW, KSH) inView:window bgColor:rgba(0, 0, 0, 0.5) radius:0];
+
+    CGFloat webViewX = 0;
+    CGFloat webViewY = 0;
+    CGFloat webViewW = [UIScreen mainScreen].bounds.size.width;
+    CGFloat webViewH = KSH;
+    SGWebView * webView = [SGWebView webViewWithFrame:CGRectMake(webViewX, webViewY, webViewW, webViewH)];
+    webView.backgroundColor = appClearColor;
+    webView.progressViewColor = color_main;
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://216.250.254.49:88/api/lottery_page"]]];
+    [bgView addSubview:webView];
+
+ 
+    UIButton *clickBtn = [UIButton creatBtn:frame(50, KSH * 0.4, KSW - 100, KSH * 0.3) inView:bgView bgImage:@"" action:^{
+        [webView.wkWebView evaluateJavaScript:@"getLottery()" completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+        }];
+        [MioPostReq(api_lottery, @{@"k":@"v"}) success:^(NSDictionary *result){
+        } failure:^(NSString *errorInfo) {}];
+    }];
+
+    UIButton *closeBtn = [UIButton creatBtn:frame(KSW2 - 20, KSH * 0.8, 40, 40) inView:bgView bgImage:@"tc_gb" action:^{
+        [UIView animateWithDuration:0.3 animations:^{
+            bgView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [bgView removeFromSuperview];
+            PostNotice(@"refreshInfo");
+        }];
+    }];
+}
+
+
++(void)showShare{
+    UIWindow * window = [UIApplication sharedApplication].keyWindow;
+    UIView *bgView = [UIView creatView:frame(0, 0, KSW, KSH) inView:window bgColor:rgba(0, 0, 0, 0.3) radius:0];
+
+    MioView *view = [MioView creatView:frame(KSW/2 - 285/2, KSH/2 - 179, 285, 340) inView:bgView bgColorName:name_hud radius:8];
+
+    UILabel *title = [UILabel creatLabel:frame(0, 12, 285, 22) inView:view text:@"分享好友领会员VIP" color:color_main boldSize:16 alignment:NSTextAlignmentCenter];
+    
+    UILabel *tip1 = [UILabel creatLabel:frame(0, 55, 285, 20) inView:view text:@"你已经分享给0个好友" color:color_text_two size:14 alignment:NSTextAlignmentCenter];
+    
+    [MioGetReq(api_userInfo, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        tip1.text = [NSString stringWithFormat:@"你已经分享给%@个好友",data[@"invitee_num"]];
+    } failure:^(NSString *errorInfo) {}];
+    
+    UIImageView *img = [UIImageView creatImgView:frame(54, 83, 177, 177) inView:view image:@"vip_15" radius:0];
+    UILabel *tip3 = [UILabel creatLabel:frame(0, 242, 285, 20) inView:view text:@"好友可得7天VIP会员" color:color_main size:12 alignment:NSTextAlignmentCenter];
+    
+    UIButton *shareBtn = [UIButton creatBtn:frame(20, 270,245, 38) inView:view bgColor:color_main title:@"参加活动" titleColor:appWhiteColor font:14 radius:6 action:^{
+        if (!islogin) {
+            PostNotice(@"login");
+            return;
+        }
+
+        [view removeFromSuperview];
+        MioShareView *shareView = [[MioShareView alloc] initWithFrame:frame(0, 0, KSW, KSH)];
+        [bgView addSubview:shareView];
+
+        MioNavView *navView = [[MioNavView alloc] initWithFrame:frame(0, 0, KSW, NavH)];
+        [shareView addSubview:navView];
+        
+        [navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
+        [navView.centerButton setTitle:@"分享得会员" forState:UIControlStateNormal];
+        navView.leftButtonBlock = ^{
+            [bgView removeFromSuperview];
+        };
+        
+    }];
+    
+    UILabel *tip2 = [UILabel creatLabel:frame(0, 312, 285, 20) inView:view text:@"（注册需填写邀请码，否则无效）" color:color_text_two size:10 alignment:NSTextAlignmentCenter];
+
+    
+    UIButton *closeBtn = [UIButton creatBtn:frame(KSW2 - 20, KSH * 0.8, 40, 40) inView:bgView bgImage:@"tc_gb" action:^{
+        [UIView animateWithDuration:0.3 animations:^{
+            bgView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [bgView removeFromSuperview];
+        }];
+    }];
+}
+
+
 
 +(void)showNewVersion:(NSString *)message link:(NSString *)url
 {

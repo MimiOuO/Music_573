@@ -26,8 +26,11 @@
     [self requestVersion];
     [self requestTreaties];
     [self requestShareUrl];
+//    [UIWindow showShare];
     [self requestVipTimeLeft];
+    
     [self configAd];
+    RecieveNotice(@"loginSuccess", resetTimeLeft);
 }
 
 -(void)requestSingerGroup{
@@ -146,11 +149,69 @@
     } failure:^(NSString *errorInfo) {}];
 }
 
--(void)requestVipTimeLeft{
-    [CountdownTimer startTimerWithKey:vipCutDown count:24*60*60 callBack:^(NSInteger count, BOOL isFinished) {
+-(void)resetTimeLeft{
+    [CountdownTimer stopTimerWithKey:vipCutDown];
+    [MioGetReq(api_userInfo, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        MioUserInfo *user = [MioUserInfo mj_objectWithKeyValues:data];
+        if (user.vip_remain.intValue > 0) {
+            [userdefault setObject:@"1" forKey:@"isVip"];
+            [userdefault synchronize];
+            
+
         
- 
-    }];
+            [CountdownTimer startTimerWithKey:vipCutDown count:user.vip_remain.intValue callBack:^(NSInteger count, BOOL isFinished) {
+                
+//                NSLog(@"会员剩余时间%ld",(long)count);
+                if (count == 1) {
+                    [userdefault setObject:@"0" forKey:@"isVip"];
+                    [userdefault synchronize];
+                }
+            }];
+        }
+    } failure:^(NSString *errorInfo) {}];
+    [self requestLottery];
+}
+
+-(void)requestVipTimeLeft{
+    [MioGetReq(api_userInfo, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        MioUserInfo *user = [MioUserInfo mj_objectWithKeyValues:data];
+        if (user.vip_remain.intValue > 0) {
+            [userdefault setObject:@"1" forKey:@"isVip"];
+            [userdefault synchronize];
+        
+            
+            
+            [CountdownTimer startTimerWithKey:vipCutDown count:user.vip_remain.intValue callBack:^(NSInteger count, BOOL isFinished) {
+                
+//                NSLog(@"会员剩余时间%ld",(long)count);
+                if (count == 1) {
+                    [userdefault setObject:@"0" forKey:@"isVip"];
+                    [userdefault synchronize];
+                }
+            }];
+        }
+        if (user.vip_remain.intValue < 86400*3) {
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIWindow showShare];
+            });
+        }
+        
+    } failure:^(NSString *errorInfo) {}];
+
+}
+
+-(void)requestLottery{
+    [MioGetReq(api_isLottery, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *data = [result objectForKey:@"data"];
+        if ([data[@"is_lottery"] intValue] ==  1) {
+            return;
+        }else{
+            [UIWindow showLucky];
+        }
+    } failure:^(NSString *errorInfo) {}];
 }
 
 -(void)configAd{

@@ -22,6 +22,7 @@
 #import "MioMvVC.h"
 #import "MioSingerVC.h"
 #import <JhtMarquee/JhtHorizontalMarquee.h>
+#import "STRAutoScrollLabel.h"
 @interface MioMainPlayerVC ()<GKSliderViewDelegate,LyricViewDelegate,ChangeQuailtyDelegate,chooseDownloadDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -31,10 +32,13 @@
 
 @property (nonatomic, strong) UIImageView *backgroundImg;
 @property (nonatomic, strong) JhtHorizontalMarquee *marquee;
+@property (nonatomic, strong) STRAutoScrollLabel *titleLab;
 @property (nonatomic, strong) UILabel *nameLab;
 @property (nonatomic, strong) UILabel *singerLab;
 @property (nonatomic, strong) UIButton *qualityBtn;
 @property (nonatomic, strong) UIButton *mvButton;
+@property (nonatomic, strong) UIButton *officialBtn;
+@property (nonatomic, strong) UIButton *vipButton;
 @property (nonatomic, strong) UIImageView *coverImg;
 
 @property (nonatomic, strong) UILabel *singleLrcLab;
@@ -79,6 +83,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     statusBarLight;
+    [self updateUI];
 }
 
 -(void)changeMusic{
@@ -123,13 +128,14 @@
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     };
     
-    _marquee = [[JhtHorizontalMarquee alloc] initWithFrame:frame(60, StatusH + 10, KSW - 120, 25) singleScrollDuration:5.0];
-    _marquee.textAlignment = NSTextAlignmentCenter;
-    _marquee.text = [NSString stringWithFormat:@"%@          ",music.title];
-    _marquee.textColor = appWhiteColor;
-    _marquee.font = BoldFont(18);
-    [self.view addSubview:_marquee];
-    [_marquee marqueeOfSettingWithState:MarqueeStart_H];
+    
+    _titleLab = [[STRAutoScrollLabel alloc] initWithFrame:CGRectMake(60, StatusH + 10, KSW - 120, 25)];
+    _titleLab.text = music.title;//[NSString stringWithFormat:@"%@          ",music.title];
+    //color
+    _titleLab.labelBetweenGap = 10;
+    _titleLab.textColor = appWhiteColor;
+    _titleLab.textFont = BoldFont(18);
+    [self.view addSubview:_titleLab];
     
 //    _nameLab = [UILabel creatLabel:frame(60, StatusH + 10, KSW - 120, 25) inView:self.view text:@"" color:appWhiteColor boldSize:18 alignment:NSTextAlignmentCenter];
 //    _nameLab.text = music.title;
@@ -161,14 +167,33 @@
         }];
     }];
     
+    _officialBtn = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"nondestructive_player_zhengban" action:^{}];
+    _vipButton = [UIButton creatBtn:frame(KSW2 + 7, StatusH + 62, 26, 14) inView:self.view bgImage:@"mv_player_vip" action:^{}];
+    
+    NSMutableArray *tagArr = [[NSMutableArray alloc] init];
+    [tagArr addObject:_qualityBtn];
+    
+    _mvButton.hidden = YES;
+    _officialBtn.hidden = YES;
+    _vipButton.hidden = YES;
+    
     if (music.hasMV) {
         _mvButton.hidden = NO;
-        _qualityBtn.left = KSW2 - 26 - 7;
-    }else{
-        _mvButton.hidden = YES;
-        _qualityBtn.left = KSW2 - 13;
+        [tagArr addObject:_mvButton];
     }
-
+    if (music.official) {
+        _officialBtn.hidden = NO;
+        [tagArr addObject:_officialBtn];
+    }
+    if (music.need_vip) {
+        _vipButton.hidden = NO;
+        [tagArr addObject:_vipButton];
+    }
+    
+    for (int i = 0;i < tagArr.count; i++) {
+        ((UIView *)tagArr[i]).left = KSW - tagArr.count * 32 + 6 + i *32;
+    }
+    
     _scrollView = [UIScrollView creatScroll:frame(0, StatusH + 86, KSW, 5 + KSW-56 + (KSH - StatusH - 91 - (KSW - 56) - SafeBotH)/2) inView:self.view contentSize:CGSizeMake(KSW*2, KSH - NavH - 50 - 300)];
     _scrollView.bounces = NO;
     _scrollView.pagingEnabled = YES;
@@ -212,7 +237,6 @@
         [_playOrderBtn setBackgroundImage:image(@"random_player") forState:UIControlStateNormal];
     }
 
-    
     _preBtn = [UIButton creatBtn:frame(28 + (KSW2 - 28 - 30)/2, 0, 30, 30) inView:self.view bgImage:@"forward_player" action:^{
         [weakSelf preBtnClick];
     }];
@@ -301,19 +325,43 @@
     MioMusicModel *music = mioM3U8Player.currentMusic;
     [_backgroundImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
     [_coverImg sd_setImageWithURL:music.cover_image_path.mj_url placeholderImage:image(@"gequ_zhanweitu")];
-    _marquee.text = [NSString stringWithFormat:@"%@          ",music.title];
-    [_marquee marqueeOfSettingWithState:MarqueeStart_H];
+    [_titleLab removeFromSuperview];
+    _titleLab = [[STRAutoScrollLabel alloc] initWithFrame:CGRectMake(60, StatusH + 10, KSW - 120, 25)];
+    _titleLab.labelBetweenGap = 10;
+    _titleLab.textColor  = appWhiteColor;
+    _titleLab.textFont = BoldFont(18);
+    _titleLab.text = music.title;
+    [self.view addSubview:_titleLab];//[NSString stringWithFormat:@"%@          ",music.title];
+//    [_marquee marqueeOfSettingWithState:MarqueeStart_H];
     _nameLab.text = music.title;
     _singerLab.text = music.singer_name;
     _slider.bufferValue = 0;
     _slider.value = 0;
+
+    NSMutableArray *tagArr = [[NSMutableArray alloc] init];
+    [tagArr addObject:_qualityBtn];
+    
+    _mvButton.hidden = YES;
+    _officialBtn.hidden = YES;
+    _vipButton.hidden = YES;
+    
     if (music.hasMV) {
         _mvButton.hidden = NO;
-        _qualityBtn.left = KSW2 - 26 - 7;
-    }else{
-        _mvButton.hidden = YES;
-        _qualityBtn.left = KSW2 - 13;
+        [tagArr addObject:_mvButton];
     }
+    if (music.official) {
+        _officialBtn.hidden = NO;
+        [tagArr addObject:_officialBtn];
+    }
+    if (music.need_vip) {
+        _vipButton.hidden = NO;
+        [tagArr addObject:_vipButton];
+    }
+    
+    for (int i = 0;i < tagArr.count; i++) {
+        ((UIView *)tagArr[i]).left = (KSW - tagArr.count * 32 + 6)/2 + i *32;
+    }
+    
     if (music.is_like) {
         _likeBtn.selected = YES;
     }else{
@@ -582,8 +630,6 @@
         [_qualityBtn setBackgroundImage:image(@"nondestructive_player_player") forState:UIControlStateNormal];
     }
 }
-
-
 
 -(void)updateCmtCount{
     _cmtCountLab.text = [NSString stringWithFormat:@"%d",[_cmtCountLab.text intValue] + 1];

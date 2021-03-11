@@ -34,6 +34,7 @@
         _page = _page + 1;
         [self requestData];
     }];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     RecieveNotice(@"search", requestNewKeyData);
     [self requestData];
 }
@@ -65,11 +66,7 @@
         [UIWindow hiddenLoading];
     }];
 }
- 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _dataArr.count;

@@ -54,7 +54,7 @@
     
     [text addAttribute:NSForegroundColorAttributeName
                      value:color_text_two
-                 range:[_nameLab.text rangeOfString:model.singer_name]];
+                 range:NSMakeRange(model.title.length+2, model.singer_name.length)];
     _nameLab.attributedText = text;
     
     [_fromView whenTapped:^{
@@ -102,34 +102,36 @@
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  %@",_model.title,_model.singer_name]];
         [text addAttribute:NSFontAttributeName
                          value:Font(12)
-                         range:[_nameLab.text rangeOfString:_model.singer_name]];
+                         range:NSMakeRange(_model.title.length+2, _model.singer_name.length)];
         [text addAttribute:NSForegroundColorAttributeName
                          value:color_main
-                     range:[_nameLab.text rangeOfString:_model.singer_name]];
+                     range:NSMakeRange(_model.title.length+2, _model.singer_name.length)];
         _nameLab.attributedText = text;
-        _nameLab.width = KSW - 16 - 38 - 68;
+        _nameLab.width = KSW - 16 - 38 - 68 - 28;
         if (_model.fromModel != MioFromUnkown) {
             _fromView.hidden = NO;
         }else{
             _fromView.hidden = YES;
         }
         _playIcon.hidden = NO;
-        _playIcon.left = [_model.title widthForFont:Font(14)] + [_model.singer_name widthForFont:Font(12)] + Mar + 12;
+        _playIcon.left = Mar;
+        _nameLab.left = 44;
     }else{
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  %@",_model.title,_model.singer_name]];
         [text addAttribute:NSFontAttributeName
                          value:Font(12)
-                         range:[_nameLab.text rangeOfString:_model.singer_name]];
+                         range:NSMakeRange(_model.title.length+2, _model.singer_name.length)];
         [text addAttribute:NSForegroundColorAttributeName
                          value:color_text_one
-                     range:[_nameLab.text rangeOfString:_model.title]];
+                     range:NSMakeRange(0, _model.title.length)];
         [text addAttribute:NSForegroundColorAttributeName
                          value:color_text_two
-                     range:[_nameLab.text rangeOfString:_model.singer_name]];
+                     range:NSMakeRange(_model.title.length+2, _model.singer_name.length)];
         _nameLab.attributedText = text;
         _nameLab.width = KSW - 16 - 40;
         _fromView.hidden = YES;
         _playIcon.hidden = YES;
+        _nameLab.left = Mar;
     }
 }
 

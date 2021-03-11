@@ -43,5 +43,13 @@ static MioUserInfo *_userInfo;
 	[userdefault synchronize];
 }
 
+- (NSString *)vip_remain_format{
+    if (_vip_remain.intValue > 86400) {
+        return [NSString stringWithFormat:@"%d天",_vip_remain.intValue/86400 + 1];
+    }else{
+        return [NSString stringWithFormat:@"%d小时",_vip_remain.intValue/1440 + 1];
+    }
+}
+
 
 @end

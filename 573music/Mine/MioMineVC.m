@@ -26,6 +26,7 @@
 #import <SJM3U8DownloadListController.h>
 #import <SJM3U8DownloadListItem.h>
 #import "MioShareResultVC.h"
+#import "CountdownTimer.h"
 
 @interface MioMineVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) MioUserInfo *user;
@@ -36,6 +37,8 @@
 @property (nonatomic, strong) UIImageView *avatar;
 @property (nonatomic, strong) UIImageView *gender;
 @property (nonatomic, strong) MioButton *editBtn;
+@property (nonatomic, strong) UIImageView *vipImg;
+@property (nonatomic, strong) UILabel *vipLab;
 @property (nonatomic, strong) MioLabel *nicknameLab;
 @property (nonatomic, strong) MioLabel *signLab;
 @property (nonatomic, strong) UIView *LvBg;
@@ -60,6 +63,8 @@
     _mySonglistArr = [[NSArray alloc] init];
     _recentPlayArr = [[NSArray alloc] init];
     [self creatUI];
+    
+    RecieveNotice(@"refreshInfo", updateInfo);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,7 +82,8 @@
         _loginLab.hidden = YES;
         _tipLab.hidden = YES;
         _gender.hidden = NO;
-        _editBtn.hidden = NO;
+        _editBtn.hidden = YES;
+        _vipImg.hidden = NO;
         _nicknameLab.hidden = NO;
         _signLab.hidden = NO;
         _LvBg.hidden = NO;
@@ -90,9 +96,10 @@
             _user = [MioUserInfo mj_objectWithKeyValues:data];
             [_avatar sd_setImageWithURL:_user.avatar.mj_url placeholderImage:image(@"qxt_yonhu")];
             _nicknameLab.text = _user.nickname;
-            _nicknameLab.width = [_nicknameLab.text widthForFont:BoldFont(16)];
+            _nicknameLab.width = [_nicknameLab.text widthForFont:BoldFont(14)];
             _signLab.text = (_user.sign.length > 0)?_user.sign:@"暂时没有个性签名哦，赶快去编写一个吧~~~";
-            _editBtn.left = _nicknameLab.right + 4;
+//            _editBtn.left = _nicknameLab.right + 4;
+            _vipImg.left = _nicknameLab.right;
             _LvLab.text = [NSString stringWithFormat:@"Lv.%@",_user.level];
             _listenLab.text = [NSString stringWithFormat:@"%d小时",(int)round([_user.listen_time intValue]/3600.0)];
             _listenLab.width = [_listenLab.text widthForFont:Font(10)];
@@ -108,7 +115,26 @@
             if (_user.gender == 2) {
                 _gender.hidden = YES;
             }
-
+            if (_user.is_vip) {
+                _vipImg.image = image(@"vip_yes");
+                _vipLab.text = _user.vip_remain_format;
+            }else{
+                _vipImg.image = image(@"vip_no");
+                _vipLab.text = @"非会员";
+            }
+            if (_user.vip_remain.intValue > 0) {
+                [userdefault setObject:@"1" forKey:@"isVip"];
+                [userdefault synchronize];
+       
+                [CountdownTimer startTimerWithKey:vipCutDown count:_user.vip_remain.intValue callBack:^(NSInteger count, BOOL isFinished) {
+                    
+//                    NSLog(@"会员剩余时间%ld",(long)count);
+                    if (count == 1) {
+                        [userdefault setObject:@"0" forKey:@"isVip"];
+                        [userdefault synchronize];
+                    }
+                }];
+            }
         } failure:^(NSString *errorInfo) {}];
     }else{
         _loginLab.hidden = NO;
@@ -116,6 +142,7 @@
         _avatar.image = image(@"qxt_yonhu");
         _gender.hidden = YES;
         _editBtn.hidden = YES;
+        _vipImg.hidden = YES;
         _nicknameLab.hidden = YES;
         _signLab.hidden = YES;
         _LvBg.hidden = YES;
@@ -134,6 +161,8 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     messegeBtn.clickArea = @"2";
+
+    
     _reddot = [UIView creatView:frame(16, 0, 6, 6) inView:messegeBtn bgColor:redTextColor radius:3];
     _reddot.hidden = YES;
     
@@ -162,7 +191,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     _gender = [UIImageView creatImgView:frame(76, 76, 14, 14) inView:bgScroll image:@"" radius:0];
-    _nicknameLab = [MioLabel creatLabel:frame(92, 4, 0, 22) inView:_userBgView text:@"" colorName:name_text_one boldSize:16 alignment:NSTextAlignmentLeft];
+    _nicknameLab = [MioLabel creatLabel:frame(92, 4, 0, 22) inView:_userBgView text:@"" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
     _nicknameLab.text = currentUserNickName;
     _nicknameLab.width = [_nicknameLab.text widthForFont:BoldFont(16)];
     _editBtn = [MioButton creatBtn:frame(_nicknameLab.right + 4, 8, 14, 14) inView:_userBgView bgImage:@"bianji_icon" bgTintColorName:name_icon_three action:^{
@@ -171,6 +200,11 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     _editBtn.clickArea = @"3";
+    
+    
+    _vipImg = [UIImageView creatImgView:frame(-100, 0, 65, 27) inView:_userBgView image:@"vip_no" radius:0];
+    _vipLab = [UILabel creatLabel:frame(28, 10, 34, 14) inView:_vipImg text:@"" color:appWhiteColor size:10 alignment:NSTextAlignmentCenter];
+
     
     _LvBg = [UIView creatView:frame(92, 28, 30, 16) inView:_userBgView bgColor:rgba(0, 0, 0, 0.15) radius:8];
     _LvLab = [UILabel creatLabel:frame(0, 0, 30, 16) inView:_LvBg text:@"Lv.1" color:appWhiteColor size:10 alignment:NSTextAlignmentCenter];
@@ -184,6 +218,7 @@
     
     _gender.hidden = YES;
     _editBtn.hidden = YES;
+    _vipImg.hidden = YES;
     _nicknameLab.hidden = YES;
     _signLab.hidden = YES;
     _LvBg.hidden = YES;

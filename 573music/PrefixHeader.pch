@@ -361,7 +361,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define api_skin                @"" api_base"/themes"
 #define api_notifications               @"" api_base"/notifications"
 #define api_unread               @"" api_base"/notifications/unread"
-
+#define api_isLottery            @"" api_base"/is_lottery"
+#define api_lottery            @"" api_base"/lottery"
 //like
 #define api_likesCount                @"" api_base"/likes/count"
 #define api_likes                @"" api_base"/likes"

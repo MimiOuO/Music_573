@@ -16,6 +16,7 @@
 #import "MioFeedBackVC.h"
 #import "MioModiPassWordVC.h"
 #import "MioChooseDefaultQuailtyView.h"
+#import "CountdownTimer.h"
 @interface MioMoreVC ()<defaultQuailtyDelegate>
 @property (nonatomic, strong) MioLabel *timeLab;
 @property (nonatomic, strong) UISwitch *jifenSwitch;
@@ -37,7 +38,7 @@
 
 -(void)creatUI{
     UIScrollView *bgscroll = [UIScrollView creatScroll:frame(0, NavH, KSW, KSH - NavH) inView:self.view contentSize:CGSizeMake(KSW, 580)];
-    NSArray *fuc1Arr = @[@"修改密码",@"定时关闭",@"显示积分倒计时",@"夜间模式",@"听歌识曲",@"仅WIFI联网",@"扫一扫",@"默认播放音质"];
+    NSArray *fuc1Arr = @[@"修改密码",@"定时关闭",/*@"显示积分倒计时",*/@"夜间模式",@"听歌识曲",@"仅WIFI联网",@"扫一扫",@"默认播放音质"];
     NSArray *fuc2Arr = @[@"清除缓存",@"意见反馈",@"关于我们"];
     NSArray *arrowArr = @[@"设置密码",@"修改密码",@"听歌识曲",@"扫一扫",@"意见反馈",@"关于我们"];
     
@@ -134,6 +135,9 @@
         [userdefault setObject:nil forKey:@"avatar"];
         [userdefault setObject:nil forKey:@"phone"];
         [userdefault synchronize];
+        
+        [userdefault setObject:@"0" forKey:@"isVip"];
+        [CountdownTimer stopTimerWithKey:vipCutDown];
         
         PostNotice(@"logout");
         

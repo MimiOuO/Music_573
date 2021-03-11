@@ -50,6 +50,8 @@ typedef NS_ENUM(NSUInteger, MioFromType) {
 @property (nonatomic, assign) BOOL hasHQ;//高清
 @property (nonatomic, assign) BOOL hasFlac;//无损
 @property (nonatomic, assign) BOOL hasMV;
+@property (nonatomic, assign) int need_vip;
+@property (nonatomic, assign) int official;
 
 @property (nonatomic, strong) NSURL * audioFileURL;
 
@@ -59,6 +61,8 @@ typedef NS_ENUM(NSUInteger, MioFromType) {
 
 @property (nonatomic, assign) MioFromType fromModel;
 @property (nonatomic, copy) NSString * fromId;
+
+
 
 @end
 

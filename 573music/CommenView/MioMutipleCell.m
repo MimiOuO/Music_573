@@ -12,6 +12,9 @@
 @property (nonatomic, strong) UILabel *singerLab;
 @property (nonatomic, strong) UIImageView *flacImg;
 @property (nonatomic, strong) UIImageView *mvImg;
+@property (nonatomic, strong) MioImageView *officialImg;
+@property (nonatomic, strong) MioImageView *vipImg;
+
 @end
 
 
@@ -24,8 +27,10 @@
         self.backgroundColor = appClearColor;
         
         _titleLab = [UILabel creatLabel:frame(16, 6, KSW - 66, 22) inView:self.contentView text:@"" color:color_text_one boldSize:16 alignment:NSTextAlignmentLeft];
-        _flacImg = [UIImageView creatImgView:frame(16, 34, 22, 12) inView:self.contentView image:@"playlist_nondestructive" radius:0];
-        _mvImg = [UIImageView creatImgView:frame(16, 34, 22, 12) inView:self.contentView image:@"playlist_mv" radius:0];
+        _flacImg = [UIImageView creatImgView:frame(-100, 34, 22, 12) inView:self.contentView image:@"playlist_nondestructive" radius:0];
+        _mvImg = [UIImageView creatImgView:frame(-100, 34, 22, 12) inView:self.contentView image:@"playlist_mv" radius:0];
+        _officialImg = [MioImageView creatImgView:frame(-100, 34, 22, 12) inView:self.contentView image:@"playlist_zhengban" bgTintColorName:name_main radius:0];
+        _vipImg = [MioImageView creatImgView:frame(-100 ,34, 22, 12) inView:self.contentView image:@"playlist_vip" bgTintColorName:name_main radius:0];
         _singerLab = [UILabel creatLabel:frame(0, 32, 200, 17) inView:self.contentView text:@"" color:color_text_two size:12 alignment:NSTextAlignmentLeft];
 
         
@@ -35,27 +40,34 @@
 
 - (void)setMusic:(MioMusicModel *)music{
     _titleLab.text = music.title;
+
+    _flacImg.hidden = YES;
+    _mvImg.hidden = YES;
+    _officialImg.hidden = YES;
+    _vipImg.hidden = YES;
+    NSMutableArray *tagArr = [[NSMutableArray alloc] init];
     if (music.hasFlac) {
         _flacImg.hidden = NO;
-        _mvImg.left = 42;
-        if (music.hasMV) {
-            _mvImg.hidden = NO;
-            _singerLab.left = 68;
-        }else{
-            _mvImg.hidden = YES;
-            _singerLab.left = 42;
-        }
-    }else{
-        _flacImg.hidden = YES;
-        _mvImg.left = 16;
-        if (music.hasMV) {
-            _mvImg.hidden = NO;
-            _singerLab.left = 42;
-        }else{
-            _mvImg.hidden = YES;
-            _singerLab.left = 20;
-        }
+        [tagArr addObject:_flacImg];
     }
+    if (music.hasMV) {
+        _mvImg.hidden = NO;
+        [tagArr addObject:_mvImg];
+    }
+    if (music.official) {
+        _officialImg.hidden = NO;
+        [tagArr addObject:_officialImg];
+    }
+    if (music.need_vip) {
+        _vipImg.hidden = NO;
+        [tagArr addObject:_vipImg];
+    }
+    
+    for (int i = 0;i < tagArr.count; i++) {
+        ((UIView *)tagArr[i]).left = 16 + i * 26;
+    }
+
+    _singerLab.left = 16 + tagArr.count * 26;
     _singerLab.text = music.singer_name;
 }
 

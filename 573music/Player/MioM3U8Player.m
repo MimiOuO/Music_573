@@ -179,6 +179,16 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void)resetAudiostreamer:(MioMusicModel *)music{
 //    [self _cancelStreamer];
+    
+    if (music.need_vip && Equals([userdefault objectForKey:@"isVip"], @"0")) {
+        [self stop];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIWindow showShare];
+            [UIWindow showInfo:@"当前歌曲为VIP歌曲，您需要成为VIP才能播放"];
+        });
+        return;
+    }
+    
     NSArray<MioMusicModel *> *dataArr = [WHCSqlite query:[MioMusicModel class]  where:@"savetype = 'downloaded'"];
     NSMutableArray *musicIdArr = [[NSMutableArray alloc] init];
     for (int i = 0;i < dataArr.count; i++) {

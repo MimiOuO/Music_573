@@ -15,6 +15,7 @@
 #import "MioMineVC.h"
 #import "MioMainPlayerVC.h"
 #import "MioBottomPlayView.h"
+#import "MioPlayListVC.h"
 
 @interface MioTabbarVC ()
 
@@ -201,13 +202,42 @@
 }
 
 -(void)login{
-    
     MioLoginVC *vc = [[MioLoginVC alloc] init];
     MioNavVC *nav = [[MioNavVC alloc] initWithRootViewController:vc];
     nav.modalPresentationStyle = 0;
-    [self presentViewController:nav animated:YES completion:nil];
-    return;
-    
+    NSLog(@"%@",[self getCurrentVC]);
+    if ([[self getCurrentVC] isKindOfClass:[MioMainPlayerVC class]]) {
+        [[self getCurrentVC] presentViewController:nav animated:YES completion:nil];
+    }else if([[self getCurrentVC] isKindOfClass:[MioPlayListVC class]]){
+        [[self getCurrentVC] presentViewController:nav animated:YES completion:nil];
+    } else{
+        [self presentViewController:nav animated:YES completion:nil];
+        return;
+    }
+}
+
+- (UIViewController *)getCurrentVC
+{
+
+    //获得当前活动窗口的根视图
+    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (1)
+    {
+        //根据不同的页面切换方式，逐步取得最上层的viewController
+        if ([vc isKindOfClass:[UITabBarController class]]) {
+            vc = ((UITabBarController*)vc).selectedViewController;
+        }
+        if ([vc isKindOfClass:[UINavigationController class]]) {
+            vc = ((UINavigationController*)vc).visibleViewController;
+        }
+        if (vc.presentedViewController) {
+            vc = vc.presentedViewController;
+        }else{
+            break;
+        }
+    }
+    return vc;
+
 }
 
 

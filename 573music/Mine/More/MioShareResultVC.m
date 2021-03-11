@@ -22,18 +22,23 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
+
+    [self setupWebView];
     [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
-    [self.navView.centerButton setTitle:@"分享得积分" forState:UIControlStateNormal];
-   [self setupWebView];
+    [self.navView.centerButton setTitle:@"分享得会员" forState:UIControlStateNormal];
+    WEAKSELF;
+    self.navView.leftButtonBlock = ^{
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    };
     
 }
 
 // 添加webView，加载扫描过来的内容
 - (void)setupWebView {
     CGFloat webViewX = 0;
-    CGFloat webViewY = NavH;
+    CGFloat webViewY = StatusH;
     CGFloat webViewW = [UIScreen mainScreen].bounds.size.width;
-    CGFloat webViewH = KSH - NavH;
+    CGFloat webViewH = KSH - StatusH;
     self.webView = [SGWebView webViewWithFrame:CGRectMake(webViewX, webViewY, webViewW, webViewH)];
 //    if (self.comeFromVC == ScanSuccessJumpComeFromWB) {
         _webView.progressViewColor = color_main;
@@ -45,7 +50,7 @@
     
 
 
-    UIView *coverView = [UIView creatView:frame(0, 0, KSW, KSH - NavH) inView:self.view bgColor:appClearColor radius:0];
+    UIView *coverView = [UIView creatView:frame(0, NavH, KSW, KSH - NavH) inView:self.view bgColor:appClearColor radius:0];
     
     [coverView addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(imglongTapClick:)]];
 

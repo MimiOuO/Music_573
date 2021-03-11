@@ -35,14 +35,15 @@
         _page = _page + 1;
         [self requestData];
     }];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     RecieveNotice(@"search", requestNewKeyData);
     [self requestData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
 
 -(void)requestNewKeyData{
     _page = 1;

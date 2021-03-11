@@ -51,7 +51,7 @@
     self.view.backgroundColor = appClearColor;
     
     _scroll = [UIScrollView creatScroll:frame(0, 0, KSW, KSH - NavH - 40 - TabH) inView:self.view contentSize:CGSizeMake(KSW, KSH)];
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     RecieveNotice(@"search", requestData);
 }
 
@@ -61,7 +61,6 @@
         return;
     }
     [UIWindow showLoading];
-    NSLog(@"111111++++");
     
     YTKBatchRequest *batchRequest = [[YTKBatchRequest alloc] initWithRequestArray:@[MioGetReq(api_singers, @{@"s":_searchKey}), MioGetReq(api_songs, @{@"s":_searchKey}),MioGetReq(api_songLists, @{@"s":_searchKey}),MioGetReq(api_albums, @{@"s":_searchKey}),MioGetReq(api_mvs, @{@"s":_searchKey})]];
     [batchRequest startWithCompletionBlockWithSuccess:^(YTKBatchRequest *batchRequest) {

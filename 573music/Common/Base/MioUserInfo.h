@@ -42,6 +42,11 @@
 /** 兴趣 */
 @property (nonatomic, strong) NSArray    *favorite_tags;
 
+@property (nonatomic, assign) NSInteger is_vip;
+/** VIP剩余 */
+@property (nonatomic, copy) NSString    *vip_remain;
+/** VIP剩余格式化 */
+@property (nonatomic, copy) NSString    *vip_remain_format;
 
 /**
  *  单例

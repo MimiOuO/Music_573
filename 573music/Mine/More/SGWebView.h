@@ -9,6 +9,7 @@
 //  如果 self.navigationController.navigationBar.translucent = NO；或者导航栏不存在; 那么 SGWebView 的 isNavigationBarOrTranslucent属性 必须设置 NO)
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 @class SGWebView;
 
 @protocol SGWebViewDelegate <NSObject>
@@ -32,6 +33,9 @@
 @property (nonatomic, copy) NSString *navigationItemTitle;
 /** 导航栏存在且有穿透效果(默认导航栏存在且有穿透效果) */
 @property (nonatomic, assign) BOOL isNavigationBarOrTranslucent;
+
+/// WKWebView
+@property (nonatomic, strong) WKWebView *wkWebView;
 
 /** 类方法创建 SGWebView */
 + (instancetype)webViewWithFrame:(CGRect)frame;
