@@ -559,6 +559,7 @@
 		23E5B6B225B17AC10017F0CC /* MioMoreFuncView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5B6B125B17AC10017F0CC /* MioMoreFuncView.m */; };
 		23E5B6B525B199790017F0CC /* MioChooseQuantityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5B6B425B199790017F0CC /* MioChooseQuantityView.m */; };
 		23F3716F25906DDE006053B1 /* MioSonglistCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3716E25906DDE006053B1 /* MioSonglistCollectionCell.m */; };
+		23F901C325FB4BC600C0C886 /* NSObject+MioDeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F901C225FB4BC600C0C886 /* NSObject+MioDeviceHelper.m */; };
 		23FF98332547BB26008CC170 /* GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF98282547BB25008CC170 /* GCD.m */; };
 		23FF98342547BB26008CC170 /* GCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF98292547BB25008CC170 /* GCDQueue.m */; };
 		23FF98352547BB26008CC170 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF982A2547BB25008CC170 /* GCDTimer.m */; };
@@ -1680,6 +1681,8 @@
 		23E5B6B425B199790017F0CC /* MioChooseQuantityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioChooseQuantityView.m; sourceTree = "<group>"; };
 		23F3716D25906DDE006053B1 /* MioSonglistCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioSonglistCollectionCell.h; sourceTree = "<group>"; };
 		23F3716E25906DDE006053B1 /* MioSonglistCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioSonglistCollectionCell.m; sourceTree = "<group>"; };
+		23F901C125FB4BC600C0C886 /* NSObject+MioDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MioDeviceHelper.h"; sourceTree = "<group>"; };
+		23F901C225FB4BC600C0C886 /* NSObject+MioDeviceHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MioDeviceHelper.m"; sourceTree = "<group>"; };
 		23FF98272547BB25008CC170 /* GCDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSemaphore.h; sourceTree = "<group>"; };
 		23FF98282547BB25008CC170 /* GCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCD.m; sourceTree = "<group>"; };
 		23FF98292547BB25008CC170 /* GCDQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDQueue.m; sourceTree = "<group>"; };
@@ -3513,6 +3516,8 @@
 				23FF98392547BE09008CC170 /* UITableView+MioExtension.m */,
 				236DB79F250F6FBC001CC2F3 /* NSDate+Helper.h */,
 				236DB79E250F6FBB001CC2F3 /* NSDate+Helper.m */,
+				23F901C125FB4BC600C0C886 /* NSObject+MioDeviceHelper.h */,
+				23F901C225FB4BC600C0C886 /* NSObject+MioDeviceHelper.m */,
 				2393DD122512055C002483A9 /* UIImage+MioExtension.h */,
 				2393DD132512055C002483A9 /* UIImage+MioExtension.m */,
 				23615E2D257638BE00EAD39D /* NSObject+XWAdd.h */,
@@ -4218,6 +4223,7 @@
 				2366652D256B81D400609A05 /* MioTest2VC.m in Sources */,
 				233825E32518796900DC9021 /* UIView+HSFrame.m in Sources */,
 				231AE597259ADA46006AFA89 /* MioCategoryMVVC.m in Sources */,
+				23F901C325FB4BC600C0C886 /* NSObject+MioDeviceHelper.m in Sources */,
 				230274AC2589B67700937C04 /* NSArray+HXExtension.m in Sources */,
 				231AE591259ABF15006AFA89 /* MioCreatSonglistVC.m in Sources */,
 				238C94F62566683100FA58FC /* MioTabbar.m in Sources */,
@@ -4604,7 +4610,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.11.3;
+				CURRENT_PROJECT_VERSION = 1.0.12.1;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = X7B59Z8L2P;
 				GCC_PREFIX_HEADER = 573music/PrefixHeader.pch;
@@ -4618,7 +4624,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/573music/Common/Lib/AcrCloud",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.573music.jgs.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "573music/573music-Bridging-Header.h";
@@ -4640,7 +4646,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.11.3;
+				CURRENT_PROJECT_VERSION = 1.0.12.1;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = X7B59Z8L2P;
 				GCC_PREFIX_HEADER = 573music/PrefixHeader.pch;
@@ -4654,7 +4660,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/573music/Common/Lib/AcrCloud",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.573music.jgs.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "573music/573music-Bridging-Header.h";

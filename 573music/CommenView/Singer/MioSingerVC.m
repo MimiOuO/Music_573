@@ -60,14 +60,20 @@
             [self.navigationController popViewControllerAnimated:YES];
         }];
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIWindow showLoading];
+    });
 
+    [self requestData];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
     
-    [self requestData];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -81,7 +87,10 @@
         _model = [MioSingerModel mj_objectWithKeyValues:data];
         [self updateUI];
         [_pageController reloadData];
-    } failure:^(NSString *errorInfo) {}];
+        [UIWindow hiddenLoading];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+    }];
     
 }
 
@@ -206,13 +215,13 @@
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
 
     if (index == 0) {
-        return @"歌曲";
+        return [NSString stringWithFormat:@"歌曲 %d",_model.songs_num.intValue];
     }
     else if (index == 1) {
-        return @"专辑";
+        return [NSString stringWithFormat:@"专辑 %d",_model.albums_num.intValue];
     }
     else {
-        return @"视频";
+        return [NSString stringWithFormat:@"视频 %d",_model.mvs_num.intValue];
     }
 }
 

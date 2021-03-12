@@ -105,15 +105,20 @@
         [bgView whenTapped:^{
             if (Equals(titleArr[i], @"歌手")) {
                 [self hiddenView];
-                MioSingerVC *vc = [[MioSingerVC alloc] init];
-                vc.singerId = _model.singer_id;
-                [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                [_fatherVC dismissViewControllerAnimated:YES completion:^{
+                    MioSingerVC *vc = [[MioSingerVC alloc] init];
+                    vc.singerId = _model.singer_id;
+                    [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                }];
+
             }
             if (Equals(titleArr[i], @"专辑")) {
                 [self hiddenView];
-                MioAlbumVC *vc = [[MioAlbumVC alloc] init];
-                vc.album_id = _model.album_id;
-                [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                [_fatherVC dismissViewControllerAnimated:YES completion:^{
+                    MioAlbumVC *vc = [[MioAlbumVC alloc] init];
+                    vc.album_id = _model.album_id;
+                    [_fatherVC.currentTabbarSelectedNavigationController pushViewController:vc animated:YES];
+                }];
             }
             if (Equals(titleArr[i], @"歌词快退")) {
                 _lrcView.adjustLrcSec = _lrcView.adjustLrcSec - 1;

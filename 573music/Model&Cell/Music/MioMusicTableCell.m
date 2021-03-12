@@ -80,7 +80,7 @@
     _countImg.left = _cover.right + 8 + tagArr.count * 26;
     _countLab.left = _countImg.right + 1;
     _singerLab.left = _countLab.right + 4;
-    _nameLab.width = KSW - 84 - 45 - tagArr.count * 26 - 20 - _countLab.width -5;
+    _singerLab.width = KSW - 84 - 45 - tagArr.count * 26 - 20 - _countLab.width -5;
     
     if (model.is_like) {
         _likeBtn.selected = YES;

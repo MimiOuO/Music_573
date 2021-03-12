@@ -26,7 +26,6 @@
     [self requestVersion];
     [self requestTreaties];
     [self requestShareUrl];
-//    [UIWindow showShare];
     [self requestVipTimeLeft];
     
     [self configAd];

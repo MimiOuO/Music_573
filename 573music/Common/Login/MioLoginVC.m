@@ -10,9 +10,11 @@
 #import "WLCaptcheButton.h"
 #import "MioUserAgreementVC.h"
 #import "UITextField+NumberFormat.h"
+#import "NSObject+MioDeviceHelper.h"
 #import "MioLargeButton.h"
 #import "MioPasswordLoginVC.h"
 #import "MioChooseFavoriteTagView.h"
+
 @interface MioLoginVC ()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *phoneTF;
 @property (nonatomic, strong) UITextField *verifyTF;
@@ -166,11 +168,15 @@
             @"verification_key":_key,
             @"verification_code":self.verifyTF.text,
             @"invite_code":self.invitaTF.text,
+            @"device":[NSObject getCurrentDeviceModel],
+            @"imei":[NSObject getDeviceIDInKeychain],
         };
     }else{
         dic = @{
             @"verification_key":_key,
             @"verification_code":self.verifyTF.text,
+            @"device":[NSObject getCurrentDeviceModel],
+            @"imei":[NSObject getDeviceIDInKeychain],
         };
     }
     

@@ -48,6 +48,8 @@
 @property (nonatomic, strong) UILabel *listenLab;
 @property (nonatomic, strong) UIView *reddot;
 
+@property (nonatomic, strong) MioLabel *recentLab;
+
 @property (nonatomic, strong) UICollectionView *mySonglistCollection;
 @property (nonatomic, strong) UICollectionView *recentPlayCollection;
 @property (nonatomic, strong) NSArray<MioSongListModel *> *mySonglistArr;
@@ -74,6 +76,7 @@
     [self requestUnred];
     _recentPlayArr = [[[WHCSqlite query:[MioMusicModel class] where:@"savetype = 'recentMusic'"] reverseObjectEnumerator] allObjects];
     [_recentPlayCollection reloadData];
+    _recentLab.text = [NSString stringWithFormat:@"最近播放(%d)",_recentPlayArr.count];
     
 }
 
@@ -269,7 +272,7 @@
     [bgScroll addSubview:_mySonglistCollection];
     
     _recentTitleView = [UIView creatView:frame(0, 507, KSW, 23) inView:bgScroll bgColor:appClearColor radius:0];
-    MioLabel *recentLab = [MioLabel creatLabel:frame(Mar, 0, 100, 20) inView:_recentTitleView text:@"最近播放" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
+    _recentLab = [MioLabel creatLabel:frame(Mar, 0, 100, 20) inView:_recentTitleView text:@"最近播放" colorName:name_text_one boldSize:14 alignment:NSTextAlignmentLeft];
     MioLabel *moreRecentLab = [MioLabel creatLabel:frame(KSW_Mar - 50, 0, 50, 23) inView:_recentTitleView text:@"更多" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];
     MioImageView *arrow2 = [MioImageView creatImgView:frame(KSW_Mar -  14, 4.5, 14, 14) inView:_recentTitleView image:@"return_more" bgTintColorName:name_icon_two radius:0];
     

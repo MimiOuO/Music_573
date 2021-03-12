@@ -36,6 +36,11 @@
     [self creatUI];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [UIWindow hiddenLoading];
+}
+
 -(void)creatCategory{
     
     _areaArr = [((NSArray *)_categoryArr[0][@"tags"]) mutableCopy];

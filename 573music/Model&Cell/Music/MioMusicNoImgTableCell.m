@@ -73,7 +73,7 @@
     _countImg.left = 12 + tagArr.count * 26;
     _countLab.left = _countImg.right + 1;
     _singerLab.left = _countLab.right + 4;
-    _nameLab.width = KSW_Mar2 - 12 - tagArr.count * 26 - 20 - _countLab.width -5;
+    _singerLab.width = KSW_Mar2 - 12 - tagArr.count * 26 - 20 - _countLab.width -5;
     
     _countLab.left = _countImg.right + 1;
     _singerLab.left = _countLab.right + 4;

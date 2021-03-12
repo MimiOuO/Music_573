@@ -66,6 +66,7 @@
             [WHCSqlite delete:[MioMvModel class] where:@"savetype = 'recentMV'"];
             [weakSelf.recentMusic clearData];
             [weakSelf.recentMV clearData];
+            [weakSelf.pageController reloadData];
         }];
         [alertController addAction:cancelAction];
         [alertController addAction:okAction];
@@ -90,10 +91,12 @@
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
     
+    NSArray *musicArr = [[[WHCSqlite query:[MioMusicModel class] where:@"savetype = 'recentMusic'"] reverseObjectEnumerator] allObjects];
+    NSArray *mvArr = [[[WHCSqlite query:[MioMvModel class] where:@"savetype = 'recentMV'"] reverseObjectEnumerator] allObjects];
     if (index == 0) {
-        return @"歌曲";
+        return [NSString stringWithFormat:@"歌曲 %d",musicArr.count];
     }else{
-        return @"视频";
+        return [NSString stringWithFormat:@"视频 %d",mvArr.count];
     }
 }
 @end

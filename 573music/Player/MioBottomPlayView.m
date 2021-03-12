@@ -62,6 +62,7 @@
             vc.beforeVC = [self getCurrentViewController];
             [[self getCurrentViewController] presentViewController:vc animated:YES completion:nil];
         }];
+        _playListBtn.clickArea = @"3";
         _playBtn = [MioButton creatBtn:frame(KSW - 56 - 26, 11, 26, 26) inView:self bgImage:@"play_dibu" bgTintColorName:name_main action:^{
             if (mioM3U8Player.status == ZFPlayerPlayStatePlaying) {
                 [mioM3U8Player pause];
@@ -69,9 +70,11 @@
                 [mioM3U8Player play];
             }
         }];
+        _playBtn.clickArea = @"2";
         _playNextBtn = [MioButton creatBtn:frame(KSW - 20 - 17, 14.5, 17, 17) inView:self bgImage:@"bfq_xys" bgTintColorName:name_main action:^{
             [mioM3U8Player playNext];
         }];
+        _playNextBtn.clickArea = @"2";
         
         if (Equals([userdefault objectForKey:@"isRadio"], @"1")) {
             _playListBtn.hidden = YES;

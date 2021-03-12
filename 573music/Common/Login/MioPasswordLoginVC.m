@@ -11,6 +11,7 @@
 #import "WLCaptcheButton.h"
 #import "MioUserAgreementVC.h"
 #import "UITextField+NumberFormat.h"
+#import "NSObject+MioDeviceHelper.h"
 #import "MioLargeButton.h"
 #import "MioModiPassWordVC.h"
 #import "MioChooseFavoriteTagView.h"
@@ -135,6 +136,8 @@
     NSDictionary *dic = @{
                           @"phone":telNumber,
                           @"password":self.verifyTF.text,
+                          @"device":[NSObject getCurrentDeviceModel],
+                          @"imei":[NSObject getDeviceIDInKeychain],
                           };
     MioPostRequest *request = [[MioPostRequest alloc] initWithRequestUrl:api_passwordLogin argument:dic];
     
