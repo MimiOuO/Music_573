@@ -439,7 +439,7 @@
                 [self.slider layoutIfNeeded];
                 
                 _singleLrcLab.text = _lrcView.lyrics[_lrcView.currentLyricIndex].content;
-                if (Equals(_singleLrcLab.text, @"暂无歌词")) {
+                if ([_singleLrcLab.text containsString:@"暂无歌词"]) {
                     _singleLrcLab.text = @"";
                 }
             }
@@ -469,8 +469,13 @@
             }];
         };
     }else{//没有歌词
+        NSMutableString *blankStr = [[NSMutableString alloc] init];
+        for (int i = 0;i < (KSW2 - 28 - [@"暂无" widthForFont:Font(16)])/[@" " widthForFont:Font(16)]; i++) {
+            [blankStr appendFormat:@" "];
+        }
+        
         MusicLyric *lyric = [[MusicLyric alloc]init];
-        lyric.content = @"暂无歌词";
+        lyric.content = [NSString stringWithFormat:@"%@暂无歌词",blankStr];//@"%@暂无歌词";
         lyric.time = 0;
         _lrcView.lyrics = @[lyric];
     }

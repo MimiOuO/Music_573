@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2302029525FF0DEA0010B78E /* MioRankMusicTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2302029425FF0DEA0010B78E /* MioRankMusicTableCell.m */; };
 		230273D925899E5900937C04 /* CountdownTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 230273D825899E5900937C04 /* CountdownTimer.m */; };
 		230273E32589B59800937C04 /* MioEditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 230273E22589B59800937C04 /* MioEditInfoVC.m */; };
 		230274A42589B67700937C04 /* HXPhotoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 230273E62589B67600937C04 /* HXPhotoConfiguration.m */; };
@@ -570,6 +571,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2302029325FF0DEA0010B78E /* MioRankMusicTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioRankMusicTableCell.h; sourceTree = "<group>"; };
+		2302029425FF0DEA0010B78E /* MioRankMusicTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MioRankMusicTableCell.m; sourceTree = "<group>"; };
 		230273D725899E5900937C04 /* CountdownTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownTimer.h; sourceTree = "<group>"; };
 		230273D825899E5900937C04 /* CountdownTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownTimer.m; sourceTree = "<group>"; };
 		230273E12589B59800937C04 /* MioEditInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MioEditInfoVC.h; sourceTree = "<group>"; };
@@ -2219,6 +2222,8 @@
 				2318945B258AF4B70092C31B /* MioMusicTableCell.m */,
 				23197FF925EE1DD0003AB5C1 /* MioMusicNoImgTableCell.h */,
 				23197FFA25EE1DD0003AB5C1 /* MioMusicNoImgTableCell.m */,
+				2302029325FF0DEA0010B78E /* MioRankMusicTableCell.h */,
+				2302029425FF0DEA0010B78E /* MioRankMusicTableCell.m */,
 				232C972225E507A600D6139A /* MioDownloadedMusicTableCell.h */,
 				232C972325E507A600D6139A /* MioDownloadedMusicTableCell.m */,
 				2386D49D25E0F77B001D45A9 /* MioDJMusicTableCell.h */,
@@ -4350,6 +4355,7 @@
 				230274D42589B67700937C04 /* HXPhotoView.m in Sources */,
 				23DE1F3325D0E78500E1551F /* MioDownloadMusicCell.m in Sources */,
 				2388759F25A551190097FCEE /* MioMVRankVC.m in Sources */,
+				2302029525FF0DEA0010B78E /* MioRankMusicTableCell.m in Sources */,
 				23C9140B259D6B32006FA6EB /* CYCustomSectionIndexCell.m in Sources */,
 				239930B425777DFA00584486 /* DOUAudioDecoder.m in Sources */,
 				236936A125835210005DB8CA /* MioSongListVC.m in Sources */,

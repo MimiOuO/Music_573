@@ -28,6 +28,7 @@
         UIImageView *icon = [UIImageView creatImgView:frame(14, 14, 22, 22) inView:iconView image:@"xiaoxi_os" radius:0];
         
         _contentLab = [MioLabel creatLabel:frame(70, 17, (KSW - 86 -28), 0) inView:self.contentView text:@"" colorName:name_text_one size:14 alignment:NSTextAlignmentLeft];
+        _contentLab.numberOfLines = 0;
         _timeLab = [MioLabel creatLabel:frame(70, _contentLab.bottom + 13, 200, 14) inView:self.contentView text:@"" colorName:name_text_two size:10 alignment:NSTextAlignmentLeft];
         _split = [MioView creatView:frame(60, _timeLab.bottom + 12, KSW - 76 -28, 0.5) inView:self bgColorName:name_split radius:0];
         _reddot = [UIImageView creatImgView:frame(KSW_Mar2-14, 0, 14, 14) inView:_bgView image:@"tongzhi_new" radius:0];

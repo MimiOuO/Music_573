@@ -13,7 +13,11 @@
 @interface MioNoticeCenterVC ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) WMPageController *pageController;
+@property (nonatomic, strong) UIView *reddot;
+@property (nonatomic, strong) UILabel *unredLab;
 
+@property (nonatomic, strong) UIView *reddot2;
+@property (nonatomic, strong) UILabel *unredLab2;
 @end
 
 @implementation MioNoticeCenterVC
@@ -54,7 +58,32 @@
     UIButton *backBtn = [UIButton creatBtn:frame(0, StatusH, 50, 44) inView:self.view bgColor:appClearColor title:@"" titleColor:appClearColor font:10 radius:0  action:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
+    
+    _reddot = [UIView creatView:frame(KSW2 - 5,StatusH + 8, 14, 14) inView:_contentView bgColor:redTextColor radius:7];
+    _reddot.hidden = YES;
+    _unredLab = [UILabel creatLabel:frame(0, 0, 14, 14) inView:_reddot text:@"" color:appWhiteColor size:8 alignment:NSTextAlignmentCenter];
+    
+    
+    _reddot2 = [UIView creatView:frame(KSW2 + 66,StatusH + 8, 14, 14) inView:_contentView bgColor:redTextColor radius:7];
+    _reddot2.hidden = YES;
+    _unredLab2 = [UILabel creatLabel:frame(0, 0, 14, 14) inView:_reddot2 text:@"" color:appWhiteColor size:8 alignment:NSTextAlignmentCenter];
+    
+    [MioGetReq(api_unread, @{@"k":@"v"}) success:^(NSDictionary *result){
+        NSDictionary *count = [result objectForKey:@"data"][@"count"];
+        
+        if ([count[@"like_or_comment"] intValue] != 0) {
+            _reddot.hidden = NO;
+            _unredLab.text = [NSString stringWithFormat:@"%d", [count[@"like_or_comment"] intValue]];
+        }
+        
+        if ([count[@"from_system"] intValue] != 0) {
+            _reddot2.hidden = NO;
+            _unredLab2.text = [NSString stringWithFormat:@"%d", [count[@"from_system"] intValue]];
+        }
+
+    } failure:^(NSString *errorInfo) {}];
 }
+
 
 -(NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
     return 2;

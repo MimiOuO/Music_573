@@ -47,6 +47,7 @@
 @property (nonatomic, strong) UIImageView *listenIcon;
 @property (nonatomic, strong) UILabel *listenLab;
 @property (nonatomic, strong) UIView *reddot;
+@property (nonatomic, strong) UILabel *unredLab;
 
 @property (nonatomic, strong) MioLabel *recentLab;
 
@@ -166,8 +167,10 @@
     messegeBtn.clickArea = @"2";
 
     
-    _reddot = [UIView creatView:frame(16, 0, 6, 6) inView:messegeBtn bgColor:redTextColor radius:3];
+    _reddot = [UIView creatView:frame(12, -4, 14, 14) inView:messegeBtn bgColor:redTextColor radius:7];
     _reddot.hidden = YES;
+    _unredLab = [UILabel creatLabel:frame(0, 0, 14, 14) inView:_reddot text:@"99" color:appWhiteColor size:8 alignment:NSTextAlignmentCenter];
+
     
     MioButton *moreBtn = [MioButton creatBtn:frame(KSW - 16 - 20, StatusH + 12, 20, 20) inView:self.view bgImage:@"me_more" bgTintColorName:name_icon_one action:^{
         MioMoreVC *vc = [[MioMoreVC alloc] init];
@@ -375,11 +378,13 @@
 
 -(void)requestUnred{
     [MioGetReq(api_unread, @{@"k":@"v"}) success:^(NSDictionary *result){
-        NSString *count = [result objectForKey:@"data"][@"count"];
-        if ([count intValue] == 0) {
+        NSDictionary *count = [result objectForKey:@"data"][@"count"];
+        
+        if (([count[@"from_system"] intValue]  + [count[@"like_or_comment"] intValue] )== 0) {
             _reddot.hidden = YES;
         }else{
             _reddot.hidden = NO;
+            _unredLab.text = [NSString stringWithFormat:@"%d",([count[@"from_system"] intValue]  + [count[@"like_or_comment"] intValue] )];
         }
     } failure:^(NSString *errorInfo) {}];
 }

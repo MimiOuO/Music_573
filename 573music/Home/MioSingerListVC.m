@@ -130,7 +130,10 @@
         self.sections = temArr;
         [self.sectionIndexView reloadItems];
         [_table reloadData];
-    } failure:^(NSString *errorInfo) {}];
+    } failure:^(NSString *errorInfo) {
+        [UIWindow hiddenLoading];
+        NSLog(@"%@",errorInfo);
+    }];
 }
 
 -(void)creatUI{

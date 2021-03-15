@@ -82,5 +82,9 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [UIWindow showMessage:_dataArr[indexPath.row][@"data"][@"content"] withTitle:@"系统通知"];
+}
+
 
 @end

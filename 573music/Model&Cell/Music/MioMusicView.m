@@ -30,8 +30,8 @@
         _nameLab = [MioLabel creatLabel:frame(_cover.right + 8, 10, self.width  - 84 - 45, 22) inView:self text:@"" colorName:name_text_one size:16 alignment:NSTextAlignmentLeft];
         _flacImg = [MioImageView creatImgView:frame(_cover.right + 8, _nameLab.bottom + 5, 22, 12) inView:self image:@"playlist_nondestructive" bgTintColorName:name_main radius:0];
         _mvImg = [MioImageView creatImgView:frame(_flacImg.right + 4, _nameLab.bottom + 5, 22, 12) inView:self image:@"playlist_mv" bgTintColorName:name_main radius:0];
-        _officialImg = [MioImageView creatImgView:frame(-100, _nameLab.bottom + 2.5, 22, 12) inView:self image:@"playlist_zhengban" bgTintColorName:name_main radius:0];
-        _vipImg = [MioImageView creatImgView:frame(-100, _nameLab.bottom + 2.5, 22, 12) inView:self image:@"playlist_vip" bgTintColorName:name_main radius:0];
+        _officialImg = [MioImageView creatImgView:frame(-100, _nameLab.bottom + 5, 22, 12) inView:self image:@"playlist_zhengban" bgTintColorName:name_main radius:0];
+        _vipImg = [MioImageView creatImgView:frame(-100, _nameLab.bottom + 5, 22, 12) inView:self image:@"playlist_vip" bgTintColorName:name_main radius:0];
         _singerLab = [MioLabel creatLabel:frame(_mvImg.right + 8, _nameLab.bottom + 2, self.width  - 136 - 45, 17) inView:self text:@"" colorName:name_text_two size:12 alignment:NSTextAlignmentLeft];
         MioImageView *icon = [MioImageView creatImgView:frame(self.width - 46, 10, 22, 22) inView:self image:@"play" bgTintColorName:name_icon_three radius:0];
         _countLab = [MioLabel creatLabel:frame(self.width - 51, 34, 32, 17) inView:self text:@"" colorName:name_text_two size:12 alignment:NSTextAlignmentCenter];

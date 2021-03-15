@@ -7,7 +7,7 @@
 //
 
 #import "MioMusicRankVC.h"
-#import "MioMusicTableCell.h"
+#import "MioRankMusicTableCell.h"
 #import "MioMutipleVC.h"
 
 @interface MioMusicRankVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -161,13 +161,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";
-    MioMusicTableCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    MioRankMusicTableCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[MioMusicTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[MioRankMusicTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = appClearColor;
     cell.model = _dataArr[indexPath.row];
+    cell.rankLab.text = [NSString stringWithFormat:@"%d",indexPath.row + 1];
     return cell;
 }
 

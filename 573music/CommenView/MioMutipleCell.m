@@ -10,8 +10,8 @@
 @interface MioMutipleCell()
 @property (nonatomic, strong) UILabel *titleLab;
 @property (nonatomic, strong) UILabel *singerLab;
-@property (nonatomic, strong) UIImageView *flacImg;
-@property (nonatomic, strong) UIImageView *mvImg;
+@property (nonatomic, strong) MioImageView *flacImg;
+@property (nonatomic, strong) MioImageView *mvImg;
 @property (nonatomic, strong) MioImageView *officialImg;
 @property (nonatomic, strong) MioImageView *vipImg;
 
@@ -27,8 +27,9 @@
         self.backgroundColor = appClearColor;
         
         _titleLab = [UILabel creatLabel:frame(16, 6, KSW - 66, 22) inView:self.contentView text:@"" color:color_text_one boldSize:16 alignment:NSTextAlignmentLeft];
-        _flacImg = [UIImageView creatImgView:frame(-100, 34, 22, 12) inView:self.contentView image:@"playlist_nondestructive" radius:0];
-        _mvImg = [UIImageView creatImgView:frame(-100, 34, 22, 12) inView:self.contentView image:@"playlist_mv" radius:0];
+
+        _flacImg = [MioImageView creatImgView:frame(-100, 34, 22, 12) inView:self.contentView image:@"playlist_nondestructive" bgTintColorName:name_main radius:0];
+        _mvImg = [MioImageView creatImgView:frame(-100 ,34, 22, 12) inView:self.contentView image:@"playlist_mv" bgTintColorName:name_main radius:0];
         _officialImg = [MioImageView creatImgView:frame(-100, 34, 22, 12) inView:self.contentView image:@"playlist_zhengban" bgTintColorName:name_main radius:0];
         _vipImg = [MioImageView creatImgView:frame(-100 ,34, 22, 12) inView:self.contentView image:@"playlist_vip" bgTintColorName:name_main radius:0];
         _singerLab = [UILabel creatLabel:frame(0, 32, 200, 17) inView:self.contentView text:@"" color:color_text_two size:12 alignment:NSTextAlignmentLeft];
@@ -81,18 +82,18 @@
                 if ([v isKindOfClass: [UIImageView class]]) {
                     UIImageView *img=(UIImageView *)v;
                     if (self.selected) {
-                        img.image=[UIImage imageNamed:@"xuanze_yixuan"];
+                        img.image=[[UIImage imageNamed:@"xuanze_yixuan"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
                     }else
                     {
-                        img.image=[UIImage imageNamed:@"xuanze_weixuan"];
+                        img.image=[[UIImage imageNamed:@"xuanze_weixuan"] imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
                     }
+                    img.tintColor = color_main;
                 }
             }
         }
     }
     [super layoutSubviews];
 }
-
 
 //适配第一次图片为空的情况
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
